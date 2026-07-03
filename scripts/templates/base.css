@@ -176,6 +176,35 @@ details[open] > summary { border-bottom: 1px solid var(--line); }
 /* 高亮原语：theme 决定具体配色 */
 mark, .hl { padding: 0 .1em; }
 
+/* ---- 键盘导航与可访问性 (WCAG 2.4.7, 2.4.1) ---- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 1000;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 增强 focus 可见性 (WCAG 2.4.7) */
+a:focus, button:focus, input:focus, select:focus, textarea:focus, [tabindex]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 /* ---- 响应式：移动端断点（验收点：≤375px 不破版） ---- */
 @media (max-width: 860px) {
   .grid.cols-2, .grid.cols-3, .grid.cols-4 { grid-template-columns: 1fr; }

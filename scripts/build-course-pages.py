@@ -25,7 +25,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def _load_paths() -> dict[str, Path]:
-    """Read [paths] from build.toml; fall back to defaults for missing keys."""
+    """Read [paths] from build.toml; fall back to defaults for missing keys.
+    Supports ${VAR:default} syntax for environment variable fallback."""
+    import os
+    
+    def expand_env_vars(value: str) -> str:
+        """Expand ${VAR:default} patterns."""
+        pattern = r'\$\{([^:}]+):([^}]+)\}'
+        def replacer(m):
+            var_name, default = m.groups()
+            return os.environ.get(var_name, default)
+        return re.sub(pattern, replacer, value)
+    
     defaults = {
         "courses_dir":   "content/jiangsu/courses",
         "majors_dir":    "content/jiangsu/majors",
@@ -36,7 +47,7 @@ def _load_paths() -> dict[str, Path]:
     if cfg_path.exists():
         with cfg_path.open("rb") as fh:
             data = tomllib.load(fh).get("paths", {})
-        defaults.update({k: v for k, v in data.items() if isinstance(v, str)})
+        defaults.update({k: expand_env_vars(v) for k, v in data.items() if isinstance(v, str)})
     return {k: (ROOT / v) for k, v in defaults.items()}
 
 
@@ -848,7 +859,11 @@ def render_old_code_page(page: CoursePage) -> str:
         f'</div>'
     )
     cross_jump = f'<nav class="cross-jump" aria-label="站内跳转"><a href="{escape_attr(majors_href)}">浏览全部专业</a></nav>'
-    return html_shell(page.title, banner + body + cross_jump, canonical=prefix_path(f"/courses/{target_code}/"), noindex="noindex, follow")
+    
+    desc = f"江苏自考{page.code}课程已更新为{target_name}（{target_code}），查看新版课程资料。"
+    kw = f"江苏自考,{page.code},{target_code},{target_name}"
+    
+    return html_shell(page.title, banner + body + cross_jump, canonical=prefix_path(f"/courses/{target_code}/"), noindex="noindex, follow", description=desc, keywords=kw)
 
 
 def render_course_page(page: CoursePage, result: BuildResult) -> str:
@@ -881,7 +896,13 @@ def render_course_page(page: CoursePage, result: BuildResult) -> str:
     majors_href = prefix_path("/majors/")
     cross_jump = f'<nav class="cross-jump" aria-label="站内跳转"><a href="{escape_attr(majors_href)}">浏览全部专业</a></nav>'
     content = status_banner(page) + count_html + exam_index_json + body + cross_jump
-    return html_shell(page.title, content, canonical=page.route)
+    
+    # Generate SEO meta description and keywords
+    course_name = page.meta.get("课程名称", page.code)
+    desc = f"江苏自考{course_name}（{page.code}）课程资料：考纲概览、知识树、真题索引、学习资料汇总。"
+    kw = f"江苏自考,{course_name},{page.code},考纲,真题,自学考试"
+    
+    return html_shell(page.title, content, canonical=page.route, description=desc, keywords=kw)
 
 
 def render_migration_note(page: CoursePage) -> str:
@@ -890,16 +911,18 @@ def render_migration_note(page: CoursePage) -> str:
     return html_shell(page.title, content, canonical="/courses/15040/", noindex="noindex, follow")
 
 
-def _head(title: str, canonical_href: str, noindex: str | None = None) -> str:
+def _head(title: str, canonical_href: str, noindex: str | None = None, description: str = "", keywords: str = "") -> str:
     """Shared <head>: two-layer stylesheet (base.css token contract + style-C
-    theme.css signature), canonical, optional robots."""
+    theme.css signature), canonical, optional robots, SEO meta tags."""
     robots = f'<meta name="robots" content="{escape_attr(noindex)}">\n  ' if noindex else ""
+    desc_tag = f'<meta name="description" content="{escape_attr(description)}">\n  ' if description else ""
+    kw_tag = f'<meta name="keywords" content="{escape_attr(keywords)}">\n  ' if keywords else ""
     base_href = prefix_path("/assets/base.css")
     theme_href = prefix_path("/assets/theme.css")
     return f"""<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {robots}<link rel="canonical" href="{escape_attr(canonical_href)}">
+  {robots}{desc_tag}{kw_tag}<link rel="canonical" href="{escape_attr(canonical_href)}">
   <title>{html.escape(title)}</title>
   <link rel="stylesheet" href="{escape_attr(base_href)}">
   <link rel="stylesheet" href="{escape_attr(theme_href)}">
@@ -929,17 +952,18 @@ _FOOTER = """<footer class="site-footer"><div class="wrap">
 
 
 def page_shell(title: str, breadcrumb: str, content: str, *, active: str,
-               canonical_href: str, noindex: str | None = None) -> str:
+               canonical_href: str, noindex: str | None = None, description: str = "", keywords: str = "") -> str:
     """Unified style-C page shell for all five page types: top nav + .wrap
     breadcrumb + centered .course-page main + footer. No sidebar — the
     style-C layout uses a sticky top nav (see CHO-94 prototype)."""
     bc = f'<nav class="breadcrumb" aria-label="面包屑"><div class="wrap">{breadcrumb}</div></nav>\n  ' if breadcrumb else ""
+    skip_link = '<a href="#main-content" class="skip-link">跳转到主内容</a>\n'
     return f"""<!doctype html>
 <html lang="zh-CN">
-{_head(title, canonical_href, noindex)}
+{_head(title, canonical_href, noindex, description, keywords)}
 <body>
-  {_header(active)}
-  {bc}<main>
+  {skip_link}{_header(active)}
+  {bc}<main id="main-content">
     <div class="course-page">
       {content}
     </div>
@@ -950,13 +974,15 @@ def page_shell(title: str, breadcrumb: str, content: str, *, active: str,
 """
 
 
-def html_shell(title: str, content: str, canonical: str, noindex: str | None = None) -> str:
+def html_shell(title: str, content: str, canonical: str, noindex: str | None = None, description: str = "", keywords: str = "") -> str:
     home_href = prefix_path("/")
     courses_href = prefix_path("/courses/")
     breadcrumb = (
         f'<a href="{escape_attr(home_href)}">首页</a> &gt; '
         f'<a href="{escape_attr(courses_href)}">课程</a> &gt; {html.escape(title)}'
     )
+    canonical_href = prefix_path(canonical)
+    return page_shell(title, breadcrumb, content, active="courses", canonical_href=canonical_href, noindex=noindex, description=description, keywords=keywords)
     return page_shell(
         f"{title} · 江苏自考课程", breadcrumb, content,
         active="courses", canonical_href=prefix_path(canonical), noindex=noindex,
@@ -972,9 +998,12 @@ def html_shell_major(title: str, content: str, canonical: str, name: str, level:
         f'<a href="{escape_attr(home_href)}">首页</a> &gt; '
         f'<a href="{escape_attr(majors_href)}">专业</a> &gt; {html.escape(name)}'
     )
+    desc = f"江苏自考{name}（{level}）专业介绍、课程设置及考试计划。"
+    kw = f"江苏自考,{name},{level},专业介绍,考试计划"
     return page_shell(
         f"{title_full} · 江苏自考专业", breadcrumb, content,
         active="majors", canonical_href=prefix_path(canonical),
+        description=desc, keywords=kw
     )
 
 
@@ -982,9 +1011,12 @@ def html_shell_majors_index(title: str, content: str) -> str:
     """Shell for the majors index page."""
     home_href = prefix_path("/")
     breadcrumb = f'<a href="{escape_attr(home_href)}">首页</a> &gt; 专业'
+    desc = "江苏自考全部专业索引，包含专业代码、名称、层次及详细介绍页面。"
+    kw = "江苏自考,专业索引,自考专业,专业代码"
     return page_shell(
         "江苏自考专业索引 · 江苏自考专业", breadcrumb, content,
         active="majors", canonical_href=prefix_path("/majors/"),
+        description=desc, keywords=kw
     )
 
 
@@ -1004,7 +1036,9 @@ def render_index(pages: Iterable[CoursePage]) -> str:
         body += "<h2>历史存档</h2><ul class=\"course-index course-index--archive\">" + "\n".join(archive_items) + "</ul>"
     majors_href = prefix_path("/majors/")
     body += f'<nav class="cross-jump" aria-label="站内跳转"><a href="{escape_attr(majors_href)}">浏览全部专业</a></nav>'
-    return html_shell("江苏自考课程页索引", body, canonical="/courses/")
+    desc = "江苏自考全部课程索引，包含课程代码、名称及详细资料页面。"
+    kw = "江苏自考,课程索引,自考课程,课程代码"
+    return html_shell("江苏自考课程页索引", body, canonical="/courses/", description=desc, keywords=kw)
 
 
 def render_site_index() -> str:
@@ -1042,7 +1076,9 @@ def render_site_index() -> str:
 <li>附件 3：《江苏省高等教育自学考试面向社会开考专科专业新旧代码和名称对照表》</li>
 <li>附件 4：《江苏省高等教育自学考试专业考试计划简编（2024年版）》</li>
 </ul>"""
-    return page_shell("江苏自考资料库", "", body, active="home", canonical_href=prefix_path("/"))
+    return page_shell("江苏自考资料库", "", body, active="home", canonical_href=prefix_path("/"), 
+                      description="江苏自考资料库，提供江苏省高等教育自学考试专业目录、课程资料及考试计划。",
+                      keywords="江苏自考,自学考试,专业目录,课程资料,考试计划")
 
 
 def render_majors_index(rows: list[MajorIndexRow], result: BuildResult) -> str:
@@ -1124,6 +1160,42 @@ def render_major_page(page: MajorPage, result: BuildResult) -> str:
 
 
 TEMPLATES_DIR = _PATHS["templates_dir"]
+
+def generate_sitemap(out_root: Path, pages: list, major_rows: list) -> None:
+    """Generate sitemap.xml for SEO. Includes site index, courses, majors indices and pages."""
+    from datetime import datetime
+    base_url = "https://supercatqr.github.io/jiangsu-zikao-aio"
+    lastmod = datetime.now().strftime("%Y-%m-%d")
+    
+    urls = [
+        (f"{base_url}/", "1.0", lastmod),
+        (f"{base_url}/courses/", "0.9", lastmod),
+        (f"{base_url}/majors/", "0.9", lastmod),
+    ]
+    
+    # Course pages
+    for page in pages:
+        urls.append((f"{base_url}{page.route}", "0.8", lastmod))
+    
+    # Major pages
+    for row in major_rows:
+        if row.exists:
+            urls.append((f"{base_url}/majors/{row.slug}/", "0.7", lastmod))
+    
+    xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, priority, mod in urls:
+        xml_lines.extend([
+            "  <url>",
+            f"    <loc>{html.escape(loc)}</loc>",
+            f"    <lastmod>{mod}</lastmod>",
+            f"    <priority>{priority}</priority>",
+            "  </url>"
+        ])
+    xml_lines.append("</urlset>")
+    
+    sitemap_path = out_root / "sitemap.xml"
+    sitemap_path.write_text("\n".join(xml_lines) + "\n", encoding="utf-8")
 
 def write_css(out_root: Path) -> None:
     """Emit the two-layer stylesheet: base.css (token contract + structural
@@ -1210,6 +1282,10 @@ def build(out_dir: Path) -> BuildResult:
         report.append("## Errors (blocking)")
         report.extend(f"- {e}" for e in result.errors)
     (out_dir.parent / "course-build-report.md").write_text("\n".join(report) + "\n", encoding="utf-8")
+    
+    # Generate sitemap.xml for SEO
+    generate_sitemap(out_dir.parent, pages, major_rows)
+    
     return result
 
 
