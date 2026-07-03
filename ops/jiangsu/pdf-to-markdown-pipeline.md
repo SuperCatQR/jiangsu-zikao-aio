@@ -177,6 +177,19 @@ plan.normalized.html
 - 章节顺序与官方 PDF 一致。
 - 所有自动推断字段都能追溯来源。
 
+**检查方法**：
+
+```bash
+# 1. 检查表格列数一致性
+grep -o '<td>' plan.normalized.html | wc -l  # 应为 (行数 × 列数)
+
+# 2. 检查课程代码格式
+grep -E '<td>[0-9]{5}</td>' plan.normalized.html  # 应匹配所有课程代码
+
+# 3. 对比原始文本
+diff <(pdftotext plan.pdf -) <(lynx -dump plan.normalized.html)  # 检查遗漏段落
+```
+
 ## 阶段 3：规范化 HTML -> Markdown 草稿
 
 输入：

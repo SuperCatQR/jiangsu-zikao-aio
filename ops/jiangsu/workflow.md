@@ -16,7 +16,7 @@ PDF -> 原始 HTML/XML -> 规范化 HTML -> Markdown
 
 - 官方公告页：江苏省教育考试院《 关于江苏省高等教育自学考试面向社会开考专业及考试计划调整有关事项的通告》
 - 解压后的单专业 PDF：`sources/jiangsu/major-plans-2024/*.pdf`
-- 官方附件原始 RAR：项目外本地归档 `C:\WorkSpace\project\FinalGo_local_archive\official-packages\jiangsu\jiangsu-major-plans-2024.rar`
+- 官方附件原始 RAR：归档在 zikao-materials 私有仓库 `official-packages/jiangsu/`
 - 总览政策：`policies.md`
 - 专业页模板：`ops/jiangsu/templates/major.md`
 
@@ -34,16 +34,37 @@ PDF -> 原始 HTML/XML -> 规范化 HTML -> Markdown
 
 推荐使用 Poppler 的 `pdftohtml`，因为它比 `pdftotext` 更好地保留中文课名、表格单元格和坐标。
 
-Windows 可用 `winget` 安装：
+### 安装 Poppler
 
-```bash
-winget install --id oschwartz10612.Poppler --accept-package-agreements --accept-source-agreements --silent
+**Windows**:
+
+```powershell
+# 方法1：使用 winget（推荐）
+winget install --id oschwartz10612.Poppler --accept-package-agreements --silent
+
+# 方法2：手动下载
+# 下载地址：https://github.com/oschwartz10612/poppler-windows/releases
+# 解压后添加 bin 目录到系统 PATH
 ```
 
-当前机器安装后的可执行文件位置示例：
+**安装后验证**：
+
+```powershell
+# 检查是否在 PATH 中
+pdftohtml -v
+
+# 若未在 PATH 中，手动指定路径
+$env:PATH += ";$env:LOCALAPPDATA\Microsoft\WinGet\Packages\oschwartz10612.Poppler_Microsoft.Winget.Source_8wekyb3d8bbwe\poppler-25.07.0\Library\bin"
+```
+
+**Linux/macOS**:
 
 ```bash
-$LOCALAPPDATA/Microsoft/WinGet/Packages/oschwartz10612.Poppler_Microsoft.Winget.Source_8wekyb3d8bbwe/poppler-25.07.0/Library/bin/pdftohtml.exe
+# Ubuntu/Debian
+sudo apt install poppler-utils
+
+# macOS
+brew install poppler
 ```
 
 跨平台环境如果 `pdftohtml` 已在 `PATH` 中，直接使用 `pdftohtml` 即可。
@@ -235,13 +256,34 @@ notes: "不托管教材电子版"
 当前项目可用批处理脚本：
 
 ```powershell
+# 基本用法
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1
+
+# 强制重新处理已有文件
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Force
+
+# 仅处理特定目录
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Path "sources/jiangsu/major-plans-2024"
 ```
 
-批处理结果记录在：
+**批处理参数说明**：
 
-- `sources/jiangsu/pdf-processing-report.md`
-- `sources/jiangsu/pdf-processing-manifest.csv`
+- `-Force`：覆盖已存在的输出文件
+- `-Path`：指定处理目录（默认处理所有 PDF）
+- `-Verbose`：输出详细日志
+
+**批处理结果记录**：
+
+- `sources/jiangsu/pdf-processing-report.md`：处理摘要与错误报告
+- `sources/jiangsu/pdf-processing-manifest.csv`：逐文件处理清单
+
+**常见故障排查**：
+
+| 问题 | 原因 | 解决 |
+| --- | --- | --- |
+| `pdftohtml: command not found` | Poppler 未安装或不在 PATH | 重新安装并配置 PATH |
+| 中文文件名乱码 | PowerShell 编码问题 | 改用 UTF-8 编码或重命名 PDF |
+| 表格列错位 | PDF 坐标解析失败 | 检查 plan.raw.xml，手动调整 normalized.html |
 
 不建议完全自动化的部分：
 

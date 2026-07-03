@@ -41,6 +41,21 @@ jiangsu-zikao-aio/
 
 ## 使用
 
+### 安装依赖
+
+```bash
+# Python 依赖
+pip install -r requirements-dev.txt
+
+# PDF 处理工具（可选，仅处理 PDF 时需要）
+# Windows:
+winget install --id oschwartz10612.Poppler --accept-package-agreements --silent
+# 或手动下载 Poppler 并添加到 PATH
+
+# Git LFS（首次克隆后）
+git lfs install
+```
+
 ### 构建静态站点
 
 ```bash
@@ -67,8 +82,29 @@ python scripts/check-source-links.py
 使用脚手架快速生成骨架：
 
 ```bash
+# 1. 生成目录结构
 python scripts/bootstrap-province.py guangdong
-# 生成 content/guangdong/、sources/guangdong/、ops/guangdong/ 三路目录结构
+
+# 2. 编辑首页
+# 编辑 content/guangdong/index.md
+
+# 3. 添加课程页
+# 在 content/guangdong/courses/ 创建课程 Markdown
+
+# 4. 更新配置
+# 在 build.toml 中添加省份路径（若需自定义）
+
+# 5. 构建验证
+python scripts/build-course-pages.py --base /
+```
+
+### 本地开发环境变量（可选）
+
+复制 `.env.example` 为 `.env` 并按需修改路径：
+
+```bash
+cp .env.example .env
+# 编辑 .env 配置自定义路径
 ```
 
 ### 运行测试
@@ -79,6 +115,9 @@ pip install -r requirements-dev.txt
 
 # 运行测试
 pytest
+
+# 指定测试文件
+pytest tests/test_build_course_pages.py
 ```
 
 ## 开发规范
