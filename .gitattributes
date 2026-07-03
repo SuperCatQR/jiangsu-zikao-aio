@@ -1,0 +1,14 @@
+# Git LFS 配置：大文件自动走 LFS 存储
+
+# PDF 文件（sources/ 下的原始考纲、资料包等）
+sources/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# 压缩包（官方资料包）
+sources/**/*.zip filter=lfs diff=lfs merge=lfs -text
+sources/**/*.rar filter=lfs diff=lfs merge=lfs -text
+sources/**/*.7z filter=lfs diff=lfs merge=lfs -text
+
+# 大型图片（如扫描版真题图片）
+sources/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+sources/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+sources/**/*.png filter=lfs diff=lfs merge=lfs -text

@@ -1,15 +1,19 @@
 # 站点构建配置。路径相对仓库根。
 # 用于 scripts/build-course-pages.py 和 scripts/check-source-links.py。
 # 修改路径后无需改脚本；未指定的字段回退到脚本内默认值。
+#
+# 环境变量回退机制：
+# - ${VAR_NAME:default_value} 语法支持从环境变量读取，未设置时用默认值
+# - 脚本需实现 expand_env_vars() 函数解析
 
 [paths]
-courses_dir     = "content/jiangsu/courses"
-majors_dir      = "content/jiangsu/majors"
-templates_dir   = "scripts/templates"
-out_dir         = "site/courses"
-site_dir        = "site"
+courses_dir     = "${ZIKAO_COURSES_DIR:content/jiangsu/courses}"
+majors_dir      = "${ZIKAO_MAJORS_DIR:content/jiangsu/majors}"
+templates_dir   = "${ZIKAO_TEMPLATES_DIR:scripts/templates}"
+out_dir         = "${ZIKAO_OUT_DIR:site/courses}"
+site_dir        = "${ZIKAO_SITE_DIR:site}"
 
 [source_link_monitor]
-baseline        = "ops/jiangsu/source-links.baseline.json"
-report          = "site/source-link-report.md"
-summary         = "site/source-link-report.json"
+baseline        = "${ZIKAO_BASELINE:ops/jiangsu/source-links.baseline.json}"
+report          = "${ZIKAO_REPORT:site/source-link-report.md}"
+summary         = "${ZIKAO_SUMMARY:site/source-link-report.json}"
