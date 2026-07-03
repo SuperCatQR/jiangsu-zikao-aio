@@ -1,63 +1,119 @@
 # 江苏自考一站式解决（jiangsu-zikao-aio）
 
-江苏省自学考试资料库。Markdown 源 → Python 生成静态站点 → GitHub Pages 发布。
+江苏省自学考试资料库，提供课程信息、考纲、真题索引和学习资料。
 
-- 站点：<https://supercatqr.github.io/jiangsu-zikao-aio/>
-- 数据源优先级：江苏省教育考试院官方公告与附件 > 主考学校转发公告 > 后续人工校对资料。
+## 目的
 
-## 目录
+为江苏自考生提供：
+- 🎯 **课程信息聚合**：专业计划、课程元数据、考纲链接
+- 📚 **真题索引**：历年真题汇总与来源追溯
+- 🔍 **外链监控**：自动检测考纲/官方资料链接可用性
+- 📖 **静态站点发布**：Markdown → GitHub Pages 全流程
+
+数据源优先级：江苏省教育考试院官方 > 主考学校 > 人工校对。
+
+## 项目结构
 
 ```text
 jiangsu-zikao-aio/
-├── content/jiangsu/       # 发布内容：majors, courses, index.md
-├── sources/jiangsu/       # 原始 PDF、机器抽取产物、清单、报告
-├── ops/                   # 元文档：政策、工作流、闸门、模板、外链基线、蓝图
-├── scripts/               # 构建/巡检/PDF 处理脚本 + CSS 模板
-├── archive/               # 历史存档（不参与发布）
-├── build.toml             # 路径 + 外链巡检配置
-├── .github/workflows/     # Pages 部署 + 外链监控
-└── README.md GIT_GUIDE.md reasonix.toml
+├── content/jiangsu/       # 发布内容：课程、专业、索引
+│   ├── courses/           # 课程 Markdown（{code}/index.md 或 {code}.md）
+│   ├── majors/            # 专业计划与来源
+│   └── index.md           # 站点首页
+├── sources/jiangsu/       # 原始 PDF、机器抽取产物、清单
+├── ops/                   # 元文档：政策、工作流、检查清单、蓝图
+│   └── jiangsu/           # 江苏专属元文档
+├── scripts/               # 构建/巡检脚本 + HTML 模板
+│   ├── build-course-pages.py      # 静态站点生成器
+│   ├── check-source-links.py      # 外链监控
+│   ├── bootstrap-province.py      # 省份扩展脚手架
+│   └── templates/                 # HTML/CSS 模板
+├── tests/                 # 单元测试
+├── build.toml             # 路径 + 监控配置
+├── .env.example           # 环境变量示例
+└── .github/workflows/     # CI：Pages 部署 + 外链监控
 ```
 
-三分区语义：
+**三分区语义**：
+- **content/** 被渲染进 `site/`（发布内容）
+- **sources/** 原始资料与机器产物（按省分层）
+- **ops/** 元文档（内部规范，不进入站点）
 
-- **content/** 会被构建器渲染进 `site/`；改路径先看 `build.toml`。
-- **sources/** 原始与机器产物；`sources/<省>/` 独立分省。
-- **ops/** 元文档，供内容作者查阅；不进入 `site/`。
+## 使用
 
-新增省份：`content/<省>/`、`sources/<省>/`、`ops/<省>/` 三条支线一起加。
-
-## 常用命令
-
-构建静态站点（Pages CI 也跑这条）：
+### 构建静态站点
 
 ```bash
+# 生产构建（GitHub Pages）
 python scripts/build-course-pages.py --base /jiangsu-zikao-aio/
-```
 
-本地预览：
-
-```bash
+# 本地预览
 python scripts/build-course-pages.py --base /
-open site/index.html
+# 然后用浏览器打开 site/index.html
 ```
 
-外链巡检（离线快速统计文件覆盖）：
+### 外链监控
 
 ```bash
+# 离线快速统计（仅统计引用数量）
 python scripts/check-source-links.py --offline
+
+# 在线探测（检查可用性并比对基线）
+python scripts/check-source-links.py
 ```
 
-PDF 批处理（Windows PowerShell）：
+### 新增省份
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Force
+使用脚手架快速生成骨架：
+
+```bash
+python scripts/bootstrap-province.py guangdong
+# 生成 content/guangdong/、sources/guangdong/、ops/guangdong/ 三路目录结构
 ```
 
-## 目录职责与放置规则
+### 运行测试
 
-见 [ops/project-folders-structure-blueprint.md](ops/project-folders-structure-blueprint.md)。
+```bash
+# 安装开发依赖
+pip install -r requirements-dev.txt
+
+# 运行测试
+pytest
+```
+
+## 开发规范
+
+### 目录职责
+
+详见 [ops/project-folders-structure-blueprint.md](ops/project-folders-structure-blueprint.md)。
+
+### Git 提交
+
+遵循 [GIT_GUIDE.md](GIT_GUIDE.md) 和 Conventional Commits 规范：
+
+```bash
+feat(courses): 新增 12345 软件工程课程页
+fix(scripts): 修复 URL 规范化尾随标点处理
+docs(ops): 更新课程审查清单
+```
+
+### 课程页发布前检查
+
+必过 [ops/jiangsu/course-review-checklist.md](ops/jiangsu/course-review-checklist.md) 所有项。
+
+### 配置管理
+
+- `build.toml`：路径和监控配置（支持环境变量回退）
+- `.env.example`：可选环境变量模板（本地开发时复制为 `.env`）
 
 ## 贡献
 
-Git 规范：[GIT_GUIDE.md](GIT_GUIDE.md)。课程页发布前必过 [ops/jiangsu/course-review-checklist.md](ops/jiangsu/course-review-checklist.md)。
+欢迎提交 PR 或 Issue：
+- 课程信息勘误
+- 真题索引补充
+- 外链更新通知
+- 新省份扩展
+
+---
+
+站点地址：<https://supercatqr.github.io/jiangsu-zikao-aio/>
