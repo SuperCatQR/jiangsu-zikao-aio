@@ -39,6 +39,13 @@ jiangsu-zikao-aio/
 - **sources/** 原始资料与机器产物（按省分层）
 - **ops/** 元文档（内部规范，不进入站点）
 
+## 基础建设文档
+
+- `ops/jiangsu/content-standard.md`：公开课程页、专业页、学习计划、复习计划排版标准。
+- `ops/jiangsu/workflow.md`：专业页与课程页生产流程。
+- `ops/jiangsu/publish-gate-contract.md`：发布闸门契约。
+- `ops/jiangsu/templates/study-plan.md`：课程学习计划模板。
+
 ## 使用
 
 ### 安装依赖
