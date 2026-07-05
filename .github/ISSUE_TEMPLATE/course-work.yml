@@ -1,0 +1,49 @@
+name: 课程/专业建设任务
+about: 新增或完善江苏自考课程页、专业页、学习/复习计划
+title: "[课程建设] <课程代码/专业代码> <名称>"
+labels: [content-task]
+body:
+  - type: input
+    id: scope
+    attributes:
+      label: 范围
+      description: 课程代码、专业代码或专题页
+      placeholder: "02333 软件工程 / 080901 计算机科学与技术"
+    validations:
+      required: true
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: 类型
+      options:
+        - 课程页
+        - 专业页
+        - 学习计划
+        - 阶段目标
+        - 复习计划
+        - 资料索引
+        - 排版/模板优化
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 来源
+      description: 官方优先；private 原件仅写 materials:// 相对路径，不贴 raw 链接。
+      placeholder: |
+        - 官方链接：
+        - materials://e-books/jiangsu/...
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收条件
+      value: |
+        - [ ] 符合 `ops/jiangsu/content-standard.md`
+        - [ ] 未暴露 private 原件或截图
+        - [ ] `python scripts/build-course-pages.py --base /jiangsu-zikao-aio/` 通过
+        - [ ] `python scripts/check-source-links.py --offline` 通过
+        - [ ] `pytest` 通过
+    validations:
+      required: true
