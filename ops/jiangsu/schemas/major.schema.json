@@ -1,0 +1,8 @@
+{
+  "type": "major",
+  "required_fields": ["省份", "专业代码", "专业名称", "层次"],
+  "recommended_fields": ["资料状态", "数据状态", "最后核验日期"],
+  "status_values": ["complete", "metadata-only", "missing-source", "needs-review"],
+  "code_pattern": "^[0-9]{6}[A-Z]?$",
+  "date_pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+}

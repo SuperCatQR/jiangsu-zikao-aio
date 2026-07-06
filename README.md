@@ -67,6 +67,7 @@ git lfs install
 
 ```bash
 # 生产构建（GitHub Pages）
+python scripts/validate-content.py
 python scripts/build-course-pages.py --base /jiangsu-zikao-aio/
 
 # 本地预览

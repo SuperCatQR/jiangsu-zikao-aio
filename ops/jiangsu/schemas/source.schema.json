@@ -1,0 +1,7 @@
+{
+  "type": "source-record",
+  "required_fields": ["类别", "来源", "状态"],
+  "source_levels": ["A", "B", "C"],
+  "public_source_prefixes": ["sources/jiangsu/public-official/", "sources/jiangsu/processed/", "sources/jiangsu/manifests/"],
+  "private_source_prefix": "materials://"
+}

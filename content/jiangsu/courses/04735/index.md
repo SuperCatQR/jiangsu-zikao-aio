@@ -125,7 +125,7 @@ data_status:
 | 版本年份 | 2018 年版 |
 | ISBN | 978-7-111-59481-9（据本地教材版权页，待法务合规复核） |
 | 辅导书 | 暂无官方辅导书信息；复习资料应以教材附大纲与当次教材计划为准 |
-| 本地归档路径 | `C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\04735 数据库系统原理（2018年版）.pdf` |
+| 本地归档路径 | `materials://e-books/jiangsu/04735 数据库系统原理（2018年版）.pdf` |
 
 > 高风险提示：ISBN 来自本地教材版权页的机器识别 / 人工读取线索，属于教材版权与版本信息，🟢 前需法务合规或 PR 审查团队复核。页面不得转载教材正文大段内容，本页仅做考纲结构化摘要与原创复习方法说明。
 
@@ -570,7 +570,7 @@ data_status:
 | 专业页 | `content/jiangsu/majors/080901-computer-science-and-technology/index.md` | 已处理；04735 为 P1 核心笔试课 |
 | 教材计划（2026-10/2027-01） | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | 已处理；含 `047351 数据库系统原理（附大纲）` |
 | 教材计划（2025-10/2026-01） | `sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.extracted.md` | 已处理；同样列出黄靖、机械工业出版社、2018 年 |
-| 教材与考纲（本地） | `C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\04735 数据库系统原理（2018年版）.pdf` | 已归档；本页按教材附自学考试大纲整理，不转载正文大段内容 |
+| 教材与考纲（本地） | `materials://e-books/jiangsu/04735 数据库系统原理（2018年版）.pdf` | 已归档；本页按教材附自学考试大纲整理，不转载正文大段内容 |
 | 真题素材仓库 | `SuperCatQR/zikao-materials`(私有仓库,鉴权访问) | 已按 CHO-116 指定为采集路径；当前本地 checkout 仅见 README，未发现 04735 样本 |
 | 真题（在线线索） | [攀知自考 04735](https://www.zikaosw.cn/lnzt/subject-1091.html) | 等级 B，待核验；不得直接转载第三方原题全文 |
 

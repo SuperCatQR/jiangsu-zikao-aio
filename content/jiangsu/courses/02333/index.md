@@ -15,7 +15,7 @@
 | 考纲 | [江苏省教育考试院 02333 软件工程（高纲4068）](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html) | 官方 |
 | 本地考纲 | `sources/jiangsu/syllabus/02333-software-engineering-gaogang-4068.pdf`；`sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md` | 已处理 |
 | 教材 | `023331 软件工程`，瞿中、宋琦等，人民邮电出版社，2016 年 | 江苏 2026-04/07 教材计划 |
-| 本地教材 | `C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\02333 软件工程.pdf` | 已归档 |
+| 本地教材 | `materials://e-books/jiangsu/02333 软件工程.pdf` | 已归档 |
 
 ## 真题索引
 

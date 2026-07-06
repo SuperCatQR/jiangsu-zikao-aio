@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate content
+        run: python scripts/validate-content.py
+
       - name: Build site
         run: |
           python scripts/build-course-pages.py --base /jiangsu-zikao-aio/

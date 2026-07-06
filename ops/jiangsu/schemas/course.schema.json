@@ -1,0 +1,8 @@
+{
+  "type": "course",
+  "required_fields": ["省份", "课程代码", "课程名称"],
+  "recommended_fields": ["资料状态", "数据状态", "最后核验日期"],
+  "status_values": ["complete", "metadata-only", "missing-source", "needs-review"],
+  "code_pattern": "^[0-9]{5}$",
+  "date_pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+}

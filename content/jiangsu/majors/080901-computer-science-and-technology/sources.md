@@ -79,7 +79,7 @@
 教材 PDF 位于项目外：
 
 ```text
-C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\
+materials://e-books/jiangsu/
 ```
 
 本地状态：

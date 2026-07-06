@@ -15,7 +15,7 @@
 | 考纲 | [江苏省教育考试院 00898 互联网软件应用与开发（高纲4295）](https://www.jseea.cn/webfile/selflearning_jcdg/2024-07-05/7214792761239670784.html) | 官方 |
 | 本地考纲 | `sources/jiangsu/syllabus/00898-internet-software-development-gaogang-4295.pdf`；`sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/document.extracted.md` | 已处理 |
 | 教材 | `008981 JSP 应用与开发技术（第 3 版）`，马建红、李学相，清华大学出版社，2019 年 | 江苏 2026-10/2027-01 教材计划 |
-| 本地教材 | `C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\` 未见对应 PDF | 缺失 |
+| 本地教材 | `materials://e-books/jiangsu/` 未见对应 PDF | 缺失 |
 
 ## 真题索引
 

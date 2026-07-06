@@ -68,7 +68,7 @@
 教材 PDF 在项目外归档：
 
 ```text
-C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\
+materials://e-books/jiangsu/
 ```
 
 | 状态 | 课程 |
