@@ -26,6 +26,7 @@ import argparse
 import gzip
 import hashlib
 import json
+import os
 import re
 import socket
 import ssl
@@ -43,6 +44,15 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def expand_env_vars(value: str) -> str:
+    """Expand ${VAR:default} strings used by build.toml."""
+    def repl(match: re.Match[str]) -> str:
+        name, default = match.group(1), match.group(2)
+        return os.environ.get(name, default)
+
+    return re.sub(r"\$\{([A-Za-z_][A-Za-z0-9_]*):([^}]+)\}", repl, value)
+
+
 def _load_cfg() -> dict[str, Path]:
     """Read paths + source-link-monitor from build.toml."""
     defaults = {
@@ -58,10 +68,10 @@ def _load_cfg() -> dict[str, Path]:
             data = tomllib.load(fh)
         for k, v in data.get("paths", {}).items():
             if isinstance(v, str) and k in defaults:
-                defaults[k] = v
+                defaults[k] = expand_env_vars(v)
         for k, v in data.get("source_link_monitor", {}).items():
             if isinstance(v, str) and k in defaults:
-                defaults[k] = v
+                defaults[k] = expand_env_vars(v)
     return {k: (ROOT / v) for k, v in defaults.items()}
 
 
@@ -176,16 +186,12 @@ def course_code_for(path: Path) -> str | None:
 
 def iter_source_files() -> Iterable[Path]:
     """All markdown files that may carry in-scope source links."""
-    index = COURSES_DIR / "index.md"
-    if index.exists():
-        yield index
-    for path in sorted(COURSES_DIR.glob("*/index.md")):
-        if re.fullmatch(r"\d{5}", path.parent.name):
-            yield path
-    for path in sorted(MAJORS_DIR.glob("*/index.md")):
-        yield path
-    for path in sorted(MAJORS_DIR.glob("*/sources.md")):
-        yield path
+    seen: set[Path] = set()
+    for root in (COURSES_DIR, MAJORS_DIR):
+        for path in sorted(root.rglob("*.md")):
+            if path not in seen:
+                seen.add(path)
+                yield path
 
 
 def extract_refs(path: Path) -> list[UrlRef]:

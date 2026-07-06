@@ -7,6 +7,9 @@ MAT = re.compile(r"materials://([^\s)>'\"]+)")
 
 
 def check_ref(ref: str) -> str | None:
+    ref = ref.rstrip("`。，；,.;:")
+    if ref.startswith("...") or ref in {"<path>", "<relative-path-without-extension-or-sensitive-name>"}:
+        return None
     if ".." in ref or "\\" in ref:
         return "bad materials path"
     if re.search(r"(secret|token|key|password)", ref, re.I):

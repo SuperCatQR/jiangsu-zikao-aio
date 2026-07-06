@@ -68,3 +68,31 @@ def test_url_ref_extraction():
     
     bare_urls = BARE_URL_RE.findall(text)
     assert any("https://www.jseea.cn/webfile/" in u for u in bare_urls)
+
+
+def test_expand_env_vars_uses_default_and_env(monkeypatch):
+    """build.toml env fallback: ${VAR:default}."""
+    from check_source_links import expand_env_vars
+
+    monkeypatch.delenv("ZIKAO_REPORT", raising=False)
+    assert expand_env_vars("${ZIKAO_REPORT:site/source-link-report.md}") == "site/source-link-report.md"
+
+    monkeypatch.setenv("ZIKAO_REPORT", "tmp/report.md")
+    assert expand_env_vars("${ZIKAO_REPORT:site/source-link-report.md}") == "tmp/report.md"
+
+
+def test_iter_source_files_includes_nested_major_pages(tmp_path, monkeypatch):
+    """source-link monitor scans all major/course markdown, not only index.md."""
+    import check_source_links as mod
+
+    courses = tmp_path / "courses"
+    majors = tmp_path / "majors"
+    target = majors / "080901" / "past-paper-index.md"
+    target.parent.mkdir(parents=True)
+    target.write_text("## 真题索引\nhttps://www.jseea.cn/webfile/", encoding="utf-8")
+    courses.mkdir()
+
+    monkeypatch.setattr(mod, "COURSES_DIR", courses)
+    monkeypatch.setattr(mod, "MAJORS_DIR", majors)
+
+    assert target in list(mod.iter_source_files())
