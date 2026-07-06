@@ -96,3 +96,20 @@ def test_iter_source_files_includes_nested_major_pages(tmp_path, monkeypatch):
     monkeypatch.setattr(mod, "MAJORS_DIR", majors)
 
     assert target in list(mod.iter_source_files())
+
+
+
+def test_bulk_rot_is_separate_from_actionable_gate():
+    from check_source_links import UrlFinding, ProbeResult, STATUS_DEAD, build_report
+
+    findings = {}
+    for i in range(3):
+        f = UrlFinding(url=f"https://rot.example/{i}", host="rot.example", authoritative=False)
+        f.probe = ProbeResult(f.url, STATUS_DEAD)
+        f.change = "went_dead"
+        findings[f.url] = f
+
+    _, summary = build_report(findings, {"rot.example": {"total": 3, "dead": 3, "dead_urls": sorted(findings)}})
+    assert summary["actionable_count"] == 0
+    assert summary["bulk_rot_count"] == 1
+    assert len(summary["bulk_actionable"]) == 3

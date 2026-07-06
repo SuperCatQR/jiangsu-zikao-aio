@@ -2,8 +2,10 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-BAD = re.compile(r"https://github\.com/.+/(zikao-materials/.+|raw|download)|(?:^|[\s(])(?:\.\./)?(?:materials|e-books|papers|official-archives)/[^\s)]+\.(?:pdf|zip|rar)\b", re.I)
+BAD = re.compile(r"https://github\.com/.+/(zikao-materials/.+|raw|download)|(?:^|[\s(])(?:\.\./)?(?:materials|e-books|papers|past-papers|syllabus|official-archives|official-packages)/[^\s)]+\.(?:pdf|zip|rar)\b", re.I)
 MAT = re.compile(r"materials://([^\s)>'\"]+)")
+TEXT_SUFFIXES = {".md", ".txt", ".toml", ".yml", ".yaml", ".json", ".html"}
+SKIP_DIRS = {".git", "site", "__pycache__"}
 
 
 def check_ref(ref: str) -> str | None:

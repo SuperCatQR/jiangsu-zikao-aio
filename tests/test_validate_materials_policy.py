@@ -26,3 +26,10 @@ def test_check_ref_rejects_escape_and_sensitive_names():
     assert mod.check_ref("../private.pdf") == "bad materials path"
     assert mod.check_ref(r"e-books\secret.pdf") == "bad materials path"
     assert mod.check_ref("e-books/jiangsu/password.pdf") == "sensitive word in path"
+
+
+
+def test_bad_pattern_catches_documented_private_dirs():
+    mod = _load_module()
+    for text in ("past-papers/jiangsu/a.pdf", "syllabus/jiangsu/a.pdf", "official-packages/jiangsu/a.zip"):
+        assert mod.BAD.search(text)

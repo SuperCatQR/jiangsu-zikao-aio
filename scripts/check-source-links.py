@@ -299,41 +299,38 @@ def probe(url: str, *, authoritative: bool, timeout: float, retries: int) -> Pro
     """Fetch a URL and classify the outcome. Never raises."""
     ctx = ssl.create_default_context()
     last_detail = ""
-    for attempt in range(retries + 1):
+
+    def request(method: str) -> ProbeResult:
         req = urllib.request.Request(
-            url,
-            method="GET" if authoritative else "HEAD",
+            url, method=method,
             headers={
                 "User-Agent": USER_AGENT,
                 "Accept": "*/*",
                 "Accept-Encoding": "gzip, deflate",
             },
         )
+        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+            content_hash = None
+            if authoritative:
+                raw = resp.read(2_000_000)
+                body = _decode_body(raw, resp.headers.get("Content-Encoding"))
+                content_hash = _content_fingerprint(body)
+            return ProbeResult(url, STATUS_OK, http_code=resp.getcode(), content_hash=content_hash)
+
+    method = "GET" if authoritative else "HEAD"
+    for attempt in range(retries + 1):
         try:
-            with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
-                code = resp.getcode()
-                content_hash = None
-                if authoritative:
-                    raw = resp.read(2_000_000)  # cap at ~2MB; we only need a fingerprint
-                    body = _decode_body(raw, resp.headers.get("Content-Encoding"))
-                    content_hash = _content_fingerprint(body)
-                return ProbeResult(url, STATUS_OK, http_code=code, content_hash=content_hash)
+            return request(method)
         except urllib.error.HTTPError as exc:
-            # Some servers reject HEAD with 403/405; retry once with GET before judging.
-            if exc.code in (403, 405, 501) and req.get_method() == "HEAD" and attempt < retries:
-                last_detail = f"HEAD {exc.code}, retrying with GET"
-                req2 = urllib.request.Request(
-                    url, method="GET",
-                    headers={"User-Agent": USER_AGENT, "Accept": "*/*"},
-                )
+            # HEAD refusal is a method problem, not a dead link; always try GET once.
+            if method == "HEAD" and exc.code in (403, 405, 501):
                 try:
-                    with urllib.request.urlopen(req2, timeout=timeout, context=ctx) as resp:
-                        return ProbeResult(url, STATUS_OK, http_code=resp.getcode())
+                    return request("GET")
                 except urllib.error.HTTPError as exc2:
                     return ProbeResult(url, STATUS_DEAD, http_code=exc2.code,
                                        detail=f"HTTP {exc2.code} {exc2.reason}")
                 except (urllib.error.URLError, socket.timeout, ssl.SSLError, OSError) as exc2:
-                    last_detail = f"{type(exc2).__name__}: {exc2}"
+                    last_detail = f"GET after HEAD {exc.code}: {type(exc2).__name__}: {exc2}"
                     continue
             return ProbeResult(url, STATUS_DEAD, http_code=exc.code,
                                detail=f"HTTP {exc.code} {exc.reason}")
@@ -459,7 +456,9 @@ def build_report(findings: dict[str, UrlFinding], bulk: dict[str, dict]) -> tupl
     incon = sum(1 for f in findings.values() if f.probe and f.probe.status == STATUS_INCONCLUSIVE)
 
     actionable = [f for f in findings.values()
-                  if f.change in ("went_dead", "content_changed")]
+                  if f.change in ("went_dead", "content_changed") and f.host not in bulk]
+    bulk_actionable = [f for f in findings.values()
+                       if f.change in ("went_dead", "content_changed") and f.host in bulk]
     new_urls = [f for f in findings.values() if f.change == "new"]
     recovered = [f for f in findings.values() if f.change == "recovered"]
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -469,8 +468,8 @@ def build_report(findings: dict[str, UrlFinding], bulk: dict[str, dict]) -> tupl
         "",
         f"- 生成时间：{now}",
         f"- 链接总数：{total}（可访问 {ok} · 失效 {dead} · 网络不确定 {incon}）",
-        f"- 需处理变更：{len(actionable)} · 新增链接：{len(new_urls)} · 恢复：{len(recovered)}",
-        f"- 批量腐烂主机：{len(bulk)}",
+        f"- 需逐项处理变更：{len(actionable)} · 新增链接：{len(new_urls)} · 恢复：{len(recovered)}",
+        f"- 批量腐烂主机：{len(bulk)}（涉及 {len(bulk_actionable)} 条，单独处理）",
         "",
     ]
 
@@ -484,20 +483,19 @@ def build_report(findings: dict[str, UrlFinding], bulk: dict[str, dict]) -> tupl
         lines.append("")
 
     if actionable:
-        lines += ["## 🔴 需降级处理（PRD §4.2）", "",
+        lines += ["## 🔴 需逐项降级处理（PRD §4.2）", "",
                   "| URL | 变更 | 涉及课程 | 章节 | 建议降级 |",
                   "| --- | --- | --- | --- | --- |"]
         for f in sorted(actionable, key=lambda x: x.url):
-            host_bulk = " (属批量腐烂，先核站点)" if f.host in bulk else ""
             codes = ", ".join(f.course_codes) or "—"
             secs = ", ".join(f.sections) or "—"
-            rec = DEGRADE_BY_CHANGE.get(f.change, "—") + host_bulk
+            rec = DEGRADE_BY_CHANGE.get(f.change, "—")
             detail = f.probe.detail if f.probe else ""
             lines.append(f"| {f.url} | {f.change} {detail} | {codes} | {secs} | {rec} |")
         lines.append("")
 
     if new_urls:
-        lines += ["## 🆕 新增链接（已纳入基线，无需处理）", ""]
+        lines += ["## 🆕 新增链接（待纳入基线，无需降级）", ""]
         for f in sorted(new_urls, key=lambda x: x.url):
             status = f.probe.status if f.probe else "?"
             lines.append(f"- {f.url} — {status}（{', '.join(f.course_codes) or '专业页'}）")
@@ -531,6 +529,7 @@ def build_report(findings: dict[str, UrlFinding], bulk: dict[str, dict]) -> tupl
             for f in sorted(actionable, key=lambda x: x.url)
         ],
         "bulk_rot_hosts": bulk,
+        "bulk_actionable": [f.url for f in sorted(bulk_actionable, key=lambda x: x.url)],
         "new_urls": [f.url for f in sorted(new_urls, key=lambda x: x.url)],
         "recovered": [f.url for f in sorted(recovered, key=lambda x: x.url)],
         "actionable_count": len(actionable),
