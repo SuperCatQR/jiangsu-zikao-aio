@@ -19,21 +19,21 @@
 
 ## 内容入口
 
-- [江苏政策口径](../../ops/jiangsu/policies.md)
-- [专业页批量生产工作流](../../ops/jiangsu/workflow.md)
-- [PDF 到 Markdown 四段式流水线](../../ops/jiangsu/pdf-to-markdown-pipeline.md)
-- [PDF 批处理报告](../../sources/jiangsu/pdf-processing-report.md)
-- [全量专业索引](./majors/)
-- [项目目录结构蓝图](../../ops/project-folders-structure-blueprint.md)
-- [法学（专升本）](./majors/030101K-law/)
-- [汉语言文学（专升本）](./majors/050101-chinese-language-literature/)
-- [会计学（专升本）](./majors/120203K-accounting/)
-- [计算机科学与技术（专升本）](./majors/080901-computer-science-and-technology/)
+- [江苏政策口径](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/jiangsu/policies.md)
+- [专业页批量生产工作流](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/jiangsu/workflow.md)
+- [PDF 到 Markdown 四段式流水线](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/jiangsu/pdf-to-markdown-pipeline.md)
+- [PDF 批处理报告](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/sources/jiangsu/processed/source-records/pdf-processing-report.md)
+- [全量专业索引](./majors/index.md)
+- [项目目录结构蓝图](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/project-folders-structure-blueprint.md)
+- [法学（专升本）](./majors/030101K-law/index.md)
+- [汉语言文学（专升本）](./majors/050101-chinese-language-literature/index.md)
+- [会计学（专升本）](./majors/120203K-accounting/index.md)
+- [计算机科学与技术（专升本）](./majors/080901-computer-science-and-technology/index.md)
 - [计算机科学与技术资料源清单](./majors/080901-computer-science-and-technology/sources.md)
 - [计算机科学与技术课程资料采集矩阵](./majors/080901-computer-science-and-technology/course-source-matrix.md)
-- [中国近现代史纲要](./courses/03708/)
-- [马克思主义基本原理概论](./courses/03709/)
-- [英语（专升本）](./courses/13000/)
+- [中国近现代史纲要](./courses/03708/index.md)
+- [马克思主义基本原理概论](./courses/03709/index.md)
+- [英语（专升本）](./courses/13000/index.md)
 
 ## 目录组织原则
 

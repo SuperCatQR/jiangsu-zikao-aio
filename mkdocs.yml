@@ -1,0 +1,28 @@
+site_name: 江苏自考资料库
+site_url: https://supercatqr.github.io/jiangsu-zikao-aio/
+repo_url: https://github.com/SuperCatQR/jiangsu-zikao-aio
+repo_name: SuperCatQR/jiangsu-zikao-aio
+docs_dir: content
+site_dir: site
+use_directory_urls: true
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+extra:
+  governance:
+    public_repo_policy: "official-public-source-index-summary-only"
+    private_material_scheme: "materials://"

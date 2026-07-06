@@ -333,8 +333,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Fo
 
 - 专业计划 PDF：`content/jiangsu/majors/<major>/sources/`
 - 共享 PDF：`sources/jiangsu/processed/<category>/<document>/`
-- 清单：`sources/jiangsu/pdf-processing-manifest.csv`
-- 报告：`sources/jiangsu/pdf-processing-report.md`
+- 清单：`sources/jiangsu/processed/source-records/pdf-processing-manifest.csv`
+- 报告：`sources/jiangsu/processed/source-records/pdf-processing-report.md`
 
 ## 当前样板
 

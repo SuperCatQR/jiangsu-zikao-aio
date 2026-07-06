@@ -7,22 +7,20 @@
 | 课程名称 | 互联网软件应用与开发 |
 | 080901 状态 | 现行必修专业课 |
 | 数据状态 | 已定位官方考纲、教材计划和真题线索入口；本地教材缺失 |
+## 页面导航
 
-## 考纲与教材
+- [考纲与教材](syllabus.md)
+- [学习计划](plan.md)
+- [复习计划](review.md)
+- [练习与真题](practice.md)
+- [来源与核验](sources.md)
 
-| 类型 | 来源 | 状态 |
-| --- | --- | --- |
-| 考纲 | [江苏省教育考试院 00898 互联网软件应用与开发（高纲4295）](https://www.jseea.cn/webfile/selflearning_jcdg/2024-07-05/7214792761239670784.html) | 官方 |
-| 本地考纲 | `sources/jiangsu/syllabus/00898-internet-software-development-gaogang-4295.pdf`；`sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/document.extracted.md` | 已处理 |
-| 教材 | `008981 JSP 应用与开发技术（第 3 版）`，马建红、李学相，清华大学出版社，2019 年 | 江苏 2026-10/2027-01 教材计划 |
-| 本地教材 | `materials://e-books/jiangsu/` 未见对应 PDF | 缺失 |
+## 状态
 
-## 真题索引
-
-| 来源 | 等级 | 用法 |
-| --- | --- | --- |
-| [攀知自考 00898](https://www.zikaosw.cn/lnzt/subject-802.html) | B | 历年真题线索 |
-| [自考365 00898](https://www.zikao365.com/shiti/downlist-7-586.html) | B | 历年试题入口 |
+| 项目 | 内容 | 来源 | 状态 |
+| --- | --- | --- | --- |
+| 资料状态 | metadata-only | 本页机械迁移默认值 | needs-review |
+| 页面成熟度 | red | 待人工按新模板校对 | needs-review |
 
 ## 待做
 

@@ -10,3 +10,6 @@ ruff>=0.1.0
 
 # 类型检查
 mypy>=1.7.0
+
+# 文档站点
+mkdocs-material>=9.5

@@ -19,18 +19,18 @@
 
 | 来源 | 本地原件 | 处理产物 |
 | --- | --- | --- |
-| 2024 版计算机科学与技术专业计划 | `sources/jiangsu/major-plans-2024/26.计算机科学与技术专业（专升本）考试计划.pdf` | `./sources/plan.extracted.md` |
-| 江苏省高等教育自学考试专业考试计划简编（2026 年 5 月） | `sources/jiangsu/jiangsu-plan-handbook-2026-05.pdf` | `sources/jiangsu/processed/documents/jiangsu-plan-handbook-2026-05/document.extracted.md` |
-| 080901 部分课程调整通知，苏教考自〔2025〕18 号 | `sources/jiangsu/jiangsu-080901-course-adjustment-2025-11.pdf` | `sources/jiangsu/processed/documents/jiangsu-080901-course-adjustment-2025-11/document.extracted.md` |
-| 江苏省 2026 年 4 月和 7 月考试日程及开考课程教材计划 | `sources/jiangsu/textbooks/jiangsu-2026-04-07-schedule-textbooks.pdf` | `sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.extracted.md` |
-| 江苏省 2026 年 10 月和 2027 年 1 月考试日程及开考课程教材计划 | `sources/jiangsu/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks.pdf` | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` |
-| 15040 习近平新时代中国特色社会主义思想概论课程自学考试大纲 | `sources/jiangsu/syllabus/15040-xi-thought-gaogang-2024.pdf` | `sources/jiangsu/processed/syllabus/15040-xi-thought-gaogang-2024/document.extracted.md` |
-| 15043 中国近现代史纲要课程考试大纲 | `sources/jiangsu/syllabus/15043-modern-chinese-history-gaogang-2024.pdf` | `sources/jiangsu/processed/syllabus/15043-modern-chinese-history-gaogang-2024/document.extracted.md` |
-| 15044 马克思主义基本原理课程考试大纲 | `sources/jiangsu/syllabus/15044-marxism-principles-gaogang-2024.pdf` | `sources/jiangsu/processed/syllabus/15044-marxism-principles-gaogang-2024/document.extracted.md` |
-| 02333 软件工程（高纲4068） | `sources/jiangsu/syllabus/02333-software-engineering-gaogang-4068.pdf` | `sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md` |
-| 00898 互联网软件应用与开发（高纲4295） | `sources/jiangsu/syllabus/00898-internet-software-development-gaogang-4295.pdf` | `sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/document.extracted.md` |
-| 04747 Java 语言程序设计（一）（高纲4067） | `sources/jiangsu/syllabus/04747-java-programming-1-gaogang-4067.pdf` | `sources/jiangsu/processed/syllabus/04747-java-programming-1-gaogang-4067/document.extracted.md` |
-| 04751 计算机网络安全（高纲4389） | `sources/jiangsu/syllabus/04751-computer-network-security-gaogang-4389.pdf` | `sources/jiangsu/processed/syllabus/04751-computer-network-security-gaogang-4389/document.extracted.md` |
+| 2024 版计算机科学与技术专业计划 | `sources/jiangsu/public-official/major-plans/computer-science/26.计算机科学与技术专业（专升本）考试计划.pdf` | `./sources/plan.extracted.md` |
+| 江苏省高等教育自学考试专业考试计划简编（2026 年 5 月） | `sources/jiangsu/public-official/major-plans/jiangsu-plan-handbook/jiangsu-plan-handbook-2026-05.pdf` | `sources/jiangsu/processed/documents/jiangsu-plan-handbook-2026-05/document.extracted.md` |
+| 080901 部分课程调整通知，苏教考自〔2025〕18 号 | `sources/jiangsu/public-official/policies/jiangsu-course-adjustment/jiangsu-080901-course-adjustment-2025-11.pdf` | `sources/jiangsu/processed/documents/jiangsu-080901-course-adjustment-2025-11/document.extracted.md` |
+| 江苏省 2026 年 4 月和 7 月考试日程及开考课程教材计划 | `sources/jiangsu/public-official/syllabi/jiangsu-schedule-textbooks/jiangsu-2026-04-07-schedule-textbooks.pdf` | `sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.extracted.md` |
+| 江苏省 2026 年 10 月和 2027 年 1 月考试日程及开考课程教材计划 | `sources/jiangsu/public-official/syllabi/jiangsu-schedule-textbooks/jiangsu-2026-10-2027-01-schedule-textbooks.pdf` | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` |
+| 15040 习近平新时代中国特色社会主义思想概论课程自学考试大纲 | `sources/jiangsu/public-official/syllabi/xi-thought-gaogang/15040-xi-thought-gaogang-2024.pdf` | `sources/jiangsu/processed/syllabus/15040-xi-thought-gaogang-2024/document.extracted.md` |
+| 15043 中国近现代史纲要课程考试大纲 | `sources/jiangsu/public-official/syllabi/modern-chinese-history-gaogang/15043-modern-chinese-history-gaogang-2024.pdf` | `sources/jiangsu/processed/syllabus/15043-modern-chinese-history-gaogang-2024/document.extracted.md` |
+| 15044 马克思主义基本原理课程考试大纲 | `sources/jiangsu/public-official/syllabi/marxism-principles-gaogang/15044-marxism-principles-gaogang-2024.pdf` | `sources/jiangsu/processed/syllabus/15044-marxism-principles-gaogang-2024/document.extracted.md` |
+| 02333 软件工程（高纲4068） | `sources/jiangsu/public-official/syllabi/software-engineering-gaogang/02333-software-engineering-gaogang-4068.pdf` | `sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md` |
+| 00898 互联网软件应用与开发（高纲4295） | `sources/jiangsu/public-official/syllabi/internet-software-development-gaogang/00898-internet-software-development-gaogang-4295.pdf` | `sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/document.extracted.md` |
+| 04747 Java 语言程序设计（一）（高纲4067） | `sources/jiangsu/public-official/syllabi/java-programming-gaogang/04747-java-programming-1-gaogang-4067.pdf` | `sources/jiangsu/processed/syllabus/04747-java-programming-1-gaogang-4067/document.extracted.md` |
+| 04751 计算机网络安全（高纲4389） | `sources/jiangsu/public-official/syllabi/computer-network-security-gaogang/04751-computer-network-security-gaogang-4389.pdf` | `sources/jiangsu/processed/syllabus/04751-computer-network-security-gaogang-4389/document.extracted.md` |
 
 ## 3. 官方考纲页面
 

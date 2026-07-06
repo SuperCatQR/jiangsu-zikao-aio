@@ -1,0 +1,15 @@
+name: 工作流改进
+description: CI、模板、规范、自动化建议
+title: "[workflow] <主题>"
+labels: [workflow]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议

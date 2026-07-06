@@ -116,8 +116,8 @@ summary         = "site/source-link-report.json"
 | `sources/jiangsu/textbooks/` | 教材计划原件 |
 | `sources/jiangsu/past-papers/` | 官方公开真题 |
 | `sources/jiangsu/processed/` | 机器处理产物 |
-| `sources/jiangsu/pdf-processing-manifest.csv` | PDF 处理清单 |
-| `sources/jiangsu/pdf-processing-report.md` | PDF 处理报告 |
+| `sources/jiangsu/processed/source-records/pdf-processing-manifest.csv` | PDF 处理清单 |
+| `sources/jiangsu/processed/source-records/pdf-processing-report.md` | PDF 处理报告 |
 | `ops/jiangsu/policies.md` | 江苏省级政策口径 |
 | `ops/jiangsu/workflow.md` | 专业页批量生产工作流 |
 | `ops/jiangsu/pdf-to-markdown-pipeline.md` | PDF 四段式流水线设计 |
@@ -206,7 +206,7 @@ content/jiangsu/courses/<5位课程代码>/index.md
 - 将计算机科学与技术的 XML/TXT 抽取结果迁入该专业 `sources/`，并统一命名为 `plan.raw.*`。
 - 已用 `scripts/process-pdfs.ps1` 批处理 70 个 PDF，其中 54 个专业计划进入各专业目录，16 个共享 PDF 进入 `sources/jiangsu/processed/`。
 - 2026-06-22 为 080901 增量下载并处理 7 个官方独立考纲 PDF。
-- 将教材 PDF 从项目树移到 `C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\`。
+- 将教材 PDF 从项目树移到 `materials://e-books/jiangsu/`。
 - 将已解压的官方专业计划 RAR 从项目树移到 `C:\WorkSpace\project\FinalGo_local_archive\official-packages\jiangsu\`。
 - 清理根目录残留的 UnRAR 辅助文件。
 - 删除 Playwright 临时日志目录 `.playwright-cli/`。

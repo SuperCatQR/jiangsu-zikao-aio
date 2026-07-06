@@ -1,0 +1,30 @@
+name: 课程资料追踪
+description: 跟踪单门课程资料、计划、复习与来源
+title: "[course] <课程代码>-<课程名称>"
+labels: [course, content]
+body:
+  - type: input
+    id: course
+    attributes:
+      label: 课程
+      placeholder: "02333 软件工程"
+    validations:
+      required: true
+  - type: dropdown
+    id: data_status
+    attributes:
+      label: 资料状态
+      options: [complete, metadata-only, missing-source, needs-review]
+    validations:
+      required: true
+  - type: dropdown
+    id: maturity
+    attributes:
+      label: 页面成熟度
+      options: [red, yellow, green]
+    validations:
+      required: true
+  - type: textarea
+    id: gaps
+    attributes:
+      label: 缺口

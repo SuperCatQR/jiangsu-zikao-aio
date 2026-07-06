@@ -7,22 +7,20 @@
 | 课程名称 | 软件工程 |
 | 080901 状态 | 现行必修专业课 |
 | 数据状态 | 已定位官方考纲、教材计划和真题线索入口 |
+## 页面导航
 
-## 考纲与教材
+- [考纲与教材](syllabus.md)
+- [学习计划](plan.md)
+- [复习计划](review.md)
+- [练习与真题](practice.md)
+- [来源与核验](sources.md)
 
-| 类型 | 来源 | 状态 |
-| --- | --- | --- |
-| 考纲 | [江苏省教育考试院 02333 软件工程（高纲4068）](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html) | 官方 |
-| 本地考纲 | `sources/jiangsu/syllabus/02333-software-engineering-gaogang-4068.pdf`；`sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md` | 已处理 |
-| 教材 | `023331 软件工程`，瞿中、宋琦等，人民邮电出版社，2016 年 | 江苏 2026-04/07 教材计划 |
-| 本地教材 | `materials://e-books/jiangsu/02333 软件工程.pdf` | 已归档 |
+## 状态
 
-## 真题索引
-
-| 来源 | 等级 | 用法 |
-| --- | --- | --- |
-| [自考生网 02333 资料页](https://www.zikaosw.cn/zkkm/787.html) | B | 历年真题线索 |
-| [自考365 软件工程](https://www.zikao365.com/shiti/downlist-7-1619.html) | B | 历年试题入口 |
+| 项目 | 内容 | 来源 | 状态 |
+| --- | --- | --- | --- |
+| 资料状态 | metadata-only | 本页机械迁移默认值 | needs-review |
+| 页面成熟度 | red | 待人工按新模板校对 | needs-review |
 
 ## 待做
 

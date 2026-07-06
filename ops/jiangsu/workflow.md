@@ -82,7 +82,7 @@ POPPLER_BIN="$LOCALAPPDATA/Microsoft/WinGet/Packages/oschwartz10612.Poppler_Micr
   -xml \
   -i \
   -noframes \
-  "sources/jiangsu/major-plans-2024/26.计算机科学与技术专业（专升本）考试计划.pdf" \
+  "sources/jiangsu/public-official/major-plans/computer-science/26.计算机科学与技术专业（专升本）考试计划.pdf" \
   "content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw"
 ```
 
@@ -102,7 +102,7 @@ content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw.x
 
 ```bash
 pdftotext -layout \
-  "sources/jiangsu/major-plans-2024/26.计算机科学与技术专业（专升本）考试计划.pdf" \
+  "sources/jiangsu/public-official/major-plans/computer-science/26.计算机科学与技术专业（专升本）考试计划.pdf" \
   "content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw.txt"
 ```
 
@@ -188,7 +188,7 @@ content/jiangsu/majors/080901-computer-science-and-technology/index.md
 
 教材 ISBN 用于帮助后续定位正版纸书、出版社页面、图书馆馆藏或合法电子书入口；ISBN 本身不代表可以托管或分发教材电子版。
 
-项目内不保存教材电子书 PDF。已收集但不适合发布的教材 PDF 放在项目外本地归档 `C:\WorkSpace\project\FinalGo_local_archive\e-books\jiangsu\`，公开文档只记录教材计划、ISBN、出版社等可追溯信息。
+项目内不保存教材电子书 PDF。已收集但不适合发布的教材 PDF 放在项目外本地归档 `materials://e-books/jiangsu/`，公开文档只记录教材计划、ISBN、出版社等可追溯信息。
 
 批量收集教材时按以下顺序处理：
 
@@ -274,8 +274,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Pa
 
 **批处理结果记录**：
 
-- `sources/jiangsu/pdf-processing-report.md`：处理摘要与错误报告
-- `sources/jiangsu/pdf-processing-manifest.csv`：逐文件处理清单
+- `sources/jiangsu/processed/source-records/pdf-processing-report.md`：处理摘要与错误报告
+- `sources/jiangsu/processed/source-records/pdf-processing-manifest.csv`：逐文件处理清单
 
 **常见故障排查**：
 

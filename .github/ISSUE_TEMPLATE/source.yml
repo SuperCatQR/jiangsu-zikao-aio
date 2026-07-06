@@ -1,0 +1,22 @@
+name: 来源记录
+description: 新增或核验官方公开来源/索引/摘要
+title: "[source] <来源名称>"
+labels: [source]
+body:
+  - type: input
+    id: official_url
+    attributes:
+      label: 官方公开链接
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 覆盖范围/用途
+  - type: dropdown
+    id: public_status
+    attributes:
+      label: 入仓形态
+      options: [official-public-source, index, summary, materials-reference-only]
+    validations:
+      required: true

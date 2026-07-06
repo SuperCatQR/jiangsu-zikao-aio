@@ -29,9 +29,9 @@
 
 汉语言文学专业课程页建议优先整理：
 
-- [03708 中国近现代史纲要](../../courses/03708/)
-- [03709 马克思主义基本原理概论](../../courses/03709/)
-- [13000 英语（专升本）](../../courses/13000/)
+- [03708 中国近现代史纲要](../../courses/03708/index.md)
+- [03709 马克思主义基本原理概论](../../courses/03709/index.md)
+- [13000 英语（专升本）](../../courses/13000/index.md)
 - 美学
 - 古代汉语
 - 中国现代文学史
@@ -61,5 +61,5 @@
 ## 官方来源
 
 - 江苏省教育考试院：《江苏省高等教育自学考试专业考试计划简编（2024年版）》
-- `sources/jiangsu/jiangsu-plan-handbook-2024.pdf`
+- `sources/jiangsu/public-official/major-plans/jiangsu-plan-handbook/jiangsu-plan-handbook-2024.pdf`
 - `sources/jiangsu/jiangsu-plan-handbook-2024.txt`
