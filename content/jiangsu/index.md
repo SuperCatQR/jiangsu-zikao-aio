@@ -19,21 +19,13 @@
 
 ## 内容入口
 
-- [江苏政策口径](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/jiangsu/policies.md)
-- [专业页批量生产工作流](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/jiangsu/workflow.md)
-- [PDF 到 Markdown 四段式流水线](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/jiangsu/pdf-to-markdown-pipeline.md)
-- [PDF 批处理报告](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/sources/jiangsu/processed/source-records/pdf-processing-report.md)
-- [全量专业索引](./majors/index.md)
-- [项目目录结构蓝图](https://github.com/SuperCatQR/jiangsu-zikao-aio/blob/main/ops/project-folders-structure-blueprint.md)
-- [法学（专升本）](./majors/030101K-law/index.md)
-- [汉语言文学（专升本）](./majors/050101-chinese-language-literature/index.md)
-- [会计学（专升本）](./majors/120203K-accounting/index.md)
-- [计算机科学与技术（专升本）](./majors/080901-computer-science-and-technology/index.md)
-- [计算机科学与技术资料源清单](./majors/080901-computer-science-and-technology/sources.md)
-- [计算机科学与技术课程资料采集矩阵](./majors/080901-computer-science-and-technology/course-source-matrix.md)
-- [中国近现代史纲要](./courses/03708/index.md)
-- [马克思主义基本原理概论](./courses/03709/index.md)
-- [英语（专升本）](./courses/13000/index.md)
+| 入口 | 用途 |
+| --- | --- |
+| [专业索引](./majors/index.md) | 全量专业与考试计划工作区 |
+| [课程索引](./courses/index.md) | 跨专业复用课程页 |
+| [考期资料](./exams/index.md) | 开考安排、教材计划、官方公告入口 |
+| [缺口雷达](./gaps/index.md) | 课程缺口、成熟度、issue 入口 |
+| [标准与工作流](./standards/index.md) | 内容标准、materials 政策、发布闸门 |
 
 ## 目录组织原则
 

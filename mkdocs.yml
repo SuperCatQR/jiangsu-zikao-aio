@@ -26,3 +26,24 @@ extra:
   governance:
     public_repo_policy: "official-public-source-index-summary-only"
     private_material_scheme: "materials://"
+nav:
+  - 首页: index.md
+  - 江苏:
+      - 总览: jiangsu/index.md
+      - 专业:
+          - 专业索引: jiangsu/majors/index.md
+      - 课程:
+          - 课程索引: jiangsu/courses/index.md
+      - 考期:
+          - 考期资料: jiangsu/exams/index.md
+      - 缺口:
+          - 缺口雷达: jiangsu/gaps/index.md
+          - 页面成熟度: jiangsu/gaps/page-maturity.md
+      - 标准:
+          - 标准总览: jiangsu/standards/index.md
+          - 公开内容标准: jiangsu/standards/content-standard.md
+          - materials:// 政策: jiangsu/standards/materials-policy.md
+          - 课程页契约: jiangsu/standards/course-pages-contract.md
+          - 发布闸门: jiangsu/standards/publish-gate-contract.md
+          - 审核清单: jiangsu/standards/review-checklist.md
+          - 来源监控: jiangsu/standards/source-link-monitor.md
