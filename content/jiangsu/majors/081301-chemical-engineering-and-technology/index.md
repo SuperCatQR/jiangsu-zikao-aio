@@ -12,7 +12,7 @@
 
 - Raw XML：docs\jiangsu\majors\081301-chemical-engineering-and-technology\sources\plan.raw.xml
 - Raw TXT：docs\jiangsu\majors\081301-chemical-engineering-and-technology\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\081301-chemical-engineering-and-technology\sources\plan.normalized.html
+- Raw View HTML：docs\jiangsu\majors\081301-chemical-engineering-and-technology\sources\plan.raw-view.html
 - Markdown 草稿：docs\jiangsu\majors\081301-chemical-engineering-and-technology\sources\plan.extracted.md
 
 ## 待校对

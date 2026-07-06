@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\09.心理健康教育专业（专科）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\mental-health\09.心理健康教育专业（专科）考试计划.pdf |
+| 源 PDF SHA256 | 6c9beb4a634eca80780cb45bb28e97617c51a18f172cf721f09e5bcde46b0e13 |
 | 专业代码 | 570116K |
 | 专业名称 | 心理健康教育 |
 | 层次 | 专科 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\570116K-mental-health-education\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\570116K-mental-health-education\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\570116K-mental-health-education\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

@@ -2,13 +2,15 @@
 
 | 字段 | 内容 |
 | --- | --- |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\19.英语专业（专升本）考试计划.pdf |
-| 转换日期 | 2026-06-22 15:32:16 +08:00 |
+| 源 PDF | sources\jiangsu\public-official\major-plans\english\19.英语专业（专升本）考试计划.pdf |
+| 源 PDF SHA256 | 16c73022fb2bde4e85d33aa464b225cf0eed164f220c53236a498105999dab2d |
+| 转换日期 | 2026-07-06 12:29:51 +08:00 |
 | 转换工具 | Poppler pdftohtml -xml -i -noframes；pdftotext -layout |
-| 原始 XML | docs\jiangsu\majors\050201-english\sources\plan.raw.xml |
-| 原始 TXT | docs\jiangsu\majors\050201-english\sources\plan.raw.txt |
-| 规范化 HTML | docs\jiangsu\majors\050201-english\sources\plan.normalized.html |
-| Markdown 草稿 | docs\jiangsu\majors\050201-english\sources\plan.extracted.md |
+| 抽取策略 | full-text-draft |
+| 原始 XML | content\jiangsu\majors\050201-english\sources\plan.raw.xml |
+| 原始 TXT | content\jiangsu\majors\050201-english\sources\plan.raw.txt |
+| Raw View HTML | content\jiangsu\majors\050201-english\sources\plan.raw-view.html |
+| Markdown 草稿 | content\jiangsu\majors\050201-english\sources\plan.extracted.md |
 | 数据状态 | 机器初稿，待人工校对 |
 
 ## 自动抽取问题

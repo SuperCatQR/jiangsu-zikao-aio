@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\26.计算机科学与技术专业（专升本）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\computer-science\26.计算机科学与技术专业（专升本）考试计划.pdf |
+| 源 PDF SHA256 | 2b001ef7abe8f354f400f97a62e39d50aeacfd2fabc25af789d1d94b641ecc89 |
 | 专业代码 | 080901 |
 | 专业名称 | 计算机科学与技术 |
 | 层次 | 专升本 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\080901-computer-science-and-technology\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\080901-computer-science-and-technology\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\080901-computer-science-and-technology\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\080901-computer-science-and-technology\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\080901-computer-science-and-technology\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\080901-computer-science-and-technology\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

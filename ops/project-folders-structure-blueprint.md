@@ -144,7 +144,7 @@ content/jiangsu/majors/<专业代码>-<english-slug>/
 └── sources/
     ├── plan.raw.xml
     ├── plan.raw.txt
-    ├── plan.normalized.html
+    ├── plan.raw-view.html
     ├── plan.extracted.md
     └── plan.pipeline-notes.md
 ```
@@ -204,7 +204,7 @@ content/jiangsu/courses/<5位课程代码>/index.md
 - 2026-06-23：新增根 `README.md`；`design-proposals/` 归档到 `archive/design-proposals/`；`CLAUDE.md`、`AGENTS.md` 加入 `.gitignore`。
 - 将专业页统一为 `majors/<major>/index.md` 目录形态。
 - 将计算机科学与技术的 XML/TXT 抽取结果迁入该专业 `sources/`，并统一命名为 `plan.raw.*`。
-- 已用 `scripts/process-pdfs.ps1` 批处理 70 个 PDF，其中 54 个专业计划进入各专业目录，16 个共享 PDF 进入 `sources/jiangsu/processed/`。
+- 已用 `scripts/process-pdfs.ps1` 批处理官方 PDF；专业计划进入各专业目录，共享 PDF 进入 `sources/jiangsu/processed/`，以 manifest 为准。
 - 2026-06-22 为 080901 增量下载并处理 7 个官方独立考纲 PDF。
 - 将教材 PDF 从项目树移到 `materials://e-books/jiangsu/`。
 - 将已解压的官方专业计划 RAR 从项目树移到 `C:\WorkSpace\project\FinalGo_local_archive\official-packages\jiangsu\`。

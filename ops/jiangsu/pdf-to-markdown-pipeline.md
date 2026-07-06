@@ -3,7 +3,7 @@
 目标：把江苏自考官方 PDF 稳定转换成可审核、可发布、可追溯的 Markdown 页面。流水线不追求一步到位，而是把 PDF 解析拆成四个可检查阶段：
 
 ```text
-PDF -> 原始 HTML/XML -> 规范化 HTML -> Markdown
+PDF -> 原始 HTML/XML -> Raw View HTML -> Markdown
 ```
 
 ## 为什么需要中间层
@@ -29,7 +29,7 @@ content/jiangsu/majors/<major>/
 └── sources/
     ├── plan.raw.xml
     ├── plan.raw.txt
-    ├── plan.normalized.html
+    ├── plan.raw-view.html
     ├── plan.extracted.md
     └── plan.pipeline-notes.md
 ```
@@ -55,8 +55,8 @@ sources/jiangsu/
 | --- | --- | --- |
 | `plan.raw.xml` | 原始 HTML/XML | `pdftohtml -xml` 产物，保留页码、坐标、字体、文本块 |
 | `plan.raw.txt` | 原始文本 | `pdftotext` 或人工辅助文本，方便搜索和对照 |
-| `plan.normalized.html` | 规范化 HTML | 将坐标文本整理成语义化章节、段落和表格 |
-| `plan.extracted.md` | Markdown 草稿 | 从规范化 HTML 生成的专业页草稿或关键片段 |
+| `plan.raw-view.html` | Raw View HTML | 将坐标文本整理成语义化章节、段落和表格 |
+| `plan.extracted.md` | Markdown 草稿 | 从Raw View HTML 生成的专业页草稿或关键片段 |
 | `plan.pipeline-notes.md` | 转换记录 | 记录命令、异常、人工修正和审核结果 |
 
 ## 阶段 1：PDF -> 原始 HTML/XML
@@ -98,7 +98,7 @@ pdftotext -layout \
 - XML 中课程代码、课程名称、学分文本没有明显缺失。
 - 页眉、页脚、页码仍可识别，后续归一化时再移除。
 
-## 阶段 2：原始 HTML/XML -> 规范化 HTML
+## 阶段 2：原始 HTML/XML -> Raw View HTML
 
 输入：
 
@@ -110,10 +110,10 @@ plan.raw.txt
 输出：
 
 ```text
-plan.normalized.html
+plan.raw-view.html
 ```
 
-规范化 HTML 是本流水线最重要的中间层。它不追求样式还原，而是把 PDF 坐标文本转换成语义结构。
+Raw View HTML 是本流水线最重要的中间层。它不追求样式还原，而是把 PDF 坐标文本转换成语义结构。
 
 推荐结构：
 
@@ -181,21 +181,21 @@ plan.normalized.html
 
 ```bash
 # 1. 检查表格列数一致性
-grep -o '<td>' plan.normalized.html | wc -l  # 应为 (行数 × 列数)
+grep -o '<td>' plan.raw-view.html | wc -l  # 应为 (行数 × 列数)
 
 # 2. 检查课程代码格式
-grep -E '<td>[0-9]{5}</td>' plan.normalized.html  # 应匹配所有课程代码
+grep -E '<td>[0-9]{5}</td>' plan.raw-view.html  # 应匹配所有课程代码
 
 # 3. 对比原始文本
-diff <(pdftotext plan.pdf -) <(lynx -dump plan.normalized.html)  # 检查遗漏段落
+diff <(pdftotext plan.pdf -) <(lynx -dump plan.raw-view.html)  # 检查遗漏段落
 ```
 
-## 阶段 3：规范化 HTML -> Markdown 草稿
+## 阶段 3：Raw View HTML -> Markdown 草稿
 
 输入：
 
 ```text
-plan.normalized.html
+plan.raw-view.html
 templates/major.md
 ```
 
@@ -218,9 +218,9 @@ plan.extracted.md
 验收点：
 
 - Markdown 表格列数正确。
-- 学分数字、课程代码和课程名称与 `plan.normalized.html` 一致。
+- 学分数字、课程代码和课程名称与 `plan.raw-view.html` 一致。
 - 页面保留“待补全 / 待校对”。
-- 官方来源指向原始 PDF、`plan.raw.xml`、`plan.normalized.html`。
+- 官方来源指向原始 PDF、`plan.raw.xml`、`plan.raw-view.html`。
 
 ## 阶段 4：Markdown 草稿 -> 发布页
 
@@ -266,7 +266,7 @@ index.md
 | 转换日期 |  |
 | 转换工具 |  |
 | 原始 XML | `plan.raw.xml` |
-| 规范化 HTML | `plan.normalized.html` |
+| Raw View HTML | `plan.raw-view.html` |
 | Markdown 草稿 | `plan.extracted.md` |
 | 数据状态 | 机器初稿 / 人工校对中 / 已校对 |
 
@@ -296,8 +296,8 @@ pdftotext ...
 | 脚本 | 输入 | 输出 | 职责 |
 | --- | --- | --- | --- |
 | `pdf_to_raw` | PDF | `plan.raw.xml`、`plan.raw.txt` | 调用 Poppler，不做语义判断 |
-| `raw_to_normalized_html` | `plan.raw.xml` | `plan.normalized.html` | 按坐标和文本规则识别章节、表格 |
-| `normalized_html_to_markdown` | `plan.normalized.html` | `plan.extracted.md` | 套模板生成 Markdown 草稿 |
+| `raw_to_raw_view_html` | `plan.raw.xml` + `plan.raw.txt` | `plan.raw-view.html` | 保真展示原始抽取，禁止伪规范化 |
+| `raw_text_to_markdown_draft` | `plan.raw.txt` | `plan.extracted.md` | 生成带策略声明的机器草稿 |
 
 优先自动化：
 
@@ -343,7 +343,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Fo
 ```text
 content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw.xml
 content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw.txt
-content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.normalized.html
+content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw-view.html
 content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.extracted.md
 content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.pipeline-notes.md
 ```

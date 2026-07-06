@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\02.机电一体化技术专业（专科）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\mechatronics\02.机电一体化技术专业（专科）考试计划.pdf |
+| 源 PDF SHA256 | 23b6625b78fc0c4dece156fcab817a46f788acf24bcc12de28050de63674e0af |
 | 专业代码 | 460301 |
 | 专业名称 | 机电一体化技术 |
 | 层次 | 专科 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

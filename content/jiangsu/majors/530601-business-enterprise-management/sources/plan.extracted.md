@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\04.工商企业管理专业（专科）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\business-admin\04.工商企业管理专业（专科）考试计划.pdf |
+| 源 PDF SHA256 | dfbf238956b0d68fa6dc766037ed66e3539232ab2184e103cad806914c57225f |
 | 专业代码 | 530601 |
 | 专业名称 | 工商企业管理 |
 | 层次 | 专科 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\530601-business-enterprise-management\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\530601-business-enterprise-management\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\530601-business-enterprise-management\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\530601-business-enterprise-management\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\530601-business-enterprise-management\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\530601-business-enterprise-management\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

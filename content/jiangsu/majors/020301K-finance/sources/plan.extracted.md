@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\12.金融学专业（专升本）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\finance\12.金融学专业（专升本）考试计划.pdf |
+| 源 PDF SHA256 | 28d8530a29d3e017224d02ac7159c40a5ef1080f48cff68ffce8a4c7967838e3 |
 | 专业代码 | 020301K |
 | 专业名称 | 金融学 |
 | 层次 | 专升本 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\020301K-finance\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\020301K-finance\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\020301K-finance\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\020301K-finance\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\020301K-finance\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\020301K-finance\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

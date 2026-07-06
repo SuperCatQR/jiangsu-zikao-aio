@@ -9,7 +9,7 @@
 | 专业考试计划 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\34.动物医学专业（专升本）考试计划.pdf |
 | Raw XML | docs\jiangsu\majors\090401-animal-medicine\sources\plan.raw.xml |
 | Raw TXT | docs\jiangsu\majors\090401-animal-medicine\sources\plan.raw.txt |
-| 规范化 HTML | docs\jiangsu\majors\090401-animal-medicine\sources\plan.normalized.html |
+| Raw View HTML | docs\jiangsu\majors\090401-animal-medicine\sources\plan.raw-view.html |
 | Markdown 草稿 | docs\jiangsu\majors\090401-animal-medicine\sources\plan.extracted.md |
 
 ## 待补全

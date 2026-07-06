@@ -7,7 +7,7 @@
 | 转换工具 | Poppler pdftohtml -xml -i -noframes；pdftotext -layout |
 | 原始 XML | docs\jiangsu\majors\130503-environmental-design\sources\plan.raw.xml |
 | 原始 TXT | docs\jiangsu\majors\130503-environmental-design\sources\plan.raw.txt |
-| 规范化 HTML | docs\jiangsu\majors\130503-environmental-design\sources\plan.normalized.html |
+| Raw View HTML | docs\jiangsu\majors\130503-environmental-design\sources\plan.raw-view.html |
 | Markdown 草稿 | docs\jiangsu\majors\130503-environmental-design\sources\plan.extracted.md |
 | 数据状态 | 机器初稿，待人工校对 |
 

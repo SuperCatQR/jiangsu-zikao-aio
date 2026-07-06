@@ -12,7 +12,7 @@
 
 - Raw XML：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.raw.xml
 - Raw TXT：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.normalized.html
+- Raw View HTML：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.raw-view.html
 - Markdown 草稿：docs\jiangsu\majors\570116K-mental-health-education\sources\plan.extracted.md
 
 ## 待校对

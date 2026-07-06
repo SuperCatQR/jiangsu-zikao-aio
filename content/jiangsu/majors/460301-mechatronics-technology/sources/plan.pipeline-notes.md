@@ -2,13 +2,15 @@
 
 | 字段 | 内容 |
 | --- | --- |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\02.机电一体化技术专业（专科）考试计划.pdf |
-| 转换日期 | 2026-06-22 15:32:16 +08:00 |
+| 源 PDF | sources\jiangsu\public-official\major-plans\mechatronics\02.机电一体化技术专业（专科）考试计划.pdf |
+| 源 PDF SHA256 | 23b6625b78fc0c4dece156fcab817a46f788acf24bcc12de28050de63674e0af |
+| 转换日期 | 2026-07-06 12:29:51 +08:00 |
 | 转换工具 | Poppler pdftohtml -xml -i -noframes；pdftotext -layout |
-| 原始 XML | docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.xml |
-| 原始 TXT | docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.txt |
-| 规范化 HTML | docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.normalized.html |
-| Markdown 草稿 | docs\jiangsu\majors\460301-mechatronics-technology\sources\plan.extracted.md |
+| 抽取策略 | full-text-draft |
+| 原始 XML | content\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.xml |
+| 原始 TXT | content\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw.txt |
+| Raw View HTML | content\jiangsu\majors\460301-mechatronics-technology\sources\plan.raw-view.html |
+| Markdown 草稿 | content\jiangsu\majors\460301-mechatronics-technology\sources\plan.extracted.md |
 | 数据状态 | 机器初稿，待人工校对 |
 
 ## 自动抽取问题

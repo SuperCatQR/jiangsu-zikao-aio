@@ -13,7 +13,7 @@
 
 - Raw XML：docs\jiangsu\majors\090502-landscape-architecture\sources\plan.raw.xml
 - Raw TXT：docs\jiangsu\majors\090502-landscape-architecture\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\090502-landscape-architecture\sources\plan.normalized.html
+- Raw View HTML：docs\jiangsu\majors\090502-landscape-architecture\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

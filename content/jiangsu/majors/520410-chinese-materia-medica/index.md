@@ -12,7 +12,7 @@
 
 - Raw XML：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw.xml
 - Raw TXT：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.normalized.html
+- Raw View HTML：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw-view.html
 - Markdown 草稿：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.extracted.md
 
 ## 待校对

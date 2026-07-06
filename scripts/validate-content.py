@@ -2,6 +2,7 @@
 """Lightweight content gate for Jiangsu self-study exam pages."""
 from __future__ import annotations
 
+import csv
 import re
 import sys
 from pathlib import Path
@@ -29,11 +30,15 @@ def table_fields(text: str) -> dict[str, str]:
     return fields
 
 
-def validate_file(path: Path) -> list[str]:
+def rel_label(path: Path) -> str:
     try:
-        rel = path.relative_to(ROOT).as_posix()
+        return path.relative_to(ROOT).as_posix()
     except ValueError:
-        rel = path.as_posix()
+        return path.as_posix()
+
+
+def validate_file(path: Path) -> list[str]:
+    rel = rel_label(path)
     text = path.read_text(encoding="utf-8", errors="replace")
     fields = table_fields(text)
     errors: list[str] = []
@@ -71,6 +76,38 @@ def validate_file(path: Path) -> list[str]:
     return errors
 
 
+MANIFEST = ROOT / "sources" / "jiangsu" / "processed" / "source-records" / "pdf-processing-manifest.csv"
+MANIFEST_REQUIRED = {"type", "source_pdf", "raw_xml", "raw_txt", "raw_view_html", "extracted_md", "source_sha256", "extraction_policy"}
+
+
+def validate_pdf_manifest(path: Path = MANIFEST) -> list[str]:
+    errors: list[str] = []
+    if not path.exists():
+        return [f"{rel_label(path)}: 缺 PDF 处理 manifest"]
+    rows = list(csv.DictReader(path.open(encoding="utf-8-sig")))
+    fields = set(rows[0].keys()) if rows else set()
+    missing = MANIFEST_REQUIRED - fields
+    if missing:
+        errors.append(f"{rel_label(path)}: manifest 缺字段：{', '.join(sorted(missing))}")
+    for i, row in enumerate(rows, 2):
+        for key in ["source_pdf", "raw_xml", "raw_txt", "raw_view_html", "extracted_md"]:
+            rel = row.get(key, "")
+            if not rel:
+                errors.append(f"{rel_label(path)}:{i}: {key} 为空")
+                continue
+            target = ROOT / rel.replace("\\", "/")
+            if not target.exists():
+                errors.append(f"{rel_label(path)}:{i}: {key} 不存在：{rel}")
+            elif key == "source_pdf" and target.stat().st_mtime > path.stat().st_mtime + 1:
+                errors.append(f"{rel_label(path)}:{i}: manifest 旧于源 PDF：{rel}")
+        sha = row.get("source_sha256", "")
+        if not re.fullmatch(r"[0-9a-f]{64}", sha):
+            errors.append(f"{rel_label(path)}:{i}: source_sha256 非 SHA256：{sha}")
+        if not row.get("extraction_policy"):
+            errors.append(f"{rel_label(path)}:{i}: extraction_policy 为空")
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
     for md in CONTENT.rglob("*.md"):
@@ -78,6 +115,7 @@ def main() -> int:
         if md.name in {"plan.extracted.md", "plan.pipeline-notes.md"}:
             continue
         errors.extend(validate_file(md))
+    errors.extend(validate_pdf_manifest())
     if errors:
         print("Content validation failed:")
         for e in errors:

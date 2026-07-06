@@ -12,7 +12,7 @@
 
 - Raw XML：docs\jiangsu\majors\050303-advertising\sources\plan.raw.xml
 - Raw TXT：docs\jiangsu\majors\050303-advertising\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\050303-advertising\sources\plan.normalized.html
+- Raw View HTML：docs\jiangsu\majors\050303-advertising\sources\plan.raw-view.html
 - Markdown 草稿：docs\jiangsu\majors\050303-advertising\sources\plan.extracted.md
 
 ## 待校对

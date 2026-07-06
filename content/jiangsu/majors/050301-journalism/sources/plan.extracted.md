@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\21.新闻学专业（专升本）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\journalism\21.新闻学专业（专升本）考试计划.pdf |
+| 源 PDF SHA256 | 72ec98ad2cba95df480711aa4487e49d08d91303fe61fa001dd6933cb0712d6b |
 | 专业代码 | 050301 |
 | 专业名称 | 新闻学 |
 | 层次 | 专升本 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\050301-journalism\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\050301-journalism\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\050301-journalism\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\050301-journalism\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\050301-journalism\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\050301-journalism\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

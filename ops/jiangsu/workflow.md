@@ -5,7 +5,7 @@
 本项目采用四段式流水线：
 
 ```text
-PDF -> 原始 HTML/XML -> 规范化 HTML -> Markdown
+PDF -> 原始 HTML/XML -> Raw View HTML -> Markdown
 ```
 
 详细设计见：[PDF 到 Markdown 四段式流水线](./pdf-to-markdown-pipeline.md)。
@@ -24,7 +24,7 @@ PDF -> 原始 HTML/XML -> 规范化 HTML -> Markdown
 
 - 单专业原始 XML：`content/jiangsu/majors/<专业代码>-<english-slug>/sources/plan.raw.xml`
 - 单专业原始文本：`content/jiangsu/majors/<专业代码>-<english-slug>/sources/plan.raw.txt`
-- 单专业规范化 HTML：`content/jiangsu/majors/<专业代码>-<english-slug>/sources/plan.normalized.html`
+- 单专业Raw View HTML：`content/jiangsu/majors/<专业代码>-<english-slug>/sources/plan.raw-view.html`
 - 单专业 Markdown 草稿：`content/jiangsu/majors/<专业代码>-<english-slug>/sources/plan.extracted.md`
 - 单专业 Markdown：`content/jiangsu/majors/<专业代码>-<english-slug>/index.md`
 - 单专业资料源清单：`content/jiangsu/majors/<专业代码>-<english-slug>/sources.md`
@@ -106,9 +106,9 @@ pdftotext -layout \
   "content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.raw.txt"
 ```
 
-## 3. 从原始 XML 生成规范化 HTML
+## 3. 从原始 XML 生成Raw View HTML
 
-把 `plan.raw.xml` 中的坐标文本整理为 `plan.normalized.html`。规范化 HTML 使用真实标题、段落和表格表达结构，不追求还原 PDF 视觉样式。
+把 `plan.raw.xml` 中的坐标文本整理为 `plan.raw-view.html`。Raw View HTML 使用真实标题、段落和表格表达结构，不追求还原 PDF 视觉样式。
 
 关键规则：
 
@@ -118,7 +118,7 @@ pdftotext -layout \
 4. 每个来自 PDF 的段落或表格行尽量保留 `data-source-page`。
 5. 自动推断字段用 `data-derived="true"` 标记。
 
-## 4. 从规范化 HTML 抽取专业信息
+## 4. 从Raw View HTML 抽取专业信息
 
 优先抽取这些字段：
 
@@ -248,8 +248,8 @@ notes: "不托管教材电子版"
 2. 调用 `pdftohtml -xml` 和 `pdftotext -layout` 生成 raw 产物。
 3. 从文件名解析序号、专业名称、层次。
 4. 从 raw XML 第一页解析专业代码。
-5. 生成 `plan.normalized.html`，把课程表整理为真实 HTML 表格。
-6. 从规范化 HTML 生成 `plan.extracted.md`。
+5. 生成 `plan.raw-view.html`，把课程表整理为真实 HTML 表格。
+6. 从Raw View HTML 生成 `plan.extracted.md`。
 7. 按 `ops/jiangsu/templates/major.md` 生成或更新 `index.md`。
 8. 在页面顶部标记 `数据状态：机器初稿，待人工审核`。
 
@@ -263,7 +263,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Force
 
 # 仅处理特定目录
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\process-pdfs.ps1 -Path "sources/jiangsu/major-plans-2024"
 ```
 
 **批处理参数说明**：

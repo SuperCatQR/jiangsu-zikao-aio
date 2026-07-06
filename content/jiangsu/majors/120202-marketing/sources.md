@@ -9,7 +9,7 @@
 | 专业考试计划 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\42.市场营销专业（专升本）考试计划.pdf |
 | Raw XML | docs\jiangsu\majors\120202-marketing\sources\plan.raw.xml |
 | Raw TXT | docs\jiangsu\majors\120202-marketing\sources\plan.raw.txt |
-| 规范化 HTML | docs\jiangsu\majors\120202-marketing\sources\plan.normalized.html |
+| Raw View HTML | docs\jiangsu\majors\120202-marketing\sources\plan.raw-view.html |
 | Markdown 草稿 | docs\jiangsu\majors\120202-marketing\sources\plan.extracted.md |
 
 ## 待补全

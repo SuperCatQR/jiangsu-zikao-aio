@@ -73,7 +73,7 @@
 - `../../source/2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）/{{原始PDF文件名}}`
 - `./sources/plan.raw.xml`
 - `./sources/plan.raw.txt`
-- `./sources/plan.normalized.html`
+- `./sources/plan.raw-view.html`
 - `./sources/plan.extracted.md`
 
 ## 人工审核清单

@@ -8,11 +8,13 @@ $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 $Root = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ContentRoot = Join-Path $Root "content\jiangsu"
 $SourcesRoot = Join-Path $Root "sources\jiangsu"
-$MajorPdfDir = Join-Path $SourcesRoot "major-plans-2024"
+$PublicOfficialDir = Join-Path $SourcesRoot "public-official"
+$MajorPdfDir = Join-Path $PublicOfficialDir "major-plans"
 $ProcessedDir = Join-Path $SourcesRoot "processed"
-$TextbookPdfDir = Join-Path $SourcesRoot "textbooks"
-$SyllabusPdfDir = Join-Path $SourcesRoot "syllabus"
-$PastPaperPdfDir = Join-Path $SourcesRoot "past-papers"
+$PolicyPdfDir = Join-Path $PublicOfficialDir "policies"
+$TextbookPdfDir = Join-Path $PublicOfficialDir "textbooks"
+$SyllabusPdfDir = Join-Path $PublicOfficialDir "syllabi"
+$PastPaperPdfDir = Join-Path $PublicOfficialDir "past-papers"
 
 $NameSlugMap = @{
   "机械制造及自动化" = "mechanical-manufacturing-and-automation"
@@ -107,6 +109,49 @@ function Escape-Html {
   return [System.Net.WebUtility]::HtmlEncode($Value)
 }
 
+
+function Get-Sha256 {
+  param([string]$Path)
+  return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant()
+}
+
+function Assert-NonEmptyFile {
+  param(
+    [string]$Path,
+    [string]$Label
+  )
+
+  if (-not (Test-Path -LiteralPath $Path)) {
+    throw "$Label missing: $Path"
+  }
+  if ((Get-Item -LiteralPath $Path).Length -le 0) {
+    throw "$Label empty: $Path"
+  }
+}
+
+function Test-IsUnderDirectory {
+  param(
+    [string]$Path,
+    [string]$Directory
+  )
+
+  if (-not (Test-Path -LiteralPath $Directory)) { return $false }
+  $fullPath = [System.IO.Path]::GetFullPath($Path).TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+  $fullDir = [System.IO.Path]::GetFullPath($Directory).TrimEnd([System.IO.Path]::DirectorySeparatorChar, [System.IO.Path]::AltDirectorySeparatorChar)
+  return $fullPath.Equals($fullDir, [System.StringComparison]::OrdinalIgnoreCase) -or `
+    $fullPath.StartsWith($fullDir + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase) -or `
+    $fullPath.StartsWith($fullDir + [System.IO.Path]::AltDirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)
+}
+
+function Get-DocumentPolicy {
+  param([string]$Type)
+
+  if ($Type -in @("textbooks", "past-papers")) {
+    return @{ EmitFullText = $false; Policy = "metadata-only" }
+  }
+  return @{ EmitFullText = $true; Policy = "full-text-draft" }
+}
+
 function Get-SafeSlug {
   param([string]$Value)
 
@@ -115,6 +160,21 @@ function Get-SafeSlug {
   $slug = $slug.Trim("-")
   if ([string]::IsNullOrWhiteSpace($slug)) {
     return "document"
+  }
+  return $slug
+}
+
+
+function Get-UniqueSlug {
+  param(
+    [string]$Stem,
+    [string]$SourcePath
+  )
+
+  $slug = Get-SafeSlug $Stem
+  if ($slug -eq "document") {
+    $hash = (Get-Sha256 $SourcePath).Substring(0, 12)
+    return "document-$hash"
   }
   return $slug
 }
@@ -151,7 +211,7 @@ function Invoke-PdfRawConversion {
   }
 }
 
-function New-NormalizedHtml {
+function New-RawViewHtml {
   param(
     [hashtable]$Meta,
     [string]$RawText
@@ -176,7 +236,7 @@ function New-NormalizedHtml {
     }
 
     $escapedBody = Escape-Html $body
-    [void]$sections.AppendLine("    <section data-section=""raw-page"" data-source-page=""$pageNumber"">")
+    [void]$sections.AppendLine("    <section data-section=""raw-text-page"" data-source-page=""$pageNumber"">")
     [void]$sections.AppendLine("      <h2>第 $pageNumber 页</h2>")
     [void]$sections.AppendLine("      <pre>$escapedBody</pre>")
     [void]$sections.AppendLine("    </section>")
@@ -218,10 +278,16 @@ function New-ExtractedMarkdown {
     [string]$RawText,
     [string]$RawXmlRel,
     [string]$RawTxtRel,
-    [string]$NormalizedHtmlRel
+    [string]$RawViewHtmlRel
   )
 
   $text = (($RawText -replace "`r", "").Trim() -split "`n" | ForEach-Object { "    $_" }) -join "`n"
+  $body = if ($Meta.EmitFullText) {
+    "## 机器抽取文本`n`n$text"
+  } else {
+    "## 机器抽取文本`n`n本资料类型按版权策略不写入全文；请查看 Raw TXT/Raw XML 做内部校对。"
+  }
+
   return @"
 # $($Meta.Title)
 
@@ -229,20 +295,20 @@ function New-ExtractedMarkdown {
 | --- | --- |
 | 文档类型 | $($Meta.Type) |
 | 源 PDF | $($Meta.SourcePdf) |
+| 源 PDF SHA256 | $($Meta.SourceSha256) |
 | 专业代码 | $($Meta.Code) |
 | 专业名称 | $($Meta.Name) |
 | 层次 | $($Meta.Level) |
+| 抽取策略 | $($Meta.ExtractionPolicy) |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
 - Raw XML：$RawXmlRel
 - Raw TXT：$RawTxtRel
-- 规范化 HTML：$NormalizedHtmlRel
+- Raw View HTML：$RawViewHtmlRel
 
-## 机器抽取文本
-
-$text
+$body
 "@
 }
 
@@ -251,7 +317,7 @@ function New-PipelineNotes {
     [hashtable]$Meta,
     [string]$RawXmlRel,
     [string]$RawTxtRel,
-    [string]$NormalizedHtmlRel,
+    [string]$RawViewHtmlRel,
     [string]$ExtractedMarkdownRel
   )
 
@@ -261,11 +327,13 @@ function New-PipelineNotes {
 | 字段 | 内容 |
 | --- | --- |
 | 源 PDF | $($Meta.SourcePdf) |
+| 源 PDF SHA256 | $($Meta.SourceSha256) |
 | 转换日期 | $($Meta.GeneratedAt) |
 | 转换工具 | Poppler pdftohtml -xml -i -noframes；pdftotext -layout |
+| 抽取策略 | $($Meta.ExtractionPolicy) |
 | 原始 XML | $RawXmlRel |
 | 原始 TXT | $RawTxtRel |
-| 规范化 HTML | $NormalizedHtmlRel |
+| Raw View HTML | $RawViewHtmlRel |
 | Markdown 草稿 | $ExtractedMarkdownRel |
 | 数据状态 | 机器初稿，待人工校对 |
 
@@ -289,7 +357,7 @@ function Write-MajorStub {
     [string]$MajorDir,
     [string]$RawXmlRel,
     [string]$RawTxtRel,
-    [string]$NormalizedHtmlRel,
+    [string]$RawViewHtmlRel,
     [string]$ExtractedMarkdownRel
   )
 
@@ -310,7 +378,7 @@ function Write-MajorStub {
 
 - Raw XML：$RawXmlRel
 - Raw TXT：$RawTxtRel
-- 规范化 HTML：$NormalizedHtmlRel
+- Raw View HTML：$RawViewHtmlRel
 - Markdown 草稿：$ExtractedMarkdownRel
 
 ## 待校对
@@ -337,7 +405,7 @@ function Write-MajorStub {
 | 专业考试计划 PDF | $($Meta.SourcePdf) |
 | Raw XML | $RawXmlRel |
 | Raw TXT | $RawTxtRel |
-| 规范化 HTML | $NormalizedHtmlRel |
+| Raw View HTML | $RawViewHtmlRel |
 | Markdown 草稿 | $ExtractedMarkdownRel |
 
 ## 待补全
@@ -363,29 +431,39 @@ function Process-Document {
   New-Item -ItemType Directory -Force -Path $OutDir | Out-Null
   $prefix = Join-Path $OutDir $PrefixName
   $textOutput = "$prefix.txt"
-  $raw = Invoke-PdfRawConversion -Pdf $Pdf -OutputPrefix $prefix -TextOutput $textOutput -PdfToHtml $PdfToHtml -PdfToText $PdfToText
-  $rawText = Get-Content -Raw -LiteralPath $raw.RawTxt
+  $Meta.SourceSha256 = Get-Sha256 $Pdf.FullName
+  $policy = Get-DocumentPolicy $Meta.Type
+  $Meta.EmitFullText = $policy.EmitFullText
+  $Meta.ExtractionPolicy = $policy.Policy
 
-  $normalizedPath = Join-Path $OutDir ($PrefixName -replace "\.raw$", ".normalized.html")
+  $raw = Invoke-PdfRawConversion -Pdf $Pdf -OutputPrefix $prefix -TextOutput $textOutput -PdfToHtml $PdfToHtml -PdfToText $PdfToText
+  Assert-NonEmptyFile $raw.RawXml "Raw XML"
+  Assert-NonEmptyFile $raw.RawTxt "Raw TXT"
+  $rawText = Get-Content -Raw -LiteralPath $raw.RawTxt
+  if ([string]::IsNullOrWhiteSpace($rawText)) { throw "Raw TXT has no extractable text: $($Pdf.FullName)" }
+
+  $rawViewPath = Join-Path $OutDir ($PrefixName -replace "\.raw$", ".raw-view.html")
   $extractedPath = Join-Path $OutDir ($PrefixName -replace "\.raw$", ".extracted.md")
   $notesPath = Join-Path $OutDir ($PrefixName -replace "\.raw$", ".pipeline-notes.md")
 
-  Write-Utf8File $normalizedPath (New-NormalizedHtml -Meta $Meta -RawText $rawText)
+  Write-Utf8File $rawViewPath (New-RawViewHtml -Meta $Meta -RawText $rawText)
 
   $rawXmlRel = Get-RelativePath $raw.RawXml
   $rawTxtRel = Get-RelativePath $raw.RawTxt
-  $normalizedRel = Get-RelativePath $normalizedPath
+  $rawViewRel = Get-RelativePath $rawViewPath
   $extractedRel = Get-RelativePath $extractedPath
 
-  Write-Utf8File $extractedPath (New-ExtractedMarkdown -Meta $Meta -RawText $rawText -RawXmlRel $rawXmlRel -RawTxtRel $rawTxtRel -NormalizedHtmlRel $normalizedRel)
-  Write-Utf8File $notesPath (New-PipelineNotes -Meta $Meta -RawXmlRel $rawXmlRel -RawTxtRel $rawTxtRel -NormalizedHtmlRel $normalizedRel -ExtractedMarkdownRel $extractedRel)
+  Write-Utf8File $extractedPath (New-ExtractedMarkdown -Meta $Meta -RawText $rawText -RawXmlRel $rawXmlRel -RawTxtRel $rawTxtRel -RawViewHtmlRel $rawViewRel)
+  Write-Utf8File $notesPath (New-PipelineNotes -Meta $Meta -RawXmlRel $rawXmlRel -RawTxtRel $rawTxtRel -RawViewHtmlRel $rawViewRel -ExtractedMarkdownRel $extractedRel)
 
   return @{
     RawXml = $raw.RawXml
     RawTxt = $raw.RawTxt
-    NormalizedHtml = $normalizedPath
+    RawViewHtml = $rawViewPath
     ExtractedMarkdown = $extractedPath
     PipelineNotes = $notesPath
+    SourceSha256 = $Meta.SourceSha256
+    ExtractionPolicy = $Meta.ExtractionPolicy
   }
 }
 
@@ -395,7 +473,9 @@ $GeneratedAt = Get-Date -Format "yyyy-MM-dd HH:mm:ss zzz"
 $Manifest = New-Object System.Collections.Generic.List[object]
 $MajorRows = New-Object System.Collections.Generic.List[object]
 
-$majorPdfs = Get-ChildItem -LiteralPath $MajorPdfDir -Filter "*.pdf" -File | Sort-Object Name
+$majorPdfs = Get-ChildItem -LiteralPath $MajorPdfDir -Filter "*.pdf" -File -Recurse |
+  Where-Object { $_.FullName -notmatch "[\\/]source[\\/]" -and $_.BaseName -match "^\d+\." } |
+  Sort-Object Name
 foreach ($pdf in $majorPdfs) {
   $fileMatch = [regex]::Match($pdf.Name, "^(\d+)\.(.+?)专业（(.+?)）考试计划\.pdf$")
   if (-not $fileMatch.Success) {
@@ -408,7 +488,7 @@ foreach ($pdf in $majorPdfs) {
   $level = $fileMatch.Groups[3].Value
   $probeText = & $PdfToText -layout $pdf.FullName -
   $codeMatch = [regex]::Match(($probeText -join "`n"), "专业代码[：:]\s*([0-9A-Z]+)")
-  $code = if ($codeMatch.Success) { $codeMatch.Groups[1].Value } else { "unknown-$sequence" }
+  $code = if ($codeMatch.Success) { $codeMatch.Groups[1].Value } else { throw "Cannot extract major code from $($pdf.Name)" }
   $slug = if ($NameSlugMap.ContainsKey($majorName)) { $NameSlugMap[$majorName] } else { "major-$sequence" }
   $majorDirName = "$code-$slug"
   $majorDir = Join-Path $ContentRoot "majors\$majorDirName"
@@ -430,9 +510,9 @@ foreach ($pdf in $majorPdfs) {
 
   $rawXmlRel = Get-RelativePath $outputs.RawXml
   $rawTxtRel = Get-RelativePath $outputs.RawTxt
-  $normalizedRel = Get-RelativePath $outputs.NormalizedHtml
+  $rawViewRel = Get-RelativePath $outputs.RawViewHtml
   $extractedRel = Get-RelativePath $outputs.ExtractedMarkdown
-  Write-MajorStub -Meta $meta -MajorDir $majorDir -RawXmlRel $rawXmlRel -RawTxtRel $rawTxtRel -NormalizedHtmlRel $normalizedRel -ExtractedMarkdownRel $extractedRel
+  Write-MajorStub -Meta $meta -MajorDir $majorDir -RawXmlRel $rawXmlRel -RawTxtRel $rawTxtRel -RawViewHtmlRel $rawViewRel -ExtractedMarkdownRel $extractedRel
 
   $Manifest.Add([pscustomobject]@{
     type = "major-plan"
@@ -442,8 +522,10 @@ foreach ($pdf in $majorPdfs) {
     output_dir = Get-RelativePath $outDir
     raw_xml = $rawXmlRel
     raw_txt = $rawTxtRel
-    normalized_html = $normalizedRel
+    raw_view_html = $rawViewRel
     extracted_md = $extractedRel
+    source_sha256 = $outputs.SourceSha256
+    extraction_policy = $outputs.ExtractionPolicy
   })
   $MajorRows.Add([pscustomobject]@{
     sequence = $sequence
@@ -454,8 +536,14 @@ foreach ($pdf in $majorPdfs) {
   })
 }
 
-$sharedPdfs = Get-ChildItem -LiteralPath $SourcesRoot -Filter "*.pdf" -File |
-  Where-Object { $_.FullName -notlike "$MajorPdfDir*" }
+$sharedPdfs = @()
+if (Test-Path -LiteralPath $PolicyPdfDir) {
+  $sharedPdfs += Get-ChildItem -LiteralPath $PolicyPdfDir -Filter "*.pdf" -File -Recurse
+}
+$majorSourceDir = Join-Path $MajorPdfDir "source"
+if (Test-Path -LiteralPath $majorSourceDir) {
+  $sharedPdfs += Get-ChildItem -LiteralPath $majorSourceDir -Filter "*.pdf" -File -Recurse
+}
 $textbookPdfDir = $TextbookPdfDir
 if (Test-Path -LiteralPath $textbookPdfDir) {
   $sharedPdfs += Get-ChildItem -LiteralPath $textbookPdfDir -Filter "*.pdf" -File
@@ -470,18 +558,22 @@ if (Test-Path -LiteralPath $pastPaperPdfDir) {
 }
 
 foreach ($pdf in ($sharedPdfs | Sort-Object FullName)) {
-  $stemSlug = Get-SafeSlug $pdf.BaseName
-  $category = if ($pdf.FullName -like "$TextbookPdfDir*") {
+  $stemSlug = Get-UniqueSlug -Stem $pdf.BaseName -SourcePath $pdf.FullName
+  $category = if (Test-IsUnderDirectory $pdf.FullName $TextbookPdfDir) {
     "textbooks"
-  } elseif ($pdf.FullName -like "$SyllabusPdfDir*") {
-    "syllabus"
-  } elseif ($pdf.FullName -like "$PastPaperPdfDir*") {
+  } elseif (Test-IsUnderDirectory $pdf.FullName $SyllabusPdfDir) {
+    "syllabi"
+  } elseif (Test-IsUnderDirectory $pdf.FullName $PolicyPdfDir) {
+    "policies"
+  } elseif (Test-IsUnderDirectory $pdf.FullName (Join-Path $MajorPdfDir "source")) {
+    "major-source"
+  } elseif (Test-IsUnderDirectory $pdf.FullName $PastPaperPdfDir) {
     "past-papers"
   } else {
     "documents"
   }
   $outDir = if ($category -eq "past-papers") {
-    $relativePastPaper = $pdf.FullName.Substring($PastPaperPdfDir.Length).TrimStart("\", "/")
+    $relativePastPaper = [System.IO.Path]::GetRelativePath($PastPaperPdfDir, $pdf.FullName)
     $relativeStem = [System.IO.Path]::Combine(
       (Split-Path -Parent $relativePastPaper),
       [System.IO.Path]::GetFileNameWithoutExtension($relativePastPaper)
@@ -513,12 +605,14 @@ foreach ($pdf in ($sharedPdfs | Sort-Object FullName)) {
     output_dir = Get-RelativePath $outDir
     raw_xml = Get-RelativePath $outputs.RawXml
     raw_txt = Get-RelativePath $outputs.RawTxt
-    normalized_html = Get-RelativePath $outputs.NormalizedHtml
+    raw_view_html = Get-RelativePath $outputs.RawViewHtml
     extracted_md = Get-RelativePath $outputs.ExtractedMarkdown
+    source_sha256 = $outputs.SourceSha256
+    extraction_policy = $outputs.ExtractionPolicy
   })
 }
 
-$manifestCsv = Join-Path $SourcesRoot "pdf-processing-manifest.csv"
+$manifestCsv = Join-Path $ProcessedDir "source-records\pdf-processing-manifest.csv"
 $Manifest | Export-Csv -NoTypeInformation -Encoding UTF8 -Path $manifestCsv
 
 $majorIndex = Join-Path $ContentRoot "majors\index.md"
@@ -533,7 +627,7 @@ foreach ($row in ($MajorRows | Sort-Object sequence)) {
 }
 Write-Utf8File $majorIndex $majorLines.ToString()
 
-$report = Join-Path $SourcesRoot "pdf-processing-report.md"
+$report = Join-Path $ProcessedDir "source-records\pdf-processing-report.md"
 $majorCount = ($Manifest | Where-Object { $_.type -eq "major-plan" }).Count
 $sharedCount = $Manifest.Count - $majorCount
 $reportContent = @"
@@ -544,7 +638,7 @@ $reportContent = @"
 | 处理时间 | $GeneratedAt |
 | 专业计划 PDF | $majorCount |
 | 共享 PDF | $sharedCount |
-| Manifest | sources/jiangsu/pdf-processing-manifest.csv |
+| Manifest | sources/jiangsu/processed/source-records/pdf-processing-manifest.csv |
 
 ## 输出规则
 
@@ -553,7 +647,7 @@ $reportContent = @"
 
 ## 数据状态
 
-本次输出为机器初稿，已完成 raw XML/TXT、基线规范化 HTML、Markdown 草稿和转换记录。课程表级语义化抽取仍需后续人工校对或规则增强。
+本次输出为机器初稿，已完成 raw XML/TXT、Raw View HTML、Markdown 草稿和转换记录；manifest 记录 SHA256 与抽取策略。教材/真题默认不写入全文草稿，课程表级语义化抽取仍需后续人工校对或规则增强。
 "@
 Write-Utf8File $report $reportContent
 

@@ -19,3 +19,15 @@ def test_validator_rejects_private_raw_url(tmp_path):
     f.write_text("https://raw.githubusercontent.com/me/zikao-materials/main/a.pdf", encoding="utf-8")
     errors = validate_content.validate_file(f)
     assert any("private/raw" in e for e in errors)
+
+
+
+def test_pdf_manifest_gate_rejects_missing_output(tmp_path):
+    manifest = tmp_path / "pdf-processing-manifest.csv"
+    manifest.write_text(
+        '"type","source_pdf","raw_xml","raw_txt","raw_view_html","extracted_md","source_sha256","extraction_policy"\n'
+        '"major-plan","missing.pdf","a.xml","a.txt","a.html","a.md","0" * 64,"full-text-draft"\n',
+        encoding="utf-8-sig",
+    )
+    errors = validate_content.validate_pdf_manifest(manifest)
+    assert any("不存在" in e for e in errors)

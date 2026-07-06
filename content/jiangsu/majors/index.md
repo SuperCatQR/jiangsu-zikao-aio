@@ -1,64 +1,35 @@
 # 江苏自考专业索引
 
-## 如何使用
-
-1. 按专业代码或专业名称定位自己的专业。
-2. 点“页面”进入专业页，先核对层次、考试计划和课程表。
-3. 再按课程代码回到[课程索引](../courses/index.md)查教材来源、资料状态和学习计划。
-
 | 序号 | 专业代码 | 专业名称 | 层次 | 页面 |
 | ---: | --- | --- | --- | --- |
-| 01 | 460104 | 机械制造及自动化 | 专科 | [页面](./460104-mechanical-manufacturing-and-automation/index.md) |
-| 02 | 460301 | 机电一体化技术 | 专科 | [页面](./460301-mechatronics-technology/index.md) |
-| 03 | 520410 | 中药学 | 专科 | [页面](./520410-chinese-materia-medica/index.md) |
-| 04 | 530601 | 工商企业管理 | 专科 | [页面](./530601-business-enterprise-management/index.md) |
-| 05 | 530605 | 市场营销 | 专科 | [页面](./530605-marketing/index.md) |
-| 06 | 530701 | 电子商务 | 专科 | [页面](./530701-e-commerce/index.md) |
-| 07 | 570102K | 学前教育 | 专科 | [页面](./570102K-preschool-education/index.md) |
-| 08 | 570103K | 小学教育 | 专科 | [页面](./570103K-primary-education/index.md) |
-| 09 | 570116K | 心理健康教育 | 专科 | [页面](./570116K-mental-health-education/index.md) |
-| 10 | 590202 | 人力资源管理 | 专科 | [页面](./590202-human-resource-management/index.md) |
-| 11 | 590206 | 行政管理 | 专科 | [页面](./590206-administrative-management/index.md) |
-| 12 | 020301K | 金融学 | 专升本 | [页面](./020301K-finance/index.md) |
-| 13 | 020401 | 国际经济与贸易 | 专升本 | [页面](./020401-international-economics-and-trade/index.md) |
-| 14 | 030101K | 法学 | 专升本 | [页面](./030101K-law/index.md) |
-| 15 | 040106 | 学前教育 | 专升本 | [页面](./040106-preschool-education/index.md) |
-| 16 | 040107 | 小学教育 | 专升本 | [页面](./040107-primary-education/index.md) |
-| 17 | 050101 | 汉语言文学 | 专升本 | [页面](./050101-chinese-language-literature/index.md) |
-| 18 | 050107T | 秘书学 | 专升本 | [页面](./050107T-secretarial-science/index.md) |
-| 19 | 050201 | 英语 | 专升本 | [页面](./050201-english/index.md) |
-| 20 | 050262 | 商务英语 | 专升本 | [页面](./050262-business-english/index.md) |
-| 21 | 050301 | 新闻学 | 专升本 | [页面](./050301-journalism/index.md) |
-| 22 | 050303 | 广告学 | 专升本 | [页面](./050303-advertising/index.md) |
-| 23 | 080202 | 机械设计制造及其自动化 | 专升本 | [页面](./080202-mechanical-design-manufacturing-and-automation/index.md) |
-| 24 | 080208 | 汽车服务工程 | 专升本 | [页面](./080208-automotive-service-engineering/index.md) |
-| 25 | 080703 | 通信工程 | 专升本 | [页面](./080703-communication-engineering/index.md) |
-| 26 | 080901 | 计算机科学与技术 | 专升本 | [页面](./080901-computer-science-and-technology/index.md) |
-| 27 | 080903 | 网络工程 | 专升本 | [页面](./080903-network-engineering/index.md) |
-| 28 | 080905 | 物联网工程 | 专升本 | [页面](./080905-internet-of-things-engineering/index.md) |
-| 29 | 081001 | 土木工程 | 专升本 | [页面](./081001-civil-engineering/index.md) |
-| 30 | 081301 | 化学工程与工艺 | 专升本 | [页面](./081301-chemical-engineering-and-technology/index.md) |
-| 31 | 082502 | 环境工程 | 专升本 | [页面](./082502-environmental-engineering/index.md) |
-| 32 | 082701 | 食品科学与工程 | 专升本 | [页面](./082701-food-science-and-engineering/index.md) |
-| 33 | 083102K | 消防工程 | 专升本 | [页面](./083102K-fire-protection-engineering/index.md) |
-| 34 | 090401 | 动物医学 | 专升本 | [页面](./090401-animal-medicine/index.md) |
-| 35 | 090502 | 园林 | 专升本 | [页面](./090502-landscape-architecture/index.md) |
-| 36 | 100701 | 药学 | 专升本 | [页面](./100701-pharmacy/index.md) |
-| 37 | 100801 | 中药学 | 专升本 | [页面](./100801-chinese-materia-medica/index.md) |
-| 38 | 101101 | 护理学 | 专升本 | [页面](./101101-nursing/index.md) |
-| 39 | 120102 | 信息管理与信息系统 | 专升本 | [页面](./120102-information-management-and-information-systems/index.md) |
-| 40 | 120103 | 工程管理 | 专升本 | [页面](./120103-engineering-management/index.md) |
-| 41 | 120201K | 工商管理 | 专升本 | [页面](./120201K-business-administration/index.md) |
-| 42 | 120202 | 市场营销 | 专升本 | [页面](./120202-marketing/index.md) |
-| 43 | 120203K | 会计学 | 专升本 | [页面](./120203K-accounting/index.md) |
-| 44 | 120206 | 人力资源管理 | 专升本 | [页面](./120206-human-resource-management/index.md) |
-| 45 | 120207 | 审计学 | 专升本 | [页面](./120207-auditing/index.md) |
-| 46 | 120301 | 农林经济管理 | 专升本 | [页面](./120301-agricultural-and-forestry-economic-management/index.md) |
-| 47 | 120402 | 行政管理 | 专升本 | [页面](./120402-administrative-management/index.md) |
-| 48 | 120601 | 物流管理 | 专升本 | [页面](./120601-logistics-management/index.md) |
-| 49 | 120701 | 工业工程 | 专升本 | [页面](./120701-industrial-engineering/index.md) |
-| 50 | 120801 | 电子商务 | 专升本 | [页面](./120801-e-commerce/index.md) |
-| 51 | 120901K | 旅游管理 | 专升本 | [页面](./120901K-tourism-management/index.md) |
-| 52 | 130502 | 视觉传达设计 | 专升本 | [页面](./130502-visual-communication-design/index.md) |
-| 53 | 130503 | 环境设计 | 专升本 | [页面](./130503-environmental-design/index.md) |
-| 54 | 130508 | 数字媒体艺术 | 专升本 | [页面](./130508-digital-media-art/index.md) |
+| 01 | 460104 | 机械制造及自动化 | 专科 | [页面](./460104-mechanical-manufacturing-and-automation/) |
+| 02 | 460301 | 机电一体化技术 | 专科 | [页面](./460301-mechatronics-technology/) |
+| 03 | 520410 | 中药学 | 专科 | [页面](./520410-chinese-materia-medica/) |
+| 04 | 530601 | 工商企业管理 | 专科 | [页面](./530601-business-enterprise-management/) |
+| 05 | 530605 | 市场营销 | 专科 | [页面](./530605-marketing/) |
+| 06 | 530701 | 电子商务 | 专科 | [页面](./530701-e-commerce/) |
+| 07 | 570102K | 学前教育 | 专科 | [页面](./570102K-preschool-education/) |
+| 08 | 570103K | 小学教育 | 专科 | [页面](./570103K-primary-education/) |
+| 09 | 570116K | 心理健康教育 | 专科 | [页面](./570116K-mental-health-education/) |
+| 10 | 590202 | 人力资源管理 | 专科 | [页面](./590202-human-resource-management/) |
+| 11 | 590206 | 行政管理 | 专科 | [页面](./590206-administrative-management/) |
+| 12 | 020301K | 金融学 | 专升本 | [页面](./020301K-finance/) |
+| 13 | 020401 | 国际经济与贸易 | 专升本 | [页面](./020401-international-economics-and-trade/) |
+| 14 | 030101K | 法学 | 专升本 | [页面](./030101K-law/) |
+| 15 | 040106 | 学前教育 | 专升本 | [页面](./040106-preschool-education/) |
+| 16 | 040107 | 小学教育 | 专升本 | [页面](./040107-primary-education/) |
+| 17 | 050101 | 汉语言文学 | 专升本 | [页面](./050101-chinese-language-literature/) |
+| 18 | 050107T | 秘书学 | 专升本 | [页面](./050107T-secretarial-science/) |
+| 19 | 050201 | 英语 | 专升本 | [页面](./050201-english/) |
+| 20 | 050262 | 商务英语 | 专升本 | [页面](./050262-business-english/) |
+| 21 | 050301 | 新闻学 | 专升本 | [页面](./050301-journalism/) |
+| 22 | 050303 | 广告学 | 专升本 | [页面](./050303-advertising/) |
+| 23 | 080202 | 机械设计制造及其自动化 | 专升本 | [页面](./080202-mechanical-design-manufacturing-and-automation/) |
+| 24 | 080208 | 汽车服务工程 | 专升本 | [页面](./080208-automotive-service-engineering/) |
+| 26 | 080901 | 计算机科学与技术 | 专升本 | [页面](./080901-computer-science-and-technology/) |
+| 33 | 083102K | 消防工程 | 专升本 | [页面](./083102K-fire-protection-engineering/) |
+| 37 | 100801 | 中药学 | 专升本 | [页面](./100801-chinese-materia-medica/) |
+| 42 | 120202 | 市场营销 | 专升本 | [页面](./120202-marketing/) |
+| 44 | 120206 | 人力资源管理 | 专升本 | [页面](./120206-human-resource-management/) |
+| 47 | 120402 | 行政管理 | 专升本 | [页面](./120402-administrative-management/) |
+| 50 | 120801 | 电子商务 | 专升本 | [页面](./120801-e-commerce/) |

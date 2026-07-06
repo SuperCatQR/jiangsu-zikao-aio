@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\23.机械设计制造及其自动化专业（专升本）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\mechanical-design\23.机械设计制造及其自动化专业（专升本）考试计划.pdf |
+| 源 PDF SHA256 | 9dac17a9ff1cb310cdab3b33b0bcd387ff22018f77fa0317c1b2b1c77547a959 |
 | 专业代码 | 080202 |
 | 专业名称 | 机械设计制造及其自动化 |
 | 层次 | 专升本 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\080202-mechanical-design-manufacturing-and-automation\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\080202-mechanical-design-manufacturing-and-automation\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\080202-mechanical-design-manufacturing-and-automation\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\080202-mechanical-design-manufacturing-and-automation\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\080202-mechanical-design-manufacturing-and-automation\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\080202-mechanical-design-manufacturing-and-automation\sources\plan.raw-view.html
 
 ## 机器抽取文本
 

@@ -3,17 +3,19 @@
 | 字段 | 内容 |
 | --- | --- |
 | 文档类型 | major-plan |
-| 源 PDF | docs\jiangsu\source\2.江苏省高等教育自学考试面向社会开考专业考试计划（2024年版）\03.中药学专业（专科）考试计划.pdf |
+| 源 PDF | sources\jiangsu\public-official\major-plans\chinese-medicine\03.中药学专业（专科）考试计划.pdf |
+| 源 PDF SHA256 | 00a7d0697e1ec74b94dc84afdb88d49040f888b8733b031f700970c17ea74c73 |
 | 专业代码 | 520410 |
 | 专业名称 | 中药学 |
 | 层次 | 专科 |
+| 抽取策略 | full-text-draft |
 | 数据状态 | 机器抽取草稿，待人工校对 |
 
 ## 转换产物
 
-- Raw XML：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw.xml
-- Raw TXT：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw.txt
-- 规范化 HTML：docs\jiangsu\majors\520410-chinese-materia-medica\sources\plan.normalized.html
+- Raw XML：content\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw.xml
+- Raw TXT：content\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw.txt
+- Raw View HTML：content\jiangsu\majors\520410-chinese-materia-medica\sources\plan.raw-view.html
 
 ## 机器抽取文本
 
