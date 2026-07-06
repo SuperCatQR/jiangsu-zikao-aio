@@ -1,0 +1,162 @@
+[
+  {
+    "code": "00023",
+    "title": "高等数学（工本）（00023）",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "00898",
+    "title": "00898 互联网软件应用与开发",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "02324",
+    "title": "02324 离散数学",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "02333",
+    "title": "02333 软件工程",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "03708",
+    "title": "03708 中国近现代史纲要（旧代码 — 历史参考）",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "无"
+  },
+  {
+    "code": "03709",
+    "title": "03709 马克思主义基本原理概论（旧代码）",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "无"
+  },
+  {
+    "code": "04735",
+    "title": "数据库系统原理（04735）",
+    "priority": "P0",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "04747",
+    "title": "Java 语言程序设计（一）（04747）",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "04751",
+    "title": "04751 计算机网络安全",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "13003",
+    "title": "数据结构与算法（13003）",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "13013",
+    "title": "13013 高级语言程序设计",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "13015",
+    "title": "13015 计算机系统原理",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "13180",
+    "title": "13180 操作系统",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "15040",
+    "title": "习近平新时代中国特色社会主义思想概论（15040）",
+    "priority": "P1",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "15043",
+    "title": "中国近现代史纲要（15043）",
+    "priority": "P0",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  },
+  {
+    "code": "15044",
+    "title": "── 🟢 发布闸门待签字段(由 PR 审查团队 / 法务合规团队填写,不得自动化",
+    "priority": "P0",
+    "gaps": [
+      "教材",
+      "学习计划"
+    ],
+    "materials_hint": "有"
+  }
+]

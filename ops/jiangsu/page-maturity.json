@@ -1,0 +1,146 @@
+[
+  {
+    "code": "00023",
+    "status": "yellow",
+    "maturity": "yellow",
+    "reasons": [
+      "status:yellow"
+    ]
+  },
+  {
+    "code": "00898",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "02324",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "02333",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "03708",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "03709",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "04735",
+    "status": "yellow",
+    "maturity": "yellow",
+    "reasons": [
+      "status:yellow"
+    ]
+  },
+  {
+    "code": "04747",
+    "status": "draft",
+    "maturity": "yellow",
+    "reasons": [
+      "status:draft"
+    ]
+  },
+  {
+    "code": "04751",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "13000",
+    "status": "yellow",
+    "maturity": "yellow",
+    "reasons": [
+      "status:yellow"
+    ]
+  },
+  {
+    "code": "13003",
+    "status": "yellow",
+    "maturity": "yellow",
+    "reasons": [
+      "status:yellow"
+    ]
+  },
+  {
+    "code": "13013",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "13015",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "13017",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "13180",
+    "status": "unknown",
+    "maturity": "yellow",
+    "reasons": [
+      "status:unknown"
+    ]
+  },
+  {
+    "code": "15040",
+    "status": "yellow",
+    "maturity": "yellow",
+    "reasons": [
+      "status:yellow"
+    ]
+  },
+  {
+    "code": "15043",
+    "status": "draft",
+    "maturity": "yellow",
+    "reasons": [
+      "status:draft"
+    ]
+  },
+  {
+    "code": "15044",
+    "status": "draft",
+    "maturity": "yellow",
+    "reasons": [
+      "status:draft"
+    ]
+  }
+]
