@@ -1,28 +1,30 @@
-# ── 🟢 发布闸门待签字段(由 PR 审查团队 / 法务合规团队填写,不得自动化伪造)──：来源与核验
+# 马克思主义基本原理（15044）：来源与核验
 
-> ponytail: 机械拆页骨架；人工精修时按课程逐节补充。
+> ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
 
-本页承接来源清单、核验日期、缺口与后续采集任务。
+[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
 
+## 来源清单
 
-[返回课程概览](index.md)
+| 项目 | 内容 | 来源 | 状态 |
+| --- | --- | --- | --- |
+| 课程概览 | 马克思主义基本原理 / 15044 | `index.md` | needs-review |
+| 教材计划 | 15044   马克思主义基本原理                                   考试指导委员会 | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | verified-metadata |
+| 考纲 | sources/jiangsu/processed/syllabus/15044-marxism-principles-gaogang-2024/document.extracted.md | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | processed-local |
+| 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
 
+## 核验规则
 
-## 来源与引用
+- 官方来源优先级：江苏省教育考试院官方 > 主考学校 > 人工校对。
+- 内部资料只写 `materials://...`，不得写 GitHub private raw URL。
+- 不确定信息标 `待核验`，不猜测发布日期、ISBN、教材版本或考试范围。
+- 最后机器核验日期：2026-07-06。
 
-| 类别 | 来源 | 状态 |
-| --- | --- | --- |
-| 考纲（在线） | [江苏省教育考试院课程考试大纲](https://www.jseea.cn/webfile/selflearning_jcdg/2025-02-25/7300038247357353984.html) | 官方，待链接校验 |
-| 考纲（本地） | 本地仓库源数据目录（具体路径不公开发布） | 已归档 |
-| 考纲（处理后） | 本地仓库源数据目录（具体路径不公开发布） | 已处理 |
-| 教材计划 | 本地仓库源数据目录（具体路径不公开发布） | 已处理 |
-| 教材（本地） | 本地电子教材库（仓库外归档，路径不公开） | 已归档 |
-| 真题（在线） | [攀知自考 15044/03709](https://www.zikaosw.cn/lnzt/subject-702.html) | 等级 B，待核验 |
-| 真题（在线） | [自考365 马克思主义基本原理](https://www.zikao365.com/shiti/downlist-1-427.html) | 等级 B，待核验 |
+## 缺口
 
+- 真题原件/授权索引（公开仓不得转载题文）。
+- 教材实物/ISBN 核验。
 
-## 发布边界
+## 需用户/总管提供
 
-- 公开仓仅保留官方公开来源、索引、摘要与核验状态。
-- 非公开/版权材料统一引用 `materials://e-books/jiangsu/15044 马克思主义基本原理/`，不公开本地路径，不转载 PDF/真题全文。
-- 缺口以 issue 跟踪；核验后再更新课程状态。
+- 若已有合法教材、真题、扫描件或购买凭证，请入 private `zikao-materials` 后在此页补 `materials://...` 索引；公开仓不接收原件。

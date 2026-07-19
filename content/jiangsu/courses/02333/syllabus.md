@@ -1,18 +1,28 @@
-# 02333 软件工程：考纲与教材
+# 软件工程（02333）：考纲与范围
 
-> ponytail: 机械拆页骨架；人工精修时按课程逐节补充。
+> ponytail: 最小范围页；未取得官方考纲时只列核验动作，不扩写考点。
 
-本页承接课程考纲、教材、官方来源与 materials:// 内部资料索引。
+[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
+## 资料状态
 
-[返回课程概览](index.md)
+| 项目 | 内容 | 来源 | 状态 |
+| --- | --- | --- | --- |
+| 官方考纲 | 待补官方 URL 或授权归档索引 | `sources.md` / `materials://` | missing-source |
+| 课程范围 | 暂以课程概览与来源页为核验入口 | `index.md` / `sources.md` | needs-review |
+| 内部资料 | 私仓归档后仅在公开仓写 `materials://` | `zikao-materials` | metadata-only |
 
+## 核验清单
 
-## 考纲与教材
-
-| 类型 | 来源 | 状态 |
+| 步骤 | 动作 | 完成标准 |
 | --- | --- | --- |
-| 考纲 | [江苏省教育考试院 02333 软件工程（高纲4068）](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html) | 官方 |
-| 本地考纲 | `sources/jiangsu/public-official/syllabi/software-engineering-gaogang/02333-software-engineering-gaogang-4068.pdf`；`sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md` | 已处理 |
-| 教材 | `023331 软件工程`，瞿中、宋琦等，人民邮电出版社，2016 年 | 江苏 2026-04/07 教材计划 |
-| 本地教材 | `materials://e-books/jiangsu/02333 软件工程.pdf` | 已归档 |
+| 1 | 查找江苏省教育考试院或主考学校公开考纲 | 记录官方 URL 与发布日期 |
+| 2 | 与课程代码、课程名逐项比对 | 代码、名称、版本一致 |
+| 3 | 若仅有内部资料，登记 `materials://` 索引 | 不暴露 private raw 链接 |
+| 4 | 更新学习计划和复习计划 | 范围变化有据可追 |
+
+## 缺口
+
+- 待补最后核验日期。
+- 待补官方考纲链接或内部归档索引。
+- 待人工确认考纲版本是否适用于当前江苏自考计划。
