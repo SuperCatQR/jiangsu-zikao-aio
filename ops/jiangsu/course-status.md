@@ -52,12 +52,11 @@ Frontmatter 字段：`completeness: <上表>`。
 python scripts/migrate-course-status.py --dry-run
 python scripts/migrate-course-status.py
 
-# 发布闸门（仅 publishable 硬失败）
-python scripts/validate-publish-gate.py
+# 统一闸门（content + materials + contract + publish）
+python scripts/run-gates.py
 
 # 生产构建
-python scripts/validate-content.py
-python scripts/validate-publish-gate.py
+python scripts/run-gates.py
 pytest -q
 python scripts/check-source-links.py --offline
 mkdocs build --strict

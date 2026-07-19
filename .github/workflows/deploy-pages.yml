@@ -24,10 +24,8 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
-      - name: Validate content
-        run: python scripts/validate-content.py
-      - name: Publish gate
-        run: python scripts/validate-publish-gate.py
+      - name: Run content gates
+        run: python scripts/run-gates.py
       - name: Run tests
         run: pytest -q
       - name: Check source links

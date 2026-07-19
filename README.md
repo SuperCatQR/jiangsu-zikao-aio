@@ -24,8 +24,8 @@ jiangsu-zikao-aio/
 ├── ops/                   # 元文档：政策、工作流、检查清单、蓝图
 │   └── jiangsu/           # 江苏专属元文档
 ├── scripts/               # 校验/闸门/巡检脚本
-│   ├── validate-content.py        # 内容与版权边界
-│   ├── validate-publish-gate.py   # lifecycle=publishable 发布闸门
+│   ├── run-gates.py               # 统一分层闸门入口（CI 主路径）
+│   ├── validate-*.py              # 单层薄包装（兼容旧命令）
 │   ├── check-source-links.py      # 外链监控
 │   ├── bootstrap-province.py      # 省份扩展脚手架
 │   └── lib/                       # 共享状态机与闸门实现
@@ -71,8 +71,7 @@ git lfs install
 
 ```bash
 # 生产构建（GitHub Pages）
-python scripts/validate-content.py
-python scripts/validate-publish-gate.py
+python scripts/run-gates.py
 pytest -q
 python scripts/check-source-links.py --offline
 mkdocs build --strict

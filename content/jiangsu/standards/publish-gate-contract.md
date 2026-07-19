@@ -35,11 +35,12 @@
 ## 四、命令
 
 ```bash
-python scripts/validate-content.py
-python scripts/validate-publish-gate.py
+python scripts/run-gates.py
 pytest -q
 python scripts/check-source-links.py --offline
 mkdocs build --strict
 ```
+
+单层兼容：`python scripts/validate-publish-gate.py` 仍可单独调用。
 
 历史手写 SSG（`scripts/build-course-pages.py`）已归档至 `archive/scripts/`，**不再作为生产构建路径**。
