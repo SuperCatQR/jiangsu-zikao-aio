@@ -33,4 +33,12 @@ ISBN: 9787040494938
 3. 在 AIO 课程页 `sources.md` 写公开元数据和 `materials://`。
 4. 若缺资料，开 `missing-source` issue；若待核验，标 `needs-review`。
 
-ponytail: 暂不解析私仓真实文件名；当批量入库超过 10 份时再加索引生成器。
+## 解析与存在性（P2 / Issue #57）
+
+机器侧实现：`scripts/lib/materials_resolve.py`。
+
+- 私仓根目录：环境变量 `ZIKAO_MATERIALS_ROOT`，或与 AIO 同级的 sibling `zikao-materials/`。
+- `materials://e-books/jiangsu/04735` 可前缀匹配私仓中以课程代码开头的教材文件。
+- 私仓不可用时（CI 无 sibling）不阻断；本地有私仓时，`run-gates` materials 层会报告 missing。
+- 诊断：`python scripts/check-materials-resolve.py`
+- 关闭存在性检查：`ZIKAO_MATERIALS_RESOLVE=0`

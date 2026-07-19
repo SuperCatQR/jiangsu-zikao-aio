@@ -25,6 +25,7 @@ jiangsu-zikao-aio/
 │   └── jiangsu/           # 江苏专属元文档
 ├── scripts/               # 校验/闸门/巡检脚本
 │   ├── run-gates.py               # 统一分层闸门入口（CI 主路径）
+│   ├── check-materials-resolve.py # materials:// 跨仓存在性诊断
 │   ├── validate-*.py              # 单层薄包装（兼容旧命令）
 │   ├── check-source-links.py      # 外链监控
 │   ├── bootstrap-province.py      # 省份扩展脚手架
