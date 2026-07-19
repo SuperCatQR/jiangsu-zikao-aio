@@ -1,8 +1,23 @@
 {
   "type": "course",
-  "required_fields": ["省份", "课程代码", "课程名称"],
-  "recommended_fields": ["资料状态", "数据状态", "最后核验日期"],
-  "status_values": ["complete", "metadata-only", "missing-source", "needs-review"],
+  "directory_pattern": "^[0-9]{5}$",
+  "required_files": ["index.md", "sources.md", "practice.md", "plan.md"],
+  "optional_files": ["syllabus.md", "review.md"],
+  "frontmatter": {
+    "required": ["lifecycle", "completeness"],
+    "lifecycle_values": ["draft", "machine_ready", "in_review", "publishable"],
+    "completeness_values": ["complete", "metadata-only", "missing-source", "needs-review"],
+    "recommended": ["course_code", "course_name", "reviewed", "reviewer"]
+  },
+  "required_table_fields": ["省份", "课程代码", "课程名称"],
+  "recommended_table_fields": ["资料状态", "数据状态", "最后核验日期"],
+  "page_markers": {
+    "index.md": ["页面导航", "sources.md", "practice.md", "plan.md"],
+    "sources.md": ["来源", "核验"],
+    "practice.md": ["真题"],
+    "plan.md": ["阶段目标"]
+  },
   "code_pattern": "^[0-9]{5}$",
-  "date_pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+  "date_pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+  "notes": "lifecycle drives publish gate; completeness is materials readiness. Emoji is display-only."
 }
