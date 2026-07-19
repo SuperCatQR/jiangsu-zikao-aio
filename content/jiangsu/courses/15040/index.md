@@ -4,7 +4,7 @@ course_code: "15040"
 course_name: 习近平新时代中国特色社会主义思想概论
 credits: 3
 exam_method: 笔试
-status: yellow
+status: machine_ready
 version: v0.3
 publish_date: null
 route: /courses/15040/
@@ -55,6 +55,8 @@ data_status:
 reviewed: false
 reviewer: ""
 content_revision: ""
+lifecycle: machine_ready
+completeness: metadata-only
 ---
 
 # 习近平新时代中国特色社会主义思想概论（15040）
@@ -66,7 +68,7 @@ content_revision: ""
 | 课程名称 | 习近平新时代中国特色社会主义思想概论 |
 | 学分 | 3 |
 | 适用专业数 | 待脚本重算（公共课，全专业必修） |
-| 状态 | 🟡 内容包待 PR 审查 |
+| 状态 | 🟡 机器初稿 |
 | 版本号 | v0.3 |
 | 发布日期 | 待发布 |
 | 数据状态 | 内容包已按 2024 版官方考纲补齐 16 必填区块；待 PR 审查团队替代 SME 审查、法务合规终审与真题材料持续补采 |

@@ -9,7 +9,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content" / "jiangsu"
-ALLOWED_STATUS = {"complete", "metadata-only", "missing-source", "needs-review"}
+ALLOWED_COMPLETENESS = {"complete", "metadata-only", "missing-source", "needs-review"}
+ALLOWED_LIFECYCLE = {"draft", "machine_ready", "in_review", "publishable"}
+# Back-compat: table cell 资料状态 still uses completeness enum
+ALLOWED_STATUS = ALLOWED_COMPLETENESS
 DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 COURSE_CODE_RE = re.compile(r"^[0-9]{5}$")
 MAJOR_CODE_RE = re.compile(r"^[0-9]{6}[A-Z]?$")
@@ -48,10 +51,25 @@ def validate_file(path: Path) -> list[str]:
     if WINDOWS_EBOOK_RE.search(text):
         errors.append(f"{rel}: 禁止公开写入本机 e-books 绝对路径，改用 materials://")
 
-    # Backward-compatible: only enforce status enum when the page declares 资料状态.
+    # completeness (table 资料状态) + lifecycle (frontmatter when present)
     status = fields.get("资料状态")
-    if status and status not in ALLOWED_STATUS:
-        errors.append(f"{rel}: 资料状态非法：{status}")
+    if status and status not in ALLOWED_COMPLETENESS:
+        errors.append(f"{rel}: 资料状态(completeness)非法：{status}")
+
+    fm_lifecycle = None
+    if text.startswith("---"):
+        end = text.find("\n---\n", 4)
+        if end != -1:
+            for line in text[4:end].splitlines():
+                if line.startswith("lifecycle:"):
+                    fm_lifecycle = line.split(":", 1)[1].strip().strip("\"'")
+                elif line.startswith("status:") and fm_lifecycle is None:
+                    # legacy status may still appear during migration
+                    raw = line.split(":", 1)[1].strip().strip("\"'")
+                    if raw in ALLOWED_LIFECYCLE:
+                        fm_lifecycle = raw
+    if fm_lifecycle and fm_lifecycle not in ALLOWED_LIFECYCLE:
+        errors.append(f"{rel}: lifecycle 非法：{fm_lifecycle}")
 
     last_verified = fields.get("最后核验日期")
     if last_verified and not DATE_RE.fullmatch(last_verified):

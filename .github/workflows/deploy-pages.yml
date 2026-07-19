@@ -26,6 +26,8 @@ jobs:
         run: pip install -r requirements-dev.txt
       - name: Validate content
         run: python scripts/validate-content.py
+      - name: Publish gate
+        run: python scripts/validate-publish-gate.py
       - name: Run tests
         run: pytest -q
       - name: Check source links

@@ -66,7 +66,8 @@ jiangsu-zikao-aio/
 │           ├── course.md
 │           └── course-review-checklist.md
 ├── scripts/
-│   ├── build-course-pages.py                    # 站点生成器 + 发布闸门（读 build.toml）
+│   ├── validate-publish-gate.py                 # lifecycle=publishable 发布闸门
+│   ├── lib/                                     # course_status + publish_gate 共享实现
 │   ├── check-source-links.py                    # 外链巡检（读 build.toml）
 │   ├── process-pdfs.ps1                         # PDF 批处理（PowerShell）
 │   └── templates/                               # 站点渲染用 CSS 模板
@@ -126,7 +127,7 @@ summary         = "site/source-link-report.json"
 | `ops/jiangsu/source-link-monitor.md` | 外链监控说明 |
 | `ops/jiangsu/source-links.baseline.json` | 外链监控基线 |
 | `ops/jiangsu/templates/` | 专业/课程页模板 |
-| `scripts/build-course-pages.py` | 站点生成器；从 `build.toml` 读路径 |
+| `scripts/validate-publish-gate.py` | 发布闸门；MkDocs 为唯一站点构建 |
 | `scripts/check-source-links.py` | 外链巡检；从 `build.toml [source_link_monitor]` 读配置 |
 | `scripts/process-pdfs.ps1` | PDF 批处理（PowerShell） |
 | `scripts/templates/` | 站点 CSS 模板 |

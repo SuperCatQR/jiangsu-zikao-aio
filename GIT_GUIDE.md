@@ -34,7 +34,7 @@
 由 `.gitignore` 兜底,务必不要强行 `git add -f` 以下内容:
 
 - 平台/工具运行时目录:`.multica/`、`.agent_context/`、`.claude/`、`.opencode/`、`.reasonix/`
-- 构建产物:`site/`(可由 `python scripts/build-course-pages.py` 重新生成)
+- 构建产物:`site/`(可由 `mkdocs build` 重新生成)
 - 缓存与依赖:`__pycache__/`、`node_modules/`
 - 任何密钥、token、`.env`、证书文件
 

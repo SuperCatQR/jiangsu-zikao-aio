@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 13015 计算机系统原理
 
 | 字段 | 内容 |

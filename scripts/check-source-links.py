@@ -8,7 +8,7 @@ content hash. Drift (a link that went dead, or an authoritative page whose conte
 changed) is reported and mapped to the PRD §4.2 双向状态回退 recommendation
 (🟢→🟡 / 🟡→🔴) so a maintainer can apply the degradation.
 
-Design goals (matches scripts/build-course-pages.py):
+Design goals (dependency-free CLI, same style as other ops scripts):
 - Dependency-free (stdlib urllib only) so it runs in CI without a venv.
 - Network-fault tolerant: a timeout / DNS / TLS failure is classified as
   ``inconclusive`` (NOT a dead link), so geo-blocking of CN sites from a foreign

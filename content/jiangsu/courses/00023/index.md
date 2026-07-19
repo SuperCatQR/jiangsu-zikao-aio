@@ -4,7 +4,7 @@ course_code: "00023"
 course_name: 高等数学（工本）
 credits: 10
 exam_method: 笔试
-status: yellow
+status: machine_ready
 version: v2.1
 publish_date: "2026-06-30"
 route: /courses/00023/
@@ -38,6 +38,8 @@ data_status:
       - PR审查团队尚未完成公式、例题推导与版权合规审查
       - zikao-materials 暂无 00023 真题原件，真题解析与考频维持方法论/空态，不引用第三方原题全文
       - ISBN 需法务/审查团队从教材实物或出版社官网核验后补齐
+lifecycle: machine_ready
+completeness: metadata-only
 ---
 
 # 高等数学（工本）（00023）
@@ -49,7 +51,7 @@ data_status:
 | 课程名称 | 高等数学（工本） |
 | 学分 | 10 |
 | 适用专业数 | 待全量统计（当前已确认至少 5 个专业计划线索：080901、080703、080905、080903、120102） |
-| 状态 | 🟡 AI 初稿（待 PR 审查团队校对） |
+| 状态 | 🟡 机器初稿 |
 | 版本号 | v2.1 |
 | 发布日期 | 2026-06-30 |
 | 数据状态 | AI 辅助初稿已填充 16 个必填区块；公式与例题推导为高风险内容，待 PR 审查团队逐项核验；真题素材待 zikao-materials 补齐 |
@@ -475,7 +477,7 @@ data_status:
 
 ## 适用专业清单
 
-> 本课程本次仍按普通静态区块维护，不生成 Block 14 AUTO_GEN 清单；`build-course-pages.py` 对 00023 无 AUTO_GEN 为正常契约。
+> 本课程本次仍按普通静态区块维护，不生成 Block 14 AUTO_GEN 清单；`validate-publish-gate.py / mkdocs` 对 00023 无 AUTO_GEN 为正常契约。
 
 | 专业代码 | 专业名称 | 状态 | 备注 |
 | --- | --- | --- | --- |

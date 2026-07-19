@@ -45,5 +45,6 @@ nav:
           - materials:// 政策: jiangsu/standards/materials-policy.md
           - 课程页契约: jiangsu/standards/course-pages-contract.md
           - 发布闸门: jiangsu/standards/publish-gate-contract.md
+          - 课程状态机: jiangsu/standards/course-status.md
           - 审核清单: jiangsu/standards/review-checklist.md
           - 来源监控: jiangsu/standards/source-link-monitor.md

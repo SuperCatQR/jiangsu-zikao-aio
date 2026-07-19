@@ -4,7 +4,7 @@ course_code: "04735"
 course_name: 数据库系统原理
 credits: 4
 exam_method: 笔试
-status: yellow
+status: machine_ready
 version: v2.1
 publish_date: "2026-06-30"
 route: /courses/04735/
@@ -42,6 +42,8 @@ data_status:
       - PR 审查团队尚未对 16 必填区块与高风险区块放行
       - 法务合规尚未终审真题版权、教材 ISBN、AI 生成声明
       - 真题三考期样本尚未从 zikao-materials 入库，考频统计保持空态
+lifecycle: machine_ready
+completeness: metadata-only
 ---
 
 # 数据库系统原理（04735）
@@ -53,7 +55,7 @@ data_status:
 | 课程名称 | 数据库系统原理 |
 | 学分 | 4（笔试）；配套实践 04736 为 2 学分 |
 | 适用专业数 | 1（当前仓库已建 080901 计算机科学与技术） |
-| 状态 | 🟡 AI 初稿（待 PR 审查 / 法务终审） |
+| 状态 | 🟡 机器初稿 |
 | 版本号 | v2.1 |
 | 发布日期 | 2026-06-30 |
 | 数据状态 | 已按本地 2018 年版教材附自学考试大纲、080901 专业计划与教材计划填充 16 必填区块；章节知识树覆盖 78/78；真题与考频保持空态，待 zikao-materials 采集后统计；不得包装为已终审通过 |
@@ -521,5 +523,5 @@ data_status:
 - [ ] 适用专业清单完整且不夸大覆盖范围（当前仅 080901）
 - [ ] 「来源与引用」节格式与专业页模板一致，所有本地路径 / 外链可核验
 - [ ] 法务合规已审视版权、PII、AI 生成声明区块
-- [ ] Markdown 格式规范，页面可由 `scripts/build-course-pages.py` 渲染
+- [ ] Markdown 格式规范，页面可由 `mkdocs build` 渲染
 - [ ] 页面状态在未终审前保持 🟡，不得移除顶部 ⚠️ 横幅或包装成 🟢

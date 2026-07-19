@@ -23,11 +23,12 @@ jiangsu-zikao-aio/
 ├── sources/jiangsu/       # 原始 PDF、机器抽取产物、清单
 ├── ops/                   # 元文档：政策、工作流、检查清单、蓝图
 │   └── jiangsu/           # 江苏专属元文档
-├── scripts/               # 构建/巡检脚本 + HTML 模板
-│   ├── build-course-pages.py      # 静态站点生成器
+├── scripts/               # 校验/闸门/巡检脚本
+│   ├── validate-content.py        # 内容与版权边界
+│   ├── validate-publish-gate.py   # lifecycle=publishable 发布闸门
 │   ├── check-source-links.py      # 外链监控
 │   ├── bootstrap-province.py      # 省份扩展脚手架
-│   └── templates/                 # HTML/CSS 模板
+│   └── lib/                       # 共享状态机与闸门实现
 ├── tests/                 # 单元测试
 ├── build.toml             # 路径 + 监控配置
 ├── .env.example           # 环境变量示例
@@ -44,6 +45,7 @@ jiangsu-zikao-aio/
 - `ops/jiangsu/content-standard.md`：公开课程页、专业页、学习计划、复习计划排版标准。
 - `ops/jiangsu/workflow.md`：专业页与课程页生产流程。
 - `ops/jiangsu/publish-gate-contract.md`：发布闸门契约。
+- `ops/jiangsu/course-status.md`：lifecycle + completeness 状态机。
 - `ops/jiangsu/templates/study-plan.md`：课程学习计划模板。
 
 ## 使用
@@ -65,14 +67,18 @@ git lfs install
 
 ### 构建静态站点
 
+生产构建以 **MkDocs Material** 为唯一路径（与 CI 一致）。手写 SSG 已归档到 `archive/scripts/`。
+
 ```bash
 # 生产构建（GitHub Pages）
 python scripts/validate-content.py
-python scripts/build-course-pages.py --base /jiangsu-zikao-aio/
+python scripts/validate-publish-gate.py
+pytest -q
+python scripts/check-source-links.py --offline
+mkdocs build --strict
 
 # 本地预览
-python scripts/build-course-pages.py --base /
-# 然后用浏览器打开 site/index.html
+mkdocs serve
 ```
 
 ### 外链监控
@@ -103,7 +109,7 @@ python scripts/bootstrap-province.py guangdong
 # 在 build.toml 中添加省份路径（若需自定义）
 
 # 5. 构建验证
-python scripts/build-course-pages.py --base /
+mkdocs build --strict
 ```
 
 ### 本地开发环境变量（可选）
@@ -125,7 +131,7 @@ pip install -r requirements-dev.txt
 pytest
 
 # 指定测试文件
-pytest tests/test_build_course_pages.py
+pytest tests/test_publish_gate.py tests/test_course_status.py
 ```
 
 ## 开发规范

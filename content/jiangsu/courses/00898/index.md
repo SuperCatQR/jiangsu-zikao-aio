@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 00898 互联网软件应用与开发
 
 | 字段 | 内容 |

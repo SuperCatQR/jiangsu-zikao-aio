@@ -1,146 +1,215 @@
 [
   {
     "code": "00023",
-    "status": "yellow",
+    "lifecycle": "machine_ready",
+    "completeness": "metadata-only",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "status:yellow"
+      "thin-required-pages",
+      "lifecycle:machine_ready",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "00898",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "02324",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "02333",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "03708",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "03709",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "04735",
-    "status": "yellow",
+    "lifecycle": "machine_ready",
+    "completeness": "metadata-only",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "status:yellow"
+      "lifecycle:machine_ready",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "04747",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
     "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:draft"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "04751",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "13000",
-    "status": "yellow",
+    "lifecycle": "machine_ready",
+    "completeness": "metadata-only",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "status:yellow"
+      "thin-required-pages",
+      "lifecycle:machine_ready",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "13003",
-    "status": "yellow",
+    "lifecycle": "machine_ready",
+    "completeness": "metadata-only",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "status:yellow"
+      "thin-required-pages",
+      "lifecycle:machine_ready",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "13013",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "13015",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "13017",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "13180",
-    "status": "unknown",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:unknown"
+      "thin-required-pages",
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "15040",
-    "status": "yellow",
+    "lifecycle": "machine_ready",
+    "completeness": "metadata-only",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "status:yellow"
+      "thin-required-pages",
+      "lifecycle:machine_ready",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "15043",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
     "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:draft"
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   },
   {
     "code": "15044",
+    "lifecycle": "draft",
+    "completeness": "metadata-only",
     "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "status:draft"
+      "lifecycle:draft",
+      "completeness:metadata-only"
     ]
   }
 ]

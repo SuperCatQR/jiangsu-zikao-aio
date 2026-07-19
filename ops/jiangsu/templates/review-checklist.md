@@ -16,6 +16,6 @@
 ## 发布
 
 - [ ] `python scripts/validate-content.py`
-- [ ] `python scripts/build-course-pages.py --base /jiangsu-zikao-aio/`
+- [ ] `python scripts/validate-publish-gate.py` 与 `mkdocs build --strict`
 - [ ] `python scripts/check-source-links.py --offline`
 - [ ] `pytest`

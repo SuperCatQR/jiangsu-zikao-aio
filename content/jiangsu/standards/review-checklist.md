@@ -13,9 +13,9 @@
 - [ ] 校对一律以 **该 extracted.md（官方考纲原文）** 为准；机器初稿与官方原文冲突时，**以官方为准**修正，并在「版本历史」记一行
 - [ ] 冲突无法判定（学分/章节/版本三者互斥、官方多版本不一致）→ 按 [[blocker-protocol]] 报阻塞，不擅自取舍
 
-## A. 机器可验证项（提交前 `python scripts/build-course-pages.py` 必须 0 error）
+## A. 机器可验证项（提交前 `python scripts/validate-publish-gate.py` 必须 0 error）
 
-构建门禁（`scripts/build-course-pages.py`）在页面标记 🟢 时会强制以下检查，未过 = 直接 block：
+构建门禁（`scripts/validate-publish-gate.py`）在 `lifecycle: publishable` 时会强制以下检查，未过 = 直接 block：
 
 - [ ] **A1 数据状态/发布日期无待定值**：meta 表「数据状态」「发布日期」不得含 `待补充/待统计/待收集/待校对/待确认/待核验`（`PUBLISH_PENDING_REQUIRED_DATA`）
 - [ ] **A2 人工校对签名**：frontmatter `reviewed: true` 且 `reviewer: <真实姓名/Git author>` 非空（`HUMAN_REVIEW_REQUIRED`）—— 此项由 B 层签名完成后回填
