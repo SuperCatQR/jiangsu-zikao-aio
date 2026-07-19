@@ -80,16 +80,23 @@ def create_structure(province: str) -> dict[Path, str]:
         
         ```text
         sources/{province}/
-        ├── syllabi/           # 考纲 PDF 原件
-        ├── exam-schedules/    # 考试计划表
-        ├── machine-output/    # OCR/PDF 解析产物
-        └── reports/           # 抽取报告
+        ├── public-official/     # 可公开官方 PDF
+        │   ├── major-plans/
+        │   ├── policies/
+        │   ├── syllabi/
+        │   └── textbooks/
+        ├── processed/           # 机器抽取产物
+        │   ├── major-source/
+        │   ├── syllabus/
+        │   ├── policies/
+        │   └── source-records/
+        └── manifests/
         ```
         
         ## 注意事项
         
         - PDF 文件应使用 Git LFS 管理
-        - 文件命名遵循 `{{type}}-{{date}}-{{desc}}.pdf` 格式
+        - 布局契约见 ops 侧 sources-layout.md；slug 字典见 major-slugs.json
     """)
     
     # ops/{province}/

@@ -15,7 +15,7 @@ PDF -> 原始 HTML/XML -> Raw View HTML -> Markdown
 ### 输入
 
 - 官方公告页：江苏省教育考试院《 关于江苏省高等教育自学考试面向社会开考专业及考试计划调整有关事项的通告》
-- 解压后的单专业 PDF：`sources/jiangsu/major-plans-2024/*.pdf`
+- 解压后的单专业 PDF：`sources/jiangsu/public-official/major-plans/*.pdf`
 - 官方附件原始 RAR：归档在 zikao-materials 私有仓库 `official-packages/jiangsu/`
 - 总览政策：`policies.md`
 - 专业页模板：`ops/jiangsu/templates/major.md`
