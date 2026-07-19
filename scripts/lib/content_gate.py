@@ -98,6 +98,9 @@ def validate_file(root: Path, path: Path) -> list[str]:
 
     for pdf in PDF_RE.findall(text):
         norm = pdf.replace("\\", "/")
+        # Example prose like `e-books/jiangsu/04735 *.pdf` is not a real path claim.
+        if "*" in norm or "…" in norm or "..." in norm:
+            continue
         if "e-books/" in norm.lower() and not norm.startswith("materials://"):
             errors.append(f"{rel}: PDF 教材原件须用 materials:// 引用：{pdf}")
     return errors

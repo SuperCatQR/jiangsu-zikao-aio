@@ -1,8 +1,10 @@
-"""materials:// path policy and private/raw leak scan."""
+"""materials:// path policy, private/raw leak scan, optional resolve."""
 from __future__ import annotations
 
 import re
 from pathlib import Path
+
+from lib.materials_resolve import run_materials_resolve
 
 BAD = re.compile(
     r"https://github\.com/.+/(zikao-materials/.+|raw|download)|"
@@ -27,7 +29,7 @@ def check_ref(ref: str) -> str | None:
     return None
 
 
-def run_materials_policy(root: Path) -> list[str]:
+def run_materials_policy(root: Path, *, resolve: bool = True) -> list[str]:
     errors: list[str] = []
     for p in (root / "content").rglob("*.md"):
         text = p.read_text(encoding="utf-8", errors="ignore")
@@ -41,4 +43,6 @@ def run_materials_policy(root: Path) -> list[str]:
                 continue
             if BAD.search(line) and "jseea.cn" not in line:
                 errors.append(f"{rel}:{line_no}: possible private/raw file leak")
+    if resolve:
+        errors.extend(run_materials_resolve(root))
     return errors
