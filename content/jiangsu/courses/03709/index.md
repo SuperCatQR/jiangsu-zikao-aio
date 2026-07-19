@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 03709 马克思主义基本原理概论（旧代码）
 
 > ⚠️ 旧代码跳转页：现行课程页请查看 [15044 马克思主义基本原理](../15044/index.md)。

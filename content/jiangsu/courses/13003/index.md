@@ -4,7 +4,7 @@ course_code: "13003"
 course_name: 数据结构与算法
 credits: 4
 exam_method: 笔试
-status: yellow
+status: machine_ready
 version: v0.2
 publish_date: "2026-06-30"
 route: /courses/13003/
@@ -38,6 +38,8 @@ data_status:
       - PR审查团队尚未完成人工核验：算法复杂度、伪代码边界条件、题型模板与教材附大纲需逐项确认
       - zikao-materials 暂无 13003 真题原件，真题解析与考频维持方法论/空态，不引用第三方原题全文
       - 法务合规团队需在发布前审视版权、教材 ISBN、AI 生成声明与 PII 风险
+lifecycle: machine_ready
+completeness: metadata-only
 ---
 
 # 数据结构与算法（13003）
@@ -49,7 +51,7 @@ data_status:
 | 课程名称 | 数据结构与算法 |
 | 学分 | 4 |
 | 适用专业数 | 2（当前仓库已发现：080901 计算机科学与技术、080903 网络工程） |
-| 状态 | 🟡 AI 初稿（待 PR 审查团队校对） |
+| 状态 | 🟡 机器初稿 |
 | 版本号 | v0.2 |
 | 发布日期 | 2026-06-30 |
 | 数据状态 | AI 辅助初稿已填充 16 个必填区块；算法复杂度、伪代码边界条件、真题考频与教材 ISBN 均待 PR 审查团队及法务合规审视后方可标记为 🟢 |

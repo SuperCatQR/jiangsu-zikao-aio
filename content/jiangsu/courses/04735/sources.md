@@ -1,28 +1,31 @@
 # 数据库系统原理（04735）：来源与核验
 
-> ponytail: 机械拆页骨架；人工精修时按课程逐节补充。
+> ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
 
-本页承接来源清单、核验日期、缺口与后续采集任务。
+[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
 
+## 来源清单
 
-[返回课程概览](index.md)
+| 项目 | 内容 | 来源 | 状态 |
+| --- | --- | --- | --- |
+| 课程概览 | 数据库系统原理 / 04735 | `index.md` | needs-review |
+| 教材计划 | 04735   数据库系统原理         047351   数据库系统原理(附大纲)            黄靖      机械工业出版社       2018 年 | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | verified-metadata |
+| 考纲 | 未定位官方公开考纲 | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | missing-source |
+| 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
 
+## 核验规则
 
-## 来源与引用
+- 官方来源优先级：江苏省教育考试院官方 > 主考学校 > 人工校对。
+- 内部资料只写 `materials://...`，不得写 GitHub private raw URL。
+- 不确定信息标 `待核验`，不猜测发布日期、ISBN、教材版本或考试范围。
+- 最后机器核验日期：2026-07-06。
 
-| 类别 | 来源 | 状态 |
-| --- | --- | --- |
-| 专业计划（处理后） | `content/jiangsu/majors/080901-computer-science-and-technology/sources/plan.extracted.md` | 已处理；含 04735/04736 课程组、学分与实践说明 |
-| 专业页 | `content/jiangsu/majors/080901-computer-science-and-technology/index.md` | 已处理；04735 为 P1 核心笔试课 |
-| 教材计划（2026-10/2027-01） | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | 已处理；含 `047351 数据库系统原理（附大纲）` |
-| 教材计划（2025-10/2026-01） | `sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.extracted.md` | 已处理；同样列出黄靖、机械工业出版社、2018 年 |
-| 教材与考纲（本地） | `materials://e-books/jiangsu/04735 数据库系统原理（2018年版）.pdf` | 已归档；本页按教材附自学考试大纲整理，不转载正文大段内容 |
-| 真题素材仓库 | `SuperCatQR/zikao-materials`(私有仓库,鉴权访问) | 已按 CHO-116 指定为采集路径；当前本地 checkout 仅见 README，未发现 04735 样本 |
-| 真题（在线线索） | [攀知自考 04735](https://www.zikaosw.cn/lnzt/subject-1091.html) | 等级 B，待核验；不得直接转载第三方原题全文 |
+## 缺口
 
+- 官方考纲 URL/抽取件。
+- 真题原件/授权索引（公开仓不得转载题文）。
+- 教材实物/ISBN 核验。
 
-## 发布边界
+## 需用户/总管提供
 
-- 公开仓仅保留官方公开来源、索引、摘要与核验状态。
-- 非公开/版权材料统一引用 `materials://e-books/jiangsu/04735 数据库系统原理（2018年版）.pdf`，不公开本地路径，不转载 PDF/真题全文。
-- 缺口以 issue 跟踪；核验后再更新课程状态。
+- 若已有合法教材、真题、扫描件或购买凭证，请入 private `zikao-materials` 后在此页补 `materials://...` 索引；公开仓不接收原件。

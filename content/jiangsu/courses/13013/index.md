@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 13013 高级语言程序设计
 
 | 字段 | 内容 |

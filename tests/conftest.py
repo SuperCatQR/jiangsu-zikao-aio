@@ -9,9 +9,9 @@ sys.path.insert(0, str(scripts_dir))
 
 # Create module aliases for dash-named scripts
 _script_mappings = {
-    "build_course_pages": "build-course-pages.py",
     "check_source_links": "check-source-links.py",
     "bootstrap_province": "bootstrap-province.py",
+    "validate_publish_gate": "validate-publish-gate.py",
 }
 
 for module_name, file_name in _script_mappings.items():

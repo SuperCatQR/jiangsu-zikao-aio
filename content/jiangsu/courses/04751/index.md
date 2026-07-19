@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 04751 计算机网络安全
 
 | 字段 | 内容 |

@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 13017 计算机网络与信息安全
 
 | 字段 | 内容 |

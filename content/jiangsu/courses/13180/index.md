@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 13180 操作系统
 
 | 字段 | 内容 |

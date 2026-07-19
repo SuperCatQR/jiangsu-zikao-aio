@@ -4,7 +4,7 @@ course_code: "13000"
 course_name: 英语（专升本）
 credits: 7
 exam_method: 笔试
-status: yellow
+status: machine_ready
 version: v2.1
 publish_date: "2026-06-26"
 route: /courses/13000/
@@ -64,6 +64,8 @@ data_status:
         scope: content
         severity: warning
         note: 适用专业清单 AUTO_GEN 区仍为迁移占位（normal=1），13000 为本科段公共英语，实际覆盖约 54 个正常开考专业
+lifecycle: machine_ready
+completeness: metadata-only
 ---
 
 # 英语（专升本）（13000）

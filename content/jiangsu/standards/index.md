@@ -9,6 +9,7 @@
 | [公开内容标准](content-standard.md) | Markdown、资料状态、学习计划粒度 |
 | [materials:// 政策](materials-policy.md) | 私仓引用边界与命名规则 |
 | [课程页契约](course-pages-contract.md) | 课程四页结构与必备区块 |
-| [发布闸门](publish-gate-contract.md) | B-1/B-2/B-3 发布条件 |
+| [发布闸门](publish-gate-contract.md) | publishable 机器闸门 |
+| [课程状态机](course-status.md) | lifecycle + completeness |
 | [审核清单](review-checklist.md) | 人工复核清单 |
 | [来源监控](source-link-monitor.md) | 外链与官方来源漂移检测 |

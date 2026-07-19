@@ -1,3 +1,9 @@
+---
+lifecycle: draft
+completeness: metadata-only
+status: draft
+---
+
 # 03708 中国近现代史纲要（旧代码 — 历史参考）
 
 > ⚠️ 此页面为历史参考，现行有效页面为 [15043 中国近现代史纲要](../15043/index.md)。本页仅保留给旧计划、过渡顶替和历史引用使用。

@@ -1,23 +1,31 @@
 # 高等数学（工本）（00023）：来源与核验
 
-> ponytail: 机械拆页骨架；人工精修时按课程逐节补充。
+> ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
 
-本页承接来源清单、核验日期、缺口与后续采集任务。
+[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
 
+## 来源清单
 
-[返回课程概览](index.md)
+| 项目 | 内容 | 来源 | 状态 |
+| --- | --- | --- | --- |
+| 课程概览 | 高等数学（工本） / 00023 | `index.md` | needs-review |
+| 教材计划 | 00023   高等数学(工本)       000231   高等数学(工本)(附大纲)     陈兆斗、马鹏     北京大学出版社       2023 年 | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | verified-metadata |
+| 考纲 | 未定位官方公开考纲 | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | missing-source |
+| 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
 
+## 核验规则
 
-## 来源与引用
+- 官方来源优先级：江苏省教育考试院官方 > 主考学校 > 人工校对。
+- 内部资料只写 `materials://...`，不得写 GitHub private raw URL。
+- 不确定信息标 `待核验`，不猜测发布日期、ISBN、教材版本或考试范围。
+- 最后机器核验日期：2026-07-06。
 
-| 类别 | 来源 | 状态 |
-| --- | --- | --- |
-| 专业计划 | `content/jiangsu/majors/080901-computer-science-and-technology/sources.md` | 已处理：列出 00023 作为计算机科学与技术计划课程 |
-| 专业计划原始抽取 | `content/jiangsu/majors/080703-communication-engineering/sources/plan.extracted.md` | 已处理：同样出现 00023 高等数学（工本） |
-| 专业计划原始抽取 | `content/jiangsu/majors/080905-internet-of-things-engineering/sources/plan.extracted.md` | 已处理：同样出现 00023 高等数学（工本） |
-| 专业计划原始抽取 | `content/jiangsu/majors/080903-network-engineering/sources/plan.extracted.md` | 已处理：同样出现 00023 高等数学（工本） |
-| 专业计划原始抽取 | `content/jiangsu/majors/120102-information-management-and-information-systems/sources/plan.extracted.md` | 已处理：同样出现 00023 高等数学（工本） |
-| 教材计划 | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | 已处理：课程 00023 / 教材 000231 / 2023 年版 |
-| 真题素材仓库 | `https://github.com/SuperCatQR/zikao-materials` | 当前未发现 00023 素材，待后续入库 |
-| 第三方真题线索 | [攀知自考 00023](https://www.zikaosw.cn/lnzt/subject-1033.html) | 等级 B，待法务合规与素材采集核验 |
-| 第三方真题线索 | [自考365 高数工本](https://www.zikao365.com/shiti/downlist-1-827.html) | 等级 B，待法务合规与素材采集核验 |
+## 缺口
+
+- 官方考纲 URL/抽取件。
+- 真题原件/授权索引（公开仓不得转载题文）。
+- 教材实物/ISBN 核验。
+
+## 需用户/总管提供
+
+- 若已有合法教材、真题、扫描件或购买凭证，请入 private `zikao-materials` 后在此页补 `materials://...` 索引；公开仓不接收原件。
