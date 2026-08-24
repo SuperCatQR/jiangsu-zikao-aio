@@ -2,7 +2,7 @@
 
 > ponytail: 最小可验收计划页；只用项目既有资料状态，不扩写未核验考点。
 
-[返回课程概览](index.md) ｜ [来源与核验](sources.md) ｜ [练习与真题](practice.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 资料状态
 
