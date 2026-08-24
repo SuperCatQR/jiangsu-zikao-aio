@@ -1,6 +1,6 @@
 # Specifications Index
 
-Long-term product/API specs. Iteration-only drafts live under `.mstar/iterations/<id>/`, not here. There is no `.mstar/knowledge/` tree; do not create one during iteration-start.
+Long-term product/API specs. Iteration-only drafts live under `.mstar/iterations/<id>/`, not here. Do not add knowledge docs at iteration-start (compound at close).
 
 | Spec | Status | Scope |
 |------|--------|-------|
