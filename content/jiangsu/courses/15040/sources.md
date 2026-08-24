@@ -6,25 +6,32 @@
 
 ## 来源清单
 
-| 项目 | 内容 | 来源 | 状态 |
-| --- | --- | --- | --- |
-| 课程概览 | 习近平新时代中国特色社会主义思想概论 / 15040 | `index.md` | needs-review |
-| 教材计划 | 未在已入库江苏教材计划抽取件中定位到教材行 | `待补官方教材计划或授权归档索引` | missing-source |
-| 考纲 | sources/jiangsu/processed/syllabus/15040-xi-thought-gaogang-2024/document.extracted.md | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | processed-local |
-| 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
+| 官方 URL | 标题 | 发布/适用日期 | 课程代码/名称匹配 | 核验日期 | 支撑字段 | 状态 |
+| --- | --- | --- | --- | --- | --- | --- |
+| [《15040 习近平新时代中国特色社会主义思想概论》课程考试大纲](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html) | 《15040 习近平新时代中国特色社会主义思想概论》课程考试大纲 | 路径日期 2025-01-15；适用考期 `未声明` | match | 2026-08-24 | 课程代码 15040、课程名称、官方考纲 HTML 页 | verified-metadata |
+| （缺官方公开 URL；本地抽取件 `sources/jiangsu/processed/syllabus/15040-xi-thought-gaogang-2024/document.extracted.md`） | 官方考纲 PDF `大纲目录` 章名（导论 + 十七章） | 前言署「2024 年 8 月」（照录）；适用考期 `未声明` | match | 2026-08-24 | 章名索引 SSOT；不转载正文。官方 PDF 公开 URL 不在 `ops/jiangsu/source-links.baseline.json` | verified-metadata |
+| （缺官方公开 URL） | 官方考纲 PDF 公开出处 | 未声明 | unverified | 2026-08-24 | 无 jseea PDF URL；仓内源路径不作公开 URL | missing-source |
+| （缺官方公开 URL） | 章节级大纲（HTML 章目） | 未声明 | unverified | 2026-08-24 | 官方 HTML 无章目；不以 HTML 为章名 SSOT | missing-source |
+| （缺官方公开 URL） | 章节正文 / 考核要求 | 未声明 | unverified | 2026-08-24 | 无；不得从 PDF 或抽取稿粘贴正文 | missing-source |
+| （缺官方公开 URL） | 指定教材 ISBN / 书目 | 未声明 | unverified | 2026-08-24 | 无；不得从计划表推断 ISBN | missing-source |
+| （缺官方公开 URL） | 真题原件或授权索引 | 未声明 | unverified | 2026-08-24 | 无；公开仓不转载题文 | missing-source |
 
 ## 核验规则
 
 - 官方来源优先级：江苏省教育考试院官方 > 主考学校 > 人工校对。
 - 内部资料只写 `materials://...`，不得写 GitHub private raw URL。
 - 不确定信息标 `待核验`，不猜测发布日期、ISBN、教材版本或考试范围。
-- 最后机器核验日期：2026-07-06。
+- HTML 页不含章节目录（HTML 章目仍为缺口）。章名已由官方 PDF `大纲目录` 支撑（本地切片 `sources/jiangsu/processed/syllabus/15040-xi-thought-gaogang-2024/document.extracted.md`），见 `syllabus.md`；不得粘贴 PDF 或抽取稿正文。官方 PDF 公开 URL 仍为缺口，不得发明 jseea PDF 路径。
+- 最后机器核验日期：2026-08-24。
 
 ## 缺口
 
-- 教材计划元数据。
-- 真题原件/授权索引（公开仓不得转载题文）。
-- 教材实物核验。
+- 官方考纲 PDF 公开 URL：基线无该 URL。读者无法从本仓打开考试院 PDF。
+- 适用考期/版本：官方 HTML 未声明，仅 URL 路径含 2025-01-15。读者无法据此锁定某次考试。前言「2024 年 8 月」只作修订署期。
+- 章节级大纲（HTML）：官方 HTML 仍无章目；不以 HTML 为章名 SSOT。
+- 章节正文：章名索引已发布；考核要求/知识点仍不得从 PDF 或抽取稿粘贴。下一证据为官方授权转载或 `materials://`。
+- 指定教材 ISBN / 书目：缺官方公开 URL。
+- 真题原件/授权索引：缺官方公开 URL（公开仓不得转载题文）。
 
 ## 需用户/总管提供
 

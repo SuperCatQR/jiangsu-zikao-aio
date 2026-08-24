@@ -185,7 +185,6 @@
     "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "thin-required-pages",
       "lifecycle:machine_ready",
       "completeness:metadata-only"
     ]
