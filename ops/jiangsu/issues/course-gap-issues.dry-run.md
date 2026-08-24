@@ -324,48 +324,62 @@ materials线索：有
 - 公开仓不出现私仓原件或下载链接
 ```
 
-## [course-gap] 15043 中国近现代史纲要（15043）：教材、学习计划
+## [course-gap] 15043 中国近现代史纲要（15043）：教材 ISBN、真题、适用考期、章目
 
 labels: course-gap, p0, materials-needed
 
 ```markdown
 课程：`15043` 中国近现代史纲要（15043）
 
-缺口：教材、学习计划
+缺口：指定教材 ISBN；真题授权索引；官方适用考期/版本（HTML 未声明）；章节级大纲（HTML 无章目）
+已完成：江苏省教育考试院考纲 HTML/PDF 出处核验（2026-08-24，代码/课名 match）；公开学习计划已写出处核对与教材/真题空态
 优先级：P0
-materials线索：有
+materials线索：有（私仓不入公开页）
 
 核验路径：
 - `content/jiangsu/courses/15043/sources.md`
 - `content/jiangsu/courses/15043/plan.md`
+- `content/jiangsu/courses/15043/syllabus.md`
 - `materials://` 私仓按课程代码检索
-- `ops/jiangsu/source-links.baseline.json` 官方来源
+
+下一证据：
+- 官方页或 PDF 封面声明适用考期/版本
+- 官方 PDF 目录页章名（仅章名）
+- 考试院/主考学校教材书目（ISBN）
+- 真题授权索引或 `materials://` 指针（不转载题文）
 
 验收：
-- 教材状态明确为 `verified` / `missing-source` / `needs-review`
-- 学习计划不再是弱占位；至少给出阶段目标与复习节奏
-- 公开仓不出现私仓原件或下载链接
+- 教材状态明确为 `verified-metadata` / `missing-source` / `needs-review`
+- 学习计划含阶段目标与教材/真题空态
+- 公开仓不出现私仓原件或下载链接；不伪造 reviewed/publishable
 ```
 
-## [course-gap] 15044 ── 🟢 发布闸门待签字段(由 PR 审查团队 / 法务合规团队填写,不得自动化：教材、学习计划
+## [course-gap] 15044 马克思主义基本原理（15044）：教材 ISBN、真题、适用考期、章目
 
 labels: course-gap, p0, materials-needed
 
 ```markdown
-课程：`15044` ── 🟢 发布闸门待签字段(由 PR 审查团队 / 法务合规团队填写,不得自动化
+课程：`15044` 马克思主义基本原理
 
-缺口：教材、学习计划
+缺口：指定教材 ISBN；真题授权索引；官方适用考期/版本（HTML 未声明）；章节级大纲（HTML 无章目）
+已完成：江苏省教育考试院考纲 HTML/PDF 出处核验（2026-08-24，代码/课名 match）；公开学习计划已写出处核对与教材/真题空态
 优先级：P0
-materials线索：有
+materials线索：有（私仓不入公开页）
 
 核验路径：
 - `content/jiangsu/courses/15044/sources.md`
 - `content/jiangsu/courses/15044/plan.md`
+- `content/jiangsu/courses/15044/syllabus.md`
 - `materials://` 私仓按课程代码检索
-- `ops/jiangsu/source-links.baseline.json` 官方来源
+
+下一证据：
+- 官方页或 PDF 封面声明适用考期/版本
+- 官方 PDF 目录页章名（仅章名）
+- 考试院/主考学校教材书目（ISBN）
+- 真题授权索引或 `materials://` 指针（不转载题文）
 
 验收：
-- 教材状态明确为 `verified` / `missing-source` / `needs-review`
-- 学习计划不再是弱占位；至少给出阶段目标与复习节奏
-- 公开仓不出现私仓原件或下载链接
+- 教材状态明确为 `verified-metadata` / `missing-source` / `needs-review`
+- 学习计划含阶段目标与教材/真题空态
+- 公开仓不出现私仓原件或下载链接；不伪造 reviewed/publishable
 ```

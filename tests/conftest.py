@@ -12,6 +12,7 @@ _script_mappings = {
     "check_source_links": "check-source-links.py",
     "bootstrap_province": "bootstrap-province.py",
     "validate_publish_gate": "validate-publish-gate.py",
+    "compute_page_maturity": "compute-page-maturity.py",
 }
 
 for module_name, file_name in _script_mappings.items():

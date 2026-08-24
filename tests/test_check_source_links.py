@@ -53,6 +53,12 @@ def test_course_code_for():
     p3 = Path("content/jiangsu/majors/software/index.md")
     assert course_code_for(p3) is None
 
+    # Sibling course pages under a 5-digit folder
+    p4 = Path("content/jiangsu/courses/12345/sources.md")
+    assert course_code_for(p4) == "12345"
+    p5 = Path("content/jiangsu/courses/12345/syllabus.md")
+    assert course_code_for(p5) == "12345"
+
 
 def test_url_ref_extraction():
     """测试 URL 引用提取逻辑（集成测试风格，依赖正则）。"""
