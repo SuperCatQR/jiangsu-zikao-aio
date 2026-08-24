@@ -179,7 +179,7 @@ def course_code_for(path: Path) -> str | None:
     stem = path.stem
     if re.fullmatch(r"\d{5}", stem):
         return stem
-    if path.name == "index.md" and re.fullmatch(r"\d{5}", path.parent.name):
+    if path.suffix.lower() == ".md" and re.fullmatch(r"\d{5}", path.parent.name):
         return path.parent.name
     return None
 
