@@ -57,7 +57,7 @@ data_status:
         scope: content
         severity: warning
         note: 适用专业清单 AUTO_GEN 区仍为迁移占位（normal=1），15044 为全专业必修公共课
-lifecycle: draft
+lifecycle: machine_ready
 completeness: metadata-only
 ---
 
@@ -70,7 +70,7 @@ completeness: metadata-only
 | 课程名称 | 马克思主义基本原理 |
 | 学分 | 3 |
 | 适用专业数 | 1 |
-| 状态 | 🔴 建设中 |
+| 状态 | 🟡 机器初稿 |
 | 版本号 | v0.2 |
 | 发布日期 | 待发布 |
 | 数据状态 | 机器初稿：13 区块已按 2024 版考纲机器抽取，尚未经人工校对；真题 2025-04/2025-10 待收集 |

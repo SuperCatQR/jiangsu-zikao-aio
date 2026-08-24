@@ -1,29 +1,34 @@
 # 中国近现代史纲要（15043）：来源与核验
 
-> ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
+> ponytail: 只补可核验元数据；教材/真题原件不入公开仓。PDF 只记 URL、标题与已声明日期。
 
 [返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
 
 ## 来源清单
 
-| 项目 | 内容 | 来源 | 状态 |
-| --- | --- | --- | --- |
-| 课程概览 | 中国近现代史纲要 / 15043 | `index.md` | needs-review |
-| 教材计划 | 15043   中国近现代史纲要                                    考试指导委员会 | `sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.extracted.md` | verified-metadata |
-| 考纲 | sources/jiangsu/processed/syllabus/15043-modern-chinese-history-gaogang-2024/document.extracted.md | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | processed-local |
-| 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
+| 官方 URL | 标题 | 发布/适用日期 | 课程代码/名称匹配 | 核验日期 | 支撑字段 | 状态 |
+| --- | --- | --- | --- | --- | --- | --- |
+| [《15043 中国近现代史纲要》课程考试大纲](https://www.jseea.cn/webfile/selflearning_jcdg/2025-02-25/7300038163492245504.html) | 《15043 中国近现代史纲要》课程考试大纲 - 考试大纲 | 路径日期 2025-02-25；适用考期 `未声明` | match | 2026-08-24 | 课程代码 15043、课程名称、官方考纲 HTML 页 | verified-metadata |
+| [《15043 中国近现代史纲要》课程考试大纲.pdf](https://www.jseea.cn/webfile/upload/2025/02-25/14-25-1908861288944883.pdf) | 《15043 中国近现代史纲要》课程考试大纲.pdf | 路径日期 2025-02-25；适用考期 `未声明` | match | 2026-08-24 | 官方考纲 PDF 出处（不转载正文） | verified-metadata |
+| （缺官方公开 URL） | 指定教材 ISBN / 书目 | 未声明 | unverified | 2026-08-24 | 无；不得从计划表推断 ISBN | missing-source |
+| （缺官方公开 URL） | 真题原件或授权索引 | 未声明 | unverified | 2026-08-24 | 无；公开仓不转载题文 | missing-source |
+| （缺官方公开 URL） | 课程替代关系 | 未声明 | unverified | 2026-08-24 | 无；`replacement_confirmed` 仍为待确认 | missing-source |
 
 ## 核验规则
 
 - 官方来源优先级：江苏省教育考试院官方 > 主考学校 > 人工校对。
 - 内部资料只写 `materials://...`，不得写 GitHub private raw URL。
 - 不确定信息标 `待核验`，不猜测发布日期、ISBN、教材版本或考试范围。
-- 最后机器核验日期：2026-07-06。
+- HTML 页不含章节目录；章节级大纲仍为缺口，不得粘贴 PDF 或抽取稿正文。
+- 最后机器核验日期：2026-08-24。
 
 ## 缺口
 
-- 真题原件/授权索引（公开仓不得转载题文）。
-- 教材实物/ISBN 核验。
+- 适用考期/版本：官方 HTML 未声明，仅 URL 路径含 2025-02-25。读者无法据此锁定某次考试。
+- 章节级大纲：官方 HTML 无章目列表；下一证据为人工从官方 PDF 封面/目录页摘章名（不得贴正文）。
+- 指定教材 ISBN / 书目：缺官方公开 URL。
+- 真题原件/授权索引：缺官方公开 URL（公开仓不得转载题文）。
+- 替代课程关系：官方页未声明。
 
 ## 需用户/总管提供
 
