@@ -32,7 +32,13 @@ DEFAULT_LAYERS = ("content", "materials", "contract", "publish", "maturity-check
 ALL_LAYERS = DEFAULT_LAYERS + ("maturity",)
 
 
+_COMPUTE_PAGE_MATURITY_MOD = None
+
+
 def _load_compute_page_maturity(root: Path):
+    global _COMPUTE_PAGE_MATURITY_MOD
+    if _COMPUTE_PAGE_MATURITY_MOD is not None:
+        return _COMPUTE_PAGE_MATURITY_MOD
     import importlib.util
 
     script = root / "scripts" / "compute-page-maturity.py"
@@ -41,6 +47,7 @@ def _load_compute_page_maturity(root: Path):
         return None
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
+    _COMPUTE_PAGE_MATURITY_MOD = mod
     return mod
 
 
@@ -50,7 +57,7 @@ def run_maturity(root: Path) -> list[str]:
         mod = _load_compute_page_maturity(root)
         if mod is None:
             return ["maturity: cannot load compute-page-maturity.py"]
-        code = mod.main()
+        code = mod.main([])
         if code:
             return [f"maturity exited {code}"]
     except Exception as e:  # noqa: BLE001
