@@ -5,8 +5,9 @@ Layers (order):
   content   — copyright, lifecycle/completeness enums, codes, PDF manifest
   materials — materials:// refs + private/raw leak scan
   contract  — course multipage required files/markers
-  publish   — lifecycle=publishable hard gate
-  maturity  — write page-maturity report (optional, non-default)
+  publish         — lifecycle=publishable hard gate
+  maturity-check  — non-mutating public page-maturity projection check (default)
+  maturity        — write page-maturity report (optional, non-default)
 
 Usage:
   python scripts/run-gates.py
@@ -27,28 +28,45 @@ from lib.course_pages_contract import run_course_pages_contract  # noqa: E402
 from lib.materials_policy import run_materials_policy  # noqa: E402
 from lib.publish_gate import run_publish_gate  # noqa: E402
 
-DEFAULT_LAYERS = ("content", "materials", "contract", "publish")
+DEFAULT_LAYERS = ("content", "materials", "contract", "publish", "maturity-check")
 ALL_LAYERS = DEFAULT_LAYERS + ("maturity",)
 
 
-def run_maturity(root: Path) -> list[str]:
-    """Import and run compute-page-maturity main()."""
-    # Load sibling script as module by path
+def _load_compute_page_maturity(root: Path):
     import importlib.util
 
     script = root / "scripts" / "compute-page-maturity.py"
     spec = importlib.util.spec_from_file_location("compute_page_maturity", script)
     if spec is None or spec.loader is None:
-        return ["maturity: cannot load compute-page-maturity.py"]
+        return None
     mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def run_maturity(root: Path) -> list[str]:
+    """Import and run compute-page-maturity main() (mutating ops write)."""
     try:
-        spec.loader.exec_module(mod)
+        mod = _load_compute_page_maturity(root)
+        if mod is None:
+            return ["maturity: cannot load compute-page-maturity.py"]
         code = mod.main()
         if code:
             return [f"maturity exited {code}"]
     except Exception as e:  # noqa: BLE001
         return [f"maturity error: {e}"]
     return []
+
+
+def check_public_projection_layer(root: Path) -> list[str]:
+    """Non-mutating public projection check (Task 1 check_public_projection)."""
+    try:
+        mod = _load_compute_page_maturity(root)
+        if mod is None:
+            return ["maturity-check: cannot load compute-page-maturity.py"]
+        return list(mod.check_public_projection(root))
+    except Exception as e:  # noqa: BLE001
+        return [f"maturity-check error: {e}"]
 
 
 def _publish_errors() -> list[str]:
@@ -84,6 +102,7 @@ def main() -> int:
         "materials": lambda: run_materials_policy(ROOT),
         "contract": lambda: run_course_pages_contract(ROOT),
         "publish": _publish_errors,
+        "maturity-check": lambda: check_public_projection_layer(ROOT),
         "maturity": lambda: run_maturity(ROOT),
     }
 

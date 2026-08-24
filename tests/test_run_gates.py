@@ -16,6 +16,9 @@ def test_run_gates_list():
     assert r.returncode == 0
     assert "content" in r.stdout
     assert "publish" in r.stdout
+    assert "* maturity-check" in r.stdout
+    assert "  maturity" in r.stdout
+    assert "* maturity\n" not in r.stdout
 
 
 def test_run_gates_default_passes_on_repo():
@@ -28,3 +31,4 @@ def test_run_gates_default_passes_on_repo():
     )
     assert r.returncode == 0, r.stdout + r.stderr
     assert "All gates passed" in r.stdout
+    assert "[maturity-check] ok" in r.stdout
