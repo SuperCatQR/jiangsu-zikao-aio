@@ -7,6 +7,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 COURSES = ROOT / "content" / "jiangsu" / "courses"
 CODES = ("15043", "15044")
+EXPAND_CODES = ("15040", "00023")
+FIVE_KIND_CODES = CODES + EXPAND_CODES
 PAGE_KINDS = ("index.md", "sources.md", "syllabus.md", "plan.md", "practice.md")
 START_HERE_STEPS = (
     ("考纲与范围", "syllabus.md"),
@@ -41,14 +43,14 @@ def _section_after(text: str, heading: str) -> str:
 
 
 def test_five_page_kinds_exist_for_both_courses():
-    for code in CODES:
+    for code in FIVE_KIND_CODES:
         for page in PAGE_KINDS:
             path = COURSES / code / page
             assert path.is_file(), f"missing {path.relative_to(ROOT)}"
 
 
 def test_cross_link_bar_is_symmetric_and_targets_exist():
-    for code in CODES:
+    for code in FIVE_KIND_CODES:
         for page in PAGE_KINDS:
             bar = _cross_link_bar(_read(code, page), page=f"{code}/{page}")
             hrefs = set(_hrefs(bar))
@@ -63,7 +65,7 @@ def test_cross_link_bar_is_symmetric_and_targets_exist():
 
 
 def test_start_here_block_has_four_reader_path_steps():
-    for code in CODES:
+    for code in FIVE_KIND_CODES:
         text = _read(code, "index.md")
         assert "## 开始学习" in text, f"{code}/index.md missing 开始学习 heading"
         block = _section_after(text, "## 开始学习")
@@ -88,4 +90,17 @@ def test_hub_lists_15043_and_15044_with_five_page_kinds():
         for page in PAGE_KINDS:
             rel = f"./{code}/{page}"
             assert rel in deepened, f"hub deepened section missing {rel}"
+            assert (COURSES / code / page).is_file()
+
+
+def test_hub_lists_15040_and_00023_with_five_page_kinds():
+    hub = COURSES / "index.md"
+    text = hub.read_text(encoding="utf-8")
+    assert "章节索引 + 学习计划已就绪" in text
+    assert "教材导向学习计划已就绪" in text
+    expand = _section_after(text, "## 本轮深化课程（15040 / 00023）")
+    for code in EXPAND_CODES:
+        for page in PAGE_KINDS:
+            rel = f"./{code}/{page}"
+            assert rel in expand, f"hub expand section missing {rel}"
             assert (COURSES / code / page).is_file()
