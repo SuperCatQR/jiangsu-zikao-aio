@@ -36,3 +36,13 @@ Thumbs.db
 !*secretarial-science/
 !*secretarial-science/**
 *credential*
+
+# Morning Star harness (.mstar/) - process artifacts stay local.
+.mstar/**
+!.mstar/AGENTS.md
+!.mstar/knowledge/
+!.mstar/knowledge/**
+!.mstar/specs/
+!.mstar/specs/**
+# .mstarc is local harness configuration.
+.mstarc
