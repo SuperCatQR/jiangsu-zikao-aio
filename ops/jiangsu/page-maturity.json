@@ -191,23 +191,23 @@
   },
   {
     "code": "15043",
-    "lifecycle": "machine_ready",
+    "lifecycle": "draft",
     "completeness": "metadata-only",
-    "status": "machine_ready",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "lifecycle:machine_ready",
+      "lifecycle:draft",
       "completeness:metadata-only"
     ]
   },
   {
     "code": "15044",
-    "lifecycle": "machine_ready",
+    "lifecycle": "draft",
     "completeness": "metadata-only",
-    "status": "machine_ready",
+    "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "lifecycle:machine_ready",
+      "lifecycle:draft",
       "completeness:metadata-only"
     ]
   }
