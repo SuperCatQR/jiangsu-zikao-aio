@@ -10,7 +10,8 @@ publish_date: null
 route: /courses/15044/
 canonical: /courses/15044/
 priority: P0
-source_level: official_syllabus_processed
+# internal-unverified: official HTML/PDF URLs matched; applicability/version 未声明 — not a public version claim
+source_level: official_html_url_matched
 migration_status: v2
 
 # ── 🟢 发布闸门待签字段(由 PR 审查团队 / 法务合规团队填写,不得自动化伪造)──
@@ -21,6 +22,9 @@ reviewed_at: null
 replacement_confirmed: pending
 exam_source_status: 待收集
 exam_analysis_status: 待统计
+exam_index:
+  current_exam_periods: []
+  legacy_comparison_periods: []
 auto_gen_count:
   normal: 1
   transition: 0
@@ -30,7 +34,7 @@ data_status:
   machine_draft:
     status: generated
     generated_at: "2026-06-29"
-    source: syllabus_pdf
+    source: official_html_url_matched
     blocks:
       completed: 12
       total: 13
@@ -51,8 +55,8 @@ data_status:
       - code: past_paper_gap
         scope: content
         severity: warning
-        periods: ["2025-04", "2025-10"]
-        note: 真题三考期覆盖不足，2025-04/2025-10 暂无官方公开原件
+        periods: []
+        note: 真题官方公开原件缺失（missing-source）；官方页未声明适用考期，不推断考期范围
       - code: major_coverage_stale
         scope: content
         severity: warning
@@ -73,13 +77,13 @@ completeness: metadata-only
 | 状态 | 🟡 机器初稿 |
 | 版本号 | v0.2 |
 | 发布日期 | 待发布 |
-| 数据状态 | 机器初稿：13 区块已按 2024 版考纲机器抽取，尚未经人工校对；真题 2025-04/2025-10 待收集 |
+| 数据状态 | 机器初稿：13 区块已按官方考纲页 URL 核验后的内部抽取稿整理，尚未经人工校对；考纲适用版本/考期官方未声明；真题官方公开原件缺失 |
 | MIGRATION_STATUS | v2 |
 | AUTO_GEN_COUNT | normal=1; transition=0; total=1 |
 
 > 面包屑：首页 > 课程 > 15044
 
-> ⚠️ 以下内容为 AI 辅助从官方考纲 PDF 机器抽取生成，尚未经人工校对，可能存在错误。发布前须逐区块人工核对并补全校对签名。
+> ⚠️ 以下内容为 AI 辅助整理（内部抽取稿，非已核验版本声明），尚未经人工校对，可能存在错误。官方页未声明适用考期/版本。发布前须逐区块人工核对并补全校对签名。
 ## 页面导航
 
 - [考纲与教材](syllabus.md)
@@ -99,7 +103,7 @@ completeness: metadata-only
 
 - 本课程属于江苏省高等教育自学考试现行思想政治理论课。
 - `15044` 为现行必修思政课，替代旧计划 `03709` 口径。
-- 考纲版本：15044 马克思主义基本原理课程自学考试大纲，全国高等教育自学考试指导委员会，2024 年 8 月制定。
+- 考纲版本：官方 HTML/PDF 出处已核验（见 `sources.md`）；适用考期/版本字段官方未声明，不推断。
 - 旧代码页保留为历史引用与醒目跳转页：[03709 马克思主义基本原理概论](../03709/index.md)。
 
 ## 章节知识树
@@ -329,7 +333,7 @@ completeness: metadata-only
 
 > 本区块 ⭐✋——须人工根据真题统计确认考频排序，不可仅靠机器生成。
 
-> ⚠️ 考频暂为「待统计」，非确认排序。以下概念均源自考纲 §Ⅰ.四「课程重点」和各章「四、本章重点」，解释采用考纲标准表述。待 2024-10/2025-04/2025-10 真题逐题核验后填写实际考频。
+> ⚠️ 考频暂为「待统计」，非确认排序。以下概念来自内部抽取稿，解释待对照官方正文；官方未声明适用考期，真题官方公开原件缺失。
 
 | 序号 | 概念 | 解释 | 关联章节 | 考频 |
 | ---: | --- | --- | --- | ---: |
@@ -462,9 +466,7 @@ completeness: metadata-only
 
 | 考期 | 真题入口 | 来源等级 | 备注 |
 | --- | --- | --- | --- |
-| 2024-10 | [攀知自考 15044/03709](https://www.zikaosw.cn/lnzt/subject-702.html)；[自考365 马克思主义基本原理](https://www.zikao365.com/shiti/downlist-1-427.html) | B | 新旧代码合并线索，需区分 `15044` 新卷和 `03709` 旧卷年份 |
-| 2025-04 | 待收集 | C | 暂未定位官方公开原件 |
-| 2025-10 | 待收集 | C | 暂未定位官方公开原件 |
+| 未声明 | 无官方公开原件 | C | 官方页未声明适用考期；不推断考试场次 |
 
 ## 新旧课程顶替
 

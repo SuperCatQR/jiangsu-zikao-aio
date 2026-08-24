@@ -10,14 +10,16 @@ publish_date: null
 route: /courses/15043/
 canonical: /courses/15043/
 priority: P0
-source_level: official_syllabus_processed
+# internal-unverified: official HTML/PDF URLs matched; applicability/version 未声明 — not a public version claim
+source_level: official_html_url_matched
 migration_status: v2
 auto_gen_count:
   normal: 1
   transition: 0
   total: 1
 exam_index:
-  current_exam_periods: [2024-10, 2025-04, 2025-10]
+  # keys retained for schema/tools; lists empty until official applicability names periods
+  current_exam_periods: []
   legacy_comparison_periods: []
 replacement_confirmed: pending_confirmation
 exam_source_status: pending_validation
@@ -29,7 +31,7 @@ data_status:
   machine_draft:
     status: generated
     generated_at: "2026-06-30"
-    source: syllabus_pdf
+    source: official_html_url_matched
     blocks:
       completed: 12
       total: 13
@@ -50,8 +52,8 @@ data_status:
       - code: past_paper_gap
         scope: content
         severity: warning
-        periods: ["2025-04", "2025-10"]
-        note: 真题三考期覆盖不足，2025-04/2025-10 暂无官方公开原件
+        periods: []
+        note: 真题官方公开原件缺失（missing-source）；官方页未声明适用考期，不推断考期范围
       - code: major_coverage_stale
         scope: content
         severity: warning
@@ -72,13 +74,13 @@ completeness: metadata-only
 | 状态 | 🟡 机器初稿 |
 | 版本号 | v0.2 |
 | 发布日期 | 待发布 |
-| 数据状态 | 机器初稿：13 区块已按 2024 版考纲机器抽取，尚未经人工校对；真题 2025-04/2025-10 待收集 |
+| 数据状态 | 机器初稿：13 区块已按官方考纲页 URL 核验后的内部抽取稿整理，尚未经人工校对；考纲适用版本/考期官方未声明；真题官方公开原件缺失 |
 | MIGRATION_STATUS | v2 |
 | AUTO_GEN_COUNT | normal=1; transition=0; total=1 |
 
 > 面包屑：首页 > 课程 > 15043
 
-> ⚠️ 以下内容为 AI 辅助从官方考纲 PDF 机器抽取生成，尚未经人工校对，可能存在错误。发布前须逐区块人工核对并补全校对签名。
+> ⚠️ 以下内容为 AI 辅助整理（内部抽取稿，非已核验版本声明），尚未经人工校对，可能存在错误。官方页未声明适用考期/版本。发布前须逐区块人工核对并补全校对签名。
 ## 页面导航
 
 - [考纲与教材](syllabus.md)
@@ -98,7 +100,7 @@ completeness: metadata-only
 
 - 本课程属于江苏省高等教育自学考试现行思想政治理论课，在各专业本科阶段实施考试。
 - `15043` 为现行必修思想政治理论课，衔接旧计划 `03708` 口径。
-- 考纲版本：《中国近现代史纲要自学考试大纲》，全国高等教育自学考试指导委员会公共课课程指导委员会组织制定，2024 年 8 月。
+- 考纲版本：官方 HTML/PDF 出处已核验（见 `sources.md`）；适用考期/版本字段官方未声明，不推断。
 - 旧代码页保留为历史引用与醒目跳转页：[03708 中国近现代史纲要](../03708/index.md)。
 - 考试之日起 6 个月前，由全国人民代表大会及其常务委员会和国务院制定或修订的法律、法规，按考纲说明列入考试范围。
 
@@ -306,7 +308,7 @@ completeness: metadata-only
 
 > 本区块 ⭐✋——须人工根据真题统计确认考频排序，不可仅靠机器生成。
 
-> ⚠️ 考频暂为「待统计」，非确认排序。以下概念均源自考纲 §Ⅰ.四「课程重点」和各章「四、本章重点」，解释采用考纲标准表述。待 2024-10/2025-04/2025-10 真题逐题核验后填写实际考频。
+> ⚠️ 考频暂为「待统计」，非确认排序。以下概念来自内部抽取稿，解释待对照官方正文；官方未声明适用考期，真题官方公开原件缺失。
 
 | 序号 | 概念 | 解释 | 关联章节 | 考频 |
 | ---: | --- | --- | --- | ---: |
@@ -439,9 +441,7 @@ completeness: metadata-only
 
 | 考期 | 真题入口 | 来源等级 | 备注 |
 | --- | --- | --- | --- |
-| 2024-10 | [攀知自考 15043](https://www.zikaosw.cn/lnzt/subject-9.html)；[自考365 中国近现代史纲要](https://www.zikao365.com/shiti/downlist-1-457.html) | B | 现行代码 15043 考期，真题待核验 |
-| 2025-04 | 待收集 | C | 暂未定位官方公开原件 |
-| 2025-10 | 待收集 | C | 暂未定位官方公开原件 |
+| 未声明 | 无官方公开原件 | C | 官方页未声明适用考期；不推断考试场次 |
 
 ## 新旧课程顶替
 
@@ -454,7 +454,7 @@ completeness: metadata-only
 | 顶替起始考期 | 2024 年 10 月 |
 | 过渡期后旧代码定位 | 历史参考 |
 | 注册口径说明 | 2024 年 7 月后注册考生仅参加 15043 考试 |
-| 名称差异说明 | 新旧代码课程名称一致，考生仍需按现行 2024 版考纲复习 |
+| 名称差异说明 | 新旧代码课程名称一致；适用考纲版本官方未声明，复习范围以官方页当时链接为准 |
 
 ## AI 生成声明
 
@@ -506,7 +506,7 @@ completeness: metadata-only
 | 版本号 | 发布日期 | 变更摘要 |
 | --- | --- | --- |
 | v2.0 | 2026-06-22 | Phase 1 骨架迁移：写入 MIGRATION_STATUS、AUTO_GEN_COUNT 和适用专业清单骨架 |
-| v0.2 | 2026-06-30 | 套用 15044 校对样板：按官方 2024 版考纲机器抽取产物补齐考纲概览、章节知识树、题型模板、真题空态、来源与 AI 声明；仍待 SME 逐项签名 + 法务合规审视 |
+| v0.2 | 2026-06-30 | 套用 15044 校对样板：按官方考纲页核验后的内部抽取稿补齐区块；适用版本/考期仍为未声明；仍待 SME 逐项签名 + 法务合规审视 |
 
 ## 人工审核清单
 
