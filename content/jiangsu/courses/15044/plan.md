@@ -2,7 +2,7 @@
 
 > ponytail: 阶段目标可执行；教材与真题缺官方公开件时保持空态，不编造周任务细目。
 
-[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [来源与核验](sources.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 资料状态
 
