@@ -49,3 +49,6 @@ Thumbs.db
 
 # uv tool-run artifacts (local)
 uv.lock
+
+# Local git worktrees (process-local, never tracked)
+.worktrees/
