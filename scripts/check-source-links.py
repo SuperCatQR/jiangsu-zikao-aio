@@ -23,7 +23,6 @@ status degradation is a content-side action (see the runbook).
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import os

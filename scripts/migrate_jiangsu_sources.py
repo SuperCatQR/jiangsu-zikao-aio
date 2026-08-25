@@ -1,5 +1,7 @@
 from pathlib import Path
-import csv, re, shutil
+import csv
+import re
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "sources" / "jiangsu"

@@ -1,0 +1,12 @@
+[tool.ruff.lint]
+# Minimal bug-catching contract (audit plan 007): pycodestyle-critical
+# (E4/E7/E9) + pyflakes (F). Style/format rules are intentionally not
+# enforced — the goal is catching real bugs, not a style gate.
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Tests import scripts via sys.path.insert before module-level imports
+# (repo convention for hyphenated script aliases in conftest.py).
+"tests/*" = ["E402"]
+# One-shot migration scripts keep compressed one-liner style.
+"scripts/migrate_*.py" = ["E701", "E702"]
