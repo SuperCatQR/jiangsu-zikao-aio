@@ -113,7 +113,7 @@ STATUS_DEAD = "dead"           # reachable server, but 4xx/5xx (real rot)
 STATUS_INCONCLUSIVE = "inconclusive"  # timeout / DNS / TLS / connection refused
 
 MD_LINK_RE = re.compile(r"\[[^\]]*\]\((https?://[^\s)]+)\)")
-BARE_URL_RE = re.compile(r"(?<![(\[])\bhttps?://[^\s)\]<>`\"']+")
+BARE_URL_RE = re.compile(r"(?<![(\[])\bhttps?://[^\s)\]<>`\"'；]+")
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*\S)\s*$")
 
 
@@ -166,7 +166,10 @@ def host_of(url: str) -> str:
 
 def normalize_url(url: str) -> str:
     # Strip trailing punctuation that markdown prose tends to glue onto bare URLs.
-    return url.rstrip(".,;:。，、)）]】>")
+    # The fullwidth semicolon （；U+FF1B） is a common CJK list separator between
+    # two bare URLs in markdown tables; without stripping it the two URLs merge
+    # into one and the ASCII-encoded request crashes (UnicodeEncodeError).
+    return url.rstrip(".,;:。，、；)）]】>")
 
 
 def section_in_scope(section: str) -> bool:
@@ -333,7 +336,7 @@ def probe(url: str, *, authoritative: bool, timeout: float, retries: int) -> Pro
                     continue
             return ProbeResult(url, STATUS_DEAD, http_code=exc.code,
                                detail=f"HTTP {exc.code} {exc.reason}")
-        except (urllib.error.URLError, socket.timeout, ssl.SSLError, OSError) as exc:
+        except (urllib.error.URLError, socket.timeout, ssl.SSLError, OSError, UnicodeEncodeError) as exc:
             last_detail = f"{type(exc).__name__}: {exc}"
             time.sleep(min(2.0, 0.5 * (attempt + 1)))
             continue

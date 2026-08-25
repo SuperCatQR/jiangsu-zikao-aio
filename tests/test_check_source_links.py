@@ -118,3 +118,28 @@ def test_bulk_rot_is_separate_from_actionable_gate():
     assert summary["actionable_count"] == 0
     assert summary["bulk_rot_count"] == 1
     assert len(summary["bulk_actionable"]) == 3
+
+
+def test_normalize_url_fullwidth_semicolon():
+    """全角分号（；）作为 CJK 列表分隔符应被剥离。"""
+    from check_source_links import normalize_url
+
+    # trailing fullwidth semicolon
+    assert normalize_url("https://example.com/a.html；") == "https://example.com/a.html"
+    # trailing fullwidth comma still stripped
+    assert normalize_url("https://example.com/a.html，") == "https://example.com/a.html"
+
+
+def test_bare_url_split_on_fullwidth_semicolon():
+    """BARE_URL_RE 不得把全角分号连接的两个 URL 合并为一个。"""
+    from check_source_links import BARE_URL_RE
+
+    line = (
+        "| 考纲 | https://www.jseea.cn/webfile/a/1.html；"
+        "https://www.jseea.cn/webfile/upload/2025/06-19/14-59-1607281034810553.pdf |"
+    )
+    urls = [m.group(0) for m in BARE_URL_RE.finditer(line)]
+    assert urls == [
+        "https://www.jseea.cn/webfile/a/1.html",
+        "https://www.jseea.cn/webfile/upload/2025/06-19/14-59-1607281034810553.pdf",
+    ], urls
