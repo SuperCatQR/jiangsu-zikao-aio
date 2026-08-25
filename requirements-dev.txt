@@ -5,10 +5,10 @@
 pytest>=7.4.0
 pytest-cov>=4.1.0
 
-# 代码质量
+# 代码质量（CI 强制：ruff check scripts tests，规则见 pyproject.toml）
 ruff>=0.1.0
 
-# 类型检查
+# 类型检查（声明但暂未强制；如需启用请补 mypy 配置与 CI 步骤）
 mypy>=1.7.0
 
 # 文档站点

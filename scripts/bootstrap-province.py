@@ -185,10 +185,10 @@ def main() -> None:
         print(f"✓  创建: {path.relative_to(ROOT)}")
     
     print(f"\n成功创建 {len(created)}/{len(files)} 个文件")
-    print(f"\n下一步:")
+    print("\n下一步:")
     print(f"  1. 更新 content/{province}/index.md 中的考试院链接")
     print(f"  2. 编辑 build.toml 添加 {province} 相关路径（如需单独配置）")
-    print(f"  3. 运行 scripts/check-source-links.py 生成外链基线")
+    print("  3. 运行 scripts/check-source-links.py 生成外链基线")
 
 
 if __name__ == "__main__":
