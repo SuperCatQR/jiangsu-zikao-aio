@@ -6,7 +6,6 @@
     "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "thin-required-pages",
       "lifecycle:machine_ready",
       "completeness:metadata-only"
     ]
@@ -191,23 +190,23 @@
   },
   {
     "code": "15043",
-    "lifecycle": "draft",
+    "lifecycle": "machine_ready",
     "completeness": "metadata-only",
-    "status": "draft",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "lifecycle:draft",
+      "lifecycle:machine_ready",
       "completeness:metadata-only"
     ]
   },
   {
     "code": "15044",
-    "lifecycle": "draft",
+    "lifecycle": "machine_ready",
     "completeness": "metadata-only",
-    "status": "draft",
+    "status": "machine_ready",
     "maturity": "yellow",
     "reasons": [
-      "lifecycle:draft",
+      "lifecycle:machine_ready",
       "completeness:metadata-only"
     ]
   }

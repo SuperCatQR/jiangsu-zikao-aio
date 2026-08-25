@@ -66,12 +66,12 @@ def run_maturity(root: Path) -> list[str]:
 
 
 def check_public_projection_layer(root: Path) -> list[str]:
-    """Non-mutating public projection check (Task 1 check_public_projection)."""
+    """Non-mutating projection check: public page + ops JSON/report vs grade() rows."""
     try:
         mod = _load_compute_page_maturity(root)
         if mod is None:
             return ["maturity-check: cannot load compute-page-maturity.py"]
-        return list(mod.check_public_projection(root))
+        return list(mod.check_projection(root))
     except Exception as e:  # noqa: BLE001
         return [f"maturity-check error: {e}"]
 

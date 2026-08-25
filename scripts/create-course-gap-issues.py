@@ -1,6 +1,8 @@
 from __future__ import annotations
 from pathlib import Path
-import argparse, json, subprocess, sys
+import argparse
+import json
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "ops/jiangsu/issues/course-gap-issues.json"

@@ -76,3 +76,46 @@ def test_main_without_check_writes_ops_only_not_public(tmp_path: Path, monkeypat
     assert cpm.main(["--write-public"]) == 0
     assert public.read_text(encoding="utf-8") != "UNCHANGED\n"
     assert "|lifecycle|" in public.read_text(encoding="utf-8")
+
+
+def test_check_ops_empty_after_write(tmp_path: Path, monkeypatch):
+    gaps = _symlink_courses(tmp_path)
+    public = gaps / "page-maturity.md"
+    public.write_text(cpm.render_public_markdown(cpm.compute_rows(tmp_path)), encoding="utf-8")
+    ops = tmp_path / "ops" / "jiangsu"
+    ops.mkdir(parents=True)
+    monkeypatch.setattr(cpm, "ROOT", tmp_path)
+    monkeypatch.setattr(cpm, "COURSES", tmp_path / "content" / "jiangsu" / "courses")
+    monkeypatch.setattr(cpm, "OUT_JSON", ops / "page-maturity.json")
+    monkeypatch.setattr(cpm, "OUT_MD", ops / "page-maturity.report.md")
+    cpm.main([])  # writes ops JSON + report
+    assert cpm.check_ops_projection(tmp_path) == []
+    assert cpm.check_projection(tmp_path) == []
+
+
+def test_check_ops_catches_stale_json(tmp_path: Path, monkeypatch):
+    gaps = _symlink_courses(tmp_path)
+    public = gaps / "page-maturity.md"
+    public.write_text(cpm.render_public_markdown(cpm.compute_rows(tmp_path)), encoding="utf-8")
+    ops = tmp_path / "ops" / "jiangsu"
+    ops.mkdir(parents=True)
+    monkeypatch.setattr(cpm, "ROOT", tmp_path)
+    monkeypatch.setattr(cpm, "COURSES", tmp_path / "content" / "jiangsu" / "courses")
+    monkeypatch.setattr(cpm, "OUT_JSON", ops / "page-maturity.json")
+    monkeypatch.setattr(cpm, "OUT_MD", ops / "page-maturity.report.md")
+    cpm.main([])  # correct ops files
+    # stale the JSON
+    rows = cpm.compute_rows(tmp_path)
+    for r in rows:
+        if r["code"] == "15043":
+            r["lifecycle"] = "draft"
+    ops.joinpath("page-maturity.json").write_text(
+        cpm.json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    errors = cpm.check_ops_projection(tmp_path)
+    assert errors
+    joined = "\n".join(errors)
+    assert "page-maturity.json" in joined
+    assert "python scripts/compute-page-maturity.py" in joined
+    # combined check also fails
+    assert cpm.check_projection(tmp_path) != []

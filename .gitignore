@@ -46,3 +46,9 @@ Thumbs.db
 !.mstar/specs/**
 # .mstarc is local harness configuration.
 .mstarc
+
+# uv tool-run artifacts (local)
+uv.lock
+
+# Local git worktrees (process-local, never tracked)
+.worktrees/

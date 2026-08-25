@@ -146,9 +146,8 @@ def check_public_projection(root: Path) -> list[str]:
     ]
 
 
-def _write_ops(rows: list[dict]) -> dict[str, int]:
-    OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-    OUT_JSON.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def render_ops_report(rows: list[dict]) -> str:
+    """Deterministic ops report Markdown from the same rows written to the JSON."""
     lines = ["# 页面成熟度报告", "", "|课程|lifecycle|completeness|成熟度|原因|", "|-|-|-|-|-|"]
     for r in rows:
         lines.append(
@@ -157,7 +156,40 @@ def _write_ops(rows: list[dict]) -> dict[str, int]:
         )
     tally = {k: sum(1 for r in rows if r["maturity"] == k) for k in ("red", "yellow", "green")}
     lines += ["", f"合计：red={tally['red']} yellow={tally['yellow']} green={tally['green']}"]
-    OUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return "\n".join(lines) + "\n"
+
+
+def check_ops_projection(root: Path) -> list[str]:
+    """Non-mutating. Empty list if ops JSON + report match compute_rows(root)."""
+    rows = compute_rows(root)
+    errors: list[str] = []
+    expected_json = json.dumps(rows, ensure_ascii=False, indent=2) + "\n"
+    actual_json = OUT_JSON.read_text(encoding="utf-8") if OUT_JSON.exists() else ""
+    if actual_json != expected_json:
+        errors.append(
+            f"{OUT_JSON.relative_to(root).as_posix()} is stale; regenerate with "
+            "`python scripts/compute-page-maturity.py`"
+        )
+    expected_md = render_ops_report(rows)
+    actual_md = OUT_MD.read_text(encoding="utf-8") if OUT_MD.exists() else ""
+    if actual_md != expected_md:
+        errors.append(
+            f"{OUT_MD.relative_to(root).as_posix()} is stale; regenerate with "
+            "`python scripts/compute-page-maturity.py`"
+        )
+    return errors
+
+
+def check_projection(root: Path) -> list[str]:
+    """Non-mutating combined check: public page + ops JSON/report vs grade() rows."""
+    return check_public_projection(root) + check_ops_projection(root)
+
+
+def _write_ops(rows: list[dict]) -> dict[str, int]:
+    OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
+    OUT_JSON.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    OUT_MD.write_text(render_ops_report(rows), encoding="utf-8")
+    tally = {k: sum(1 for r in rows if r["maturity"] == k) for k in ("red", "yellow", "green")}
     return tally
 
 
@@ -172,7 +204,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.check:
-        errors = check_public_projection(ROOT)
+        errors = check_projection(ROOT)
         for err in errors:
             print(err, file=sys.stderr)
         return 1 if errors else 0
