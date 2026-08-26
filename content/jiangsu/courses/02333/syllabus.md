@@ -2,7 +2,7 @@
 
 > ponytail: 仅记录官方 URL 已核验的元数据与章名索引（机器抽取件照录）；不粘贴考纲正文、不扩写考点、不推断适用考期。
 
-[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 资料状态
 
