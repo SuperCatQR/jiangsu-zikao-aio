@@ -58,7 +58,7 @@ completeness: metadata-only
 | 状态 | 🟡 机器初稿 |
 | 版本号 | v2.1 |
 | 发布日期 | 2026-06-30 |
-| 数据状态 | 已按本地 2018 年版教材附自学考试大纲、080901 专业计划与教材计划填充 16 必填区块；章节知识树覆盖 78/78；真题与考频保持空态，待 zikao-materials 采集后统计；不得包装为已终审通过 |
+| 数据状态 | 13 个机器初稿状态字段已填充；另有 16 个面向读者的已填充区块。章节知识树按本地 2018 年版教材附大纲的声明性来源整理，非官方考纲；覆盖 78/78，真题与考频保持空态，待 zikao-materials 采集后统计；不得包装为已终审通过 |
 | MIGRATION_STATUS | v2 |
 | AUTO_GEN_COUNT | normal=0; transition=0; total=0 |
 
@@ -67,11 +67,14 @@ completeness: metadata-only
 > ⚠️ 以下内容为 AI 辅助依据本地教材附自学考试大纲、江苏专业计划与教材计划整理的机器初稿。PR 审查团队尚未放行，法务合规尚未终审版权 / PII / AI 声明；如与江苏省教育考试院当次公告或主考学校实践公告冲突，以官方最新发布为准。
 ## 页面导航
 
-- [考纲与教材](syllabus.md)
-- [学习计划](plan.md)
-- [复习计划](review.md)
-- [练习与真题](practice.md)
-- [来源与核验](sources.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
+
+## 开始这里
+
+1. 先读[考纲与范围](syllabus.md)，确认当前官方考纲缺口与课程范围边界。
+2. 再看本页章节知识树，按来源追踪逐章核对声明性 provenance 与未支持项。
+3. 按[学习计划](plan.md)或[复习计划](review.md)选择学习节奏，并记录自己的练习结果。
+4. 最后到[练习与真题](practice.md)使用索引训练，再到[来源与核验](sources.md)复查状态与缺口。
 
 ## 状态
 
@@ -82,10 +85,10 @@ completeness: metadata-only
 
 ## 政策与时效
 
-- 本课程属于江苏省高等教育自学考试计算机科学与技术（专升本，080901）现行专业核心笔试课，在 2024 年版新计划中与配套实践 `04736 数据库系统原理（实践）` 同组出现。
+- 本页按江苏省高等教育自学考试计算机科学与技术（专升本，080901）的课程定位展示 `04735` 与配套实践 `04736 数据库系统原理（实践）` 的关系；该专业计划 / 考纲摘录当前仍缺失，以上定位与分组尚待官方来源确认。
 - 080901 专业计划口径下，`04735` 为 4 学分笔试，`04736` 为 2 学分实践；本地 2018 年版自学考试大纲中“本课程共 6 学分，其中包含 2 学分的实验学分”应理解为理论课与实践环节合并说明，页面主表按江苏专业计划拆分口径展示。
 - 教材计划口径：`047351 数据库系统原理（附大纲）`，黄靖主编，机械工业出版社，2018 年版；2026-10/2027-01 江苏教材计划仍列为本课程使用教材。
-- 考试时间：大纲说明笔试采用闭卷方式，考试时间 150 分钟；实际考试安排以江苏省教育考试院当次考试日程为准。
+- 考试时间：本页既有“闭卷、150 分钟”说明仅作待核验的页面声明；当前来源清单未提供可复核的官方考纲摘录，实际考试安排以江苏省教育考试院当次考试日程为准。
 - 课程定位：面向计算机信息管理 / 计算机科学与技术相关专业，要求考生掌握数据库系统的基本概念、关系数据库、数据库设计、SQL 基本操作、数据库编程、安全与保护、应用设计与数据管理技术发展。
 - 发布状态：本页当前仅作为 🟡 机器初稿进入 PR 审查链路，不代表可发布终稿；真题原文、教材 ISBN 与 AI 生成声明仍需法务合规终审。
 
@@ -252,7 +255,21 @@ completeness: metadata-only
 | 覆盖率 | 100% |
 | 是否达标（≥ 90%） | 是（待 PR 审查团队复核分母与逐项归类） |
 
-## 高频概念表
+
+## 章节知识树来源追踪
+
+> 以下追踪仅补充本区块的来源边界，不改动前述章节知识树。`local_textbook_outline` 为页面声明的本地 2018 年版教材附自学考试大纲 provenance，仓库中无可读取的本地大纲/抽取件，故独立未核验，不能视为官方考纲或独立核验的章节摘录；`textbook-plan-row` 为课程级教材计划元数据（`document.extracted.md:1403`，镜像 `sources.md:12`）；`materials-index` 为既有私有材料索引（`plan.md:11`），仅作 index-only 参照。每行支持范围均不包含章节正文、真题或官方考纲证明。未支持项统一为：G1 官方考纲链接/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。
+
+| 章节 | 来源追踪 | 支持范围与未支持项 |
+| --- | --- | --- |
+| 第一章 数据库系统概述 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第二章 关系数据库 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第三章 数据库设计 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第四章 SQL 与关系数据库基本操作 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第五章 数据库编程 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第六章 数据库安全与保护 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第七章 数据库应用设计与开发实例 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第八章 数据管理技术的发展 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
 
 > 本区块 ⭐✋——“高频”排序必须等真题样本统计后确认。当前仅列出按考纲重点、难点与数据库课程通行结构得到的核心概念候选，考频统一标为“待真题统计”，不得对外呈现为真实排名。
 

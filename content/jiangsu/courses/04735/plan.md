@@ -2,7 +2,7 @@
 
 > ponytail: 最小可发布计划页；精修时按最新官方考纲拆到周任务与测验。
 
-[返回课程概览](index.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 资料状态
 

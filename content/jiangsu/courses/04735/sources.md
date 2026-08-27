@@ -2,7 +2,9 @@
 
 > ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
 
-[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
+
+> 追踪索引：本页仅列课程级来源状态；请在[课程概览](index.md)的“章节知识树来源追踪”区块按章节查看声明性 provenance、支持范围与 G1/G2/G3 未支持项。
 
 ## 来源清单
 
