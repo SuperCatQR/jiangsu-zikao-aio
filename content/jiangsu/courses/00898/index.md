@@ -15,6 +15,8 @@ status: draft
 | 数据状态 | 已定位官方考纲、教材计划和真题线索入口；本地教材缺失 |
 ## 页面导航
 
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
+
 - [考纲与范围](syllabus.md)
 - [学习计划](plan.md)
 - [复习计划](review.md)
