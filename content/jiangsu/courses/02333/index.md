@@ -38,7 +38,8 @@ status: draft
 
 | 项目 | 内容 | 来源 | 状态 |
 | --- | --- | --- | --- |
-| 资料状态 | 官方考纲页 official-url-ok（[jseea.cn 考纲 URL](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html)）+ 机器抽取章名索引（3 篇 / 第 1–14 章 / 附录一–七，标题照录） | [考纲与范围](syllabus.md) / [来源与核验](sources.md) | needs-review |
+| 资料状态 | metadata-only | [考纲与范围](syllabus.md) / [来源与核验](sources.md) | needs-review |
+| 资料详情 | 官方考纲页 official-url-ok（[jseea.cn 考纲 URL](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html)）+ 机器抽取章名索引（3 篇 / 第 1–14 章 / 附录一–七，标题照录） | [考纲与范围](syllabus.md) / [来源与核验](sources.md) | 已定位 |
 | 命名缺口 | 教材计划元数据（G1）、真题原件/授权索引（G2）、教材实物核验（G3）、适用考期/版本（G4） | [来源与核验](sources.md) | missing-source / metadata-only |
 | 页面成熟度 | red | 待人工按新模板校对 | needs-review |
 
