@@ -2,6 +2,8 @@
 
 > ponytail: 最小练习索引页；只登记来源与训练方法，不转载题文。
 
+
+
 [返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 资料状态
@@ -32,5 +34,3 @@
 
 - 公开仓不粘贴真题正文、答案全文、PDF 截图。
 - 可写年份、来源、页码、主题标签和 `materials://` 索引；不添加真题内容。
-
-[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
