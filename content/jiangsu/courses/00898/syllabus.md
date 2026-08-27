@@ -4,7 +4,7 @@
 >
 > **机器抽取提示：** 以下章节名称与章节级标注保留自机器抽取草稿，待人工校对；抽取间距未作规范化。
 
-[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 资料状态
 
