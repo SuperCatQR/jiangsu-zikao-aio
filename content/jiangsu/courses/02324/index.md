@@ -37,7 +37,8 @@ status: draft
 
 | 项目 | 内容 | 来源 | 状态 |
 | --- | --- | --- | --- |
-| 资料状态 | metadata-only；教材计划元数据已核验，官方考纲 URL/抽取件缺失，未持有或核验教材/书内大纲内容 | [来源与核验](sources.md) | needs-review |
+| 资料状态 | metadata-only | [来源与核验](sources.md) | needs-review |
+| 资料详情 | 教材计划元数据已核验；官方考纲 URL/抽取件缺失，未持有或核验教材/书内大纲内容 | [来源与核验](sources.md) | needs-review |
 | 页面成熟度 | red | 待人工按新模板校对 | needs-review |
 
 ## 待做
