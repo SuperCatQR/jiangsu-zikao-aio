@@ -15,7 +15,7 @@ status: draft
 | 数据状态 | 已定位官方考纲页（jseea.cn，official-url-ok）与机器抽取章名索引；教材计划、真题原件、适用考期为已命名缺口（见 [来源与核验](sources.md)） |
 ## 页面导航
 
-- [考纲与教材](syllabus.md)
+- [考纲与范围](syllabus.md)
 - [学习计划](plan.md)
 - [复习计划](review.md)
 - [练习与真题](practice.md)
