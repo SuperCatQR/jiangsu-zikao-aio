@@ -16,7 +16,7 @@
 |13000|machine_ready|metadata-only|yellow|thin-required-pages; lifecycle:machine_ready; completeness:metadata-only|gap: 核验|
 |13003|machine_ready|metadata-only|yellow|thin-required-pages; lifecycle:machine_ready; completeness:metadata-only|gap: 核验|
 |13013|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|
-|13015|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|
+|13015|draft|metadata-only|yellow|lifecycle:draft; completeness:metadata-only|/courses/13015/|
 |13017|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|
 |13180|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|
 |15040|machine_ready|metadata-only|yellow|lifecycle:machine_ready; completeness:metadata-only|/courses/15040/|
