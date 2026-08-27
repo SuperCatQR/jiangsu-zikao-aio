@@ -252,7 +252,21 @@ completeness: metadata-only
 | 覆盖率 | 100% |
 | 是否达标（≥ 90%） | 是（待 PR 审查团队复核分母与逐项归类） |
 
-## 高频概念表
+
+## 章节知识树来源追踪
+
+> 以下追踪仅补充本区块的来源边界，不改动前述章节知识树。`local_textbook_outline` 为页面声明的本地 2018 年版教材附自学考试大纲 provenance，仓库中无可读取的本地大纲/抽取件，故独立未核验，不能视为官方考纲或独立核验的章节摘录；`textbook-plan-row` 为课程级教材计划元数据（`document.extracted.md:1403`，镜像 `sources.md:12`）；`materials-index` 为既有私有材料索引（`plan.md:11`），仅作 index-only 参照。每行支持范围均不包含章节正文、真题或官方考纲证明。未支持项统一为：G1 官方考纲链接/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。
+
+| 章节 | 来源追踪 | 支持范围与未支持项 |
+| --- | --- | --- |
+| 第一章 数据库系统概述 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第二章 关系数据库 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第三章 数据库设计 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第四章 SQL 与关系数据库基本操作 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第五章 数据库编程 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第六章 数据库安全与保护 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第七章 数据库应用设计与开发实例 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
+| 第八章 数据管理技术的发展 | `local_textbook_outline`（声明 provenance，独立未核验）；`textbook-plan-row`；`materials-index` | 支持本章树的声明 provenance，以及课程级教材身份与既有材料索引；不支持章节摘录或官方考纲证明。G1 官方考纲 URL/抽取件缺失；G2 真题原件/授权索引/统计仍为 index-only/empty；G3 教材实物/ISBN 核验仍开放。 |
 
 > 本区块 ⭐✋——“高频”排序必须等真题样本统计后确认。当前仅列出按考纲重点、难点与数据库课程通行结构得到的核心概念候选，考频统一标为“待真题统计”，不得对外呈现为真实排名。
 
