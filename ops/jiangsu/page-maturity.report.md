@@ -14,7 +14,7 @@
 |13000|machine_ready|metadata-only|yellow|thin-required-pages; lifecycle:machine_ready; completeness:metadata-only|
 |13003|machine_ready|metadata-only|yellow|thin-required-pages; lifecycle:machine_ready; completeness:metadata-only|
 |13013|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
-|13015|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
+|13015|draft|metadata-only|yellow|lifecycle:draft; completeness:metadata-only|
 |13017|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
 |13180|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
 |15040|machine_ready|metadata-only|yellow|lifecycle:machine_ready; completeness:metadata-only|
