@@ -8,7 +8,7 @@ A learner landing on either selected course can identify the official syllabus b
 
 **Target state:** each selected course has a names-only, source-bounded 13-row chapter index; a chapter-keyed study sequence distinguishing assessed and reference-only chapters; a four-step start-here path; symmetric links across all six existing pages; and machine-checkable consistency evidence. Lifecycle remains at or below the current machine-safe state.
 
-**Explicit non-goals:** no 13017/13000/13003/13180 work; no syllabus body prose, code, screenshots, question text, exam-period or applicability inference; no textbook, ISBN, physical-book, true-paper, reviewer, `reviewed`, or `publishable` claim; no edits outside the two course write surfaces and permitted focused tests.
+**Explicit non-goals:** no 13017/13000/13003/13180 work; no syllabus body prose, code, screenshots, question text, exam-period or applicability inference; no textbook, ISBN, physical-book, true-paper, reviewer, `reviewed`, or `publishable` claim; no edits outside the two course write surfaces and permitted focused tests. During Execute, the user explicitly authorized one minimal baseline-contract repair in `tests/test_site_integration.py` for stale assertions against already-current hub wording; the hub remains read-only.
 
 ## Deferred roadmap / ownership / trigger
 
@@ -27,7 +27,11 @@ Deferred slices must not become process-only plans or silently expand the two-pl
 | `04747-official-syllabus-reader-path` | `content/jiangsu/courses/04747/**` plus `tests/test_04747_reader_path.py` if needed | other course pages, `sources/jiangsu/processed/**`, `ops/`, scripts, schemas, hub |
 | `04751-official-syllabus-reader-path` | `content/jiangsu/courses/04751/**` plus `tests/test_04751_reader_path.py` if needed | other course pages, `sources/jiangsu/processed/**`, `ops/`, scripts, schemas, hub |
 
-### Worktree and Harness Process Boundary
+### Execute scope amendment — baseline contract
+
+- User authorization recorded during Execute permits the 04747 plan to update only the stale expected strings in `tests/test_site_integration.py` that no longer match the already-current `content/jiangsu/courses/index.md` headings.
+- The permitted file is limited to the two affected test functions and their four stale literals: the shared test remains a read-only product/hub observer; no hub, other shared tests, scripts, or source artifacts may change.
+- This is a prerequisite test-contract repair for the existing integration baseline, not a third business plan or a change to the selected reader-path outcome.
 
 - **Control worktree & harness process paths**: All harness artifacts (plans `.mstar/plans/`, SDD directories `.mstar/sdd/`, review bundles `.mstar/sdd/<plan-id>/review/`, workflow snapshots `.mstar/workflows/`) reside strictly on the control filesystem at `/root/workspace/jiangsu-zikao-aio` and are accessed via absolute paths. Harness process artifacts must never be placed into or committed from feature worktrees.
 - **Feature worktree isolation**: Each plan is executed in its dedicated feature worktree created by PM with an explicit `execution_lease` before writable dispatch.
