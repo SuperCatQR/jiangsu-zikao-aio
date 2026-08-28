@@ -47,7 +47,7 @@ Phase 1 review and edit work is performed directly on `iteration/jiangsu-course-
 
 | plan_id | Name | Status | Notes |
 |---------|------|--------|-------|
-| `04747-official-syllabus-reader-path` | 04747 Java official-syllabus chapter index and reader path | Todo | P1/M; local gaogang-4067 extraction; 13 chapters, 9 assessed (1–6, 8–10), 4 non-assessed (7, 11–13) |
+| `04747-official-syllabus-reader-path` | 04747 Java official-syllabus chapter index and reader path | InProgress | P1/M; resumed by explicit user instruction; Task 4 four-literal baseline test repair pending delegated execution |
 | `04751-official-syllabus-reader-path` | 04751 network-security official-syllabus chapter index and reader path | Todo | P1/M; local gaogang-4389 extraction; 13 chapters, 10 assessed (1–10), 3 non-assessed (11–13) |
 
 Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
