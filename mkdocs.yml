@@ -5,27 +5,95 @@ repo_name: SuperCatQR/jiangsu-zikao-aio
 docs_dir: content
 site_dir: site
 use_directory_urls: true
+
 theme:
   name: material
   language: zh
+  palette:
+    - scheme: default
+      primary: slate
+      accent: slate
+      toggle:
+        icon: material/weather-night
+        name: 切换至深色模式
+    - scheme: slate
+      primary: slate
+      accent: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至浅色模式
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/book-open-page-variant-outline
   features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
-    - navigation.indexes
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
     - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+
 plugins:
   - search
+
 markdown_extensions:
   - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - tables
+  - attr_list
+  - md_in_html
   - toc:
       permalink: true
+      toc_depth: 3
+
 extra:
   governance:
     public_repo_policy: "official-public-source-index-summary-only"
     private_material_scheme: "materials://"
+
 nav:
   - 首页: index.md
   - 江苏:
