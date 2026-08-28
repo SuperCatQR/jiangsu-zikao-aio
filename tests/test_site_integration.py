@@ -84,8 +84,8 @@ def test_start_here_block_has_four_reader_path_steps():
 def test_hub_lists_15043_and_15044_with_five_page_kinds():
     hub = COURSES / "index.md"
     text = hub.read_text(encoding="utf-8")
-    assert "章节索引 + 学习计划已就绪" in text
-    deepened = _section_after(text, "## 本轮深化课程（15043 / 15044）")
+    assert "章节索引与学习计划已整理" in text
+    deepened = _section_after(text, "## 示范课程（15043 / 15044）")
     for code in CODES:
         for page in PAGE_KINDS:
             rel = f"./{code}/{page}"
@@ -96,9 +96,9 @@ def test_hub_lists_15043_and_15044_with_five_page_kinds():
 def test_hub_lists_15040_and_00023_with_five_page_kinds():
     hub = COURSES / "index.md"
     text = hub.read_text(encoding="utf-8")
-    assert "章节索引 + 学习计划已就绪" in text
+    assert "章节索引与学习计划已整理" in text
     assert "教材导向学习计划已就绪" in text
-    expand = _section_after(text, "## 本轮深化课程（15040 / 00023）")
+    expand = _section_after(text, "## 深化课程（15040 / 00023）")
     for code in EXPAND_CODES:
         for page in PAGE_KINDS:
             rel = f"./{code}/{page}"
