@@ -2,13 +2,13 @@
 
 > ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
 
-[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
 
 ## 来源清单
 
 | 项目 | 内容 | 来源 | 状态 |
 | --- | --- | --- | --- |
-| 课程概览 | 软件工程 / 02333 | `index.md` | needs-review |
+| 课程概览 | 软件工程 / 02333；开始学习四步入口与章名索引指针见概览页 | `index.md` | needs-review |
 | 教材计划 | 未在已入库江苏教材计划抽取件中定位到教材行 | `待补官方教材计划或授权归档索引` | missing-source |
 | 考纲 | https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | official-url-ok |
 | 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
@@ -25,6 +25,7 @@
 - 教材计划元数据。
 - 真题原件/授权索引（公开仓不得转载题文）。
 - 教材实物核验。
+- G4：考纲适用考期/版本官方未声明；不据此推断具体考期或版本。
 
 ## 需用户/总管提供
 
