@@ -1,0 +1,544 @@
+/* ==========================================================================
+   Jiangsu Zikao AIO - Minimalist Design System
+   Style: Clean, Minimalist, Engineering-Grade, Modern Typography
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens (Light & Dark)
+   -------------------------------------------------------------------------- */
+:root {
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Surfaces & Borders */
+  --zk-surface: #ffffff;
+  --zk-surface-subtle: #f8fafc;
+  --zk-surface-hover: #f1f5f9;
+  --zk-border: #e2e8f0;
+  --zk-border-hover: #94a3b8;
+  --zk-border-subtle: #f1f5f9;
+
+  /* Text Colors */
+  --zk-text-main: #0f172a;
+  --zk-text-muted: #64748b;
+  --zk-text-subtle: #94a3b8;
+
+  /* Primary Button / Controls */
+  --zk-btn-primary-bg: #0f172a;
+  --zk-btn-primary-text: #ffffff;
+  --zk-btn-primary-hover: #1e293b;
+
+  --zk-btn-secondary-bg: #ffffff;
+  --zk-btn-secondary-text: #0f172a;
+  --zk-btn-secondary-border: #e2e8f0;
+  --zk-btn-secondary-hover: #f8fafc;
+
+  /* Restrained Status Badges */
+  --zk-badge-neutral-bg: #f1f5f9;
+  --zk-badge-neutral-text: #475569;
+  --zk-badge-neutral-border: #e2e8f0;
+
+  --zk-badge-green-bg: #f0fdf4;
+  --zk-badge-green-text: #166534;
+  --zk-badge-green-border: #bbf7d0;
+
+  --zk-badge-amber-bg: #fffbeb;
+  --zk-badge-amber-text: #92400e;
+  --zk-badge-amber-border: #fde68a;
+
+  --zk-badge-red-bg: #fef2f2;
+  --zk-badge-red-text: #991b1b;
+  --zk-badge-red-border: #fecaca;
+
+  --zk-badge-blue-bg: #f0f9ff;
+  --zk-badge-blue-text: #075985;
+  --zk-badge-blue-border: #bae6fd;
+}
+
+[data-md-color-scheme="slate"] {
+  /* Surfaces & Borders */
+  --zk-surface: #0f172a;
+  --zk-surface-subtle: #1e293b;
+  --zk-surface-hover: #334155;
+  --zk-border: #1e293b;
+  --zk-border-hover: #475569;
+  --zk-border-subtle: #1e293b;
+
+  /* Text Colors */
+  --zk-text-main: #f8fafc;
+  --zk-text-muted: #94a3b8;
+  --zk-text-subtle: #64748b;
+
+  /* Primary Button / Controls */
+  --zk-btn-primary-bg: #f8fafc;
+  --zk-btn-primary-text: #0f172a;
+  --zk-btn-primary-hover: #e2e8f0;
+
+  --zk-btn-secondary-bg: #1e293b;
+  --zk-btn-secondary-text: #f8fafc;
+  --zk-btn-secondary-border: #334155;
+  --zk-btn-secondary-hover: #273549;
+
+  /* Restrained Status Badges (Dark Mode) */
+  --zk-badge-neutral-bg: rgba(71, 85, 105, 0.2);
+  --zk-badge-neutral-text: #cbd5e1;
+  --zk-badge-neutral-border: rgba(148, 163, 184, 0.25);
+
+  --zk-badge-green-bg: rgba(22, 101, 52, 0.2);
+  --zk-badge-green-text: #86efac;
+  --zk-badge-green-border: rgba(134, 239, 172, 0.25);
+
+  --zk-badge-amber-bg: rgba(146, 64, 14, 0.2);
+  --zk-badge-amber-text: #fde68a;
+  --zk-badge-amber-border: rgba(253, 230, 138, 0.25);
+
+  --zk-badge-red-bg: rgba(153, 27, 27, 0.2);
+  --zk-badge-red-text: #fca5a5;
+  --zk-badge-red-border: rgba(252, 165, 165, 0.25);
+
+  --zk-badge-blue-bg: rgba(7, 89, 133, 0.2);
+  --zk-badge-blue-text: #7dd3fc;
+  --zk-badge-blue-border: rgba(125, 211, 252, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base Typography & Global Refinements
+   -------------------------------------------------------------------------- */
+body, .md-typeset {
+  font-family: var(--md-text-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.68;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.8rem;
+  color: var(--md-default-fg-color--heavy);
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.015em;
+  margin-top: 2.2rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--zk-border);
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.md-typeset p {
+  margin-bottom: 0.9rem;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset code {
+  font-family: var(--md-code-font);
+  font-size: 0.84em;
+  padding: 0.18em 0.4em;
+  border-radius: 4px;
+  background-color: var(--md-code-bg-color);
+  border: 1px solid var(--zk-border);
+}
+
+/* --------------------------------------------------------------------------
+   3. Status Chips & Badges (Minimalist, No Dots)
+   -------------------------------------------------------------------------- */
+.zk-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--md-code-font);
+  font-size: 0.74rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid var(--zk-badge-neutral-border);
+  background-color: var(--zk-badge-neutral-bg);
+  color: var(--zk-badge-neutral-text) !important;
+}
+
+.zk-badge-green {
+  background-color: var(--zk-badge-green-bg);
+  color: var(--zk-badge-green-text) !important;
+  border-color: var(--zk-badge-green-border);
+}
+
+.zk-badge-yellow,
+.zk-badge-amber {
+  background-color: var(--zk-badge-amber-bg);
+  color: var(--zk-badge-amber-text) !important;
+  border-color: var(--zk-badge-amber-border);
+}
+
+.zk-badge-red {
+  background-color: var(--zk-badge-red-bg);
+  color: var(--zk-badge-red-text) !important;
+  border-color: var(--zk-badge-red-border);
+}
+
+.zk-badge-blue,
+.zk-badge-purple {
+  background-color: var(--zk-badge-blue-bg);
+  color: var(--zk-badge-blue-text) !important;
+  border-color: var(--zk-badge-blue-border);
+}
+
+/* --------------------------------------------------------------------------
+   4. Minimalist Hero / Header Section
+   -------------------------------------------------------------------------- */
+.zk-hero {
+  border: 1px solid var(--zk-border);
+  background-color: var(--zk-surface-subtle);
+  border-radius: 8px;
+  padding: 1.8rem 2rem;
+  margin: 1.2rem 0 2rem 0;
+}
+
+.zk-hero-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--md-code-font);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--zk-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.zk-hero-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0 0 0.6rem 0;
+  color: var(--zk-text-main);
+}
+
+.zk-hero-subtitle {
+  font-size: 0.95rem;
+  color: var(--zk-text-muted);
+  max-width: 65ch;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.6;
+}
+
+.zk-hero-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.zk-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.48rem 0.95rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.zk-btn-primary {
+  background-color: var(--zk-btn-primary-bg);
+  color: var(--zk-btn-primary-text) !important;
+  border: 1px solid var(--zk-btn-primary-bg);
+}
+
+.zk-btn-primary:hover {
+  background-color: var(--zk-btn-primary-hover);
+  border-color: var(--zk-btn-primary-hover);
+}
+
+.zk-btn-secondary {
+  background-color: var(--zk-btn-secondary-bg);
+  color: var(--zk-btn-secondary-text) !important;
+  border: 1px solid var(--zk-btn-secondary-border);
+}
+
+.zk-btn-secondary:hover {
+  background-color: var(--zk-btn-secondary-hover);
+  border-color: var(--zk-border-hover);
+}
+
+/* --------------------------------------------------------------------------
+   5. Clean Grid Layouts & Cards
+   -------------------------------------------------------------------------- */
+.zk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 1.8rem 0;
+}
+
+.zk-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.zk-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.zk-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.zk-card {
+  background-color: var(--zk-surface);
+  border: 1px solid var(--zk-border);
+  border-radius: 6px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.zk-card:hover {
+  border-color: var(--zk-border-hover);
+  background-color: var(--zk-surface-subtle);
+}
+
+.zk-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.zk-card-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  color: var(--zk-text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zk-card-title::after {
+  content: "→";
+  font-size: 0.85rem;
+  color: var(--zk-text-subtle);
+  transition: transform 0.15s ease;
+}
+
+.zk-card:hover .zk-card-title::after {
+  transform: translateX(2px);
+  color: var(--zk-text-main);
+}
+
+.zk-card-desc {
+  font-size: 0.84rem;
+  color: var(--zk-text-muted);
+  line-height: 1.55;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.zk-card-footer {
+  margin-top: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--zk-text-muted);
+}
+
+/* Metric / Stat Cards */
+.zk-stat-card {
+  background-color: var(--zk-surface);
+  border: 1px solid var(--zk-border);
+  border-radius: 6px;
+  padding: 1rem 1.15rem;
+}
+
+.zk-stat-number {
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--zk-text-main);
+  font-family: var(--md-code-font);
+  letter-spacing: -0.03em;
+}
+
+.zk-stat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--zk-text-muted);
+  margin-top: 0.3rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Course Cross-Link Navigation Ribbons (5-Page Model)
+   -------------------------------------------------------------------------- */
+.zk-cross-link-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--zk-surface-subtle);
+  border: 1px solid var(--zk-border);
+  border-radius: 6px;
+  padding: 0.3rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.zk-cross-link-ribbon a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--zk-text-muted) !important;
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.zk-cross-link-ribbon a:hover {
+  color: var(--zk-text-main) !important;
+  background-color: var(--zk-surface);
+}
+
+.zk-cross-link-ribbon .is-active {
+  background-color: var(--zk-btn-primary-bg) !important;
+  color: var(--zk-btn-primary-text) !important;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   7. Tables UI/UX
+   -------------------------------------------------------------------------- */
+.md-typeset table:not([class]) {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--zk-border);
+  border-radius: 6px;
+  font-size: 0.86rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--zk-surface-subtle);
+  color: var(--zk-text-main);
+  font-weight: 600;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--zk-border);
+  text-align: left;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--zk-border);
+  vertical-align: middle;
+}
+
+.md-typeset table:not([class]) tr:last-child td {
+  border-bottom: none;
+}
+
+.md-typeset table:not([class]) tbody tr:hover {
+  background-color: var(--zk-surface-hover);
+}
+
+.md-typeset__table {
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+/* --------------------------------------------------------------------------
+   8. Process & Reader Path Steps
+   -------------------------------------------------------------------------- */
+.zk-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.zk-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--zk-surface);
+  border: 1px solid var(--zk-border);
+  border-radius: 6px;
+}
+
+.zk-step-num {
+  flex-shrink: 0;
+  font-family: var(--md-code-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--zk-text-muted);
+  padding: 0.15rem 0.45rem;
+  background-color: var(--zk-surface-subtle);
+  border: 1px solid var(--zk-border);
+  border-radius: 4px;
+}
+
+.zk-step-content {
+  flex-grow: 1;
+}
+
+.zk-step-title {
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.15rem;
+  color: var(--zk-text-main);
+}
+
+.zk-step-title a {
+  color: inherit !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.zk-step-desc {
+  font-size: 0.82rem;
+  color: var(--zk-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   9. Admonitions & Details
+   -------------------------------------------------------------------------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+  border-left-width: 3px;
+  box-shadow: none;
+  font-size: 0.86rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Responsive
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .zk-hero {
+    padding: 1.25rem 1.15rem;
+  }
+
+  .zk-hero-title {
+    font-size: 1.35rem;
+  }
+
+  .zk-grid {
+    grid-template-columns: 1fr;
+  }
+}
