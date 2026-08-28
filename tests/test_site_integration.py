@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 COURSES = ROOT / "content" / "jiangsu" / "courses"
 CODES = ("15043", "15044")
 EXPAND_CODES = ("15040", "00023")
-FIVE_KIND_CODES = CODES + EXPAND_CODES
+FIVE_KIND_CODES = CODES + EXPAND_CODES + ("04747",)
 PAGE_KINDS = ("index.md", "sources.md", "syllabus.md", "plan.md", "practice.md")
 START_HERE_STEPS = (
     ("考纲与范围", "syllabus.md"),
