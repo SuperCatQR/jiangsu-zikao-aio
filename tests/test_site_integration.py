@@ -97,7 +97,7 @@ def test_hub_lists_15040_and_00023_with_five_page_kinds():
     hub = COURSES / "index.md"
     text = hub.read_text(encoding="utf-8")
     assert "章节索引与学习计划已整理" in text
-    assert "教材导向学习计划已就绪" in text
+    assert "教材导向学习计划已整理" in text
     expand = _section_after(text, "## 深化课程（15040 / 00023）")
     for code in EXPAND_CODES:
         for page in PAGE_KINDS:
