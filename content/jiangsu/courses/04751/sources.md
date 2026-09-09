@@ -2,7 +2,7 @@
 
 > ponytail: 只补可核验元数据；教材/真题原件不入公开仓。
 
-[返回课程概览](index.md) ｜ [学习计划](plan.md) ｜ [考纲与范围](syllabus.md) ｜ [练习与真题](practice.md)
+[返回课程概览](index.md) ｜ [考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md)
 
 ## 来源清单
 
@@ -11,6 +11,7 @@
 | 课程概览 | 计算机网络安全 / 04751 | `index.md` | needs-review |
 | 教材计划 | 未在已入库江苏教材计划抽取件中定位到教材行 | `待补官方教材计划或授权归档索引` | missing-source |
 | 考纲 | https://www.jseea.cn/webfile/index/index_zcwj/2025-11-20/7397162260776357888.html；https://www.jseea.cn/webfile/upload/2025/06-19/14-59-1607281034810553.pdf | `ops/jiangsu/source-links.baseline.json` / `sources/jiangsu/processed/syllabus/` | official-url-ok |
+| 13017 关联 | 与 13017 二选一；不推断选择建议或替代关系 | 专业计划通知 | needs-review |
 | 真题 | 仅保留索引；不转载题文 | `practice.md` / `zikao-materials` | metadata-only |
 
 ## 核验规则
@@ -22,9 +23,11 @@
 
 ## 缺口
 
-- 教材计划元数据。
-- 真题原件/授权索引（公开仓不得转载题文）。
-- 教材实物核验。
+- 教材计划元数据（G2）。
+- 真题原件/授权索引（G4，公开仓不得转载题文）。
+- 教材实物/ISBN 核验（G3）。
+- 考纲适用考期/版本（G1）。
+- 人工校对（G5）。
 
 ## 需用户/总管提供
 
