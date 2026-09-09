@@ -84,6 +84,9 @@ completeness: metadata-only
 > 面包屑：首页 > 课程 > 04747
 
 > ⚠️ 以下内容为 AI 辅助从官方考纲 PDF 机器抽取生成，尚未经人工校对，可能存在错误。本课程含可运行代码示例，属高风险区块，发布前须逐区块人工核对、逐段编译运行代码并补全校对签名。
+
+[考纲与范围](syllabus.md) ｜ [学习计划](plan.md) ｜ [复习计划](review.md) ｜ [练习与真题](practice.md) ｜ [来源与核验](sources.md)
+
 ## 页面导航
 
 - [考纲与范围](syllabus.md)
@@ -93,6 +96,13 @@ completeness: metadata-only
 - [来源与核验](sources.md)
 
 ## 开始学习
+
+按下列顺序阅读本课页面（导向路径，不新增证据口径）：
+
+1. [考纲与范围](syllabus.md)
+2. [学习计划](plan.md)
+3. [练习与真题](practice.md)
+4. [来源与核验](sources.md)
 
 | 步骤 | 去处 | 做什么 |
 | --- | --- | --- |
