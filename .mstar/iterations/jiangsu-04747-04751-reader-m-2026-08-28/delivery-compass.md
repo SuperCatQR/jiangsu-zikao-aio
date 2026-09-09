@@ -48,7 +48,7 @@ Phase 1 review and edit work is performed directly on `iteration/jiangsu-course-
 | plan_id | Name | Status | Notes |
 |---------|------|--------|-------|
 | `04747-official-syllabus-reader-path` | 04747 Java official-syllabus chapter index and reader path | Done | P1/M; 13-row index, reader path, S-001 coverage & navigation normalization complete; QC approved (0 residuals); QA PASS; merged |
-| `04751-official-syllabus-reader-path` | 04751 network-security official-syllabus chapter index and reader path | Todo | P1/M; local gaogang-4389 extraction; 13 chapters, 10 assessed (1–10), 3 non-assessed (11–13) |
+| `04751-official-syllabus-reader-path` | 04751 network-security official-syllabus chapter index and reader path | InProgress | P1/M; local gaogang-4389 extraction; 13 chapters, 10 assessed (1–10), 3 non-assessed (11–13) |
 
 Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
