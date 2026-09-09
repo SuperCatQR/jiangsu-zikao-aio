@@ -1,8 +1,9 @@
 ---
 iteration_id: jiangsu-04747-04751-reader-m-2026-08-28
 start_date: 2026-08-28
-status: locked
-locked_at: 2026-08-28
+end_date: 2026-09-09
+status: completed
+enforcement: soft
 effort_budget: M
 iteration_base_branch: main
 spec_integration_branch: iteration/jiangsu-04747-04751-reader-m-2026-08-28
@@ -48,7 +49,7 @@ Phase 1 review and edit work is performed directly on `iteration/jiangsu-course-
 | plan_id | Name | Status | Notes |
 |---------|------|--------|-------|
 | `04747-official-syllabus-reader-path` | 04747 Java official-syllabus chapter index and reader path | Done | P1/M; 13-row index, reader path, S-001 coverage & navigation normalization complete; QC approved (0 residuals); QA PASS; merged |
-| `04751-official-syllabus-reader-path` | 04751 network-security official-syllabus chapter index and reader path | InProgress | P1/M; local gaogang-4389 extraction; 13 chapters, 10 assessed (1–10), 3 non-assessed (11–13) |
+| `04751-official-syllabus-reader-path` | 04751 network-security official-syllabus chapter index and reader path | Done | P1/M; 13-row index, 10 assessed / 3 reference-only, 6 pages aligned; QC approved (0 residuals); QA PASS; merged |
 
 Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
@@ -58,8 +59,8 @@ Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 |-----------|-------------|--------|
 | Autonomous direction lock and Prepare freeze | 2026-08-28 | completed |
 | Spec / plans locked | 2026-08-28 | completed |
-| 04747 and 04751 implementation, QC, QA | 2026-08-28 | pending |
-| Iteration close | 2026-08-28 | pending |
+| 04747 and 04751 implementation, QC, QA | 2026-08-28 | completed |
+| Iteration close | 2026-08-28 | completed |
 
 ## Acceptance Criteria
 
@@ -80,7 +81,7 @@ Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
 ## Roadmap Position
 
-- **Current iteration (planned)**: deliver the evidence-backed 04747 and 04751 reader paths described above; status becomes `delivered` only after Phase 3 close.
+- **Current iteration (delivered)**: delivered the evidence-backed 04747 and 04751 reader paths described above.
 - **Next iteration**: resolve the 13017 paired-choice reader path after its official syllabus extraction / applicability boundary is confirmed, or take 13000 only after a verified official source record or an explicitly triaged public gap; owner: content maintainer and project manager; trigger: the stated evidence boundary is confirmed.
 - **Overflow / deferred**: 13003 and 13180 remain discovery candidates until equivalent official source evidence is available; owner: content maintainer; trigger: equivalent official extraction evidence exists; they are not silently absorbed into this M budget.
 - **Final target**: every included Jiangsu course has an auditable public-source record, useful reader content, truthful lifecycle/completeness state, and a human-controlled publish gate.
@@ -127,22 +128,18 @@ Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
 | plan_id | QC decision | QA gate | Residuals | Durable summary |
 |---------|-------------|---------|-----------|-----------------|
-| `04747-official-syllabus-reader-path` | pending | mandatory | none pending | [`.mstar/plans/04747-official-syllabus-reader-path.md#review-gate-summary`](../../plans/04747-official-syllabus-reader-path.md#review-gate-summary) |
-| `04751-official-syllabus-reader-path` | pending | mandatory | none pending | [`.mstar/plans/04751-official-syllabus-reader-path.md#review-gate-summary`](../../plans/04751-official-syllabus-reader-path.md#review-gate-summary) |
+| `04747-official-syllabus-reader-path` | Approve (tri-review, S-001 resolved) | PASS | none | [`.mstar/plans/04747-official-syllabus-reader-path.md#review-gate-summary`](../../plans/04747-official-syllabus-reader-path.md#review-gate-summary) |
+| `04751-official-syllabus-reader-path` | Approve (tri-review) | PASS | none | [`.mstar/plans/04751-official-syllabus-reader-path.md#review-gate-summary`](../../plans/04751-official-syllabus-reader-path.md#review-gate-summary) |
 
 ## Compound Round Summary
 
-> Filled at iteration-close.
-
-- 结晶文档数：pending
-- 新增 `CONCEPTS.md` 条目：pending
-- 触发 compound-refresh：pending
-- package 盘点：pending（默认排除本 compass；逐篇 guides/specs/README triage）
+- 结晶文档数：0（本轮主要复用既有 02333/00898 读者路径标准规范，无新增全局架构范式）
+- 新增 `CONCEPTS.md` 条目：无
+- 触发 compound-refresh：否
+- package 盘点：`guides/direction-lock.md`, `specs/iteration-scope.md`, `README.md` 均为当前迭代专属范围界定，保留在迭代包内，不提升进全局 `{KNOWLEDGE_DIR}/`。
 
 ## Iteration Retrospective (minimal)
 
-> Filled at iteration-close.
-
-- 做得好的：pending
-- 可改进的：pending
-- 下迭代建议：pending
+- 做得好的：严格遵守仅发布考纲章名索引、保留非考核限定语、不复制代码和攻击实操的原则；两门课程（04747、04751）均实现 6 页完整对称导航与 4 步标准导读；全局门禁、106 项测试与 MkDocs 构建均全绿通过。
+- 可改进的：前期通用站点集成测试未覆盖 04747 导致格式差异被后置暴露；后续可在 plan 中提早包含集成测试断言范围。
+- 下迭代建议：优先跟进 13017（计算机网络与信息安全）官方考纲抽取与 04751 之间的选考关系，或推进 13000。
