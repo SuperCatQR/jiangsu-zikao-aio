@@ -74,6 +74,7 @@ def _write_major(
     name: str,
     level: str = "专升本",
     course_table: bool = False,
+    extra_page: str = "",
     plan_rows: str | None = None,
 ) -> Path:
     major = root / "content" / "jiangsu" / "majors" / slug
@@ -90,7 +91,7 @@ def _write_major(
             "| ---: | --- | --- | ---: | --- | --- | --- |\n"
             "| 1 | 04747 | Java 语言程序设计（一） | 3 | 笔试 | [04747](../../courses/04747/index.md) | P1 |\n"
         )
-    (major / "index.md").write_text(body, encoding="utf-8")
+    (major / "index.md").write_text(body + extra_page, encoding="utf-8")
     if plan_rows is not None:
         (major / "sources" / "plan.raw.txt").write_text(plan_rows, encoding="utf-8")
     return major
@@ -490,6 +491,69 @@ def test_catalog_falls_back_to_major_source(tmp_path: Path):
     course = next(c for c in cc.build_catalog(tmp_path)["courses"] if c["code"] == "13013")
     assert course["sources"][0]["path"].endswith("major-source/25/document.extracted.md")
     assert course["sources"][0]["locator"] == "L6"
+
+
+def test_zero_row_tier_with_candidates_is_not_silently_skipped(tmp_path: Path):
+    """G-001：某档位「0 解析行但有候选行」时，不得静默回落而丢掉它的 `dropped_rows`。
+
+    档位命中判据是**产出候选行**（解析行**或**丢弃行），因此回落只发生在「本档位无候选行」时——
+    无候选即无可丢弃，回落不可能丢行；有候选的档位成为被选中档位，`dropped_rows` 只覆盖它。
+    把命中判据改回「解析行非空」（`if table_rows:` / `if plan_rows:`），tier-1 的候选行就会凭空
+    消失、目录改用它本不该用的下一档。
+    """
+    # 档位 1（现行课程表）0 解析行 + 1 候选行；档位 2（计划定宽表）可解析 → 不得改用档位 2
+    root = tmp_path / "zero-row-index-tier"
+    major = _write_major(
+        root,
+        "080901-demo-a",
+        code="080901",
+        name="示例专业甲",
+        extra_page=(
+            "\n## 现行课程清单\n\n"
+            "| 序号 | 课程代码 | 课程名称 | 学分 | 考试方式 | 课程页 | 建设优先级 |\n"
+            "| ---: | --- | --- | ---: | --- | --- | --- |\n"
+            "| 1 | 04747 |\n"
+        ),
+        plan_rows=" 1    03708   中国近现代史纲要                 2   笔试\n",
+    )
+    broken = next(
+        number
+        for number, line in enumerate(_physical_lines(major / "index.md"), start=1)
+        if line.startswith("| 1 | 04747 |")
+    )
+    selected = cc.build_majors(root)["majors"][0]
+    assert selected["course_table_source"] == "index.md", "有候选行的档位即被选中档位，不回落"
+    assert selected["parsed_rows"] == 0
+    assert selected["course_codes"] == [], "档位 2 的行不得冒充被选中档位的课程表"
+    assert len(selected["dropped_rows"]) == 1
+    assert set(selected["dropped_rows"][0]) == {"locator", "raw", "reason"}
+    assert selected["dropped_rows"][0]["locator"] == f"L{broken}"
+    assert selected["dropped_rows"][0]["raw"] == "| 1 | 04747 |"
+    assert selected["dropped_rows"][0]["reason"]
+
+    # 档位 2（计划定宽表）0 解析行 + 1 候选行；档位 3（抽取件）可解析 → 同样不得改用档位 3
+    root = tmp_path / "zero-row-plan-tier"
+    _write_major(
+        root,
+        "080703-demo-b",
+        code="080703",
+        name="示例专业乙",
+        plan_rows="99999   只有课码和说明文字的候选行\n",
+    )
+    doc = root / "sources" / "jiangsu" / "processed" / "major-source" / "25" / "document.extracted.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "# 25.示例专业乙（专升本）考试计划\n\n（专业代码：080703）\n\n"
+        " 1    03708   中国近现代史纲要                 2   笔试\n",
+        encoding="utf-8",
+    )
+    selected = cc.build_majors(root)["majors"][0]
+    assert selected["course_table_source"] == "plan.raw.txt"
+    assert selected["parsed_rows"] == 0
+    assert selected["course_codes"] == [], "档位 3 的行不得冒充被选中档位的课程表"
+    assert [row["locator"] for row in selected["dropped_rows"]] == ["L1"]
+    assert selected["dropped_rows"][0]["raw"] == "99999   只有课码和说明文字的候选行"
+    assert selected["dropped_rows"][0]["reason"]
 
 
 def test_catalog_is_byte_stable(tmp_path: Path):

@@ -20,7 +20,9 @@
 非课程文本（`学分合计 73 学分`、表头、说明段、页码、6 位专业代码）不满足入场判据，不会
 产出课程行；**行首有课码却读不出唯一考试方式**的候选行写进 `majors[].dropped_rows[]`
 （`{locator, raw, reason}`），不静默丢弃。`majors[].parsed_rows` = 该专业来源区的解析行数，
-与候选行数相等即覆盖完整。
+与候选行数相等即覆盖完整。**`dropped_rows[]` 只覆盖 `course_table_source` 命中的那一档**
+（不合并其它档位）：档位链以「产出候选行」（解析行**或**丢弃行）为命中判据，只有在本档位既无
+解析行也无候选行时才回落——无候选即无可丢弃，因此回落不会丢行（T1 复审 G-001）。
 
 **`locator` 约定**：`L<n>` 是 `Path.read_text(encoding="utf-8").split("\\n")` 口径的 1-based
 **物理行号**（与 `sed -n '<n>p'` / `grep -n` 显示的行号一致）；PDF 分页产生的 `\\x0c` 落在
@@ -258,13 +260,15 @@ def _major_sources(root: Path, major_dir: Path) -> tuple[list[_Source], dict]:
     dropped: list[dict] = []
     path = f"{rel}/index.md"
     source = None
+    # 档位命中判据 = 产出候选行（解析行**或**丢弃行）：只要本档位有候选行就被选中，回落只发生在本
+    # 档位无候选行时——无候选即无可丢弃，回落不会丢掉上一档的 `dropped_rows`（T1 复审 G-001）。
     table_rows, table_dropped = _table_rows(page_text)
-    if table_rows:
+    if table_rows or table_dropped:
         rows, dropped, source = table_rows, table_dropped, "index.md"
     else:
         plan = major_dir / "sources" / "plan.raw.txt"
         plan_rows, plan_dropped = parse_plan_rows(plan) if plan.is_file() else ([], [])
-        if plan_rows:
+        if plan_rows or plan_dropped:
             rows, dropped = plan_rows, plan_dropped
             path, source = f"{rel}/sources/plan.raw.txt", "plan.raw.txt"
         elif (extracted := _major_source_doc(root, code)) is not None:
