@@ -7,8 +7,6 @@ exam_method: 笔试
 status: machine_ready
 version: v2.1
 publish_date: "2026-06-30"
-route: /courses/00023/
-canonical: /courses/00023/
 priority: P0
 source_level: textbook_outline_processed
 migration_status: v2

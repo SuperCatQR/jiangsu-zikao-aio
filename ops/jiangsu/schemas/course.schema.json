@@ -7,7 +7,11 @@
     "required": ["lifecycle", "completeness"],
     "lifecycle_values": ["draft", "machine_ready", "in_review", "publishable"],
     "completeness_values": ["complete", "metadata-only", "missing-source", "needs-review"],
-    "recommended": ["course_code", "course_name", "reviewed", "reviewer"]
+    "recommended": ["course_code", "course_name", "reviewed", "reviewer"],
+    "disallowed": {
+      "route": "MkDocs derives the page URL from site_url plus the file path; the archived SSG's routing input must not come back",
+      "canonical": "MkDocs emits <link rel=canonical> from site_url plus the file path; a hand-written copy only drifts"
+    }
   },
   "required_table_fields": ["省份", "课程代码", "课程名称"],
   "recommended_table_fields": ["资料状态", "数据状态", "最后核验日期"],

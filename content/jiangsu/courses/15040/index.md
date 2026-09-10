@@ -7,8 +7,6 @@ exam_method: 笔试
 status: machine_ready
 version: v0.3
 publish_date: null
-route: /courses/15040/
-canonical: /courses/15040/
 priority: P0
 source_level: official_syllabus_processed
 migration_status: v2
