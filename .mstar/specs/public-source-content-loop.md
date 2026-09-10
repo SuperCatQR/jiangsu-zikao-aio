@@ -9,6 +9,8 @@ owner: project-manager
 
 This document is the **locked** long-term spec for this iteration. Iteration-local notes remain in `.mstar/iterations/jiangsu-public-source-loop-2026-08-24/`.
 
+> **Partially superseded (2026-09-11).** [`ai-course-prep-pipeline.md`](ai-course-prep-pipeline.md) partially supersedes this spec: it keeps this document's evidence discipline, source-record fields, no-copied-text rule, and `machine_ready` ceiling in force, while replacing the content-production path, the § Roadmap batch plan, and the 15043/15044 coverage limit, and adding the AI 备考层 with the `evidence` / `ai-content` gate layers. Where the two conflict, the newer spec governs. The locked body below is unchanged.
+
 ## Intent
 
 Build a repeatable public-source workflow for Jiangsu self-study course pages. The first delivery slice covers P0 courses **15043 中国近现代史纲要** and **15044 马克思主义基本原理** and keeps every claim tied to an official public source or an explicit unresolved gap.
