@@ -6,10 +6,26 @@
 2. `content/jiangsu/majors/<slug>/sources/plan.raw.txt` 官方计划定宽表
 3. `sources/jiangsu/processed/major-source/<NN>/document.extracted.md` 机器抽取件
 
-定宽表的真实版式（见 `080901/sources/plan.raw.txt`）：序号可缺失、可独占一行；
-课程名称单元格折行时被抽到相邻行（`00899` + 下一行 `（实践）`、`12656` 上下两行
-`毛泽东思想…` / `理论体系概论`），因此折行行的名称按**紧邻上下两行同列片段**拼回，
-无片段时留空（`null`），不猜。
+**行覆盖（入场判据 + 形态）**：某行只要**行首**（序号单元格之后）出现**边界感知**的 5 位
+课码 token 就是候选课程行——不要求整行匹配某一种形态；随后按结构读出行内**唯一**的考试方式
+单元格，其左侧若以整数单元格收尾即为学分，余下为课名。必须覆盖的真实形态：
+
+1. `课码 + 课名 + 学分 + 考试方式`
+2. 同上但带尾随 `备注` 单元格（41 个专业页有此形态）
+3. `课码 + 课名 + 考试方式`（毕业环节等来源确实未给学分的行 → `credits: null`，不猜）
+4. 课名单元格为空、课名折到相邻行（`00899` + 下一行 `（实践）`、`12656` 上下两行
+   `毛泽东思想…` / `理论体系概论`），按**紧邻上下两行同列片段**拼回
+5. `课码 + 考试方式` 极简形态（`14875` / `14976`，学分单元格也折行 → `credits: null`）
+
+非课程文本（`学分合计 73 学分`、表头、说明段、页码、6 位专业代码）不满足入场判据，不会
+产出课程行；**行首有课码却读不出唯一考试方式**的候选行写进 `majors[].dropped_rows[]`
+（`{locator, raw, reason}`），不静默丢弃。`majors[].parsed_rows` = 该专业来源区的解析行数，
+与候选行数相等即覆盖完整。
+
+**`locator` 约定**：`L<n>` 是 `Path.read_text(encoding="utf-8").split("\\n")` 口径的 1-based
+**物理行号**（与 `sed -n '<n>p'` / `grep -n` 显示的行号一致）；PDF 分页产生的 `\\x0c` 落在
+行内，计入其所在行。注意 `str.splitlines()` 会把 `\\x0c` 当换行、凭空多出行来，**不得**用它
+算行号（T1 评审 F-002）。
 
 同名课（如旧代码 `03708 中国近现代史纲要` 与现行代码 `15043 中国近现代史纲要`）
 按**来源档位**定序：现行课程表来源的课优先于旧计划定宽表来源的课；档位仍相同才报
@@ -39,21 +55,27 @@ COURSE_TABLE_SOURCES = ("index.md", "plan.raw.txt", "major-source")
 CATALOG_DIR = Path("sources") / "jiangsu" / "catalog"
 CATALOG_FILES = ("courses.json", "majors.json")
 
-# 定宽课程行：`<序号> <课码> <课名> <学分> <考试方式>`，序号可缺失或独占一行
-_NAMED_ROW_RE = re.compile(rf"^\s*\d*\s*(\d{{5}})\s+(\S.*?)\s+(\d+)\s+({'|'.join(EXAM_METHODS)})\s*$")
-_CODE_CREDITS_ROW_RE = re.compile(rf"^\s*\d*\s*(\d{{5}})\s+(\d+)\s+({'|'.join(EXAM_METHODS)})\s*$")
-_CODE_ROW_RE = re.compile(rf"^\s*\d*\s*(\d{{5}})\s+({'|'.join(EXAM_METHODS)})\s*$")
+# 候选课程行入场判据：行首（序号单元格之后）是**边界感知**的 5 位课码 token。
+# `080901` / `X2080901` 的子串（`08090` / `20809`）与 6 位专业代码都不算课码。
+_ROW_HEAD_RE = re.compile(r"^\s*(?:\d{1,3}\s+)?(\d{5})(?=\s|$)")
+# 行内考试方式单元格：空白分隔的独立 token（课程名里的 `（实践）` 不算）
+_METHOD_RE = re.compile(rf"(?:(?<=\s)|^)({'|'.join(EXAM_METHODS)})(?=\s|$)")
+# 考试方式左侧的「课名 + 学分」：左侧以整数单元格收尾时该整数即学分
+_NAME_CREDITS_RE = re.compile(r"^(?P<name>.*?)\s*(?P<credits>\d+)$")
 # `index.md` 现行课程表行：`| 序号 | 课程代码 | 课程名称 | 学分 | 考试方式 | … |`
 _TABLE_ROW_RE = re.compile(
     r"^\|\s*\d+\s*\|\s*(\d{5})\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*(笔试|实践|机考)\s*\|"
 )
+# 候选现行课程表行：列位不足时必须登记为丢弃行，不得静默跳过
+_TABLE_CANDIDATE_RE = re.compile(r"^\|\s*\d+\s*\|\s*\d{5}\s*\|")
 _SEQUENCE_RE = re.compile(r"^\s*\d+\s*$")
 _CREDIT_TAIL_RE = re.compile(r"\s+(?:不计学分|不计|学分)$")
-# 边界感知的 5 位课码：`080901` / `X2080901` 的子串（`08090` / `20809`）不算
+# 边界感知的 5 位课码（`080901` / `X2080901` 的子串 `08090` / `20809` 不算）：折行片段识别与课码查询复用
 _CODE_TOKEN_RE = re.compile(r"(?<!\d)\d{5}(?!\d)")
 _HALFWIDTH_PARENS = str.maketrans({"（": "(", "）": ")"})
 _MAJOR_SOURCE_CODE_RE = r"专业代码[：:]\s*{}(?!\d)"
 _UNKNOWN_PRIORITY = len(COURSE_TABLE_SOURCES) + 1
+_DROPPED_NO_METHOD = "行内未找到唯一的考试方式单元格"
 
 
 @dataclass(frozen=True)
@@ -102,9 +124,91 @@ def aliases_for(name: str | None) -> list[str]:
     return sorted(variant for variant in variants if variant and variant != name)
 
 
-def scan_course_codes(text: str) -> list[str]:
-    """边界感知扫描 5 位课码（升序去重）。"""
-    return sorted(set(_CODE_TOKEN_RE.findall(text)))
+def _row(code: str, name: str | None, credits: int | None, exam_method: str, locator: str) -> dict:
+    return {
+        "code": code,
+        "name": name,
+        "credits": credits,
+        "exam_method": exam_method,
+        "locator": locator,
+    }
+
+
+def _dropped(line: str, locator: str, reason: str) -> dict:
+    return {"locator": locator, "raw": line.strip(), "reason": reason}
+
+
+def _split_name_credits(left: str) -> tuple[str | None, int | None]:
+    """考试方式单元格左侧内容 →（课名, 学分）；以整数单元格收尾时该整数是学分。"""
+    matched = _NAME_CREDITS_RE.match(left)
+    if matched is None:
+        return _fold_space(left) or None, None
+    return _fold_space(matched.group("name")) or None, int(matched.group("credits"))
+
+
+def _parse_row_line(line: str) -> tuple[dict | None, str]:
+    """单行 →（课程行不含 locator, 丢弃原因）；非候选行返回 `(None, "")`。"""
+    head = _ROW_HEAD_RE.match(line)
+    if head is None:
+        return None, ""
+    rest = line[head.end():]
+    methods = list(_METHOD_RE.finditer(rest))
+    if len(methods) != 1:
+        return None, _DROPPED_NO_METHOD
+    method = methods[0]
+    name, credits = _split_name_credits(rest[: method.start()].strip())
+    return _row(head.group(1), name, credits, method.group(1), ""), ""
+
+
+def parse_plan_rows(path: Path) -> tuple[list[dict], list[dict]]:
+    """解析官方计划定宽表 / 机器抽取件 →（课程行, 被丢弃的候选行）。
+
+    行号与折行片段都按**物理行**（`split("\\n")`，`\\x0c` 计入所在行）计算，与 `sed -n '<n>p'`
+    显示的行号一致。课名为空的行按紧邻上下两行的同列片段拼回。
+    """
+    lines = path.read_text(encoding="utf-8").split("\n")
+    rows: list[dict] = []
+    dropped: list[dict] = []
+    for index, line in enumerate(lines):
+        row, reason = _parse_row_line(line)
+        locator = f"L{index + 1}"
+        if row is None:
+            if reason:
+                dropped.append(_dropped(line, locator, reason))
+            continue
+        if row["name"] is None:
+            row["name"] = _wrapped_name(lines, index)
+        row["locator"] = locator
+        rows.append(row)
+    return rows, dropped
+
+
+def _table_rows(page_text: str) -> tuple[list[dict], list[dict]]:
+    """现行课程表行（`| 序号 | 课程代码 | 课程名称 | 学分 | 考试方式 | … |`）→（课程行, 丢弃行）。"""
+    rows: list[dict] = []
+    dropped: list[dict] = []
+    for index, line in enumerate(page_text.split("\n"), start=1):
+        matched = _TABLE_ROW_RE.match(line)
+        if matched is None:
+            if _expected_table_row(line):
+                dropped.append(_dropped(line, f"L{index}", "现行课程表行列位不足"))
+            continue
+        credits = matched.group(3).strip()
+        rows.append(
+            _row(
+                matched.group(1),
+                _fold_space(matched.group(2)) or None,
+                int(credits) if credits.isdigit() else None,
+                matched.group(4),
+                f"L{index}",
+            )
+        )
+    return rows, dropped
+
+
+def _expected_table_row(line: str) -> bool:
+    """候选现行课程表行：`| 序号 | 5 位课码 | …`（列位不足时须登记为丢弃行）。"""
+    return _TABLE_CANDIDATE_RE.match(line) is not None
 
 
 def _fragment(line: str) -> str:
@@ -129,58 +233,6 @@ def _wrapped_name(lines: list[str], index: int) -> str | None:
     return _fold_space("".join(parts)) or None
 
 
-def _row(code: str, name: str | None, credits: int | None, exam_method: str, locator: str) -> dict:
-    return {
-        "code": code,
-        "name": name,
-        "credits": credits,
-        "exam_method": exam_method,
-        "locator": locator,
-    }
-
-
-def parse_plan_rows(path: Path) -> list[dict]:
-    """解析官方计划定宽表 / 机器抽取件（含序号独占一行与名称折行版式）。"""
-    lines = path.read_text(encoding="utf-8").splitlines()
-    rows: list[dict] = []
-    for index, line in enumerate(lines):
-        named = _NAMED_ROW_RE.match(line)
-        if named:
-            rows.append(_row(named.group(1), _fold_space(named.group(2)), int(named.group(3)), named.group(4), f"L{index + 1}"))
-            continue
-        code_credits = _CODE_CREDITS_ROW_RE.match(line)
-        matched = code_credits or _CODE_ROW_RE.match(line)
-        if matched is None:
-            continue
-        if code_credits:
-            credits: int | None = int(code_credits.group(2))
-            exam_method = code_credits.group(3)
-        else:
-            credits, exam_method = None, matched.group(2)
-        rows.append(_row(matched.group(1), _wrapped_name(lines, index), credits, exam_method, f"L{index + 1}"))
-    return rows
-
-
-def _table_rows(page_text: str) -> list[dict]:
-    """现行课程表行（`| 序号 | 课程代码 | 课程名称 | 学分 | 考试方式 | … |`）。"""
-    rows = []
-    for index, line in enumerate(page_text.splitlines(), start=1):
-        matched = _TABLE_ROW_RE.match(line)
-        if matched is None:
-            continue
-        credits = matched.group(3).strip()
-        rows.append(
-            _row(
-                matched.group(1),
-                _fold_space(matched.group(2)) or None,
-                int(credits) if credits.isdigit() else None,
-                matched.group(4),
-                f"L{index}",
-            )
-        )
-    return rows
-
-
 def _major_source_doc(root: Path, code: str) -> Path | None:
     """第三档来源：正文声明该专业代码的机器抽取件。"""
     base = root / "sources" / "jiangsu" / "processed" / "major-source"
@@ -203,16 +255,21 @@ def _major_sources(root: Path, major_dir: Path) -> tuple[list[_Source], dict]:
     doc_id = f"major-plan:{code}"
 
     rows: list[dict] = []
+    dropped: list[dict] = []
     path = f"{rel}/index.md"
     source = None
-    plan = major_dir / "sources" / "plan.raw.txt"
-    extracted = None
-    if table := _table_rows(page_text):
-        rows, source = table, "index.md"
-    elif plan.is_file() and (rows := parse_plan_rows(plan)):
-        path, source = f"{rel}/sources/plan.raw.txt", "plan.raw.txt"
-    elif (extracted := _major_source_doc(root, code)) is not None and (rows := parse_plan_rows(extracted)):
-        path, source = extracted.relative_to(root).as_posix(), "major-source"
+    table_rows, table_dropped = _table_rows(page_text)
+    if table_rows:
+        rows, dropped, source = table_rows, table_dropped, "index.md"
+    else:
+        plan = major_dir / "sources" / "plan.raw.txt"
+        plan_rows, plan_dropped = parse_plan_rows(plan) if plan.is_file() else ([], [])
+        if plan_rows:
+            rows, dropped = plan_rows, plan_dropped
+            path, source = f"{rel}/sources/plan.raw.txt", "plan.raw.txt"
+        elif (extracted := _major_source_doc(root, code)) is not None:
+            rows, dropped = parse_plan_rows(extracted)
+            path, source = extracted.relative_to(root).as_posix(), "major-source"
 
     major = {
         "code": code,
@@ -221,6 +278,8 @@ def _major_sources(root: Path, major_dir: Path) -> tuple[list[_Source], dict]:
         "level": (meta.get("层次") or "").strip() or None,
         "page": f"{rel}/index.md",
         "course_table_source": source,
+        "parsed_rows": len(rows),
+        "dropped_rows": dropped,
         "course_codes": sorted({row["code"] for row in rows}),
         "practice_codes": sorted({row["code"] for row in rows if row["exam_method"] == "实践"}),
     }

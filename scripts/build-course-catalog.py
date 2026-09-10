@@ -34,8 +34,13 @@ def main(argv: list[str] | None = None) -> int:
 
     paths, (catalog, majors) = write_catalog(ROOT)
     conflicts = sum(1 for course in catalog["courses"] if course["conflicts"])
+    parsed = sum(major["parsed_rows"] for major in majors["majors"])
+    dropped = [row for major in majors["majors"] for row in major["dropped_rows"]]
     print(f"courses: {len(catalog['courses'])} unique codes, {conflicts} with conflicts")
     print(f"majors: {len(majors['majors'])}")
+    print(f"rows: {parsed} parsed, {len(dropped)} dropped")
+    for row in dropped:
+        print(f"  dropped {row['locator']}: {row['reason']} — {row['raw']}")
     for path in paths:
         print(f"wrote {path.relative_to(ROOT).as_posix()}")
     return 0

@@ -9,6 +9,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/020301K-finance/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00067",
         "00076",
@@ -25,11 +27,13 @@
         "14318",
         "14653",
         "14654",
-        "14658"
+        "14658",
+        "14817"
       ],
       "practice_codes": [
         "14318",
-        "14654"
+        "14654",
+        "14817"
       ]
     },
     {
@@ -39,6 +43,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/020401-international-economics-and-trade/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00091",
         "00098",
@@ -49,6 +55,7 @@
         "04184",
         "07750",
         "07788",
+        "11544",
         "13000",
         "13134",
         "13135",
@@ -57,6 +64,7 @@
         "14676"
       ],
       "practice_codes": [
+        "11544",
         "14676"
       ]
     },
@@ -67,6 +75,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/030101K-law/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00220",
         "00226",
@@ -83,9 +93,12 @@
         "13749",
         "13969",
         "14081",
-        "14392"
+        "14392",
+        "14850"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "14850"
+      ]
     },
     {
       "code": "040106",
@@ -94,6 +107,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/040106-preschool-education/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 22,
+      "dropped_rows": [],
       "course_codes": [
         "00398",
         "00401",
@@ -101,6 +116,7 @@
         "03670",
         "03708",
         "03709",
+        "10224",
         "10979",
         "11190",
         "11191",
@@ -118,6 +134,7 @@
         "14970"
       ],
       "practice_codes": [
+        "10224",
         "13148",
         "13214",
         "14604",
@@ -131,6 +148,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/040107-primary-education/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 19,
+      "dropped_rows": [],
       "course_codes": [
         "00466",
         "03329",
@@ -139,6 +158,7 @@
         "03709",
         "08328",
         "08329",
+        "10242",
         "13000",
         "14444",
         "14445",
@@ -152,6 +172,7 @@
         "14970"
       ],
       "practice_codes": [
+        "10242",
         "14446",
         "14450",
         "14463"
@@ -164,6 +185,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/050101-chinese-language-literature/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00037",
         "00536",
@@ -172,14 +195,20 @@
         "00539",
         "00540",
         "00541",
+        "00814",
         "03708",
         "03709",
+        "03954",
         "07827",
+        "10196",
+        "10398",
         "13000",
         "14025",
         "14970"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "10196"
+      ]
     },
     {
       "code": "050107T",
@@ -188,6 +217,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/050107T-secretarial-science/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00107",
         "00523",
@@ -196,15 +227,20 @@
         "00526",
         "00527",
         "01513",
+        "01515",
         "03708",
         "03709",
         "03954",
+        "05005",
         "05006",
         "05007",
+        "10223",
         "13000",
         "14970"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "10223"
+      ]
     },
     {
       "code": "050201",
@@ -213,6 +249,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/050201-english/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 15,
+      "dropped_rows": [],
       "course_codes": [
         "00600",
         "00604",
@@ -223,6 +261,7 @@
         "03708",
         "03709",
         "08680",
+        "10233",
         "13129",
         "13161",
         "13162",
@@ -230,6 +269,7 @@
         "13952"
       ],
       "practice_codes": [
+        "10233",
         "13161"
       ]
     },
@@ -240,9 +280,12 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/050262-business-english/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00321",
         "00839",
+        "00840",
         "00841",
         "00891",
         "00952",
@@ -250,6 +293,7 @@
         "03709",
         "07969",
         "08680",
+        "11677",
         "13605",
         "13606",
         "13607",
@@ -258,6 +302,7 @@
       ],
       "practice_codes": [
         "07969",
+        "11677",
         "13606"
       ]
     },
@@ -268,6 +313,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/050301-journalism/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00182",
         "00648",
@@ -279,13 +326,16 @@
         "06381",
         "08252",
         "08257",
+        "10209",
         "13000",
         "14013",
         "14237",
         "14475",
         "14970"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "10209"
+      ]
     },
     {
       "code": "050303",
@@ -294,6 +344,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/050303-advertising/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 15,
+      "dropped_rows": [],
       "course_codes": [
         "00034",
         "00037",
@@ -303,6 +355,7 @@
         "03708",
         "03709",
         "08257",
+        "10318",
         "11009",
         "13000",
         "13690",
@@ -310,7 +363,9 @@
         "14226",
         "14237"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "10318"
+      ]
     },
     {
       "code": "080202",
@@ -319,6 +374,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/080202-mechanical-design-manufacturing-and-automation/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 21,
+      "dropped_rows": [],
       "course_codes": [
         "01928",
         "01929",
@@ -360,6 +417,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/080208-automotive-service-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 21,
+      "dropped_rows": [],
       "course_codes": [
         "00144",
         "02187",
@@ -380,14 +439,16 @@
         "11095",
         "11096",
         "13000",
-        "13174"
+        "13174",
+        "30039"
       ],
       "practice_codes": [
         "02188",
         "04448",
         "04913",
         "08571",
-        "11096"
+        "11096",
+        "30039"
       ]
     },
     {
@@ -397,6 +458,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/080703-communication-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 18,
+      "dropped_rows": [],
       "course_codes": [
         "00023",
         "02323",
@@ -414,12 +477,14 @@
         "13000",
         "13013",
         "13014",
-        "14311"
+        "14311",
+        "14974"
       ],
       "practice_codes": [
         "02357",
         "02374",
-        "13014"
+        "13014",
+        "14974"
       ]
     },
     {
@@ -429,6 +494,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
       "course_table_source": "index.md",
+      "parsed_rows": 23,
+      "dropped_rows": [],
       "course_codes": [
         "00023",
         "00898",
@@ -471,6 +538,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/080903-network-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 21,
+      "dropped_rows": [],
       "course_codes": [
         "00023",
         "02324",
@@ -491,7 +560,8 @@
         "14341",
         "14342",
         "14352",
-        "14353"
+        "14353",
+        "14977"
       ],
       "practice_codes": [
         "04736",
@@ -499,7 +569,8 @@
         "04748",
         "13004",
         "14342",
-        "14353"
+        "14353",
+        "14977"
       ]
     },
     {
@@ -509,6 +580,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/080905-internet-of-things-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00023",
         "03708",
@@ -525,12 +598,14 @@
         "13958",
         "14255",
         "14382",
-        "14383"
+        "14383",
+        "14989"
       ],
       "practice_codes": [
         "09121",
         "12574",
-        "12579"
+        "12579",
+        "14989"
       ]
     },
     {
@@ -540,6 +615,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/081001-civil-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 24,
+      "dropped_rows": [],
       "course_codes": [
         "00420",
         "00421",
@@ -555,20 +632,26 @@
         "03941",
         "10993",
         "11168",
+        "11169",
         "13000",
         "13188",
+        "13594",
         "13648",
         "13649",
         "14322",
-        "14323"
+        "14323",
+        "14734",
+        "18914"
       ],
       "practice_codes": [
         "00421",
         "02161",
         "02441",
         "02443",
+        "11169",
         "13649",
-        "14323"
+        "14323",
+        "18914"
       ]
     },
     {
@@ -578,6 +661,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/081301-chemical-engineering-and-technology/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 18,
+      "dropped_rows": [],
       "course_codes": [
         "02485",
         "02487",
@@ -591,6 +676,7 @@
         "06118",
         "09393",
         "11021",
+        "11535",
         "13000",
         "13174",
         "13734",
@@ -599,6 +685,7 @@
       ],
       "practice_codes": [
         "11021",
+        "11535",
         "13735",
         "14730"
       ]
@@ -610,15 +697,20 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/082502-environmental-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 22,
+      "dropped_rows": [],
       "course_codes": [
         "02160",
         "02161",
         "02480",
         "03708",
         "03709",
+        "04624",
         "06610",
         "08291",
         "08292",
+        "08295",
+        "10359",
         "13000",
         "13422",
         "13423",
@@ -634,6 +726,7 @@
       "practice_codes": [
         "02161",
         "08292",
+        "10359",
         "13423",
         "14275",
         "14276"
@@ -646,6 +739,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/082701-food-science-and-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "02520",
         "03069",
@@ -659,13 +754,15 @@
         "04175",
         "04991",
         "04996",
+        "10363",
         "13000",
         "14204",
         "14591"
       ],
       "practice_codes": [
         "03263",
-        "03278"
+        "03278",
+        "10363"
       ]
     },
     {
@@ -675,6 +772,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/083102K-fire-protection-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 24,
+      "dropped_rows": [],
       "course_codes": [
         "03708",
         "03709",
@@ -685,12 +784,17 @@
         "12412",
         "12414",
         "12415",
+        "12418",
         "13000",
         "13226",
         "13227",
         "13228",
         "13229",
+        "13843",
+        "13959",
         "14111",
+        "14136",
+        "14427",
         "14428",
         "14429",
         "14431",
@@ -700,9 +804,14 @@
         "12410",
         "12412",
         "12415",
+        "12418",
         "13227",
         "13229",
+        "13843",
+        "13959",
         "14111",
+        "14136",
+        "14427",
         "14429",
         "14431",
         "14441"
@@ -715,6 +824,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/090401-animal-medicine/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 22,
+      "dropped_rows": [],
       "course_codes": [
         "02678",
         "02765",
@@ -724,23 +835,28 @@
         "02784",
         "02787",
         "02788",
+        "02795",
         "03708",
         "03709",
+        "06668",
         "07410",
         "07411",
         "07557",
         "13000",
+        "14241",
         "14243",
         "14244",
         "14247",
-        "14248"
+        "14248",
+        "14781"
       ],
       "practice_codes": [
         "02766",
         "02784",
         "07411",
         "14244",
-        "14248"
+        "14248",
+        "14781"
       ]
     },
     {
@@ -750,12 +866,17 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/090502-landscape-architecture/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 24,
+      "dropped_rows": [],
       "course_codes": [
+        "01570",
         "01572",
         "03708",
         "03709",
         "04041",
         "04042",
+        "04045",
+        "04046",
         "05602",
         "05604",
         "06631",
@@ -764,7 +885,9 @@
         "07427",
         "07894",
         "07899",
+        "10387",
         "11216",
+        "11217",
         "13000",
         "14610",
         "14611",
@@ -773,8 +896,11 @@
       ],
       "practice_codes": [
         "04042",
+        "04046",
         "05602",
         "05604",
+        "10387",
+        "11217",
         "14611",
         "14617"
       ]
@@ -786,12 +912,15 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/100701-pharmacy/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 18,
+      "dropped_rows": [],
       "course_codes": [
         "02087",
         "03708",
         "03709",
         "05524",
         "07950",
+        "10394",
         "13000",
         "14380",
         "14536",
@@ -806,6 +935,7 @@
         "14593"
       ],
       "practice_codes": [
+        "10394",
         "14537",
         "14541",
         "14547",
@@ -819,6 +949,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/100801-chinese-materia-medica/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 20,
+      "dropped_rows": [],
       "course_codes": [
         "02895",
         "03044",
@@ -830,6 +962,7 @@
         "05078",
         "05079",
         "05081",
+        "10254",
         "11252",
         "13000",
         "13558",
@@ -843,6 +976,7 @@
       "practice_codes": [
         "03045",
         "05078",
+        "10254",
         "11252",
         "13559",
         "14541",
@@ -856,13 +990,19 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/101101-nursing/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "03005",
+        "03006",
         "03007",
         "03008",
         "03201",
+        "03700",
         "03708",
         "03709",
+        "04435",
+        "10225",
         "13000",
         "13198",
         "13203",
@@ -872,6 +1012,7 @@
         "13207"
       ],
       "practice_codes": [
+        "10225",
         "13205",
         "13207"
       ]
@@ -883,6 +1024,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120102-information-management-and-information-systems/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 19,
+      "dropped_rows": [],
       "course_codes": [
         "00023",
         "02115",
@@ -901,13 +1044,15 @@
         "13479",
         "14147",
         "14253",
-        "14254"
+        "14254",
+        "14789"
       ],
       "practice_codes": [
         "02135",
         "03345",
         "13014",
-        "14254"
+        "14254",
+        "14789"
       ]
     },
     {
@@ -917,15 +1062,21 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120103-engineering-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 20,
+      "dropped_rows": [],
       "course_codes": [
+        "01850",
+        "01854",
         "02382",
         "02383",
         "03708",
         "03709",
         "06086",
+        "06393",
         "08263",
         "10633",
         "10993",
+        "12104",
         "13000",
         "13542",
         "13543",
@@ -937,6 +1088,7 @@
       ],
       "practice_codes": [
         "02383",
+        "12104",
         "13543",
         "13649"
       ]
@@ -948,6 +1100,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120201K-business-administration/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00051",
         "00052",
@@ -964,12 +1118,14 @@
         "13887",
         "14071",
         "14198",
-        "14199"
+        "14199",
+        "14790"
       ],
       "practice_codes": [
         "00052",
         "01465",
-        "14198"
+        "14198",
+        "14790"
       ]
     },
     {
@@ -979,6 +1135,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120202-marketing/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00098",
         "00184",
@@ -990,6 +1148,7 @@
         "03708",
         "03709",
         "04184",
+        "10211",
         "13000",
         "13675",
         "13676",
@@ -999,6 +1158,7 @@
       ],
       "practice_codes": [
         "00909",
+        "10211",
         "13676"
       ]
     },
@@ -1009,6 +1169,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120203K-accounting/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00160",
         "03409",
@@ -1024,10 +1186,12 @@
         "13752",
         "13753",
         "13887",
-        "14033"
+        "14033",
+        "14848"
       ],
       "practice_codes": [
-        "13753"
+        "13753",
+        "14848"
       ]
     },
     {
@@ -1037,6 +1201,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120206-human-resource-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00051",
         "00052",
@@ -1044,6 +1210,7 @@
         "03709",
         "04184",
         "06091",
+        "10222",
         "13000",
         "13683",
         "13811",
@@ -1057,6 +1224,7 @@
       ],
       "practice_codes": [
         "00052",
+        "10222",
         "13968",
         "14106"
       ]
@@ -1068,6 +1236,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120207-auditing/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00043",
         "03708",
@@ -1084,10 +1254,12 @@
         "14065",
         "14066",
         "14196",
-        "14197"
+        "14197",
+        "14785"
       ],
       "practice_codes": [
-        "14066"
+        "14066",
+        "14785"
       ]
     },
     {
@@ -1097,13 +1269,17 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120301-agricultural-and-forestry-economic-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00134",
+        "00209",
         "02678",
         "02680",
         "03353",
         "03708",
         "03709",
+        "06187",
         "08988",
         "12658",
         "13000",
@@ -1111,9 +1287,12 @@
         "14043",
         "14048",
         "14049",
-        "14050"
+        "14050",
+        "14782"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "14782"
+      ]
     },
     {
       "code": "120402",
@@ -1122,6 +1301,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120402-administrative-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00261",
         "01680",
@@ -1132,6 +1313,7 @@
         "04863",
         "05722",
         "07816",
+        "10197",
         "10999",
         "13000",
         "13709",
@@ -1139,7 +1321,9 @@
         "14660",
         "14970"
       ],
-      "practice_codes": []
+      "practice_codes": [
+        "10197"
+      ]
     },
     {
       "code": "120601",
@@ -1148,6 +1332,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120601-logistics-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00915",
         "00916",
@@ -1158,6 +1344,7 @@
         "05374",
         "07724",
         "07729",
+        "10294",
         "13000",
         "13677",
         "13683",
@@ -1168,6 +1355,7 @@
       ],
       "practice_codes": [
         "00916",
+        "10294",
         "14386",
         "14387"
       ]
@@ -1179,6 +1367,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120701-industrial-engineering/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 19,
+      "dropped_rows": [],
       "course_codes": [
         "02194",
         "02627",
@@ -1194,6 +1384,7 @@
         "05854",
         "05855",
         "07103",
+        "11543",
         "13000",
         "13174",
         "13189",
@@ -1203,6 +1394,7 @@
         "02632",
         "02649",
         "05855",
+        "11543",
         "13190"
       ]
     },
@@ -1213,6 +1405,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120801-e-commerce/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 21,
+      "dropped_rows": [],
       "course_codes": [
         "00908",
         "00909",
@@ -1226,6 +1420,7 @@
         "03708",
         "03709",
         "04184",
+        "11670",
         "13000",
         "13477",
         "13478",
@@ -1240,6 +1435,7 @@
         "00912",
         "00916",
         "02383",
+        "11670",
         "13478",
         "14351"
       ]
@@ -1251,6 +1447,8 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/120901K-tourism-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 18,
+      "dropped_rows": [],
       "course_codes": [
         "00198",
         "03533",
@@ -1259,6 +1457,7 @@
         "04184",
         "04929",
         "05034",
+        "10227",
         "13000",
         "13683",
         "13887",
@@ -1271,6 +1470,7 @@
         "14970"
       ],
       "practice_codes": [
+        "10227",
         "13997",
         "14004"
       ]
@@ -1282,12 +1482,18 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/130502-visual-communication-design/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00504",
         "03708",
         "03709",
         "05421",
         "05424",
+        "07072",
+        "09234",
+        "10177",
+        "10331",
         "13000",
         "13283",
         "13288",
@@ -1299,6 +1505,10 @@
       ],
       "practice_codes": [
         "05421",
+        "07072",
+        "09234",
+        "10177",
+        "10331",
         "13283",
         "13288",
         "14133",
@@ -1315,27 +1525,39 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/130503-environmental-design/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00709",
         "03708",
         "03709",
+        "04487",
         "04856",
+        "05415",
+        "05418",
+        "10177",
         "13000",
         "13685",
         "13740",
         "13897",
         "14165",
         "14166",
-        "14234"
+        "14234",
+        "14795"
       ],
       "practice_codes": [
         "00709",
+        "04487",
         "04856",
+        "05415",
+        "05418",
+        "10177",
         "13685",
         "13897",
         "14165",
         "14166",
-        "14234"
+        "14234",
+        "14795"
       ]
     },
     {
@@ -1345,15 +1567,20 @@
       "level": "专升本",
       "page": "content/jiangsu/majors/130508-digital-media-art/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 20,
+      "dropped_rows": [],
       "course_codes": [
         "00504",
+        "03513",
         "03708",
         "03709",
+        "07189",
         "11734",
         "12208",
         "13000",
         "13464",
         "13465",
+        "13466",
         "13511",
         "13512",
         "13875",
@@ -1361,17 +1588,20 @@
         "14267",
         "14268",
         "14269",
-        "14270"
+        "14270",
+        "14975"
       ],
       "practice_codes": [
         "11734",
         "12208",
         "13465",
+        "13466",
         "13512",
         "13876",
         "14267",
         "14268",
-        "14270"
+        "14270",
+        "14975"
       ]
     },
     {
@@ -1381,6 +1611,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/460104-mechanical-manufacturing-and-automation/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 23,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1426,6 +1658,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/460301-mechatronics-technology/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 22,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1468,6 +1702,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/520410-chinese-materia-medica/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 20,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1505,6 +1741,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/530601-business-enterprise-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 18,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1538,6 +1776,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/530605-marketing/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1567,6 +1807,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/530701-e-commerce/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 20,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1604,6 +1846,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/570102K-preschool-education/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 21,
+      "dropped_rows": [],
       "course_codes": [
         "00402",
         "00874",
@@ -1643,6 +1887,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/570103K-primary-education/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 18,
+      "dropped_rows": [],
       "course_codes": [
         "00413",
         "00414",
@@ -1676,6 +1922,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/570116K-mental-health-education/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 17,
+      "dropped_rows": [],
       "course_codes": [
         "00469",
         "03372",
@@ -1707,6 +1955,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/590202-human-resource-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00018",
         "00019",
@@ -1737,6 +1987,8 @@
       "level": "专科",
       "page": "content/jiangsu/majors/590206-administrative-management/index.md",
       "course_table_source": "plan.raw.txt",
+      "parsed_rows": 16,
+      "dropped_rows": [],
       "course_codes": [
         "00163",
         "00277",
