@@ -7,8 +7,6 @@ exam_method: 笔试
 status: draft
 version: v0.2
 publish_date: null
-route: /courses/15043/
-canonical: /courses/15043/
 priority: P0
 # internal-unverified: official HTML/PDF URLs matched; applicability/version 未声明 — not a public version claim
 source_level: official_html_url_matched

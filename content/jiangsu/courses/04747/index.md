@@ -7,8 +7,6 @@ exam_method: 笔试
 status: draft
 version: v0.2
 publish_date: null
-route: /courses/04747/
-canonical: /courses/04747/
 priority: P1
 source_level: official_syllabus_processed
 migration_status: v2

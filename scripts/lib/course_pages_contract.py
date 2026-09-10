@@ -48,6 +48,10 @@ def check_frontmatter(root: Path, index_path: Path, schema: dict) -> list[str]:
     comp = (fm.get("completeness") or "").strip()
     if comp and comp not in comp_vals:
         errors.append(f"{rel}: invalid completeness `{comp}`")
+
+    for key, reason in (fm_spec.get("disallowed") or {}).items():
+        if key in fm:
+            errors.append(f"{rel}: frontmatter `{key}` is disallowed ({reason})")
     return errors
 
 
