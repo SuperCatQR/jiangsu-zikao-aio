@@ -47,8 +47,8 @@ Improve the reader-facing course pages of five Jiangsu 080901 计算机科学与
 | 02324-reader-path | 离散数学 reader paths (no official syllabus) | Done | P1/S; gaps stay named; no chapter index; mandatory QA PASS; merged into `iteration/jiangsu-course-completion-xl` |
 | 02333-official-syllabus-reader-path | 软件工程 chapter index from official gaogang-4068 | Done | P1/M; QC tri-review + targeted revalidation approved; mandatory QA PASS; merged into `iteration/jiangsu-course-completion-xl` |
 | 00898-official-syllabus-reader-path | 互联网软件应用与开发 chapter index from gaogang-4295 | Done | P1/M; 16 章 flat; 第9、12–16章 non-assessed (qualifiers verbatim); QC/QA PASS; merged into `iteration/jiangsu-course-completion-xl` |
-| 13015-reader-path | 计算机系统原理 reader paths (no official syllabus) | Done | P1/S; gaps stay named; no chapter index; QC/QA PASS; merged as `98e5e3c` into `iteration/jiangsu-course-completion-xl` |
-| 04735-source-trace-reader-path | 数据库系统原理 source-trace reader path | Done | P0/M; trace existing v2.1 content; no rewrite of knowledge tree; QC consolidated Approve; mandatory QA PASS; merged as `4703536` into `iteration/jiangsu-course-completion-xl` |
+| 13015-reader-path | 计算机系统原理 reader paths (no official syllabus) | Done | P1/S; gaps stay named; no chapter index; QC/QA PASS; merged as `ffa3ab1` into `iteration/jiangsu-course-completion-xl` |
+| 04735-source-trace-reader-path | 数据库系统原理 source-trace reader path | Done | P0/M; trace existing v2.1 content; no rewrite of knowledge tree; QC consolidated Approve; mandatory QA PASS; merged as `78e2522` into `iteration/jiangsu-course-completion-xl` |
 
 Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
