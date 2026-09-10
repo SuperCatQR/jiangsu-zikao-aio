@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import re
 from pathlib import Path
 
@@ -106,6 +107,32 @@ def validate_file(root: Path, path: Path) -> list[str]:
     return errors
 
 
+LFS_POINTER_RE = re.compile(
+    rb"\Aversion https://git-lfs\.github\.com/spec/v1\noid sha256:([0-9a-f]{64})\nsize \d+\n?\Z"
+)
+
+
+def source_sha256(path: Path) -> str | None:
+    """Content hash the working tree claims for a source PDF.
+
+    LFS-tracked sources arrive as pointer files in a plain git checkout, so the
+    declared `oid` is the hash of the real file; anything else is hashed in full.
+    Returns None when the file cannot be read.
+    """
+    try:
+        with path.open("rb") as fh:
+            head = fh.read(256)
+            match = LFS_POINTER_RE.match(head)
+            if match:
+                return match.group(1).decode()
+            digest = hashlib.sha256(head)
+            for chunk in iter(lambda: fh.read(1 << 16), b""):
+                digest.update(chunk)
+        return digest.hexdigest()
+    except OSError:
+        return None
+
+
 def validate_pdf_manifest(root: Path, path: Path | None = None) -> list[str]:
     path = path or (
         root / "sources" / "jiangsu" / "processed" / "source-records" / "pdf-processing-manifest.csv"
@@ -127,8 +154,13 @@ def validate_pdf_manifest(root: Path, path: Path | None = None) -> list[str]:
             target = root / rel.replace("\\", "/")
             if not target.exists():
                 errors.append(f"{rel_label(root, path)}:{i}: {key} 不存在：{rel}")
-            elif key == "source_pdf" and target.stat().st_mtime > path.stat().st_mtime + 1:
-                errors.append(f"{rel_label(root, path)}:{i}: manifest 旧于源 PDF：{rel}")
+            elif key == "source_pdf":
+                actual = source_sha256(target)
+                expected = row.get("source_sha256", "")
+                if actual is not None and expected and actual != expected:
+                    errors.append(
+                        f"{rel_label(root, path)}:{i}: manifest source_sha256 与源 PDF 不一致：{rel}"
+                    )
         sha = row.get("source_sha256", "")
         if not re.fullmatch(r"[0-9a-f]{64}", sha):
             errors.append(f"{rel_label(root, path)}:{i}: source_sha256 非 SHA256：{sha}")
