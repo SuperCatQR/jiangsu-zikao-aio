@@ -41,7 +41,7 @@ B2（公共课 P0 五门）、B3（080901 计算机 27 门）、B4（其余专�
 
 | plan_id | Name | Status | Notes |
 |---------|------|--------|-------|
-| ai-course-prep-pipeline-b1 | AI 备考流水线 B1：数据底座 + `15040` 端到端试点（本迭代唯一交付切片） | Todo | 6 个 task；`Execution mode: sdd`；pilot = `15040`；范围 = B1 only（B2–B4 见 spec § Roadmap，本迭代不启动） |
+| ai-course-prep-pipeline-b1 | AI 备考流水线 B1：数据底座 + `15040` 端到端试点（本迭代唯一交付切片） | InProgress | 6 个 task；`Execution mode: sdd`；pilot = `15040`；范围 = B1 only（B2–B4 见 spec § Roadmap，本迭代不启动）。Task 1 完成并过审（`86423a9..3f2c5a1`，全量 132 passed），T2–T6 待做 |
 
 Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 

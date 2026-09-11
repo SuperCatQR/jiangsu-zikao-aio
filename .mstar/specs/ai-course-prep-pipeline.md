@@ -180,6 +180,16 @@ B2–B4 是后续迭代的批次，各有独立触发条件，见 § Roadmap；�
    非 `L1` 课程**零 AI 产物**（`content.json` 不存在，`tests/test_course_evidence.py::test_blocked_course_has_no_generated_artifacts`）；
    每个 `named_gap`（命名缺口）字段含非空 `gap_impact` + `next_evidence`。
    实测与上述集合不符时**不得放宽判定**：按 STOP 回报并回写 plan。
+   **实测留痕（2026-09-11，plan Task 2）**：`python scripts/build-course-content.py evidence --all` → exit 0，18 份
+   `sources/jiangsu/courses/<code>/evidence.json`；`L1` 实测集合 = `{00898, 02333, 04747, 04751, 15040, 15043, 15044}`
+   （**7 门**，与上式逐元素相等，未触发 STOP）；`blocked` **11 门** = `{00023, 02324, 03708, 03709, 04735, 13000, 13003,
+   13013, 13015, 13017, 13180}`，`reasons` 恒为 `[syllabus:*, textbook_plan:*]` 有序二元组（逐门取值见 plan
+   § Current state「双齐实测」行）；非 `L1` 课程零 AI 产物由
+   `tests/test_course_evidence.py::test_blocked_course_has_no_generated_artifacts` 锁定。
+   **口径说明（实测更正）**：`syllabus.status == "extracted"` 的判据 = 考纲抽取件内**能定位「考核知识点与考核要求」小节**；
+   该小节序号随高纲批次不同（`15040` / `15043` / `15044` 为 `三、`，`00898` / `02333` / `04747` / `04751` 为 `二、`），
+   因此判定取小节名稳定部分，命中标题逐字记入 `evidence.json` 的 `syllabus.requirements_heading` 以便复核；
+   `textbook_plan` 的教材计划区 = **首个**含表头 `教材代号` 的行起至文档末尾（表头逐页重复），区之前的考试日程区课码出现不算教材行。
 5. **知识模型覆盖率与手工比对**：`sources/jiangsu/courses/15040/knowledge-model.json` 的 `coverage.ratio ≥ 0.90`；
    章数 **18** 且章标题与 `content/jiangsu/courses/15040/syllabus.md` 章目**逐字一致**；
    `coverage.official_point_count` 与手工页 `content/jiangsu/courses/15040/index.md:549` 记录的 **61** 个节级知识点比对，
