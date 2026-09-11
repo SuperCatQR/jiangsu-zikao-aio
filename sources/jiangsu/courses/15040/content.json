@@ -15,22 +15,20 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "把导论与第一至第五章的章节目录和考纲要求层级过一遍，能说出每章讲什么、每节包含哪些考核点。",
+      "goal": "把导论与第一至第七章的章名、节名和考点清单过一遍，搭出全课程的知识框架。",
       "inputs": [
-        "考纲章节目录与考核要求（导论、第一至第五章）",
-        "本课知识模型的章—节—点三级结构",
-        "本课已生成的 AI 讲解块与记忆法块"
+        "考纲章节目录",
+        "各章考核知识点清单"
       ],
       "how": [
-        "先通读目录，按章画三栏表：章、节、考核点，只写名称不写解释",
-        "在每个考核点后面标注识记、领会或应用，明确这一点的要求层级",
-        "合上目录凭记忆复述六章部分的节标题，记不住的做上记号，作为精读阶段的第一批任务"
+        "按章顺序通读目录与考核点，数清每章节数与点数",
+        "给每章写一句话概括，标出与前后章的衔接关系"
       ],
       "outputs": [
-        "一张导论至第五章的章节与考核点对照表",
-        "一份要求层级标注清单"
+        "全书框架笔记",
+        "各章一句话概括清单"
       ],
-      "done_when": "对照表覆盖已开放各章全部考核点且每行都标出要求层级；能凭记忆说出每章的主题与节标题。",
+      "done_when": "合上目录能按顺序报出导论至第七章的章名，并说出每章下设的节标题。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -46,22 +44,20 @@
     },
     {
       "stage": "精读",
-      "goal": "把导论与第一至第五章的每一个考核点读懂并能用自己的话复述，形成分层的复习笔记。",
+      "goal": "逐节逐点吃透导论至第七章的每个考核点，弄懂内涵与易混之处。",
       "inputs": [
-        "已开放各章的 AI 讲解块（要点梳理与易错点）",
-        "已开放各章的 AI 记忆法块",
-        "入门阶段的章节与考核点对照表"
+        "本课全部 AI 讲解块",
+        "全书框架笔记"
       ],
       "how": [
-        "按考点逐条精读，先读要点梳理，再读易错点，每个考点写一句自己的界定",
-        "对照记忆法块给每个考点配一个抓手：口诀、对比表或关键词串联，写在笔记同一行",
-        "把同一章内的易错点集中比对，专门区分近义提法（例如必由之路、关键一招与根本动力，本质要求与重要特征）"
+        "按节精读每点的要点梳理，对照易错点自查是否理解到位",
+        "对领会与应用层级考点补充身边例证，并整理概念对照表"
       ],
       "outputs": [
-        "已开放各章的逐考点笔记（每个考点一行界定、一行易错点）",
-        "易混提法对照表"
+        "分章精读笔记",
+        "概念易混对照表"
       ],
-      "done_when": "已开放各章的全部考核点都写出一句自己的界定；识记层考点名称能默写一遍，易混提法能逐组说清区别。",
+      "done_when": "任意抽一个考核点都能不看材料复述其要点并指出一个易混点。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -77,22 +73,20 @@
     },
     {
       "stage": "刷题",
-      "goal": "把已开放各章的考核点转成做题能力，覆盖考纲声明的三类题型，形成可复查的错题清单。",
+      "goal": "把已学考点转化为答题能力，覆盖单项选择、简答与材料三类题型。",
       "inputs": [
-        "已开放各章的 AI 练习题（含答案解析）",
-        "精读阶段的笔记与易混提法对照表",
-        "考纲声明的题型：单项选择题、简答题、材料题"
+        "本课全部 AI 练习题",
+        "分章精读笔记"
       ],
       "how": [
-        "按题型分开练：先做单项选择题，再做简答题，最后做材料题，每类做完立即对答案",
-        "对错题逐题写错因归类：没记住、混淆提法、还是没结合材料",
-        "隔一天把错题重做一遍，仍错的题目标红，进入冲刺阶段重点回看"
+        "按章完成三类题型练习，先做选择再做大题",
+        "逐题核对答案与解析，错题回看对应讲解并归类"
       ],
       "outputs": [
-        "已开放各章分题型的练习记录",
-        "错题清单（含错因与正确答案要点）"
+        "分章错题清单",
+        "题型正确率记录"
       ],
-      "done_when": "三类题型都练过一轮，错题清单每条都写明错因与正确要点，红标题在冲刺阶段全部回看一遍。",
+      "done_when": "已开放各章的练习全部完成，且每道错题都能对照讲解写出订正理由。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -108,22 +102,20 @@
     },
     {
       "stage": "冲刺",
-      "goal": "在已开放各章范围内做到考点名称、定位提法与易混点三者都不出错，能按题型顺序完成综合练习。",
+      "goal": "集中背诵各章记忆法与高频考点，把理解固化为可提取的记忆。",
       "inputs": [
-        "错题清单与易混提法对照表",
-        "已开放各章的逐考点笔记",
-        "本课 AI 讲解块中标注的易错点"
+        "本课全部记忆块",
+        "分章错题清单"
       ],
       "how": [
-        "合上资料按章默写考点清单，写完再对照笔记补漏，只补漏不重抄",
-        "集中辨别定位提法：必由之路、根本动力、重要法宝、关键一招、本质要求、重要特征、显著优势",
-        "按题型顺序完整做一套已开放各章的综合练习，训练审题与分点作答的把控"
+        "按章循环背诵口诀、对比与关键词串联",
+        "用错题清单定点回扫薄弱考点，二轮只背不牢的"
       ],
       "outputs": [
-        "已开放各章考点默写稿（含补漏标记）",
-        "定位提法辨别练习结果"
+        "背诵打卡记录",
+        "高频考点速记卡"
       ],
-      "done_when": "已开放各章考点默写无遗漏、定位提法全部正确；综合练习中每道题的答案都能落到考纲要求层级上。",
+      "done_when": "能脱稿默写各章记忆法要点，错题对应考点全部完成二轮复扫。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -139,22 +131,20 @@
     },
     {
       "stage": "复盘",
-      "goal": "把已开放各章的复习收成一份可复用的复盘记录，明确下一步开放新章时要补的缺口。",
+      "goal": "考前整合作答规范与全课知识网络，以稳定状态迎接考试。",
       "inputs": [
-        "冲刺阶段的默写稿与练习结果",
-        "错题清单",
-        "已开放各章的笔记与记忆抓手"
+        "高频考点速记卡",
+        "分章精读笔记"
       ],
       "how": [
-        "回看错题清单，连续做对两次的标记结题，仍错的写明下一步补法",
-        "把最容易混的几组提法单独抄成一页，作为考前最后一遍回看的材料",
-        "记录本轮复习暴露的知识缺口（例如某节的关系类考点没梳理清），写明补救方式与复查时间"
+        "限时完成跨章简答与材料题模拟，练习分点作答",
+        "复盘错题类型与审题偏差，形成作答纪律清单"
       ],
       "outputs": [
-        "已开放各章复盘记录（结题清单＋待补缺口）",
-        "易混提法一页纸"
+        "作答规范自查清单",
+        "全课知识网络图"
       ],
-      "done_when": "复盘记录里每个待补缺口都写明补救动作与复查时间；已开放各章的考点、易错点、定位提法能在一页纸上完整回顾。",
+      "done_when": "限时任选三章完成简答与材料题模拟，要点覆盖完整且格式规范。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -6954,6 +6944,3825 @@
       "source_kind": "ai_generated"
     },
     {
+      "block_id": "15040-ch06-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "### 要点梳理\n- 新常态是对我国经济发展阶段性特征的总体概括：增长速度由高速转为中高速，发展方式从规模速度型转向质量效率型，经济结构从增量扩能为主转向调整存量与做优增量并举，发展动力从传统要素投入转向创新驱动。\n- 新常态不是经济衰退，而是经济向形态更高级、分工更优化、结构更合理的阶段演进的必经过程，是我国经济步入新的发展阶段呈现出的新状态。\n- 在本章逻辑中，新常态是理解新发展阶段、新发展理念与高质量发展的起点：正因为发展阶段变了，发展理念与发展方式才必须随之转变。\n\n### 易错点\n- 易把新常态误解为“增长速度下降是好事”，正确理解是：速度换挡是客观规律使然，关键是主动适应、把握和引领新常态，而不是听任下滑。\n- 易把“新常态”写成某一次短期的经济波动或政策调整，它是较长期的阶段性特征，不是权宜之计。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "**关键词**：一个“新”字扣四变——速度换挡、方式转型、结构优化、动力转换。**串联**：先把“速度”记成换挡（不是熄火），再把“方式”记成提质，把“结构”记成调优，把“动力”记成创新，四步连成一条线就是新常态的完整画像。**对比**：新常态回答“经济处于什么阶段”，高质量发展回答“经济往什么方向走”，先有阶段判断，再有方向选择。\n**易混提醒**：新常态与经济危机画不上等号，前者讲阶段特征，后者讲运行故障，考试最爱拿“下滑＝衰退”设错。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "我国经济发展呈现速度换挡、结构优化、动力转换等阶段性特征，对这一状态的标准概括是（ ）\nA. 由高速增长转向中高速增长\nB. 继续保持两位数的高速增长\nC. 短期内出现负增长\nD. 增长速度完全停止波动\n作答要求：先默想新常态的四项特征再作选择，并想一想其余三项各自把哪类状态错当了新常态。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。新常态的重要特征之一是增长速度由高速转为中高速，这是经济发展阶段的客观变化。B 项错误，速度换挡正是新常态的题中之义，两位数高速增长难以为继；C 项错误，新常态不是经济衰退，不等于负增长；D 项错误，中高速不排斥合理区间内的正常波动，说“完全停止波动”过于绝对。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "### 要点梳理\n- 新发展阶段指全面建成小康社会之后，开启全面建设社会主义现代化国家新征程的历史阶段，是我国发展站到新的更高起点上的阶段。\n- 进入新发展阶段是经济社会发展沿历史进程自然推进的结果，标定的是当前发展所处的历史方位，回答“我们现在站在哪里”的问题。\n- 在本章逻辑中，新发展阶段与“新常态”相衔接：阶段变了，面临的任务随之改变，高质量发展的要求由此提出，新发展理念也必须贯穿始终。\n\n### 易错点\n- 易把新发展阶段与新发展格局混为一谈：前者是历史方位，后者是为赢得优势主动构建的循环格局，两个“新”字不在同一层。\n- 易把新发展阶段理解为抛弃过去的全新起点，正确理解是它在既有发展成就基础上接续推进，不是另起炉灶。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "**串联**：方位三问连成线——过去全面建成小康社会（站上新的更高起点），现在全面建设社会主义现代化国家（开启新征程），将来建成社会主义现代化强国（远景目标），这条时间线就是新发展阶段。**对比**：发展阶段是“舞台”，新发展理念是“指挥”，高质量发展是“演出”，舞台换了，指挥和演出都要跟着换。\n**易混提醒**：分清两个“新”——新发展阶段讲“站在哪”，新发展格局讲“怎么循环”，一道题里同时出现时先各归各位。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "下列关于新发展阶段的表述，正确的是（　）\nA. 新发展阶段指全面建成小康社会之后、开启全面建设社会主义现代化国家新征程的阶段\nB. 新发展阶段是脱离以往发展成就的全新起点\nC. 新发展阶段与构建新发展格局是同一概念\nD. 新发展阶段只涉及经济领域，与其他领域无关",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。新发展阶段标定的是我国发展所处的历史方位，即小康社会全面建成后向现代化目标迈进的新进程。B 项错误，新发展阶段建立在已有发展成就之上，是接续推进而非另起炉灶；C 项错误，新发展格局是主动构建的循环格局，与历史方位不是一个概念；D 项错误，现代化国家建设涵盖经济、政治、文化、社会、生态等多个方面，不限于经济领域。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "### 要点梳理\n- 新发展理念指创新、协调、绿色、开放、共享五大理念：创新解决发展动力问题，协调解决发展不平衡问题，绿色解决人与自然和谐问题，开放解决发展内外联动问题，共享解决社会公平正义问题。\n- 五大理念相互贯通、相互促进，构成具有内在联系的有机整体，必须一体坚持、一体贯彻，不能顾此失彼。\n- 在本章逻辑中，新发展理念是高质量发展的指挥棒，回答“实现什么样的发展、怎样实现发展”，后文的基本经济制度、新发展格局都以它为遵循。\n\n### 易错点\n- 易只记五大理念的名称而不记各自解决的问题，答题时要能一一对号：动力、不平衡、人与自然、内外联动、公平正义。\n- 易把五大理念当成可任选其一的并列选项，正确理解是整体：任何单项理念都不能单独成立，偏废任何一项都会破坏发展的系统性。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "**口诀**：创新动、协调衡，绿色生态共享公，开放内外一线牵——五大理念记成“动、衡、绿、开、公”。**对比**：每个理念配一个问题——创新对动力、协调对不平衡、绿色对和谐、开放对联动、共享对正义，考题问哪一个问题，就选对应理念。**结构**：先记五个名称（创协绿开共），再补五个问题，最后记“有机整体、一体贯彻”这句总括。\n**易混提醒**：五大理念的名称顺序是“创协绿开共”，与“动力、平衡、和谐、联动、正义”五个问题一一对应，顺序别乱。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "新发展理念是相互贯通、相互促进的有机整体，其中着力解决发展不平衡问题的是（ ）\nA. 创新发展\nB. 协调发展\nC. 绿色发展\nD. 开放发展\n作答要求：先背一遍五大理念各自解决的问题再作答，排除概念错位的选项；若选项中出现理念与问题错位，即为干扰项；作答前把五组配对默写一遍。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。协调发展注重的是解决发展不平衡问题，推动城乡、区域、经济与社会等关系相协调。A 项错误，创新发展解决的是发展动力问题；C 项错误，绿色发展解决的是人与自然和谐共生问题；D 项错误，开放发展解决的是发展内外联动问题。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "### 要点梳理\n- 高质量发展是体现新发展理念的发展，是能够很好满足人民日益增长的美好生活需要的发展，创新成为第一动力、协调成为内生特点、绿色成为普遍形态、开放成为必由之路、共享成为根本目的。\n- 高质量发展是全面建设社会主义现代化国家的首要任务，经济发展从“有没有”转向“好不好”，是各领域共同要求的总基调。\n- 在本章逻辑中，高质量发展是新常态与新阶段之上的方向选择：发展阶段标定方位，新发展理念提供遵循，高质量发展则是二者落地的目标形态。\n\n### 易错点\n- 易把高质量发展窄化为单纯的经济增速指标，正确理解是不以速度论英雄，而以质量、效率、动力变革和人民需要满足程度衡量。\n- 易把高质量发展只限定在经济工作范围，它虽以经济为重点，却是各领域发展的总要求。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "**关键词**：一个“好”字加五特征——动力靠创新、特点重协调、形态要绿色、路子走开放、目的为共享。**串联**：先记“首要任务”这一定位，再记“五个成为”，最后记衡量标尺是人民的美好生活需要。**对比**：高速增长解决“有没有”，高质量发展解决“好不好”，一问数量、一问质量，两代命题对照记忆。\n**易混提醒**：高质量发展不是不要速度，而是不以速度论英雄，考试常用“零增长”“慢增长”偷换概念。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "评价一个阶段的发展成色，不能只看增长速度，还要看是否体现新发展理念、是否满足人民需要，这样的发展就是（ ）\nA. 体现新发展理念、能够很好满足人民日益增长的美好生活需要的发展\nB. 经济增长速度越快越好的发展\nC. 只重视生态环境保护而放缓其余领域发展的发展\nD. 主要依靠扩大要素投入规模实现的发展\n作答要求：先回忆高质量发展的五个成为再比对选项，选出最完整的一项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。高质量发展的质的规定性是体现新发展理念，并以满足人民日益增长的美好生活需要为归依。B 项错误，高质量发展不以速度论英雄，简单求快恰恰是旧思路；C 项错误，绿色发展是重要内容但不是全部，不能以一项取代整体；D 项错误，依靠要素投入扩张是旧动能，高质量发展要求转向创新驱动。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "### 要点梳理\n- 新质生产力是创新起主导作用，摆脱传统经济增长方式和生产力发展路径，具有高科技、高效能、高质量特征的先进生产力质态，由技术革命性突破、生产要素创新性配置、产业深度转型升级而催生。\n- 其基本内涵是劳动者、劳动资料、劳动对象及其优化组合的跃升，以全要素生产率大幅提升为核心标志，特点是创新，关键在质优。\n- 在本章逻辑中，发展新质生产力是高质量发展的内在要求和重要着力点，为构建新发展格局、建设现代化经济体系提供动力支撑。\n\n### 易错点\n- 易把新质生产力等同于放弃传统产业另搞一套，正确理解是用先进技术改造提升传统产业与传统产业转型升级本身也是发展新质生产力的组成部分。\n- 易忽略“核心标志是全要素生产率大幅提升”这一界定，把它泛化为一切新技术新产业的笼统说法。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "**关键词**：三高＋一核心——高科技、高效能、高质量，核心标志是全要素生产率大幅提升。**串联**：催生三条线——技术突破、要素新配置、产业转型；记住特点是创新、关键在质优、本质是先进生产力。**对比**：传统生产力靠要素堆量，新质生产力靠创新提“质”，一字之差，路径全变。\n**易混提醒**：新质生产力之“新”在质态而非行业，传统产业升级同样算数，别把它当成另起炉灶的代名词。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L456"
+      ],
+      "text_md": "由技术革命性突破、生产要素创新性配置、产业深度转型升级催生，以全要素生产率大幅提升为核心标志的生产力质态是（ ）\nA. 全要素生产率大幅提升\nB. 劳动力投入规模持续扩大\nC. 传统产业规模快速扩张\nD. 经济增长速度居于首位\n作答要求：先默想新质生产力的核心标志与催生路径，再逐项比对四个选项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。新质生产力以全要素生产率大幅提升为核心标志，反映效率与质量跃升。B 项错误，靠劳动力规模扩张是旧动能，与新质生产力摆脱传统路径的要求相反；C 项错误，发展新质生产力并不排斥传统产业，但核心不在规模扩张而在质态跃升；D 项错误，速度居首不是衡量新质生产力的尺度。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "### 要点梳理\n- 科学内涵：创新、协调、绿色、开放、共享五大理念各有分工——创新是引领发展的第一动力，协调是持续健康发展的内在要求，绿色是永续发展的必要条件，开放是国家繁荣发展的必由之路，共享是中国特色社会主义的本质要求。\n- 实践要求：完整、准确、全面贯彻，把五大理念统一到发展全过程和各领域，从整体上把握，不搞选择性执行。\n- 道理所在：五大理念从动力、平衡、人与自然、内外联动、公平五个维度系统回答了发展问题，彼此贯通促进，缺一则系统性被破坏。\n\n### 易错点\n- 易把实践要求写成“逐条落实即可”，正确理解是“完整、准确、全面”三词缺一不可：完整指不缺项，准确指不走样，全面指覆盖各领域。\n- 易把五大理念的分工写成可以相互替代的关系，正确理解是整体中的分工，一体坚持、一体贯彻。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "**对比**：五理念对五要求——创新对第一动力、协调对内在要求、绿色对必要条件、开放对必由之路、共享对本质要求，一一配对背。**关键词**：贯彻要“完整、准确、全面”三连词，一个都不能少。**结构**：先背名称，再背各自定位，最后背整体性要求，三层递进。\n**易混提醒**：实践要求背“完整、准确、全面”三个副词，考试爱把其中一个换成“重点”，顺序与用词都不能改。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "简述新发展理念的科学内涵及贯彻的实践要求。\n作答要求：先逐一说明五大理念各自解决什么问题、处于什么定位，再概括贯彻新发展理念在整体上应把握的要求；注意“完整、准确、全面”三个关键词缺一不可；作答前先把五组“理念对问题”的配对默想一遍，防止张冠李戴。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）创新是引领发展的第一动力，解决发展动力问题。（2）协调是持续健康发展的内在要求，解决发展不平衡问题。（3）绿色是永续发展的必要条件，解决人与自然和谐共生问题。（4）开放是国家繁荣发展的必由之路，解决发展内外联动问题。（5）共享是中国特色社会主义的本质要求，解决社会公平正义问题。解析：贯彻的实践要求是完整、准确、全面——五大理念相互贯通、相互促进，构成有机整体，必须一体坚持、一体贯彻，防止顾此失彼或断章取义。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "### 要点梳理\n- 从发展阶段看：高质量发展是适应我国社会主要矛盾变化、保持经济持续健康发展的必然要求，发展阶段变了，发展方式必须跟着变。\n- 从现代化全局看：高质量发展是全面建设社会主义现代化国家的首要任务，现代化大厦要靠高质量的根基支撑，没有高质量就没有现代化的成色。\n- 从规律层面看：它遵循经济规律作出的必然选择，体现发展从量的积累转向质的跃升的演进逻辑，是应对复杂环境、赢得战略主动的可靠依托。\n\n### 易错点\n- 易把战略意义写成“提高若干指标”的操作层面内容，正确理解是回答“为什么必须高质量发展”，落在首要任务与必然要求两层定位上。\n- 易漏掉主要矛盾变化这一依据，只谈速度放缓，论证就不完整。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "**串联**：意义三连——主要矛盾变了所以必须（必然要求）、现代化要建成所以首要（首要任务）、发展规律如此所以主动（必然选择）。**关键词**：必然要求、首要任务，两个定位词先记牢，再往里填依据。**结构**：从矛盾、从目标、从规律三条线各记一句，答简答时分三条写。\n**易混提醒**：分清“首要任务”配高质量发展、“中心任务”配现代化建设，两个定位词各属各的主语。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "简述高质量发展的重大战略意义。\n作答要求：从发展阶段与社会主要矛盾、现代化建设的任务定位、发展演进的规律性三个层面作答，每层先给结论再作说明；两个定位词必须原样写出，不要用“很重要”一类空话代替；答题前先想清“为什么变、变向何处”两个追问。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）高质量发展是适应我国社会主要矛盾变化、保持经济持续健康发展的必然要求，发展阶段与矛盾性质变了，发展方式必须相应转变。（2）高质量发展是全面建设社会主义现代化国家的首要任务，现代化建设各项目标都要以发展质量为根基。（3）高质量发展体现发展从量的积累转向质的跃升的演进逻辑，是遵循发展规律、赢得战略主动的必然选择。解析：答题要点在于两个定位词——“必然要求”与“首要任务”，并能把规律层面单独列出，避免只谈速度问题。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "### 要点梳理\n- 推动高质量发展要以新发展理念为指导，把创新、协调、绿色、开放、共享贯穿于发展全过程，使各环节各领域都体现质量导向。\n- 要坚持质量第一、效益优先，推动质量变革、效率变革、动力变革，提高全要素生产率，把发展成果转化为实实在在的竞争力与民生福祉。\n- 道理所在：高质量发展不会自动实现，需要供给侧、需求侧协同发力，以建设现代化经济体系、构建新发展格局为抓手，把理念要求转化为具体路径。\n\n### 易错点\n- 易把推动高质量发展写成单一部门或单一领域的事，正确理解是经济、社会、生态等各领域共同的总要求，需要系统集成推进。\n- 易把“质量第一、效益优先”拆成只要质量或只讲效益，两者是并重的统一体。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "**关键词**：三变革——质量变革、效率变革、动力变革，加一句“质量第一、效益优先”。**串联**：理念领路（新发展理念）→ 变革发力（三变革）→ 体系承载（现代化经济体系与新发展格局）→ 民生落脚（满足人民需要），四步连成推进链条。**对比**：讲“是什么”时背定义，讲“怎么推”时背变革与路径，两类题目不要答串。\n**易混提醒**：三变革的顺序是质量、效率、动力，与“理念领路、变革发力、体系承载”的推进链条配套背。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L458"
+      ],
+      "text_md": "简述推动高质量发展的主要路径。\n作答要求：先说明指导理念与总体要求，再列出质量、效率、动力三方面变革，并指出承载这些要求的体系性抓手；三变革的名称逐字写出，顺序按质量、效率、动力排列；最后用一句体系性抓手收尾，防止只答理念不答路径。；作答完毕回看是否漏点，三条变革一条都不能少。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）以新发展理念为指导，把创新、协调、绿色、开放、共享贯穿发展全过程和各领域。（2）坚持质量第一、效益优先，推动质量变革，提升供给体系质量。（3）推动效率变革，提高全要素生产率与资源配置效率。（4）推动动力变革，实现发展动力向创新驱动转换。（5）以建设现代化经济体系、加快构建新发展格局为抓手，使高质量发展落到实体经济的坚实根基上。解析：答这类题先亮理念与总要求，再按三变革分点展开，最后补体系抓手，层次才完整。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s1-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L460"
+      ],
+      "text_md": "### 要点梳理\n- 变革之深在于全局性：贯彻新发展理念不只是个别指标的调整，而是涉及发展方式、经济结构、增长动力乃至思想观念的系统性转变，关系发展全局。\n- 应用场合：分析一个地区或行业转型的材料时，先判断其做法对应哪一项理念，再看是否做到完整、准确、全面，是否触及深层利益格局与路径依赖。\n- 落点：真正贯彻理念要敢于破除惯性思维与体制障碍，把理念要求转化为制度安排与行动自觉，这正是“深刻变革”的实践含义。\n\n### 易错点\n- 易把材料中的零星做法直接说成已贯彻理念，正确分析要区分“单点尝试”与“系统性变革”，看是否覆盖五大理念、是否触及全局。\n- 易只谈“理念重要”而不落到具体转变，答题必须写清在观念、结构、动力、体制上分别发生了什么变化。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L460"
+      ],
+      "text_md": "**关键词**：全局、深刻、变革三连——不是修修补补，而是动全局、动深层、动观念。**串联**：分析材料三步走——先找做法对应的理念，再看覆盖是否完整全面，最后判断是否触及深层障碍，三步答完即成完整论证。**对比**：普通政策调整是“改一点”，深刻变革是“动全局”，材料题据此判断层次高低。\n**易混提醒**：判层次看“是否动全局”：单点做法是调整，五大理念齐动、触及观念与体制才是变革。"
+    },
+    {
+      "block_id": "15040-ch06-s1-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L460"
+      ],
+      "text_md": "某市原有产业以资源加工为主，能耗高、利润薄。近年该市压减落后产能，引入科研机构共建研发平台，培育新能源装备与软件服务企业；同步治理水体与大气污染，建设绿道与公园；推动优质医疗、教育资源向新区和乡镇布局，让搬迁安置群众就近就业；并与邻近城市共建产业协作带，共享口岸与市场。有干部仍习惯按老办法铺摊子、追产值，认为“先上项目再讲质量”。\n结合材料，运用贯彻新发展理念是关系我国发展全局的一场深刻变革的知识，评析该市的转型做法。\n作答要求：先指出材料中的做法分别体现了哪一项理念，再说明为什么贯彻理念是一场深刻变革，最后评析材料中干部观念的问题。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）引入科研平台、培育新产业体现创新发展，治理污染、建设绿道体现绿色发展，公共服务均衡布局体现共享发展，共建产业协作带体现开放与协调发展，压减落后产能则是整体转型的必要前提。（2）之所以是深刻变革，因为贯彻理念涉及发展方式、经济结构与增长动力的系统转换，要破除路径依赖、调整利益格局、更新思想观念，牵动发展全局而非局部修补。（3）按老办法铺摊子、追产值，仍停留在规模速度型的旧思路上，没有看到发展阶段与发展理念的变化，若不扭转观念，全局性变革就难以落地。解析：评析题要“指出＋说明＋评析”三段齐全，只罗列做法不点明变革的深刻性属于答不全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "### 要点梳理\n- 内涵是三位一体：公有制为主体、多种所有制经济共同发展，按劳分配为主体、多种分配方式并存，社会主义市场经济体制，三者作为一个有机整体共同构成社会主义基本经济制度。\n- 所有制是基础层：有什么样的所有制，就有什么样的分配方式与资源配置方式，三项制度相互支撑、不可分割。\n- 地位：它是社会主义制度的经济基础，本节其余考核点（两个毫不动摇、分配制度、市场经济体制）都是对它的逐层展开。\n\n### 易错点\n- 易只把“公有制为主体、多种所有制经济共同发展”当作基本经济制度的全部，遗漏按劳分配为主体与社会主义市场经济体制两块内容。\n- 易把基本经济制度与经济体制混为一谈：前者是制度属性层面，后者是资源配置方式层面，市场经济体制本身是基本经济制度的组成部分而非外部附加。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "**关键词**：三位一体——所有制＋分配制＋体制。**串联**：三项各缩成一字（公、按、市），连成“公按市”一根线，再逐项展开：公有主体多所有制、按劳主体多方式、市场决定配资源。**对比**：制度管属性、体制管配置，答题时不要把“社会主义市场经济体制”说成基本经济制度之外的东西。\n**易混提醒**：市场经济体制是基本经济制度的第三块内容，不是外部环境，考试爱把它挪出制度内涵设错。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "下列关于社会主义基本经济制度的表述，准确的是（ ）\nA. 公有制为主体、多种所有制经济共同发展，按劳分配为主体、多种分配方式并存，社会主义市场经济体制三者构成有机整体\nB. 社会主义基本经济制度只包括所有制制度一项\nC. 社会主义基本经济制度与市场经济体制互不相容\nD. 社会主义基本经济制度只在个别行业中适用",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项把三项制度作为有机整体把握，符合其内涵界定。\nB 项遗漏了分配制度与社会主义市场经济体制，理解残缺。\nC 项错误，市场经济体制正是基本经济制度的组成部分，两者一体存在。\nD 项错误，它覆盖整个国民经济，不是局部或个别行业的安排。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "### 要点梳理\n- 内容：毫不动摇巩固和发展公有制经济，毫不动摇鼓励、支持、引导非公有制经济发展。\n- 对象：一头连着公有制经济，一头连着非公有制经济，两者都是社会主义市场经济的重要组成部分，都是我国经济社会发展的重要基础。\n- 位置：它是坚持和完善社会主义基本经济制度的实践要求，直接对应“所有制”这一核心问题，是本节承上启下的考点。\n\n### 易错点\n- 易把后一个毫不动摇错记成限制甚至收缩非公有制经济，正确方向是鼓励、支持、引导，三个动词一个都不能换。\n- 易把“引导”理解成“取代”，引导的目的是促进其依法规范、健康发展，不是消灭或排挤。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "**口诀**：巩固发展公有制，鼓励支持引导非公——一“固”一“鼓”，两个不摇。**关键词**：非公那头记三个动词加一个落点：鼓励、支持、引导，落到健康发展。**对比**：对公有制讲“巩固和发展”，对非公经济讲“鼓励、支持、引导”，动词配对不能错位。\n**易混提醒**：两个毫不动摇的动词不对称——公有讲“巩固发展”，非公讲“鼓励支持引导”，动词互换即错。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "下列对“两个毫不动摇”的理解，正确的是（ ）\nA. 毫不动摇巩固和发展公有制经济，毫不动摇鼓励、支持、引导非公有制经济发展\nB. 毫不动摇发展公有制经济，毫不动摇限制非公有制经济发展\nC. 毫不动摇扩大对外开放，毫不动摇推进深层次改革\nD. 毫不动摇坚持按劳分配，毫不动摇实行平均主义分配",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项完整、准确地复述了两个毫不动摇各自的指向与动词搭配。\nB 项把对非公有制经济的方针说成限制，方向完全颠倒。\nC 项谈的是改革开放层面的要求，不是所有制方针的配对。\nD 项把分配原则与基本方针混在一起，且平均主义本身就是要纠正的倾向。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "### 要点梳理\n- 我国现阶段实行公有制为主体、多种所有制经济共同发展的所有制结构：公有制经济包括国有经济、集体经济，以及混合所有制经济中的国有成分和集体成分。\n- 主体地位如何体现：公有资产在社会总资产中占优势，国有经济控制国民经济命脉，对经济发展起主导作用。\n- 位置：所有制是基本经济制度的基础层，决定分配方式与资源配置方式，后面几个考点都由此派生。\n\n### 易错点\n- 易把公有制经济等同于国有经济，集体经济以及混合所有制经济中的公有成分同样属于公有制经济。\n- 易把“主体地位”与“主导作用”错位使用：主体地位说的是公有制经济整体，主导作用说的是国有经济。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "**对比**：主体对主导——公有制经济当“主体”（占比与优势），国有经济起“主导”（控制命脉）。**串联**：公有制三成分记成“国有、集体、混成分”，最后两个字提醒混合所有制里的国有与集体成分也算。**关键词**：占优势、控命脉、起主导，三个短语按顺序对应三层含义。\n**易混提醒**：集体经济与混合经济中的公有成分都算公有制，把公有制写成国有经济独一份是最常见丢分点。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "我国现阶段的生产资料所有制结构，决定了基本经济制度的制度底色，对这一结构的准确概括是（ ）\nA. 国有经济、集体经济以及混合所有制经济中的国有成分和集体成分\nB. 仅包括国有经济\nC. 包括个体经济和私营经济\nD. 仅包括城镇集体经济\n作答要求：先默想基本经济制度的三项构成再作选择，注意选项是否写全。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项完整列出了公有制经济的三类构成。\nB 项把范围收窄为国有经济，遗漏了集体经济与混合经济中的公有成分。\nC 项错误，个体经济、私营经济属于非公有制经济。\nD 项错误，集体经济不限于城镇，农村集体经济是其重要组成部分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "### 要点梳理\n- 内容：按劳分配为主体、多种分配方式并存，劳动、资本、土地、知识、技术、管理、数据等生产要素按贡献参与分配。\n- 依据：生产资料所有制决定分配方式，公有制为主体的所有制结构决定了按劳分配的主体地位。\n- 位置：它是基本经济制度在分配领域的展开，与所有制制度配套记忆，两者是“决定与被决定”的关系。\n\n### 易错点\n- 易把多种分配方式并存理解成削弱按劳分配，正确理解是以按劳分配为主体、多种方式共同发展，主体与多元并行不悖。\n- 易把“按要素分配”当成与社会主义制度对立的东西，它是要素所有权在经济上的实现形式，服务于发展生产力。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "**关键词**：一主多元——按劳分配为主体、多种分配方式并存。**串联**：所有制决定分配制，“公”对“按劳”，“多所有制”对“多方式”，两层一一对应地记。**口诀**：劳为主、要素跟，谁出要素谁分成。\n**易混提醒**：按要素分配不是资本主义专利，要素所有权在经济上实现收益，与按劳分配并行构成“一主多元”。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "生产资料所有制决定分配方式，与公有制为主体的所有制结构相对应，我国的分配制度是（ ）\nA. 生产资料所有制的结构\nB. 居民消费水平的高低\nC. 企业规模的大小\nD. 对外开放程度的高低\n作答要求：先回忆所有制与分配制度的决定关系，再选出因果对应正确的一项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正确，生产资料所有制决定分配方式，公有制为主体决定了按劳分配为主体。\nB 项消费水平是分配的结果，不是决定分配的依据。\nC 项企业规模影响经营但不决定分配制度。\nD 项开放程度与国内分配制度的决定关系没有直接因果联系。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "### 要点梳理\n- 定位：社会主义市场经济体制是社会主义基本经济制度的重要组成部分，是资源配置的基本方式。\n- 核心要义：市场在资源配置中起决定性作用，同时更好发挥政府作用，两只手有机结合。\n- 制度属性：把市场经济与社会主义基本制度结合起来，既讲效率又讲公平，超越了把市场等同于资本主义的认识。\n\n### 易错点\n- 易沿用“基础性作用”的旧提法，现行表述是“决定性作用”，这是层级提法的升级，考试常拿旧提法设干扰项。\n- 易把“更好发挥政府作用”理解成政府直接配置资源，政府的职能是宏观调控、市场监管、公共服务等，是补位而不是取代市场。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "**对比**：基础性（旧提法）对决定性（现行表述），一字之差记层级。**串联**：市场“决定”、政府“更好”，两只手各就其位——看不见的手配资源，看得见的手补短板。**关键词**：决定性作用、更好发挥，两个短语分别配给市场与政府。\n**易混提醒**：旧提法“基础性作用”已被“决定性作用”取代，选择题里旧词出现即是干扰项信号。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "在社会主义条件下发展市场经济，既要讲效率又要讲公平，对资源配置起决定性作用的是（ ）\nA. 决定性作用\nB. 辅助性作用\nC. 从属性作用\nD. 唯一性作用\n作答要求：先分清市场与政府各自的功能定位，再选出现行规范表述的一项；留意旧提法与新表述的差别，凡与现行规范表述不符者一律排除。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项符合现行表述，市场在资源配置中起决定性作用。\nB 项低估了市场的地位，属于已被修正的旧认识。\nC 项错误，市场不是从属手段，而是资源配置的基本方式。\nD 项错误，市场起决定性作用不等于包办一切，政府还要更好发挥作用。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "### 要点梳理\n- 命题内容：构建高水平社会主义市场经济体制，关键是要处理好政府和市场的关系。\n- 内涵：既让市场在资源配置中起决定性作用，又更好发挥政府作用，“放得活”与“管得住”统一起来。\n- 意义：这一关系是经济体制改革的核心问题，处理好了才能同时释放市场活力与政府效能，为高质量发展提供体制保障。\n\n### 易错点\n- 易把它理解成“政府退出去就行”，正确理解是“放活”与“管好”并重，政府要在市场失灵处补位，不能缺位。\n- 易与“计划和市场谁多谁少”的旧框架混淆，现行命题聚焦政府与市场两只手的功能定位，不是简单算比例。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "**关键词**：两只手——看不见的手配资源，看得见的手管秩序与服务，关键在“关系”二字。**对比**：市场长于效率，政府长于公平底线与规则供给，谁也不是万能的。**口诀**：市场决定不动摇，政府更好不缺位。\n**易混提醒**：处理好政府和市场的关系是“核心问题”级表述，别与央地关系、供需关系等周边概念混搭。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L464"
+      ],
+      "text_md": "政府这只手与市场这只手各展所长、相互补位，构建高水平社会主义市场经济体制要处理好的正是（ ）\nA. 政府和市场的关系\nB. 中央和地方的关系\nC. 生产和消费的关系\nD. 城市和乡村的关系\n作答要求：先回忆经济体制改革的核心问题，再看哪个选项与之对应。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正是命题原文的指向，政府与市场的关系是体制建设的核心。\nB 项属于纵向政府间关系，不是本题命题的关键。\nC 项是社会再生产环节之间的关系，与题干不在同一层面。\nD 项属于城乡发展关系，重要但不是该命题所指。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "### 要点梳理\n- 新概括新在哪：把公有制为主体、多种所有制经济共同发展，按劳分配为主体、多种分配方式并存，社会主义市场经济体制三项制度作为一个有机整体，共同界定为社会主义基本经济制度。\n- 意义之一：标志着对社会主义基本经济制度的认识上升为制度整体，三项相互支撑、不可分割，制度内涵更完整。\n- 意义之二：为坚持“两个毫不动摇”、完善分配制度、建设高水平市场经济体制提供制度遵循，增强制度自信与实践定力。\n\n### 易错点\n- 易把“新概括”理解成推翻原有制度另立新制，正确理解是对实践经验的制度化确认与整体提升。\n- 易只答“包括三项”而不答意义，简答题要“内容＋意义”两层都写全。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "**结构**：一体三柱——一个基本经济制度，所有制、分配制、体制三根柱子共同支撑。**关键词**：有机整体、认识新高度、制度遵循，三个短语对应“是什么、新在哪、有何用”。**对比**：旧认识把三项分开看待，新概括把它们合成一个整体。\n**易混提醒**：新概括不是新制度而是新认识，答“意义”时扣“认识深化＋实践遵循”两层。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "简述社会主义基本经济制度新概括的内容及其意义。\n作答要求：先说明新概括把哪些制度纳入一个有机整体，再从认识深化与实践指导两个方面说明其意义；意义部分不要只写一句套话，要分别点出对认识深化与实践遵循的作用；答题时注意“新概括”新在认识而不是另立新制。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）新概括把公有制为主体、多种所有制经济共同发展，按劳分配为主体、多种分配方式并存，社会主义市场经济体制三项制度作为一个有机整体，共同界定为社会主义基本经济制度。（2）意义：标志着对社会主义基本经济制度内涵的认识达到新的高度，三项制度相互支撑、不可分割。（3）为坚持“两个毫不动摇”、完善基本分配制度、构建高水平社会主义市场经济体制提供制度遵循。解析：先答“内容”再答“意义”，意义要落在认识深化与实践指导两个层面，缺一即不完整。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "### 要点梳理\n- 体现在量与质两方面：公有资产在社会总资产中占优势，既要有量的优势，更要注重质的提高。\n- 国有经济对经济发展起主导作用，主要体现在控制力上，控制国民经济命脉和关系国计民生的重要行业与关键领域。\n- 道理所在：公有制是社会主义制度的经济基础，坚持其主体地位才能保证发展的社会主义方向，这也是“两个毫不动摇”的第一条。\n\n### 易错点\n- 易把主体地位单纯理解为数量比重，正确理解是量质并重，质指对国民经济的影响力与控制力。\n- 易把主体地位与国有经济的主导作用画等号：主体说的是公有制经济整体，主导说的是国有经济这一支。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "**结构**：两量一控——量的优势、质的提高、控制力。**对比**：主体（公有制整体）对主导（国有经济），题目问谁答谁。**关键词**：占优势、重质效、控命脉，三个短语覆盖内涵要点。\n**易混提醒**：主体地位配“量质并重”，主导作用配“控制力”，两组词各配各的主角，写串即丢分。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "简述坚持公有制经济主体地位的内涵及意义。\n作答要求：先说明公有资产优势与国有经济主导作用两方面的内涵，再指出坚持主体地位的制度意义；写内涵时注意“量”与“质”并重；写主导作用时主体是国有经济，不要写成公有制整体，两组词各配各的主角。；注意区分主体地位与主导作用两句话的主语。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）公有资产在社会总资产中占优势，既要有量的优势，更要注重质的提高。（2）国有经济控制国民经济命脉，对经济发展起主导作用，主导作用主要体现在控制力上。（3）意义：公有制是社会主义制度的经济基础，坚持其主体地位才能保证发展的社会主义方向，也是坚持“两个毫不动摇”的必然要求。解析：内涵写两条、意义写一条；把主导作用安在公有制整体头上属于概念错位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "### 要点梳理\n- 地位：非公有制经济是社会主义市场经济的重要组成部分，与公有制经济一样都是我国经济社会发展的重要基础。\n- 作用：在稳定增长、促进创新、增加就业、改善民生等方面发挥着重要作用，是发展社会生产力的重要力量。\n- 政策取向：毫不动摇鼓励、支持、引导，依法保护其产权与合法权益，促进其健康发展。\n\n### 易错点\n- 易沿用“必要补充”的旧定位，现行定位是“重要组成部分”，地位已发生根本变化，旧提法常被用作干扰项。\n- 易把鼓励、支持、引导误解为放任不管，引导包含依法规范与健康发展导向，不是没有边界。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "**对比**：旧“补充”对今“重要组成部分”，定位升级要记牢。**串联**：作用四连——稳增长、促创新、增就业、惠民生。**关键词**：两个“都是重要基础”，公有制与非公有制并提不偏废。\n**易混提醒**：地位背“重要组成部分”，作用背“稳增促创增就惠民”四连，旧的“补充”说法直接排除。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L468"
+      ],
+      "text_md": "简述非公有制经济的地位和作用。\n作答要求：先给出其在社会主义市场经济中的定位，再列举其主要作用，最后说明对待非公有制经济的政策态度；作用部分至少写满四个方面；政策态度要写出“鼓励、支持、引导”的动词搭配，顺序不要颠倒。；地位表述用现行提法，不要沿用旧的补充说法。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）地位：非公有制经济是社会主义市场经济的重要组成部分，与公有制经济一样是我国经济社会发展的重要基础。（2）作用：在稳定增长、促进创新、增加就业、改善民生等方面发挥重要作用。（3）政策态度：毫不动摇鼓励、支持、引导非公有制经济发展，依法保护产权与合法权益，促进其健康发展。解析：三段式齐全；把非公有制经济说成“必要补充”是常见失分点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L470"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：拿到收入分配类材料，先区分收入来源属于按劳分配还是按生产要素分配，再看制度安排如何体现效率与公平的统一。\n- 分析要点：坚持按劳分配为主体，多劳多得，保护劳动所得；多种分配方式并存，让要素按贡献参与分配，激发各类要素所有者的积极性。\n- 完善方向：在初次分配、再分配各环节处理好效率与公平的关系，通过制度安排缩小收入差距，防止两极分化。\n\n### 易错点\n- 易把村里分红、租金等一切收入都写成按劳分配，判断标准是收入是否来自劳动付出，租金与红利属于要素收入。\n- 易只谈调动积极性而不谈公平，坚持和完善是一体两面，漏掉公平一层即答不全。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L470"
+      ],
+      "text_md": "**结构**：一判二配三落点——先判收入性质，再配“主体＋并存”，最后落到效率与公平。**对比**：薪金属按劳，租金、分红属要素收入，一个看劳动、一个看所有权。**关键词**：多劳多得、要素参与、公平兜底。\n**易混提醒**：判断收入性质先看来源——劳动所得归按劳，租金红利归要素，兜底帮扶归再分配，三堆别混。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L470"
+      ],
+      "text_md": "某村依托合作社组织经营：农户把承包地流转给合作社，每年收取租金；劳动力在合作社务工，按劳动量与出勤情况领取薪金；农户还以承包经营权或资金入股，年底按约定参与分红；对缺乏劳动力的困难农户，村里安排公益性岗位并给予集体补助。\n结合材料，运用坚持和完善基本分配制度的知识，说明该村各类收入分别体现哪种分配方式，并说明坚持和完善这一基本分配制度的意义。\n作答要求：先逐项对应材料中的收入形式与分配方式，再从调动积极性与促进公平两个方面作答。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）务工按劳动量与出勤领取薪金，属于按劳分配，体现按劳分配的主体地位，多劳多得。（2）土地流转的租金与入股分红属于按生产要素分配，是多种分配方式并存的具体形式，要素按贡献获得收益。（3）公益性岗位与集体补助体现通过再分配与集体帮扶调节收入、兜住底线，促进公平。（4）意义：生产资料所有制决定分配方式，坚持和完善这一基本分配制度，既能调动劳动者与要素所有者的积极性、提高效率，又能缩小收入差距、防止两极分化，让发展成果更多更公平惠及全体农民。解析：逐项对应是得分关键，漏掉租金或分红的性质判定即失分；意义必须写出效率与公平两层。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s2-p11/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L470"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：遇到“放管服”、清单管理、监管执法类材料，用“市场决定性作用＋更好发挥政府作用”两把尺子分别衡量。\n- 分析要点：放宽准入、简化审批、要素自由流动，体现发挥市场的决定性作用；监管执法、公共服务、宏观调控，体现政府更好发挥作用。\n- 完善方向：建设高标准市场体系，把“放得活”与“管得住”统一起来，既纠正市场失灵也防止政府越位。\n\n### 易错点\n- 易把“政府更好发挥作用”写成政府直接定价、直接投资经营，正确理解是政府管规则、管秩序、管公平，不取代市场。\n- 易只答“放”或只答“管”，评析类材料题必须两面俱全，缺一面即片面。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L470"
+      ],
+      "text_md": "**结构**：两把尺子量材料——一量市场是否“放活”，二量政府是否“管好”。**关键词**：负面清单、放得活、管得住。**口诀**：准入交给市场，秩序交给政府，两头都不缺。\n**易混提醒**：评析先亮判断再论证，把“放活”与“管好”各配一处材料，最后必须回扣观点。"
+    },
+    {
+      "block_id": "15040-ch06-s2-p11/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L470"
+      ],
+      "text_md": "某市推进营商环境改革：全面实行市场准入负面清单，企业开办一日办结；水电气等要素价格主要由市场形成；同时建立事中事后监管体系，对食品药品实行全程追溯，清理对企业的乱检查、乱收费，并为小微企业提供信用贷款贴息服务。讨论中有观点认为“管得越少的政府就是好政府”。\n结合材料，运用构建高水平社会主义市场经济体制的知识，评析这一观点，并说明该市做法是如何体现处理好政府和市场的关系的。\n作答要求：先对该观点作出判断并说明理由，再逐项对应材料中的做法与政府、市场各自的作用。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）该观点片面。构建高水平社会主义市场经济体制，既要“放得活”，让市场在资源配置中起决定性作用，又要“管得住、管得好”，更好发挥政府作用，不能以管多管少论政府优劣。（2）负面清单、一日办结、要素价格由市场形成，体现放宽准入、由市场决定资源配置，发挥市场的决定性作用。（3）全程追溯监管体现政府履行市场监管职能，清理乱检查乱收费体现规范政府行为、维护公平秩序，贴息服务体现政府提供公共服务的补位作用，都是更好发挥政府作用。（4）结论：把“放活”与“管好”统一起来，正是处理好政府和市场关系的关键。解析：评析题先判断再论证，材料须逐项对应到两只手的功能；只答“该放”或“该管”均属片面。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L472"
+      ],
+      "text_md": "### 要点梳理\n- 内涵：以国内大循环为主体、国内国际双循环相互促进的发展格局，关键在于经济循环的畅通无阻。\n- 要义：不是各地都搞自我小循环，而是在国内统一大市场中畅通生产、分配、流通、消费各环节，实现供需更高水平的动态平衡。\n- 位置：它是把握发展主动权的先手棋，与新发展理念、高质量发展同属本章的主线逻辑，为建设现代化经济体系提供格局支撑。\n\n### 易错点\n- 易把以国内大循环为主体误解为关起门来封闭运行，正确理解是开放的双循环，国内国际两个市场两种资源联动。\n- 易把新发展格局当成某个地区、某个部门的局部任务，它是对全国经济循环的整体要求。"
+    },
+    {
+      "block_id": "15040-ch06-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L472"
+      ],
+      "text_md": "**关键词**：一主一促——国内大循环为主体，国内国际双循环相互促进。**对比**：主体对封闭，国内循环为主不等于关门，双循环仍靠开放。**串联**：四环节连成链——生产、分配、流通、消费，链条畅通是格局的要害。\n**易混提醒**：国内大循环为主体不等于只做国内生意，主体讲依存结构，开放讲资源配置，两层并行。"
+    },
+    {
+      "block_id": "15040-ch06-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L472"
+      ],
+      "text_md": "立足新发展阶段，为畅通经济循环、把握发展主动权而构建的发展格局，其内涵是（ ）\nA. 以国内大循环为主体、国内国际双循环相互促进\nB. 以国际大循环为主体、国内循环为补充\nC. 各地区自成体系、自我循环\nD. 只依靠国内市场、放弃国际市场\n作答要求：先回忆新发展格局的主语与关系语再作选择，注意主体与开放的表述。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项完整给出了新发展格局的主体与相互促进关系。\nB 项把主次颠倒，不符合战略部署。\nC 项错误，国内大循环建立在全国统一大市场基础上，不是地方自循环。\nD 项错误，双循环要求更好利用国际市场，绝非放弃开放。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L473"
+      ],
+      "text_md": "### 要点梳理\n- 从主动权看：构建新发展格局是把握发展主动权的先手棋，面对外部环境变化，把发展的立足点更多放在国内，增强抗冲击能力。\n- 从循环质量看：畅通经济循环能打通供需堵点，实现更高水平的供需动态平衡，释放强大国内市场潜力。\n- 从开放层面看：最本质的特征是实现高水平的自立自强，不是封闭的国内循环，而是通过强大国内市场吸引全球资源要素，塑造国际合作与竞争新优势。\n\n### 易错点\n- 易把意义写成“扩大内需”一项就收尾，意义至少要覆盖主动权、循环畅通、开放优势三个层面。\n- 易把自立自强与开放对立起来，正确理解是以自立自强为底气的更高水平开放。"
+    },
+    {
+      "block_id": "15040-ch06-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L473"
+      ],
+      "text_md": "**结构**：意义三层楼——底层保主动权，中层通循环，顶层强优势。**关键词**：先手棋、动态平衡、新优势，三个短语各占一层。**对比**：被动应对对主动布局，构建格局就是把发展立足点握在自己手里。\n**易混提醒**：意义答题按“主动权、循环、优势”三层递进，只写扩大内需一层算答不全。"
+    },
+    {
+      "block_id": "15040-ch06-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L473"
+      ],
+      "text_md": "简述构建新发展格局的意义。\n作答要求：从把握发展主动权、畅通经济循环、塑造国际合作竞争新优势三个层面作答，每层先给结论句再补一句说明；三层之间要体现递进关系，不要写成同一个意思；最后用一句话点明三者共同服务于发展主动权。；可结合国内国际两个市场的关系来组织第三层。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）构建新发展格局是把握发展主动权的先手棋，面对外部环境的深刻变化，把发展立足点更多放在国内，增强抵御冲击的能力。（2）有利于畅通生产、分配、流通、消费各环节，打通供需堵点，实现更高水平的供需动态平衡，释放国内市场潜力。（3）新发展格局最本质的特征是实现高水平的自立自强，通过强大国内市场集聚全球资源要素，塑造国际合作与竞争新优势。解析：三层意义缺一即不完整；把格局说成封闭循环属方向性错误。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L474"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：遇到扩内需、促消费、建统一大市场、稳外贸稳外资类材料，用“畅通循环＋双循环相互促进”的框架逐项对应。\n- 分析要点：从供给端看创新驱动与产业升级，从需求端看扩大内需与消费升级，从流通端看统一大市场与物流体系，从开放端看内外贸一体化与外资利用。\n- 落点：推动构建格局要把扩大内需与深化供给侧结构性改革结合起来，扭住扩大内需这个战略基点。\n\n### 易错点\n- 易把材料中的出口数据增长直接当作违背新发展格局，正确理解是双循环仍需要国际循环，关键是内外联动而非替代。\n- 易把扩大内需写成单纯刺激消费，供给与需求要两端发力，供给创造需求、需求牵引供给。"
+    },
+    {
+      "block_id": "15040-ch06-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L474"
+      ],
+      "text_md": "**结构**：四端分析法——供给端、需求端、流通端、开放端，材料逐端对号。**关键词**：战略基点（扩大内需）、统一大市场、高水平开放。**口诀**：内需作基点，循环求畅通，内外相互促。\n**易混提醒**：双循环里的出口不是对立面，判断标准是内外是否相互促进，而不是有没有外单。"
+    },
+    {
+      "block_id": "15040-ch06-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L474"
+      ],
+      "text_md": "某省推出一揽子举措：发放消费券并改造县城商业设施，扩大养老、托育等服务消费；实施产业基础再造工程，支持企业开发新产品；清理市场壁垒，实现全省药品与农产品检验结果互认；举办国际采购大会，引导外贸企业开发适销内销产品，同时稳定海外订单。\n结合材料，运用推动构建新发展格局的知识，说明该省举措是如何畅通经济循环、促进国内国际双循环相互促进的。\n作答要求：先对应材料说明扩大内需与供给侧发力的做法，再说明统一大市场与开放举措在双循环中的作用。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）发放消费券、改造县域商业设施、扩大服务消费，是从需求端扩大内需，扭住扩大内需这个战略基点。（2）产业基础再造、开发新产品，是从供给端深化供给侧结构性改革，以高质量供给创造需求。（3）清理市场壁垒、检验结果互认，是建设统一大市场、畅通流通环节，打通循环堵点。（4）举办国际采购大会、稳定海外订单并引导内外贸一体化，是利用两个市场两种资源，使国内国际双循环相互促进。解析：作答须供需两端并提，再补流通与开放两环；把出口当成与格局对立的分析属于误读。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "### 要点梳理\n- 内涵：现代化产业体系以实体经济为根基，制造业是立国之本、强国之基，先进制造业与现代服务业、现代农业协同发展。\n- 建设要求：把发展经济的着力点放在实体经济上，推进新型工业化，巩固优势产业领先地位，在关系安全发展的领域加快补短板。\n- 位置：产业体系是现代化经济体系的重要内容，也是发展新质生产力、构建新发展格局的产业载体。\n\n### 易错点\n- 易把产业体系现代化等同于脱实向虚发展金融地产，正确方向是坚守实体经济根基，防止脱实向虚。\n- 易忽视制造业的地位表述，制造业的定位语要能准确复述。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "**关键词**：实体经济为根基，制造业是立国之本、强国之基。**对比**：实体经济对虚拟经济，体系建设的着力点在前者。**串联**：新型工业化、优势产业巩固、安全领域补短板，三条建设要求连成线。\n**易混提醒**：产业体系的根基词是实体经济，金融地产类选项出现“着力点”字样即为干扰。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "建设现代化经济体系，必须把发展经济的着力点放在（ ）\nA. 实体经济上\nB. 房地产开发上\nC. 单纯扩大金融规模上\nD. 低水平重复建设上\n作答要求：先回忆产业体系的根基表述再作选择，警惕脱实向虚类选项；先排除与实体经济相悖的选项，再确认剩余项与根基表述一致。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项符合把着力点放在实体经济上的要求。\nB 项错误，房地产不属于立国根基的产业定位。\nC 项错误，金融要服务实体经济，单纯扩大金融规模属脱实向虚。\nD 项错误，产业体系建设强调转型升级，不是低水平扩张。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "### 要点梳理\n- 总目标：农业农村现代化，乡村振兴要围绕这一目标统筹推进产业、人才、文化、生态、组织的全面振兴。\n- 与现代化全局的关系：农业农村现代化是全面建设社会主义现代化国家的短板所在与潜力所在，没有农业农村现代化就没有整个国家的现代化。\n- 位置：在“建设现代化经济体系”一节中，乡村振兴是产业体系建设的乡村篇，与区域协调发展并列成线。\n\n### 易错点\n- 易把总要求（产业兴旺等五句）错当成总目标，总目标只有一个短语——农业农村现代化。\n- 易把总目标写成“农民增收”，增收是重要结果，不是总目标本身的表述。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "**关键词**：总目标只有一个——农业农村现代化。**对比**：目标（现代化）对要求（五句十六字），一个管方向、一个管标准。**口诀**：目标定在现代化，要求落在兴、居、风、治、富。\n**易混提醒**：四个“总”字开头的考点各自只有一条核心语，总目标＝农业农村现代化，先锁死这条。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "实施乡村振兴战略，统揽乡村各项建设与各项事业的奋斗方向，即总目标是（ ）\nA. 农业农村现代化\nB. 农民收入翻番\nC. 乡村人口城镇化\nD. 粮食产量增长\n作答要求：先分清总目标、总方针、总要求、制度保障四个层级，再作选择；四个选项各属不同层级；作答前先默念“目标、方针、要求、保障”的四级口诀。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是总目标的准确表述。\nB 项增收是重要任务而非总目标。\nC 项城镇化不是乡村振兴的总目标，乡村振兴落脚在农业农村本身。\nD 项粮食生产是重要内容，但不是总目标表述。\n补充辨析：四个选项分别对应总目标、任务、城镇化与粮食生产四个不同层面，作答时先定位“总目标”三字再选。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "### 要点梳理\n- 总方针：坚持农业农村优先发展，在干部配备、要素配置、资金投入、公共服务上向农业农村倾斜。\n- 内涵：把解决好“三农”问题作为全党工作重中之重，农业基础地位任何时候不能忽视。\n- 位置：总方针是连接总目标与总要求的实施主线，回答“按什么原则推进”的问题。\n\n### 易错点\n- 易把总方针错记成总要求里的某一句或“巩固完善农村基本经营制度”（那是制度保障层），四个“总”字开头各有所指，不能串位。\n- 易忽略“优先”二字的含义，优先体现在资源要素配置的顺序上。\n- 易把“优先发展”的主体写成乡村振兴本身，正确理解是优先二字落在资源投入的顺序安排上，主语是农业农村。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "**口诀**：目标现代化，方针是优先，要求五句话，保障在制度。**关键词**：农业农村优先发展。**串联**：四个“总”字排成四级台阶——目标、方针、要求、保障，各记一条主线词。\n**易混提醒**：总方针背“优先”二字，落点在干部、要素、资金、公共服务的倾斜顺序上。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "实施乡村振兴战略，要求资源配置和公共服务安排上农业农村先行一步，这一总方针是（ ）\nA. 坚持农业农村优先发展\nB. 产业兴旺、生态宜居\nC. 巩固和完善农村基本经营制度\nD. 生活富裕\n作答要求：先默想四个“总”字考点各配哪条主线，再选出总方针对应项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是总方针的准确表述。\nB 项是总要求中的两项内容。\nC 项属于制度保障层面。\nD 项是总要求之一，不是总方针。\n补充辨析：把总方针与总要求、制度保障混填是常见失分点，记“方针讲优先”即可锁定。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "### 要点梳理\n- 总要求：产业兴旺、生态宜居、乡风文明、治理有效、生活富裕，五句话覆盖经济、生态、文化、治理、民生五个方面。\n- 内在关系：产业兴旺是重点，生态宜居是关键，乡风文明是保障，治理有效是基础，生活富裕是根本，五者相互支撑、缺一不可。\n- 位置：总要求是衡量乡村振兴成效的标准，与总目标、总方针配套成套记忆。\n\n### 易错点\n- 易漏项或添项，答题时按五个方面各记一个关键词：产、居、风、治、富。\n- 易把顺序记乱，按经济、生态、文化、治理、民生的逻辑顺序背诵不易错。\n- 易把总要求五句与总方针、总目标混填，作答前先分清“方向、原则、标准”三个层级各是哪一句。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "**口诀**：产业旺、生态居、乡风明、治理效、生活富——五字诀“旺居明效富”。**结构**：五句话对五领域，经济、生态、文化、治理、民生一一对号。**对比**：重点在产业、根本在富裕，两端的定位词单独记。\n**易混提醒**：总要求五句按“产居风治富”顺序背，与新农村建设旧五句“生产生活村容管理”区分开。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "下列五项中，完整属于实施乡村振兴战略总要求的是（ ）\nA. 产业兴旺、生态宜居、乡风文明、治理有效、生活富裕\nB. 生产发展、生活宽厚、乡风文明、村容整洁、管理民主\nC. 农业高质高效、乡村宜居宜业、农民富裕富足\nD. 城乡融合、区域协调、绿色发展、共享发展、创新驱动",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是总要求的完整五句表述。\nB 项是社会主义新农村建设的旧提法，不是乡村振兴的总要求。\nC 项是对农业、乡村、农民的形象化目标描述，不属于总要求原文。\nD 项是发展理念与区域战略的杂糅，与总要求无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "### 要点梳理\n- 制度保障：建立健全城乡融合发展体制机制和政策体系，让城乡要素双向流动、公共服务均衡配置。\n- 配套制度：巩固和完善农村基本经营制度，保持土地承包关系稳定并长久不变，发展新型农业经营主体。\n- 位置：制度保障回答“靠什么制度支撑”的问题，与总目标、总方针、总要求构成完整链条。\n\n### 易错点\n- 易把制度保障错记成总方针或总要求，城乡融合机制与基本经营制度属于保障层。\n- 易把“城乡融合”理解成把农村变成城市，融合强调要素与服务的双向均衡，不是单向上楼进城。\n- 易把制度保障层的内容错填到方针或要求层，判断时抓住“体制机制”与“经营制度”两个关键词。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "**关键词**：城乡融合发展体制机制、农村基本经营制度。**结构**：四级台阶完整背——目标现代化、方针优先、要求五句、保障融合。**对比**：方针讲投入顺序，保障讲制度安排，一个管倾斜、一个管根基。\n**易混提醒**：制度保障背“城乡融合＋基本经营制度”，与总方针的“优先”各占一格，别填错格。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L476"
+      ],
+      "text_md": "实施乡村振兴战略，离不开体制与政策的托底支撑，为其提供制度保障的是（ ）\nA. 建立健全城乡融合发展体制机制和政策体系\nB. 坚持农业农村优先发展\nC. 产业兴旺、生态宜居\nD. 农业农村现代化\n作答要求：先回忆四个层级的分工，找准“制度保障”对应的那一条。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是制度保障层面的表述。\nB 项是总方针。\nC 项是总要求的内容。\nD 项是总目标。四个层级各有专指，不可混填。\n补充辨析：本题与总方针的区分点是“制度”二字——凡问保障，就找城乡融合体制机制与基本经营制度。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L478"
+      ],
+      "text_md": "### 要点梳理\n- 内容框架：以总要求为纲展开——发展现代农业、促进产业兴旺；推进乡村生态宜居建设；繁荣乡村文化、涵育文明乡风；健全乡村治理体系；拓宽农民增收渠道、实现生活富裕。\n- 实施路径：把产业、人才、文化、生态、组织“五个振兴”统筹起来，分类推进、循序渐进，不搞一刀切。\n- 道理所在：乡村振兴是系统工程，单项突进会顾此失彼，必须目标、方针、要求、保障一体落实。\n\n### 易错点\n- 易把“主要内容”只写成发展产业一项，内容要覆盖总要求的五个方面。\n- 易把“五个振兴”与“总要求五句话”混为一谈，前者是实施路径，后者是建设标准，两套口径都要能分开表述。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L478"
+      ],
+      "text_md": "**结构**：五领域对五振兴——产业、生态、文化、治理、民生对应产业、生态、文化、组织、人才的振兴部署。**关键词**：统筹推进、循序渐进。**串联**：先背总要求五句，再按五句各扩一句实施内容，答案即成。\n**易混提醒**：答主要内容按总要求五句各扩一句，再补“五个振兴”统筹，一套框架两套口径分得清。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L478"
+      ],
+      "text_md": "简述实施乡村振兴战略的主要内容。\n作答要求：按总要求的五个方面逐条说明主要内容，并指出实施中应把握的统筹要求；每条内容先点领域再写做法，顺序按总要求原文排列；统筹要求单独成点，点出“五个振兴”一体推进与因地制宜、循序渐进。；不要把总要求的内容与实施路径混写在同一条里。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）发展现代农业，构建乡村产业体系，促进产业兴旺。（2）推进农村人居环境整治与生态建设，实现生态宜居。（3）传承发展乡村文化，提高乡村社会文明程度，涵育乡风文明。（4）健全自治、法治、德治相结合的乡村治理体系，实现治理有效。（5）拓宽农民增收渠道，补齐民生短板，实现生活富裕。解析：统筹要求是坚持产业、人才、文化、生态、组织“五个振兴”一体推进，因地制宜、循序渐进，不搞一刀切。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L478"
+      ],
+      "text_md": "### 要点梳理\n- 战略部署：深入实施区域协调发展战略、区域重大战略、主体功能区战略，优化重大生产力布局，形成优势互补的区域经济布局。\n- 内在逻辑：各地区禀赋不同，发展不能齐步走，要按主体功能定位分工协作，让发达地区与欠发达地区各展所长、协同增效。\n- 与乡村振兴的关系：区域协调包括城乡协调，推进新型城镇化与乡村振兴联动，缩小城乡与区域发展差距。\n\n### 易错点\n- 易把区域协调发展理解成各地区搞同质化竞争、产业雷同，正确方向是错位发展、优势互补。\n- 易漏掉主体功能区这一层，只答东西部帮扶，表述就不完整。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L478"
+      ],
+      "text_md": "**关键词**：三大战略连记——区域协调发展、区域重大战略、主体功能区战略。**对比**：同质竞争对优势互补，协调的要义在分工。**串联**：城市群里找重大战略，粮食与生态屏障里找主体功能，一条线串起布局。\n**易混提醒**：区域协调背三类战略，判断对错看“优势互补”，同质竞争类说法直接判错。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L478"
+      ],
+      "text_md": "简述促进区域协调发展的主要部署与基本要求。\n作答要求：先列出主要战略部署，再说明区域协调发展的基本要求及其与城乡协调的关系；战略部署写全三类；基本要求里必须出现“优势互补”或“错位发展”字样，防止把协调发展写成同质竞争。；答完部署与要求后，用一句话点出城乡协调的位置。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）深入实施区域协调发展战略、区域重大战略、主体功能区战略，优化重大生产力布局，构建优势互补的区域经济布局。（2）基本要求是各地区按主体功能定位分工协作、错位发展，避免同质化竞争，让各区域各展所长。（3）区域协调包括城乡协调，要推进新型城镇化与乡村振兴联动，逐步缩小城乡与区域发展差距。解析：部署要写全三类战略；只谈对口支援不谈功能分工属于表述不全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch06-s4-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch06-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L479"
+      ],
+      "text_md": "### 要点梳理\n- 内容框架：建设创新引领、协同发展的产业体系，统一开放、竞争有序的市场体系，体现效率、促进公平的收入分配体系，彰显优势、协调联动的城乡区域体系，资源节约、环境友好的绿色发展体系，多元平衡、安全高效的全面开放体系，以及充分发挥市场作用、更好发挥政府作用的经济体制。\n- 应用场合：材料给出产业、市场、分配、区域、绿色、开放等任一方面的做法，先归位到体系框架，再谈相互支撑。\n- 意义：现代化经济体系是现代化建设的经济基础，只有体系完整、协同高效，高质量发展才有坚实依托。\n\n### 易错点\n- 易把现代化经济体系窄化为产业体系一项，体系是多个子体系加经济体制的有机整体。\n- 易把各子体系写成互不相干的并列条目，答题要点出相互联系、一体建设。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch06-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L479"
+      ],
+      "text_md": "**结构**：六个体系加一个体制——产业、市场、分配、区域、绿色、开放各成一个体系，政府与市场关系作体制底座。**口诀**：产市分区绿开六体系，体制管两只手。**串联**：材料归类先问属于哪个体系，再答协同建设，框架即立。\n**易混提醒**：体系归位题按“产市分区绿开”六格对号，最后补一句“一体建设”收束。"
+    },
+    {
+      "block_id": "15040-ch06-s4-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch06-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L479"
+      ],
+      "text_md": "某市围绕现代化建设布局推进工作：建设智能制造产业园与研发孵化平台；清理市场准入隐性壁垒，实现企业信用评价互认；提高技能人才薪酬并扩大保障性住房供给；推动城区与县域结对共建产业园区；整治入河排污口并推广清洁能源；开通中欧班列线路并吸引外资研发中心落地。\n结合材料，运用建设现代化经济体系的知识，说明该市做法分别属于哪些子体系的建设，并说明建设现代化经济体系的意义。\n作答要求：先逐项对应材料与体系框架，再从现代化全局与高质量发展两个角度作答意义。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）智能制造产业园与孵化平台属于建设创新引领、协同发展的产业体系。（2）清理准入壁垒、信用互认属于建设统一开放、竞争有序的市场体系。（3）提高技能人才薪酬、扩大保障性住房属于建设体现效率、促进公平的收入分配体系。（4）城区与县域结对共建属于建设彰显优势、协调联动的城乡区域发展体系。（5）整治排污口、推广清洁能源属于建设资源节约、环境友好的绿色发展体系。（6）中欧班列与外资研发中心属于建设多元平衡、安全高效的全面开放体系。（7）意义：现代化经济体系是全面建设社会主义现代化国家的经济基础，各子体系相互支撑、一体建设，才能为高质量发展提供坚实依托。解析：逐项归位是得分主体，意义要写出全局定位与支撑关系；只答产业一项属于框架残缺。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 定位：科教兴国战略是国家发展的重大战略，把科技和教育摆在经济社会发展的重要位置，依靠科技进步与劳动者素质提高推动发展。\n- 内涵：坚持教育优先发展、科技自立自强、人才引领驱动，三者统筹部署、协同发力。\n- 位置：在本章中，科教兴国战略与人才强国战略、创新驱动发展战略并列为三大战略，是基础性、战略性支撑的战略载体。\n\n### 易错点\n- 易把科教兴国战略说成只抓科技不抓教育，名称里“科”与“教”并立，缺一不可。\n- 易把它当成某一时期的临时政策，它是持续推进的国家战略，并与基本国策层面的部署相衔接。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**关键词**：科与教并举，兴国为落点。**串联**：三大战略连成线——科教兴国打基础、人才强国聚力量、创新驱动增动能，一基一聚一动。**对比**：战略（国家部署）对国策（基本国策），科教兴国兼具两重属性，答题先分清问的是哪层。\n**易混提醒**：科教兴国战略里科教并重，只答科技一半即错；战略与国策两层属性都要能说。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "下列关于科教兴国战略的理解，正确的是（ ）\nA. 把科技和教育摆在经济社会发展的重要位置，依靠科技进步与劳动者素质提高推动发展\nB. 只需要发展科学技术，教育可以缓一步\nC. 科教兴国战略是针对个别行业的专项政策\nD. 科教兴国战略与创新驱动发展战略相互对立",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项完整表达了战略的核心内容。\nB 项割裂了科技与教育的关系，两者必须协同。\nC 项错误，科教兴国是国家层面的重大战略，不是行业专项政策。\nD 项错误，三大战略相互支撑，创新驱动发展战略与科教兴国战略方向一致。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 定位：人才强国战略依靠人才队伍的建设与开发来支撑强国事业，把人才作为支撑发展的第一资源来统筹布局。\n- 内容：全方位培养、引进、用好人才，聚天下英才而用之，加快建设世界重要人才中心和创新高地。\n- 位置：与科教兴国战略、创新驱动发展战略并列，本章第四节“加快建设人才强国”是对它的系统展开。\n\n### 易错点\n- 易把人才强国战略窄化为引进海外人才，培养与用好同样是其支柱，三个环节缺一不可。\n- 易与人才引领驱动的提法错位，前者是战略名称，后者是战略实施的要求层次。\n- 易把人才强国战略写成待遇留人一项，战略层的内容要覆盖培养、引进、使用与制度环境多个方面。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**关键词**：培养、引进、用好，三环相扣聚英才。**口诀**：育才、引才、用才，聚天下英才而用之。**对比**：人才强国（战略）对人才引领驱动（实施要求），一层管全局、一层管落实。\n**易混提醒**：人才强国战略记“育引用”三环，缺任何一环都不构成完整表述。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "依靠人才队伍的培育、聚集与使用来支撑强国事业，这一战略是（ ）\nA. 全方位培养、引进、用好人才\nB. 只注重引进海外人才而忽视本土培养\nC. 人才工作只面向科研机构\nD. 以学历高低作为评价人才的唯一标准\n作答要求：先回忆人才工作三个基本环节再作选择，警惕重引进轻培养类选项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项涵盖了人才工作的三个基本环节。\nB 项重引进轻培养，结构失衡，不符合战略要求。\nC 项错误，人才工作覆盖各行业各领域，不限于科研机构。\nD 项错误，人才评价坚持德才兼备、以德为先，不唯学历。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 定位：创新驱动发展战略把创新摆在国家发展全局的核心位置，依靠科技创新驱动发展方式转变。\n- 内涵：坚持面向世界科技前沿、面向经济主战场、面向国家重大需求、面向人民生命健康，加快实现高水平科技自立自强。\n- 位置：三大战略中，创新驱动发展战略是动能层，与科教兴国、人才强国相互支撑，共同服务基础性、战略性支撑。\n\n### 易错点\n- 易把创新驱动窄化为技术创新，创新还包括制度创新、管理创新等，但科技创新处于核心地位。\n- 易把“核心位置”写成“重要位置”，命题层级用词的差异常被拿来做干扰项。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**关键词**：核心位置、四个面向。**串联**：面向记成“前沿、战场、需求、健康”四词口诀。**对比**：要素驱动对创新驱动，前者拼投入规模，后者拼科技与制度效能。\n**易混提醒**：创新驱动发展战略记“核心位置＋四个面向”，把创新窄化成技术一项即不完整。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "把创新摆在国家发展全局的核心位置、依靠科技创新转换发展动力的战略是（ ）\nA. 世界科技前沿\nB. 经济主战场\nC. 国家重大需求\nD. 单纯追求论文数量的导向\n作答要求：先默想四个面向的内容再比对选项，注意题干问的是“不包括”；四个面向的内容要先背全，再用排除法锁定不属于其范围的一项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\n解析：D 项不属于“四个面向”的内容，片面追求论文数量是科技评价中被纠正的倾向。\nA 项、B 项、C 项分别对应科技前沿、经济主战场与国家重大需求，均属四个面向，人民生命健康同样是其中的方向要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 命题：科学技术是第一生产力，科学技术渗透于生产力的各个要素之中，能够使劳动者、劳动资料、劳动对象发生质的提升。\n- 内涵：现代生产率的提高越来越依靠科技进步，科技从潜在生产力转化为现实生产力，直接推动经济增长。\n- 位置：这一论断是理解“创新是第一动力”与科教兴国战略的理论基点，在本章承担理论依据的角色。\n\n### 易错点\n- 易把“第一生产力”写成“第一资源”或“第一动力”，三个“第一”各有所指——科技是第一生产力、人才是第一资源、创新是第一动力，不能互换。\n- 易把该论断理解为科技独立于生产过程之外，科技恰恰是内嵌于生产要素之中发挥作用。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**口诀**：科技第一生产力，人才第一资源，创新第一动力——三个“第一”三句话，一对号就不错位。**对比**：潜在生产力对现实生产力，科技通过应用才转化为现实生产力。**关键词**：渗透、提升、转化。\n**易混提醒**：三个“第一”对号入座——生产力归科技、资源归人才、动力归创新，错位即答错。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "科学技术渗透于生产力各要素之中，能使劳动者、劳动资料与劳动对象发生质的提升，这一论断是（ ）\nA. 科学技术是第一生产力，人才资源是第一资源，创新是第一动力\nB. 科学技术是第一资源，人才是第一生产力\nC. 人才是第一动力，创新是第一资源\nD. 三者都统称为第一生产力",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项三个论断与三个主体一一对应，是标准表述。\nB 项把生产力与资源错位。\nC 项同样错位，创新对应的是第一动力。\nD 项把三个论断混为一谈，抹去了各自的指涉。\n补充辨析：三个论断同源于对现代化动力系统的概括，主体与宾语一一对应，答前先默念对号口诀。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 命题：科教兴国是我国的基本国策，表明发展科技与教育是国家长期坚持的根本性政策，不因短期形势变化而动摇。\n- 内涵：把教育摆在优先发展的战略位置，把科技创新摆在发展全局的核心位置，两者以基本国策的刚性获得长期保障。\n- 位置：本点强调政策属性的稳定性，与战略层面的科教兴国战略相衔接：战略讲部署，国策讲长期坚持。\n\n### 易错点\n- 易把基本国策与一般政策混同，基本国策是长期稳定的国家层面政策，层级更高、约束更强。\n- 易把“科教兴国”与“节约资源、保护环境”等基本国策混抄，答题按题目指向作答。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**关键词**：基本国策＝长期坚持、国家层面，两个属性绑定背。**对比**：战略对国策——战略讲怎么部署，国策讲必须长期坚持，层级高一档。**口诀**：科教兴国是国策，教育优先不动摇，科技核心不让步。**结构**：先记国策身份，再记教育与科技各自的定位语，最后记“长期”二字是判据。\n**易混提醒**：基本国策的判词是“长期坚持”，随经济周期调整之类的说法与国策属性相反。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "发展科技与教育是国家长期坚持的根本性政策，不因短期形势变化而动摇，其政策定位是（ ）\nA. 发展科技和教育是国家长期坚持的根本性政策\nB. 科技教育政策可以随经济周期随时调整\nC. 科教兴国只是一项阶段性倡议\nD. 教育投入由市场自发决定即可",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项揭示了基本国策的长期性与根本性。\nB 项错误，基本国策恰恰不随短期形势摇摆。\nC 项错误，基本国策不是阶段性倡议。\nD 项错误，教育优先发展要求政府保障投入，不能交由市场自发决定。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 命题：人才资源是第一资源，人才是衡量一个国家综合国力的重要指标，事业发展要靠人才推动。\n- 内涵：在各类资源中，人才是具有能动性、创造性的资源，能够激活其他资源，实现人尽其才则百业兴。\n- 位置：它是人才强国战略与“坚持人才引领驱动”的理论依据，与科技是第一生产力、创新是第一动力连成一组。\n\n### 易错点\n- 易把“第一资源”错写成“第一生产力”，两个论断分属人才与科技，不能张冠李戴。\n- 易把人才资源等同于人口数量，人才强调素质与创造能力，不是单纯的人口规模。\n- 易把人才资源的判断标准写成文凭与资历，正确理解是看能动性与创造性，能解决实际问题、作出实际贡献。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**关键词**：能动性、创造性、激活其他资源。**口诀**：三个“第一”各归位——生产力归科技、资源归人才、动力归创新。**对比**：人口规模对人才资源，一个讲数量，一个讲素质与创造力。\n**易混提醒**：人才资源讲“第一资源”，别写成“第一生产力”，两者主体不同。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "在各类资源中，有一种资源具有能动性与创造性，能激活和带动其他资源，它被称为（ ）\nA. 人才具有能动性和创造性，能够激活和带动其他资源\nB. 人口数量越多发展越快\nC. 人才是可以替代一切的物质资源\nD. 只有高学历者才算人才\n作答要求：先回忆三个“第一”论断的分工再作选择，注意题干强调的特性。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项点明人才资源的能动性与创造性这一本质。\nB 项把人口数量当人才，混淆了人口与人才。\nC 项错误，人才不是一般物质资源，其价值恰在创造性。\nD 项错误，人才评价不唯学历，坚持德才兼备。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "### 要点梳理\n- 命题：创新是引领发展的第一动力，坚持创新在我国现代化建设全局中的核心地位。\n- 内涵：发展动力决定发展速度、效能与可持续性，靠要素投入的老路难以为继，必须转向创新驱动。\n- 位置：它是创新驱动发展战略与科技自立自强的理念依据，与本章“发展新质生产力”的考点在逻辑上相接。\n\n### 易错点\n- 易把创新仅理解为科技人员的发明创造，创新涵盖理论、制度、科技、文化等各方面，以科技创新为核心。\n- 易与“开放是国家繁荣发展的必由之路”混淆表述来源，考生常把发展理念中的定位词张冠李戴。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "**关键词**：第一动力、核心地位。**对比**：创新（动力）对开放（必由之路）对共享（本质要求），理念定位词各归各。**口诀**：创新驱动一马当先，全局核心不动摇。\n**易混提醒**：创新配“第一动力”，与开放（必由之路）、共享（本质要求）的定位词分清归属。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L497"
+      ],
+      "text_md": "发展动力决定发展速度、效能与可持续性，引领发展的第一动力是（ ）\nA. 核心地位\nB. 从属地位\nC. 辅助地位\nD. 机动地位\n作答要求：先回忆创新的定位语再作选择，其余三项都是生造表述；定位语类题目先想标准表述，再看选项是否换字、降级或生造。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是标准表述，创新处于现代化建设全局的核心地位。\nB 项、C 项明显低估了创新的定位。\nD 项表述不存在，属于生造干扰项。\n补充辨析：其余三个选项都是生造的定位词，创新的标准定位语只有“核心地位”一处。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L499"
+      ],
+      "text_md": "### 要点梳理\n- 道理所在：教育培养人才，人才推动科技创新，科技创新又反过来引领教育变革与人才培养升级，三者构成相互支撑的循环。\n- 一体推进的含义：把教育、科技、人才作为整体统筹部署，打通培养链、创新链、使用链，避免各管一段、相互脱节。\n- 意义：三者统一服务于全面建设社会主义现代化国家的基础性、战略性支撑，一体推进才能形成放大效应。\n\n### 易错点\n- 易把三者写成互不相干的三件事再机械相加，答题要点出彼此贯通的循环关系。\n- 易只讲教育或只讲科技单线突进，一体推进的要害在统筹与衔接。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L499"
+      ],
+      "text_md": "**结构**：循环三角——教育出人才、人才做创新、创新反哺教育，三边各一句。**关键词**：统筹部署、循环贯通、放大效应。**口诀**：教育育人，人才创新，创新促教，三角循环一体推。\n**易混提醒**：一体推进的关键词是“循环贯通”，三者并列相加式的答案拿不到逻辑分。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L499"
+      ],
+      "text_md": "简述坚持教育发展、科技创新、人才培养一体推进的道理与实践要求。\n作答要求：先说明教育、科技、人才三者相互支撑的内在联系，再说明一体推进的实践要求与意义；内在联系要写出“谁培养谁、谁支撑谁”的循环链，不要三句独立并列；实践要求落在统筹部署与打通链条上。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）教育是人才培养的基础，人才是科技创新的主体，科技创新又引领教育内容与方式的更新，三者相互支撑、循环贯通。（2）一体推进要求把教育、科技、人才统筹部署，打通人才培养链、科技创新链与人才使用链的衔接。（3）意义：三者统一构成全面建设社会主义现代化国家的基础性、战略性支撑，一体推进能够形成协同放大的整体效应。解析：答内在联系时必须体现“循环”而非并列相加；实践要求落在统筹与衔接两个词上。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：教育投入、教师队伍、乡村学校、职业教育类材料，用“优先”两把标尺衡量——规划优先安排、投入优先保障。\n- 分析要点：经济社会发展规划优先安排教育、财政资金投入优先保障教育、公共资源配置优先满足教育发展需要。\n- 落点：优先发展教育是建设教育强国的前提，材料中的做法应落到“为谁培养人、培养什么人”与补短板促公平的实效上。\n\n### 易错点\n- 易把教育优先写成一句口号而不对应材料，答题必须逐项指出优先体现在哪些具体安排上。\n- 易把发展教育等同于扩建校舍，软件（师资、课程、育人质量）同样是优先发展的内容。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "**关键词**：三个优先——规划优先、投入优先、资源配置优先。**结构**：一量硬件二量师资三量公平，材料逐项对号。**口诀**：先规划、先投钱、先配资源，教育优先不落空。\n**易混提醒**：教育优先看“三个优先”是否落地——规划、投入、资源配置，答口号不答举措即空。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "某县在财政紧张的情况下仍把教育列为预算安排的第一顺位：新建改扩建乡镇公办幼儿园与寄宿制学校；实施乡村教师补贴与周转宿舍计划，定向培养本地师范生；推动城区优质学校与乡村学校结对，共享课程与教研资源；同时把职业教育实训基地与本地主导产业用工需求对接起来。\n结合材料，运用坚持教育优先发展的知识，说明该县是如何落实教育优先发展的，并说明这样做的意义。\n作答要求：先逐项对应材料中的做法，再从教育强国建设与民生公平两个角度作答意义。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）预算第一顺位、新建改扩建学校，体现经济社会发展规划优先安排教育、财政资金优先保障教育。（2）乡村教师补贴、周转宿舍与定向培养师范生，体现公共资源配置优先满足教育需要，补上师资短板。（3）城乡学校结对共享课程教研，是促进教育均衡与公平的举措。（4）实训基地对接产业需求，体现职业教育服务发展、培养实用人才的定位。（5）意义：教育优先发展为建设教育强国打基础，也为阻断贫困代际传递、促进社会公平提供支撑。解析：逐项对应是主体得分点；意义要写出强国建设与公平两层。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p10/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：关键技术攻关、研发投入、产学研合作类材料，用“自立自强＋高水平”的框架分析。\n- 分析要点：把科技自立自强作为国家发展的战略支撑，关键核心技术要牢牢掌握在自己手中，同时坚持开放合作不封闭。\n- 落点：高水平科技自立自强是构建新发展格局最本质特征的要求，材料做法要落到创新链与产业链的自主可控上。\n\n### 易错点\n- 易把自立自强写成闭门造车，正确理解是自立自强与开放合作并行，关键在自主可控。\n- 易把材料中的普通技术引进当作自立自强，只有形成自主研发能力与关键环节掌控力才符合题意。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "**关键词**：战略支撑、关键核心技术、自主可控。**对比**：自立自强（自己的本事）对开放合作（借力共生），两者并行不悖。**串联**：研发投入—平台建设—人才团队—成果转化，四环连成自主创新的链条。\n**易混提醒**：自立自强与开放合作并行，把自立自强答成闭门造车即方向性错误。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p10/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "某科技企业曾长期依赖进口核心部件。近年来企业与高校共建联合实验室，连续多年将销售收入的一成以上投入研发；组建以青年骨干为主的攻关团队，实行项目负责人制；对失败但程序合规的探索项目不予追责，鼓励大胆尝试；最终实现核心部件自主设计制造，并反向出口海外市场，同时继续与国际同行开展标准合作。\n结合材料，运用坚持科技自立自强的知识，说明该企业实现高水平科技自立自强的做法，并评析“自立自强就是关起门来搞研发”的观点。\n作答要求：先逐项对应材料中的做法，再对该观点作出判断并说明理由。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）与高校共建联合实验室、持续投入研发，体现产学研协同与创新投入保障，把创新资源组织起来。（2）青年骨干攻关与项目负责人制，体现发挥人才第一资源的作用并改革科研组织方式。（3）宽容失败的机制体现了鼓励探索、激发创新活力的导向。（4）核心部件自主设计制造并出口，说明掌握关键核心技术、实现自主可控，这正是科技自立自强的目标。（5）观点错误：坚持自立自强与坚持开放合作并不矛盾，该企业仍与国际同行开展标准合作；自立自强强调关键核心技术掌握在自己手中，不是封闭自我，而是以自主能力赢得更高水平的开放合作。解析：逐项对应加观点评析两部分缺一不可；评析须点出“自主”与“开放”的统一。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s1-p11/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s1-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：引才政策、人才评价改革、成果转化激励类材料，用“培养—引进—用好—留住”的链条分析。\n- 分析要点：人才引领发展要求把人才放在优先位置，通过人才链衔接创新链与产业链，使人才优势转化为创新优势与发展优势。\n- 落点：坚持人才引领驱动要破除束缚人才的体制机制障碍，向用人主体授权、为人才松绑，营造识才爱才敬才用才的环境。\n\n### 易错点\n- 易把人才工作写成发补贴、给帽子，评价激励改革与环境营造同样是引才留才的关键。\n- 易只写引进不写用好，人才引领驱动重在“用”，让人才在创新一线发挥作用。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s1-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "**结构**：四环链条——培养、引进、用好、留住，材料对环作答。**关键词**：授权松绑、识才爱才敬才用才。**口诀**：引得进、用得好、留得住，人才引领才有动力。\n**易混提醒**：人才引领驱动重在“用”，评价改革、授权松绑、环境留人三件套缺一不可。"
+    },
+    {
+      "block_id": "15040-ch07-s1-p11/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s1-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L502"
+      ],
+      "text_md": "某高新区改革人才政策：对高层次人才团队实行“一事一议”引进，赋予领衔科学家技术路线决定权和经费使用权；推行代表作评价制度，不以论文数量为唯一标准；建设人才公寓与子女入学配套；设立成果转化收益分成办法，让科研人员按约定比例分享转化收益。园区企业反映，人才流入后新产品开发速度明显加快。\n结合材料，运用坚持人才引领驱动的知识，说明该区是如何通过体制机制改革激发人才引领作用的。\n作答要求：先逐项对应材料中的改革举措，再说明人才引领驱动的实现路径。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）“一事一议”引进体现了不拘一格聚才，授权与松绑让领衔科学家自主决定技术路线与经费使用。（2）代表作评价破除唯论文倾向，体现了以创新能力和实际贡献为导向的人才评价改革。（3）人才公寓与入学配套体现营造识才爱才敬才用才的环境，解决人才后顾之忧。（4）转化收益分成体现让人才凭创新贡献获得合理回报，激励人才把论文写在产品上。（5）实现路径：以改革授权松绑、改革评价、优化环境、强化激励，使人才链衔接创新链与产业链，把人才优势转化为创新优势和发展优势。解析：逐项对应后必须落到“引领驱动”的转化链条上，只罗列政策不点转化即答不全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "### 要点梳理\n- 命题：必须把教育事业放在优先发展的战略位置，这是建设教育强国、办好人民满意教育的前提性要求。\n- 内涵：教育是国之大计、党之大计，规划优先安排、投入优先保障、公共资源配置优先满足教育需要。\n- 位置：本点是教育强国建设的总要求，其后各点（基石、根本任务、办学方向、根本保证、根本遵循）都是它的展开。\n\n### 易错点\n- 易把“优先发展的战略位置”弱化成“重视教育”，优先是排位要求，落在规划、投入、资源配置三个具体环节。\n- 易与“科技摆在核心位置”的提法错位，教育的定位语是优先发展，科技的定位语是核心地位。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "**关键词**：优先＋战略位置，两个词绑定背。**口诀**：教育优先排前头，规划投入资源三先走。**对比**：教育（优先发展）对科技（核心地位）对人才（引领驱动），定位词各就各位。\n**易混提醒**：教育的定位词是“优先发展的战略位置”，与科技“核心地位”、人才“引领驱动”三句分清。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "教育是国之大计、党之大计，在党和国家事业布局中，教育事业应当处于（ ）\nA. 优先发展的战略位置\nB. 从属于经济发展的辅助位置\nC. 视财政盈余而定的机动位置\nD. 由市场供需决定的自由位置\n作答要求：先回忆教育的定位语再作选择，与科技、人才的定位词分清。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是标准表述，教育处于优先发展的战略位置。\nB 项低估了教育的定位。\nC 项错误，教育优先发展不以财政盈余为前提。\nD 项错误，教育是国之大计、党之大计，不能交给市场自由决定。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "### 要点梳理\n- 命题：教育是民族振兴、社会进步的基石，也是提高国民素质、促进人的全面发展的根本途径。\n- 内涵：教育承担立德树人、传承文明、培育人才的基础功能，其效益指向民族与社会的长远未来。\n- 位置：本点回答“为什么教育优先”，与上一点构成“地位—要求”的配套关系，基石地位决定优先安排。\n\n### 易错点\n- 易把教育的定位语与科技的混淆，科技对应的是第一生产力等提法，教育对应的是基石。\n- 易把基石作用写成单纯传授知识，教育的功能还涵盖育人、公平与人的全面发展。\n- 易把基石作用写成教育产业的经济贡献，正确理解是教育通过育人作用于民族与社会的长远根基。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "**关键词**：基石＋两个振兴（民族振兴、社会进步），一个定位语带两个受益方。**串联**：基石地位推出优先发展，优先发展通向教育强国，三点连成因果链。**对比**：教育的定位语是基石，科技对应第一生产力，人才对应第一资源，三句不要串门。**口诀**：兴邦先兴教，基石最牢靠。\n**易混提醒**：基石定位配教育，第一生产力配科技，第一资源配人才，三张名片别贴错对象。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "提高国民素质、促进人的全面发展，为民族复兴与社会进步打地基，承担这一基础功能的事业是（ ）\nA. 教育\nB. 科学技术\nC. 人才\nD. 资本\n作答要求：先对号三张定位名片再作选择，看准题干问的是哪一项事业；三张定位名片各归各主，不要互相串门。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是教育的定位表述。\nB 项科学技术对应的是第一生产力等论断。\nC 项人才对应第一资源的提法。\nD 项资本不属于此类定位表述。\n补充辨析：把教育的基石定位与科技、人才的定位语混用是最常见错误，答题先看主语再选定位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "### 要点梳理\n- 命题：把立德树人作为教育的根本任务，回答培养什么人、怎样培养人、为谁培养人这一根本问题。\n- 内涵：育人的根本在于立德，要坚持德智体美劳全面发展，把思想道德培养放在育人之首。\n- 位置：根本任务贯穿办学方向、教育方针与育人实践各点，是教育强国建设的灵魂工程。\n\n### 易错点\n- 易把根本任务写成提高升学率或传授知识技能，根本任务专指立德树人，答题用词要准。\n- 易漏掉“根本问题”的三问表述，三问（培养什么人、怎样培养人、为谁培养人）是常考配套。\n- 易把根本任务的主体写成学校德育部门一家的事，正确理解是全员、全过程、全方位育人共同承担。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "**关键词**：立德树人＝根本任务，四字定位语必须原样背。**串联**：根本任务回答根本三问——培养什么人、怎样培养人、为谁培养人，问与答一一对上。**结构**：先记任务名，再记三问，最后记育人之首在立德。**对比**：任务（立德树人）、保证（党的领导）、遵循（教育方针），三个“根本”各归各。\n**易混提醒**：根本任务四个字是“立德树人”，升学率、规模、经费都不是任务本身。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "教育要解决培养什么人、怎样培养人、为谁培养人的问题，集中起来就是要把（ ）作为教育的根本任务\nA. 立德树人\nB. 提升升学率\nC. 扩大办学规模\nD. 增加教育经费\n作答要求：先回忆根本任务的标准表述再作选择，排除条件类、指标类选项；作答前先默想根本任务的四字表述。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是教育根本任务的规范表述。\nB 项升学率是局部指标，不能取代根本任务。\nC 项规模是办学条件之一，不是根本任务。\nD 项经费是保障条件，同样不是任务本身。\n补充辨析：根本任务指向育人的根本问题，其余选项都是办学条件或局部指标，层级不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "### 要点梳理\n- 命题：坚持社会主义办学方向，教育要为人民服务、为治国理政服务、为巩固和发展中国特色社会主义制度服务、为改革开放和社会主义现代化建设服务。\n- 内涵：我国教育是社会主义教育，培养的是德智体美劳全面发展的社会主义建设者和接班人。\n- 位置：办学方向是根本任务的制度保证，方向偏了，育人就会偏离目标。\n\n### 易错点\n- 易把培养目标写成“建设者”而漏掉“接班人”，或相反，完整表述是建设者和接班人并提。\n- 易把办学方向当成抽象口号，它落实在培养目标、课程体系与育人全过程之中。\n- 易把办学方向的内容写成一句抽象口号，它具体落在培养什么人的规格与教育为谁服务的立场上。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "**关键词**：社会主义办学方向，培养建设者和接班人。**口诀**：为党育人、为国育才，方向社会主义。**结构**：四个服务各记一半——为人民、为治理、为制度、为现代化建设。\n**易混提醒**：培养目标必须写全“建设者和接班人”，只写一半即表述不完整。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "我国教育事业的性质决定了培养目标，坚持社会主义办学方向，就是要培养（ ）\nA. 德智体美劳全面发展的社会主义建设者和接班人\nB. 只掌握专业技能的劳动者\nC. 只强调分数的应试型人才\nD. 脱离社会需要的书斋型学者\n作答要求：先默想培养目标的完整表述再作选择，注意“并提”的完整性。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是培养目标的完整表述。\nB 项只提技能、不提全面发展，窄化了目标。\nC 项应试导向与全面发展背道而驰。\nD 项脱离社会需要，不符合教育服务现代化建设的方向。\n补充辨析：培养目标的完整表述包含发展方向与人才规格两层，只答一半即算表述不全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "### 要点梳理\n- 命题：坚持党对教育工作的全面领导是办好教育的根本保证，这是我国教育事业的领导核心所在。\n- 内涵：党领导教育体现为把牢社会主义办学方向、落实立德树人、统筹教育资源，确保教育始终沿着正确方向发展。\n- 位置：本点与办学方向、教育方针相衔接，回答“靠谁保证”的问题，是教育各考点中最具统领性的一条。\n\n### 易错点\n- 易把“根本保证”与“根本任务”“根本遵循”混写，三者各有所指——保证在党的领导、任务在立德树人、遵循在教育方针。\n- 易把党的领导弱化为一般性支持，全面领导是方向、路线与重大事项的统领。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "**对比**：三个“根本”对号——领导是根本保证、立德树人是根本任务、教育方针是根本遵循。**关键词**：全面领导、把牢方向。**口诀**：保证靠领导，任务在树人，遵循看方针。\n**易混提醒**：三个“根本”对号——保证在党的领导、任务在立德树人、遵循在教育方针。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "把牢办学方向、落实根本任务、统筹教育资源，都离不开一个领导核心，办好教育的根本保证是（ ）\nA. 坚持党对教育工作的全面领导\nB. 增加教育经费投入\nC. 扩大教育对外开放\nD. 提升教师学历水平\n作答要求：先分清三个“根本”各指什么再作选择，找准题干问的那一个。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是规范表述，党的全面领导是办好教育的根本保证。\nB 项经费是保障条件，不是根本保证。\nC 项对外开放是途径之一，层级不同。\nD 项师资建设是重要内容，同样不是根本保证的表述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "### 要点梳理\n- 命题：党的教育方针是教育事业发展的根本遵循，各级各类学校办学育人都要按教育方针执行。\n- 内涵：教育方针规定教育为社会主义现代化建设服务、为人民服务，把立德树人作为根本要求，培养德智体美劳全面发展的建设者和接班人。\n- 位置：方针是方向与任务的政策化表达，与其后“落实立德树人”“办好人民满意的教育”两点构成从遵循到实践的链条。\n\n### 易错点\n- 易把教育方针与具体教育政策混同，方针是根本遵循，层级高于单项政策。\n- 易漏掉“德智体美劳”全面发展的表述，培养目标要写全五育。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "**关键词**：根本遵循＝党的教育方针，级别是“遵循”不是“参考”。**串联**：方针定方向、方向管办学、办学落树人，链条三层步步落实。**对比**：方针（遵循）与单项政策（执行）层级不同，别把具体政策当遵循。**口诀**：遵循看方针，育人求全面，五育并举一个不落。\n**易混提醒**：教育方针是“根本遵循”，层级高于单项政策，别拿具体措施冒充遵循。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L504"
+      ],
+      "text_md": "各级各类学校办学育人都要以此为准绳，它规定教育为社会主义现代化建设服务、为人民服务，这就是（ ）\nA. 党的教育方针\nB. 学校的招生计划\nC. 社会培训机构的导向\nD. 个别地区的升学排名\n作答要求：先回忆根本遵循的层级含义再作选择，排除下位的具体安排。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是规范表述，党的教育方针是根本遵循。\nB 项招生计划是具体安排。\nC 项培训机构导向不能充当办学遵循。\nD 项排名是局部数据，更不是遵循。\n补充辨析：判断“根本遵循”先看层级——方针管全局管方向，具体计划与排名都是下位安排。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L508"
+      ],
+      "text_md": "### 要点梳理\n- 定位：教育强国是社会主义现代化强国的重要支撑，教育强国建设为民族复兴提供人才与智力基础。\n- 内涵：建设教育强国要落实立德树人根本任务，坚持教育优先发展，加快建设高质量教育体系，促进教育公平，培养德智体美劳全面发展的社会主义建设者和接班人。\n- 道理所在：教育是国之大计、党之大计，强国必先强教，教育强则国家强，人才与科技的源头都在教育。\n\n### 易错点\n- 易把教育强国只写成普及程度或办学规模，核心在质量、公平与育人成效，规模只是基础。\n- 易漏掉立德树人与公平两条，只谈投入建设，答题就不完整。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L508"
+      ],
+      "text_md": "**结构**：一定位（强国之基）＋两坚持（立德树人、优先发展）＋两建设（高质量体系、教育公平）。**关键词**：国之大计、党之大计。**口诀**：强国先强教，强教先树人。\n**易混提醒**：教育强国要点有四——定位、根本任务、高质量体系、公平，漏公平一条即不全。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L508"
+      ],
+      "text_md": "简述建设教育强国的内涵与要求。\n作答要求：先说明教育强国的定位，再从根本任务、发展路径与公平三个层面说明建设要求；定位部分要出现“国之大计、党之大计”的表述；每层要求各配一句具体内容，防止只写规模普及一类表层内容。；公平一层要落到城乡、区域、校际差距的具体方向。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）定位：教育是国之大计、党之大计，教育强国是社会主义现代化强国的重要支撑，强国必先强教。（2）根本任务：落实立德树人，培养德智体美劳全面发展的社会主义建设者和接班人。（3）发展路径：坚持教育优先发展，加快建设高质量教育体系，推动各级各类教育协调发展。（4）公平维度：促进教育公平，缩小城乡、区域、校际差距，让教育发展成果更多更公平惠及全体人民。解析：四层齐全方为完整；只写规模普及属于要点残缺。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L508"
+      ],
+      "text_md": "### 要点梳理\n- 性质定位：我国是社会主义国家，教育必须坚持社会主义办学方向，扎根中国大地办教育，走自己的教育发展道路。\n- 核心要求：坚持以立德树人为根本，以理想信念教育为核心，培育和践行社会主义核心价值观，培养担当民族复兴大任的时代新人。\n- 道理所在：教育具有鲜明的国家属性与方向属性，办好中国特色社会主义教育才能保证事业后继有人。\n\n### 易错点\n- 易把“办人民满意的教育”与本点混用，前者侧重民生导向，本点侧重性质与方向，两者不能互换。\n- 易漏掉“扎根中国大地”这一表述，中国特色正体现在立足自身国情与文化。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L508"
+      ],
+      "text_md": "**关键词**：扎根中国大地、时代新人。**结构**：一方向（社会主义）＋一根本（立德树人）＋一核心（理想信念）＋一目标（时代新人）。**对比**：性质教育（本点）对民生教育（人民满意），一条管方向、一条管获得感。\n**易混提醒**：本点管性质方向，人民满意管民生感受，两题两答别互换。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L508"
+      ],
+      "text_md": "简述办好中国特色社会主义教育的主要要求。\n作答要求：从办学性质与方向、育人核心、培养目标三个方面作答，并说明三者之间的内在关系；性质部分要写出“扎根中国大地”；目标部分注意培养对象称呼的完整性，不要缩写；注意与民生类考点的区分。；三段之间要点出性质决定方向、方向统领目标的逻辑。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）办学性质与方向：坚持社会主义的办学方向不动摇，扎根中国大地办教育，走自己的教育发展道路。（2）育人核心：以立德树人为根本，以理想信念教育为核心，培育和践行社会主义核心价值观。（3）培养目标：培养担当民族复兴大任的时代新人，造就德智体美劳全面发展的建设者和接班人。解析：三段各自成点；把本题答成教育公平或满意教育属于答非所问。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L509"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：思政课程、劳动教育、家校协同、师德建设类材料，用“立德为先、全面育人、融入全程”的框架对应。\n- 分析要点：把德智体美劳全面发展的要求落实到课程、活动、评价各环节，思政课是落实立德树人根本任务的关键课程。\n- 落点：落实的关键在教师队伍与评价导向，材料中的做法应能看出育人从说教转向融入日常、知行合一。\n\n### 易错点\n- 易把落实写成立德与树人两张皮，立德是根本、树人是目标，一体两面不可拆分。\n- 易忽视评价改革一层，只谈开课不够，育人成效要靠评价指挥棒保障。\n- 易把立德树人写成德育课程的代名词，正确理解是各门课程与各项活动都承担育人职责，门门有思政。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L509"
+      ],
+      "text_md": "**结构**：三融入——融入课程、融入活动、融入评价，育人无处不在。**关键词**：关键课程（思政课）、全面发展、知行合一。**口诀**：德在课中、在行中、在评中，三处落笔答落实。**对比**：说“开了思政课”只算一点，落实要求全过程融入，层次差一档。\n**易混提醒**：落实三融入——课程、活动、评价，只答开思政课一门是以点代面。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L509"
+      ],
+      "text_md": "某中学推进育人方式改革：把思政小课堂与社会大课堂结合，组织学生到社区开展志愿服务与国情调研；开齐开足劳动教育课程，校园里开辟种植园与工坊；将品德表现纳入学生综合素质评价，教师全员承担育人职责并建立师德考核制度。\n结合材料，运用落实立德树人根本任务的知识，说明该校做法是怎样落实这一根本任务的。\n作答要求：先逐项对应材料中的举措，再指出落实立德树人需要把握的关键。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）思政课与社会大课堂结合、志愿服务与国情调研，体现思政小课堂同社会大课堂结合，在知行合一中筑牢理想信念。（2）劳动课程、种植园与工坊，体现坚持德智体美劳全面发展，以劳树德、以劳育人。（3）品德纳入评价、全员育人、师德考核，体现把育人成效与评价指挥棒和教师队伍建设挂钩，保障立德树人落地。（4）关键：落实立德树人要融入教育教学全过程各环节，坚持德育为先、全面发展，健全科学评价与育人合力机制。解析：逐项对应后再归纳机制；只答“开了思政课”属于以点代面。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L509"
+      ],
+      "text_md": "### 要点梳理\n- 应用场合：教育均衡、双减、随迁子女入学、学前教育普惠类材料，用“公平＋质量”两把尺子分析。\n- 分析要点：办好人民满意的教育要以促进公平为重点，以高质量发展为主线，解决群众急难愁盼的教育问题。\n- 落点：人民满意既是价值导向也是检验标准，材料做法要落到机会公平、质量提升与负担合理三重实效上。\n\n### 易错点\n- 易把人民满意写成扩大投入一项，公平与质量两条主线都要有着落。\n- 易把满意度等同于升学成绩，满意指向机会、过程与结果的全面感受，不是单一指标。\n- 易把人民满意写成单一考试指标的满意，正确理解是机会、过程与结果的综合感受，公平与质量缺一不可。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L509"
+      ],
+      "text_md": "**结构**：两主线一落点——公平为重点、质量为主线，落到急难愁盼。**关键词**：普惠、均衡、减负。**口诀**：机会要公、质量要高、负担要轻，满意才有着落。\n**易混提醒**：人民满意看两条主线——公平为重点、质量为主线，满意度不等于升学率。"
+    },
+    {
+      "block_id": "15040-ch07-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L509"
+      ],
+      "text_md": "某市推进教育惠民改革：新增公办幼儿园学位并扶持普惠性民办园；实行义务教育就近入学与教师轮岗交流，缩小校际差距；为随迁子女提供平等入学保障；推进课后服务全覆盖，规范作业管理与校外培训，减轻学生负担；同时实施普通高中多样化特色发展。\n结合材料，运用办好人民满意的教育知识，说明该市举措是如何体现教育公平与质量统一的。\n作答要求：先逐项对应材料中的举措，再概括办好人民满意的教育应把握的要求。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）新增公办学位与扶持普惠园，体现扩大普惠性资源供给，缓解入园难入园贵。（2）就近入学与教师轮岗，体现均衡配置师资与生源，缩小校际差距，促进机会公平。（3）随迁子女平等入学保障，体现教育权利与机会的公平。（4）课后服务全覆盖与规范培训，体现减轻过重负担、回归育人本职。（5）普通高中多样化发展，体现满足不同学生成长需要、提升教育质量。（6）概括：办好人民满意的教育要坚持公平与质量统一，以促进公平为重点、提高质量为主线，解决群众急难愁盼问题。解析：逐项对应后必须归纳出公平与质量两条主线；漏答负担治理属于要点缺失。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "### 要点梳理\n- 定位：自主创新是科技发展的战略基点，强调依靠自身力量实现技术突破，形成自主知识产权与核心技术能力。\n- 三个层次：原始创新、集成创新、引进消化吸收再创新，三条路径共同构成自主创新能力。\n- 位置：自主创新是增强自主创新能力、实现高水平科技自立自强的落脚点，是本节的理论起点。\n\n### 易错点\n- 易把自主创新等同于原始创新，自主创新还包括集成创新与引进消化吸收再创新，范围更宽。\n- 易把自主创新与开放合作对立，自主创新不排斥学习借鉴，关键在消化吸收后的再创造。\n- 易把自主创新写成临时性补短板举措，正确理解是长期战略基点，贯穿科技发展全过程。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "**关键词**：战略基点＋三层次（原始、集成、引进消化吸收再创新）。**口诀**：原始刨根、集成拼装、消化再造，三路并进皆自主。**对比**：自主创新（能力层）对自立自强（目标层），能力托起目标。\n**易混提醒**：自主创新三层次齐背，把原始创新当全部即是窄化。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "依靠自身力量实现技术突破、形成自主知识产权与核心技术能力，科技发展的这一战略基点是（ ）\nA. 自主创新包括原始创新、集成创新和引进消化吸收再创新\nB. 自主创新仅指完全从零开始的原始创新\nC. 自主创新意味着拒绝一切国际技术交流\nD. 自主创新与增强自主创新能力无关",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项完整给出自主创新的三个层次。\nB 项把自主创新窄化为原始创新。\nC 项错误，自主创新与开放合作并行不悖。\nD 项错误，自主创新正是增强自主创新能力的内容。\n补充辨析：三层次是并列关系，缺一即构成对自主创新的窄化，答题时完整背出三条。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "### 要点梳理\n- 定位：基础研究是整个科学体系的源头，是所有技术问题的总机关，决定了创新的深度与后劲。\n- 特点：探索未知、周期长、不确定性高，需要长期稳定支持与宽容失败的环境。\n- 位置：本点与“科技创新的源头”相呼应，说明做强源头供给必须把基础研究摆在更加突出的位置。\n\n### 易错点\n- 易用短期产出来衡量基础研究，急功近利恰是基础研究的大敌，其价值在长期源头供给。\n- 易把基础研究与应用研究混同，前者探索原理、后者面向具体应用，两者衔接但定位不同。\n- 易把基础研究的应用前景当作评价其价值的唯一尺度，正确理解是源头价值优先，急功近利反受其乱。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "**关键词**：源头、总机关、长期稳定支持，三词连成基础研究的名片。**比喻**：基础研究像树根，根深才有枝繁叶茂，急功近利等于刨根。**对比**：基础研究（问原理）对应用研究（解问题），一源一用衔接而不混同。**口诀**：根深叶茂，源远流长。\n**易混提醒**：基础研究是“源头”，急功近利是它的天敌，长期稳定支持才是护航词。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "探索未知、周期较长、需要长期稳定支持，却决定创新深度与后劲，处在整个科学体系源头的是（ ）\nA. 基础研究\nB. 产品营销\nC. 规模生产\nD. 技术组装\n作答要求：先回忆基础研究的源头地位再作选择，排除产业链下游选项；作答时先想“源头在哪里”，再排除处于转化与生产环节的选项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项符合基础研究的定位，它位于科学体系的最上游。\nB 项、C 项、D 项都处于产业链下游环节，不是科学体系的源头。\n补充辨析：源头地位决定其评价导向不能急功近利，长期稳定支持是基础研究健康发展的前提。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "### 要点梳理\n- 命题：实现高水平科技自立自强是促进发展大局的根本支撑，科技对发展全局的支撑作用具有根本性。\n- 内涵：面对外部环境变化，只有把科技命脉掌握在自己手中，发展大局才有可靠依托，安全与发展才能统筹。\n- 位置：本点回答“科技对全局的意义”，与源头、动力两条线索共同支撑科技强国建设的论证。\n\n### 易错点\n- 易把“根本支撑”弱化成“有帮助”，支撑的是发展大局本身，定位是根本性的。\n- 易把它与教育、人才领域的定位语混抄，本点专指高水平科技自立自强。\n- 易把根本支撑的表述与教育科技人才合起来的支撑表述混用，两句的主语与层级都不同，作答先看主语。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "**关键词**：高水平科技自立自强＝促进发展大局的根本支撑。**口诀**：命脉握手中，大局有支撑。**对比**：根本支撑（科技对大局）对基础性战略性支撑（教育科技人才对现代化），两句话层级不同，别串用。\n**易混提醒**：根本支撑配高水平科技自立自强，基础性战略性支撑配教育科技人才，两句话层级不同。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "面对外部环境变化，把科技命脉掌握在自己手中，发展大局才有可靠依托，这就是说，实现高水平科技自立自强是（ ）\nA. 根本支撑\nB. 可有可无的条件\nC. 短期临时措施\nD. 仅关系个别行业\n作答要求：先默想两句不同层级的支撑定位语，再选出本题主语对应的一项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是规范定位表述。\nB 项低估科技对全局的作用。\nC 项错误，科技自立自强是长期战略取向。\nD 项错误，科技支撑覆盖发展全局，不限于个别行业。\n补充辨析：区分两句定位语——本题主语是科技自立自强，谓语是根本支撑；教育科技人才合起来对应的是基础性战略性支撑。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "### 要点梳理\n- 命题：科技创新的源头在基础研究（就科学体系而言），创新活动由此发端并向应用转化。\n- 相关表述：原始创新是科技创新的源泉所在，加强基础研究是从源头和底层解决关键技术问题。\n- 位置：本点与基础研究、自主创新各点相互呼应，构成“源头—能力—支撑”的论证链。\n\n### 易错点\n- 易把应用开发当成创新源头，应用是源头的转化环节，源头在于基础研究与原始创新。\n- 易把“源头”与“总机关”当成两个概念，它们是对基础研究地位的一致表述。\n- 易把源头理解成技术引进后的二次开发，正确理解是最上游的基础研究与原始创新才是活水之源。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "**串联**：源头—总机关—树根，三个说法都指基础研究。**关键词**：从源头和底层解决关键技术问题。**口诀**：问渠那得清如许，为有源头活水来——创新的活水在基础研究。\n**易混提醒**：源头、总机关、树根三个比喻都指基础研究，考哪个词都能对上。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "创新活动由此发端并向应用转化，从科学体系看，科技创新的源头是（ ）\nA. 基础研究\nB. 成果转化\nC. 技术引进\nD. 产业化生产\n作答要求：先画出创新链条的上下游再作选择，找准最上游的一环；转化、引进、产业化都在源头之后，判断源头类题目先找最上游环节。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正确，基础研究位于创新链条最上游，是科技创新的源头。\nB 项转化是中下游环节。\nC 项引进是外部获取方式。\nD 项产业化是最终应用环节。\n补充辨析：转化、引进、产业化都在源头之后，判断源头类题目先找最上游环节。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "### 要点梳理\n- 命题：科学技术是现代化建设中最活跃、最具革命性的因素，科技进步能够引发生产力诸要素及其组合的变革。\n- 内涵：科技每前进一步，生产方式、生活方式与治理方式都随之改变，其影响具有全局性与根本性。\n- 位置：本点从科技的作用特性上印证“科学技术是第一生产力”，并与“人才是推动社会发展最活跃、最积极的因素”形成对照考点。\n\n### 易错点\n- 易与“推动社会发展最活跃、最积极的因素（人才）”混淆，一个指科技、一个指人才，是最典型的对偶考点。\n- 易把“革命性”理解成否定一切，其含义是能够引起质的飞跃与深刻变革。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "**对比**：最活跃、最具革命性的因素＝科技；最活跃、最积极的因素＝人才，两句只差“革命”与“积极”两词，对照记。**口诀**：科技革命性，人才积极性。**关键词**：引发变革、质的飞跃。\n**易混提醒**：对偶考点记“科技革命性、人才积极性”，两句一字之差，考试就考这一字。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L511"
+      ],
+      "text_md": "它每前进一步，都会引发生产方式、生活方式与治理方式的深刻变革，这一因素指的是（ ）\nA. 科学技术\nB. 人才资源\nC. 自然资源\nD. 资金投入\n作答要求：先回忆科技与人才的对偶定位句再作选择，一字之差就是考点；作答前默念对偶句，看准题干问的是“革命性”还是“积极性”。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项科学技术渗透在现代化建设的各领域各环节，其每一次突破都会引起生产力要素及其组合的深刻变革，最活跃、革命性也最强，故为题干所指。\nB 项对应的是人才的对偶定位——推动社会发展最积极的那支力量，与本题的“革命性”表述不是同一句话，属对偶易混项。\nC 项自然资源与 D 项资金投入都是传统生产要素，不具有题干所描述的地位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "### 要点梳理\n- 道理所在：构建新发展格局最本质的特征是实现高水平的自立自强，科技自立自强是国家强盛之基、安全之要，关键核心技术要不来自也要不来、买不来、讨不来。\n- 主要路径：加强原创性引领性科技攻关，强化国家战略科技力量，打好关键核心技术攻坚战，把创新主动权掌握在自己手中。\n- 与开放的关系：自立自强不是封闭自我，而是在开放条件下形成自主可控能力，以自身实力赢得合作主动。\n\n### 易错点\n- 易把自立自强写成关门研发，高水平三字正体现开放与自主的统一。\n- 易漏掉国家战略科技力量这一抓手，只谈企业研发，答题层次不全。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "**关键词**：强盛之基、安全之要、战略科技力量。**口诀**：基要二字记心间——自立自强是国家强盛之基、安全之要。**结构**：为什么（根本支撑）＋怎么办（攻关＋力量＋改革）两层作答。\n**易混提醒**：自立自强是“基与要”，不是“可选项”，答题先亮定位再谈路径。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "简述实现高水平科技自立自强的意义与主要路径。\n作答要求：先说明其战略意义，再从科技攻关、国家战略科技力量与体制改革等方面说明主要路径；意义部分先写“基与要”的定位再展开；路径至少写三条，注意把改革与攻关分开写，防止混在一层。；注意把“高水平”三个字的含义落在路径表述里。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）意义：科技自立自强是国家强盛之基、安全之要，是实现高水平自立自强的必然要求，为构建新发展格局提供根本支撑，保证产业链供应链自主可控。（2）路径：加强原创性引领性科技攻关，打好关键核心技术攻坚战。（3）强化国家战略科技力量，发挥高水平研究型大学与国家实验室等建制化力量作用。（4）深化科技体制改革，营造有利于创新的生态，使创新主动权牢牢掌握在自己手中。解析：意义与路径分层作答；把自立自强答成封闭研发属方向性错误。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "### 要点梳理\n- 为什么要攻坚：关键核心技术是国之重器，要不来、买不来、讨不来，受制于人是最大隐患，必须自主突破。\n- 如何攻坚：发挥新型举国体制优势，集中力量协同攻关；强化企业创新主体地位，推动产学研深度融合。\n- 道理所在：突破关键核心技术既是发展问题也是安全问题，直接关系产业链供应链的自主可控。\n\n### 易错点\n- 易把攻关写成企业单打独斗，新型举国体制强调集中力量与协同攻关。\n- 易漏掉“国之重器”“要不来买不来讨不来”这类定位表述，论证力度就不足。\n- 易把攻坚战写成个别企业的商业行为，正确理解是国家层面的战略任务，体制协同与主体活力缺一不可。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "**关键词**：国之重器、新型举国体制、协同攻关。**串联**：为什么（受制于人）→靠什么（举国体制）→谁来干（企业主体、产学研融合），三段成线。**口诀**：重器买不来，攻坚靠协同。\n**易混提醒**：攻坚记“举国体制＋企业主体”，单打独斗式答案缺体制维度。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "简述打赢关键核心技术攻坚战的必要性与主要举措。\n作答要求：先说明为什么必须自主突破关键核心技术，再从体制优势与创新主体两方面说明主要举措；必要性部分要出现“要不来、买不来、讨不来”的表述；举措部分注意企业主体地位，不要写成企业单打独斗。；举措可从体制、主体、机制三处各取其一展开。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）必要性：关键核心技术是国之重器，要不来、买不来、讨不来，受制于人是最大隐患，直接关系产业链供应链安全与发展主动权。（2）发挥新型举国体制优势，集中力量开展协同攻关。（3）强化企业科技创新主体地位，推动产学研深度融合，使创新成果加快转化为现实生产力。（4）健全科技评价与激励机制，鼓励科研人员潜心攻关、宽容探索失败。解析：必要性与举措分段作答；只答企业研发不提举国体制属要点缺失。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s3-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "### 要点梳理\n- 主要路径：坚持自主创新道路，加强基础研究以夯实源头供给，推进原始创新与集成创新并举。\n- 主体建设：强化企业科技创新主体地位，发挥高校与科研机构作用，建设高水平创新平台与创新人才队伍。\n- 生态保障：深化科技体制改革，完善科技评价与成果转化机制，营造鼓励创新、宽容失败的环境。\n\n### 易错点\n- 易只答技术层面不答体制生态，创新能力是技术、主体、生态三者合力。\n- 易漏掉基础研究这条源头性举措，创新后劲正来自源头。\n- 易把增强创新能力等同于增加研发经费，正确理解是源头、主体、生态三管齐下，经费只是条件之一。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "**结构**：一源（基础研究）二主体（企业、高校院所）三生态（评价、转化、宽容失败）。**关键词**：创新主体、创新平台、创新生态。**口诀**：源头深、主体强、生态活，能力自然强。\n**易混提醒**：创新能力三件套——源头、主体、生态，漏生态一层即结构不全。"
+    },
+    {
+      "block_id": "15040-ch07-s3-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L513"
+      ],
+      "text_md": "简述增强自主创新能力的主要途径。\n作答要求：从源头供给、创新主体与制度生态三个方面作答，每方面给出具体举措；每段至少写出一条可检查的做法；生态部分别忘了宽容失败的导向，防止把增强能力等同于单纯增加投入。；不要把增强能力等同于增加投入，三个层面都要有着落。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）源头供给：加强基础研究，坚持自主创新道路，推进原始创新与集成创新，从源头和底层解决关键技术问题。（2）创新主体：强化企业科技创新主体地位，发挥高校和科研院所作用，建设高水平创新平台，培育创新人才队伍。（3）制度生态：深化科技体制改革，完善科技评价机制与成果转化机制，营造鼓励创新、宽容失败的良好环境。解析：三方面各成一段，答出具体举措；漏掉基础研究或体制生态均属要点不全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "### 要点梳理\n- 命题：人才是推动社会发展最活跃、最积极的因素，人的创造活动是社会发展最深层的动力之一。\n- 内涵：人才具有主观能动性与创造性，能把知识、技术转化为现实生产力，牵引各种资源集聚。\n- 位置：本点与“现代化建设中最活跃、最具革命性的因素（科技）”构成对偶考点，为人才强国建设提供地位论证。\n\n### 易错点\n- 最典型错误是与科技的定位语互换，记忆抓手是“人才积极、科技革命”。\n- 易把该论断理解为人多力量大，关键在人才的创造力而非数量。\n- 易把本点与科技的定位语混写，判断抓限定词：题干出现“积极”指人才，出现“革命性”指科技。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "**口诀**：人才积极，科技革命——对偶两句，考试不错。**关键词**：能动性、创造力、牵引资源。**对比**：人才（最积极）对科技（最具革命性），一主一器，相互成就。\n**易混提醒**：与科技的对偶句再背一遍——人才最积极、科技最具革命性，对号入座。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "人的创造活动能把知识与技术转化为现实生产力，牵引各类资源集聚，推动社会发展最活跃、最积极的因素是（ ）\nA. 人才\nB. 科学技术\nC. 土地要素\nD. 资本积累\n作答要求：先回忆对偶句“人才积极、科技革命”再作选择，看准题干限定语；题干强调“最积极”，先想人才的能动性，再排除科技的对偶项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是人才的定位表述。\nB 项科技的定位是最活跃、最具革命性的因素，属对偶易混项。\nC 项、D 项是传统要素，不具有该地位表述。\n补充辨析：本点与科技的定位语构成对偶，作答先看题干是“积极”还是“革命性”，再对号入座。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "### 要点梳理\n- 命题：坚持党对人才工作的全面领导是做好人才工作的根本保证，办好中国的事情，关键在党、关键在人。\n- 内涵：党管人才就是党要领导实施人才强国战略、加强对人才工作的政治引领，聚天下英才而用之。\n- 位置：本点与教育领域的“党对教育工作的全面领导”相呼应，回答人才工作“靠谁保证”的问题。\n\n### 易错点\n- 易把“根本保证”错位到“战略地位”或“原则”等其他层面，定位词必须落准。\n- 易把党管人才理解成包揽一切事务，其要义在方向引领、统筹协调与环境营造。\n- 易把根本保证写成待遇保障或经费保障，正确理解是领导与政治层面的保证，层次最高。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "**关键词**：全面领导＝根本保证，定位语原样背。**串联**：关键在党、关键在人，两个“关键”连成一句，人才工作方向由此定。**对比**：保证（党的领导）对任务（各领域具体工作），层级不同。**口诀**：党管人才把方向，政治引领聚英才。\n**易混提醒**：根本保证只认“党的全面领导”，待遇、规模、市场都是下位因素。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "办好中国的事情，关键在党、关键在人，做好人才工作的根本保证是（ ）\nA. 坚持党对人才工作的全面领导\nB. 提高人才待遇标准\nC. 扩大人才引进规模\nD. 完善人才市场体系\n作答要求：先分清保证与工作层面的差别再作选择，找准定位语；先想“根本保证”类题目找领导主体，再排除工作层面的下位选项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项是规范表述，党的全面领导是根本保证。\nB 项待遇是激励条件之一。\nC 项规模是工作内容。\nD 项市场体系是机制建设，均不属于根本保证层面的定位。\n补充辨析：根本保证类题目先找领导主体，待遇、规模、市场都是工作层面的下位因素。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "### 要点梳理\n- 命题：坚持党管人才是我国人才体系的鲜明政治优势，也是人才工作沿着正确方向前进的根本保障。\n- 内涵：党管人才管宏观、管政策、管协调、管服务，把各方面人才紧密团结凝聚在党的事业周围。\n- 位置：本点与根本保证相衔接：全面领导是保证，党管人才是这一领导在人才治理上的制度化体现。\n\n### 易错点\n- 易把政治优势写成人才数量或规模优势，政治优势专指党管人才的领导体制。\n- 易把党管人才与用市场机制配置人才对立，两者是方向引领与方式灵活的关系。\n- 易把党管人才写成党组织包办人才的一切事务，正确理解是管方向、管政策、管协调、管服务。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "**关键词**：党管人才＝鲜明政治优势，属性词“政治”必须带上。**结构**：四管齐记——管宏观、管政策、管协调、管服务。**对比**：政治优势（领导体制）对规模优势（人数数量），两回事别混。**口诀**：党管人才聚四方，四个管字记心上。\n**易混提醒**：政治优势专指党管人才，数量规模类选项与“政治”无关。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "管宏观、管政策、管协调、管服务，把各方面人才凝聚到党的事业周围，我国人才体系的这一鲜明政治优势是（ ）\nA. 坚持党管人才\nB. 人才总量位居前列\nC. 高校毕业生数量多\nD. 人才流动渠道多样\n作答要求：先回忆政治优势的主体再作选择，排除规模类、流动性类选项；政治优势的判断抓“党管”二字，规模类、流动类选项直接排除。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正确，党管人才体现的是政治优势与领导体制优势。\nB 项、C 项属于人才规模层面的情况，不是政治优势。\nD 项是机制灵活性，同样不属于政治优势范畴。\n补充辨析：政治优势的关键词是“党管”，规模与流动性描述都与政治属性无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "### 要点梳理\n- 命题：建设人才强国，坚持聚天下英才而用之是“纲”，培养用好人才是“本”，纲举目张、固本培元。\n- 内涵：“纲”是牵总的要求——以宽广视野集聚各方人才为我所用；“本”是根基所在——立足自主培养、用好现有人才。\n- 位置：本点把人才工作的路线凝练为纲本关系，与根本保证、政治优势各点共同构成人才强国的方法论。\n\n### 易错点\n- 易把纲与本的内容互换，纲对聚才用才的全局牵引，本对培养用好人才的根基，两字各有所指。\n- 易漏掉“纲举目张、固本培元”的关系表述，只答内容不答关系。\n- 易把“纲”与“本”的内涵互相写反，记忆抓手：纲是全局牵引（聚才），本是根基所在（育才用才）。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "**口诀**：纲是聚天下，本是育用好——纲举目张，固本培元。**关键词**：聚天下英才而用之（纲）、培养用好人才（本）。**串联**：先记两字定位，再记各自内容，最后记关系语。\n**易混提醒**：纲本配对记牢——纲是聚天下英才而用之，本是培养用好人才，互换即错。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L516"
+      ],
+      "text_md": "建设人才强国，一头要以宽广视野集聚各方人才，一头要立足自主培养用好人才，其中作为“本”的是（ ）\nA. 培养用好人才\nB. 扩大人才引进规模\nC. 提高人才待遇\nD. 增设人才称号\n作答要求：先默想纲与本各自对应的内容，再选出“本”的那一项。",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正确，培养用好人才是人才强国之“本”，聚天下英才而用之是“纲”。\nB 项引进是聚才的方式之一，不属于“本”的指涉。\nC 项待遇是激励手段。\nD 项称号是评价形式，均非“本”的内容。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "### 要点梳理\n- 道理所在：人才培养周期长、影响远，今天培养的人才决定明天的竞争力，故培养人才是国家和民族的长远发展大计。\n- 内涵：人才培养靠教育，教育是人才培养的基础工程，源头活水在办好教育、提高全民素质。\n- 意义：只有源源不断培养造就大批优秀人才，事业才能后继有人，民族复兴才有接续力量。\n\n### 易错点\n- 易把人才培养写成短期用工安排，其定位是“长远发展大计”，着眼代际接续。\n- 易把培养与引进的关系倒置，自主培养是根基，引进是补充增效。\n- 易把培养人才的论述写成企业培训视角，正确理解立足国家与民族的代际接续，视野要放到长远。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "**关键词**：长远大计、源头活水、后继有人，三词各占一层理由。**串联**：教育育人出人才、人才强国立根基、事业接续靠新人，三层因果连成线。**口诀**：十年树木，百年树人，培养人才是长远的大计。**对比**：培养（根基）对引进（增效），主次不要倒置。\n**易混提醒**：长远大计看“周期长、影响远”，答成短期用工安排即偏题。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "为什么说培养人才是国家和民族长远发展的大计？\n作答要求：从人才培养的周期特点、教育与培养的关系、事业接续三个层面作答；第一层要点出培养周期长、影响深远；第三层要落到“后继有人”，不要写成泛泛的“人才重要”；立足国家与民族的代际接续来谈。；每层都扣住“长远”二字展开，避免泛泛而谈。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）人才培养周期长、影响深远，今天的人才培养质量决定未来的发展竞争力，必须着眼长远布局。（2）教育是人才培养的基础，办好教育、提高全民素质是人才源源不断涌现的源头活水。（3）只有源源不断培养造就大批优秀人才，党和国家事业才能后继有人，民族复兴才有接续力量。解析：三层各自成点，紧扣“长远”二字；答成引进政策属于答非所问。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "### 要点梳理\n- 道理所在：事业发展靠人才支撑，人才工作的着力点在“培养造就”，形成人尽其才、才尽其用的局面。\n- 内涵：坚持德才兼备、以德为先，培养造就大批德艺双馨、结构合理、素质优良的人才队伍，覆盖各领域各层次。\n- 路径：教育与生产劳动、社会实践相结合，统筹教育与人才培养，让各类人才在各行各业各展所长。\n\n### 易错点\n- 易漏掉“以德为先”的排序，德才兼备四字之后须紧接以德为先。\n- 易把人才队伍理解为只有高端科研人才，各领域各层次的人才都是培养对象。\n- 易把“大批”理解为数量堆叠，正确理解是规模与结构并重，各领域各层次都要有人才支撑。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "**关键词**：德才兼备、以德为先、结构合理。**口诀**：德字当先，才字为基，百业皆需，各展其长。**结构**：标准（德才兼备）＋规模（大批）＋结构（各领域各层次）三点记忆。\n**易混提醒**：德才兼备后必须接“以德为先”，顺序词漏写即表述不完整。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "简述培养造就大批德才兼备的高素质人才的要求。\n作答要求：从人才标准、培养路径与队伍结构三个方面作答，并说明德与才的关系；标准部分注意德与才的先后关系，先德后才；结构部分要点出各领域各层次，不要只写科研人才一类。；答完三点后补一句德才统一于育人全程。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）人才标准：坚持德才兼备、以德为先，把思想政治素质与专业能力统一起来。（2）培养路径：坚持教育与生产劳动和社会实践相结合，统筹教育强国建设与人才培养，提高人才自主培养质量。（3）队伍结构：培养造就覆盖各领域各层次的大批高素质人才，使人尽其才、才尽其用。解析：标准、路径、结构三点齐全；漏掉以德为先属表述不完整。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch07-s4-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch07-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "### 要点梳理\n- 道理所在：事业呼唤人才，人才成就事业，把各方面优秀人才集聚到党和人民事业中来，是实现民族振兴、赢得国际竞争主动的战略之举。\n- 主要途径：坚持聚天下英才而用之，实施更加积极、开放、有效的人才政策，营造识才爱才敬才用才的环境。\n- 制度支撑：深化人才发展体制机制改革，向用人主体授权、为人才松绑，让各类人才各得其所、各展其长。\n\n### 易错点\n- 易把集聚人才只理解为引进海外人才，集聚对象是各方面、各领域人才，本土与引进并重。\n- 易漏掉环境与改革两层，集聚不能只靠政策优惠，生态建设同样关键。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch07-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "**关键词**：聚天下英才而用之、识才爱才敬才用才。**结构**：政策（积极开放有效）＋环境（四个才）＋改革（授权松绑）。**口诀**：引得进、聚得拢、用得活，英才归心事业兴。\n**易混提醒**：集聚人才靠政策、环境、改革三件套，只答待遇引进即片面。"
+    },
+    {
+      "block_id": "15040-ch07-s4-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch07-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-11"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L518"
+      ],
+      "text_md": "简述把各方面优秀人才集聚到党和国家事业中来的主要途径。\n作答要求：从人才政策、人才环境与体制机制改革三个方面作答，并点明集聚人才的目的；途径部分每条都要有具体抓手；最后点明集聚人才与事业发展的关系，答出“为什么集聚”，防止只罗列政策。；三条途径由外到内排列，先政策再环境后改革。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）人才政策：坚持聚天下英才而用之，实施更加积极、更加开放、更加有效的人才政策，促进人才区域合理布局与有序流动。（2）人才环境：营造识才爱才敬才用才的环境，搭建干事创业平台，让人才安心、安身、安业。（3）体制改革：深化人才发展体制机制改革，向用人主体授权、为人才松绑，完善评价与激励机制，使各类人才各得其所、各展其长。解析：三途径各自成点；把集聚窄化为海外引进属要点偏差。",
+      "source_kind": "ai_generated"
+    },
+    {
       "block_id": "course/exam_strategy",
       "kind": "exam_strategy",
       "point_id": null,
@@ -6970,7 +10779,7 @@
       "evidence_refs": [
         "knowledge-model:exam"
       ],
-      "text_md": "应试作答先解决顺序问题。拿到试卷后先通看一遍，把题目分成有把握、需要想、暂时没思路三类，先做有把握的题稳住节奏，再回头处理需要思考的题目，不要让一道题耗掉整场作答的主动权。审题要慢、下笔要快：圈出设问里的关键词，看清问的是“是什么”“为什么”还是“怎么办”，再决定答案的层次。作答一律分点书写，一层意思一行，先给结论再补依据，让要点一眼可见；简答题宁可每条写得短一些，也不要只写一两条长段落。材料题的处理顺序是固定的：先读材料抓主题，画出关键做法或观点；再用所学知识对应定位，明确材料指向哪个考核点；最后按“材料依据＋知识要点”作答，先扣材料再落知识点，避免只抄材料或只背结论。综合卷覆盖的章较多，答题时先判断题干属于哪一章的哪一节，把知识定位找准再落笔，遇到两两关系的考点（例如方向与指向、体系与能力、改革与开放）要把两端都写出来。由于官方尚未公布考试时长，作答时以“要点写全、层次清楚、不留空题”为原则；全部题目答完后按题型顺序回看一遍，重点检查有无漏答的小问、有无把定位提法写反，把检查时间用在能补救的地方。"
+      "text_md": "考场作答先定顺序、再抠质量。开考先通览全卷，按单项选择、简答、材料题的顺序作答，把需要展开论述的大题留足构思时间。审题时圈出设问的知识范围与要求层级，先判断考的是识记、领会还是应用，再决定答案的详略与层次。单项选择题逐项比对，先排除表述绝对或概念错位的选项，再在剩余项中比较；简答题分点作答，先亮结论再补一句依据，宁短勿混；材料题先读设问再回读材料，把材料信息与考核点逐条对应，先扣材料、再落知识点，最后归纳提升。官方未公布考试时长与分值分布，不猜具体分配，原则是按题型工作量与自身擅长动态调配，无论松紧都给检查留出余量，收尾核对有无漏题、漏点与笔误。"
     }
   ],
   "review_schedule": {
