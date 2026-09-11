@@ -9,6 +9,7 @@
 """
 from __future__ import annotations
 
+import datetime
 import hashlib
 import json
 import os
@@ -41,6 +42,18 @@ EXPECTED_BLOCKED = [
     "00023", "02324", "03708", "03709", "04735", "13000", "13003",
     "13013", "13015", "13017", "13180",
 ]
+# 基线（只读）里覆盖该课码的权威 jseea URL → 产物 `course_url`（同课多 URL 取字典序最小）；
+# 未列出的课码必须为 null。硬编码来自基线实测，不由产物反推。
+EXPECTED_COURSE_URLS = {
+    "00898": "https://www.jseea.cn/webfile/selflearning_jcdg/2024-07-05/7214792761239670784.html",
+    "02333": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html",
+    "04747": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285133106820943872.html",
+    "04751": "https://www.jseea.cn/webfile/index/index_zcwj/2025-11-20/7397162260776357888.html",
+    "13017": "https://www.jseea.cn/webfile/index/index_zcwj/2025-11-20/7397162260776357888.html",
+    "15040": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html",
+    "15043": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-02-25/7300038163492245504.html",
+    "15044": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-02-25/7300038247357353984.html",
+}
 # 四份官方「考试日程与教材」抽取件（教材计划区 = 首个 `教材代号` 表头之后）
 TEXTBOOK_DOCS = [
     "jiangsu-2025-04-07-schedule-textbooks",
@@ -119,6 +132,32 @@ def _walk_status(node, status: str) -> list[dict]:
     return found
 
 
+class _FrozenDate:
+    """`date` 的替身：把 `build_evidence` 的构建日期冻结到指定值（F-201 跨天验证）。"""
+
+    def __init__(self, iso: str) -> None:
+        self._iso = iso
+
+    def today(self) -> "_FrozenDate":
+        return self
+
+    def isoformat(self) -> str:
+        return self._iso
+
+
+def _freeze_build_date(monkeypatch: pytest.MonkeyPatch, iso: str) -> None:
+    monkeypatch.setattr(ev, "date", _FrozenDate(iso))
+
+
+def _is_fresh(root: Path, code: str) -> bool:
+    """产物新鲜度：`generated_at` 是构建日期（T1 `check_catalog()` 口径，沿用磁盘值），其余逐字节比对。"""
+    path = root / COURSES_DIR / code / "evidence.json"
+    on_disk = path.read_text(encoding="utf-8")
+    fresh = ev.build_evidence(root, code)
+    fresh["generated_at"] = json.loads(on_disk)["generated_at"]
+    return ev.serialize(fresh) == on_disk
+
+
 # ---- 放行判定与 15040 试点 ---------------------------------------------------
 
 def test_15040_is_l1():
@@ -153,9 +192,12 @@ def test_15040_is_l1():
     assert doc["facts"]["name"]["value"] == "习近平新时代中国特色社会主义思想概论"
     assert doc["facts"]["credits"]["value"] == 3
     assert doc["facts"]["exam_method"]["value"] == "笔试"
+    # 官方考纲 URL 是**课程级**信息（`course_url`）；三个字段的出处是专业计划表行（见 F-203 回归测试）
+    assert doc["course_url"] == "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html"
     for fact in doc["facts"].values():
         assert fact["status"] == "verified"
-        assert fact["provenance"]["url"] == "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html"
+        assert fact["provenance"]["kind"] == "official_major_plan"
+        assert fact["provenance"]["url"] is None
 
 
 def test_evaluate_eligibility_is_the_single_decision_point():
@@ -273,6 +315,42 @@ def test_textbook_matching_unions_documents():
         "schedule-textbooks:2025-04-07",
         "schedule-textbooks:2026-04-07",
     }
+
+
+def test_row_truncated_reflects_the_published_row_only(tmp_path: Path):
+    """F-202：`row_truncated` 只描述**发布行**（Data contracts 2：「> 200 字符时截断并置 true，仅在实际截断时为 true」）。
+
+    `00023`（`len(row) == 162`）与 `13015`（`len(row) == 177`）的发布行都没超 200 字符，但**非规范**
+    文档（较旧的那份）的命中窗口被截断过：旧实现把 `matches[].row_truncated` OR 进发布标志，于是给出
+    `row_truncated == true`，既与同行文本矛盾，也与同一对象的 `matches[]` 矛盾。
+    """
+    for code, width in (("00023", 162), ("13015", 177)):
+        path = ROOT / COURSES_DIR / code / "evidence.json"
+        textbook = json.loads(path.read_text(encoding="utf-8"))["textbook_plan"]
+        assert textbook["status"] == "matched", code
+        assert len(textbook["row"]) == width and width <= 200, code
+        assert textbook["row_truncated"] is False, code
+        assert any(match["row_truncated"] for match in textbook["matches"]), (
+            f"{code}: 非规范文档确实截断过，只是不该体现在发布行的标志上"
+        )
+
+    # 读者 / T6 闸门会用的不变量：置了 true 的发布行必须真是被截断的那一行（200 字符上限）
+    for code in EXISTING_COURSE_CODES:
+        textbook = json.loads((ROOT / COURSES_DIR / code / "evidence.json").read_text(encoding="utf-8"))["textbook_plan"]
+        if textbook["status"] == "matched" and textbook["row_truncated"]:
+            assert len(textbook["row"]) == 200, code
+
+    # 发布行自身超长 → 必须为 true（标志不是被一次性关掉）
+    root = tmp_path / "published-row-truncation"
+    _write_textbook_doc(
+        root,
+        "jiangsu-demo-schedule-textbooks",
+        "附件 3\n课程代号  课程名称  教材代号  教材名称  作者  出版社  版次\n"
+        "15040   " + "长" * 250 + "   150401   示例教材   本书编写组   高等教育出版社   2023 年\n",
+    )
+    textbook = ev.build_evidence(root, "15040")["textbook_plan"]
+    assert textbook["status"] == "matched"
+    assert len(textbook["row"]) == 200 and textbook["row_truncated"] is True
 
 
 def test_schedule_occurrence_is_not_textbook_row(tmp_path: Path):
@@ -474,11 +552,12 @@ def test_evidence_shape_invariants():
         assert path.is_file(), path
         doc = json.loads(path.read_text(encoding="utf-8"))
         assert set(doc) == {
-            "schema_version", "course_code", "generated_at", "facts",
+            "schema_version", "course_code", "generated_at", "course_url", "facts",
             "syllabus", "textbook_plan", "eligibility", "source_snapshot",
         }, code
         assert doc["schema_version"] == 1 and doc["course_code"] == code
         assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", doc["generated_at"])
+        assert doc["course_url"] is None or doc["course_url"].startswith("https://www.jseea.cn/"), code
         assert doc["source_snapshot"] is None  # 离线路径（GC15）
         assert set(doc["eligibility"]) == {"level", "reasons"}
         assert doc["eligibility"]["level"] in {"L1", "blocked"}
@@ -513,6 +592,32 @@ def test_evidence_shape_invariants():
             assert doc["textbook_plan"]["matches"]
         else:
             assert doc["textbook_plan"]["locator"] is None and doc["textbook_plan"]["row"] is None
+
+
+def test_fact_provenance_kind_matches_the_cited_evidence():
+    """F-203：`facts[*].provenance` 的 `kind` 必须与**所引证据**同类（Data contracts 2）。
+
+    课名 / 学分 / 考试方式取自专业计划表课程行（`path` + `locator`）→ `kind == "official_major_plan"`；
+    基线里的官方 URL 是另一份文档（考纲页 / 政策文件页），只作为课程级 `course_url`。旧实现把这个
+    考纲 URL 与 `official_major_plan` 配对，而 plan § Data contracts 2 对同一个 URL 标的是
+    `official_syllabus` —— 于是同一个 provenance 对象里 `kind` 描述的是 `path`，`url` 却是别的文档。
+    """
+    for code in EXISTING_COURSE_CODES:
+        path = ROOT / COURSES_DIR / code / "evidence.json"
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        assert doc["course_url"] == EXPECTED_COURSE_URLS.get(code), code
+        for name, fact in doc["facts"].items():
+            if fact["status"] != "verified":
+                continue
+            provenance = fact["provenance"]
+            assert provenance["kind"] == "official_major_plan", (code, name)
+            assert provenance["url"] is None, (code, name)
+            assert provenance["path"] and provenance["locator"], (code, name)
+
+    # 15040：考纲 URL 是课程级来源，不是三个字段的出处
+    doc = json.loads((ROOT / COURSES_DIR / "15040" / "evidence.json").read_text(encoding="utf-8"))
+    assert doc["course_url"] == EXPECTED_COURSE_URLS["15040"]
+    assert all(fact["provenance"]["url"] != doc["course_url"] for fact in doc["facts"].values())
 
 
 def test_syllabus_requires_locatable_assessment_requirements(tmp_path: Path):
@@ -552,11 +657,53 @@ def test_syllabus_requires_locatable_assessment_requirements(tmp_path: Path):
 
 
 def test_committed_artifacts_match_a_fresh_build():
-    """磁盘上的 18 份产物必须与当前来源一致：不得停在旧判定逻辑上（离线，只读）。"""
+    """磁盘上的 18 份产物必须与当前来源一致：不得停在旧判定逻辑上（离线，只读）。
+
+    `generated_at` 是**构建日期**，比对时沿用磁盘值再逐字节比内容（T1 `check_catalog()` 的
+    「跨天不误报」口径，`tests/test_course_catalog.py:589-594`）；其它字段一律逐字节比对。
+    """
     for code in EXISTING_COURSE_CODES:
         path = ROOT / COURSES_DIR / code / "evidence.json"
         assert path.is_file(), path
-        assert path.read_text(encoding="utf-8") == ev.serialize(ev.build_evidence(ROOT, code)), code
+        assert _is_fresh(ROOT, code), code
+
+
+def test_freshness_comparison_ignores_build_date_but_catches_drift(monkeypatch: pytest.MonkeyPatch, tmp_path: Path):
+    """F-201：跨天不得误报（两个不同构建日期都判 fresh），内容漂移必须判 stale。
+
+    ① 真实 18 份产物：磁盘构建日期下 fresh，构建日期冻结到**磁盘日期 + 3 天**后仍 fresh；
+    ② 冻结日期确实进入构建结果，且与磁盘产物只差 `generated_at` 一行（日期从产物读取，不硬编码）；
+    ③ 篡改一个内容值（合成根，不动仓库产物）→ 必须判 stale，证明比对不是空转。
+    """
+    path = ROOT / COURSES_DIR / "15040" / "evidence.json"
+    disk_date = json.loads(path.read_text(encoding="utf-8"))["generated_at"]
+    assert all(_is_fresh(ROOT, code) for code in EXISTING_COURSE_CODES)
+
+    other_date = (datetime.date.fromisoformat(disk_date) + datetime.timedelta(days=3)).isoformat()
+    _freeze_build_date(monkeypatch, other_date)
+    assert all(_is_fresh(ROOT, code) for code in EXISTING_COURSE_CODES)
+
+    on_disk = path.read_text(encoding="utf-8")
+    fresh = ev.serialize(ev.build_evidence(ROOT, "15040"))
+    assert fresh != on_disk, "冻结日期必须真的进入构建结果，否则本条断言空转"
+    assert fresh.replace(f'"generated_at": "{other_date}"', f'"generated_at": "{disk_date}"') == on_disk
+
+    root = tmp_path / "freshness-drift"
+    _write_syllabus(root, "15040", "# 大纲\n\n三、考核知识点与考核要求\n\n识记：示例\n")
+    _write_textbook_doc(
+        root,
+        "jiangsu-demo-schedule-textbooks",
+        "附件 3\n课程代号  课程名称  教材代号  教材名称  作者  出版社  版次\n"
+        "15040   习近平新时代中国特色社会主义思想概论   150401   习近平新时代中国特色社会主义思想概论   "
+        "本书编写组   高等教育出版社   2023 年\n",
+    )
+    paths, _ = ev.write_evidence(root, ["15040"])
+    assert _is_fresh(root, "15040"), "刚写完的产物必须判 fresh"
+
+    drifted = json.loads(paths[0].read_text(encoding="utf-8"))
+    drifted["facts"]["name"]["value"] = "被篡改的课名"
+    paths[0].write_text(ev.serialize(drifted), encoding="utf-8")
+    assert not _is_fresh(root, "15040"), "内容漂移必须判 stale（比对不得空转）"
 
 
 def test_write_evidence_lands_on_disk_byte_identically(tmp_path: Path):

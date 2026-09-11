@@ -2,6 +2,7 @@
   "schema_version": 1,
   "course_code": "03708",
   "generated_at": "2026-09-11",
+  "course_url": null,
   "facts": {
     "name": {
       "value": "中国近现代史纲要",

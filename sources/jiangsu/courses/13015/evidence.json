@@ -2,6 +2,7 @@
   "schema_version": 1,
   "course_code": "13015",
   "generated_at": "2026-09-11",
+  "course_url": null,
   "facts": {
     "name": {
       "value": "计算机系统原理",
@@ -55,7 +56,7 @@
     "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
     "locator": "L1603",
     "row": "— 45 — 13015 计算机系统原理 130151 计算机系统原理(附大纲) 袁春风 机械工业出版社 2023 年 13017 计算机网络与信息安全 130171 计算机网络与信息安全(附大纲) 李全龙 机械工业出版社 2024 年 13124 英语(专) 131241 英语(一)自学教程(附大纲) 张敬源、张虹 外语教学与研究出版社 2012 年",
-    "row_truncated": true,
+    "row_truncated": false,
     "matches": [
       {
         "doc_id": "schedule-textbooks:2025-04-07",

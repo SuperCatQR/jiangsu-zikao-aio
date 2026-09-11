@@ -18,8 +18,11 @@
    命中行 ±2 行的窗口内必须同时能读到该课码（多行版式的教材行课码会独占一行）与至少一个来源标记
    （`出版社` / `大学出版社` / `高纲` / `考试指导委员会`）；四份文档取**并集**（同一课不必在每份都有行）。
 3. `facts` —— 课名 / 学分 / 考试方式取自目录 SSOT `sources/jiangsu/catalog/courses.json`（spec `D10`），
-   溯到该课最高优先来源的 `path` + `locator`，并在基线里查到覆盖该课码的官方 URL 时写入 `provenance.url`
-   （基线只读，GC14）。取不到值的字段一律 `named_gap` + `gap_impact` + `next_evidence`，不猜。
+   溯到该课最高优先来源的 `path` + `locator`。`provenance.kind` 必须与所引证据同类，因此这里恒为
+   `official_major_plan`（专业计划表课程行）：基线里覆盖该课码的官方 URL 属于**另一份文档**
+   （考纲页 / 政策文件页），记在课程级 `course_url`（基线只读，GC14），不进 `provenance` ——
+   否则同一对象会拿 `official_major_plan` 去标注一个考纲 URL（Data contracts 2 的 `kind` 语义）。
+   取不到值的字段一律 `named_gap` + `gap_impact` + `next_evidence`，不猜。
 
 行号约定与 Task 1 一致：`L<n>` 是 `Path.read_text(encoding="utf-8").split("\\n")` 口径的 1-based
 **物理行号**（与 `sed -n '<n>p'` 一致，`\\x0c` 计入所在行）；**不得**用 `str.splitlines()` 算行号。
@@ -239,14 +242,18 @@ def _textbook_plan_evidence(root: Path, code: str) -> dict:
     # 规范行 = **最新**一份命中文档的行（`doc_id` 里的日期标签按字典序即时间序）
     canonical_doc = max(match["doc_id"] for match in matches)
     canonical = [match for match in matches if match["doc_id"] == canonical_doc]
-    row, truncated = _truncate_row(" / ".join(match["row"] for match in canonical))
+    # 发布行 = 规范文档命中窗口的拼接；`row_truncated` 只描述这一行是否**真的**被截断（Data contracts 2）：
+    # ① 任一规范窗口自身超长被截断（`matches[].row` 已按 200 字符截断，再拼一遍不会超长），或 ② 拼接后超长。
+    # 非规范文档的截断状态留在各自 `matches[].row_truncated`，不 OR 进来 —— 旧实现 OR 全部匹配，
+    # 于是 00023（`len(row)=162`）/ 13015（`len(row)=177`）也报 `row_truncated=true`，与发布行和 `matches[]` 都矛盾。
+    row_text = " / ".join(match["row"] for match in canonical)
     return {
         "status": "matched",
         "doc_id": canonical_doc,
         "path": canonical[0]["path"],
         "locator": ",".join(match["locator"] for match in canonical),
-        "row": row,
-        "row_truncated": truncated or any(match["row_truncated"] for match in matches),
+        "row": row_text[:ROW_MAX_CHARS],
+        "row_truncated": any(match["row_truncated"] for match in canonical) or len(row_text) > ROW_MAX_CHARS,
         "matches": matches,
     }
 
@@ -262,7 +269,10 @@ def _catalog_course(root: Path, code: str) -> dict | None:
 
 
 def _official_urls(root: Path) -> dict[str, str]:
-    """基线（**只读**）里 `authoritative` 且域名为 `jseea.cn` 的 URL → 课码（同课多 URL 取字典序最小）。"""
+    """课程级官方 URL：基线（**只读**）里 `authoritative` 且域名为 `jseea.cn` 的 URL → 课码（同课多 URL 取字典序最小）。
+
+    写进 `course_url`，不写 `facts[*].provenance.url`（那份证据是专业计划表行，见 `_facts`）。
+    """
     path = root / BASELINE_PATH
     if not path.is_file():
         return {}
@@ -280,7 +290,6 @@ def _facts(root: Path, code: str) -> dict:
     course = _catalog_course(root, code)
     sources = (course or {}).get("sources") or []
     best = sources[0] if sources else None
-    url = _official_urls(root).get(code)
     facts = {}
     for field in FACT_FIELDS:
         value = (course or {}).get(field)
@@ -299,7 +308,9 @@ def _facts(root: Path, code: str) -> dict:
             "provenance": {
                 "doc_id": best["doc_id"],
                 "kind": "official_major_plan",
-                "url": url,
+                # 值出自专业计划表课程行（`path` + `locator`）；基线的官方 URL 是另一份文档，
+                # 记在课程级 `course_url`，因此这里恒为 `null`（Data contracts 2：`url|path` 只需其一）
+                "url": None,
                 "path": best["path"],
                 "locator": best["locator"],
             },
@@ -330,6 +341,9 @@ def build_evidence(root: Path, code: str, *, offline: bool = True) -> dict:
         "schema_version": SCHEMA_VERSION,
         "course_code": code,
         "generated_at": date.today().isoformat(),
+        # 课程级官方页面（只读基线；该课码在基线里没有权威官方 URL 时为 `null`）。不是任何字段的
+        # `provenance`：事实值出自专业计划表行，混在 provenance 里会让 `kind` 与所引证据不符（F-203）。
+        "course_url": _official_urls(root).get(code),
         "facts": _facts(root, code),
         "syllabus": _syllabus_evidence(root, code),
         "textbook_plan": _textbook_plan_evidence(root, code),

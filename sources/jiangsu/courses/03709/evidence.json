@@ -2,6 +2,7 @@
   "schema_version": 1,
   "course_code": "03709",
   "generated_at": "2026-09-11",
+  "course_url": null,
   "facts": {
     "name": {
       "value": "马克思主义基本原理概论",

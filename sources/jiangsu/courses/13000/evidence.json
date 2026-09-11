@@ -2,6 +2,7 @@
   "schema_version": 1,
   "course_code": "13000",
   "generated_at": "2026-09-11",
+  "course_url": null,
   "facts": {
     "name": {
       "value": "英语（专升本）",

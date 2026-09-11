@@ -8,8 +8,8 @@
 既有 `scripts/snapshot-official-sources.py` 用 `host.endswith("jseea.cn")`，会把 `eviljseea.cn` 误判为官方；
 本模块不复刻该缺陷（那个脚本不改，本模块也不复用它的判定）。
 
-检查顺序：先白名单（`ValueError`），再 `offline`（`RuntimeError`）——非官方 URL 在任何模式下都不得触网，
-也不得因为 `offline=True` 而把「域名不合规」报成「离线不可用」。
+检查顺序：先白名单（`ValueError`），再 `offline`（`RuntimeError`），再显式 `root`（`RuntimeError`）——
+非官方 URL 在任何模式下都不得触网，也不得因为 `offline=True` 而把「域名不合规」报成「离线不可用」。
 """
 from __future__ import annotations
 
@@ -34,11 +34,6 @@ def is_official_url(url: str) -> bool:
     return host == OFFICIAL_DOMAIN or host.endswith("." + OFFICIAL_DOMAIN)
 
 
-def _repo_root() -> Path:
-    """`scripts/lib/course_pipeline/official_source.py` → 仓库根。"""
-    return Path(__file__).resolve().parents[3]
-
-
 def _slug(url: str) -> str:
     """URL 末段 → 文件名安全的 slug（无末段时用 `index`）。"""
     path = urlparse(url).path
@@ -60,21 +55,24 @@ def fetch_official_source(url: str, *, offline: bool = True, root: Path | None =
     """抓取单个官方来源并落盘快照，返回 `{url, host, sha256, fetched_at, status, snapshot_path, content_type}`。
 
     `offline=True`（默认）→ `RuntimeError("offline: fetch_official_source")`；非 `jseea.cn` 域名 → `ValueError`。
-    `snapshot_path` 是相对 `root`（默认仓库根）的 POSIX 路径；B1 只由测试传 `tmp_path`。
+    联网落盘必须**显式**传 `root`，省略即 `RuntimeError`：默认目标曾从模块路径推导出仓库根，正是 GC15
+    本迭代禁止写入的路径（`sources/jiangsu/public-official/**`），因此失败关闭而不是静默落盘（B2 再定默认）。
+    `snapshot_path` 是相对 `root` 的 POSIX 路径；B1 只由测试传 `tmp_path`。
     唯一网络调用是 `urllib.request.urlopen`（stdlib，GC12），`read()` 的输出按**字节**落盘并现算 sha256。
     """
     if not is_official_url(url):
         raise ValueError(f"non-official host: {urlparse(url).hostname or ''!r}")
     if offline:
         raise RuntimeError("offline: fetch_official_source")
+    if root is None:
+        raise RuntimeError("root: 联网落盘必须显式传入 root（B1 不写仓库 sources/jiangsu/public-official/**，见 GC15）")
 
     with urllib.request.urlopen(url, timeout=TIMEOUT_SECONDS) as response:
         payload = response.read()
         headers = getattr(response, "headers", None)
         content_type = (headers.get("Content-Type", "") if headers else "") or ""
 
-    base = root if root is not None else _repo_root()
-    target = _snapshot_target(base, url)
+    target = _snapshot_target(root, url)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(payload)
     return {
@@ -83,6 +81,6 @@ def fetch_official_source(url: str, *, offline: bool = True, root: Path | None =
         "sha256": hashlib.sha256(payload).hexdigest(),
         "fetched_at": date.today().isoformat(),
         "status": "ok",
-        "snapshot_path": target.relative_to(base).as_posix(),
+        "snapshot_path": target.relative_to(root).as_posix(),
         "content_type": content_type,
     }

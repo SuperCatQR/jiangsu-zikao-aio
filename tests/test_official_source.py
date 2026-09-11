@@ -128,6 +128,29 @@ def test_snapshot_carries_bytes_not_text(tmp_path, monkeypatch):
     assert result["content_type"].startswith("application/pdf")
 
 
+def test_online_path_requires_an_explicit_root(monkeypatch):
+    """F-207 / GC15：联网落盘必须**显式**传 `root`；省略时失败关闭，绝不静默落到仓库根。
+
+    省略 `root` 的旧默认是模块路径推导出的仓库根 —— 正是本迭代禁止写入的
+    `sources/jiangsu/public-official/**`（GC15），因此这里必须 `RuntimeError` 且不触网。
+    """
+    monkeypatch.setattr(urllib.request, "urlopen", _boom)
+    with pytest.raises(RuntimeError, match=r"^root: "):
+        fetch_official_source(OFFICIAL_URL, offline=False)
+
+    # 前置检查的顺序不变：非白名单 → ValueError；offline=True → offline 的 RuntimeError
+    with pytest.raises(ValueError):
+        fetch_official_source("https://www.zikao365.com/x", offline=False)
+    with pytest.raises(RuntimeError, match="^offline: fetch_official_source$"):
+        fetch_official_source(OFFICIAL_URL, offline=True, root=None)
+
+    # 失败关闭后仓库官方原件树不变（GC15）
+    assert subprocess.run(
+        ["git", "diff", "--quiet", "--", "sources/jiangsu/public-official"],
+        cwd=ROOT,
+    ).returncode == 0
+
+
 def test_no_secret_in_errors(monkeypatch):
     """异常文案不得泄漏 `ZIKAO_LLM_API_KEY` 的值（GC9 同类约束）。"""
     secret = "sk-do-not-leak-0123456789"

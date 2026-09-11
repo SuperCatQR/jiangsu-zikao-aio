@@ -2,6 +2,7 @@
   "schema_version": 1,
   "course_code": "00023",
   "generated_at": "2026-09-11",
+  "course_url": null,
   "facts": {
     "name": {
       "value": "高等数学（工本）",
@@ -55,7 +56,7 @@
     "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
     "locator": "L896",
     "row": "00022 高等数学(工专) 000221 高等数学(工专)(附大纲) 吴纪桃、漆毅 北京大学出版社 2023 年 00023 高等数学(工本) 000231 高等数学(工本)(附大纲) 陈兆斗、马鹏 北京大学出版社 2023 年 00024 普通逻辑 000241 普通逻辑(附大纲) 杜国平 高等教育出版社 2010 年",
-    "row_truncated": true,
+    "row_truncated": false,
     "matches": [
       {
         "doc_id": "schedule-textbooks:2025-04-07",

@@ -2,6 +2,7 @@
   "schema_version": 1,
   "course_code": "02333",
   "generated_at": "2026-09-11",
+  "course_url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html",
   "facts": {
     "name": {
       "value": "软件工程",
@@ -9,7 +10,7 @@
       "provenance": {
         "doc_id": "major-plan:080901",
         "kind": "official_major_plan",
-        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html",
+        "url": null,
         "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
         "locator": "L53"
       }
@@ -20,7 +21,7 @@
       "provenance": {
         "doc_id": "major-plan:080901",
         "kind": "official_major_plan",
-        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html",
+        "url": null,
         "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
         "locator": "L53"
       }
@@ -31,7 +32,7 @@
       "provenance": {
         "doc_id": "major-plan:080901",
         "kind": "official_major_plan",
-        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html",
+        "url": null,
         "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
         "locator": "L53"
       }
