@@ -13,8 +13,8 @@
 `.agent-task/*.result.json`）/ `replay`（CI 离线读录制 fixture，缺一条即报错、不套模板）；
 `--record-fixtures` 把本次响应落到 `tests/fixtures/course_pipeline/llm/`；`--chapters` 限定章范围（分批生成，
 取值见 `generate_content.select_chapters()`：章 `slug` / 章序标签 / `ordinal`）；`--merge` 把本次结果合并进
-已有 `content.json`（课程级块整块替换 / 考点级块按 `block_id` 合并 / 重排块序，见
-`generate_content.merge_content_docs()`）；提示词是课程作用域产物（frontmatter `course_scope`），课程不在
+已有 `content.json`（课程级块整块替换 / 考点级块按 `block_id` 合并 / 按唯一规范序重排，与非合并的全量
+生成路径同序，见 `generate_content.merge_content_docs()`）；提示词是课程作用域产物（frontmatter `course_scope`），课程不在
 作用域内时 `generate` 失败关闭（exit 2，点名缺失的提示词包）。`resolve` / `render` 等后续阶段
 随各自 task 接入（plan § Target-state module map）；本入口不做占位子命令。
 默认离线：只读仓内抽取件与只读基线（GC8 / GC14 / GC15）。
@@ -103,14 +103,14 @@ def run_generate(code: str, *, backend: str, chapters: list[str], record_fixture
         )
         return 2
     model = json.loads(model_file.read_text(encoding="utf-8"))
-    if chapters:
-        model = generate_content_mod.select_chapters(model, chapters)
+    scoped_model = generate_content_mod.select_chapters(model, chapters) if chapters else model
     llm_client.RECORD_FIXTURES = record_fixtures
     path = generate_content_mod.content_path(ROOT, code)
     try:
-        doc = generate_content_mod.generate_course_content(ROOT, model, backend=backend)
+        doc = generate_content_mod.generate_course_content(ROOT, scoped_model, backend=backend)
         if merge:
-            doc = generate_content_mod.merge_content_file(path, doc)
+            # 合并排序用**全课**知识模型：既有产物里历史批次的块不在本批 scoped_model 内。
+            doc = generate_content_mod.merge_content_file(path, doc, model)
     except llm_client.AgentTasksPendingError as exc:
         print(f"stage=generate missing: {exc}", file=sys.stderr)
         return 2

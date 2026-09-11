@@ -19,12 +19,13 @@ plan § Target-state module map）。15040 的知识模型没有这两个键 →
 + 非空 `evidence_refs` + `review_state: "machine_draft"`；`validate_content_doc()` 是本层的失败关闭自检
 （Task 6 的 `ai-content` 层复用同一函数）。
 
-确定性：块序 = 章 → 节 → 点 → explain / memorize / drill，课程级块在末尾；提示词 payload 不含时间戳，
+确定性：块序 = 章 → 节 → 点 → explain / memorize / drill（`order_blocks()` 的唯一规范序，合并路径同序），
+课程级块在末尾；提示词 payload 不含时间戳，
 因此 fixture 哈希稳定；`generated_at` 来自 `llm_client.generator_metadata()`（`replay` 回放录制时的来源），
 `--backend replay` 复跑与首次产物逐字段一致（AC9）。
 
 分批：`--merge` 的语义见 `merge_content_docs()`（课程级块整块替换 / 考点级块按 `block_id` 合并 /
-合并后重排）；`out_of_scope_prompts()` 是「课程无提示词包」的失败关闭判据（F-401）。
+合并后按同一规范序重排）；`out_of_scope_prompts()` 是「课程无提示词包」的失败关闭判据（F-401）。
 """
 from __future__ import annotations
 
@@ -392,6 +393,7 @@ def generate_course_content(root: Path, model: dict, *, backend: str = "cli") ->
             job["prompt_id"], job["prompt_version"], job["payload"], backend=backend
         )
     course_job = jobs[-1]
+    blocks = [_point_block(model, job) for job in jobs[:-1]] + [_exam_strategy_block(course_job)]
     doc = {
         "schema_version": 1,
         "course_code": model["course_code"],
@@ -402,7 +404,7 @@ def generate_course_content(root: Path, model: dict, *, backend: str = "cli") ->
             "prompt_versions": {job["prompt_id"]: job["prompt_version"] for job in jobs},
         },
         "stage_plan": [_stage_entry(stage, course_job) for stage in course_job["response"]["stages"]],
-        "blocks": [_point_block(model, job) for job in jobs[:-1]] + [_exam_strategy_block(course_job)],
+        "blocks": order_blocks(blocks, model),
         "review_schedule": _review_schedule(model, _generator(course_job)),
     }
     problems = validate_content_doc(doc, model)
@@ -428,29 +430,64 @@ def _point_level_blocks(doc: dict, *, source: str) -> dict[str, dict]:
     return blocks
 
 
-def _block_sort_key(block: dict) -> tuple[bool, str, str]:
-    """合并后的块序：考点级按 `point_id` → `kind`，课程级块（`point_id: null`）排在末尾。"""
-    point_id = block.get("point_id")
-    return (point_id is None, point_id or "", block.get("kind") or "")
+# 块序契约（plan § Data contracts 4「唯一规范序」）：考点级块按 章序 → 节序 → 点序 → kind 排序，
+# kind 用生成序 explain → memorize → drill（与知识模型的阅读序一致），课程级块排在末尾。
+KIND_ORDER = {kind: index for index, kind in enumerate([kind for kind, _ in POINT_PROMPTS] + ["exam_strategy"])}
 
 
-def merge_content_docs(existing: dict, new: dict) -> dict:
+def _point_order(model: dict) -> dict[str, tuple[int, int, int]]:
+    """`point_id` → 规范序前缀（知识模型的章序 → 节序 → 点序）。"""
+    return {
+        point["id"]: (chapter["ordinal"], section_index, point_index)
+        for chapter in model["chapters"]
+        for section_index, section in enumerate(chapter["sections"])
+        for point_index, point in enumerate(section["points"])
+    }
+
+
+def order_blocks(blocks: list[dict], model: dict) -> list[dict]:
+    """按唯一规范序重排块（PM 2026-09-11 二次裁决，F-405 收口）。
+
+    逐批 `--merge` 与一次性全量生成都调用本函数：只有两条路径落在同一个序上，它们对同一内容集合
+    才可能逐字节一致（plan § Data contracts 4；`tests/test_generate_content.py` 的字节相等用例锁住这一点）。
+    考点级块按知识模型的章序 → 节序 → 点序 → `kind`；课程级块（`point_id: null`）一律排在末尾。
+    """
+    order = _point_order(model)
+
+    def _key(block: dict) -> tuple[int, int, int, int, int]:
+        kind = block.get("kind")
+        if kind not in KIND_ORDER:
+            raise RuntimeError(f"块的 kind 不在标注契约内，无法按规范序重排: {block.get('block_id')}（{kind!r}）")
+        point_id = block.get("point_id")
+        if point_id is None:
+            return (1, 0, 0, 0, KIND_ORDER[kind])
+        position = order.get(point_id)
+        if position is None:
+            raise RuntimeError(f"考点级块不在知识模型内，无法按规范序重排: {block.get('block_id')}")
+        return (0, *position, KIND_ORDER[kind])
+
+    return sorted(blocks, key=_key)
+
+
+def merge_content_docs(existing: dict, new: dict, model: dict) -> dict:
     """逐批合并（plan § Data contracts 4「逐批合并语义」，PM 2026-09-11 裁决 F-405）。
 
     - 课程级块（`stage_plan[]` / `exam_strategy` / `review_schedule`）**整块替换**为本次生成结果
       —— 它们的 payload 每批都变，保留旧值会产生自相矛盾的阶段目标；
     - 考点级块（`blocks[]`）按 `block_id` 合并：同 id 替换、其余保留（批次间不丢已通过闸门的内容）；
-    - 合并后 `blocks[]` 重排，保证字节确定性。
+    - 合并后 `blocks[]` 按唯一规范序重排（`order_blocks()`），保证字节确定性，且与非合并的全量生成路径
+      同序（plan § Data contracts 4 二次裁决）；`model` 传**全课**知识模型：既有产物里历史批次的块
+      不在本批 `--chapters` 的范围内，只有全课模型才能给它们定位章序。
     """
     if existing.get("course_code") != new.get("course_code"):
         raise RuntimeError(f"不能合并不同课程的产物: {existing.get('course_code')} ← {new.get('course_code')}")
     blocks = _point_level_blocks(existing, source="既有产物")
     blocks.update(_point_level_blocks(new, source="本次生成"))
     course_blocks = [block for block in new.get("blocks") or [] if block.get("point_id") is None]
-    return {**new, "blocks": sorted([*blocks.values(), *course_blocks], key=_block_sort_key)}
+    return {**new, "blocks": order_blocks([*blocks.values(), *course_blocks], model)}
 
 
-def merge_content_file(path: Path, doc: dict) -> dict:
+def merge_content_file(path: Path, doc: dict, model: dict) -> dict:
     """`--merge` 的落盘口径：既有产物存在即合并（不存在 = 首批，直接返回本次产物）；损坏即失败关闭。"""
     if not path.is_file():
         return doc
@@ -460,7 +497,7 @@ def merge_content_file(path: Path, doc: dict) -> dict:
         raise RuntimeError(f"既有产物不是合法 JSON，拒绝合并: {path.name}") from exc
     if not isinstance(existing, dict):
         raise RuntimeError(f"既有产物不是 JSON 对象，拒绝合并: {path.name}")
-    return merge_content_docs(existing, doc)
+    return merge_content_docs(existing, doc, model)
 
 
 def serialize(doc: dict) -> str:

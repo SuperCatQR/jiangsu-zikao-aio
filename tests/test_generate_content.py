@@ -267,6 +267,28 @@ def _point_blocks(doc: dict) -> dict[str, dict]:
     return {block["block_id"]: block for block in doc["blocks"] if block.get("point_id") is not None}
 
 
+BLOCK_KIND_ORDER = {"explain": 0, "memorize": 1, "drill": 2, "exam_strategy": 3}
+
+
+def _canonical_keys(model: dict, blocks: list[dict]) -> list[tuple]:
+    """源侧探针：唯一规范序 = 知识模型章序 → 节序 → 点序 → `kind`，课程级块（`point_id: null`）在末尾。
+
+    独立复算（不调用生产 helper），因此「两条生成路径是否同序」这件事测的是产物而不是实现自述。
+    """
+    positions = {
+        point["id"]: (chapter["ordinal"], section_index, point_index)
+        for chapter in model["chapters"]
+        for section_index, section in enumerate(chapter["sections"])
+        for point_index, point in enumerate(section["points"])
+    }
+    keys = []
+    for block in blocks:
+        point_id = block.get("point_id")
+        prefix = (1, 0, 0, 0) if point_id is None else (0, *positions[point_id])
+        keys.append((*prefix, BLOCK_KIND_ORDER[block["kind"]]))
+    return keys
+
+
 def _exam_strategy(doc: dict) -> dict:
     return next(block for block in doc["blocks"] if block["kind"] == "exam_strategy")
 
@@ -616,7 +638,7 @@ def test_merge_replaces_course_blocks_and_keeps_point_blocks(monkeypatch, tmp_pa
     path.parent.mkdir(parents=True)
     path.write_text(gc.serialize(batch1), encoding="utf-8")
 
-    merged = gc.merge_content_file(path, batch2)
+    merged = gc.merge_content_file(path, batch2, model)
 
     # (a) 课程级块整体来自本次生成（旧批次不得残留）
     assert merged["stage_plan"] == batch2["stage_plan"]
@@ -628,13 +650,13 @@ def test_merge_replaces_course_blocks_and_keeps_point_blocks(monkeypatch, tmp_pa
     # (b) 上一批的考点级块保留，本批的考点级块进入产物
     assert _point_blocks(merged) == {**_point_blocks(batch1), **_point_blocks(batch2)}
 
-    # 合并后重排（`point_id` → `kind`），课程级块在末尾 → 字节确定性
-    keys = [(block["point_id"], block["kind"]) for block in merged["blocks"]]
-    assert keys == sorted(keys, key=lambda item: (item[0] is None, item[0] or "", item[1]))
+    # 合并后按唯一规范序重排（知识模型章序 → 节序 → 点序 → `kind`），课程级块在末尾 → 两条路径字节可比
+    keys = _canonical_keys(model, merged["blocks"])
+    assert keys == sorted(keys), "合并后必须按知识模型的规范序重排（章序 → 节序 → 点序 → kind）"
 
     # (c) 复跑合并字节一致（排序是不动点）
     path.write_text(gc.serialize(merged), encoding="utf-8")
-    assert gc.serialize(gc.merge_content_file(path, batch2)) == gc.serialize(merged)
+    assert gc.serialize(gc.merge_content_file(path, batch2, model)) == gc.serialize(merged)
 
 
 def test_merge_replaces_same_block_id_and_refuses_other_course(monkeypatch, tmp_path):
@@ -648,7 +670,7 @@ def test_merge_replaces_same_block_id_and_refuses_other_course(monkeypatch, tmp_
     rewritten = {**rewritten, "text_md": "（改版）同 block_id 必须整块替换。"}
     updated = {**batch2, "blocks": [rewritten, *batch2["blocks"]]}
 
-    merged = gc.merge_content_docs(batch1, updated)
+    merged = gc.merge_content_docs(batch1, updated, model)
 
     block_ids = [block["block_id"] for block in merged["blocks"]]
     assert len(block_ids) == len(set(block_ids)), "合并不得产生重复 block_id"
@@ -656,7 +678,7 @@ def test_merge_replaces_same_block_id_and_refuses_other_course(monkeypatch, tmp_
     assert len(merged["blocks"]) == len(_point_blocks(batch1)) + len(_point_blocks(batch2)) + 1
 
     with pytest.raises(RuntimeError):
-        gc.merge_content_docs(batch1, {**batch2, "course_code": "15043"})
+        gc.merge_content_docs(batch1, {**batch2, "course_code": "15043"}, model)
 
 
 # --------------------------------------------------------------------------------------
@@ -1001,12 +1023,56 @@ def test_cli_generate_merge_rewrites_sorted_blocks_and_is_idempotent(tmp_path):
     assert merged["stage_plan"] == fresh["stage_plan"], "课程级块必须整块替换为本次生成"
     assert merged["review_schedule"] == fresh["review_schedule"]
     assert _exam_strategy(merged) == _exam_strategy(fresh)
-    keys = [(block["point_id"], block["kind"]) for block in merged["blocks"]]
-    assert keys == sorted(keys, key=lambda item: (item[0] is None, item[0] or "", item[1])), "合并后必须重排"
+    keys = _canonical_keys(_model(), merged["blocks"])
+    assert keys == sorted(keys), "合并后必须按知识模型的规范序重排"
 
     rerun = content_path.read_bytes()
     assert _generate(merge=True) == 0
     assert content_path.read_bytes() == rerun, "复跑合并必须字节一致"
+    assert CONTENT_PATH.read_bytes() == real_before, "测试不得改动仓内产物"
+
+
+def test_merge_and_full_generation_are_byte_equal_for_the_same_content_set(tmp_path):
+    """F-405 二次裁决：同一个内容集合，逐批 `--merge` 与一次性全量生成必须逐字节一致。
+
+    两批都用仓内已录制的 replay fixture（离线）：A = 导论 + 第一章，B = 第二章 + 第三章。
+    旧实现把合并结果按 `point_id` 字典序重排（`ch01…` 排在 `intro…` 之前），与全量生成序不同 →
+    本用例 (a) 在旧实现下必红，是「两条路径同序」的回归锁。
+    """
+    real_before = CONTENT_PATH.read_bytes()
+    batched_cli, batched_path = _cli_root(tmp_path / "batched")
+    oneshot_cli, oneshot_path = _cli_root(tmp_path / "oneshot")
+    batch_a, batch_b = ("intro", "ch01"), ("ch02", "ch03")
+    both = (*batch_a, *batch_b)
+
+    def _generate(cli, chapters: tuple[str, ...], *, merge: bool) -> int:
+        return cli.run_generate(
+            "15040", backend="replay", chapters=list(chapters), record_fixtures=False, merge=merge
+        )
+
+    # 逐批：A 先落盘（首批没有既有产物），再把 B 合并进 A
+    assert _generate(batched_cli, batch_a, merge=True) == 0
+    assert _generate(batched_cli, batch_b, merge=True) == 0
+    batched = _json(batched_path)
+    # 一次性全量：同一内容集合 A ∪ B
+    assert _generate(oneshot_cli, both, merge=False) == 0
+    oneshot = _json(oneshot_path)
+
+    # (a) 考点级块：同一内容集合下逐块同序、逐字节相等
+    batched_points = [block for block in batched["blocks"] if block.get("point_id") is not None]
+    oneshot_points = [block for block in oneshot["blocks"] if block.get("point_id") is not None]
+    assert len(batched_points) == len(oneshot_points) == 246, "两批加起来 = 导论–第三章的 82 点 × 3"
+    assert [block["block_id"] for block in batched_points] == [block["block_id"] for block in oneshot_points]
+    assert gc.serialize({"blocks": batched_points}) == gc.serialize({"blocks": oneshot_points})
+    for doc in (batched, oneshot):
+        keys = _canonical_keys(_model(), doc["blocks"])
+        assert keys == sorted(keys), "两条路径都必须落在唯一规范序上"
+
+    # (b) 同一内容集合（合并的最后一次生成覆盖累积章集，即 plan § Data contracts 4 的权威路径）
+    #     → 整份产物逐字节一致：`--merge` 不是另一种产物形态
+    assert _generate(batched_cli, both, merge=True) == 0
+    assert batched_path.read_bytes() == oneshot_path.read_bytes()
+
     assert CONTENT_PATH.read_bytes() == real_before, "测试不得改动仓内产物"
 
 
