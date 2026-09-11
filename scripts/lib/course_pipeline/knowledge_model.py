@@ -18,7 +18,7 @@
    实测 15040：102 条续行全部归属考核要求行，0 条归属节标题 —— 故「节标题不吸收续行」在本课纲上无副作用。
 3. **节与考核点**：考核要求小节内 `^\\d+\\.` 为节边界；节内 `识记：` / `领会：` / `应用：` 行按 `；`
    拆成 point，`requirement` 取该行前缀。**编号节内没有前缀的考核内容** → `requirement: null`（考纲未分级）；
-   **不属于任何编号节的段落**（该段之前没有编号节，或该节已出现带前缀的要求）→ 只进
+   **不属于任何编号节的段落**（该段之前没有编号节 —— 含要求行本身，或该节已出现带前缀的要求）→ 只进
    `chapters[].unmodeled[]`（`reason: "unnumbered_section"`），不生成 point、不编造 index / 章号（GC3）。
 4. **`quote` ≤ 60 字符且逐字来自考纲**：短语本身超长时取最后一个分句边界（`，、：,;`）之内的前缀
    ——不拼接、不改写、不加省略号，`title` 仍保留完整原文（GC4；长短语只截 `quote`、不拆 point，
@@ -234,13 +234,14 @@ def _parse_requirement_block(block: list[dict], code: str, slug: str) -> tuple[l
             prefixed = False
             continue
         requirement = REQUIREMENT_RE.match(text)
-        if requirement is not None:
+        if requirement is not None and current is not None:
             prefixed = True
             requirement_name, body = requirement.group(1), requirement.group(2)
         elif current is not None and not prefixed:
             requirement_name, body = None, text
         else:
-            # 不属于任何编号节 / 该节已出现带前缀要求 → 未编号考核段落，不生成 point、不编造 index
+            # `current is None`（本行不属于任何编号节，含 `识记：` / `领会：` / `应用：` 行本身）
+            # 或该节已出现带前缀要求 → 未编号考核段落，只留痕、不生成 point、不编造 index（GC3）
             unmodeled.append({
                 "locator": f"L{item['line']}",
                 "title": text[:MAX_QUOTE_CHARS].rstrip("。").strip(),

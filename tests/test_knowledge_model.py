@@ -15,6 +15,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from collections import Counter
@@ -76,6 +77,41 @@ FRAGMENT = """大纲目录
 本节考核内容没有识记领会应用前缀；第二句也没有。
 四、本章重点
 无。
+"""
+
+# 合成考纲片段（F-301：`识记：` 行出现在任何编号节之前 → `current is None`。
+# 15040 的 18 个要求块首行全部是编号节，故本片段是这条守卫唯一的复现路径；B2–B4 复用抽取器时会遇到）
+ORPHAN_LINE = "识记：考纲在第一个编号节之前先给了一段总述性识记要求；第二句。"
+ORPHAN_FRAGMENT = f"""大纲目录
+
+导论
+
+Ⅳ 关于大纲的说明与考核实施要求
+附录：参考样卷
+大纲后记
+
+导论
+一、学习目的与要求
+通过本章学习，能说出示例。
+二、课程内容
+1.示例节
+三、考核知识点与考核要求
+{ORPHAN_LINE}
+1.示例节
+识记：甲；乙。
+领会：丙。
+四、本章重点
+甲；丙。
+"""
+
+# 合成手工页（F-303）：`1.1` 与模型 ch01 第 1 节匹配；`1.2` 手工页有、模型没有；
+# 模型导论第 1 节手工页没有 → 三条分支各命中一次
+MANUAL_PAGE = """# 99999 示例课程
+
+## 章节知识树
+
+#### 1.1 无前缀节 — 🟢🟡
+#### 1.2 考纲缺失的节 — 🟢
 """
 
 
@@ -152,11 +188,11 @@ def _strings(value) -> list[str]:
     return []
 
 
-def _fragment_root(tmp_path: Path) -> tuple[Path, dict]:
+def _fragment_root(tmp_path: Path, text: str = FRAGMENT) -> tuple[Path, dict]:
     """合成考纲片段 + 对应 evidence（`syllabus.path` 指向 tmp 抽取件）。"""
     doc = tmp_path / "sources" / "jiangsu" / "processed" / "syllabus" / "99999-demo" / "document.extracted.md"
     doc.parent.mkdir(parents=True)
-    doc.write_text(FRAGMENT, encoding="utf-8")
+    doc.write_text(text, encoding="utf-8")
     evidence = {
         "schema_version": 1,
         "course_code": "99999",
@@ -173,6 +209,36 @@ def _fragment_root(tmp_path: Path) -> tuple[Path, dict]:
         "eligibility": {"level": "L1", "reasons": ["syllabus:extracted", "textbook_plan:matched"]},
     }
     return tmp_path, evidence
+
+
+def _write_evidence(root: Path, evidence: dict) -> Path:
+    """落盘 `sources/jiangsu/courses/<code>/evidence.json`（`build_knowledge_model()` 的唯一输入）。"""
+    path = root / "sources" / "jiangsu" / "courses" / evidence["course_code"] / "evidence.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(evidence, ensure_ascii=False), encoding="utf-8")
+    return path
+
+
+def _cli_scaffold(root: Path) -> Path:
+    """tmp 根上的 CLI 装置：复制入口脚本 + 软链 `scripts/lib`。
+
+    入口脚本用 `Path(__file__).resolve().parents[1]` 推导 `ROOT`（不是 cwd），故只能把脚本放进 tmp 根；
+    生产库通过软链复用，测试不碰真实仓（真实产物必须字节不变）。
+    """
+    (root / "scripts").mkdir()
+    shutil.copy(ROOT / "scripts/build-course-content.py", root / "scripts/build-course-content.py")
+    (root / "scripts/lib").symlink_to(ROOT / "scripts/lib", target_is_directory=True)
+    return root
+
+
+def _leak_windows(value, source: str) -> list[str]:
+    """模型内所有长度 201 的字符串窗口（逐字符串切片）；落在 `source`（去噪官方正文）内的即正文倾倒。"""
+    return [
+        text[start:start + 201]
+        for text in _strings(value)
+        for start in range(len(text) - 200)
+        if text[start:start + 201] in source
+    ]
 
 
 # ---- Step 1 的 8 个必测项 ----------------------------------------------------
@@ -333,6 +399,43 @@ def test_coverage_ratio_and_diff():
     assert kinds["matched"] == 61
 
 
+def test_diff_vs_manual_records_manual_only_and_model_only(tmp_path: Path):
+    """F-303：`manual_only` / `model_only` 两条分支在合成根上各命中一次（产物里两者都是 0）。
+
+    `manual_only` 正是 T6 `evidence` 层闸门的失败关闭条件，必须有可运行检查而非「读过代码」。
+    """
+    root, evidence = _fragment_root(tmp_path)
+    page = root / "content" / "jiangsu" / "courses" / "99999" / "index.md"
+    page.parent.mkdir(parents=True)
+    page.write_text(MANUAL_PAGE, encoding="utf-8")
+
+    coverage = km.extract_knowledge_model(root, evidence)["coverage"]
+    assert coverage["manual_reference"] == {
+        "path": "content/jiangsu/courses/99999/index.md",
+        "locator": "L3",
+        "point_count": 2,
+    }
+
+    diff = coverage["diff_vs_manual"]
+    kinds = Counter(item["kind"] for item in diff)
+    assert (kinds["matched"], kinds["manual_only"], kinds["model_only"]) == (1, 1, 1)
+
+    manual_only = next(item for item in diff if item["kind"] == "manual_only")
+    assert manual_only["manual_locator"] == "content/jiangsu/courses/99999/index.md:6"
+    assert manual_only["manual_title"] == "1.2 考纲缺失的节 — 🟢"
+    assert manual_only["model_point_id"] is None, "手工页有、模型未抽出：不得编造模型侧 point"
+    assert "named_gap" in manual_only["note"]
+
+    model_only = next(item for item in diff if item["kind"] == "model_only")
+    assert model_only["manual_locator"] is None and model_only["manual_title"] is None
+    assert model_only["model_point_id"] == "99999-intro-s1-p1"
+    assert "无对应元素" in model_only["note"]
+
+    matched = next(item for item in diff if item["kind"] == "matched")
+    assert matched["manual_locator"] == "content/jiangsu/courses/99999/index.md:5"
+    assert matched["model_point_id"] == "99999-ch01-s1-p1"
+
+
 def test_named_gap_when_unnumbered(tmp_path: Path):
     """未编号考核段落不生成 point、不编造 index，写入 `chapters[].unmodeled[]`。"""
     root, evidence = _fragment_root(tmp_path)
@@ -354,6 +457,32 @@ def test_named_gap_when_unnumbered(tmp_path: Path):
     for element in intro["unmodeled"]:
         assert set(element) == {"locator", "title", "reason"}
         assert "index" not in element
+
+
+def test_orphan_requirement_before_any_section_is_recorded(tmp_path: Path):
+    """F-301 回归：编号节之前的 `识记：` 行不得抛 `TypeError`，而是按契约进 `unmodeled[]`（GC3）。
+
+    守卫前行为 = `TypeError: 'NoneType' object is not subscriptable`（`current is None` 仍进 point 循环）；
+    守卫后 = 该行只留痕、不生成 point、不凭空造节（`sections` 仍只有考纲真有的 1 节）。
+    """
+    root, evidence = _fragment_root(tmp_path, ORPHAN_FRAGMENT)
+    assert ORPHAN_FRAGMENT.split("\n")[14] == ORPHAN_LINE, "片段 `L15` 必须是孤儿要求行"
+
+    doc = km.extract_knowledge_model(root, evidence)  # 守卫前：TypeError
+    intro = doc["chapters"][0]
+    assert intro["unmodeled"] == [
+        {"locator": "L15", "title": ORPHAN_LINE.rstrip("。"), "reason": "unnumbered_section"},
+    ]
+    assert set(intro["unmodeled"][0]) == {"locator", "title", "reason"}
+    # 不发明结构：孤儿行既不生成 point，也不创建节
+    assert [section["index"] for section in intro["sections"]] == ["1"]
+    assert [point["title"] for point in intro["sections"][0]["points"]] == ["甲", "乙", "丙"]
+    assert not any(
+        "总述性识记要求" in point["title"]
+        for section in intro["sections"]
+        for point in section["points"]
+    )
+    assert doc["coverage"]["official_point_count"] == 1
 
 
 def test_section_without_requirement_prefix_gets_null(tmp_path: Path):
@@ -390,13 +519,25 @@ def test_chapter_focus_excludes_part_labels_and_appendix():
 
 
 def test_no_body_text_leak():
-    """防正文倾倒：模型内不得存在长度 > 200 的连续官方正文串。"""
+    """防正文倾倒：模型内不得存在长度 > 200 的连续官方正文串。
+
+    该不变式在真实产物上**空真**（最长字符串 87 字符 → 0 个可扫窗口），故本测试自带阳性对照：
+    把 ≥ 201 字符的官方正文塞进模型时必须被报出。删掉窗口循环（检测器退化）→ 阳性对照失败。
+    """
     source = _folded_source()
-    for text in _strings(_model()):
-        for start in range(len(text) - 200):
-            window = text[start:start + 201]
-            if window in source:
-                pytest.fail(f"模型内出现 201 字符连续官方正文串：{window[:60]}…")
+    artifact = _model()
+    # 真实产物：字段上界 200 成立（这正是窗口数为 0、必须加阳性对照的原因，不用它冒充测试强度）
+    scanned = sum(max(0, len(text) - 200) for text in _strings(artifact))
+    assert scanned == 0, "产物出现 > 200 字符字符串：先人工核对是否正文倾倒"
+    assert _leak_windows(artifact, source) == []
+
+    # 阳性对照：400 字符官方正文 → 200 个窗口全部命中（检测器必须报出）
+    body = source[1000:1400]
+    assert len(body) == 400
+    assert len(_leak_windows({"body": body}, source)) == 200
+    # 阈值语义 `> 200`：200 字符不触发，201 字符触发 1 个窗口
+    assert _leak_windows({"body": source[1000:1200]}, source) == []
+    assert len(_leak_windows({"body": source[1000:1201]}, source)) == 1
 
 
 # ---- 产物 / CLI 契约 ---------------------------------------------------------
@@ -461,6 +602,46 @@ def test_cli_model_skips_blocked_course_and_writes_nothing():
     assert result.returncode == 0, result.stdout + result.stderr
     assert "blocked" in result.stdout and "跳过" in result.stdout
     assert not blocked.exists()
+
+
+def test_write_knowledge_model_round_trip_in_tmp_root(tmp_path: Path):
+    """F-304：写盘成功路径（`knowledge_model_path` / `write_knowledge_model`）在 tmp 根上往返一次。"""
+    root, evidence = _fragment_root(tmp_path)
+    _write_evidence(root, evidence)
+
+    path, doc = km.write_knowledge_model(root, "99999")
+    assert path == km.knowledge_model_path(root, "99999")
+    assert path == root / "sources/jiangsu/courses/99999/knowledge-model.json"
+    assert path.read_text(encoding="utf-8") == km.serialize(doc)
+    assert json.loads(path.read_text(encoding="utf-8")) == doc
+
+    first = path.read_bytes()  # 复跑幂等：同输入两次落盘字节一致
+    assert km.write_knowledge_model(root, "99999")[0] == path
+    assert path.read_bytes() == first
+
+
+def test_cli_model_writes_l1_course_in_tmp_root(tmp_path: Path):
+    """F-304：CLI `model <code>` 的 L1 成功路径（另一个 CLI 测试只覆盖 blocked 跳过路径）。"""
+    root, evidence = _fragment_root(tmp_path)
+    _write_evidence(root, evidence)
+    _cli_scaffold(root)
+
+    result = subprocess.run(
+        [sys.executable, "scripts/build-course-content.py", "model", "99999"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.strip() == (
+        "99999: chapters=2 ratio=1.0 -> sources/jiangsu/courses/99999/knowledge-model.json"
+    )
+
+    written = json.loads(
+        (root / "sources/jiangsu/courses/99999/knowledge-model.json").read_text(encoding="utf-8")
+    )
+    assert written == km.build_knowledge_model(root, "99999")
+    assert written["coverage"]["ratio"] == 1.0 and len(written["chapters"]) == 2
 
 
 def test_l1_course_model_requires_extracted_syllabus(tmp_path: Path):
