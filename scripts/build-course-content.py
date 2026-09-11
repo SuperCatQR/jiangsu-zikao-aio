@@ -5,13 +5,16 @@
 
   evidence <code>   写 `sources/jiangsu/courses/<code>/evidence.json` 并打印放行等级
   evidence --all    现有 18 门课程页课码各写一份（spec AC4）
+  model <code>      写 `sources/jiangsu/courses/<code>/knowledge-model.json` 并打印章数与覆盖率
 
-`resolve` / `model` / `generate` / `render` 等后续阶段随各自 task 接入（plan § Target-state module map）；
+放行等级非 `L1` 的课程在 `model` 阶段**跳过且不视为失败**（exit 0、零 AI 产物，plan § 阶段语义）；
+`resolve` / `generate` / `render` 等后续阶段随各自 task 接入（plan § Target-state module map）；
 本入口不做占位子命令。默认离线：只读仓内抽取件与只读基线（GC8 / GC14 / GC15）。
 """
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -20,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from lib.course_pipeline import evidence as evidence_mod  # noqa: E402
+from lib.course_pipeline import knowledge_model as knowledge_model_mod  # noqa: E402
 
 CODE_RE = re.compile(r"\d{5}")
 
@@ -36,6 +40,26 @@ def run_evidence(codes: list[str]) -> int:
     return 0
 
 
+def run_model(code: str) -> int:
+    evidence_file = evidence_mod.evidence_path(ROOT, code)
+    if not evidence_file.is_file():
+        print(
+            f"stage=model missing: {evidence_file.relative_to(ROOT).as_posix()}（先跑 evidence 阶段）",
+            file=sys.stderr,
+        )
+        return 2
+    evidence = json.loads(evidence_file.read_text(encoding="utf-8"))
+    eligibility = evidence.get("eligibility") or {}
+    if eligibility.get("level") != "L1":
+        reasons = " ".join(eligibility.get("reasons") or [])
+        print(f"{code}: {eligibility.get('level', 'unknown')} {reasons} -> model 阶段跳过（非 L1，零 AI 产物）")
+        return 0
+    path, doc = knowledge_model_mod.write_knowledge_model(ROOT, code)
+    coverage = doc["coverage"]
+    print(f"{code}: chapters={len(doc['chapters'])} ratio={coverage['ratio']} -> {path.relative_to(ROOT).as_posix()}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Jiangsu self-study course content pipeline")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -44,17 +68,25 @@ def main(argv: list[str] | None = None) -> int:
     evidence.add_argument("code", nargs="?", help="5 位课码")
     evidence.add_argument("--all", action="store_true", help="现有 18 门课程页课码")
 
+    model = subparsers.add_parser("model", help="写 sources/jiangsu/courses/<code>/knowledge-model.json")
+    model.add_argument("code", help="5 位课码")
+
     args = parser.parse_args(argv)
 
-    if args.all:
-        codes = evidence_mod.course_codes(ROOT)
-    elif args.code:
-        if not CODE_RE.fullmatch(args.code):
-            parser.error(f"课码必须是 5 位数字：{args.code!r}")
-        codes = [args.code]
-    else:
-        parser.error("evidence 需要 <code> 或 --all")
-    return run_evidence(codes)
+    if args.command == "evidence":
+        if args.all:
+            codes = evidence_mod.course_codes(ROOT)
+        elif args.code:
+            if not CODE_RE.fullmatch(args.code):
+                parser.error(f"课码必须是 5 位数字：{args.code!r}")
+            codes = [args.code]
+        else:
+            parser.error("evidence 需要 <code> 或 --all")
+        return run_evidence(codes)
+
+    if not CODE_RE.fullmatch(args.code):
+        parser.error(f"课码必须是 5 位数字：{args.code!r}")
+    return run_model(args.code)
 
 
 if __name__ == "__main__":
