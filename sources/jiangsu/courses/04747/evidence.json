@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "course_code": "04747",
+  "generated_at": "2026-09-11",
+  "facts": {
+    "name": {
+      "value": "Java 语言程序设计（一）",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285133106820943872.html",
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L59"
+      }
+    },
+    "credits": {
+      "value": 3,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285133106820943872.html",
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L59"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285133106820943872.html",
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L59"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "extracted",
+    "doc_id": "syllabus:04747",
+    "path": "sources/jiangsu/processed/syllabus/04747-java-programming-1-gaogang-4067/document.extracted.md",
+    "sha256": "1d713b732f4cc516f80206824a5d15c4829fcab884b70807c13fdd65b7930db4",
+    "has_assessment_requirements": true,
+    "has_sample_paper": false,
+    "requirements_heading": "二、考核知识点与考核要求",
+    "locator": "L102"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-04-07",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+    "locator": "L1175,L1177",
+    "row": "04741 计算机网络原理 047411 计算机网络原理(附大纲) 李全龙 机械工业出版社 2018 年 047470 Java 语言程序设计(一)大纲 南京航空航天大学 高纲 4067 04747 Java 语言程序设计(一) 047471 Java 程序设计(第四版) 辛运帏、饶一梅 清华大学出版社 2017 年 / 047470 Java 语言程序设计(一)大纲 南京航空航天大学 高纲 40",
+    "row_truncated": true,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1295",
+        "row": "04737 C++程序设计 047371 C++程序设计(附大纲) 辛运帏、陈朔鹰 机械工业出版社 2019 年 04741 计算机网络原理 047411 计算机网络原理(附大纲) 李全龙 机械工业出版社 2018 年 047470 Java 语言程序设计(一)大纲 南京航空航天大学 高纲 4067 04747 Java 语言程序设计(一) 047471 Java 程序设计(第四版) 辛运帏、饶一",
+        "row_truncated": true
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1297",
+        "row": "047470 Java 语言程序设计(一)大纲 南京航空航天大学 高纲 4067 04747 Java 语言程序设计(一) 047471 Java 程序设计(第四版) 辛运帏、饶一梅 清华大学出版社 2017 年 047750 宏观经济指标分析大纲 南京农业大学 高纲 4047 04775 宏观经济指标分析",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1175",
+        "row": "04741 计算机网络原理 047411 计算机网络原理(附大纲) 李全龙 机械工业出版社 2018 年 047470 Java 语言程序设计(一)大纲 南京航空航天大学 高纲 4067 04747 Java 语言程序设计(一) 047471 Java 程序设计(第四版) 辛运帏、饶一梅 清华大学出版社 2017 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1177",
+        "row": "047470 Java 语言程序设计(一)大纲 南京航空航天大学 高纲 4067 04747 Java 语言程序设计(一) 047471 Java 程序设计(第四版) 辛运帏、饶一梅 清华大学出版社 2017 年 047750 宏观经济指标分析大纲 南京农业大学 高纲 4047",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "L1",
+    "reasons": [
+      "syllabus:extracted",
+      "textbook_plan:matched"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "course_code": "00898",
+  "generated_at": "2026-09-11",
+  "facts": {
+    "name": {
+      "value": "互联网软件应用与开发",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2024-07-05/7214792761239670784.html",
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L55"
+      }
+    },
+    "credits": {
+      "value": 3,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2024-07-05/7214792761239670784.html",
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L55"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": "https://www.jseea.cn/webfile/selflearning_jcdg/2024-07-05/7214792761239670784.html",
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L55"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "extracted",
+    "doc_id": "syllabus:00898",
+    "path": "sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/document.extracted.md",
+    "sha256": "76789a95b7bafcdd8fe925cd33fa63769d0e54dbe2aa906fda9ceaac30a151e3",
+    "has_assessment_requirements": true,
+    "has_sample_paper": false,
+    "requirements_heading": "二、考核知识点与考核要求",
+    "locator": "L135"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1112,L1114",
+    "row": "00896 电子商务概论 008961 电子商务概论(附大纲) 程大为 中国财政经济出版社 2016 年 008980 互联网软件应用与开发大纲 南京航空航天大学 高纲 4295 00898 互联网软件应用与开发 008981 JSP 应用与开发技术(第 3 版) 马建红、李学相 清华大学出版社 2019 年 / 008980 互联网软件应用与开发大纲 南京航空航天大学 高纲 4295 00898",
+    "row_truncated": true,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1162",
+        "row": "00896 电子商务概论 008961 电子商务概论(附大纲) 程大为 中国财政经济出版社 2016 年 008980 互联网软件应用与开发大纲 南京航空航天大学 高纲 4295 00898 互联网软件应用与开发 008981 JSP 应用与开发技术(第 3 版) 马建红、李学相 清华大学出版社 2019 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1164",
+        "row": "008980 互联网软件应用与开发大纲 南京航空航天大学 高纲 4295 00898 互联网软件应用与开发 008981 JSP 应用与开发技术(第 3 版) 马建红、李学相 清华大学出版社 2019 年 00908 网络营销与策划 009081 网络营销与策划(附大纲) 秦良娟 中国人民大学出版社 2018 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1112",
+        "row": "00896 电子商务概论 008961 电子商务概论(附大纲) 程大为 中国财政经济出版社 2016 年 008980 互联网软件应用与开发大纲 南京航空航天大学 高纲 4295 00898 互联网软件应用与开发 008981 JSP 应用与开发技术(第 3 版) 马建红、李学相 清华大学出版社 2019 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1114",
+        "row": "008980 互联网软件应用与开发大纲 南京航空航天大学 高纲 4295 00898 互联网软件应用与开发 008981 JSP 应用与开发技术(第 3 版) 马建红、李学相 清华大学出版社 2019 年 00908 网络营销与策划 009081 网络营销与策划(附大纲) 秦良娟 中国人民大学出版社 2018 年",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "L1",
+    "reasons": [
+      "syllabus:extracted",
+      "textbook_plan:matched"
+    ]
+  }
+}

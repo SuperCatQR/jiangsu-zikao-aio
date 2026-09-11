@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "course_code": "03709",
+  "generated_at": "2026-09-11",
+  "facts": {
+    "name": {
+      "value": "马克思主义基本原理概论",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:020301K",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/020301K-finance/sources/plan.raw.txt",
+        "locator": "L67"
+      }
+    },
+    "credits": {
+      "value": 4,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:020301K",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/020301K-finance/sources/plan.raw.txt",
+        "locator": "L67"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:020301K",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/020301K-finance/sources/plan.raw.txt",
+        "locator": "L67"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "missing",
+    "doc_id": "syllabus:03709",
+    "path": null,
+    "sha256": null,
+    "candidate_path": null,
+    "has_assessment_requirements": false,
+    "has_sample_paper": false,
+    "requirements_heading": null,
+    "gap_impact": "缺官方考纲 → 无章目 / 考核要求 / 题型依据，AI 备考层一律不生成（放行等级非 L1）",
+    "next_evidence": "jseea.cn 公开的该课自学考试大纲原件（入库并抽取为 document.extracted.md）"
+  },
+  "textbook_plan": {
+    "status": "missing",
+    "doc_id": null,
+    "path": null,
+    "locator": null,
+    "row": null,
+    "matches": [],
+    "gap_impact": "缺官方教材计划行 → 读者无法核对指定教材，知识点无法与教材章节对齐",
+    "next_evidence": "官方《开考课程教材计划》抽取件中出现该课码的教材代号行（`<code>\\d{1,3}`）"
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "blocked",
+    "reasons": [
+      "syllabus:missing",
+      "textbook_plan:missing"
+    ]
+  }
+}

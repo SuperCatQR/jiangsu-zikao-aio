@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "course_code": "13003",
+  "generated_at": "2026-09-11",
+  "facts": {
+    "name": {
+      "value": "数据结构与算法",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L49"
+      }
+    },
+    "credits": {
+      "value": 4,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L49"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L49"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "missing",
+    "doc_id": "syllabus:13003",
+    "path": null,
+    "sha256": null,
+    "candidate_path": null,
+    "has_assessment_requirements": false,
+    "has_sample_paper": false,
+    "requirements_heading": null,
+    "gap_impact": "缺官方考纲 → 无章目 / 考核要求 / 题型依据，AI 备考层一律不生成（放行等级非 L1）",
+    "next_evidence": "jseea.cn 公开的该课自学考试大纲原件（入库并抽取为 document.extracted.md）"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1591",
+    "row": "000159 英语(二)自学指导 周明亚、叶建敏 苏州大学出版社 2013 年 13003 数据结构与算法 130031 数据结构与算法(附大纲) 辛运帏、陈朔鹰 机械工业出版社 2024 年 130110 人工智能与大数据大纲 南京理工大学 高纲 4268 13011 人工智能与大数据",
+    "row_truncated": false,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1536",
+        "row": "000159 英语(二)自学指导 周明亚、叶建敏 苏州大学出版社 2013 年 13003 数据结构与算法 130031 数据结构与算法(附大纲) 辛运帏 机械工业出版社 2024 年 13013 高级语言程序设计 130131 高级语言程序设计(附大纲) 郑岩 机械工业出版社 2017 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1747",
+        "row": "000159 英语(二)自学指导 周明亚、叶建敏 苏州大学出版社 2013 年 13003 数据结构与算法 130031 数据结构与算法(附大纲) 辛运帏 机械工业出版社 2024 年 130110 人工智能与大数据大纲 南京理工大学 高纲 4268 13011 人工智能与大数据",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1421",
+        "row": "000159 英语(二)自学指导 周明亚、叶建敏 苏州大学出版社 2013 年 13003 数据结构与算法 130031 数据结构与算法(附大纲) 辛运帏、陈朔鹰 机械工业出版社 2024 年 13013 高级语言程序设计 130131 高级语言程序设计(附大纲) 郑岩 机械工业出版社 2017 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1591",
+        "row": "000159 英语(二)自学指导 周明亚、叶建敏 苏州大学出版社 2013 年 13003 数据结构与算法 130031 数据结构与算法(附大纲) 辛运帏、陈朔鹰 机械工业出版社 2024 年 130110 人工智能与大数据大纲 南京理工大学 高纲 4268 13011 人工智能与大数据",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "blocked",
+    "reasons": [
+      "syllabus:missing",
+      "textbook_plan:matched"
+    ]
+  }
+}
