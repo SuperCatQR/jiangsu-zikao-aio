@@ -47,6 +47,8 @@ HTTP_TIMEOUT_SECONDS = 120
 MAX_ATTEMPTS = 3
 RETRY_BASE_SECONDS = 1
 SCHEMA_FENCE_RE = re.compile(r"```json schema\n(?P<schema>.*?)\n```", re.S)
+FRONTMATTER_RE = re.compile(r"\A---\n(?P<body>.*?)\n---\n", re.S)
+COURSE_SCOPE_LINE_RE = re.compile(r"^course_scope:[ \t]*(?P<value>\[.*\])[ \t]*$", re.M)
 BUNDLE_NAME_RE_TEMPLATE = r"{prompt_id}-(\d+)\.json"
 
 # `--record-fixtures` 由 CLI 置位（`complete_json()` 签名固定，不加参数）。
@@ -159,6 +161,26 @@ def load_prompt(prompt_id: str, prompt_version: str) -> tuple[str, dict]:
     except ValueError as exc:
         raise RuntimeError(f"提示词的 schema 不是合法 JSON: {path.name}") from exc
     return text, schema
+
+
+def prompt_course_scope(prompt_id: str, prompt_version: str) -> list[str]:
+    """模板 frontmatter 声明的课程作用域（`course_scope: ["15040"]`，plan § Data contracts 4 / F-401）。"""
+    path = prompt_path(prompt_id, prompt_version)
+    if not path.is_file():
+        raise RuntimeError(f"提示词缺失: {path.name}")
+    match = FRONTMATTER_RE.match(path.read_text(encoding="utf-8"))
+    if match is None:
+        raise RuntimeError(f"提示词缺少 frontmatter: {path.name}")
+    field = COURSE_SCOPE_LINE_RE.search(match.group("body"))
+    if field is None:
+        raise RuntimeError(f"提示词 frontmatter 缺 course_scope: {path.name}")
+    try:
+        scope = json.loads(field.group("value"))
+    except ValueError as exc:
+        raise RuntimeError(f"提示词的 course_scope 不是合法 JSON 数组: {path.name}") from exc
+    if not isinstance(scope, list) or not all(isinstance(item, str) and item for item in scope):
+        raise RuntimeError(f"提示词的 course_scope 必须是非空字符串数组: {path.name}")
+    return scope
 
 
 def payload_hash(payload: dict) -> str:

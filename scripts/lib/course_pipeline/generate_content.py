@@ -22,6 +22,9 @@ plan § Target-state module map）。15040 的知识模型没有这两个键 →
 确定性：块序 = 章 → 节 → 点 → explain / memorize / drill，课程级块在末尾；提示词 payload 不含时间戳，
 因此 fixture 哈希稳定；`generated_at` 来自 `llm_client.generator_metadata()`（`replay` 回放录制时的来源），
 `--backend replay` 复跑与首次产物逐字段一致（AC9）。
+
+分批：`--merge` 的语义见 `merge_content_docs()`（课程级块整块替换 / 考点级块按 `block_id` 合并 /
+合并后重排）；`out_of_scope_prompts()` 是「课程无提示词包」的失败关闭判据（F-401）。
 """
 from __future__ import annotations
 
@@ -70,6 +73,19 @@ def declared_question_types(model: dict) -> list[str]:
     if not types:
         raise RuntimeError(f"知识模型未声明题型，无法生成 drill（course_code={model.get('course_code')}）")
     return types
+
+
+def out_of_scope_prompts(course_code: str) -> list[str]:
+    """该课程缺哪些提示词包（模板 frontmatter 的 `course_scope`）；空列表 = 在作用域内。
+
+    plan § Data contracts 4「提示词课程作用域」（F-401）：作用域外的课程必须 fail closed —— 四个 v1
+    提示词只服务 15040，用别人的模板生成会静默产出错课内容，且所有自检都看不出来。
+    """
+    return [
+        f"{prompt_id}.{prompt_version}"
+        for prompt_id, prompt_version in (*[prompt for _, prompt in POINT_PROMPTS], STAGE_PLAN_PROMPT)
+        if course_code not in llm_client.prompt_course_scope(prompt_id, prompt_version)
+    ]
 
 
 def select_chapters(model: dict, selectors) -> dict:
@@ -397,6 +413,54 @@ def generate_course_content(root: Path, model: dict, *, backend: str = "cli") ->
 
 def content_path(root: Path, code: str) -> Path:
     return root / COURSES_DIR / code / CONTENT_FILENAME
+
+
+def _point_level_blocks(doc: dict, *, source: str) -> dict[str, dict]:
+    """考点级块（`point_id` 非空）按 `block_id` 索引；缺 `block_id` 即失败关闭（不猜、不静默丢块）。"""
+    blocks: dict[str, dict] = {}
+    for block in doc.get("blocks") or []:
+        if block.get("point_id") is None:
+            continue
+        block_id = block.get("block_id")
+        if not isinstance(block_id, str) or not block_id:
+            raise RuntimeError(f"{source} 的考点级块缺 block_id，拒绝合并")
+        blocks[block_id] = block
+    return blocks
+
+
+def _block_sort_key(block: dict) -> tuple[bool, str, str]:
+    """合并后的块序：考点级按 `point_id` → `kind`，课程级块（`point_id: null`）排在末尾。"""
+    point_id = block.get("point_id")
+    return (point_id is None, point_id or "", block.get("kind") or "")
+
+
+def merge_content_docs(existing: dict, new: dict) -> dict:
+    """逐批合并（plan § Data contracts 4「逐批合并语义」，PM 2026-09-11 裁决 F-405）。
+
+    - 课程级块（`stage_plan[]` / `exam_strategy` / `review_schedule`）**整块替换**为本次生成结果
+      —— 它们的 payload 每批都变，保留旧值会产生自相矛盾的阶段目标；
+    - 考点级块（`blocks[]`）按 `block_id` 合并：同 id 替换、其余保留（批次间不丢已通过闸门的内容）；
+    - 合并后 `blocks[]` 重排，保证字节确定性。
+    """
+    if existing.get("course_code") != new.get("course_code"):
+        raise RuntimeError(f"不能合并不同课程的产物: {existing.get('course_code')} ← {new.get('course_code')}")
+    blocks = _point_level_blocks(existing, source="既有产物")
+    blocks.update(_point_level_blocks(new, source="本次生成"))
+    course_blocks = [block for block in new.get("blocks") or [] if block.get("point_id") is None]
+    return {**new, "blocks": sorted([*blocks.values(), *course_blocks], key=_block_sort_key)}
+
+
+def merge_content_file(path: Path, doc: dict) -> dict:
+    """`--merge` 的落盘口径：既有产物存在即合并（不存在 = 首批，直接返回本次产物）；损坏即失败关闭。"""
+    if not path.is_file():
+        return doc
+    try:
+        existing = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as exc:
+        raise RuntimeError(f"既有产物不是合法 JSON，拒绝合并: {path.name}") from exc
+    if not isinstance(existing, dict):
+        raise RuntimeError(f"既有产物不是 JSON 对象，拒绝合并: {path.name}")
+    return merge_content_docs(existing, doc)
 
 
 def serialize(doc: dict) -> str:

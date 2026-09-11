@@ -12,7 +12,10 @@
 `generate` 的 `--backend` 三值见 GC8：`cli`（OpenAI 兼容 API）/ `agent`（无 key 环境，harness agent 回填
 `.agent-task/*.result.json`）/ `replay`（CI 离线读录制 fixture，缺一条即报错、不套模板）；
 `--record-fixtures` 把本次响应落到 `tests/fixtures/course_pipeline/llm/`；`--chapters` 限定章范围（分批生成，
-取值见 `generate_content.select_chapters()`：章 `slug` / 章序标签 / `ordinal`）；`resolve` / `render` 等后续阶段
+取值见 `generate_content.select_chapters()`：章 `slug` / 章序标签 / `ordinal`）；`--merge` 把本次结果合并进
+已有 `content.json`（课程级块整块替换 / 考点级块按 `block_id` 合并 / 重排块序，见
+`generate_content.merge_content_docs()`）；提示词是课程作用域产物（frontmatter `course_scope`），课程不在
+作用域内时 `generate` 失败关闭（exit 2，点名缺失的提示词包）。`resolve` / `render` 等后续阶段
 随各自 task 接入（plan § Target-state module map）；本入口不做占位子命令。
 默认离线：只读仓内抽取件与只读基线（GC8 / GC14 / GC15）。
 """
@@ -69,7 +72,7 @@ def run_model(code: str) -> int:
     return 0
 
 
-def run_generate(code: str, *, backend: str, chapters: list[str], record_fixtures: bool) -> int:
+def run_generate(code: str, *, backend: str, chapters: list[str], record_fixtures: bool, merge: bool) -> int:
     evidence_file = evidence_mod.evidence_path(ROOT, code)
     if not evidence_file.is_file():
         print(
@@ -83,6 +86,15 @@ def run_generate(code: str, *, backend: str, chapters: list[str], record_fixture
         reasons = " ".join(eligibility.get("reasons") or [])
         print(f"{code}: {eligibility.get('level', 'unknown')} {reasons} -> generate 阶段跳过（非 L1，零 AI 产物）")
         return 0
+    out_of_scope = generate_content_mod.out_of_scope_prompts(code)
+    if out_of_scope:
+        # F-401 / plan § Data contracts 4：提示词是课程作用域产物，作用域外一律失败关闭。
+        print(
+            f"stage=generate missing: {code} 无提示词包（course_scope 不含该课码）: "
+            f"{'、'.join(out_of_scope)}（不得用其它课程的模板生成内容）",
+            file=sys.stderr,
+        )
+        return 2
     model_file = knowledge_model_mod.knowledge_model_path(ROOT, code)
     if not model_file.is_file():
         print(
@@ -94,8 +106,11 @@ def run_generate(code: str, *, backend: str, chapters: list[str], record_fixture
     if chapters:
         model = generate_content_mod.select_chapters(model, chapters)
     llm_client.RECORD_FIXTURES = record_fixtures
+    path = generate_content_mod.content_path(ROOT, code)
     try:
         doc = generate_content_mod.generate_course_content(ROOT, model, backend=backend)
+        if merge:
+            doc = generate_content_mod.merge_content_file(path, doc)
     except llm_client.AgentTasksPendingError as exc:
         print(f"stage=generate missing: {exc}", file=sys.stderr)
         return 2
@@ -103,13 +118,13 @@ def run_generate(code: str, *, backend: str, chapters: list[str], record_fixture
         # 失败关闭：缺 fixture / schema 连失 / 自检不过一律不写盘（plan § 失败与「无半成品」约定）。
         print(f"stage=generate failed: {exc}", file=sys.stderr)
         return 1
-    path = generate_content_mod.content_path(ROOT, code)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(generate_content_mod.serialize(doc), encoding="utf-8")
     counts = Counter(block["kind"] for block in doc["blocks"])
     breakdown = " ".join(f"{kind}={counts[kind]}" for kind in sorted(counts))
+    merged_note = " merge=1" if merge else ""
     print(
-        f"{code}: backend={backend} blocks={len(doc['blocks'])} {breakdown} "
+        f"{code}: backend={backend}{merged_note} blocks={len(doc['blocks'])} {breakdown} "
         f"schedule={doc['review_schedule']['status']} -> {path.relative_to(ROOT).as_posix()}"
     )
     return 0
@@ -130,6 +145,7 @@ def main(argv: list[str] | None = None) -> int:
     generate.add_argument("code", help="5 位课码")
     generate.add_argument("--backend", choices=llm_client.BACKENDS, default="cli", help="生成执行体（默认 cli）")
     generate.add_argument("--chapters", help="只生成这些章（逗号分隔的 slug / 章序标签 / ordinal）")
+    generate.add_argument("--merge", action="store_true", help="把本次结果合并进已有 content.json（逐批生成）")
     generate.add_argument("--record-fixtures", action="store_true", help="把本次响应录到 tests/fixtures/course_pipeline/llm/")
 
     args = parser.parse_args(argv)
@@ -154,7 +170,11 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(f"课码必须是 5 位数字：{args.code!r}")
     chapters = [item for item in CHAPTER_SPLIT_RE.split(args.chapters or "") if item.strip()]
     return run_generate(
-        args.code, backend=args.backend, chapters=chapters, record_fixtures=args.record_fixtures
+        args.code,
+        backend=args.backend,
+        chapters=chapters,
+        record_fixtures=args.record_fixtures,
+        merge=args.merge,
     )
 
 

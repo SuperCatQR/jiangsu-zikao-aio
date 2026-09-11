@@ -18,8 +18,10 @@
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -46,10 +48,9 @@ MEMORY_MARKERS = ("记忆", "口诀", "对比", "联想", "串联", "谐音", "�
 SECRET_SENTINEL = "sk-unit-test-sentinel-2f7c1d"
 # 合成文本：只用于机制段，绝不进入仓内产物（产物段全部读真实 content.json）
 SYNTHETIC_TEXT = "本行是机制测试用的合成文本，不进入任何仓内产物。" * 6
-# 派发 A（本次）只交付机制：真实 `content.json` 切片与已录制 fixture 由派发 B 兑现。
-# 依赖该切片的断言一律 xfail（strict=False：切片落地后自动转为 XPASS，不会被静默跳过）。
-SLICE_PENDING = "待派发 B 的内容切片"
-slice_pending = pytest.mark.xfail(reason=SLICE_PENDING, strict=False)
+# 切片已落地（批 1：导论 + 第一章）：产物段断言不再挂 xfail —— 缺切片 / 缺 fixture 一律红灯。
+# 重挂标记这条路走不通：pytest 9 默认把 XPASS 判失败，显式 `strict=False` 则由
+# `test_suite_has_no_silent_xfail_markers` 兜住（F-402）。
 
 
 # --------------------------------------------------------------------------------------
@@ -109,6 +110,17 @@ def _synthetic_model() -> dict:
             "sample_paper": {"doc_id": "syllabus:99999", "locator": "L6"},
         },
     }
+
+
+def _two_chapter_model() -> dict:
+    """两个章（intro / ch01）各 1 节 3 点：分批生成与 `--merge` 的最小可测模型（机制段用）。"""
+    model = _synthetic_model()
+    second = json.loads(json.dumps(model["chapters"][0], ensure_ascii=False))
+    second.update({"ordinal": 1, "index": "第一章", "slug": "ch01", "title": "第一章 合成章"})
+    for section in second["sections"]:
+        for point in section["points"]:
+            point["id"] = point["id"].replace("-intro-", "-ch01-")
+    return {**model, "chapters": [model["chapters"][0], second]}
 
 
 class _FakeResponse:
@@ -238,6 +250,25 @@ def _scoped_model(*slugs: str, exam: dict | None = None) -> dict:
     if exam:
         model = {**model, "exam": {**model["exam"], **exam}}
     return model
+
+
+def _batch_responder(system: str, payload: dict) -> dict:
+    """在合成响应里带上「本批覆盖的章」——真实模型同样按输入产出课程级内容（合并语义才可测）。"""
+    response = _synthetic_response(system, payload)
+    if "stage_plan" in system:
+        label = "、".join(chapter["index"] for chapter in payload["chapters"])
+        response["stages"][0]["goal"] = f"{response['stages'][0]['goal']}（{label}）"
+        response["exam_strategy"]["text_md"] = f"{response['exam_strategy']['text_md']}（{label}）"
+    return response
+
+
+def _point_blocks(doc: dict) -> dict[str, dict]:
+    """考点级块（`point_id` 非空）按 `block_id` 索引 —— 合并语义的比对基。"""
+    return {block["block_id"]: block for block in doc["blocks"] if block.get("point_id") is not None}
+
+
+def _exam_strategy(doc: dict) -> dict:
+    return next(block for block in doc["blocks"] if block["kind"] == "exam_strategy")
 
 
 def _assert_labelled(entry: dict, where: str) -> None:
@@ -548,17 +579,90 @@ def test_review_schedule_planned_has_three_tiers(monkeypatch, tmp_path):
         assert all(item["kind"] in {"read", "drill", "review"} for item in plan["items"])
         assert plan["spaced_repetition"]
 
+    # F-403：`plans[]` 非空时也要逐项满足四件套（GC1）—— 空 plans 会让标注断言空洞通过。
+    assert schedule["plans"], "本用例必须构造出非空 plans（否则 plans[] 标注契约测不到）"
+    _assert_labelled_everywhere(doc)
+
 
 def test_select_chapters_rejects_unknown_selector():
     with pytest.raises(ValueError):
         gc.select_chapters(_model(), ("不存在的章",))
 
 
+def test_prompt_pack_declares_course_scope():
+    """F-401：四个提示词模板声明 `course_scope`；作用域外的课程没有提示词包。"""
+    prompts = ("explain_point", "memorize_point", "drill_point", "stage_plan")
+
+    for prompt_id in prompts:
+        assert llm.prompt_course_scope(prompt_id, "v1") == ["15040"], prompt_id
+
+    assert gc.out_of_scope_prompts("15040") == [], "15040 在作用域内，不得误判"
+    assert gc.out_of_scope_prompts("15043") == [f"{prompt_id}.v1" for prompt_id in prompts]
+
+
+def test_merge_replaces_course_blocks_and_keeps_point_blocks(monkeypatch, tmp_path):
+    """F-405：课程级整块替换 / 考点级按 `block_id` 合并 / 复跑字节一致（plan § Data contracts 4）。"""
+    _wire(monkeypatch, tmp_path, record=True, responder=_batch_responder)
+    model = _two_chapter_model()
+    # 有考期输入 → 三档排程按本批的章推导 → 课程级块逐批不同（替换语义才可测）
+    model = {**model, "exam": {**model["exam"], "exam_date": "2026-10-25", "weekly_hours": 6}}
+    batch1 = gc.generate_course_content(ROOT, gc.select_chapters(model, ("intro",)), backend="cli")
+    batch2 = gc.generate_course_content(ROOT, gc.select_chapters(model, ("ch01",)), backend="cli")
+    assert _point_blocks(batch1).keys().isdisjoint(_point_blocks(batch2)), "两批必须是互不相交的考点"
+    assert batch1["stage_plan"] != batch2["stage_plan"], "两批的课程级块必须不同（否则本用例测不出替换）"
+    assert batch1["review_schedule"] != batch2["review_schedule"]
+
+    path = tmp_path / "courses" / "15040" / "content.json"
+    path.parent.mkdir(parents=True)
+    path.write_text(gc.serialize(batch1), encoding="utf-8")
+
+    merged = gc.merge_content_file(path, batch2)
+
+    # (a) 课程级块整体来自本次生成（旧批次不得残留）
+    assert merged["stage_plan"] == batch2["stage_plan"]
+    assert merged["review_schedule"] == batch2["review_schedule"]
+    assert _exam_strategy(merged) == _exam_strategy(batch2)
+    assert merged["generator"] == batch2["generator"]
+    assert merged["generated_at"] == batch2["generated_at"]
+
+    # (b) 上一批的考点级块保留，本批的考点级块进入产物
+    assert _point_blocks(merged) == {**_point_blocks(batch1), **_point_blocks(batch2)}
+
+    # 合并后重排（`point_id` → `kind`），课程级块在末尾 → 字节确定性
+    keys = [(block["point_id"], block["kind"]) for block in merged["blocks"]]
+    assert keys == sorted(keys, key=lambda item: (item[0] is None, item[0] or "", item[1]))
+
+    # (c) 复跑合并字节一致（排序是不动点）
+    path.write_text(gc.serialize(merged), encoding="utf-8")
+    assert gc.serialize(gc.merge_content_file(path, batch2)) == gc.serialize(merged)
+
+
+def test_merge_replaces_same_block_id_and_refuses_other_course(monkeypatch, tmp_path):
+    """F-405：同 `block_id` 整块替换（不新增重复块）；跨课程合并失败关闭。"""
+    _wire(monkeypatch, tmp_path, record=True)
+    model = _two_chapter_model()
+    batch1 = gc.generate_course_content(ROOT, gc.select_chapters(model, ("intro",)), backend="cli")
+    batch2 = gc.generate_course_content(ROOT, gc.select_chapters(model, ("ch01",)), backend="cli")
+
+    rewritten = next(block for block in batch1["blocks"] if block["point_id"] is not None)
+    rewritten = {**rewritten, "text_md": "（改版）同 block_id 必须整块替换。"}
+    updated = {**batch2, "blocks": [rewritten, *batch2["blocks"]]}
+
+    merged = gc.merge_content_docs(batch1, updated)
+
+    block_ids = [block["block_id"] for block in merged["blocks"]]
+    assert len(block_ids) == len(set(block_ids)), "合并不得产生重复 block_id"
+    assert [block for block in merged["blocks"] if block["block_id"] == rewritten["block_id"]] == [rewritten]
+    assert len(merged["blocks"]) == len(_point_blocks(batch1)) + len(_point_blocks(batch2)) + 1
+
+    with pytest.raises(RuntimeError):
+        gc.merge_content_docs(batch1, {**batch2, "course_code": "15043"})
+
+
 # --------------------------------------------------------------------------------------
 # 产物段：真实 content.json + 已录制 fixture
 # --------------------------------------------------------------------------------------
 
-@slice_pending
 def test_replay_backend_is_offline(monkeypatch):
     def _boom(*args, **kwargs):  # noqa: ARG001
         raise AssertionError("replay 不得联网")
@@ -576,7 +680,6 @@ def test_replay_backend_is_offline(monkeypatch):
         assert point_id in by_kind["explain"] and point_id in by_kind["memorize"], point_id
 
 
-@slice_pending
 def test_slice_covers_every_point_in_intro_and_ch01():
     model = _model()
     slice_points = [
@@ -600,12 +703,10 @@ def test_slice_covers_every_point_in_intro_and_ch01():
     assert question_types == set(model["exam"]["question_types"]), "drill 必须覆盖考纲声明的题型"
 
 
-@slice_pending
 def test_every_block_labelled():
     _assert_labelled_everywhere(_artifact())
 
 
-@slice_pending
 def test_b1_artifacts_have_no_official_sample():
     doc = _artifact()
     drills = [block for block in doc["blocks"] if block["kind"] == "drill"]
@@ -615,7 +716,6 @@ def test_b1_artifacts_have_no_official_sample():
     assert all("provenance" not in block for block in doc["blocks"])
 
 
-@slice_pending
 def test_content_quality_bar_for_slice():
     model = _model()
     quotes = _quote_by_point(model)
@@ -639,7 +739,6 @@ def test_content_quality_bar_for_slice():
         assert len(block["text_md"]) >= 60 and len(block["answer_md"]) >= 60, block["block_id"]
 
 
-@slice_pending
 def test_plagiarism_guard_computable_and_below_threshold():
     source = (ROOT / SYLLABUS_DOC).read_text(encoding="utf-8")
     problems = gc.plagiarism_violations(_artifact(), source)
@@ -758,7 +857,8 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
     assert not (ROOT / "sources/jiangsu/courses/99999").exists()
 
     blocked = subprocess.run(
-        [sys.executable, "scripts/build-course-content.py", "generate", "00023", "--backend", "replay"],
+        # `--merge` 必须被 CLI 接受（未识别参数会 exit 2）；非 L1 在合并之前就跳过、零写盘。
+        [sys.executable, "scripts/build-course-content.py", "generate", "00023", "--backend", "replay", "--merge"],
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -768,7 +868,23 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
     assert not (ROOT / "sources/jiangsu/courses/00023/content.json").exists()
 
 
-@slice_pending
+def test_cli_generate_refuses_a_course_without_a_prompt_pack():
+    """F-401 失败关闭：15043 是真实 L1 课程但没有提示词包 → 拒绝，不得用 15040 的模板出内容。"""
+    proc = subprocess.run(
+        [sys.executable, "scripts/build-course-content.py", "generate", "15043", "--backend", "replay"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+    assert proc.returncode != 0, proc.stdout
+    assert "15043" in proc.stderr
+    assert "提示词包" in proc.stderr
+    for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
+        assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
+    assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "拒绝路径不得写盘"
+
+
 def test_cli_generate_replay_reproduces_artifact_byte_identically():
     slugs = _artifact_slugs()
     before = CONTENT_PATH.read_bytes()
@@ -792,14 +908,118 @@ def test_cli_generate_replay_reproduces_artifact_byte_identically():
     assert "blocks=" in proc.stdout
     assert CONTENT_PATH.read_bytes() == before, "replay 复跑必须字节一致"
 
-    if len(slugs) < len(_model()["chapters"]):
-        # 分批交付期：全课 replay 必然缺 fixture → 必须失败并点名，绝不套模板
-        full = subprocess.run(
-            [sys.executable, "scripts/build-course-content.py", "generate", "15040", "--backend", "replay"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
+
+def test_full_course_replay_with_a_missing_fixture_fails_loudly(monkeypatch, tmp_path):
+    """F-404 守卫：全课 replay 缺任一条录制响应都必须失败关闭 —— 与切片进度无关（不回落模板）。
+
+    用「不完整的合成 fixture 集合」构造缺条场景（而非读实时产物），因此 18 章齐备后同样成立。
+    """
+    model = _model()
+    wanted = llm.payload_hash(gc.call_plan(model)[0][2])
+    recorded = _json(llm.FIXTURES_DIR / "explain_point.v1.json")["responses"]
+    others = sorted(key for key in recorded if key != wanted)
+    assert others, "录制文件必须还有其它 payload 的响应（否则本用例退化为空 fixture 目录）"
+
+    monkeypatch.setattr(llm, "FIXTURES_DIR", tmp_path / "fixtures" / "llm")
+    llm.FIXTURES_DIR.mkdir(parents=True)
+    (llm.FIXTURES_DIR / "explain_point.v1.json").write_text(
+        json.dumps(
+            {"prompt_id": "explain_point", "prompt_version": "v1", "responses": {others[0]: recorded[others[0]]}},
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    before = CONTENT_PATH.read_bytes()
+
+    with pytest.raises(RuntimeError) as err:
+        gc.generate_course_content(ROOT, model, backend="replay")
+
+    assert "missing fixture" in str(err.value), "缺录制响应必须失败，绝不回落模板"
+    assert f"explain_point.v1.json#{wanted}" in str(err.value), "必须点名缺失的 payload"
+    assert CONTENT_PATH.read_bytes() == before, "失败路径不得写盘"
+
+
+def _cli_module():
+    """把 kebab-case 入口脚本当模块加载（对齐 `tests/conftest.py` 对其它入口脚本的做法）。"""
+    spec = importlib.util.spec_from_file_location("build_course_content", ROOT / "scripts/build-course-content.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _cli_root(tmp_path: Path):
+    """tmp 根上的 CLI 装置：入口按 `__file__` 推导 ROOT → 加载后把 ROOT 指向 tmp
+
+    复用仓内 `scripts/lib`（软链）与已录制 fixture（`llm_client` 按真实仓根定位），
+    只把 15040 的 `evidence.json` / `knowledge-model.json` 与考纲抽取件（软链）放进 tmp 根，
+    因此 CLI 写出的 `content.json` 落在 tmp 里、真实产物字节不变。
+    """
+    root = tmp_path / "root"
+    (root / "scripts").mkdir(parents=True)
+    (root / "scripts" / "lib").symlink_to(ROOT / "scripts" / "lib", target_is_directory=True)
+    course = root / "sources" / "jiangsu" / "courses" / "15040"
+    course.mkdir(parents=True)
+    for name in ("evidence.json", "knowledge-model.json"):
+        shutil.copy(ROOT / "sources" / "jiangsu" / "courses" / "15040" / name, course / name)
+    (root / "sources" / "jiangsu" / "processed").symlink_to(
+        ROOT / "sources" / "jiangsu" / "processed", target_is_directory=True
+    )
+    cli = _cli_module()
+    cli.ROOT = root
+    return cli, course / "content.json"
+
+
+def test_cli_generate_merge_rewrites_sorted_blocks_and_is_idempotent(tmp_path):
+    """F-405 CLI 接线：`--merge` 替换课程级块、保留上一批的考点级块、重排块序、复跑字节一致。"""
+    cli, content_path = _cli_root(tmp_path)
+    real_before = CONTENT_PATH.read_bytes()
+
+    def _generate(*, merge: bool) -> int:
+        return cli.run_generate(
+            "15040", backend="replay", chapters=["intro", "ch01"], record_fixtures=False, merge=merge
         )
-        assert full.returncode != 0
-        assert "fixture" in full.stderr
-        assert CONTENT_PATH.read_bytes() == before, "失败路径不得写盘"
+
+    assert _generate(merge=False) == 0
+    fresh = _json(content_path)
+
+    # 造「上一批的产物」：课程级块已过时 + 一条本批不再生成的考点级块
+    stale = json.loads(json.dumps(fresh, ensure_ascii=False))
+    stale["stage_plan"][0]["goal"] = "（旧批次）阶段目标"
+    kept = {
+        **next(block for block in fresh["blocks"] if block["kind"] == "explain"),
+        "block_id": "15040-ch02-s1-p1/explain",
+        "point_id": "15040-ch02-s1-p1",
+        "text_md": "（上一批留下的块）必须保留。",
+    }
+    stale["blocks"].append(kept)
+    content_path.write_text(gc.serialize(stale), encoding="utf-8")
+
+    assert _generate(merge=True) == 0
+    merged = _json(content_path)
+
+    assert _point_blocks(merged) == {**_point_blocks(fresh), kept["block_id"]: kept}, "上一批的考点级块必须保留"
+    assert merged["stage_plan"] == fresh["stage_plan"], "课程级块必须整块替换为本次生成"
+    assert merged["review_schedule"] == fresh["review_schedule"]
+    assert _exam_strategy(merged) == _exam_strategy(fresh)
+    keys = [(block["point_id"], block["kind"]) for block in merged["blocks"]]
+    assert keys == sorted(keys, key=lambda item: (item[0] is None, item[0] or "", item[1])), "合并后必须重排"
+
+    rerun = content_path.read_bytes()
+    assert _generate(merge=True) == 0
+    assert content_path.read_bytes() == rerun, "复跑合并必须字节一致"
+    assert CONTENT_PATH.read_bytes() == real_before, "测试不得改动仓内产物"
+
+
+def test_suite_has_no_silent_xfail_markers(request):
+    """F-402 守卫：套件不得再挂非严格 `xfail` —— `strict=False` 会把真实回归变成静默通过。
+
+    切片已落地，产物段断言都是普通测试（缺切片 / 缺 fixture 直接红灯）；本用例在整包运行时再兜一层：
+    任何没有显式 `strict=True` 的 `xfail` 都判失败，因此「重新加标记把红灯变绿」这条路走不通。
+    """
+    offenders = [
+        f"{item.nodeid}: {mark.kwargs}"
+        for item in request.session.items
+        for mark in item.iter_markers("xfail")
+        if mark.kwargs.get("strict") is not True
+    ]
+    assert offenders == [], f"非严格 xfail 会吞掉真实回归：{offenders}"
