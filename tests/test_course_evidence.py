@@ -20,6 +20,7 @@ import urllib.request
 from pathlib import Path
 
 import pytest
+import shutil
 
 from lib.course_pipeline import evidence as ev
 
@@ -656,6 +657,125 @@ def test_syllabus_requires_locatable_assessment_requirements(tmp_path: Path):
         assert re.fullmatch(r"[一二三四五六七八九十]+、考核知识点与考核要求", syllabus["requirements_heading"]), code
 
 
+def test_supporting_locator_resolves_folded_course_names(tmp_path: Path):
+    """W4：±2 行窗口把「折行课名」也解析到位，且不改动任何既有 locator。
+
+    真形态（`10993` / `12656` 等 8 门）：课名折行、**课码行夹在两段中间** ——
+
+    ```text
+    L71                工程数学（线性代数、概率论
+    L72  5      10993                            6   笔试
+    L73                与数理统计）
+    ```
+
+    逐行包含判定永远不可能命中（没有单行含全名），把窗口直连同样不行（课码行插在中间）。
+    本用例用**合成**抽取件锁住语义（不依赖某门课的版式），再对全量 722 门课复算双侧计数。
+    """
+    root = tmp_path / "locator-root"
+    doc = root / "majors" / "plan.raw.txt"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        " 4      00023   高等数学（工本）              10     笔试\n"
+        "                工程数学（线性代数、概率论\n"
+        " 5      10993                            6   笔试\n"
+        "                与数理统计）\n"
+        "        13013   高级语言程序设计                 4   笔试\n",
+        encoding="utf-8",
+    )
+    source = {"doc_id": "major-plan:99999", "path": "majors/plan.raw.txt", "locator": "L3"}
+
+    # ① 跨行折名：前段在 L2、后段在 L4 → 引折名起始行 L2（不再回落课码行 L3）
+    assert ev._supporting_locator(root, source, "工程数学（线性代数、概率论与数理统计）") == "L2"
+    # ② 整行命中优先（原行为不变）：值完整落在中心行
+    assert ev._supporting_locator(root, source, "10993") == "L3"
+    # ③ 都命中不了 → 保持原 locator（不臆造行号）
+    assert ev._supporting_locator(root, source, "不存在的课名") == "L3"
+    # ④ 非字符串值（credits 是 int）→ 保持原 locator，不做字符串化匹配
+    assert ev._supporting_locator(root, source, 6) == "L3"
+
+    # ⑤ C2-015：前段同时出现在**邻课**的折名行上时必须**就近取行**，不得指到更远的那一行。
+    #    `02208 电气传动与可编程控制器（PLC）（实践）` 的前段正是 `02207` 的完整课名 ——
+    #    旧实现取窗口内最远的命中行，把引用指到了邻课行上（跨课误引）。
+    neighbor = root / "majors" / "neighbor.raw.txt"
+    neighbor.write_text(
+        "      02207   电气传动与可编程控制器（PLC）      3   笔试\n"
+        " 10             电气传动与可编程控制器（PLC）\n"
+        "      02208                             1   实践\n"
+        "                 （实践）\n",
+        encoding="utf-8",
+    )
+    neighbor_source = {"doc_id": "major-plan:99998", "path": "majors/neighbor.raw.txt", "locator": "L3"}
+    assert ev._supporting_locator(root, neighbor_source, "电气传动与可编程控制器（PLC）（实践）") == "L2", (
+        "折名起点取到了更远的邻课行（L1）而不是最近的前段行（L2）"
+    )
+
+    # ⑥ 诚实谓词必须**可伪**：错误行号 / 不存在的值都不得判为「支撑」
+    neighbor_lines = _physical_lines(neighbor)
+    assert _citation_supports_value(neighbor_lines, "L2", "电气传动与可编程控制器（PLC）（实践）")
+    assert not _citation_supports_value(neighbor_lines, "L4", "电气传动与可编程控制器（PLC）（实践）")
+    assert not _citation_supports_value(neighbor_lines, "L2", "完全不存在的课名ZZZ")
+
+    # 全量复算：722 门课 / 2123 个 (course, field) 对的「所引行是否支撑该值」
+    catalog = json.loads((ROOT / "sources" / "jiangsu" / "catalog" / "courses.json").read_text(encoding="utf-8"))
+    cache: dict[str, list[str]] = {}
+    worsened: list[tuple] = []
+    unresolved: list[tuple] = []
+    pairs = 0
+    for course in catalog["courses"]:
+        for field in ev.FACT_FIELDS:
+            value = course.get(field)
+            if value in (None, ""):
+                continue
+            source_entry = (course.get("sources") or [None])[0]
+            if not source_entry:
+                continue
+            pairs += 1
+            path = source_entry["path"]
+            if path not in cache:
+                cache[path] = _physical_lines(ROOT / path)
+            lines = cache[path]
+            center = int(source_entry["locator"][1:])
+            text = str(value)
+            line_ok = text in " ".join(lines[center - 1].split())
+
+            resolved = ev._supporting_locator(ROOT, source_entry, value)
+
+            if not _citation_supports_value(lines, resolved, text):
+                unresolved.append((course["code"], field, text, resolved))
+            elif line_ok and resolved != source_entry["locator"]:
+                worsened.append((course["code"], field, text, resolved))
+
+    assert pairs == 2123, f"722 课程目录的 (course, field) 对数变了：{pairs}"
+    assert not unresolved, f"解析后的 locator 仍不支撑该值：{unresolved}"
+    assert not worsened, f"fix 不得把原本正确的 locator 改坏：{worsened}"
+    assert len(cache) > 0
+
+
+def _citation_supports_value(lines: list[str], locator: str, value: str) -> bool:
+    """引用是否**支撑**该值（C2-015 的诚实口径，替代旧的「含前半段」弱谓词）。
+
+    两个必要条件，都对着**读者能不能从所引行读出来源**这个性质，而不是「生成器当初怎么选的」：
+    ① **起点**：所引行含该值的某个非空前缀（引用必须指向值**开始**出现的行）；
+    ② **可读全**：从所引行起、在 ±`ROW_WINDOW_RADIUS` 行内按序拼得出**完整**值
+    （折名场景：前段在所引行，后段在紧随的续行）。
+
+    旧谓词 `text in line or (moved and text[: len(text) // 2] in line)` 对移动过的 locator 只要求
+    「行内含值的前半段」，于是「引用指到**邻课**的行」也算通过 —— 指标因此不可伪。
+    本谓词可伪：对不存在的值、对远离值所在处的错误行号，都返回 `False`。
+    """
+    start = int(locator[1:]) - 1
+    if not any(value[:end] in ev._fold(lines[start]) for end in range(1, len(value) + 1)):
+        return False
+    remaining = value
+    for index in range(start, min(len(lines), start + ev.ROW_WINDOW_RADIUS + 1)):
+        folded = ev._fold(lines[index])
+        for end in range(len(remaining), 0, -1):
+            if remaining[:end] in folded:
+                remaining = remaining[end:]
+                break
+    return not remaining
+
+
 def test_committed_artifacts_match_a_fresh_build():
     """磁盘上的 18 份产物必须与当前来源一致：不得停在旧判定逻辑上（离线，只读）。
 
@@ -729,3 +849,66 @@ def test_write_evidence_lands_on_disk_byte_identically(tmp_path: Path):
 
     # `course_codes()` = 现有课程页目录（`--all` 的输入口径）
     assert ev.course_codes(ROOT) == EXISTING_COURSE_CODES
+
+
+# ---- C2-006：课码必须在**写入者**这一层校验 --------------------------------------------
+
+def test_evidence_path_rejects_non_code_and_never_escapes_root(tmp_path: Path):
+    """C2-006：`--stages evidence` 曾让 crafted query 逃出仓根并写盘（exit 0）。
+
+    校验放在 `evidence_path()` / `build_evidence()` / `write_evidence()` 三处 —— 调用点无法绕过，
+    也不依赖调用方记得先跑 `resolve` 阶段。
+    """
+    from lib.course_pipeline import evidence as ev_mod
+
+    root = tmp_path / "repo"
+    (root / "sources").mkdir(parents=True)
+
+    for crafted in ("../../../../escaped", "1504", "150400", "abcde", "", "15040/../..", None, 15040):
+        with pytest.raises(ValueError):
+            ev_mod.evidence_path(root, crafted)
+
+    with pytest.raises(ValueError):
+        ev_mod.write_evidence(root, ["../../../../escaped"])
+
+    # 逃逸路径确实没有产生任何文件
+    assert not (tmp_path / "escaped").exists()
+
+
+def test_build_evidence_rejects_non_code(tmp_path: Path):
+    """`build_evidence()` 同样拒绝非课码（唯一入口的守卫，不靠 CLI 阶段开关）。"""
+    from lib.course_pipeline import evidence as ev_mod
+
+    root = tmp_path / "repo"
+    (root / "sources").mkdir(parents=True)
+    with pytest.raises(ValueError):
+        ev_mod.build_evidence(root, "../../escape")
+
+
+def test_cli_build_rejects_crafted_query_even_without_resolve_stage(tmp_path: Path):
+    """C2-006 的入口侧：`build <crafted> --stages evidence` 必须 exit ≠ 0，且仓根外零写入。"""
+    import importlib.util
+
+    fake_root = tmp_path / "repo"
+    (fake_root / "scripts").mkdir(parents=True)
+    (fake_root / "scripts" / "lib").symlink_to(ROOT / "scripts" / "lib", target_is_directory=True)
+    (fake_root / "ops" / "jiangsu").mkdir(parents=True)
+    shutil.copy(ROOT / "ops" / "jiangsu" / "source-links.baseline.json",
+                fake_root / "ops" / "jiangsu" / "source-links.baseline.json")
+    (fake_root / "sources").mkdir()
+    shutil.copy(ROOT / "scripts" / "build-course-content.py", fake_root / "scripts" / "build-course-content.py")
+
+    spec = importlib.util.spec_from_file_location("bce", fake_root / "scripts" / "build-course-content.py")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    cli.ROOT = fake_root
+
+    rc = cli.run_build("../../../../escaped", backend="replay", stages=["evidence"], dry_run=False, record_fixtures=False)
+
+    assert rc != 0, "crafted query 必须被拒绝"
+    assert not (fake_root.parent / "escaped").exists(), "不得写出仓根之外"
+    assert not (fake_root.parent.parent / "escaped").exists()
+    # 也确认没有落进 fake_root 内的非课码目录
+    assert not (fake_root / "sources" / "jiangsu" / "courses").exists() or not any(
+        p.name == "escaped" for p in (fake_root / "sources" / "jiangsu" / "courses").iterdir()
+    )

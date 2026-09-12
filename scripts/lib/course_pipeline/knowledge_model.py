@@ -52,12 +52,19 @@ MANUAL_TREE_HEADING = "## 章节知识树"
 MANUAL_REFERENCE_ROW = "章节知识树"
 MANUAL_ELEMENT_PREFIX = "#### "
 
-CHAPTER_RE = re.compile(r"^(导论|第[一二三四五六七八九十]+章)(?:\s+(.+))?$")
+# 章标题形态（B6）：章序标签 `导论` / `绪 论`（考纲版式用空格分隔，**同一门课的 syllabus.md 也这样写**）
+# 或 `第N章 …`。`CHAPTER_RE` 额外要求「标签 + 空格 + 标题」；`CHAPTER_TITLE_RE` 只判形态，
+# 供闸门验证模型章标题。
+CHAPTER_LABEL = r"(导论|绪\s*论|第[一二三四五六七八九十]+章)"
+CHAPTER_TITLE_RE = re.compile(rf"^{CHAPTER_LABEL}(?:\s+.+)?$")
+CHAPTER_RE = re.compile(rf"^{CHAPTER_LABEL}(?:\s+(.+))?$")
 SECTION_RE = re.compile(r"^(\d+)\.(.*)$")
 REQUIREMENT_RE = re.compile(r"^(识记|领会|应用)：(.*)$")
 TOP_HEADING_RE = re.compile(r"^[一二三四五六七八九十]+、")
 PAGE_NUMBER_RE = re.compile(r"^\d{1,3}$")
-QUESTION_TYPE_RE = re.compile(r"主要题型一般有(.+?)等题型")
+# 题型声明行有两种版式（15040 `…等题型。` / 15043·15044 `…论述题等。各…`），词表按顿号切分后过滤
+QUESTION_TYPE_RE = re.compile(r"主要题型一般有(.+?)等")
+QUESTION_TYPE_SUFFIX_RE = re.compile(r"题型$")
 MANUAL_ELEMENT_RE = re.compile(r"^(\d+)\.(\d+)\s+(.*)$")
 MANUAL_MARKER_SUFFIX_RE = re.compile(r"\s*—\s*[🟢🟡🔴\s]+$")
 MANUAL_INDEX_RE = re.compile(r"^\d+\.\d+\s+")
@@ -91,8 +98,53 @@ def _slug(ordinal: int) -> str:
     return "intro" if ordinal == 0 else f"ch{ordinal:02d}"
 
 
+def _chapter_number(label: str) -> int | None:
+    """`第N章` 的中文数字 → 整数（`第一章` → 1 … `第十七章` → 17）；非 `第N章` 返回 `None`。"""
+    match = re.fullmatch(r"第([一二三四五六七八九十]+)章", label)
+    if match is None:
+        return None
+    digits = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+    text = match.group(1)
+    if text == "十":
+        return 10
+    if text.startswith("十"):
+        return 10 + digits.get(text[1:], 0)
+    if "十" in text:
+        head, _, tail = text.partition("十")
+        return digits.get(head, 0) * 10 + (digits.get(tail, 0) if tail else 0)
+    return digits.get(text)
+
+
+def _slug_for(title: str) -> str:
+    """章标题 → `slug`：**由章序标签推导**，不由列表位置推导（B6）。
+
+    旧实现 `_slug(位置序号)` 把「没有导论的课程」的第一章标成 `intro`（`15043` 实测：`第一章` →
+    `slug: intro`，`ordinal 0`），而 `09` 号章页文件名又跟着错位。按标签推导后 `intro` 只属于
+    `导论` / `绪 论`，其余章一律 `ch<NN>`（NN = 实际章号）。
+    """
+    number = _chapter_number(_chapter_index(title))
+    return "intro" if number is None else f"ch{number:02d}"
+
+
+def _ordinal_for(title: str) -> int:
+    """章标题 → `ordinal`：`导论` / `绪 论` = 0，`第N章` = N（plan § Data contracts 3）。
+
+    由**标签**推导而不是列表位置，正是为了让「丢了一章」在 `ordinal` 上直接可见：`15044` 丢掉
+    `绪 论` 后若按位置编号，`第一章` 会顶到 0 而没人看得出来。
+    """
+    number = _chapter_number(_chapter_index(title))
+    return 0 if number is None else number
+
+
 def _chapter_index(title: str) -> str:
-    return title.split(" ", 1)[0]
+    """章序标签（`导论` / `绪论` / `第一章`）：取标签段并折叠**内部**空白。
+
+    考纲目录里 `绪 论` 带一个内部空格（`15044`），而 `syllabus.md` 的章序列写 `绪论` —— 标签必须折叠，
+    `title` 才保留原文（Data contracts 3：`title` 逐字、`index` 是章序标签）。
+    """
+    match = CHAPTER_TITLE_RE.match(title.strip())
+    label = match.group(1) if match else title.split(" ", 1)[0]
+    return re.sub(r"\s+", "", label)
 
 
 # ---- 章目切片 ------------------------------------------------------------------
@@ -272,6 +324,12 @@ def _chapter_focus(logical: list[dict]) -> list[dict]:
 # ---- 题型 / 样卷锚点（B1 只登记锚点，不转载题文） -------------------------------
 
 def _exam(lines: list[str], doc_id: str) -> dict:
+    """题型 / 样卷锚点（B1 只登记锚点，不转载题文）。
+
+    考纲未声明题型时**不得**留 `question_types: []` 而让下游 `generate` 在运行时抛错（B6 / QC3-005）：
+    显式写 `question_types_status: "named_gap"` + `gap_impact` + `next_evidence`，让「该课没有题型依据」
+    在产物与闸门里都可见。
+    """
     question_types: list[str] = []
     types_line: int | None = None
     sample_line: int | None = None
@@ -281,10 +339,14 @@ def _exam(lines: list[str], doc_id: str) -> dict:
             match = QUESTION_TYPE_RE.search(text)
             if match:
                 types_line = number
-                question_types = [item.strip() for item in match.group(1).split("、") if item.strip()]
+                question_types = [
+                    item.strip()
+                    for item in match.group(1).split("、")
+                    if item.strip() and not QUESTION_TYPE_SUFFIX_RE.search(item.strip())
+                ]
         if sample_line is None and text == SAMPLE_PAPER_HEADING:
             sample_line = number
-    return {
+    exam = {
         "question_types": question_types,
         "question_types_provenance": {"doc_id": doc_id, "locator": f"L{types_line}"} if types_line else None,
         # 考纲未声明的字段一律 null + named_gap（GC3）
@@ -292,19 +354,49 @@ def _exam(lines: list[str], doc_id: str) -> dict:
         "duration_status": "named_gap",
         "sample_paper": {"doc_id": doc_id, "locator": f"L{sample_line}"} if sample_line else None,
     }
+    if not question_types:
+        # 考纲未声明题型时不得留 `question_types: []` 让下游 `generate` 在运行时才抛错（B6 / QC3-005）：
+        # 显式命名缺口，让「该课没有题型依据」在产物与 `evidence` 层闸门里都可见。
+        exam["question_types_status"] = "named_gap"
+        exam["question_types_gap_impact"] = "考纲未声明题型 → 无法按官方题型生成练习，AI 备考层的 drill 不得产出"
+        exam["question_types_next_evidence"] = "官方考纲「考试命题的主要题型」段落（或等效的官方说明）"
+    return exam
 
 
 # ---- 手工知识树比对（AC5：逐条留痕） -------------------------------------------
 
-def _manual_tree(path: Path, label: str) -> tuple[int | None, list[dict]]:
-    """手工页 `## 章节知识树` → (自评行行号, `####` 元素列表)。元素为节级（识记/领会/应用三层合并）。"""
+def _manual_tree(path: Path, label: str) -> tuple[int | None, list[dict], list[str]]:
+    """手工页 `## 章节知识树` → (自评行行号, `####` 元素列表, 无法解析的行)。
+
+    返回第三项是为了让「台账被静默清空」不可能发生（C2-012）：旧实现跳过不匹配的 `####` 行、
+    且在找不到 `## 章节知识树` 时返回空列表，于是 `diff_vs_manual` 变成 `[]`、`manual_only` 检查失去对象。
+    调用方必须对「解析不了的行」与「找不到锚点」都失败关闭。
+
+    **锚点缺失但编号元素仍在 → 直接失败关闭**（W3）：把标题改名为 `## 知识点总览` 而 61 条 `####` 元素
+    原地不动，与「本课没有手工参照」在返回值上完全同形，于是 `manual_only` 对这份输入永远空转。
+    「有锚点但无元素」仍是诚实的命名缺口（15043 / 15044 的真实形态），不在此列。
+    """
     lines = _physical_lines(path)
     start = next((index for index, line in enumerate(lines) if line.strip() == MANUAL_TREE_HEADING), None)
     if start is None:
-        return None, []
+        orphaned = [
+            index + 1
+            for index, line in enumerate(lines)
+            if line.strip().startswith(MANUAL_ELEMENT_PREFIX)
+            and MANUAL_ELEMENT_RE.match(line.strip()[len(MANUAL_ELEMENT_PREFIX):])
+        ]
+        if orphaned:
+            raise ValueError(
+                f"{label}: 含 {len(orphaned)} 条编号 `####` 考点行（{orphaned[0]}–{orphaned[-1]}），"
+                f"但没有手工知识树锚点 `{MANUAL_TREE_HEADING}`（标题被改名或删除？）"
+                "（台账不得静默清空：锚点缺失 + 元素仍在 = 手工参照无法比对）"
+            )
+        return None, [], []
+
     end = next((index for index in range(start + 1, len(lines)) if lines[index].startswith("## ")), len(lines))
 
     elements: list[dict] = []
+    unparsed: list[str] = []
     for index in range(start + 1, end):
         line = lines[index].strip()
         if not line.startswith(MANUAL_ELEMENT_PREFIX):
@@ -312,6 +404,7 @@ def _manual_tree(path: Path, label: str) -> tuple[int | None, list[dict]]:
         title = line[len(MANUAL_ELEMENT_PREFIX):].strip()
         match = MANUAL_ELEMENT_RE.match(title)
         if match is None:
+            unparsed.append(f"{label}:{index + 1}")
             continue
         elements.append({
             "locator": f"{label}:{index + 1}",
@@ -331,15 +424,28 @@ def _manual_tree(path: Path, label: str) -> tuple[int | None, list[dict]]:
         ),
         None,
     )
-    return reference_line or start + 1, elements
+    return reference_line or start + 1, elements, unparsed
 
 
 def _manual_reference(root: Path, code: str) -> tuple[dict | None, list[dict]]:
+    """手工页 →（`manual_reference`, 元素列表）。三种输入各自失败关闭或如实留痕：
+
+    - 锚点缺失 + 有编号 `####` 元素 → `ValueError`（W3：手工参照无法比对，台账不得静默清空）；
+    - 锚点内部有无法解析的行 → `ValueError`（C2-012，带行号）；
+    - 有锚点但无 `####` 元素 = 该页显式声明「章节知识树」为命名缺口（15043 / 15044 的真实形态），
+      这不是解析失败，`manual_reference` 保持 `null`、`diff_vs_manual` 写 `[]` 是诚实结果；
+    - 无手工页 → `(None, [])`。
+    """
     path = root / COURSE_PAGES_DIR / code / "index.md"
     if not path.is_file():
         return None, []
     label = _rel(root, path)
-    line, elements = _manual_tree(path, label)
+    line, elements, unparsed = _manual_tree(path, label)
+    if unparsed:
+        raise ValueError(
+            f"{code}: 手工页 {label} 的 `{MANUAL_TREE_HEADING}` 下有无法解析的考点行 {unparsed}"
+            "（台账不得静默清空；编号须为 `N.N 标题` 或改用 manual: 块）"
+        )
     if not elements:
         return None, []
     return {"path": label, "locator": f"L{line}", "point_count": len(elements)}, elements
@@ -432,10 +538,21 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
     toc_end, titles = _toc_chapters(lines)
     slices = _body_slices(lines, titles, toc_end)
 
+    # 章身份由章序**标签**推导（B6）：`ordinal` 必须严格递增且步长恒为 1，且首章只能是 0（导论类）
+    # 或 1（无导论课程）。任何缺口 = 有章被静默丢弃 —— 旧实现按列表位置编号，丢章后序号整体前移
+    # 而无人可见（15044 的 `绪 论` 就是这样消失、且 `第一章` 顶到 `ordinal 0` / `slug intro` 的）。
+    identities = [(_ordinal_for(title), _slug_for(title)) for title in titles]
+    ordinals = [ordinal for ordinal, _ in identities]
+    gaps = [right - left for left, right in zip(ordinals, ordinals[1:])]
+    if ordinals[0] not in (0, 1) or any(gap != 1 for gap in gaps):
+        raise ValueError(
+            f"{code}: 考纲目录的章序不连续 {ordinals}（缺章，或章序标签无法识别）：{'、'.join(titles[:8])}…"
+        )
+
     chapters = []
-    for ordinal, title in enumerate(titles):
-        slug = _slug(ordinal)
-        logical = _logical_lines(slices[ordinal])
+    for position, title in enumerate(titles):
+        ordinal, slug = identities[position]
+        logical = _logical_lines(slices[position])
         block = _requirement_block(logical, heading)
         sections, unmodeled = _parse_requirement_block(block or [], code, slug)
         chapters.append({

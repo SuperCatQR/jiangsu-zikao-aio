@@ -92,6 +92,37 @@ mkdocs serve
 - `evidence`：官方事实层（`evidence.json`）与知识模型（`knowledge-model.json`）覆盖率、断言状态校验
 - `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率及渲染页横幅校验
 
+### 课程内容流水线（`scripts/build-course-content.py`）
+
+流水线入口只有一个：`scripts/build-course-content.py`。子命令与阶段：
+
+| 子命令 | 作用 |
+| --- | --- |
+| `build <query>` | 端到端跑七阶段：`resolve → acquire → evidence → model → generate → render → gate` |
+| `resolve <query>` | 只跑目录解析（课码或课名 → 课码），打印 `status` / `code` / `name` / `matched_by` |
+| `evidence <code>` / `evidence --all` | 写 `sources/jiangsu/courses/<code>/evidence.json` 并打印放行等级 |
+| `model <code>` | 写 `sources/jiangsu/courses/<code>/knowledge-model.json` 并打印章数与覆盖率 |
+| `generate <code>` | 写 `sources/jiangsu/courses/<code>/content.json`（AI 备考层） |
+| `render <code>` | 渲染并落盘 `content/jiangsu/courses/<code>/`（内部同样走 render → gate → 原子提升） |
+| `fetch-source <url>` | 抓官方来源快照（B2 能力；B1 阶段提示并 exit 2） |
+
+常用开关：`--backend cli|agent|replay`（默认 `cli`；CI 与本地复算用 `replay`）、
+`--stages a,b,c`（只跑指定阶段）、`--dry-run`（只演练不落盘）、`--record-fixtures`（录制 fixture）。
+
+```bash
+# 端到端复算试点课程（离线 fixture，不联网、不调用 LLM）
+python scripts/build-course-content.py build 15040 --backend replay
+
+# 分步：先取证与知识模型，再生成 AI 备考层，最后渲染
+python scripts/build-course-content.py evidence 15040
+python scripts/build-course-content.py model 15040
+python scripts/build-course-content.py generate 15040 --backend replay
+python scripts/build-course-content.py render 15040
+```
+
+放行门槛（`eligibility.level`）只由两件事决定：官方考纲与官方教材计划。两者齐备才是 `L1`，
+才允许产出 AI 备考层；否则页面保持命名缺口，`content.json` / `knowledge-model.json` 一律不产出。
+
 ### 外链监控
 
 ```bash

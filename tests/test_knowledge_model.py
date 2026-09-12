@@ -22,6 +22,7 @@ from collections import Counter
 from pathlib import Path
 
 import pytest
+import tempfile
 
 from lib.course_pipeline import knowledge_model as km
 from tests.test_chapter_index_study_plan import CHAPTER_NAMES_15040
@@ -650,3 +651,189 @@ def test_l1_course_model_requires_extracted_syllabus(tmp_path: Path):
     evidence["syllabus"] = {"status": "missing", "path": None, "doc_id": "syllabus:99999"}
     with pytest.raises(ValueError):
         km.extract_knowledge_model(root, evidence)
+
+
+# ---- B6：章序标签（`导论` / `绪 论`）与题目类型声明 ---------------------------------------
+
+NO_INTRO_FRAGMENT = """大纲目录
+
+第一章 反对外国侵略的斗争
+
+第二章 对国家出路的早期探索
+
+Ⅳ 关于大纲的说明与考核实施要求
+附录：参考样卷
+大纲后记
+
+第一章 反对外国侵略的斗争
+一、学习目的与要求
+通过本章学习，能说出示例。
+二、课程内容
+1.鸦片战争前的中国与世界
+三、考核知识点与考核要求
+1.鸦片战争前的中国与世界
+识记：鸦片战争前的中国是独立的封建国家。
+四、本章重点
+鸦片战争前的中国。
+
+第二章 对国家出路的早期探索
+一、学习目的与要求
+通过本章学习，能说出示例。
+二、课程内容
+1.太平天国农民战争
+三、考核知识点与考核要求
+1.太平天国农民战争
+识记：太平天国农民战争爆发于 1851 年。
+四、本章重点
+太平天国农民战争。
+"""
+
+XU_LUN_FRAGMENT = """大纲目录
+
+绪 论
+
+第一章 物质世界及其发展规律
+
+第二章 认识的本质及规律
+
+Ⅳ 关于大纲的说明与考核实施要求
+附录：参考样卷
+大纲后记
+
+绪 论
+一、学习目的与要求
+通过本章学习，能说出示例。
+二、课程内容
+1.马克思主义的基本立场
+三、考核知识点与考核要求
+1.马克思主义的基本立场
+识记：马克思主义的基本立场是人民大众的立场。
+四、本章重点
+马克思主义的基本立场。
+
+第一章 物质世界及其发展规律
+一、学习目的与要求
+通过本章学习，能说出示例。
+二、课程内容
+1.物质及其存在形态
+三、考核知识点与考核要求
+1.物质及其存在形态
+识记：物质是不依赖于意识而存在的客观实在。
+四、本章重点
+物质及其存在形态。
+
+第二章 认识的本质及规律
+一、学习目的与要求
+通过本章学习，能说出示例。
+二、课程内容
+1.实践是认识的基础
+三、考核知识点与考核要求
+1.实践是认识的基础
+识记：实践是认识的基础。
+四、本章重点
+实践是认识的基础。
+"""
+
+
+
+def test_xu_lun_label_is_not_silently_dropped():
+    """B6：`绪 论`（内部带空格）必须被识别为章，且 `ordinal 0` / `slug intro` / `index 绪论`。
+
+    旧 `CHAPTER_RE` 只认 `导论`，于是 `15044` 的 `绪 论` 被静默丢弃：整章消失、后续章序整体前移
+    （`第一章` 顶到 `ordinal 0` 且 `slug intro`），而 `coverage.ratio` 仍是 `1.0`（被丢的章连分母一起带走）。
+    """
+    doc = km.extract_knowledge_model(*_fragment_root(tmp_path=Path(tempfile.mkdtemp()), text=XU_LUN_FRAGMENT))
+    titles = [chapter["title"] for chapter in doc["chapters"]]
+    assert titles == ["绪 论", "第一章 物质世界及其发展规律", "第二章 认识的本质及规律"], titles
+
+    intro = doc["chapters"][0]
+    assert (intro["ordinal"], intro["slug"], intro["index"]) == (0, "intro", "绪论")
+    # 后续章按实际章号定序（不再因为丢章而前移）
+    assert [(c["ordinal"], c["slug"]) for c in doc["chapters"][1:]] == [(1, "ch01"), (2, "ch02")]
+    # 分母必须含 `绪 论` 的节
+    assert doc["coverage"]["official_point_count"] == sum(len(c["sections"]) for c in doc["chapters"]) == 3
+
+
+def test_no_intro_course_does_not_get_an_intro_slug():
+    """B6：没有导论的课程不得把第一章标成 `intro`（`15043` 实测缺陷）。"""
+    doc = km.extract_knowledge_model(
+        *_fragment_root(tmp_path=Path(tempfile.mkdtemp()), text=NO_INTRO_FRAGMENT)
+    )
+    assert doc["chapters"][0]["index"] == "第一章"
+    assert doc["chapters"][0]["slug"] == "ch01", "没有导论的课程，第一章的 slug 必须是 ch01"
+    assert doc["chapters"][0]["ordinal"] == 1
+    assert all(chapter["slug"] != "intro" for chapter in doc["chapters"])
+
+
+def test_question_types_extracted_from_both_syllabus_wordings():
+    """B6/QC3-005：题型声明的两种版式都要抽到（15040 用「…等题型。」，15043/15044 用「…论述题等。各」）。"""
+    assert km.QUESTION_TYPE_RE.search("4.本课程考试命题的主要题型一般有单项选择题、简答题、材料题等题型。")
+    assert km.QUESTION_TYPE_RE.search("4. 本课程考试命题的主要题型一般有单项选择题、简答题、论述题等。各")
+    for fragment in (XU_LUN_FRAGMENT, NO_INTRO_FRAGMENT):
+        doc = km.extract_knowledge_model(*_fragment_root(tmp_path=Path(tempfile.mkdtemp()), text=fragment))
+        # 片段里没有题型声明 → 必须显式命名缺口，而不是留空数组让 generate 在运行时才抛错
+        assert doc["exam"]["question_types"] == []
+        assert doc["exam"]["question_types_status"] == "named_gap"
+        assert doc["exam"]["question_types_gap_impact"] and doc["exam"]["question_types_next_evidence"]
+
+
+def test_manual_ledger_fails_closed_on_unparseable_elements(tmp_path: Path):
+    """C2-012：手册台账出现无法解析的考点行时必须失败关闭（旧实现静默 `continue`，台账被清空而无人知）。"""
+    root, evidence = _fragment_root(tmp_path)
+    page = root / "content" / "jiangsu" / "courses" / "99999" / "index.md"
+    page.parent.mkdir(parents=True)
+    page.write_text(
+        "## 章节知识树\n\n#### 1.1 正常考点\n#### 一、非数字编号的考点\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root, evidence)
+    assert "无法解析" in str(err.value)
+    assert ":4" in str(err.value), "错误必须点名行号"
+
+
+def test_manual_ledger_fails_closed_when_the_anchor_heading_is_renamed(tmp_path: Path):
+    """W3 变异证明：锚点标题被改名而编号 `####` 元素仍在 → 必须失败关闭，不得静默返回空台账。
+
+    这是 C2-012 的另一半：旧实现只在**元素解析**这一侧失败关闭；把 `## 章节知识树` 改名成
+    `## 知识点总览`、61 条 `####` 原地不动，`_manual_tree()` 返回 `(None, [], [])`，
+    与「本课没有手工参照」完全同形 —— 于是 `manual_reference: null` + `diff_vs_manual: []`，
+    `evidence` 层的 `manual_only` 检查对这份输入永远空转（PM 实测：两层闸门全绿）。
+
+    真跑 15040 的真实页面（61 条元素）做变异，而不是合成小页：缺口正是「61 条元素在页上」时出现的。
+    """
+    real_page = ROOT / MANUAL_INDEX
+    real_text = real_page.read_text(encoding="utf-8")
+    assert "## 章节知识树" in real_text, "对照前提：真实手工页含锚点标题"
+    element_lines = [ln for ln in real_text.splitlines() if ln.startswith("#### ")]
+    assert len(element_lines) == 61, f"对照前提：15040 手工页有 61 条 `####` 元素，实际 {len(element_lines)}"
+
+    root, evidence = _fragment_root(tmp_path)
+    page = root / "content" / "jiangsu" / "courses" / "99999" / "index.md"
+    page.parent.mkdir(parents=True)
+    page.write_text(real_text.replace("## 章节知识树", "## 知识点总览", 1), encoding="utf-8")
+
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root, evidence)
+    message = str(err.value)
+    assert "61" in message, f"错误必须点名元素条数：{message}"
+    assert "章节知识树" in message, f"错误必须点名缺失的锚点标题：{message}"
+
+    # 对照组：锚点改回去（同一份文件、同一批元素）→ 台账照常写出，证明上面的失败不是别的原因
+    page.write_text(real_text, encoding="utf-8")
+    coverage = km.extract_knowledge_model(root, evidence)["coverage"]
+    assert coverage["manual_reference"] is not None, "对照前提：锚点存在时台账必须写出"
+    assert coverage["manual_reference"]["point_count"] == 61
+    assert len(coverage["diff_vs_manual"]) == 61
+
+
+def test_manual_ledger_still_treats_anchored_empty_tree_as_a_named_gap(tmp_path: Path):
+    """15043 / 15044 的真实形态：**有**锚点但 0 条元素 = 诚实的命名缺口，不是解析失败。"""
+    root, evidence = _fragment_root(tmp_path)
+    page = root / "content" / "jiangsu" / "courses" / "99999" / "index.md"
+    page.parent.mkdir(parents=True)
+    page.write_text("# demo\n\n## 章节知识树\n\n（本章节暂无编号考点，待人工补齐。）\n", encoding="utf-8")
+
+    coverage = km.extract_knowledge_model(root, evidence)["coverage"]
+    assert coverage["manual_reference"] is None
+    assert coverage["diff_vs_manual"] == []

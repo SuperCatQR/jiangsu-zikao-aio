@@ -200,3 +200,175 @@ def test_evidence_gate_fails_on_diff_manual_only(tmp_path: Path):
 
     errors = run_evidence_gate(fake_root)
     assert any(str(target.relative_to(fake_root)) in e and "manual_only" in e for e in errors), errors
+
+
+# ---- B3 / B4 / B6：闸门必须能看穿伪造与静默丢章 ------------------------------------------
+
+def _fake_root(tmp_path: Path) -> Path:
+    fake_root = tmp_path / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+    return fake_root
+
+
+def test_evidence_gate_rejects_forged_l1(tmp_path: Path):
+    """B3：`eligibility.level = "L1"` 但两个放行输入都 `missing` → 必须失败关闭（D8 单一门槛）。"""
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "evidence.json"
+    data = json.loads(target.read_text(encoding="utf-8"))
+    data["syllabus"] = {
+        "status": "missing",
+        "doc_id": "syllabus:15040",
+        "path": None,
+        "sha256": None,
+        "gap_impact": "缺官方考纲",
+        "next_evidence": "官方考纲原件",
+    }
+    data["textbook_plan"] = {
+        "status": "missing",
+        "doc_id": None,
+        "path": None,
+        "locator": None,
+        "row": None,
+        "gap_impact": "缺教材计划行",
+        "next_evidence": "官方教材计划抽取件中的教材行",
+    }
+    data["eligibility"] = {"level": "L1", "reasons": ["forged"]}
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+    errors = run_evidence_gate(fake_root)
+    assert any("eligibility.level" in e and "无法由" in e for e in errors), errors
+    assert any("syllabus:missing" in e or "textbook_plan:missing" in e for e in errors), errors
+
+
+def test_evidence_gate_rejects_non_l1_with_knowledge_model(tmp_path: Path):
+    """B3 第二向：非 `L1` 课程存在 `knowledge-model.json` 同样是零 AI 产物规则的违反（spec AC4）。"""
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    # 00023 是 blocked，但把它伪装成一个有模型的课程
+    model_src = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "knowledge-model.json"
+    model_dst = fake_root / "sources" / "jiangsu" / "courses" / "00023" / "knowledge-model.json"
+    shutil.copy(model_src, model_dst)
+
+    errors = run_evidence_gate(fake_root)
+    assert any("00023" in e and "knowledge-model.json" in e and "L1" in e for e in errors), errors
+
+
+def test_evidence_gate_rejects_unverified_value(tmp_path: Path):
+    """B4：非 `verified` 的事实不得携带 `value`（旧实现的 `unverified` / `missing-source` 是无检查的降级后门）。"""
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "evidence.json"
+
+    for status in ("unverified", "missing-source"):
+        data = json.loads(target.read_text(encoding="utf-8"))
+        data["facts"]["credits"] = {"value": "999", "status": status}
+        target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        errors = run_evidence_gate(fake_root)
+        assert any("facts.credits.status has invalid value" in e for e in errors), (status, errors)
+
+    # 契约内的 `named_gap` 同样不得带 value
+    data = json.loads(target.read_text(encoding="utf-8"))
+    data["facts"]["credits"] = {
+        "value": "888",
+        "status": "named_gap",
+        "gap_impact": "读者无法判断学分权重",
+        "next_evidence": "官方专业计划表课程行",
+    }
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("facts.credits" in e and "carries a value" in e for e in errors), errors
+
+
+def test_evidence_gate_rejects_silently_dropped_chapter(tmp_path: Path):
+    """B6：`official_point_count` 必须与模型实际节数一致，章目必须与 `syllabus.md` 逐行一致。
+
+    旧实现下 `15044` 丢掉整章 `绪 论` 而 `ratio` 仍是 `1.0`（被丢的章连分母一起带走），两层都看不见。
+    """
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "knowledge-model.json"
+
+    # (a) 删一章 → 分母自洽性必须报出
+    data = json.loads(target.read_text(encoding="utf-8"))
+    dropped_sections = len(data["chapters"][0]["sections"])
+    data["chapters"].pop(0)
+    data["coverage"]["ratio"] = 1.0
+    data["coverage"]["modeled_point_count"] = data["coverage"]["official_point_count"] - dropped_sections
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("official_point_count" in e and "不一致" in e for e in errors), errors
+    assert any("章目索引不一致" in e for e in errors), errors
+
+    # (b) 恢复章数但改一个章标题 → 与 syllabus.md 的逐行比对必须报出
+    data = json.loads(target.read_text(encoding="utf-8"))
+    data["chapters"][0]["title"] = "第一章 被改名的章"
+    data["chapters"][0]["ordinal"] = 1
+    data["chapters"][0]["slug"] = "ch01"
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("章目索引不一致" in e for e in errors), errors
+
+
+def test_evidence_gate_rejects_missing_quote(tmp_path: Path):
+    """C2-008：`quote` 缺失或超长都必须失败关闭（旧实现 `pt.get("quote") or ""` 让「没有 quote」等同合规）。"""
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "knowledge-model.json"
+
+    data = json.loads(target.read_text(encoding="utf-8"))
+    point = data["chapters"][0]["sections"][0]["points"][0]
+    point["quote"] = ""
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("缺 quote" in e for e in errors), errors
+
+    data = json.loads(target.read_text(encoding="utf-8"))
+    data["chapters"][0]["sections"][0]["points"][0]["quote"] = "长" * 61
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("quote exceeds 60" in e for e in errors), errors
+
+
+def test_evidence_gate_reports_type_invalid_artifacts_instead_of_crashing(tmp_path: Path):
+    """C2-013：类型非法的产物必须变成定位到字段的错误字符串，而不是抛 `TypeError` 中断整层。"""
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "knowledge-model.json"
+
+    for bad_ratio in (None, "1.0"):
+        data = json.loads(target.read_text(encoding="utf-8"))
+        data["coverage"]["ratio"] = bad_ratio
+        target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        errors = run_evidence_gate(fake_root)  # 不得抛异常
+        assert any("coverage.ratio 必须是数字" in e for e in errors), (bad_ratio, errors)
+
+    data = json.loads(target.read_text(encoding="utf-8"))
+    data["coverage"]["ratio"] = 1.0
+    data["chapters"][0]["sections"][0]["points"][0]["quote"] = 12345
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("缺 quote" in e for e in errors), errors
+
+
+def test_evidence_gate_rejects_syllabus_sha256_drift(tmp_path: Path):
+    """QC1 F-5 的门禁侧：考纲抽取件被换掉后 `sha256` 不一致必须报出。"""
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    evidence = json.loads(
+        (fake_root / "sources" / "jiangsu" / "courses" / "15040" / "evidence.json").read_text(encoding="utf-8")
+    )
+    document = fake_root / evidence["syllabus"]["path"]
+    document.write_text(document.read_text(encoding="utf-8") + "\n（被替换的内容）\n", encoding="utf-8")
+
+    errors = run_evidence_gate(fake_root)
+    assert any("sha256" in e for e in errors), errors
