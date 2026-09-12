@@ -315,13 +315,16 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
     root_h = _fresh_root("no_knowledge_dir")
     shutil.rmtree(root_h / course / "knowledge")
     errors_h = run_ai_content_gate(root_h)
-    assert errors_h, "整个章页目录消失必须报错（不得静默跳过整门课）"
+    # M-1（T2 评审跟进）：断言到**具体消息**，与 (f)/(g) 同级；只断言「非空」会放过「报了别的错」。
+    assert any("要点梳理" in e and "explain" in e for e in errors_h), errors_h
+    assert any("记忆辅助" in e and "memorize" in e for e in errors_h), errors_h
 
     # (i) N-1 更极端形态（design note §3.1 第三行）：整个课程渲染页目录消失，旧实现同样 0 错误
     root_i = _fresh_root("no_course_dir")
     shutil.rmtree(root_i / course)
     errors_i = run_ai_content_gate(root_i)
-    assert errors_i, "整个课程页目录消失必须报错（不得静默跳过整门课）"
+    # M-1：必须点名「渲染页目录不存在」，而不是任何一条无关错误
+    assert any("渲染页目录不存在" in e for e in errors_i), errors_i
 
 
 def _exam_strategy_text(root: Path) -> str:
