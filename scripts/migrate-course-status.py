@@ -115,10 +115,23 @@ def main() -> int:
         type=Path,
         default=ROOT / "content" / "jiangsu" / "courses",
     )
+    parser.add_argument(
+        "--include-rendered",
+        action="store_true",
+        help="同时迁移由流水线渲染的课程（默认跳过：渲染页唯一写入者是 render_pages.py，见 QC1 F-2）",
+    )
     args = parser.parse_args()
     changed = 0
+    skipped_rendered: list[str] = []
     for path in sorted(args.courses_dir.glob("*/index.md")):
         if not re.fullmatch(r"\d{5}", path.parent.name):
+            continue
+        # 渲染页的唯一写入者是 `render_pages.py`（design-notes §1 所有权表）。本脚本手工改写
+        # `index.md` 会被下一次渲染整体覆盖，且绕过 `manual:` 块协议 —— 默认跳过流水线课程，
+        # 只迁移尚未接入渲染的课程。
+        rendered = (ROOT / "sources" / "jiangsu" / "courses" / path.parent.name / "content.json").is_file()
+        if rendered and not args.include_rendered:
+            skipped_rendered.append(path.parent.name)
             continue
         text = path.read_text(encoding="utf-8")
         new_text, info = migrate_text(text)
@@ -133,6 +146,8 @@ def main() -> int:
             changed += 1
             if not args.dry_run:
                 path.write_text(new_text, encoding="utf-8", newline="\n")
+    if skipped_rendered:
+        print(f"skipped rendered courses (use --include-rendered to override): {', '.join(skipped_rendered)}")
     print(f"{'Would change' if args.dry_run else 'Changed'} {changed} course index pages")
     return 0
 

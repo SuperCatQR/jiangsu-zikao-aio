@@ -57,6 +57,8 @@ MEMORY_MARKERS = ("记忆", "口诀", "对比", "联想", "串联", "谐音", "�
 MIN_EXPLAIN_CHARS = 120
 MIN_MEMORIZE_CHARS = 80
 MIN_DRILL_CHARS = 40
+# `official_sample` 转载上限（C2-009）：公开仓只允许有界引文，不得整段转载官方题文（GC4 / spec `O2`）
+MAX_OFFICIAL_SAMPLE_CHARS = 200
 NGRAM_SIZE = 8
 PLAGIARISM_THRESHOLD = 0.2
 COURSES_DIR = Path("sources") / "jiangsu" / "courses"
@@ -589,6 +591,29 @@ def _review_schedule_problems(schedule, point_ids: set[str]) -> list[str]:
     return problems
 
 
+def _official_sample_problems(block: dict, where: str) -> list[str]:
+    """`official_sample` 块（唯一允许转载官方题文的分支）的凭据与长度校验（C2-009）。
+
+    B1 产物不含此类块（`O2` 未收敛）；本函数服务于「未来产物不得靠自声明豁免抄袭守卫」：
+    `provenance` 必须给出 `doc_id` + `locator` + `kind`，且转载长度必须在上限内。
+    """
+    problems: list[str] = []
+    provenance = block.get("provenance")
+    if not isinstance(provenance, dict):
+        problems.append(f"{where}: official_sample 块必须带 provenance")
+        return problems
+    for key in ("doc_id", "locator", "kind"):
+        if not isinstance(provenance.get(key), str) or not provenance[key].strip():
+            problems.append(f"{where}: official_sample 的 provenance 缺少可核验字段 {key}")
+    source = f"{block.get('text_md') or ''}\n{block.get('answer_md') or ''}"
+    if len(source) > MAX_OFFICIAL_SAMPLE_CHARS:
+        problems.append(
+            f"{where}: official_sample 转载长度 {len(source)} 超过上限 {MAX_OFFICIAL_SAMPLE_CHARS}"
+            "（公开仓不得整段转载官方题文）"
+        )
+    return problems
+
+
 def validate_content_doc(doc: dict, model: dict) -> list[str]:
     """AI 备考层失败关闭自检：返回违规列表（空 = 通过）。"""
     problems: list[str] = []
@@ -654,8 +679,10 @@ def validate_content_doc(doc: dict, model: dict) -> list[str]:
             source_kind = block.get("source_kind")
             if source_kind not in SOURCE_KINDS:
                 problems.append(f"{where}: drill 的 source_kind 必须是 {SOURCE_KINDS} 之一")
-            if source_kind == "official_sample" and not block.get("provenance"):
-                problems.append(f"{where}: official_sample 块必须带 provenance")
+            if source_kind == "official_sample":
+                # C2-009：豁免必须建立在**可核验的**凭据上，而不是「有个真值 dict」。
+                # 旧实现 `not block.get("provenance")` 让 `{"doc_id": "x"}` 就能豁免 600 字逐字官方正文。
+                problems.extend(_official_sample_problems(block, where))
             if declared and block.get("question_type") not in declared:
                 problems.append(f"{where}: question_type 不在考纲声明的题型内（{block.get('question_type')}）")
 
@@ -692,18 +719,63 @@ def _block_text(block: dict) -> str:
     return "\n".join(str(block[key]) for key in ("text_md", "answer_md") if isinstance(block.get(key), str))
 
 
+def _stage_text(stage: dict) -> str:
+    parts = [str(stage.get(key)) for key in ("stage", "goal", "done_when") if stage.get(key)]
+    for key in ("inputs", "how", "outputs"):
+        parts.extend(str(item) for item in stage.get(key) or [])
+    return "\n".join(parts)
+
+
+def emitted_texts(doc: dict) -> list[tuple[str, str]]:
+    """AI 产物中**全部**会印到页面上的自然语言 → `(定位标签, 文本)`（C2-007）。
+
+    旧实现只测 `blocks[]`，于是 `stage_plan[]` 与 `review_schedule` 的文本从不被测。
+    8-gram 守卫的作用域 = 全部 AI 生成的自然语言，而不是 `blocks[]` 一个子集。
+    """
+    emitted: list[tuple[str, str]] = [
+        (f"block {block.get('block_id')}", _block_text(block)) for block in doc.get("blocks") or []
+    ]
+    emitted += [
+        (f"stage_plan[{index}]·{stage.get('stage')}", _stage_text(stage))
+        for index, stage in enumerate(doc.get("stage_plan") or [])
+    ]
+    schedule = doc.get("review_schedule") or {}
+    emitted += [
+        (f"review_schedule.{key}", str(schedule[key]))
+        for key in ("gap_impact", "next_evidence")
+        if schedule.get(key)
+    ]
+    for plan in schedule.get("plans") or []:
+        # `items[].focus` 是**确定性派生标签**（章序标签 + 考纲节标题逐字拼接），不是 LLM 正文：
+        # 它与考纲必然高度重合（实测 85%），按契约豁免并只在 content-standard 记录口径（C2-007）。
+        # 排程里真正由生成器产出的部分（日期 / 天数 / 每日时长）是无文案的结构值。
+        emitted.append((f"review_schedule.plans[{plan.get('tier')}].spaced_repetition",
+                       json.dumps(plan.get("spaced_repetition") or [], ensure_ascii=False, sort_keys=True)))
+    return emitted
+
+
+
 def plagiarism_violations(
     doc: dict, syllabus_text: str, *, threshold: float = PLAGIARISM_THRESHOLD, size: int = NGRAM_SIZE
 ) -> list[str]:
-    """AI 产出与考纲抽取件的 n-gram 重合率超阈值即失败；`official_sample` 转载块豁免（B1 无此类块）。"""
+    """AI 产出与考纲抽取件的 n-gram 重合率超阈值即失败；`official_sample` 转载块豁免。
+
+    作用域 = **全部 AI 生成的自然语言**（`emitted_texts()`），不只是 `blocks[]`（C2-007）；
+    豁免只给 `official_sample` 转载块，且该块必须带**结构完整的** `provenance`（见 C2-009：
+    旧实现只看真值，`{"doc_id": "x"}` 就能豁免 600 字逐字官方正文）。
+    """
     problems: list[str] = []
+    exempt: set[str] = set()
     for block in doc.get("blocks") or []:
         if block.get("source_kind") == "official_sample":
+            exempt.add(f"block {block.get('block_id')}")
+    for label, text in emitted_texts(doc):
+        if label in exempt:
             continue
-        ratio = ngram_overlap_ratio(_block_text(block), syllabus_text, size=size)
+        ratio = ngram_overlap_ratio(text, syllabus_text, size=size)
         if ratio > threshold:
             problems.append(
-                f"{block.get('block_id')}: {size}-gram 重合率 {ratio:.1%} 超过阈值 {threshold:.0%}"
+                f"{label}: {size}-gram 重合率 {ratio:.1%} 超过阈值 {threshold:.0%}"
                 "（改写后重试，不得调高阈值）"
             )
     return problems

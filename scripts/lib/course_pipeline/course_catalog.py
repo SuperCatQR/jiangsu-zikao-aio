@@ -166,7 +166,9 @@ def parse_plan_rows(path: Path) -> tuple[list[dict], list[dict]]:
     """解析官方计划定宽表 / 机器抽取件 →（课程行, 被丢弃的候选行）。
 
     行号与折行片段都按**物理行**（`split("\\n")`，`\\x0c` 计入所在行）计算，与 `sed -n '<n>p'`
-    显示的行号一致。课名为空的行按紧邻上下两行的同列片段拼回。
+    显示的行号一致。课名为空的行按紧邻上下两行的同列片段拼回；`locator` 恒指课程行的起始物理行
+    （plan § Data contracts 1 约定）。课名折到续行时该行不含课名 —— `evidence.py` 的 `name`
+    provenance 因此改为引用**整窗**（`locator` 起 ±2 行），见 `_facts()`（C2-015）。
     """
     lines = path.read_text(encoding="utf-8").split("\n")
     rows: list[dict] = []

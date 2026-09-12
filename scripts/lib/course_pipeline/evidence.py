@@ -37,6 +37,7 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 from lib.course_pipeline.official_source import is_official_url
 
@@ -286,6 +287,26 @@ def _official_urls(root: Path) -> dict[str, str]:
     return mapping
 
 
+def _supporting_locator(root: Path, source: dict, value: Any) -> str:
+    """`provenance.locator`：引用**能支撑 `value` 的那一行**（C2-015）。
+
+    专业计划表的课名会折到课码行的下一行（实测 `10993` / `12656`），此时课码行只含课码 / 学分 /
+    考试方式 —— 引它作 `name` 的凭据是错的。策略：以 `sources[].locator` 为中心在 ±2 行窗口内
+    找首个包含该值的行；窗口内找不到就保持原 locator（值可能来自折叠空白，例如全角括号）。
+    """
+    path = root / source["path"]
+    if not path.is_file() or not isinstance(value, str):
+        return source["locator"]
+    lines = _physical_lines(path)
+    center = int(source["locator"][1:])
+    order = sorted(range(max(1, center - ROW_WINDOW_RADIUS), min(len(lines), center + ROW_WINDOW_RADIUS) + 1),
+                   key=lambda number: (abs(number - center), number))
+    for number in order:
+        if value in _fold(lines[number - 1]):
+            return f"L{number}"
+    return source["locator"]
+
+
 def _facts(root: Path, code: str) -> dict:
     course = _catalog_course(root, code)
     sources = (course or {}).get("sources") or []
@@ -312,7 +333,7 @@ def _facts(root: Path, code: str) -> dict:
                 # 记在课程级 `course_url`，因此这里恒为 `null`（Data contracts 2：`url|path` 只需其一）
                 "url": None,
                 "path": best["path"],
-                "locator": best["locator"],
+                "locator": _supporting_locator(root, best, value),
             },
         }
     return facts
@@ -328,12 +349,25 @@ def course_codes(root: Path) -> list[str]:
     return sorted(path.name for path in base.iterdir() if path.is_dir() and CODE_DIR_RE.fullmatch(path.name))
 
 
+def validate_code(code: str) -> str:
+    """课码必须是 5 位数字（C2-006）。
+
+    课码会直接参与路径拼接（`root / COURSES_DIR / code / …`）。旧实现只由 CLI 的 `resolve` 阶段
+    间接约束，于是 `build <crafted-query> --stages evidence` 可写出仓根之外（实测 exit 0）。
+    校验放在**写入者**这一层：所有调用点自动受保护，不依赖调用方记得先校验，也不依赖阶段开关。
+    """
+    if not isinstance(code, str) or not CODE_DIR_RE.fullmatch(code):
+        raise ValueError(f"课码必须是 5 位数字：{code!r}")
+    return code
+
+
 def build_evidence(root: Path, code: str, *, offline: bool = True) -> dict:
     """课码 → 取证文档（Data contracts 2）；`eligibility` 由 `evaluate_eligibility()` 写入。
 
     `offline=True`（默认）只读仓内抽取件与只读基线。B1 不落盘官方快照（GC15），因此 `offline=False`
     显式失败而不是静默联网入库；联网取证在 B2 首次真实取证时接入（spec `D7` / § Roadmap B2 门槛③）。
     """
+    validate_code(code)
     if not offline:
         raise RuntimeError("offline: build_evidence 只支持离线取证（B1 不落盘官方快照，见 GC15）")
 
@@ -359,7 +393,7 @@ def serialize(doc: dict) -> str:
 
 
 def evidence_path(root: Path, code: str) -> Path:
-    return root / COURSES_DIR / code / "evidence.json"
+    return root / COURSES_DIR / validate_code(code) / "evidence.json"
 
 
 def write_evidence(root: Path, codes: list[str]) -> tuple[list[Path], list[dict]]:
@@ -369,6 +403,9 @@ def write_evidence(root: Path, codes: list[str]) -> tuple[list[Path], list[dict]
     for code in codes:
         doc = build_evidence(root, code)
         path = evidence_path(root, code)
+        # 双保险：解析后的路径必须仍在仓根内（符号链接 / 平台路径差异都挡在这里，C2-006）
+        if not path.resolve().is_relative_to(root.resolve()):
+            raise ValueError(f"课码 {code!r} 解析出的路径逃出仓根：{path.resolve()}")
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(serialize(doc), encoding="utf-8")
         paths.append(path)

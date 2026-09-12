@@ -20,6 +20,7 @@ import urllib.request
 from pathlib import Path
 
 import pytest
+import shutil
 
 from lib.course_pipeline import evidence as ev
 
@@ -729,3 +730,66 @@ def test_write_evidence_lands_on_disk_byte_identically(tmp_path: Path):
 
     # `course_codes()` = 现有课程页目录（`--all` 的输入口径）
     assert ev.course_codes(ROOT) == EXISTING_COURSE_CODES
+
+
+# ---- C2-006：课码必须在**写入者**这一层校验 --------------------------------------------
+
+def test_evidence_path_rejects_non_code_and_never_escapes_root(tmp_path: Path):
+    """C2-006：`--stages evidence` 曾让 crafted query 逃出仓根并写盘（exit 0）。
+
+    校验放在 `evidence_path()` / `build_evidence()` / `write_evidence()` 三处 —— 调用点无法绕过，
+    也不依赖调用方记得先跑 `resolve` 阶段。
+    """
+    from lib.course_pipeline import evidence as ev_mod
+
+    root = tmp_path / "repo"
+    (root / "sources").mkdir(parents=True)
+
+    for crafted in ("../../../../escaped", "1504", "150400", "abcde", "", "15040/../..", None, 15040):
+        with pytest.raises(ValueError):
+            ev_mod.evidence_path(root, crafted)
+
+    with pytest.raises(ValueError):
+        ev_mod.write_evidence(root, ["../../../../escaped"])
+
+    # 逃逸路径确实没有产生任何文件
+    assert not (tmp_path / "escaped").exists()
+
+
+def test_build_evidence_rejects_non_code(tmp_path: Path):
+    """`build_evidence()` 同样拒绝非课码（唯一入口的守卫，不靠 CLI 阶段开关）。"""
+    from lib.course_pipeline import evidence as ev_mod
+
+    root = tmp_path / "repo"
+    (root / "sources").mkdir(parents=True)
+    with pytest.raises(ValueError):
+        ev_mod.build_evidence(root, "../../escape")
+
+
+def test_cli_build_rejects_crafted_query_even_without_resolve_stage(tmp_path: Path):
+    """C2-006 的入口侧：`build <crafted> --stages evidence` 必须 exit ≠ 0，且仓根外零写入。"""
+    import importlib.util
+
+    fake_root = tmp_path / "repo"
+    (fake_root / "scripts").mkdir(parents=True)
+    (fake_root / "scripts" / "lib").symlink_to(ROOT / "scripts" / "lib", target_is_directory=True)
+    (fake_root / "ops" / "jiangsu").mkdir(parents=True)
+    shutil.copy(ROOT / "ops" / "jiangsu" / "source-links.baseline.json",
+                fake_root / "ops" / "jiangsu" / "source-links.baseline.json")
+    (fake_root / "sources").mkdir()
+    shutil.copy(ROOT / "scripts" / "build-course-content.py", fake_root / "scripts" / "build-course-content.py")
+
+    spec = importlib.util.spec_from_file_location("bce", fake_root / "scripts" / "build-course-content.py")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    cli.ROOT = fake_root
+
+    rc = cli.run_build("../../../../escaped", backend="replay", stages=["evidence"], dry_run=False, record_fixtures=False)
+
+    assert rc != 0, "crafted query 必须被拒绝"
+    assert not (fake_root.parent / "escaped").exists(), "不得写出仓根之外"
+    assert not (fake_root.parent.parent / "escaped").exists()
+    # 也确认没有落进 fake_root 内的非课码目录
+    assert not (fake_root / "sources" / "jiangsu" / "courses").exists() or not any(
+        p.name == "escaped" for p in (fake_root / "sources" / "jiangsu" / "courses").iterdir()
+    )

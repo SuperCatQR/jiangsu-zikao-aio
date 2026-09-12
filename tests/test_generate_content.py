@@ -554,7 +554,8 @@ def test_drill_blocks_carry_answer_and_source_kind(monkeypatch, tmp_path):
         "answer_md": "（构造）官方样卷答案",
         "source_kind": "official_sample",
         "question_type": template["question_type"],
-        "provenance": {"doc_id": "syllabus:99999", "locator": "L6"},
+        # C2-009：豁免必须建立在可核验凭据上（doc_id + locator + kind），不是「有个真值 dict」
+        "provenance": {"doc_id": "syllabus:99999", "locator": "L6", "kind": "official_syllabus"},
     }
     with_provenance = {**doc, "blocks": [*doc["blocks"], official]}
     assert gc.validate_content_doc(with_provenance, model) == []
@@ -562,6 +563,21 @@ def test_drill_blocks_carry_answer_and_source_kind(monkeypatch, tmp_path):
     without_provenance = {**doc, "blocks": [*doc["blocks"], {k: v for k, v in official.items() if k != "provenance"}]}
     problems = gc.validate_content_doc(without_provenance, model)
     assert any("provenance" in problem for problem in problems), problems
+
+    # C2-009 第二向：真值但**不完整**的 provenance 不得豁免（旧实现只判真值）
+    hollow = {**doc, "blocks": [*doc["blocks"], {**official, "provenance": {"doc_id": "x"}}]}
+    hollow_problems = gc.validate_content_doc(hollow, model)
+    assert any("kind" in problem for problem in hollow_problems), hollow_problems
+
+    # C2-009 第三向：转载长度必须有界
+    overlong = {
+        **doc,
+        "blocks": [
+            *doc["blocks"],
+            {**official, "text_md": "官" * (gc.MAX_OFFICIAL_SAMPLE_CHARS + 1), "answer_md": "案"},
+        ],
+    }
+    assert any("转载长度" in problem for problem in gc.validate_content_doc(overlong, model)), "超长转载必须被抓出"
 
 
 def test_review_schedule_named_gap_without_exam_date(monkeypatch, tmp_path):
@@ -783,7 +799,7 @@ def test_plagiarism_guard_computable_and_below_threshold():
     assert gc.ngram_overlap_ratio("本题内容完全自创，与考纲用词没有交集。", source) < 0.2
     flagged = gc.plagiarism_violations(copied_doc, source)
     assert len(flagged) == 1, "official_sample 转载块必须豁免，普通块必须被抓出"
-    assert flagged[0].startswith("x/explain")
+    assert "x/explain" in flagged[0]
 
 
 def test_replay_doc_is_byte_idempotent_offline(monkeypatch, tmp_path):
@@ -970,11 +986,12 @@ def _cli_module():
 
 
 def _cli_root(tmp_path: Path):
-    """tmp 根上的 CLI 装置：入口按 `__file__` 推导 ROOT → 加载后把 ROOT 指向 tmp
+    """tmp 根上的 CLI 装置：入口按 `__file__` 推导 ROOT → 加载后把 ROOT 指向 tmp。
 
-    复用仓内 `scripts/lib`（软链）与已录制 fixture（`llm_client` 按真实仓根定位），
-    只把 15040 的 `evidence.json` / `knowledge-model.json` 与考纲抽取件（软链）放进 tmp 根，
-    因此 CLI 写出的 `content.json` 落在 tmp 里、真实产物字节不变。
+    复用仓内 `scripts/lib`（软链），把已录制的 **fixture 拷进 tmp 根**、并把 15040 的
+    `evidence.json` / `knowledge-model.json` 与考纲抽取件（软链）放进 tmp 根 —— 因此
+    `run_generate()` 的 `_sync_roots()`（QC3-007 / C2-010）会把 `llm_client` 的三个根对齐到 tmp，
+    CLI 真正作用于**被测的那棵树**，不再回落到真实仓的 fixture。
     """
     root = tmp_path / "root"
     (root / "scripts").mkdir(parents=True)
@@ -986,6 +1003,10 @@ def _cli_root(tmp_path: Path):
     (root / "sources" / "jiangsu" / "processed").symlink_to(
         ROOT / "sources" / "jiangsu" / "processed", target_is_directory=True
     )
+    # 提示词与录制响应必须随根走，否则 `_sync_roots()` 后 replay 找不到 fixture（这正是本条修复的意义）
+    (root / "scripts" / "lib" / "course_pipeline").is_dir()  # 软链复用 prompts
+    fixtures = root / "tests" / "fixtures" / "course_pipeline" / "llm"
+    shutil.copytree(ROOT / "tests" / "fixtures" / "course_pipeline" / "llm", fixtures)
     cli = _cli_module()
     cli.ROOT = root
     return cli, course / "content.json"
