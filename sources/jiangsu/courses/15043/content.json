@@ -15,9 +15,9 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "把第一章、第二章、第三章、第四章、第五章、第六章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
+      "goal": "把第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
       "inputs": [
-        "本轮范围的考纲章节目录（第一章、第二章、第三章、第四章、第五章、第六章）与各章「学习目的与要求」",
+        "本轮范围的考纲章节目录（第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章）与各章「学习目的与要求」",
         "本课知识模型列出的相关考核点及其要求层级（识记 / 领会）"
       ],
       "how": [
@@ -26,7 +26,7 @@
         "把读不通、与既有印象冲突的点单独记在待查清单上，不急着下结论。"
       ],
       "outputs": [
-        "第一章、第二章、第三章、第四章、第五章、第六章的关键词骨架表",
+        "第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的关键词骨架表",
         "考核点层级标注清单",
         "待查问题清单"
       ],
@@ -46,9 +46,9 @@
     },
     {
       "stage": "精读",
-      "goal": "逐章把第一章、第二章、第三章、第四章、第五章、第六章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
+      "goal": "逐章把第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
       "inputs": [
-        "本轮范围（第一章、第二章、第三章、第四章、第五章、第六章）的章、节、考核点结构",
+        "本轮范围（第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章）的章、节、考核点结构",
         "本课 AI 讲解块的要点梳理与易错点",
         "本课 AI 记忆辅助块里的口诀、对比与串联"
       ],
@@ -59,7 +59,7 @@
         "把讲不顺的点标回待查清单，下一轮只补这些点。"
       ],
       "outputs": [
-        "第一章、第二章、第三章、第四章、第五章、第六章的逐章复述笔记",
+        "第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的逐章复述笔记",
         "同节易混点对比表",
         "仍然讲不顺的遗留点清单"
       ],
@@ -145,14 +145,14 @@
     },
     {
       "stage": "复盘",
-      "goal": "回顾第一章、第二章、第三章、第四章、第五章、第六章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
+      "goal": "回顾第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
       "inputs": [
-        "第一章、第二章、第三章、第四章、第五章、第六章的关键词骨架表",
+        "第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的关键词骨架表",
         "错题表与对照卡",
         "本课来源页登记的缺口清单"
       ],
       "how": [
-        "对照骨架表复述第一章、第二章、第三章、第四章、第五章、第六章的主线，哪一章卡住就回看该章要点。",
+        "对照骨架表复述第一章、第二章、第三章、第四章、第五章、第六章、第七章、第八章的主线，哪一章卡住就回看该章要点。",
         "把仍不确定的考核点列入缺口清单，明确标为「待核验」，不要凭印象补一个说法。",
         "写下上考场前的检查单：先做哪类题、主观题怎么分点、留出多少时间回看。",
         "把清单与练习记录归档，便于下一轮复习直接接手。"
@@ -7814,6 +7814,3996 @@
       "text_md": "抗日战争的胜利是近代以来中国人民反抗外来侵略取得的第一次完全胜利。试述抗日战争胜利的原因及其历史意义。",
       "question_type": "论述题",
       "answer_md": "（1）原因之一：抗日民族统一战线的建立与坚持，实现了全民族抗战，这是胜利的根本保证。\n（2）原因之二：中国共产党发挥了中流砥柱作用，提出并坚持全面抗战路线与持久战方针，开辟并坚持敌后战场。\n（3）原因之三：正面战场与敌后战场相互配合，消耗并牵制了大量日军。\n（4）原因之四：世界反法西斯力量的支援与配合，中国抗战与世界反法西斯战争相互支持。\n（5）意义之一：它是近代以来中国人民反抗外来侵略取得的第一次完全胜利，洗雪了民族耻辱。\n（6）意义之二：它提高了中国的国际地位，中国成为联合国创始会员国与安理会常任理事国之一。\n（7）意义之三：它为争取新民主主义革命在全国的胜利奠定了基础，并开辟了中华民族伟大复兴的光明前景。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 《对目前时局的宣言》是抗日战争胜利后中国共产党发表的宣言，明确提出了和平、民主、团结的口号。\n- 宣言主张在和平民主的基础上实现全国统一，反对内战与独裁，反映了全国人民战后要求休养生息的愿望。\n- 它同时表明党的立场：愿意通过和平方式实现国家的进步，但不放弃自卫的权利。\n- 宣言的发表争取了中间阶层与广大民众的理解，使党在战后的政治斗争中占据主动。\n- 考纲以识记层级要求本条，作答时要点明宣言名称、核心口号与政治立场。\n\n### 易错点\n- 把宣言的口号记成「武装斗争、夺取政权」：战后初期党争取的是和平民主，口号是和平、民主、团结。\n- 把宣言说成放弃自卫：宣言在争取和平的同时并未放弃自卫的权利。\n- 忽略宣言在争取中间力量方面的作用。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**关键词**：和平、民主、团结；战后发表；争取和平但不放弃自卫。\n**口诀**：「三个词的口号：和平、民主、团结」。\n**对比**：它是争取和平的宣言，不是放弃自卫的声明，两者并存。\n**串联**：战后民心求安 → 发表宣言 → 争取中间力量 → 在政治斗争中占据主动。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "《对目前时局的宣言》提出的口号是（ ）。\nA. 和平、民主、团结\nB. 打倒蒋介石，解放全中国\nC. 将革命进行到底\nD. 向北发展，向南防御",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，宣言主张在和平民主的基础上实现全国统一，反对内战与独裁，反映全国人民战后要求休养生息的愿望。\nB 项该口号提出于战略进攻阶段，比宣言晚。\nC 项该文献发表于战略决战之后，时间更晚。\nD 项该方针是军事部署方针，不是宣言提出的政治口号。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 重庆谈判是抗日战争胜利后国共两党就国家前途进行的谈判，中国共产党派代表赴重庆参加。\n- 谈判的成果是双方签署了会谈纪要，即双十协定，其中确认了和平建国、避免内战等基本方针。\n- 中国共产党参加谈判，是为了尽一切可能争取和平，同时以谈判揭露对方的内战企图，教育人民。\n- 协定的内容后来并未得到遵守，内战仍被挑起，这说明和平的愿望不能代替实际的力量对比。\n- 考纲以识记层级要求本条，作答时要点明谈判名称、协定名称与它的双重意义。\n\n### 易错点\n- 把双十协定说成已经解决了建国问题：它确认的是基本方针，并未真正落实。\n- 把党参加谈判说成对和平抱有幻想：参加谈判是为了争取和平并教育人民。\n- 忽略协定后来被破坏这一结局。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**关键词**：重庆谈判、双十协定、和平建国、避免内战。\n**口诀**：「谈成了纸面，没拦住枪炮」。\n**对比**：协定确认的是基本方针，并未解决建国问题，后来也被破坏。\n**串联**：赴渝谈判 → 签署纪要 → 争取和平并教育人民 → 内战仍被挑起。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "重庆谈判的直接成果是（ ）。\nA. 双方签署会谈纪要，即双十协定\nB. 国民党放弃了一党专政\nC. 解放区政权获得承认\nD. 内战危险被彻底消除",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，纪要确认了和平建国、避免内战等基本方针。\nB 项与事实不符，当局仍坚持独裁。\nC 项与事实不符，解放区政权问题并未解决。\nD 项与事实不符，内战后来仍被挑起。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 「向北发展，向南防御」是党在抗战胜利后确定的战略方针，核心是调整兵力部署方向。\n- 向北发展，指争取控制东北地区，把东北建成巩固的立足点；向南防御，指在南方收缩战线、避免分散力量。\n- 这一方针的依据是东北的战略地位：工业基础较好，与苏联、朝鲜相邻，便于取得支援。\n- 方针的实行使党在东北争取了先机，为后来的战略决战创造了条件。\n- 考纲以识记层级要求本条，作答时要点明方针内容与它的战略意图。\n\n### 易错点\n- 把「向北发展」理解为放弃南方：南方是防御而非放弃，收缩是为了集中力量。\n- 把方针的含义说成单纯撤退：它包含主动争取东北这一进攻性内容。\n- 忽略东北战略地位这一依据。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**口诀**：方针八个字——「向北发展，向南防御」。\n**记忆法**：北是争取（东北），南是防御（收缩兵力），一攻一守，别记成两退。\n**对比**：南方是防御而非放弃，收缩是为了集中力量。\n**串联**：东北工业基础好、邻苏朝 → 争取先机 → 为战略决战创造条件。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "「向北发展，向南防御」方针的核心意图是（ ）。\nA. 争取控制东北，同时在南方收缩战线集中力量\nB. 放弃南方一切根据地\nC. 把主力全部撤往苏联边境\nD. 先南后北分两步夺取全国",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，东北工业基础较好、与苏联朝鲜相邻，便于取得支援，方针为战略决战创造了条件。\nB 项南方是防御而非放弃，收缩是为了集中力量。\nC 项与事实不符，方针不涉及撤往境外的设想。\nD 项方向记反，方针是先争取东北。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 抗战胜利后召开的政治协商会议，是各党派与社会贤达共同参加、商讨和平建国问题的会议。\n- 会议围绕政府改组、军队整编、宪法草案与国民大会等问题展开讨论，通过了若干协议。\n- 中国共产党在会议中与民主党派合作，为争取和平民主作出了努力与必要的让步。\n- 会议通过的协议有利于人民，但随后被国民党方面破坏，未能真正实行。\n- 考纲以识记层级要求本条，作答时要点明会议的名称、时间与议题内容。\n\n### 易错点\n- 把这次会议与中国人民政治协商会议混同：前者在抗战胜利后召开，后者在解放战争胜利后召开，性质与成果都不同。\n- 把会议协议说成得到实行：协议很快被破坏。\n- 忽略会议与民主党派合作这一层。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**关键词**：各党派与社会贤达参加、商讨和平建国、协议后被破坏。\n**口诀**：「政协会议在战后，政治协商会议在建国前——两个别混」。\n**对比**：与中国人民政治协商会议不同：前者在抗战胜利后，后者在解放战争胜利后。\n**串联**：讨论政府改组与军队整编 → 通过协议 → 被破坏 → 教育了中间阶层。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "抗战胜利后召开的政治协商会议（ ）。\nA. 由各党派与社会贤达参加，商讨和平建国问题\nB. 由国民党一党包办\nC. 通过了《共同纲领》\nD. 建立了新中国",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议围绕政府改组、军队整编、宪法草案与国民大会等问题展开讨论并通过若干协议。\nB 项与事实不符，各党派与无党派人士都参加了。\nC 项《共同纲领》由后来召开的中国人民政治协商会议通过。\nD 项与事实不符，新中国在此后成立。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 校场口惨案是国民党当局在重庆破坏庆祝政协会议成功的大会、殴打与会人士而制造的事件。\n- 事件的对象是主张和平民主的各界人士，其中包括民主党派人士与文化界代表。\n- 它的性质是当局对和平民主力量的暴力镇压，暴露了其破坏协议、坚持独裁的意图。\n- 事件教育了中间阶层，使更多人看清和平民主不能靠让步获得。\n- 考纲以识记层级要求本条，作答时要点明事件名称、性质与后果。\n\n### 易错点\n- 把惨案说成群众之间的冲突：它由当局制造，具有明确的政治目的。\n- 把校场口惨案与下关惨案混同：两者发生地点不同。\n- 忽略它对中间阶层的教育作用。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**关键词**：重庆、庆祝政协成功的大会、殴打与会人士。\n**口诀**：「校场口在重庆」。\n**对比**：与下关惨案地点不同；两者都是当局镇压和平民主力量。\n**串联**：当局制造暴行 → 暴露独裁意图 → 教育中间阶层 → 和平不能靠让步获得。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "校场口惨案的性质是（ ）。\nA. 国民党当局破坏庆祝政协成功的大会、殴打与会人士\nB. 群众之间的冲突\nC. 外国势力制造的挑衅\nD. 学生内部的争执",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，对象是主张和平民主的各界人士，暴露了当局破坏协议、坚持独裁的意图。\nB 项与事实不符，事件由当局制造，具有明确政治目的。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 下关惨案是国民党当局在南京下关车站殴打上海人民和平请愿团成员而制造的事件。\n- 请愿团由各界人士组成，赴南京呼吁和平、反对内战，遭到有组织的暴力对待。\n- 事件同样属于当局压制和平民主力量的暴行，进一步暴露了其内战与独裁的立场。\n- 它推动了国统区民主运动的发展，使更多人对当局失去幻想。\n- 考纲以识记层级要求本条，作答时要点明事件名称、对象与性质。\n\n### 易错点\n- 把下关惨案与校场口惨案的地点或时间混淆。\n- 把请愿团说成武装团体：它是和平请愿的各界人士。\n- 忽略事件与国统区民主运动之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**关键词**：南京下关车站、上海人民和平请愿团、遭暴力对待。\n**口诀**：「下关在南京，请愿为和平」。\n**对比**：与校场口惨案地点不同，同为当局制造的暴行。\n**串联**：各界请愿 → 遭殴打 → 暴露内战独裁立场 → 推动国统区民主运动。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "下关惨案中遭到暴力对待的是（ ）。\nA. 上海人民和平请愿团的成员\nB. 解放区的武装工作队\nC. 国民党的起义部队\nD. 外国记者团",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，请愿团由各界人士组成，赴南京呼吁和平、反对内战，事件推动了国统区民主运动的发展。\nB 项与事实不符。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "### 要点梳理\n- 国民党军挑起全国性内战，是指当局在完成军事部署后，向解放区发动全面进攻，全面内战由此爆发。\n- 挑起内战的方式是集中优势兵力进攻中原等解放区，企图在短期内消灭人民革命力量。\n- 中国共产党采取的方针是自卫战争：以革命战争反对反革命战争，用自卫战争粉碎进攻。\n- 内战的爆发说明和平民主的努力未能阻止战争，也说明党必须在军事上做好准备。\n- 考纲以识记层级要求本条，作答时要点明内战挑起者与党应对的方针。\n\n### 易错点\n- 把内战爆发说成双方共同的军事行动：内战由国民党军挑起。\n- 把党的方针说成主动进攻：当时采取的是自卫战争。\n- 忽略内战爆发与和平努力失败之间的关系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "**关键词**：国民党军挑起、全面进攻解放区、党的方针是自卫战争。\n**口诀**：「他挑起来的，我打的是自卫」。\n**对比**：内战由国民党军挑起；党的方针是自卫，不是主动进攻。\n**串联**：和平努力失败 → 内战爆发 → 自卫战争粉碎进攻 → 必须在军事上做好准备。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L440"
+      ],
+      "text_md": "全面内战爆发后，中国共产党采取的方针是（ ）。\nA. 自卫战争，以革命战争反对反革命战争\nB. 立即与国民党全面妥协\nC. 避免一切军事行动\nD. 先南后北逐一退让",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，党用自卫战争粉碎进攻，说明和平努力未能阻止战争，必须在军事上做好准备。\nB 项与事实不符：面对全面进攻，党并未与国民党全面妥协，而是以革命战争反对反革命战争。\nC 项与事实不符：采取自卫战争本身就是军事行动，并非避免一切军事行动。\nD 项与事实不符：党没有采取逐步退让的方针，而是在各解放区组织抵抗。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L443"
+      ],
+      "text_md": "### 要点梳理\n- 国际格局方面：世界反法西斯战争胜利后，帝国主义力量受到削弱，社会主义力量与民族解放运动发展，和平民主成为潮流；但美国推行扶助与控制中国的政策，成为内战的外部条件。\n- 国内形势方面：人民力量空前壮大，中国共产党领导的解放区与人民军队有了很大发展，全国人民强烈要求和平与民主。\n- 与此同时，国民党当局坚持独裁与内战方针，依靠美国的支持加紧准备战争。\n- 这两方面构成了战后的基本格局：和平的力量在增长，战争的危险也存在，中国面临两种前途的选择。\n- 领会本条要把国际与国内两个方面分开说明，再落到「两种前途」这一结论上。\n\n### 易错点\n- 只答国内形势而漏掉国际格局，答案就不完整。\n- 把战后形势说成和平已经确定：战争危险同样存在。\n- 忽略美国的扶助政策这一外部条件。\n"
+    },
+    {
+      "block_id": "15043-ch07-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L443"
+      ],
+      "text_md": "**口诀**：国际两条——「帝国主义削弱、和平民主成潮流」，加上「美国扶助控制中国」。\n**记忆法**：国内两条——「人民力量壮大」与「当局坚持独裁内战」，最后落到「两种前途」。\n**对比**：不能说和平已经确定，战争危险同样存在。\n**串联**：和平力量增长 + 战争危险存在 → 中国面临两种前途的选择。"
+    },
+    {
+      "block_id": "15043-ch07-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L443"
+      ],
+      "text_md": "抗日战争胜利后，中国共产党为争取和平民主进行了多方面努力。请简述这些努力及其结果。",
+      "question_type": "简答题",
+      "answer_md": "（1）发表《对目前时局的宣言》，提出和平、民主、团结的口号，明确争取和平民主的立场。\n（2）派代表赴重庆谈判，签署会谈纪要即双十协定，确认和平建国、避免内战等基本方针。\n（3）参加政治协商会议，与民主党派合作，围绕政府改组、军队整编等问题达成若干协议。\n（4）结果：和平努力未能阻止战争，国民党军仍挑起全国性内战，中国共产党由此转入自卫战争。\n（5）这些努力的意义在于争取了中间阶层与广大民众的理解，使党在政治上占据主动。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 「打倒蒋介石，解放全中国」是人民解放军转入战略进攻阶段提出的行动口号。\n- 口号的提出表明党的斗争目标已由争取和平民主转变为以革命战争推翻国民党统治。\n- 它同时起到动员作用：把军事进攻与建立新中国的目标直接联系起来，鼓舞军民士气。\n- 口号的提出以人民解放军转入战略进攻、国统区民主运动高涨为背景。\n- 考纲以识记层级要求本条，作答时要点明口号内容与它标志的转变。\n\n### 易错点\n- 把口号的提出时间提前到内战爆发之初：它提出于战略进攻阶段。\n- 把口号说成单纯的口号宣传：它标志着斗争目标的转变。\n- 忽略它与战略进攻之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：战略进攻阶段提出、斗争目标转变、动员军民。\n**口诀**：「口号一喊，目标就变了」。\n**对比**：提出于战略进攻阶段，不是内战爆发之初。\n**串联**：转入战略进攻 → 提出口号 → 斗争目标由争取和平转为推翻统治 → 鼓舞士气。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "「打倒蒋介石，解放全中国」口号的提出表明（ ）。\nA. 党的斗争目标由争取和平民主转变为以革命战争推翻国民党统治\nB. 党放弃了争取和平的努力\nC. 内战刚刚爆发\nD. 战略决战已经开始",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，口号起到动员作用，把军事进攻与建立新中国的目标直接联系起来。\nB 项表述不准确，口号标志目标转变，不是对和平努力的否定。\nC 项时间记错，口号提出于战略进攻阶段。\nD 项战略决战在其后。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 新民主主义三大经济纲领的内容是：没收封建阶级的土地归农民所有，没收官僚资本归新民主主义国家所有，保护民族工商业。\n- 三大纲领分别对应三个对象：封建土地所有制、官僚资本、民族工商业，处理方式各不相同。\n- 没收地主土地是为了解放农村生产力，没收官僚资本是为了掌握国民经济命脉，保护民族工商业是为了发展生产。\n- 三者合起来构成了新民主主义经济的完整框架，也是党的经济政策的集中表达。\n- 考纲以识记层级要求本条，作答时要点明三项内容与各自的处理对象。\n\n### 易错点\n- 把「保护民族工商业」记成「没收一切私人资本」：民族工商业是保护对象，官僚资本才是没收对象。\n- 把三大纲领的顺序或对象搞混。\n- 只记内容而不答三项各自的依据与作用。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**口诀**：三大经济纲领——「没收地主土地、没收官僚资本、保护民族工商业」。\n**记忆法**：前两个是「没收」，第三个是「保护」，对象不同，一个字之差就是得分点。\n**对比**：民族工商业是保护对象，官僚资本才是没收对象。\n**串联**：解放生产力 + 掌握经济命脉 + 发展生产 → 构成新民主主义经济框架。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "新民主主义三大经济纲领中，对民族工商业采取的政策是（ ）。\nA. 保护\nB. 没收\nC. 赎买\nD. 限制并逐步取消",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，三大纲领分别是没收封建阶级土地归农民、没收官僚资本归国家、保护民族工商业。\nB 项没收的对象是官僚资本，不是民族工商业。\nC 项赎买是后来对资本主义工商业改造的做法。\nD 项与「保护民族工商业」的纲领相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 新民主主义革命总路线，是党关于革命对象、动力、领导力量与性质的完整表述。\n- 革命的对象是帝国主义、封建主义与官僚资本主义；动力是工人、农民、城市小资产阶级与民族资产阶级。\n- 领导力量是无产阶级及其政党，这是新民主主义革命区别于旧民主主义革命的根本标志。\n- 革命的性质是资产阶级民主革命，但其前途是社会主义，因此称为新民主主义革命。\n- 考纲以识记层级要求本条，作答时要把对象、动力、领导与性质四项分开写清。\n\n### 易错点\n- 把民族资产阶级排除在动力之外：它是革命的动力之一，但不在领导地位。\n- 把新民主主义革命的性质说成社会主义革命：它在性质上属于资产阶级民主革命。\n- 漏掉领导力量这一关键，就无法说明新旧民主主义革命的区别。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**口诀**：总路线四要件——「对象、动力、领导、性质」。\n**记忆法**：对象三个（帝国主义、封建主义、官僚资本主义），动力四个（工人、农民、小资产阶级、民族资产阶级），领导是无产阶级。\n**对比**：性质是资产阶级民主革命，前途是社会主义，不是社会主义革命。\n**串联**：领导权决定性质 → 这是新旧民主主义革命的根本区别。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "新民主主义革命的领导力量是（ ）。\nA. 无产阶级及其政党\nB. 民族资产阶级\nC. 农民阶级\nD. 城市小资产阶级",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，领导权问题正是新民主主义革命区别于旧民主主义革命的根本标志。\nB 项民族资产阶级是革命的动力之一，但不在领导地位。\nC 项农民阶级是主力军，但不是领导力量。\nD 项城市小资产阶级是动力之一，不是领导力量。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 国统区的学生运动，是解放战争时期国民党统治区青年学生反对内战、反对独裁的爱国民主运动。\n- 运动以抗议暴行、要求和平民主为直接诉求，采取罢课、游行、请愿等方式，规模不断扩大。\n- 学生运动得到社会各界同情与支持，逐步与工人运动、市民斗争结合，形成反对当局的第二条战线。\n- 这条战线与人民解放军的军事斗争互相配合，使当局陷入全民包围之中。\n- 考纲以识记层级要求本条，作答时要点明运动性质与它作为第二条战线的地位。\n\n### 易错点\n- 把学生运动说成自发的校园事件：它具有明确的政治诉求，并与其他阶层的斗争结合。\n- 忽略「第二条战线」这一定位，就无法说明它的历史作用。\n- 把学生运动与解放区的土地改革混为一谈。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：国统区、青年学生、反内战反独裁、第二条战线。\n**口诀**：「第二条战线：笔杆子加街头」。\n**对比**：不是自发校园事件，它有明确政治诉求并与其他阶层斗争结合。\n**串联**：学生罢课游行 → 各界同情支持 → 与工运市民斗争结合 → 使当局陷入全民包围。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "国统区的学生运动被称为（ ）。\nA. 反对国民党统治的第二条战线\nB. 第三条道路\nC. 土地改革的前线\nD. 抗日救亡运动",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它与人民解放军的军事斗争互相配合，使当局陷入全民包围之中。\nB 项「第三条道路」指民主党派的中间路线主张，与学生运动的定位不同。\nC 项土地改革在解放区进行。\nD 项抗日救亡运动发生在抗日战争时期。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 《五四指示》是党在解放战争时期发布的关于土地问题的指示，它把减租减息政策改为没收地主土地分配给农民的政策。\n- 这一转变的依据是战争形势的变化：农民迫切要求土地，只有满足这一要求才能动员农民支持战争。\n- 指示规定的方式是有偿征购与无偿没收相结合，对不同的对象采取不同办法。\n- 指示的贯彻使解放区的土地改革进入新阶段，为解放战争提供了深厚的群众基础。\n- 考纲以识记层级要求本条，作答时要点明文件名称与它标志的政策转变。\n\n### 易错点\n- 把《五四指示》与《中国土地法大纲》混同：前者是指示，把政策由减租减息改为没收分配；后者是正式颁布的法令，规定更彻底。\n- 忽略这一政策转变的必要性（动员农民支持战争）。\n- 把指示说成减租减息政策的延续。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：《五四指示》、由减租减息改为没收地主土地分给农民。\n**口诀**：「五四指示：政策转向分地」。\n**对比**：与《中国土地法大纲》不同——前者是指示（政策转变），后者是法令（规定更彻底）。\n**串联**：战争需要农民支持 → 改变土地政策 → 土改进入新阶段 → 为战争提供群众基础。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "《五四指示》在土地政策上的转变是（ ）。\nA. 由减租减息改为没收地主土地分配给农民\nB. 由没收改为减租减息\nC. 由平均分配改为按劳动力分配\nD. 取消一切土地改革",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，转变的依据是战争形势的变化，只有满足农民的土地要求才能动员农民支持战争。\nB 项变化方向记反。\nC 项与指示内容不符。\nD 项与指示内容相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 《中国土地法大纲》是解放战争时期颁布的土地法令，明确规定废除封建性及半封建性剥削的土地制度。\n- 它规定按乡村全部人口统一平均分配土地，在土地数量上抽多补少，质量上抽肥补瘦。\n- 大纲还规定保护工商业者的财产及其合法经营，把土地改革与发展生产结合起来。\n- 它的颁布使土地改革有了统一的法令依据，推动解放区土改全面展开。\n- 考纲以识记层级要求本条，作答时要点明法令名称、核心规定与作用。\n\n### 易错点\n- 把大纲与《五四指示》混同：大纲是正式法令，规定废除封建土地制度，比指示更彻底。\n- 只记分配办法而漏掉「保护工商业」这一规定。\n- 忽略大纲使土改有了统一法令依据这一作用。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：《中国土地法大纲》、废除封建剥削土地制度、按人口平均分配、抽多补少抽肥补瘦、保护工商业。\n**口诀**：「大纲定法，指示定策」。\n**对比**：比《五四指示》更彻底，是正式法令。\n**串联**：废除封建土地制度 → 统一平均分配 → 保护工商业 → 土改全面展开。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "《中国土地法大纲》规定（ ）。\nA. 废除封建性及半封建性剥削的土地制度，按乡村全部人口统一平均分配土地\nB. 保留地主土地所有制\nC. 只在地主自愿的前提下分配土地\nD. 取消土地改革以稳定秩序",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，大纲还规定抽多补少、抽肥补瘦，并保护工商业者的财产及其合法经营。\nB 项与大纲规定相反。\nC 项与大纲规定的统一平均分配不符。\nD 项与大纲的宗旨相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 土地改革的总路线是：依靠贫农，团结中农，有步骤地、有分别地消灭封建剥削制度，发展农业生产。\n- 依靠贫农是因为他们受剥削最深、革命要求最迫切；团结中农是为了不使自己孤立。\n- 「有步骤地、有分别地」是重要的策略要求：区分不同地区与不同对象，避免乱打乱杀。\n- 总路线的落脚点是发展农业生产，这说明土改不仅是政治任务，也是经济任务。\n- 考纲以识记层级要求本条，作答时要点明依靠谁、团结谁、消灭什么、为了什么。\n\n### 易错点\n- 漏掉「有步骤地、有分别地」这一限定，把总路线答成笼统的「消灭一切封建势力」。\n- 把团结中农写成依靠中农，混淆了两者的地位。\n- 忽略「发展农业生产」这一落脚点。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**口诀**：总路线——「依靠贫农、团结中农、有步骤有分别地消灭封建剥削、发展农业生产」。\n**记忆法**：四段对应四问：依靠谁、团结谁、消灭什么、为了什么。\n**对比**：依靠贫农与团结中农地位不同，不能写成「依靠中农」。\n**串联**：最后落在「发展农业生产」上，说明土改既是政治任务也是经济任务。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "土地改革总路线的落脚点是（ ）。\nA. 发展农业生产\nB. 消灭一切富裕农民\nC. 建立集体农庄\nD. 立即实行土地国有",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，总路线是依靠贫农、团结中农、有步骤有分别地消灭封建剥削制度、发展农业生产。\nB 项总路线团结中农，不是消灭富裕农民。\nC 项集体农庄不是土改总路线的内容。\nD 项总路线实行的是农民的土地所有制，不是土地国有。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 「五二〇」惨案是国民党当局在南京等地镇压学生爱国运动而制造的流血事件。\n- 事件起因于学生为反对内战、要求和平民主而举行请愿与游行，遭到暴力镇压，多人受伤被捕。\n- 惨案进一步暴露了当局的反动面目，激起全国各界更大的愤慨。\n- 此后国统区民主运动更加高涨，第二条战线的作用更加明显。\n- 考纲以识记层级要求本条，作答时要点明事件名称、性质与后果。\n\n### 易错点\n- 把「五二〇」惨案与校场口、下关惨案混同，三者的地点与对象不同。\n- 把事件说成学生与警察的偶发冲突：它是当局有组织的镇压。\n- 忽略事件与第二条战线之间的关系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：南京等地、镇压学生爱国运动、多人受伤被捕。\n**口诀**：「五二〇：镇压学生，激起全国」。\n**对比**：与校场口、下关惨案的地点与对象不同。\n**串联**：学生请愿 → 遭暴力镇压 → 暴露反动面目 → 民主运动更加高涨。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "「五二〇」惨案发生于（ ）。\nA. 南京等地镇压学生爱国运动的过程中\nB. 重庆庆祝政协成功的大会上\nC. 南京下关车站的请愿现场\nD. 台湾地区",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，事件起因于学生为反对内战、要求和平民主而请愿游行，此后国统区民主运动更加高涨。\nB 项该地点对应校场口惨案。\nC 项该地点对应下关惨案。\nD 项台湾地区对应的是二二八起义。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 台湾人民二二八起义，是台湾民众反对当局专制统治与贪腐行为的武装斗争。\n- 起义的起因是当局的横征暴敛与对民众的压制，起义爆发后迅速波及全岛。\n- 起义遭到当局的武力镇压，大批民众伤亡，但它表现了台湾人民争取民主与自治的意志。\n- 起义是全国民主运动的一部分，说明国民党统治的危机已遍及各地。\n- 考纲以识记层级要求本条，作答时要点明起义名称、起因与性质。\n\n### 易错点\n- 把起义说成地方性的治安事件：它是反对专制统治的民众武装斗争。\n- 把起义与国统区学生运动割裂：两者同属反对当局统治的民主运动。\n- 忽略起义被武力镇压这一结局。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：台湾、反对专制与贪腐、武装斗争、遭武力镇压。\n**口诀**：「二二八：全岛起来，全岛被压」。\n**对比**：不是地方治安事件，而是反对专制统治的民众武装斗争。\n**串联**：横征暴敛 → 起义波及全岛 → 被镇压 → 说明统治危机遍及各地。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "台湾人民二二八起义的起因是（ ）。\nA. 反对当局的专制统治与贪腐行为\nB. 要求台湾独立\nC. 反对土地改革\nD. 反对学生运动",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，起义爆发后迅速波及全岛，遭武力镇压，但表现了台湾人民争取民主与自治的意志。\nB 项与起义诉求不符，起义是全国民主运动的一部分。\nC 项与起因不符。\nD 项与起因不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 「三区革命」是新疆西北部三个地区的人民为反抗压迫、争取民主权利而开展的斗争。\n- 斗争以武装起义的方式展开，在区域内建立了政权机构，实行了有利于民众的政策。\n- 它打击了当地的专制统治，是解放战争时期少数民族地区人民斗争的重要组成部分。\n- 后来这部分力量汇入全国的人民解放事业，为新疆的和平解放准备了条件。\n- 考纲以识记层级要求本条，作答时要点明斗争名称、发生地区与性质。\n\n### 易错点\n- 把「三区革命」与其他地区的斗争混同，应注意它发生在新疆西北部三个地区。\n- 把它说成外来力量煽动的骚乱：它是当地人民反抗压迫的斗争。\n- 忽略它与新疆和平解放之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：新疆西北部三个地区、武装起义、建立政权机构。\n**口诀**：「三区革命在新疆」。\n**对比**：不是外来力量煽动的骚乱，而是当地人民反抗压迫的斗争。\n**串联**：反抗压迫 → 建立政权 → 汇入人民解放事业 → 为新疆和平解放准备条件。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "「三区革命」发生在（ ）。\nA. 新疆西北部三个地区\nB. 内蒙古地区\nC. 台湾地区\nD. 东北地区",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，斗争以武装起义方式展开，在区域内建立了政权机构，为新疆和平解放准备了条件。\nB 项内蒙古对应的是内蒙古自治政府。\nC 项台湾对应的是二二八起义。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p11/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 内蒙古自治政府是解放战争时期在内蒙古地区成立的民族区域自治政权。\n- 它的成立标志着内蒙古人民实现了民族解放与区域自治，是党的民族政策的重要实践。\n- 自治政府在区域内推行民主改革，发展生产，支援人民解放战争。\n- 它的成立为后来民族区域自治制度的实施提供了经验。\n- 考纲以识记层级要求本条，作答时要点明政权名称、性质与意义。\n\n### 易错点\n- 把内蒙古自治政府说成一般的地方行政机构：它是民族区域自治政权。\n- 忽略它与党的民族政策之间的联系。\n- 把它与其它解放区政权混同。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：内蒙古、民族区域自治政权、推行民主改革、支援解放战争。\n**口诀**：「民族区域自治的一次实践」。\n**对比**：不是一般地方行政机构，而是民族区域自治政权。\n**串联**：实现民族解放与区域自治 → 民主改革发展生产 → 为民族区域自治制度提供经验。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p11/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "内蒙古自治政府的性质是（ ）。\nA. 民族区域自治政权\nB. 一般的地方行政机构\nC. 独立的政治实体\nD. 军事指挥机构",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它的成立是党的民族政策的重要实践，为民族区域自治制度的实施提供了经验。\nB 项忽略了它的民族区域自治性质。\nC 项与事实不符，它是国家统一领导下的自治政权。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p12/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "### 要点梳理\n- 民主党派是解放战争时期代表民族资产阶级、城市小资产阶级及其知识分子利益的政治派别。\n- 它们主张反对独裁、争取民主，反对内战、要求和平，在国统区民主运动中发挥了重要作用。\n- 它们曾幻想走「中间路线」，即在国共两党之外寻求第三条道路，但这一幻想在实践中破灭。\n- 随着形势发展，民主党派逐步接受中国共产党的领导，参加新政协，形成了多党合作的政治格局。\n- 考纲以识记层级要求本条，作答时要点明民主党派的性质、主张与它们的转变。\n\n### 易错点\n- 把民主党派说成国民党的附庸：它们反对独裁，要求民主。\n- 把「中间路线」说成可以走通的道路：它在实践中破灭。\n- 忽略民主党派最终接受共产党领导这一历史结论。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p12/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "**关键词**：民族资产阶级与城市小资产阶级及其知识分子、反对独裁争取民主、中间路线破灭。\n**口诀**：「中间路线走不通，最后走到新政协」。\n**对比**：民主党派不是国民党的附庸，它们反对独裁、要求民主。\n**串联**：主张民主和平 → 幻想中间路线 → 实践中破灭 → 接受共产党领导、参加新政协。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p12/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L448"
+      ],
+      "text_md": "民主党派曾主张的「中间路线」（ ）。\nA. 在实践中破灭，民主党派最终接受中国共产党的领导\nB. 最终成为国家的基本制度\nC. 得到国民党当局的支持\nD. 是武装斗争的一种形式",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，民主党派逐步参加新政协，形成了多党合作的政治格局。\nB 项与历史结论不符。\nC 项与事实不符，当局压制民主党派。\nD 项「中间路线」是政治主张，不是武装斗争。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p13/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L452"
+      ],
+      "text_md": "### 要点梳理\n- 人民解放军的战略进攻，是指解放军由战略防御转入主动进攻，把战争引向国民党统治区域。\n- 进攻的标志是主力部队挺进中原，在国统区建立新的根据地，打乱对方的军事部署。\n- 战略进攻的意义在于：改变了战争的攻守态势，减轻了解放区的压力，使战争在国统区进行。\n- 它与国统区民主运动相配合，形成军事与政治两条战线相互呼应的局面。\n- 领会本条要抓住「攻守态势的改变」这一关键，而不只是记住进军方向。\n\n### 易错点\n- 把战略进攻与战略决战混同：前者是转入进攻，后者是三大战役式的决战，阶段不同。\n- 把战略进攻说成被动应战：它是主动的进攻行动。\n- 忽略它与国统区民主运动的配合关系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p13/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L452"
+      ],
+      "text_md": "**关键词**：由防御转入进攻、主力挺进中原、战争引向国统区。\n**口诀**：「守转攻，战火烧到对方家里」。\n**对比**：与战略决战不同：进攻是攻守态势的转变，决战是双方主力的总较量。\n**串联**：挺进中原 → 减轻解放区压力 → 与国统区民主运动配合 → 两条战线呼应。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p13/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L452"
+      ],
+      "text_md": "解放战争时期，人民解放军由战略防御转入战略进攻，改变了战争的态势。请简述人民解放军的战略进攻及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）战略进攻指解放军由战略防御转入主动进攻，把战争引向国民党统治区域。\n（2）进攻的标志是主力部队挺进中原，在国统区建立新的根据地，打乱对方的军事部署。\n（3）意义之一：改变了战争的攻守态势，减轻了解放区的压力，使战争在国统区进行。\n（4）意义之二：与国统区民主运动相配合，形成军事与政治两条战线相互呼应的局面。\n（5）需要注意：战略进攻与后来的战略决战是不同阶段，前者是攻守态势的转变，后者是双方主力的总较量。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s2-p14/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s2-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L452"
+      ],
+      "text_md": "### 要点梳理\n- 政治危机方面：国民党当局坚持独裁与内战，镇压民主运动，制造流血惨案，在政治上日益孤立。\n- 经济危机方面：为支持战争而滥发纸币，造成物价飞涨、货币贬值，民族工商业凋敝，农村经济破产。\n- 军事危机方面：战争消耗巨大而战局日益不利，兵力与人心同时流失。\n- 三者互相加剧：经济危机使民众生活恶化，从而推动民主运动高涨；政治孤立又削弱其统治基础。\n- 结果便是国民党政府处在全民的包围之中，最终走向崩溃。\n\n### 易错点\n- 只答经济危机而漏掉政治与军事方面，答案就不完整。\n- 把危机说成单一政策失误的结果：它是坚持独裁与内战这一根本立场的必然结果。\n- 忽略三方面危机之间的相互加剧关系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s2-p14/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s2-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L452"
+      ],
+      "text_md": "**口诀**：危机三方面——「政治孤立、经济崩溃、军事失利」。\n**记忆法**：经济危机记三件事——滥发纸币、物价飞涨、工商凋敝。\n**对比**：不是单一政策失误，而是坚持独裁与内战这一根本立场的必然结果。\n**串联**：三方面互相加剧 → 当局处在全民包围之中 → 最终走向崩溃。"
+    },
+    {
+      "block_id": "15043-ch07-s2-p14/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s2-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L452"
+      ],
+      "text_md": "解放战争时期，国民党统治区在政治、经济、军事等方面陷入全面危机，其统治基础不断瓦解。请简述国民党统治的政治经济危机。",
+      "question_type": "简答题",
+      "answer_md": "（1）政治危机：当局坚持独裁与内战，镇压民主运动，制造流血惨案，在政治上日益孤立。\n（2）经济危机：为支持战争而滥发纸币，造成物价飞涨、货币贬值，民族工商业凋敝，农村经济破产。\n（3）军事危机：战争消耗巨大而战局日益不利，兵力与人心同时流失。\n（4）三者互相加剧：经济危机使民众生活恶化，从而推动民主运动高涨；政治孤立又削弱其统治基础。\n（5）结果便是国民党政府处在全民的包围之中，最终走向崩溃。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "### 要点梳理\n- 战略决战是解放战争后期人民解放军与国民党军主力进行的大规模决战，由三次大规模战役组成。\n- 三大战役的胜利使国民党军的主力部队基本被歼灭，从根本上改变了双方的力量对比。\n- 决战之所以能够取胜，一是战略时机选择得当，二是人民支援有力，三是军事指挥正确。\n- 决战的胜利为解放军渡江南进、解放全中国奠定了决定性的基础。\n- 考纲以识记层级要求本条，作答时要点明战略决战的含义与它的决定性作用。\n\n### 易错点\n- 把战略决战与战略进攻混同：决战是双方主力的总较量，进攻是此前攻守态势的转变。\n- 把决战的胜利说成战争的结束：此后还有渡江作战与向全国进军。\n- 忽略人民支援在决战胜利中的作用。\n"
+    },
+    {
+      "block_id": "15043-ch07-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "**关键词**：三大战役、歼灭主力、改变力量对比、为渡江奠基。\n**口诀**：「决战三仗，主力打完」。\n**对比**：决战与战略进攻阶段不同；决战胜利也不等于战争结束。\n**串联**：时机得当 + 人民支援 + 指挥正确 → 歼灭主力 → 为解放全中国奠定基础。"
+    },
+    {
+      "block_id": "15043-ch07-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "战略决战的历史作用是（ ）。\nA. 使国民党军主力部队基本被歼灭，从根本上改变了双方力量对比\nB. 标志解放战争结束\nC. 建立了新中国\nD. 结束了抗日战争",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，决战为渡江南进、解放全中国奠定了决定性基础，其胜利还得益于人民支援与正确指挥。\nB 项决战胜利后还有渡江作战与向全国进军。\nC 项新中国在此后成立。\nD 项抗日战争在更早时期已经结束。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "### 要点梳理\n- 《将革命进行到底》是党在战略决战取得胜利、革命即将在全国胜利的形势下发表的重要文献。\n- 它的核心主张是：必须把革命进行到底，不能半途而废，不能接受以妥协为条件的「和平」。\n- 文献针对的是当时出现的「划江而治」等主张，指出其本质是保存反动势力。\n- 它统一了全党与人民的思想，为渡江作战与向全国进军作了政治动员。\n- 考纲以识记层级要求本条，作答时要点明文献名称与它的核心主张。\n\n### 易错点\n- 把文献说成一般的新年致辞：它有明确的政治指向，即反对半途而废。\n- 忽略它针对「划江而治」主张这一背景。\n- 把它与《论人民民主专政》混同：后者回答的是国家性质问题。\n"
+    },
+    {
+      "block_id": "15043-ch07-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "**关键词**：《将革命进行到底》、不能半途而废、针对「划江而治」。\n**口诀**：「革命不做半截子」。\n**对比**：它是政治文献，不是一般新年致辞；与《论人民民主专政》分工不同。\n**串联**：决战胜利 → 出现妥协主张 → 发表文献 → 为渡江与向全国进军作动员。"
+    },
+    {
+      "block_id": "15043-ch07-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "《将革命进行到底》的核心主张是（ ）。\nA. 必须把革命进行到底，不能半途而废，不能接受以妥协为条件的「和平」\nB. 与国民党划江而治\nC. 立即停止军事行动\nD. 先发展经济再谈建国",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，文献针对「划江而治」等主张，指出其本质是保存反动势力。\nB 项与文献主张相反，文献正是针对这一主张。\nC 项与文献主张相反。\nD 项与文献主旨不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "### 要点梳理\n- 国共北平谈判是战略决战之后国共双方在北平进行的和平谈判。\n- 谈判中中国共产党提出了以八项条件为基础的和平方案，表明愿意在原则得到承认的前提下实现和平。\n- 谈判达成的协议草案被国民党方面拒绝，和平努力最终未能实现。\n- 谈判的意义在于：它使全国人民看清了谁在真正争取和平，为渡江作战取得了政治上的主动。\n- 考纲以识记层级要求本条，作答时要点明谈判名称、内容与结果。\n\n### 易错点\n- 把北平谈判与重庆谈判混同：两者时间、背景与结果都不同。\n- 把谈判失败说成共产党的责任：协议草案被国民党方面拒绝。\n- 忽略谈判在政治上的意义。\n"
+    },
+    {
+      "block_id": "15043-ch07-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "**关键词**：北平谈判、八项条件为基础、协议被拒、政治主动。\n**口诀**：「谈过了，才更好打」。\n**对比**：与重庆谈判时间、背景、结果都不同。\n**串联**：提出和平方案 → 被国民党方面拒绝 → 全国人民看清谁在争取和平 → 取得政治主动。"
+    },
+    {
+      "block_id": "15043-ch07-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "国共北平谈判的结果是（ ）。\nA. 达成的协议草案被国民党方面拒绝，和平努力未能实现\nB. 双方达成协议并共同执行\nC. 共产党拒绝了国民党的全部条件\nD. 谈判未及举行即告终止",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，谈判使全国人民看清谁在真正争取和平，为渡江作战取得了政治上的主动。\nB 项与事实不符。\nC 项与事实不符，协议草案是被国民党方面拒绝的。\nD 项与事实不符，谈判确实举行过。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "### 要点梳理\n- 人民解放军占领南京，标志着国民党统治的覆灭，是解放战争取得基本胜利的标志性事件。\n- 占领南京后，解放军继续向全国进军，追歼残余势力，解放广大国土。\n- 进军过程采取军事打击与政治争取相结合的方式，促成多批国民党军起义与地方和平解放。\n- 到此后不久，全国大陆绝大部分地区获得解放，为建立新中国创造了条件。\n- 考纲以识记层级要求本条，作答时要点明事件名称、标志意义与后续进军。\n\n### 易错点\n- 把占领南京说成全国解放的完成：此后还有向全国进军的过程。\n- 忽略军事打击与政治争取相结合这一方式。\n- 把占领南京与新中国成立混同，两者是先后关系。\n"
+    },
+    {
+      "block_id": "15043-ch07-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "**关键词**：占领南京、国民党统治覆灭、继续向全国进军。\n**口诀**：「南京一占，统治完结」。\n**对比**：占领南京不等于全国解放完成，此后还有进军过程。\n**串联**：占领南京 → 军事打击与政治争取结合 → 多批起义与和平解放 → 为建国创造条件。"
+    },
+    {
+      "block_id": "15043-ch07-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L457"
+      ],
+      "text_md": "人民解放军占领南京标志着（ ）。\nA. 国民党统治的覆灭\nB. 全国解放的完成\nC. 新中国的成立\nD. 抗日战争的胜利",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，此后解放军继续向全国进军，采取军事打击与政治争取相结合的方式。\nB 项占领南京后还有向全国进军的过程。\nC 项新中国成立在此后。\nD 项抗日战争在此前已经胜利。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L459"
+      ],
+      "text_md": "### 要点梳理\n- 中共七届二中全会是在革命即将取得全国胜利的前夕召开的重要会议，中心是讨论党的工作重心转移。\n- 会议决定把党的工作重心由乡村转移到城市，提出必须学会管理城市与恢复发展生产。\n- 会议规定了党在全国胜利后在政治、经济、外交等方面的基本政策，明确了由农业国转变为工业国、由新民主主义社会转变为社会主义社会的总任务。\n- 会议还告诫全党务必保持谦虚谨慎、不骄不躁的作风，务必保持艰苦奋斗的作风，警惕资产阶级思想的侵蚀。\n- 这次会议为迎接全国胜利与建立新中国作了政治上思想上的准备。\n\n### 易错点\n- 只记「工作重心转移」而漏掉「两个务必」这一重要内容。\n- 把工作重心转移的方向记反：是由乡村转移到城市。\n- 忽略会议对全国胜利后基本政策的规定。\n"
+    },
+    {
+      "block_id": "15043-ch07-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L459"
+      ],
+      "text_md": "**口诀**：二中全会三件事——「重心转城市、定全国政策、两个务必」。\n**记忆法**：「两个务必」＝谦虚谨慎不骄不躁 + 艰苦奋斗。\n**对比**：重心转移方向是「由乡村到城市」，不要记反。\n**串联**：革命即将全国胜利 → 重心转向城市 → 规定基本政策 → 为建国作政治思想准备。"
+    },
+    {
+      "block_id": "15043-ch07-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L459"
+      ],
+      "text_md": "在全国胜利的前夕，中国共产党召开了七届二中全会。请简述中共七届二中全会的主要内容。",
+      "question_type": "简答题",
+      "answer_md": "（1）决定把党的工作重心由乡村转移到城市，提出必须学会管理城市与恢复发展生产。\n（2）规定了党在全国胜利后在政治、经济、外交等方面的基本政策。\n（3）明确了由农业国转变为工业国、由新民主主义社会转变为社会主义社会的总任务。\n（4）告诫全党务必保持谦虚谨慎、不骄不躁的作风，务必保持艰苦奋斗的作风，警惕资产阶级思想的侵蚀。\n（5）这次会议为迎接全国胜利与建立新中国作了政治上思想上的准备。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch07-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch07-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L459"
+      ],
+      "text_md": "### 要点梳理\n- 中国革命统一战线中存在两个联盟：第一个是工人阶级同农民、城市小资产阶级等劳动人民的联盟，这是基础性的联盟。\n- 第二个是工人阶级同民族资产阶级等非劳动人民的联盟，这是辅助性的联盟。\n- 两个联盟的地位不同：第一个是主要的、基本的，它决定了统一战线的性质与方向；第二个是必要的、辅助的，它扩大了团结范围。\n- 正确处理两个联盟的关系，关键在于坚持工人阶级的领导权，对第二个联盟实行又团结又斗争的方针。\n- 两个联盟的存在，是中国革命统一战线的显著特点，也是革命取得胜利的重要条件。\n- 理解本条要把两个联盟的对象、地位与处理方针分开作答。\n\n### 易错点\n- 把两个联盟的地位说成并列：第一个是基础，第二个是辅助，不能等同。\n- 把民族资产阶级排除在统一战线之外：它属于第二个联盟的对象。\n- 只答联盟的构成而漏掉坚持领导权与又团结又斗争这一处理方针。\n"
+    },
+    {
+      "block_id": "15043-ch07-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch07-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L459"
+      ],
+      "text_md": "**口诀**：两个联盟——「劳动人民联盟（基础）+ 与民族资产阶级的联盟（辅助）」。\n**记忆法**：第一个联盟是主要的，第二个是必要的辅助，地位不同不能并列。\n**对比**：民族资产阶级属于第二个联盟，不是统一战线的领导力量。\n**串联**：坚持工人阶级领导权 → 对第二个联盟又团结又斗争 → 两个联盟是中国革命的显著特点。"
+    },
+    {
+      "block_id": "15043-ch07-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch07-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L459"
+      ],
+      "text_md": "中国革命统一战线内部存在着两个性质不同的联盟，正确处理它们的关系是革命取得胜利的重要条件。试述中国革命统一战线中存在的两个联盟及其相互关系。",
+      "question_type": "论述题",
+      "answer_md": "（1）第一个联盟是工人阶级同农民、城市小资产阶级等劳动人民的联盟，这是基础性的联盟。\n（2）第二个联盟是工人阶级同民族资产阶级等非劳动人民的联盟，这是辅助性的联盟。\n（3）两个联盟的地位不同：第一个是主要的、基本的，它决定了统一战线的性质与方向；第二个是必要的、辅助的，它扩大了团结范围。\n（4）正确处理两个联盟的关系，关键在于坚持工人阶级的领导权。\n（5）对第二个联盟实行又团结又斗争的方针：既团结其抗日反蒋、赞成民主的一面，又斗争其动摇妥协的一面。\n（6）两个联盟的存在是中国革命统一战线的显著特点，也是革命取得胜利的重要条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "### 要点梳理\n- 《中华人民共和国土地改革法》是新中国成立初期颁布的土地法令，它规定了土地改革的基本政策。\n- 法令的总方针是废除地主阶级封建剥削的土地所有制，实行农民的土地所有制。\n- 与战争时期的做法相比，它在政策上作了调整：由没收地主全部财产改为只没收其土地与部分生产资料，保留其自耕部分。\n- 这一调整的目的是减少改革阻力、稳定社会秩序，有利于恢复和发展农业生产。\n- 考纲以识记层级要求本条，作答时要点明法令名称、核心规定与政策调整。\n\n### 易错点\n- 把土地改革法说成废除土地私有制：它废除的是封建剥削的土地所有制，实行的是农民的土地所有制。\n- 忽略它同战争时期土地政策在做法上的区别。\n- 只记「分地」而漏掉保存富农经济、稳定秩序这一政策意图。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "**关键词**：《土地改革法》、废除封建剥削土地所有制、实行农民土地所有制。\n**口诀**：「废的是封建剥削，立的是农民所有」。\n**对比**：与战争时期做法不同——由没收全部财产改为只没收土地与部分生产资料，保留自耕部分。\n**串联**：政策调整 → 减少阻力稳定秩序 → 有利于恢复发展农业生产。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "《中华人民共和国土地改革法》规定的总方针是（ ）。\nA. 废除地主阶级封建剥削的土地所有制，实行农民的土地所有制\nB. 实行土地国有化\nC. 建立集体农庄\nD. 保留地主土地所有制",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，与战争时期相比，法令在做法上作了调整：只没收地主土地与部分生产资料，保留其自耕部分，以减少阻力、稳定秩序。\nB 项与法令规定不符。\nC 项集体农庄不是土地改革法的内容。\nD 项与法令宗旨相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "### 要点梳理\n- 《中华人民共和国婚姻法》是新中国成立初期颁布的重要法律，它确立了新民主主义婚姻家庭制度。\n- 它的核心原则是废除包办强迫、男尊女卑的封建婚姻制度，实行男女婚姻自由、一夫一妻、男女权利平等。\n- 法律还规定保护妇女与子女的合法权益，禁止重婚、纳妾、童养媳等旧习俗。\n- 它的颁布与贯彻，使广大妇女从封建婚姻关系中解放出来，对社会风气与家庭关系产生了深远影响。\n- 考纲以识记层级要求本条，作答时要点明法律名称、核心原则与意义。\n\n### 易错点\n- 把婚姻法说成一般民事规定：它是废除封建婚姻制度的重大社会改革法令。\n- 只记「婚姻自由」而漏掉一夫一妻、男女平等与保护妇女儿童权益等原则。\n- 忽略它对妇女解放的意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "**关键词**：婚姻自由、一夫一妻、男女权利平等、保护妇女儿童。\n**口诀**：「废包办、废男尊，立自由、立平等」。\n**对比**：它不是普通民事规定，而是废除封建婚姻制度的重大社会改革法令。\n**串联**：颁布与贯彻 → 妇女从封建婚姻关系中解放 → 社会风气与家庭关系深刻变化。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "《中华人民共和国婚姻法》的核心原则是（ ）。\nA. 废除包办强迫、男尊女卑的封建婚姻制度，实行婚姻自由、一夫一妻、男女权利平等\nB. 维护传统家长制\nC. 允许重婚纳妾\nD. 只规定财产分割",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，法律还规定保护妇女与子女的合法权益，禁止重婚、纳妾、童养媳等旧习俗。\nB 项与法律宗旨相反。\nC 项与法律禁止性规定相反。\nD 项缩小了法律的内容范围。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "### 要点梳理\n- 中共七届三中全会是新中国成立初期召开的重要会议，中心是确定国民经济恢复时期的任务与策略。\n- 会议提出以恢复和发展国民经济为中心任务，并把争取国家财政经济状况的基本好转作为目标。\n- 会议强调不要四面出击，要集中力量解决主要问题，团结一切可以团结的力量。\n- 会议确定的策略方针为恢复国民经济创造了条件，是新中国成立初期各项工作的重要指导。\n- 考纲以识记层级要求本条，作答时要点明会议名称、中心任务与策略方针。\n\n### 易错点\n- 把三中全会与七届二中全会混同：后者解决工作重心转移，前者确定恢复国民经济的任务与策略。\n- 只记会议名称而答不出「不要四面出击」这一策略方针。\n- 忽略会议确定的目标（争取财政经济状况基本好转）。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "**关键词**：七届三中全会、恢复国民经济为中心、争取财政经济状况基本好转、不要四面出击。\n**口诀**：「三中全会抓经济，别四面出击」。\n**对比**：与七届二中全会不同——后者解决工作重心转移，前者定恢复经济的任务与策略。\n**串联**：确定中心任务 → 集中力量解决主要问题 → 团结一切可以团结的力量 → 为恢复经济创造条件。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "中共七届三中全会确定的中心任务是（ ）。\nA. 恢复和发展国民经济，争取国家财政经济状况的基本好转\nB. 立即开展社会主义改造\nC. 发动文化大革命\nD. 实行改革开放",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议还强调不要四面出击，要集中力量解决主要问题，团结一切可以团结的力量。\nB 项社会主义改造在此后逐步展开。\nC 项与文化大革命的发动时间相距很远。\nD 项改革开放在此后。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "### 要点梳理\n- 「三反」运动是在党政机关工作人员中开展的运动，内容是反贪污、反浪费、反官僚主义。\n- 运动的背景是新中国成立初期部分工作人员出现贪污腐化与铺张浪费现象，影响了新政权的形象与工作。\n- 运动的做法是发动群众检举揭发，同时依法处理严重违法者，并把思想教育与制度建设结合起来。\n- 运动纯洁了干部队伍，挽救了一批人，也教育了全党，为后来的廉政建设积累了经验。\n- 考纲以识记层级要求本条，作答时要点明运动名称、内容与它的范围。\n\n### 易错点\n- 把「三反」与「五反」混同：「三反」在党政机关内部，「五反」针对不法资本家。\n- 只记「反贪污」而漏掉反浪费、反官僚主义两项。\n- 忽略运动的教育与挽救作用。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "**关键词**：党政机关内部、反贪污、反浪费、反官僚主义。\n**口诀**：「三反在党内」。\n**对比**：「三反」对象是党政机关工作人员，「五反」对象是不法资本家。\n**串联**：贪污腐化现象 → 发动群众检举 → 依法处理严重违法者 → 纯洁队伍、教育全党。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "「三反」运动的内容是（ ）。\nA. 反贪污、反浪费、反官僚主义\nB. 反行贿、反偷税漏税、反盗骗国家财产\nC. 反贪污、反浪费、反偷工减料\nD. 反官僚主义、反宗派主义、反主观主义",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，运动在党政机关工作人员中开展，纯洁了干部队伍，也教育了全党。\nB 项这些属于「五反」的内容。\nC 项混用了「三反」与「五反」的内容。\nD 项这些是整风运动反对的对象。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "### 要点梳理\n- 「五反」运动是在资本主义工商业者中开展的运动，内容是反行贿、反偷税漏税、反盗骗国家财产、反偷工减料、反盗窃国家经济情报。\n- 运动的背景是部分不法资本家在经营中采取违法手段牟利，扰乱经济秩序，腐蚀干部。\n- 运动的做法是区别对待：对大多数守法经营者以教育为主，只对严重违法者依法处理。\n- 运动打击了不法行为，巩固了国营经济的领导地位，也为后来的资本主义工商业改造创造了条件。\n- 考纲以识记层级要求本条，作答时要点明运动名称、五个方面与运动范围。\n\n### 易错点\n- 把「五反」的对象说成党政机关干部：它的对象是违法的资本主义工商业者。\n- 把「五反」的五个方面记漏或记错。\n- 忽略区别对待这一做法，把运动说成打击一切工商业者。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "**关键词**：资本主义工商业者、反行贿、反偷税漏税、反盗骗国家财产、反偷工减料、反盗窃国家经济情报。\n**口诀**：「五反在工商」。\n**对比**：对象是违法资本家，不是党政干部；做法是区别对待，只依法处理严重违法者。\n**串联**：打击不法行为 → 巩固国营经济领导地位 → 为资本主义工商业改造创造条件。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L496"
+      ],
+      "text_md": "「五反」运动的对象是（ ）。\nA. 违法的资本主义工商业者\nB. 党政机关工作人员\nC. 农村地主阶级\nD. 少数民族地区",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，运动内容是反行贿、反偷税漏税、反盗骗国家财产、反偷工减料、反盗窃国家经济情报，做法是区别对待。\nB 项这是「三反」的对象。\nC 项土地改革针对地主阶级，与「五反」不同。\nD 项与「五反」的对象无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "### 要点梳理\n- 西藏和平解放是在新中国成立后，通过谈判方式实现西藏回到祖国大家庭的过程。\n- 解放的方式是和平谈判：中央人民政府与西藏地方政府的代表签订协议，西藏回到祖国大家庭。\n- 和平解放的意义首先在于实现了祖国大陆的统一，结束了西藏长期与中央关系不正常的状态。\n- 其次，它为西藏的社会进步与各族人民的团结创造了条件，也为后来西藏的民主改革奠定了基础。\n- 领会本条要抓住「和平方式」与「祖国大陆统一」这两层。\n\n### 易错点\n- 把西藏和平解放说成武力占领：它是通过谈判协议实现的。\n- 把和平解放与民主改革混同：解放在前，民主改革在此后。\n- 只记时间而答不出它对祖国统一的意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "**关键词**：和平谈判、签订协议、祖国大陆统一、为民主改革奠基。\n**口诀**：「谈回来的，不是打回来的」。\n**对比**：和平解放在前，民主改革在此后，两步不要并成一步。\n**串联**：和平谈判 → 西藏回到祖国大家庭 → 实现大陆统一 → 为社会发展与民族团结创造条件。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "西藏和平解放是新中国成立初期实现祖国大陆统一的重要事件。请简述西藏和平解放的方式及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）方式：通过和平谈判实现，中央人民政府与西藏地方政府的代表签订协议，西藏回到祖国大家庭。\n（2）意义之一：实现了祖国大陆的统一，结束了西藏长期与中央关系不正常的状态。\n（3）意义之二：为西藏的社会进步与各族人民的团结创造了条件。\n（4）意义之三：为后来西藏的民主改革奠定了基础。\n（5）需要注意：和平解放与民主改革是两个先后相继的阶段，不能混为一谈。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "### 要点梳理\n- 没收官僚资本，是新中国成立初期把原属官僚资产阶级的企业收归国家所有的措施。\n- 没收的对象是官僚资本，不包括民族资本；对民族工商业采取的是保护政策。\n- 没收的方式是接管企业、清理股权，把官僚资本的企业改造为国营经济。\n- 这一措施的意义在于：国家掌握了国民经济的命脉，为恢复国民经济与后来的社会主义改造奠定了物质基础。\n- 领会本条要把没收对象与没收后的作用分开作答。\n\n### 易错点\n- 把没收官僚资本说成没收一切私人资本：民族资本不在没收之列。\n- 只记措施而答不出它使国家掌握经济命脉这一意义。\n- 把没收官僚资本与对资本主义工商业的改造混为一谈，后者是后来的事。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "**关键词**：没收官僚资本、不含民族资本、国家掌握经济命脉。\n**口诀**：「没收官僚，保护民族」。\n**对比**：民族资本不在没收之列；与后来的资本主义工商业改造也不是一回事。\n**串联**：接管企业清理股权 → 改造为国营经济 → 掌握经济命脉 → 为恢复经济与改造奠定物质基础。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "新中国成立初期，国家采取了没收官僚资本的措施。请简述没收官僚资本的对象、方式及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）对象：原属官僚资产阶级的企业，不包括民族资本；对民族工商业采取的是保护政策。\n（2）方式：接管企业、清理股权，把官僚资本的企业改造为国营经济。\n（3）意义之一：国家掌握了国民经济的命脉。\n（4）意义之二：为恢复国民经济与后来的社会主义改造奠定了物质基础。\n（5）需要注意：没收官僚资本与对资本主义工商业的社会主义改造是不同阶段的两件事。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "### 要点梳理\n- 独立自主和平外交的初步开展，指新中国成立初期确立的外交方针与实践。\n- 基本方针是「另起炉灶」「打扫干净屋子再请客」「一边倒」：不承认旧的外交关系，清理帝国主义在华特权，与社会主义国家建立外交关系。\n- 实践成果包括与一批国家建立外交关系，提出并倡导和平共处五项原则，参加重要国际会议。\n- 这些努力打破了外部封锁，为国内建设争取了有利的国际环境，也提高了新中国的国际地位。\n- 领会本条要把方针与实践成效分开说明。\n\n### 易错点\n- 把「打扫干净屋子再请客」理解成先建交后清理：它是先清理旧的特权与关系，再谈建交。\n- 只答方针而漏掉和平共处五项原则等实践成果。\n- 忽略这些努力对国内建设的保障作用。\n"
+    },
+    {
+      "block_id": "15043-ch08-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "**口诀**：三大方针——「另起炉灶、打扫干净屋子再请客、一边倒」。\n**记忆法**：实践成果记三项——建交一批国家、和平共处五项原则、参加重要国际会议。\n**对比**：「打扫干净屋子再请客」是先清理旧特权与关系，再谈建交。\n**串联**：确立方针 → 打破封锁 → 争取有利国际环境 → 提高新中国国际地位。"
+    },
+    {
+      "block_id": "15043-ch08-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L498"
+      ],
+      "text_md": "新中国成立初期，我国确立了独立自主的和平外交方针。请简述独立自主和平外交的初步开展及其成果。",
+      "question_type": "简答题",
+      "answer_md": "（1）基本方针是「另起炉灶」「打扫干净屋子再请客」「一边倒」：不承认旧的外交关系，清理帝国主义在华特权，与社会主义国家建立外交关系。\n（2）实践成果之一是同一批国家建立外交关系。\n（3）实践成果之二是提出并倡导和平共处五项原则。\n（4）实践成果之三是参加重要国际会议，在国际事务中表明立场。\n（5）这些努力打破了外部封锁，为国内建设争取了有利的国际环境，也提高了新中国的国际地位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 新民主主义社会的建立，指新中国成立后建立起来的社会形态，它既不是资本主义社会，也还不是社会主义社会。\n- 在经济上，它包含国营经济、合作社经济、个体经济、私人资本主义经济与国家资本主义经济五种成分。\n- 在政治上，它实行工人阶级领导、以工农联盟为基础的人民民主专政。\n- 它的基本特征是过渡性：既存在社会主义因素并居于领导地位，又保留着多种经济成分。\n- 考纲以识记层级要求本条，作答时要点明它的性质与主要经济成分。\n\n### 易错点\n- 把新民主主义社会等同于社会主义社会：它是过渡性的社会形态。\n- 把五种经济成分记漏或把国营经济的领导地位说成可有可无。\n- 忽略它的过渡性这一基本特征。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**关键词**：过渡性社会形态、五种经济成分、工人阶级领导的人民民主专政。\n**口诀**：「五成分：国营、合作、个体、私人资本、国家资本」。\n**对比**：它既不是资本主义社会，也还不是社会主义社会。\n**串联**：社会主义因素居领导地位 + 多种经济成分并存 → 基本特征是过渡性。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "新民主主义社会的基本特征是（ ）。\nA. 过渡性：社会主义因素居领导地位，同时保留多种经济成分\nB. 完全的社会主义社会\nC. 典型的资本主义社会\nD. 封建社会的延续",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它在经济上包含国营、合作社、个体、私人资本主义与国家资本主义五种成分。\nB 项与事实不符，它还不是社会主义社会。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 过渡时期总路线的内容是：在一个相当长的时期内，逐步实现国家的社会主义工业化，并逐步实现国家对农业、手工业和资本主义工商业的社会主义改造。\n- 这条总路线简称为「一化三改」：一化指工业化，三改指对三个方面的社会主义改造。\n- 工业化与改造是相互促进的关系：工业化提供物质基础，改造为工业化创造社会条件。\n- 总路线是指导过渡时期各项工作的总方针，它把发展生产力与变革生产关系统一起来。\n- 考纲以识记层级要求本条，作答时要点明内容与「一化三改」的简称。\n\n### 易错点\n- 把总路线只记成「三改」而漏掉工业化，或只记工业化而漏掉三改。\n- 把「相当长的时期」说成短期完成：总路线强调的是逐步实现。\n- 忽略工业化与改造之间的相互促进关系。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**口诀**：总路线＝「一化三改」：一化是工业化，三改是农业、手工业、资本主义工商业的改造。\n**记忆法**：「逐步实现」是关键，不是短期突击。\n**对比**：不能只记三改而漏掉工业化。\n**串联**：工业化提供物质基础 + 改造创造社会条件 → 发展生产力与变革生产关系统一。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "过渡时期总路线简称为（ ）。\nA. 一化三改\nB. 两步走\nC. 四个现代化\nD. 三个主体、三个补充",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，一化指社会主义工业化，三改指对农业、手工业和资本主义工商业的社会主义改造。\nB 项「两步走」不是这条总路线的简称。\nC 项「四个现代化」是建设目标，不是过渡时期总路线。\nD 项这是关于经济体制的设想。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 《关于农业合作化问题》是毛泽东就农业合作化问题所作的报告，它系统阐述了农业合作化的方针与步骤。\n- 报告论述了农业合作化与社会主义工业化的关系，指出没有农业合作化，工业化就缺乏支撑。\n- 报告强调要相信农民走社会主义道路的积极性，同时提出要遵循自愿互利、典型示范、国家帮助的原则。\n- 报告的发表推动了农业合作化运动的迅速发展。\n- 考纲以识记层级要求本条，作答时要点明报告名称、主要论述与它推动的运动。\n\n### 易错点\n- 把报告说成对合作化的否定：它恰恰是推动合作化的文献。\n- 只记报告名称而答不出它论述的核心关系（合作化与工业化的关系）。\n- 忽略报告要求遵循的几项原则。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**关键词**：《关于农业合作化问题》、合作化与工业化的关系、自愿互利、典型示范、国家帮助。\n**口诀**：「没有合作化，工业化缺支撑」。\n**对比**：它是推动合作化的文献，不是否定合作化。\n**串联**：论述两者关系 → 强调相信农民积极性 → 要求遵循三项原则 → 推动合作化迅速发展。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "《关于农业合作化问题》论述的核心关系是（ ）。\nA. 农业合作化与社会主义工业化的关系\nB. 重工业与轻工业的关系\nC. 中央与地方的关系\nD. 汉族与少数民族的关系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，报告指出没有农业合作化，工业化就缺乏支撑，并提出自愿互利、典型示范、国家帮助的原则。\nB 项这属于《论十大关系》的内容。\nC 项同属《论十大关系》的内容。\nD 项同属《论十大关系》的内容。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 手工业合作化的组织形式，是从低级到高级逐步过渡的几种形式。\n- 低级形式是手工业生产小组，成员各自生产、统一购销；中级形式是手工业供销生产合作社，统一采购原料与推销产品。\n- 高级形式是手工业生产合作社，实行集中生产、按劳分配，生产资料归集体所有。\n- 采取逐步过渡的形式，是为了让手工业者逐步适应集体经营，避免生产中断。\n- 考纲以识记层级要求本条，作答时要点明三种组织形式及其由低到高的顺序。\n\n### 易错点\n- 把三种形式的顺序颠倒，或只记最高形式。\n- 把生产小组与生产合作社的分配方式混同：前者各自生产，后者按劳分配。\n- 忽略逐步过渡这一安排的用意。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**口诀**：手工业合作化三级跳——「生产小组 → 供销生产合作社 → 生产合作社」。\n**记忆法**：低级各自生产统一购销，高级集中生产按劳分配。\n**对比**：生产小组与生产合作社的分配方式不同，不要混同。\n**串联**：由低到高逐步过渡 → 手工业者逐步适应集体经营 → 避免生产中断。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "手工业合作化的高级组织形式是（ ）。\nA. 手工业生产合作社，实行集中生产、按劳分配\nB. 手工业生产小组\nC. 手工业供销生产合作社\nD. 手工业生产互助组",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，三级形式由低到高为生产小组、供销生产合作社、生产合作社，逐步过渡以避免生产中断。\nB 项这是低级形式，成员各自生产、统一购销。\nC 项这是中级形式，统一采购原料与推销产品。\nD 项这不是手工业合作化的组织形式名称。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 「四马分肥」是对资本主义工商业进行社会主义改造过程中，企业利润分配办法的形象说法。\n- 它指企业利润按四个方面分配：国家所得税、企业公积金、职工福利费、资方红利。\n- 这一办法在企业实行公私合营后使用，既保证了国家与职工的权益，也使资方获得合理的股息红利。\n- 它的作用是在改造过程中兼顾各方利益，减少阻力，使企业生产经营得以平稳过渡。\n- 考纲以识记层级要求本条，作答时要点明这一说法所指的四个方面。\n\n### 易错点\n- 把「四马分肥」说成土地分配办法：它针对的是企业利润分配。\n- 四个方面记漏或记错，特别是漏掉职工福利费。\n- 忽略它兼顾各方利益、减少改造阻力这一作用。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**口诀**：「四马分肥」四份——「国家所得税、企业公积金、职工福利费、资方红利」。\n**记忆法**：四份对应四方：国家、企业、职工、资方。\n**对比**：它讲企业利润分配，不是土地分配办法。\n**串联**：公私合营后使用 → 兼顾各方利益 → 减少改造阻力 → 生产经营平稳过渡。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "「四马分肥」指的是（ ）。\nA. 企业利润按国家所得税、企业公积金、职工福利费、资方红利四个方面分配\nB. 土地按四类人口分配\nC. 工厂按四个车间分设\nD. 税收按四级累进征收",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一办法在公私合营后使用，兼顾国家、企业、职工与资方四方利益，减少了改造阻力。\nB 项与土地分配无关：「四马分肥」针对的是企业利润，土地分配另有按人口平均分配等办法。\nC 项与企业管理无关：它规定的是利润如何分，而不是工厂内部如何组织生产。\nD 项与税收制度无关：国家所得税只是四份中的一份，不能说它就是税收制度本身。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 一届全国人大一次会议的召开，标志着人民代表大会制度在全国范围内建立起来。\n- 会议通过了《中华人民共和国宪法》，这是我国第一部社会主义类型的宪法。\n- 宪法确立了国家的根本政治制度与基本政策，规定了公民的基本权利与义务。\n- 会议还选举产生了国家领导机构，为国家各项事业的建设提供了制度保障。\n- 考纲以识记层级要求本条，作答时要点明会议名称、通过的宪法及其性质。\n\n### 易错点\n- 把这次会议与中国人民政治协商会议混同：前者建立了人民代表大会制度，后者代行过职权。\n- 把宪法性质说成新民主主义宪法：它是第一部社会主义类型的宪法。\n- 只记会议名称而答不出它的制度意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**关键词**：一届全国人大一次会议、人民代表大会制度建立、第一部社会主义类型宪法。\n**口诀**：「人大一次会议：立制度、立宪法」。\n**对比**：与中国人民政治协商会议不同——后者曾代行职权，前者建立了人大制度。\n**串联**：召开会议 → 通过宪法 → 确立根本政治制度 → 选举国家领导机构。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "一届全国人大一次会议通过的宪法是（ ）。\nA. 我国第一部社会主义类型的宪法\nB. 我国第一部新民主主义宪法\nC. 清政府颁布的宪法大纲\nD. 一部临时性的约法",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议还选举产生了国家领导机构，标志着人民代表大会制度在全国范围内建立起来。\nB 项性质表述不准确。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "### 要点梳理\n- 民族自治区相继成立，指新中国成立后按照民族区域自治制度，在少数民族聚居地区建立自治地方。\n- 成立的方式是依据宪法与法律，结合当地民族构成与历史情况划定自治区域，设立自治机关。\n- 自治地方享有管理本民族本地区内部事务的自治权，同时接受国家的统一领导。\n- 自治区相继成立标志着民族区域自治制度在我国全面确立，保障了各民族的平等权利与团结。\n- 考纲以识记层级要求本条，作答时要点明自治区的成立与民族区域自治制度的地位。\n\n### 易错点\n- 把民族区域自治说成民族独立：自治地方是国家统一领导下的地方行政区域。\n- 只记成立事实而答不出自治制度的地位与作用。\n- 忽略自治权与国家统一领导的关系。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "**关键词**：民族区域自治制度、设立自治机关、享有自治权、接受国家统一领导。\n**口诀**：「自治不是独立，统一领导下的自治」。\n**对比**：自治地方是国家统一领导下的地方行政区域，不是独立政治实体。\n**串联**：依宪法法律划定区域 → 自治区相继成立 → 制度全面确立 → 保障民族平等与团结。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L508"
+      ],
+      "text_md": "民族自治区相继成立的制度意义是（ ）。\nA. 标志着民族区域自治制度在我国全面确立\nB. 标志着各民族实现了独立\nC. 标志着民族政策尚未定型\nD. 标志着自治地方不再受国家统一领导",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，自治地方享有管理本民族本地区内部事务的自治权，同时接受国家的统一领导。\nB 项与事实不符，自治地方不是独立政治实体。\nC 项与事实相反。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "### 要点梳理\n- 资本主义工业化与社会主义工业化，代表了两种不同的工业化道路。\n- 资本主义工业化以追求利润为动力，依靠对工人的剥削与对外掠夺积累资金，其结果是两极分化。\n- 社会主义工业化以满足人民需要为目的，依靠内部积累与有计划的经济建设，其结果是共同富裕。\n- 中国选择社会主义工业化道路，是由国家的性质与国情决定的：新中国不可能也不应该走资本主义工业化的老路。\n- 领会本条要把两条道路的动力、积累方式与结果分开对比。\n\n### 易错点\n- 把两种工业化的区别只说成速度差异，忽略动力与结果上的根本不同。\n- 把社会主义工业化说成拒绝发展商品生产：它反对的是资本主义的道路，不是工业化本身。\n- 忽略选择这一道路的国情依据。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "**对比**：资本主义工业化靠剥削与掠夺积累、结果是两极分化；社会主义工业化靠内部积累与计划建设、结果是共同富裕。\n**口诀**：「动力不同、积累不同、结果不同」。\n**记忆法**：答题按「动力—积累—结果」三层对比，比只讲速度差异得分高。\n**串联**：国家性质与国情 → 决定中国选择社会主义工业化道路。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "工业化道路的选择关系到国家的性质与前途。请简述资本主义工业化与社会主义工业化的区别。",
+      "question_type": "简答题",
+      "answer_md": "（1）动力不同：资本主义工业化以追求利润为动力；社会主义工业化以满足人民需要为目的。\n（2）积累方式不同：资本主义工业化依靠对工人的剥削与对外掠夺积累资金；社会主义工业化依靠内部积累与有计划的经济建设。\n（3）结果不同：资本主义工业化导致两极分化；社会主义工业化追求共同富裕。\n（4）中国选择社会主义工业化道路，是由国家的性质与国情决定的：新中国不可能也不应该走资本主义工业化的老路。\n（5）需要注意：反对资本主义工业化道路不等于反对工业化本身，社会主义同样要实现工业化。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "### 要点梳理\n- 对农业社会主义改造采取的过渡性经济组织形式，是由低级到高级逐步过渡的几种形式。\n- 第一种是农业生产互助组，土地仍归各户所有，只在劳动上互助；第二种是初级农业生产合作社，土地入股、统一经营、按股与按劳分配。\n- 第三种是高级农业生产合作社，土地等主要生产资料归集体所有，实行按劳分配。\n- 逐步过渡的用意是让农民在实践中体会集体经营的优越性，避免因生产关系突变而影响生产。\n- 领会本条要把三种形式的名称、生产资料归属与分配方式分开作答。\n\n### 易错点\n- 把互助组与合作社混同：互助组土地仍归各户，合作社则统一经营。\n- 把初级社与高级社的分配方式记反：初级社按股与按劳结合，高级社按劳分配。\n- 忽略逐步过渡这一安排的用意。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "**口诀**：农业改造三级跳——「互助组 → 初级社 → 高级社」。\n**记忆法**：互助组土地归各户；初级社土地入股、按股与按劳分配；高级社土地归集体、按劳分配。\n**对比**：初级社与高级社的分配方式最容易记反。\n**串联**：逐步过渡 → 农民体会集体经营优越性 → 避免生产关系突变影响生产。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "对农业的社会主义改造采取了逐步过渡的形式。请简述对农业社会主义改造采取的过渡性经济组织形式。",
+      "question_type": "简答题",
+      "answer_md": "（1）第一种是农业生产互助组：土地仍归各户所有，只在劳动上互助。\n（2）第二种是初级农业生产合作社：土地入股、统一经营，按股与按劳分配。\n（3）第三种是高级农业生产合作社：土地等主要生产资料归集体所有，实行按劳分配。\n（4）逐步过渡的用意是让农民在实践中体会集体经营的优越性，避免因生产关系突变而影响生产。\n（5）回答时要把三种形式的名称、生产资料归属与分配方式分别说清，特别是初级社与高级社的区别。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "### 要点梳理\n- 对资本主义工商业进行社会主义改造，采取了从低级到高级的国家资本主义形式。\n- 低级形式是加工订货、统购包销、经销代销，企业仍由资本家经营，国营经济与之建立外部联系。\n- 高级形式是公私合营：先是单个企业公私合营，后是全行业公私合营，国家向资本家支付定息。\n- 这种逐步过渡的形式把对企业的改造与对人的改造结合起来，使资本家逐步成为自食其力的劳动者。\n- 这是我国社会主义改造的一个创举，实现了和平赎买。\n\n### 易错点\n- 把改造形式说成直接没收：采取的是和平赎买与逐步过渡。\n- 把低级形式与高级形式的顺序颠倒。\n- 忽略「对企业的改造与对人的改造相结合」这一特点。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "**口诀**：资本主义工商业改造两级——「低级：加工订货统购包销经销代销；高级：公私合营（单个→全行业）+ 定息」。\n**记忆法**：记住「和平赎买」这个总特点，再记两级形式。\n**对比**：不是直接没收，而是逐步过渡与和平赎买。\n**串联**：改造企业 + 改造人 → 资本家逐步成为自食其力的劳动者 → 社会主义改造的创举。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "对资本主义工商业的社会主义改造采取了从低级到高级的国家资本主义形式。请简述这些改造形式及其特点。",
+      "question_type": "简答题",
+      "answer_md": "（1）低级形式是加工订货、统购包销、经销代销：企业仍由资本家经营，国营经济与之建立外部联系。\n（2）高级形式是公私合营：先是单个企业公私合营，后是全行业公私合营，国家向资本家支付定息。\n（3）这种逐步过渡的形式把对企业的改造与对人的改造结合起来，使资本家逐步成为自食其力的劳动者。\n（4）特点：实现了和平赎买，避免了直接没收，是我国社会主义改造的一个创举。\n（5）回答时要注意低级与高级形式的先后顺序，不能颠倒。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s2-p11/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "### 要点梳理\n- 第一个五年计划是我国在过渡时期开展的有计划的大规模经济建设，以苏联帮助建设的重点工程为中心。\n- 计划的基本任务是集中力量进行工业化建设，同时发展农业、手工业和交通运输业。\n- 工业建设取得了显著成就：一批重要工厂与工业基地建成投产，填补了我国工业的许多空白，为工业化打下了初步基础。\n- 计划还推动了内地工业的布局，改善了旧中国工业过分集中于沿海的状况。\n- 领会本条要把计划的任务与建设成就分开作答。\n\n### 易错点\n- 把五年计划说成单纯的农业计划：它以工业化建设为中心。\n- 只记成就而漏掉计划的基本任务。\n- 忽略它对工业布局的改善作用。\n"
+    },
+    {
+      "block_id": "15043-ch08-s2-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "**关键词**：五年计划、以重点工程为中心、工业化建设、改善工业布局。\n**口诀**：「一五计划：集中力量搞工业」。\n**对比**：不是单纯农业计划，它以工业化建设为中心。\n**串联**：集中力量建设 → 一批工厂基地投产 → 填补工业空白 → 改善过分集中于沿海的布局。"
+    },
+    {
+      "block_id": "15043-ch08-s2-p11/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L511"
+      ],
+      "text_md": "第一个五年计划是我国有计划的大规模经济建设的开端。请简述第一个五年计划的基本任务与工业建设成就。",
+      "question_type": "简答题",
+      "answer_md": "（1）基本任务：集中力量进行工业化建设，同时发展农业、手工业和交通运输业。\n（2）计划以重点工程为中心，这些工程是工业化建设的骨干。\n（3）工业建设成就：一批重要工厂与工业基地建成投产，填补了我国工业的许多空白，为工业化打下了初步基础。\n（4）计划还推动了内地工业的布局，改善了旧中国工业过分集中于沿海的状况。\n（5）需要注意：五年计划以工业化建设为中心，不是单纯的农业计划。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "### 要点梳理\n- 社会主义制度确立后，我国国内的主要矛盾是人民对于建立先进工业国的要求同落后的农业国现实之间的矛盾。\n- 这一矛盾还表现为人民对于经济文化迅速发展的需要同当前经济文化不能满足人民需要状况之间的矛盾。\n- 主要矛盾的判断决定了主要任务：集中力量发展社会生产力，把我国尽快变为先进的工业国。\n- 这一判断的提出，为党的工作重心转向经济建设提供了依据。\n- 考纲以识记层级要求本条，作答时要把主要矛盾的表述与由此决定的主要任务分开写清。\n\n### 易错点\n- 把主要矛盾判断成阶级矛盾：这一判断的要点恰恰是强调发展生产力的迫切性。\n- 只记矛盾的表述而答不出它决定的主要任务。\n- 把这一判断提出的时间与背景记错。\n"
+    },
+    {
+      "block_id": "15043-ch08-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "**关键词**：先进工业国的要求 vs 落后农业国的现实；经济文化发展需要 vs 不能满足需要。\n**口诀**：「矛盾两句话，任务是发展生产力」。\n**对比**：主要矛盾要点是强调发展生产力的迫切性，不是阶级矛盾。\n**串联**：判断主要矛盾 → 决定主要任务 → 为工作重心转向经济建设提供依据。"
+    },
+    {
+      "block_id": "15043-ch08-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "社会主义制度确立后我国国内的主要矛盾是（ ）。\nA. 人民对于建立先进工业国的要求同落后的农业国现实之间的矛盾\nB. 无产阶级与资产阶级的矛盾\nC. 地主阶级与农民阶级的矛盾\nD. 帝国主义与中华民族的矛盾",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它还表现为人民对于经济文化迅速发展的需要同当前经济文化不能满足人民需要状况之间的矛盾，由此决定主要任务是发展生产力。\nB 项不是当时的判断。\nC 项这是封建社会的矛盾。\nD 项这是近代中国社会的矛盾。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "### 要点梳理\n- 「三个主体、三个补充」是关于社会主义经济体制的设想，主张在公有制与计划经济为主的前提下保留一定的补充成分。\n- 具体是：在工商业经营方面，国家经营与集体经营是主体，一定数量的个体经营是补充。\n- 在生产计划方面，计划生产是主体，一定范围内的自由生产是补充。\n- 在市场方面，国家市场是主体，一定范围内的自由市场是补充。\n- 这一设想承认社会主义经济需要一定的灵活性与多样性，是对社会主义经济体制的有益探索。\n\n### 易错点\n- 把「三个补充」说成否定公有制主体地位：补充以主体为前提，不是替代。\n- 三个方面的主体与补充记漏或记错。\n- 忽略这一设想在探索社会主义经济体制方面的意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "**口诀**：三个主体三个补充——「经营：国家集体为主、个体为辅；计划：计划生产为主、自由生产为辅；市场：国家市场为主、自由市场为辅」。\n**记忆法**：三组都按「主体 + 补充」成对记。\n**对比**：补充以主体为前提，不是替代公有制主体地位。\n**串联**：承认经济需要灵活性与多样性 → 是对社会主义经济体制的有益探索。"
+    },
+    {
+      "block_id": "15043-ch08-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "「三个主体、三个补充」设想的核心是（ ）。\nA. 在公有制与计划经济为主的前提下保留一定的补充成分\nB. 以个体经营取代国营经营\nC. 取消计划生产\nD. 取消国家市场",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，三个方面分别是经营、生产计划与市场，补充都以主体为前提。\nB 项与设想相反，主体仍是国家经营与集体经营。\nC 项与设想相反，计划生产仍是主体。\nD 项与设想相反，国家市场仍是主体。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "### 要点梳理\n- 《关于正确处理人民内部矛盾的问题》是毛泽东的重要著作，它系统论述了社会主义社会的矛盾问题。\n- 著作指出，社会主义社会的基本矛盾仍然是生产关系与生产力、上层建筑与经济基础之间的矛盾，但性质是非对抗性的，可以通过调整与改革不断解决。\n- 著作区分了两类不同性质的矛盾：敌我矛盾与人民内部矛盾，并指出后者要用民主的、说服教育的方法解决。\n- 著作还提出在政治生活中实行「团结—批评—团结」的方针，在科学文化领域实行「百花齐放、百家争鸣」。\n- 这一著作丰富了马克思主义关于社会主义社会的理论。\n\n### 易错点\n- 把两类矛盾混为一谈：敌我矛盾用专政方法，人民内部矛盾用民主方法，处理方式不同。\n- 只记「两类矛盾」而漏掉社会主义社会基本矛盾这一内容。\n- 忽略著作提出的各项方针。\n"
+    },
+    {
+      "block_id": "15043-ch08-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "**关键词**：两类矛盾（敌我 / 人民内部）、基本矛盾非对抗性、团结—批评—团结、双百方针。\n**口诀**：「敌我用专政，内部用民主」。\n**对比**：两类矛盾处理方式不同，混为一谈就会犯错误。\n**串联**：基本矛盾可通过调整改革解决 → 区分两类矛盾 → 用民主方法处理内部矛盾。"
+    },
+    {
+      "block_id": "15043-ch08-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "《关于正确处理人民内部矛盾的问题》提出处理人民内部矛盾的方法是（ ）。\nA. 民主的、说服教育的方法\nB. 专政的方法\nC. 武力镇压的方法\nD. 不予处理的方法",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，著作区分了敌我矛盾与人民内部矛盾，并提出「团结—批评—团结」的方针。\nB 项专政方法用于敌我矛盾。\nC 项与著作主张相反。\nD 项与著作主张相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "### 要点梳理\n- 整风运动是党在社会主义改造基本完成后开展的党内教育运动，内容是反对官僚主义、宗派主义与主观主义。\n- 运动的目的是改进党的作风，正确处理人民内部矛盾，以适应全面建设社会主义的需要。\n- 反右派斗争是在整风过程中，针对极少数人攻击新政权与社会主义制度的言论而开展的运动。\n- 反右派斗争是必要的，但后来被严重扩大化，把许多不属于敌我矛盾的问题当作敌我矛盾处理，造成了不良后果。\n- 考纲以识记层级要求本条，作答时要把两件事的内容与性质分别说明。\n\n### 易错点\n- 把整风与反右派斗争混为一谈：前者是党内整风，后者是针对攻击性言论的斗争。\n- 只讲反右派斗争的必要性而不讲扩大化的后果，评价就不完整。\n- 把整风的内容记错，忽略三项反对的对象。\n"
+    },
+    {
+      "block_id": "15043-ch08-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "**口诀**：整风反三样——「官僚主义、宗派主义、主观主义」；反右派「必要但扩大化」。\n**记忆法**：评价必须两面写：必要性 + 扩大化的后果。\n**对比**：整风是党内教育，反右派斗争针对攻击性言论，两件事不能混。\n**串联**：改造基本完成 → 整风改进作风 → 反右派斗争扩大化 → 造成不良后果。"
+    },
+    {
+      "block_id": "15043-ch08-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L521"
+      ],
+      "text_md": "整风运动反对的主要对象是（ ）。\nA. 官僚主义、宗派主义与主观主义\nB. 贪污、浪费与官僚主义\nC. 行贿与偷税漏税\nD. 教条主义与经验主义并列的两种倾向之外的第三项",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，整风运动反对官僚主义、宗派主义与主观主义，目的是改进党的作风、正确处理人民内部矛盾。\nB 项这是「三反」运动的内容：反贪污、反浪费、反官僚主义针对的是党政机关中的腐化现象。\nC 项这是「五反」运动的内容：反行贿、反偷税漏税等针对的是违法资本主义工商业者。\nD 项此项表述不成立，不是整风运动反对的对象。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L523"
+      ],
+      "text_md": "### 要点梳理\n- 「第二次结合」的提法，指在社会主义条件下把马克思主义基本原理同中国实际再次结合起来，走自己的建设道路。\n- 提出这一命题的背景是：苏联模式的弊病已经暴露，照搬苏联经验不能解决中国的问题。\n- 这一命题要求党从中国的国情出发，独立自主地探索社会主义建设的正确道路。\n- 它是党探索社会主义建设道路的思想先导，《论十大关系》等著作正是这一探索的成果。\n- 领会本条要把命题的背景与它在探索中的位置说明清楚。\n\n### 易错点\n- 把「第二次结合」说成放弃马克思主义指导：它强调的是与中国实际相结合。\n- 忽略苏联模式弊病暴露这一背景。\n- 把它与一般的理论学习混同，忽略其实践指向。\n"
+    },
+    {
+      "block_id": "15043-ch08-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L523"
+      ],
+      "text_md": "**关键词**：第二次结合、马克思主义与中国实际、苏联模式弊病暴露、走自己的路。\n**口诀**：「不照搬苏联，再结合一次」。\n**对比**：不是放弃马克思主义指导，而是强调与中国实际相结合。\n**串联**：苏联模式弊病暴露 → 提出第二次结合 → 独立自主探索 → 《论十大关系》等成果。"
+    },
+    {
+      "block_id": "15043-ch08-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L523"
+      ],
+      "text_md": "在探索社会主义建设道路的过程中，党提出了「第二次结合」的命题。请简述这一命题的含义、背景与意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）含义：在社会主义条件下把马克思主义基本原理同中国实际再次结合起来，走自己的建设道路。\n（2）背景：苏联模式的弊病已经暴露，照搬苏联经验不能解决中国的问题。\n（3）要求：从中国的国情出发，独立自主地探索社会主义建设的正确道路。\n（4）意义：它是党探索社会主义建设道路的思想先导，《论十大关系》等著作正是这一探索的成果。\n（5）需要注意：它强调与中国实际相结合，不是放弃马克思主义的指导。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L523"
+      ],
+      "text_md": "### 要点梳理\n- 《论十大关系》是毛泽东在听取各方面意见基础上形成的重要著作，它论述了社会主义建设中的十种重大关系。\n- 十大关系涉及重工业与轻工业、农业的关系，沿海工业与内地工业的关系，经济建设和国防建设的关系，以及中央与地方、汉族与少数民族等关系。\n- 著作提出的基本方针是：调动一切积极因素为社会主义事业服务，把我国建设成为一个强大的社会主义国家。\n- 著作强调要以苏联的经验教训为鉴戒，走自己的建设道路，对适合中国情况的建设道路作了初步探索。\n- 领会本条要把十大关系的范围与基本方针分开作答。\n\n### 易错点\n- 把《论十大关系》说成经济计划文件：它是论述建设道路的著作。\n- 只记书名而答不出基本方针（调动一切积极因素）。\n- 忽略它「以苏为鉴、走自己的路」这一探索意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L523"
+      ],
+      "text_md": "**关键词**：《论十大关系》、十种重大关系、基本方针是调动一切积极因素、以苏为鉴。\n**口诀**：「十大关系一根线：调动一切积极因素」。\n**对比**：它是论述建设道路的著作，不是经济计划文件。\n**串联**：听取各方意见 → 论述十大关系 → 提出基本方针 → 初步探索适合中国的建设道路。"
+    },
+    {
+      "block_id": "15043-ch08-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L523"
+      ],
+      "text_md": "《论十大关系》是探索适合中国情况的社会主义建设道路的重要著作。请简述《论十大关系》的主要内容和基本方针。",
+      "question_type": "简答题",
+      "answer_md": "（1）内容：论述了社会主义建设中的十种重大关系。\n（2）十大关系涉及重工业与轻工业、农业的关系，沿海工业与内地工业的关系，经济建设和国防建设的关系，以及中央与地方、汉族与少数民族等关系。\n（3）基本方针是：调动一切积极因素为社会主义事业服务，把我国建设成为一个强大的社会主义国家。\n（4）著作强调要以苏联的经验教训为鉴戒，走自己的建设道路。\n（5）需要注意：《论十大关系》是论述建设道路的著作，不是经济计划文件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 「大跃进」运动是社会主义建设探索过程中出现的急于求成的运动，它以片面追求高指标、高速度为特征。\n- 运动中以夸大失实的产量数字和脱离实际的增产口号指导生产，违背了客观经济规律。\n- 运动造成了国民经济比例的严重失调与资源的浪费，使人民生活受到损害。\n- 这一失误的根源在于对社会主义建设规律认识不足、对国情估计过高，也在于决策缺乏民主与科学论证。\n- 考纲以识记层级要求本条，作答时要点明运动的特征、危害与教训。\n\n### 易错点\n- 把「大跃进」说成群众生产热情的体现：它的问题在于脱离实际的指标与违背规律的指导。\n- 只记运动名称而答不出它的危害与教训。\n- 把失误归因于个别人，忽略认识不足与决策机制方面的原因。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**关键词**：急于求成、高指标高速度、违背客观经济规律、比例失调。\n**口诀**：「指标飞上天，规律不答应」。\n**对比**：不是群众热情的体现，问题在于脱离实际的指标与违背规律的指导。\n**串联**：认识不足 + 对国情估计过高 + 决策缺乏民主科学论证 → 国民经济失调、人民生活受损。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "「大跃进」运动的主要问题是（ ）。\nA. 片面追求高指标高速度，违背客观经济规律\nB. 发展速度过慢\nC. 忽视工业建设\nD. 过分强调农业",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，运动造成国民经济比例严重失调与资源浪费，其根源在于对建设规律认识不足、对国情估计过高。\nB 项与事实相反。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 人民公社化运动是在「大跃进」过程中兴起的社会组织变革运动，其特点是一大二公。\n- 「大」指规模大，把若干农业合作社合并为公社；「公」指公有化程度高，生产资料与部分生活资料归公社所有。\n- 公社实行统一经营、统一分配，并普遍办公共食堂，超越了当时农村生产力的实际水平。\n- 这一做法挫伤了农民的生产积极性，加上其它因素，使农村经济遭受严重困难。\n- 考纲以识记层级要求本条，作答时要点明运动的特点与危害。\n\n### 易错点\n- 把「一大二公」的含义记错或只记其一。\n- 把人民公社化说成农民的自发要求：它是由上而下推行的。\n- 忽略它超越生产力水平这一要害。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**口诀**：人民公社特点「一大二公」——规模大、公有化程度高。\n**记忆法**：三位一体记：统一经营、统一分配、公共食堂。\n**对比**：不是农民自发要求，而是由上而下推行。\n**串联**：超越生产力水平 → 挫伤农民积极性 → 农村经济严重困难。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "人民公社化运动的特点通常概括为（ ）。\nA. 一大二公\nB. 一化三改\nC. 四马分肥\nD. 三个主体、三个补充",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，指规模大、公有化程度高，实行统一经营、统一分配并普遍办公共食堂。\nB 项这是过渡时期总路线的简称。\nC 项这是企业利润分配办法。\nD 项这是关于经济体制的设想。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 庐山会议是在「大跃进」出现严重问题后召开的一次会议，会议前期议题是总结经验、纠正已发现的错误。\n- 会议后期因对形势与问题的不同看法，转为批判所谓的右倾，会议的方向发生了变化。\n- 这一转折使已经开始的纠「左」进程被打断，一些正确的意见受到压制。\n- 此后「左」的错误继续发展，加上自然灾害等因素，国民经济陷入严重困难。\n- 考纲以识记层级要求本条，作答时要点明会议名称、议题变化与后果。\n\n### 易错点\n- 把庐山会议说成一次始终如一的纠错会议：它的议题前后发生了变化。\n- 只记会议名称而答不出议题转折及其后果。\n- 忽略它与国民经济困难之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**关键词**：庐山会议、前期纠错、后期转为批判、纠「左」进程被打断。\n**口诀**：「本想纠错，结果转向」。\n**对比**：不能说它始终是纠错会议，它的议题前后发生了变化。\n**串联**：议题转折 → 正确意见受压制 → 「左」的错误继续发展 → 国民经济陷入严重困难。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "庐山会议的一个重要转折是（ ）。\nA. 会议后期由总结经验、纠正错误转为批判所谓的右倾\nB. 会议决定立即实行改革开放\nC. 会议通过了《论十大关系》\nD. 会议决定发动文化大革命",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一转折使已经开始的纠「左」进程被打断，此后「左」的错误继续发展。\nB 项与会议内容无关。\nC 项《论十大关系》是此前形成的著作。\nD 项文化大革命的发动在此后。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 「四个现代化」的奋斗目标，指把我国建设成为具有现代农业、现代工业、现代国防和现代科学技术的社会主义强国。\n- 这一目标是在社会主义建设实践中逐步明确并提出的，它把现代化建设具体化为四个方面。\n- 提出这一目标的意义在于：在国家经历困难之后，重新明确了经济建设的方向与长期任务，起到了凝聚人心的作用。\n- 它为后来党的工作重心转向经济建设提供了思想准备。\n- 考纲以识记层级要求本条，作答时要点明目标的四个方面与它的意义。\n\n### 易错点\n- 把四个方面记漏或记错，特别是漏掉科学技术现代化。\n- 把「四个现代化」与其它建设口号混同。\n- 忽略它明确长期任务、凝聚人心的意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**口诀**：四个现代化——「农业、工业、国防、科学技术」。\n**记忆法**：最易漏的是「科学技术」，答题时按「农、工、防、科」四字过一遍。\n**对比**：不要与其它建设口号混同。\n**串联**：经历困难后提出 → 重新明确经济建设方向与长期任务 → 为工作重心转向经济作思想准备。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "「四个现代化」是指（ ）。\nA. 现代农业、现代工业、现代国防和现代科学技术\nB. 现代工业、现代商业、现代金融和现代服务业\nC. 现代城市、现代农村、现代交通和现代通讯\nD. 现代教育、现代科技、现代文化和现代国防",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一目标把现代化建设具体化为四个方面，起到了明确方向与凝聚人心的作用。\nB 项与目标内容不符。\nC 项与目标内容不符。\nD 项与目标内容不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 社会主义教育运动是在国民经济调整时期于部分农村与城市开展的群众性教育活动。\n- 运动的内容最初是清理账目、清理仓库、清理财物、清理工分，后来发展为清政治、清经济、清组织、清思想。\n- 运动在一定范围内解决了干部作风与经营管理方面的问题，但在后期出现了把不同性质问题混淆的偏差。\n- 这一偏差是当时阶级斗争扩大化倾向在基层的反映。\n- 考纲以识记层级要求本条，作答时要点明运动名称、内容与它的双重影响。\n\n### 易错点\n- 只讲运动的积极作用或只讲偏差，评价都不完整。\n- 把运动的内容记漏，尤其是前期「四清」的具体所指。\n- 忽略它与阶级斗争扩大化倾向之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**关键词**：社教运动、前期「四清」（账目、仓库、财物、工分）、后期扩展为清政治经济组织思想。\n**口诀**：「先清账物，后清思想」。\n**对比**：评价要两面——解决作风与经营问题 + 后期混淆问题性质。\n**串联**：干部作风与经营问题 → 运动展开 → 后期偏差 → 反映阶级斗争扩大化倾向。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "社会主义教育运动前期在农村的内容是（ ）。\nA. 清理账目、清理仓库、清理财物、清理工分\nB. 反贪污、反浪费、反官僚主义\nC. 反行贿、反偷税漏税\nD. 反教条主义、反经验主义",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，运动后期扩展为清政治、清经济、清组织、清思想，并在后期出现混淆问题性质的偏差。\nB 项这是「三反」运动的内容。\nC 项这是「五反」运动的内容。\nD 项与社教运动的内容不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 「二月逆流」是文化大革命期间一批老一辈革命家对当时错误做法提出批评而遭到压制的事件。\n- 这些老同志在会上对打击大批干部、搞乱正常秩序的做法表示不满，要求纠正错误。\n- 他们的意见未被接受，反而被扣上帽子并受到批判，这使文化大革命的错误进一步发展。\n- 这一事件表明，党内对文化大革命的做法从一开始就存在不同意见与抵制。\n- 考纲以识记层级要求本条，作答时要点明事件名称、性质与它反映的问题。\n\n### 易错点\n- 把「二月逆流」说成一次组织上的夺权行动：它是老同志对错误做法的批评与抵制。\n- 忽略它反映党内存在不同意见这一层意义。\n- 把它与其它事件混同。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**关键词**：老一辈革命家提出批评、遭压制批判、党内存在抵制。\n**口诀**：「不是夺权，是提意见」。\n**对比**：它不是组织上的夺权行动，而是对错误做法的批评与抵制。\n**串联**：老同志不满打击干部与搞乱秩序 → 意见未被接受 → 错误进一步发展 → 说明党内早有不同意见。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "「二月逆流」的实质是（ ）。\nA. 一批老一辈革命家对文化大革命错误做法的批评与抵制\nB. 一次组织上的夺权行动\nC. 一次军事政变\nD. 一次群众性的生产运动",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，他们的意见未被接受反而受到批判，这一事件表明党内从一开始就存在不同意见与抵制。\nB 项与事实不符。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 林彪反革命集团是在文化大革命期间形成的、以夺取党和国家最高权力为目的的反革命集团。\n- 该集团在文化大革命中窃取重要职权，迫害大批干部，策划武装政变。\n- 其阴谋败露后，主要成员仓皇出逃并坠机身亡，集团随之覆灭。\n- 这一事件客观上宣告了文化大革命在理论与实践上的破产，使更多人对文化大革命的错误有了认识。\n- 考纲以识记层级要求本条，作答时要点明集团性质、罪行与覆灭。\n\n### 易错点\n- 把该集团说成一般的工作分歧：它是以夺权为目的的反革命集团。\n- 只记覆灭事实而答不出它宣告文化大革命破产这一意义。\n- 把该集团与「四人帮」混同，两者是不同的集团。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**关键词**：以夺权为目的的反革命集团、迫害干部、策划政变、覆灭。\n**口诀**：「阴谋败露，集团覆灭」。\n**对比**：与「四人帮」是不同的集团，不要混为一谈。\n**串联**：窃取职权 → 迫害干部 → 阴谋败露覆灭 → 客观上宣告文化大革命破产。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "林彪反革命集团覆灭的客观影响是（ ）。\nA. 客观上宣告了文化大革命在理论与实践上的破产\nB. 使文化大革命立即结束\nC. 使国民经济迅速恢复\nD. 使国家进入改革开放时期",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，该集团以夺取党和国家最高权力为目的，策划武装政变，阴谋败露后主要成员出逃坠机身亡。\nB 项文化大革命在此后仍在继续。\nC 项与事实不符。\nD 项改革开放在此后。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "### 要点梳理\n- 「四人帮」是文化大革命期间形成的、以篡夺党和国家最高权力为目的的反革命集团。\n- 该集团打着极左的旗号，迫害大批干部与群众，破坏国民经济与社会秩序。\n- 他们反对纠正文化大革命的错误，在文革后期继续制造事端。\n- 文化大革命结束后，该集团被粉碎，文化大革命至此结束。\n- 考纲以识记层级要求本条，作答时要点明集团性质、危害与它的覆灭。\n\n### 易错点\n- 把「四人帮」与林彪反革命集团混同，两者是不同的集团。\n- 把粉碎「四人帮」与文化大革命结束分成两件事：前者标志着后者的结束。\n- 只记覆灭而答不出其危害。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "**关键词**：以篡权为目的的反革命集团、极左旗号、迫害干部群众、被粉碎。\n**口诀**：「粉碎四人帮，文革到此结束」。\n**对比**：与林彪反革命集团是两个不同的集团。\n**串联**：制造事端反对纠错 → 破坏经济与社会秩序 → 被粉碎 → 文化大革命结束。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L530"
+      ],
+      "text_md": "文化大革命结束的标志是（ ）。\nA. 粉碎「四人帮」\nB. 粉碎林彪反革命集团\nC. 庐山会议的召开\nD. 中共七届二中全会的召开",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，「四人帮」是以篡夺党和国家最高权力为目的的反革命集团，其覆灭结束了持续多年的内乱。\nB 项该集团的覆灭在更早，当时文化大革命仍在继续。\nC 项庐山会议在更早时期。\nD 项七届二中全会在建国前夕。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "### 要点梳理\n- 国民经济调整，是党在国民经济遭遇严重困难后采取的纠正措施，其方针是调整、巩固、充实、提高。\n- 「调整」是核心：调整国民经济比例关系，压缩过大的基本建设规模，加强农业。\n- 与之配套的措施包括精简职工与城镇人口、恢复农村自留地与集市贸易、改进经营管理等。\n- 调整取得了明显成效，国民经济逐步恢复并有所发展，人民生活得到改善。\n- 领会本条要把调整方针、具体措施与恢复成效分开作答。\n\n### 易错点\n- 把八字方针记漏或把「调整」与其他三个词的地位等同。\n- 只记方针而答不出具体措施与成效。\n- 把这次调整与后来的改革开放混同。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "**口诀**：八字方针——「调整、巩固、充实、提高」，其中「调整」是核心。\n**记忆法**：措施记四样——压缩基建规模、加强农业、精简职工与城镇人口、恢复自留地与集市贸易。\n**对比**：加强农业是重点，因为比例失调的要害在农业。\n**串联**：确定方针 → 配套措施 → 国民经济恢复发展 → 人民生活改善。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "国民经济遭遇严重困难后，党采取了调整措施。请简述20 世纪60 年代前期的国民经济调整及其成效。",
+      "question_type": "简答题",
+      "answer_md": "（1）方针是调整、巩固、充实、提高，其中「调整」是核心。\n（2）调整的重点是调整国民经济比例关系，压缩过大的基本建设规模，加强农业。\n（3）配套措施包括精简职工与城镇人口、恢复农村自留地与集市贸易、改进经营管理等。\n（4）成效：国民经济逐步恢复并有所发展，人民生活得到改善。\n（5）需要注意：这次调整是对此前错误的纠正，与后来的改革开放不是同一件事。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p10/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "### 要点梳理\n- 文化大革命的发动，是在特定历史条件下发生的，它被当作防止资本主义复辟的运动而全面展开。\n- 由于对社会主义社会阶级斗争形势作了错误估计，加之领导制度上个人专断的滋长，运动被错误发动并被反革命集团利用。\n- 运动使党、国家和人民遭到新中国成立以来最严重的挫折和损失，大批干部与群众受到迫害，国民经济受到破坏。\n- 党对文化大革命所作的官方结论是：它是一场由领导者错误发动、被反革命集团利用，给党、国家和各族人民带来严重灾难的内乱。\n- 领会本条要分清「错误估计」这一主观原因与「被利用」这一客观后果。\n\n### 易错点\n- 把文化大革命说成必要的运动：它是错误发动、带来严重灾难的内乱。\n- 只讲后果而漏掉错误估计与个人专断等发动原因。\n- 把错误估计与反革命集团的利用混为一谈，两者是不同层面的问题。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "**关键词**：错误估计阶级斗争形势、个人专断滋长、被反革命集团利用、严重灾难的内乱。\n**口诀**：「错误发动 + 被利用 = 严重灾难的内乱」。\n**对比**：分两层答——主观原因是错误估计与个人专断，客观后果是被反革命集团利用。\n**串联**：错误估计 → 运动全面展开 → 被利用 → 党、国家和人民遭到最严重的挫折和损失。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p10/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "文化大革命是党和国家历史上的一段严重曲折。请简述「文化大革命」的发动原因及其后果。",
+      "question_type": "简答题",
+      "answer_md": "（1）主观原因之一：对社会主义社会阶级斗争形势作了错误估计，把不属于阶级斗争的问题当作阶级斗争。\n（2）主观原因之二：领导制度上个人专断的滋长，使错误决策难以被纠正。\n（3）客观后果：运动被反革命集团利用，使党、国家和人民遭到新中国成立以来最严重的挫折和损失。\n（4）具体表现：大批干部与群众受到迫害，国民经济受到破坏，社会秩序遭到冲击。\n（5）党对文化大革命所作的官方结论是：它是一场由领导者错误发动、被反革命集团利用，给党、国家和各族人民带来严重灾难的内乱。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s4-p11/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s4-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "### 要点梳理\n- 文化大革命的结束，以粉碎「四人帮」为标志，此后国家进入了新的发展时期。\n- 结束的直接意义是：结束了持续多年的内乱，使党和国家的正常秩序得以恢复。\n- 结束之后，党面临的任务是纠正错误、平反冤假错案、恢复国民经济与各项事业。\n- 对文化大革命的错误进行系统总结与清理，为后来把工作重心转向经济建设、开创中国特色社会主义道路准备了条件。\n- 领会本条要把它放在「由乱到治」的转折位置上理解。\n\n### 易错点\n- 把文化大革命的结束与改革开放的开始混同：前者是结束内乱，后者在其后。\n- 只记结束的标志而答不出此后纠正错误、恢复秩序的任务。\n- 忽略它在由乱到治过程中的转折意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s4-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s4-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "**关键词**：以粉碎「四人帮」为标志、结束内乱、恢复秩序、纠正错误。\n**口诀**：「先结束内乱，再纠正错误」。\n**对比**：结束文革与开始改革开放是先后关系，不是同一件事。\n**串联**：粉碎「四人帮」 → 恢复党和国家正常秩序 → 平反冤假错案、恢复经济 → 为开创中国特色社会主义道路准备条件。"
+    },
+    {
+      "block_id": "15043-ch08-s4-p11/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s4-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L532"
+      ],
+      "text_md": "文化大革命的结束使国家进入新的发展时期。请简述「文化大革命」的结束及其后的任务。",
+      "question_type": "简答题",
+      "answer_md": "（1）结束的标志是粉碎「四人帮」，此后国家进入了新的发展时期。\n（2）直接意义：结束了持续多年的内乱，使党和国家的正常秩序得以恢复。\n（3）此后任务之一：纠正错误，平反冤假错案。\n（4）此后任务之二：恢复国民经济与各项事业。\n（5）对文化大革命的错误进行系统总结与清理，为后来把工作重心转向经济建设、开创中国特色社会主义道路准备了条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s5-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s5-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "### 要点梳理\n- 「两弹一星」是对我国在核弹、导弹与人造地球卫星方面取得重大突破的统称。\n- 这些成就的取得是在外部封锁、国内条件困难的条件下，依靠自力更生与科技人员的艰苦奋斗实现的。\n- 它们的意义首先在于打破了外部的核垄断与核威胁，增强了我国的国防实力与国际地位。\n- 其次，它们带动了一批科技领域的发展，培养了一支科技队伍，形成了宝贵的精神财富。\n- 考纲以识记层级要求本条，作答时要点明成就内容、取得条件与意义。\n\n### 易错点\n- 把「两弹一星」说成一般的技术引进成果：它是在封锁条件下自力更生取得的。\n- 只记成就而答不出它对国防与国际地位的意义。\n- 把它与其它科技成就混同。\n"
+    },
+    {
+      "block_id": "15043-ch08-s5-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s5-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "**关键词**：核弹、导弹、人造地球卫星；自力更生；打破核垄断核威胁。\n**口诀**：「两弹一星：封锁里逼出来的」。\n**对比**：不是技术引进成果，而是在外部封锁下自力更生取得的。\n**串联**：自力更生攻关 → 打破核垄断 → 增强国防与国际地位 → 带动科技发展、培养队伍。"
+    },
+    {
+      "block_id": "15043-ch08-s5-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s5-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "「两弹一星」成就的取得主要依靠（ ）。\nA. 自力更生与科技人员的艰苦奋斗\nB. 大规模技术引进\nC. 外国专家的主导\nD. 国际组织的援助",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，成就打破了外部的核垄断与核威胁，带动了科技发展并培养了一支科技队伍。\nB 项与事实不符，当时处于外部封锁之下。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s5-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s5-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "### 要点梳理\n- 中国恢复在联合国的合法席位，指联合国恢复了中华人民共和国的合法权利，承认其政府代表为中国在联合国的唯一合法代表。\n- 这一结果的取得，是中国长期坚持独立自主和平外交、国际影响不断扩大的结果，也得到广大发展中国家的支持。\n- 它的意义在于：打破了外部孤立中国的局面，使中国得以在国际事务中发挥更大作用。\n- 这一事件是新中国外交史上的重大胜利，为此后开展更广泛的国际交往创造了条件。\n- 考纲以识记层级要求本条，作答时要点明事件内容、原因与意义。\n\n### 易错点\n- 把恢复席位说成新加入联合国：中国是联合国的创始会员国，恢复的是合法席位。\n- 只记事件而答不出原因与意义。\n- 忽略广大发展中国家支持这一因素。\n"
+    },
+    {
+      "block_id": "15043-ch08-s5-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s5-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "**关键词**：恢复联合国合法席位、唯一合法代表、发展中国家支持。\n**口诀**：「是恢复，不是新加入」。\n**对比**：中国是联合国创始会员国，恢复的是合法席位。\n**串联**：坚持独立自主和平外交 → 国际影响扩大 + 发展中国家支持 → 恢复席位 → 打破孤立局面。"
+    },
+    {
+      "block_id": "15043-ch08-s5-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s5-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "中国恢复在联合国的合法席位是指（ ）。\nA. 联合国恢复中华人民共和国的合法权利，承认其政府代表为中国在联合国的唯一合法代表\nB. 中国首次加入联合国\nC. 中国退出联合国后重新加入\nD. 中国获得联合国安理会非常任理事国席位",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一结果是中国长期坚持独立自主和平外交、国际影响不断扩大的结果，也得到广大发展中国家的支持。\nB 项中国是联合国的创始会员国，恢复的是合法席位。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s5-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s5-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "### 要点梳理\n- 中美关系正常化，指两国经过接触与谈判，逐步改善关系并实现关系正常化的过程。\n- 中日建交是在中美关系改善的推动下实现的，两国建立了外交关系。\n- 这些进展的意义在于：打破了外部对中国的封锁与孤立，为国内建设争取了有利的国际环境。\n- 它们也改变了国际战略格局，为此后中国全面开展对外交往奠定了基础。\n- 考纲以识记层级要求本条，作答时要点明两国关系变化的性质与它对中国外交的意义。\n\n### 易错点\n- 把中美关系正常化说成结盟：它是两国关系的改善与正常化，不是结盟。\n- 把中日建交与中美关系改善的推动关系颠倒。\n- 只记事件而答不出对中国外交局面的意义。\n"
+    },
+    {
+      "block_id": "15043-ch08-s5-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s5-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "**关键词**：中美关系正常化、中日建交、打破孤立、有利国际环境。\n**口诀**：「中美解冻，中日建交」。\n**对比**：正常化不是结盟，是两国关系改善。\n**串联**：中美改善 → 推动中日建交 → 打破封锁孤立 → 为国内建设争取有利环境。"
+    },
+    {
+      "block_id": "15043-ch08-s5-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s5-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "中美关系正常化与中日建交的意义是（ ）。\nA. 打破了外部对中国的封锁与孤立，为国内建设争取了有利的国际环境\nB. 使中国加入了军事同盟\nC. 使中国放弃了独立自主的外交方针\nD. 使中国退出了联合国",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这些进展打破了外部对中国的封锁与孤立，也改变了国际战略格局。\nB 项不准确：中美关系正常化是两国关系的改善，不是建立军事同盟。\nC 项与事实相反：中国始终坚持独立自主的和平外交方针。\nD 项与事实相反：恢复联合国合法席位与中美关系正常化恰恰扩大了中国的国际参与。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s5-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s5-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "### 要点梳理\n- 「长期共存、互相监督」是我国处理共产党与民主党派关系的方针。\n- 「长期共存」指各民主党派在社会主义时期将继续存在并发挥作用；「互相监督」指共产党与民主党派互相提出意见与批评。\n- 这一方针的提出，是以社会主义改造基本完成后民主党派性质的变化为依据的。\n- 它是我国多党合作与政治协商制度的重要内容，为发挥民主党派的积极作用提供了政策依据。\n- 考纲以识记层级要求本条，作答时要点明方针内容与它的依据。\n\n### 易错点\n- 把这一方针说成民主党派与共产党轮流执政：它是合作与监督的关系，不是竞争执政。\n- 只记八个字而答不出它的依据与意义。\n- 把它与后来提出的方针混同。\n"
+    },
+    {
+      "block_id": "15043-ch08-s5-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s5-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "**口诀**：「长期共存、互相监督」八个字。\n**记忆法**：依据是社会主义改造基本完成后民主党派性质的变化。\n**对比**：不是轮流执政，是合作与互相监督的关系。\n**串联**：依据性质变化提出方针 → 多党合作与政治协商制度的重要内容 → 发挥民主党派积极作用。"
+    },
+    {
+      "block_id": "15043-ch08-s5-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s5-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "「长期共存、互相监督」是（ ）。\nA. 我国处理共产党与民主党派关系的方针\nB. 处理中央与地方关系的方针\nC. 处理民族关系的方针\nD. 处理对外关系的方针",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一方针以社会主义改造基本完成后民主党派性质的变化为依据，是多党合作与政治协商制度的重要内容。\nB 项这是《论十大关系》涉及的另一类关系。\nC 项民族关系实行民族区域自治。\nD 项对外关系实行独立自主的和平外交。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s5-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s5-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "### 要点梳理\n- 「百花齐放、百家争鸣」是我国发展科学文化事业的方针，主张在学术与艺术领域允许不同观点与风格的自由讨论。\n- 「古为今用、洋为中用」讲的是对待传统文化与外来文化的态度：继承古代优秀文化为今天服务，吸收外国有益成果为中国服务。\n- 「推陈出新」讲的是在继承的基础上创新，使传统文化获得新的生命力。\n- 这些方针共同构成了党在科学文化领域的政策，目的是繁荣社会主义文化、发展科学技术。\n- 考纲以识记层级要求本条，作答时要把几个方针分别说明，不要混为一句。\n\n### 易错点\n- 把「双百」方针说成允许一切错误言论自由传播：它是在社会主义方向下鼓励学术艺术讨论。\n- 把「古为今用」与「洋为中用」的对象颠倒。\n- 只记「双百」而漏掉「推陈出新」等内容。\n"
+    },
+    {
+      "block_id": "15043-ch08-s5-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s5-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "**口诀**：文化方针四句——「百花齐放、百家争鸣；古为今用、洋为中用；推陈出新」。\n**记忆法**：「古」对传统文化，「洋」对外来文化，对象不要颠倒。\n**对比**：双百方针是在社会主义方向下鼓励学术艺术讨论，不是放任错误言论。\n**串联**：允许不同观点讨论 + 正确对待古今中外 → 繁荣社会主义文化、发展科学技术。"
+    },
+    {
+      "block_id": "15043-ch08-s5-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s5-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L543"
+      ],
+      "text_md": "「百花齐放、百家争鸣」方针适用的领域是（ ）。\nA. 学术与艺术领域\nB. 农业生产领域\nC. 军事指挥领域\nD. 外交谈判领域",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它与「古为今用、洋为中用」「推陈出新」共同构成党在科学文化领域的政策。\nB 项与方针适用领域不符。\nC 项与方针适用领域不符。\nD 项与方针适用领域不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch08-s5-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch08-s5-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L546"
+      ],
+      "text_md": "### 要点梳理\n- 毛泽东关于社会主义发展阶段的思考，核心是认为社会主义社会是一个长期的、分阶段发展的历史过程。\n- 他提出社会主义可能分为不发达和比较发达两个阶段，并指出我国还处在不发达的阶段，需要经历较长时期的发展。\n- 这一思考还强调，社会主义建设必须从中国国情出发，不能急于求成、不能超越发展阶段。\n- 它的意义在于：为认识我国社会主义所处历史方位提供了思想素材，也为后来提出社会主义初级阶段理论提供了启示。\n- 同时也要看到，这一思考在当时并未形成系统的理论，实践中也出现过超越阶段的错误。\n- 理解本条要把思考的内容与它的意义、局限分开作答。\n\n### 易错点\n- 把这一思考等同于后来形成的社会主义初级阶段理论：前者是初步探索，后者是系统理论。\n- 只答内容而漏掉它对后来的启示意义。\n- 回避当时的实践中曾出现超越阶段的错误，评价就不完整。\n"
+    },
+    {
+      "block_id": "15043-ch08-s5-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch08-s5-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L546"
+      ],
+      "text_md": "**关键词**：社会主义是长期的分阶段过程、不发达与比较发达两阶段、从国情出发不急于求成。\n**口诀**：「分阶段、不超越」。\n**对比**：它是初步探索，不等于后来形成的社会主义初级阶段理论。\n**串联**：认识所处历史方位 → 为初级阶段理论提供启示 → 但当时未成系统、实践中也出现过超越阶段的错误。"
+    },
+    {
+      "block_id": "15043-ch08-s5-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch08-s5-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L546"
+      ],
+      "text_md": "在探索社会主义建设道路的过程中，毛泽东对社会主义发展阶段作了思考。试述毛泽东关于社会主义发展阶段的思考及其意义与局限。",
+      "question_type": "论述题",
+      "answer_md": "（1）核心观点：社会主义社会是一个长期的、分阶段发展的历史过程。\n（2）具体设想：社会主义可能分为不发达和比较发达两个阶段，我国还处在不发达的阶段，需要经历较长时期的发展。\n（3）方法论要求：社会主义建设必须从中国国情出发，不能急于求成、不能超越发展阶段。\n（4）意义：为认识我国社会主义所处历史方位提供了思想素材，也为后来提出社会主义初级阶段理论提供了启示。\n（5）局限：这一思考在当时并未形成系统的理论，实践中也出现过超越阶段的错误。\n（6）总的评价：它是可贵的初步探索，其价值既在于提出问题的方向，也在于为后来理论的形成积累了经验教训。",
       "source_kind": "ai_generated"
     },
     {
