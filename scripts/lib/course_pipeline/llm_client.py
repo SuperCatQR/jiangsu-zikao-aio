@@ -40,6 +40,19 @@ FIXTURES_DIR = REPO_ROOT / "tests" / "fixtures" / "course_pipeline" / "llm"
 # 因此 `agent` 后端的 `.agent-task` 根由仓根推导；测试用 monkeypatch 指向 tmp_path。
 COURSES_DIR = REPO_ROOT / "sources" / "jiangsu" / "courses"
 
+
+def set_repo_root(root: Path) -> None:
+    """把 fixture / 提示词 / `.agent-task` 三个根重定向到 `root`（QC3-007 / C2-010）。
+
+    默认由 `__file__` 推导，于是从**副本仓**跑 `build` 时仍会读到真实仓的 fixture —— 失败关闭测试
+    可能因为「真实仓恰好可用」而通过，与副本仓的真实状态无关。调用方可显式重定向，
+    使入口路径的测试真正作用于被测试的那棵树。
+    """
+    global REPO_ROOT, FIXTURES_DIR, COURSES_DIR
+    REPO_ROOT = root
+    FIXTURES_DIR = root / "tests" / "fixtures" / "course_pipeline" / "llm"
+    COURSES_DIR = root / "sources" / "jiangsu" / "courses"
+
 BACKENDS = ("cli", "agent", "replay")
 AGENT_TASK_DIRNAME = ".agent-task"
 DEFAULT_AGENT_MODEL = "harness-agent"
@@ -53,6 +66,11 @@ BUNDLE_NAME_RE_TEMPLATE = r"{prompt_id}-(\d+)\.json"
 
 # `--record-fixtures` 由 CLI 置位（`complete_json()` 签名固定，不加参数）。
 RECORD_FIXTURES = False
+
+# `.agent-task` 目录索引缓存：`(目录, prompt_id)` → (目录内的**文件清单**, payload_hash → bundle 路径)。
+# 进程内共享，清单变化即失效（见 `_bundle_index()`；判据是文件清单而非目录 mtime —— mtime 粒度可能达
+# 秒级，同一批内新写的 bundle 不会改变它，缓存就会返回缺新键的陈旧索引）。
+_BUNDLE_INDEX_CACHE: dict[tuple[str, str], tuple[list[str], dict[str, Path]]] = {}
 
 class SchemaError(ValueError):
     """LLM 响应不符合提示词自带的 JSON schema（文案只含路径与键名，不含响应内容）。"""
@@ -241,34 +259,79 @@ def _agent_result_path(bundle: Path) -> Path:
     return bundle.with_name(f"{bundle.stem}.result.json")
 
 
-def write_agent_bundle(prompt_id: str, prompt_version: str, payload: dict) -> Path:
-    """写（或复用）该 payload 的任务包。同一 payload 复用既有编号，回填结果跨次运行仍然有效。"""
+def _bundle_index(directory: Path, prompt_id: str) -> dict[str, Path]:
+    """`payload_hash → bundle 路径` 索引（按文件清单记忆化，QC3-010 / W5）。
+
+    逐 job 重建索引会把批次成本推成 O(n²)：`15040/.agent-task/` 实测 786–1196 个 bundle
+    （平均 4543 B），读 + `json.loads` 每个约 33 µs，60 µs/文件 × 2 遍（`prepare_agent_tasks`
+    + 每个 job 的 `_call_agent`）× n²/2 ≈ **86 秒**纯重复解析。
+
+    失效判据 = **目录内的文件清单**（`glob` 结果，含名字）。不用目录 mtime：其粒度可能达秒级，
+    同一批内新写的 bundle 不会改变它，缓存就会返回缺少新键的陈旧索引。清单枚举实测 7.5 ms/次，
+    相对被省掉的逐文件解析（786 × 33 µs ≈ 26 ms）小一个量级，且语义精确 ——
+    文件名变化 ⇔ 索引内容可能变化。
+    """
+    names = (
+        sorted(
+            path.name
+            for path in directory.glob(f"{prompt_id}-*.json")
+            if not path.name.endswith(".result.json")
+            and re.fullmatch(BUNDLE_NAME_RE_TEMPLATE.format(prompt_id=re.escape(prompt_id)), path.name)
+        )
+        if directory.is_dir()
+        else []
+    )
+    cache_key = (str(directory), prompt_id)
+    cached = _BUNDLE_INDEX_CACHE.get(cache_key)
+    if cached is not None and cached[0] == names:
+        return cached[1]
+
+    index: dict[str, Path] = {}
+    for name in names:
+        path = directory / name
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        key = existing.get("payload_hash")
+        if isinstance(key, str) and key:
+            index.setdefault(key, path)
+    _BUNDLE_INDEX_CACHE[cache_key] = (names, index)
+    return index
+
+
+def _bundle_position(index: dict[str, Path], prompt_id: str) -> int:
+    """索引里已有的最大编号（新 bundle 从它 +1 起编号）。"""
+    highest = 0
+    for path in index.values():
+        match = re.fullmatch(BUNDLE_NAME_RE_TEMPLATE.format(prompt_id=re.escape(prompt_id)), path.name)
+        if match:
+            highest = max(highest, int(match.group(1)))
+    return highest
+
+
+def write_agent_bundle(
+    prompt_id: str, prompt_version: str, payload: dict, *, index: dict[str, Path] | None = None
+) -> Path:
+    """写（或复用）该 payload 的任务包。同一 payload 复用既有编号，回填结果跨次运行仍然有效。
+
+    `index` 由调用方传入时直接复用（`prepare_agent_tasks` 逐批构建一次，QC3-010 / W5）。
+    """
     course_code = payload.get("course_code")
     if not isinstance(course_code, str) or not course_code:
         raise RuntimeError("agent 后端要求 payload 含 course_code（用于定位 .agent-task 目录）")
     directory = agent_task_dir(course_code)
     key = payload_hash(payload)
-    index = 0
-    paths = sorted(directory.glob(f"{prompt_id}-*.json")) if directory.is_dir() else []
-    for path in paths:
-        if path.name.endswith(".result.json"):
-            continue
-        match = re.fullmatch(BUNDLE_NAME_RE_TEMPLATE.format(prompt_id=re.escape(prompt_id)), path.name)
-        if match is None:
-            continue
-        index = max(index, int(match.group(1)))
-        try:
-            existing = json.loads(path.read_text(encoding="utf-8"))
-        except ValueError:
-            continue
-        if existing.get("payload_hash") == key:
-            return path
-    bundle = directory / f"{prompt_id}-{index + 1}.json"
+    index = _bundle_index(directory, prompt_id) if index is None else index
+    existing_path = index.get(key)
+    if existing_path is not None:
+        return existing_path
+    bundle = directory / f"{prompt_id}-{_bundle_position(index, prompt_id) + 1}.json"
     instructions, _schema = load_prompt(prompt_id, prompt_version)
     document = {
         "prompt_id": prompt_id,
         "prompt_version": prompt_version,
-        "task_index": index + 1,
+        "task_index": _bundle_position(index, prompt_id) + 1,
         "payload_hash": key,
         "expect_result": _agent_result_path(bundle).name,
         "instructions": instructions,
@@ -276,14 +339,25 @@ def write_agent_bundle(prompt_id: str, prompt_version: str, payload: dict) -> Pa
     }
     directory.mkdir(parents=True, exist_ok=True)
     bundle.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # 新 bundle 落盘 → 目录内文件清单变化，下次 `_bundle_index()` 自然重建；本批内把新键并入索引，
+    # 使后续同 payload 的 job 复用同一编号（否则整批会各自重建、回到 O(n²)）。
+    index[key] = bundle
     return bundle
 
 
 def prepare_agent_tasks(course_code: str, jobs) -> list[Path]:
-    """写全部任务包，返回仍缺回填的结果文件（供 CLI 一次性列出，不伪造）。"""
+    """写全部任务包，返回仍缺回填的结果文件（供 CLI 一次性列出，不伪造）。
+
+    目录索引**在整个批次内只构建一次**（QC3-010 / W5）：`indexes[prompt_id]` 构建后传给
+    `write_agent_bundle()` 复用，逐 job 重建会把批次成本推成 O(n²)（见 `_bundle_index()`）。
+    """
+    directory = agent_task_dir(course_code)
+    indexes: dict[str, dict[str, Path]] = {}
     missing: list[Path] = []
     for prompt_id, prompt_version, payload in jobs:
-        result = _agent_result_path(write_agent_bundle(prompt_id, prompt_version, payload))
+        if prompt_id not in indexes:
+            indexes[prompt_id] = _bundle_index(directory, prompt_id)
+        result = _agent_result_path(write_agent_bundle(prompt_id, prompt_version, payload, index=indexes[prompt_id]))
         if not result.is_file():
             missing.append(result)
     return missing

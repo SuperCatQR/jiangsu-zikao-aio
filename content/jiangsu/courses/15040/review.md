@@ -13,6 +13,24 @@
 | 练习材料 | 只使用公开链接或内部索引 | `practice.md` / `materials://` | metadata-only |
 | 错题记录 | 学习者自建错题表 | 本地笔记 | 待整理 |
 
+## 排程输入
+
+| 输入 | 取值 | 状态 |
+| --- | --- | --- |
+| 考试日期 | 未提供 | named_gap |
+| 每周可投入学时 | 未提供 | named_gap |
+
+## 命名缺口
+
+官方与用户输入均未提供排程所需的考试日期与每周学时，因此本页**不生成** 30 / 14 / 7 天计划，也不推断任何日期。
+
+- **缺口影响**：缺少 exam_date、weekly_hours，无法推导 30 / 14 / 7 天排程
+- **下一份需要的证据**：用户或官方考期公告提供 exam_date 与 weekly_hours（写入 knowledge-model.json 的 exam 块）
+
+在缺口补齐前，复习节奏以 [学习计划](plan.md) 的五阶段流程为准，不绑定具体考次。
+
+<!-- ai-block  | generator=agent/stage_plan.v1 | evidence_refs=knowledge-model:exam | review_state=machine_draft -->
+
 <!-- manual:begin id=schedules -->
 ## 30 天复习
 
@@ -47,3 +65,8 @@
 - 不转载 PDF 原文、截图、第三方题文。
 - 未核验考点只进入缺口清单，不写成确定结论。
 <!-- manual:end -->
+
+## 边界
+
+- 不转载 PDF 原文、截图、第三方题文。
+- 未核验考点只进入缺口清单，不写成确定结论。

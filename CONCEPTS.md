@@ -34,3 +34,32 @@ The reader-facing maturity table generated from the same `grade()` rows as the o
 
 ### maturity-check
 The default non-mutating gate that fails closed when the public projection drifts. Distinct from optional `maturity`, which writes operational reports.
+
+## Pipeline
+
+### Stage
+One deterministic step of the course pipeline, in fixed order: resolve (code/name to course) → acquire (verify the
+read-only source baseline) → evidence (eligibility) → model (syllabus to knowledge model) → generate (AI prep
+layer) → render (JSON to pages) → gate (validate before promotion). Only `generate` may call an LLM.
+
+### Block kind
+The four kinds of AI prep content that must each reach a page: `explain`, `memorize`, `drill` (per knowledge
+point, on the chapter pages; `drill` also on the practice page), and `exam_strategy` (course level, on the plan
+page). A gate reconciles every kind against its landing page.
+
+### Derived region
+A renderer-owned span on a hand-written page, delimited by paired begin/end markers and refreshed on every
+render. Regions are siblings, never nested, and hand-written prose outside them is byte-preserved.
+
+### Manual block
+The sanctioned channel for durable human-written page text: a marker-delimited span that the renderer
+round-trips by id instead of regenerating.
+
+### Zero AI artifacts
+The state of a course that has not reached L1 eligibility: no content artefact exists at all, and the page
+shows a named gap instead. The failing mode this prevents is inventing official data to fill a page.
+
+### Backend
+One of the three interchangeable generation executors behind a single schema: the production HTTP CLI, the
+keyless agent that fills the same JSON by hand, and the offline fixture replay used by CI. All three pass
+through the same validation path.

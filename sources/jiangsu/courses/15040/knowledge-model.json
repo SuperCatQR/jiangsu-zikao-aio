@@ -2,7 +2,7 @@
   "schema_version": 1,
   "course_code": "15040",
   "model_version": "v1",
-  "generated_at": "2026-09-11",
+  "generated_at": "2026-09-12",
   "generator": {
     "kind": "deterministic",
     "model": null,

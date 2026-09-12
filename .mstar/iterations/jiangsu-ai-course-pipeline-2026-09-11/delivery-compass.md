@@ -1,7 +1,8 @@
 ---
 iteration_id: jiangsu-ai-course-pipeline-2026-09-11
 start_date: 2026-09-11
-status: locked
+status: completed
+end_date: 2026-09-12
 enforcement: soft
 effort_budget: M
 iteration_base_branch: main
@@ -41,7 +42,7 @@ B2（公共课 P0 五门）、B3（080901 计算机 27 门）、B4（其余专�
 
 | plan_id | Name | Status | Notes |
 |---------|------|--------|-------|
-| ai-course-prep-pipeline-b1 | AI 备考流水线 B1：数据底座 + `15040` 端到端试点（本迭代唯一交付切片） | InProgress | 6 个 task；`Execution mode: sdd`；pilot = `15040`；范围 = B1 only（B2–B4 见 spec § Roadmap，本迭代不启动）。Task 1 完成并过审（`86423a9..3f2c5a1`，全量 132 passed），T2–T6 待做 |
+| ai-course-prep-pipeline-b1 | AI 备考流水线 B1：数据底座 + `15040` 端到端试点（本迭代唯一交付切片） | **Done** | 6 个 task；`Execution mode: sdd`；pilot = `15040`；范围 = B1 only。T1–T6 + 8 个内容批次 + P0/P1 打磨全部落地。**QC tri 首轮三席一致 `Request Changes`**（7 Critical → 5 个独立缺陷 + 24 Warning + 11 Suggestion），经 **3 轮修复波次**（`2bc9102` / `a25eb29` / `c5f42d8`）清零；**终审 3/3 `Approve`（0 Critical / 0 Warning）**。**QA gate `PASS with notes`，AC1–AC9 全 PASS**（8 项运行时探针）。终态 head `c5f42d8`，worktree 干净。Durable summary 见 plan § Review Gate Summary / QA Gate Summary |
 
 Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
@@ -82,9 +83,10 @@ Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
 ## Roadmap Position
 
-- **Current iteration（jiangsu-ai-course-pipeline-2026-09-11）**：交付 B1 —— 数据底座（catalog + resolver）、取证与放行（evidence / eligibility）、知识模型、AI 备考层与标注契约、确定性渲染、新增两层闸门，并以 `15040` 端到端试点验收。**本迭代不启动 B2–B4**。
-- **Next iteration（B2，未启动）**：全专业公共课 P0（`15040` / `15043` / `15044` / `13000` / `00023`）；启动门槛（触发条件）：本迭代验收 AC1–AC9 全绿且 spec `O2`（真题授权边界）与 `O4`（LLM 预算上限）**书面收敛**；owner：内容维护者（`@project-manager` 派发）。
+- **Current iteration（jiangsu-ai-course-pipeline-2026-09-11）**：**delivered** —— B1 数据底座（catalog + resolver）、取证与放行（evidence / eligibility）、知识模型、AI 备考层与标注契约、确定性渲染、新增两层闸门，以 `15040` 端到端试点验收。QC tri 首轮三席一致 `Request Changes`（7 Critical → 5 个独立缺陷），经 3 轮修复波次清零；**终审 3/3 `Approve`**；**QA gate `PASS with notes`，AC1–AC9 全 PASS**；plan `ai-course-prep-pipeline-b1` = `Done`，已合入集成分支（merge `6f80d7d`）。**本迭代未启动 B2–B4。**
+- **Next iteration（B2，未启动）**：全专业公共课 P0（`15040` / `15043` / `15044` / `13000` / `00023`）；启动门槛（触发条件）：本迭代验收 AC1–AC9 全绿（**已满足**）、且 spec `O2`（真题授权边界）与 `O4`（LLM 预算上限）**书面收敛**（**仍未满足**——`O4` 可用的实测基线：`15040` 单课产出 1.46 MB / ≈58 万 tokens / 393 考点，即 ≈1473 tokens/考点，`15043` 255 点 ≈376k、`15044` 271 点 ≈399k output tokens）；owner：内容维护者（`@project-manager` 派发）。**注意**：`15043` / `15044` 的知识模型已随 B1 落地并修复（`15044` 8 章 / coverage 28；`15043` 首章 `ch01`；两门 `question_types` 已补齐），故 B2 的剩余工作是**生成 + 渲染**，不构成 B2 启动。
 - **Later iterations（未启动）**：**B3**（080901 计算机 27 门）触发条件 = B2 Done 且 `catalog` 能解析 080901 现行计划表；**B4**（其余专业分批）触发条件 = B3 Done 且流水线在 ≥ 10 门课验证无回归。B2–B4 的完整定义（范围 / 启动门槛 / 完成定义 / owner）见 spec § Roadmap。
+- **本期非阻塞遗留（见 plan § Follow-ups F6–F17，各有 owner 与触发条件）**：手工编辑的未闭合 derived 标记不收敛；无闸门解析 derived 标记 / 对账章节链接（检测仍只在渲染器内）；`is_fresh` 死导出；模块级 record 全局；一处手写长引用块按 F10 维持现状。
 - **最终目标**：给出任一江苏自考课码或课名，即可得到一套以应试为目标、来源可追溯、AI 备考层显式标注的完整学习资料；机器产物上限始终为 `machine_ready`。
 
 ## Delivery Branch Policy
@@ -123,20 +125,35 @@ Status values: `Todo` | `InProgress` | `InReview` | `Done` | `Blocked`
 
 | plan_id | QC decision | QA gate | Residuals | Durable summary |
 |---------|-------------|---------|-----------|-----------------|
-| ai-course-prep-pipeline-b1 | pending | pending | pending | `.mstar/plans/ai-course-prep-pipeline-b1.md` |
+| ai-course-prep-pipeline-b1 | **Approve**（三席 3/3；首轮 7 Critical / 24 Warning / 11 Suggestion → 3 轮修复波次清零） | **PASS with notes**（`mandatory` / `acceptance-only`；AC1–AC9 全 PASS） | 无 open R# | `.mstar/plans/ai-course-prep-pipeline-b1.md` § Review Gate Summary / QA Gate Summary |
 
 ## Compound Round Summary
 
-> Filled at iteration-close.
-
-- 结晶文档数：pending
-- 新增 CONCEPTS.md 条目：pending
-- 触发 compound-refresh：pending
+- 结晶文档数：**5 篇**
+  - `conventions/gate-fail-closed-and-page-reach.md`（闸门须重新推导并证明会触发；四个 block kind 必须各自落页）
+  - `conventions/renderer-preserves-handwritten-prose.md`（渲染器不得改写手写正文；derived 区块兄弟化 + 配平扫描 + 无条件刷新）
+  - `testing-patterns/deterministic-generation-backends.md`（一 schema 三后端；整产物字节相等为判据；无 key 后端失败关闭）
+  - `workflow-patterns/reviewer-findings-need-reproduction.md`（席位发现须先复现再入档；行号只在产出它的切分语义下有效）
+  - `architecture-patterns/course-pipeline-layering.md`（三层流水线、每产物单写者、放行判定唯一落点）
+- 新增 CONCEPTS.md 条目：**7 条**（Pipeline 节：Stage / Block kind / Derived region / Manual block / Zero AI artifacts / Backend）
+- 迭代 package 盘点：`guides/` + `specs/` 共 5 篇（compass 按规则排除）。**Promote**：`specs/design-notes.md` → `architecture-patterns/course-pipeline-layering.md`。**Keep snapshot**：`specs/iteration-scope.md`（B1 切片说明，已被 spec 取代）、`guides/corpus-hygiene.md`（§1.6 一次性过程报告）、`guides/direction-lock.md`、`guides/official-source-evidence.md`（规划期实测证据，属迭代史）。
+- 触发 compound-refresh：**否**——五篇新文档与既有 6 篇无重叠（类目从 3 个扩到 6 个），无需合并或清理。
+- 每篇新 doc 均通过 `mstar compound validate` 并登记 `{KNOWLEDGE_DIR}/README.md`（Phase 6 强制）。
 
 ## Iteration Retrospective (minimal)
 
-> Filled at iteration-close.
-
-- 做得好的：
-- 可改进的：
-- 下迭代建议：
+- **做得好的**：
+  - 三席 tri-review 顶住了"全绿假象"——在 249 测试 + 7 层闸门 + 站点构建全绿的情况下，仍查出 AI 备考层**从未上线**（1180 块孤儿）与 `gate` 阶段**空转**这两个结构性缺陷。本轮最高价值产出。
+  - `zero-residual` 执行到位：三轮修复波次把 7 个 Critical + ~30 Warning 全部清零，无一项降级为 open R#。
+  - 独立复核纪律有效：PM 亲自复现全部 5 个独立 Critical，并推翻 2 处席位误报（plan F13 / F15③），避免错误结论入档。
+  - QA 运行时探针（三种变异证明"无半成品"、`agent` 后端失败关闭不伪造）补上 L3 无法覆盖的最后一环。
+- **可改进的**：
+  - **Phase 2 收尾顺序出错一次**：QA 通过后应"先串行 merge 再设 Done"，实际先设 Done，且三个修复波次提交一度只留在 plan 分支。已补做 merge（`6f80d7d`）并记录在案。
+  - **PM 两次越界编辑控制树**：一次直接改 `ops/jiangsu/content-standard.md`（已回滚，登记 F12）——"控制 worktree 禁产品编辑"尚未形成肌肉记忆。
+  - **席位证据链仍需 PM 兜底**：两处误报都带"实测数字"，其中一处的错误源于与 PM 首轮相同的 `splitlines()` 陷阱——方法学盲区会在席位与 PM 之间共享，故复核必须**换一种独立实现**，而非照抄口径。
+  - 首轮 `qc-consolidated.md` 曾在三席报告缺失时写出 `Approve`，属"汇总层零注入"违规；已作废重跑。
+- **下迭代建议**：
+  1. **先谈口径再排批次**：B2 启动门槛只差 spec `O2`（真题授权）与 `O4`（预算上限）书面收敛；`O4` 已有实测基线（≈1473 tokens/考点）可作上限依据。
+  2. **B2a 走"生成 + 渲染"**：`15043` / `15044` 知识模型已在 B1 修复落地，B2 增量面小于原计划。
+  3. **补纵深防御**：给 `chapter-links` 加闸门级「模型 ↔ 页面」对账（当前检测只在渲染器内），并处理手工编辑的未闭合 derived 标记。
+  4. **复习排程输入面**：`15040` 唯一读者可见空洞仍是 `review_schedule` 的 `named_gap`（缺 `exam_date` / `weekly_hours`）。

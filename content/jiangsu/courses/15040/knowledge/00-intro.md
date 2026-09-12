@@ -88,12 +88,16 @@
 - 把大变局只理解成风险上升：正确说法是变局之中危与机同生并存，关键是统筹发展和安全。
 - 把“百年未有”当成一个精确的纪年起点：这里的“百年”是形容变动的规模，不是年份数字。
 
+<!-- ai-block 15040-intro-s1-p1/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：本节五条背景可以串成一条线——先看世界，再看中国，再看道路，再看理论，最后看党自身。
 **关键词**：变局＋加速演进。变局定性质，加速演进定节奏，两个词都不能丢。
 **对比**：这一条讲的是世界范围的大调整，不是讲我国国内形势；答题时不要把主体写成中国。
 **顺口溜**：世界变局在加速，外部环境先认清。
+
+<!-- ai-block 15040-intro-s1-p1/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s1-p2（识记）
 
@@ -107,12 +111,16 @@
 - 把“关键时期”理解成已经完成复兴任务：正确说法是进入了关键时期，任务仍在推进之中。
 - 把它与“不可逆转的历史进程”混为一谈：前者讲历程所处的阶段，后者讲进程的性质与趋势。
 
+<!-- ai-block 15040-intro-s1-p2/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“时间坐标”法记——先定坐标（关键时期），再定方向（不可逆转）。
 **关键词**：复兴＋关键时期。复兴是主题，关键时期是阶段判断。
 **串联**：外部有世界大变局，内部有民族复兴关键期，一外一内构成思想创立的时代条件。
 **对比**：关键时期说的是进程处在什么阶段，不可逆转说的是进程具有什么性质，二者不能互相替代。
+
+<!-- ai-block 15040-intro-s1-p2/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s1-p3（识记）
 
@@ -126,12 +134,16 @@
 - 把中国式现代化与西方现代化道路混同：正确说法是它立足中国国情，有自身的规定性。
 - 把“全面推进拓展”说成已经定型不再发展：正确说法是仍在推进和拓展之中。
 
+<!-- ai-block 15040-intro-s1-p3/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：把五条背景排成“世界—中国—道路—理论—政党”的阶梯，这一条站在“道路”这一级。
 **关键词**：现代化＋全面＋拓展。全面讲覆盖面，拓展讲生长性。
 **对比**：民族复兴讲的是目标与进程，中国式现代化讲的是实现这一目标的道路形态。
 **顺口溜**：道路越走越宽广，现代化在全面推进中。
+
+<!-- ai-block 15040-intro-s1-p3/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s1-p4（识记）
 
@@ -145,12 +157,16 @@
 - 把这一条说成科学社会主义只在书本上得到证明：正确说法是在中国的实践中展现出活力。
 - 把“焕发生机”理解为已经完成：正确说法是持续焕发、仍在发展，不能写成终结状态。
 
+<!-- ai-block 15040-intro-s1-p4/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：记“两个限定词”——21 世纪、中国。缺一个，表述就不准确。
 **关键词**：科学社会主义＋蓬勃生机。前者是理论，后者是状态。
 **对比**：讲世界社会主义时常用“低潮”一类判断，讲中国时用“焕发生机”，对象不同，结论不同。
 **串联**：道路有现代化，理论有科学社会主义，两条合起来支撑思想的理论根基。
+
+<!-- ai-block 15040-intro-s1-p4/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s1-p5（识记）
 
@@ -164,12 +180,16 @@
 - 把自我革命等同于社会革命：正确说法是自我革命指向党自身，社会革命指向社会领域的变革。
 - 把自我革命理解为一次性的动作：正确说法是它是持续的过程，贯穿于党的建设之中。
 
+<!-- ai-block 15040-intro-s1-p5/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：五条背景的落点是“党”，用“回到主体”这一招记住最后一条。
 **关键词**：自我革命＋新的境界。前者是做法，后者是结果。
 **对比**：社会革命回答“改造什么社会”，自我革命回答“党如何保持先进性和纯洁性”。
 **顺口溜**：外部变局、内部复兴、道路拓展、理论生机，最后落到党的自我革命。
+
+<!-- ai-block 15040-intro-s1-p5/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s1-p6（领会）
 
@@ -183,12 +203,16 @@
 - 把三个阶段颠倒或并列表述：正确说法是从站起来到富起来再到强起来，有先后顺序。
 - 把“强起来”与“富起来”混为一谈：正确说法是二者是不同阶段的概括，侧重不同。
 
+<!-- ai-block 15040-intro-s1-p6/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L225 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“三级台阶”记——站起来、富起来、强起来，一级比一级高。
 **关键词**：站起来、富起来、强起来，三个动宾短语各对应一个历史阶段。
 **串联**：把它放在时代背景里读，正是这一飞跃使民族复兴进入关键时期。
 **对比**：站起来解决的是民族独立问题，富起来解决的是发展落后问题，强起来指向的是整体实力与自信。
+
+<!-- ai-block 15040-intro-s1-p6/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L225 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s1-p7（应用）
 
@@ -202,6 +226,8 @@
 - 把“不可逆转”理解为不需要再付出努力：正确说法是趋势不可逆转，但仍需付出艰巨努力。
 - 把不可逆转与一帆风顺等同：正确说法是进程不可逆转，同时会面对各种风险挑战。
 
+<!-- ai-block 15040-intro-s1-p7/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L226 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“一难一定”区分两条——关键时期讲难，不可逆转讲定。
@@ -209,6 +235,8 @@
 **对比**：关键时期是阶段判断，不可逆转是趋势判断，答题时不要把两句合成一句写。
 **顺口溜**：进程不可逆转，努力不可松懈。
 **用法**：材料题遇到“有人说既然不可逆转就不用努力”这类说法，先肯定趋势判断，再指出努力不能松懈。
+
+<!-- ai-block 15040-intro-s1-p7/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L226 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s2-p1（识记）
 
@@ -222,12 +250,16 @@
 - 把第二个结合的对象写成中国具体实际：正确说法是第二个结合指向中华优秀传统文化，两者不能互换。
 - 把“重大成果”说成只是对既有理论的照抄：正确说法是在结合中形成的创造性成果。
 
+<!-- ai-block 15040-intro-s2-p1/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L228 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：记“两个对象”法——实际、文化，一实一文，顺序固定。
 **关键词**：第一个结合＝中国具体实际；第二个结合＝中华优秀传统文化。
 **对比**：第一个结合解决理论与国情的关系，第二个结合解决理论与文化根脉的关系，侧重不同。
 **串联**：先记两个对象，再记“重大成果”这个落点，表述就完整了。
+
+<!-- ai-block 15040-intro-s2-p1/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L228 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s2-p2（领会）
 
@@ -241,12 +273,16 @@
 - 只答“中国化”漏掉“时代化”，或只答“时代化”漏掉“中国化”：正确说法是两者并举、缺一不可。
 - 把“最鲜活”理解成理论尚未定型、可以随意解释：正确说法是理论在实践基础上不断发展，同时有确定的基本立场观点方法。
 
+<!-- ai-block 15040-intro-s2-p2/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L230 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“时空双轴”记——中国化是空间轴，时代化是时间轴。
 **关键词**：最现实、最鲜活，两个形容词共同说明理论的实践品格。
 **对比**：中国化回答“在哪里用”，时代化回答“什么时候用”，合起来才是完整的理论品格。
 **串联**：先把两个“化”记住，再补两个形容词，领会题的分点就齐了。
+
+<!-- ai-block 15040-intro-s2-p2/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L230 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s2-p3（应用）
 
@@ -260,6 +296,8 @@
 - 把“最大法宝”与一般工作方法等同：正确说法是它是对成功经验的规律性概括，地位更根本。
 - 把规律性认识说成一次形成、不再发展：正确说法是它在探索中形成并在实践中继续深化。
 
+<!-- ai-block 15040-intro-s2-p3/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L231 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：抓三个词——规律性认识、探索中得出、最大法宝，按“是什么—怎么来—多重要”排序。
@@ -267,6 +305,8 @@
 **对比**：一般经验讲的是个别做法，规律性认识讲的是可反复适用的结论，层次不同。
 **顺口溜**：探索之中得规律，成功路上最大法宝。
 **用法**：材料题先看有没有“结合实际、结合本地文化”的做法，再套规律性认识与最大法宝两层。
+
+<!-- ai-block 15040-intro-s2-p3/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L231 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s3-p1（识记）
 
@@ -280,12 +320,16 @@
 - 只记“是什么”而漏掉“怎么办”：正确说法是每一课题都由认识问题和实践问题共同构成。
 - 把重大时代课题说成一般性的工作安排：正确说法是它指带根本性、全局性的时代之问。
 
+<!-- ai-block 15040-intro-s3-p1/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L234 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“三问法”记——问道路、问强国、问政党，每一问都跟一句“怎样做”。
 **关键词**：中国特色社会主义、社会主义现代化强国、长期执政的马克思主义政党，这是三个对象。
 **串联**：先有问题（重大时代课题），再有回答（主要内容），最后成体系（科学体系），三块连成一条线。
 **对比**：重大时代课题是“问”，主要内容是“答”，二者是问题与回答的关系，不能互相替代。
+
+<!-- ai-block 15040-intro-s3-p1/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L234 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s3-p2（识记）
 
@@ -299,12 +343,16 @@
 - 把主要内容缩小为某一个领域的政策安排：正确说法是它覆盖各领域，具有总体性。
 - 把“主要内容”与“科学体系”混为一谈：正确说法是前者讲内容范围，后者讲内容之间的内在联系与整体结构。
 
+<!-- ai-block 15040-intro-s3-p2/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L234 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“主题加领域”两级记——先记一个主题，再记若干领域。
 **关键词**：主题＝新时代坚持和发展中国特色社会主义；领域＝经济、政治、文化、社会、生态文明和党的建设。
 **对比**：内容讲“有哪些”，体系讲“怎么连”，一个是材料，一个是结构。
 **顺口溜**：一个主题贯到底，多个领域全覆盖。
+
+<!-- ai-block 15040-intro-s3-p2/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L234 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s3-p3（领会）
 
@@ -318,12 +366,16 @@
 - 把六条当成彼此并列的口号：正确说法是六条相互贯通、彼此支撑，是统一的立场观点方法。
 - 把“六个必须坚持”与“两个结合”混同：正确说法是“两个结合”讲理论从哪里来，“六个必须坚持”讲理论怎么用。
 
+<!-- ai-block 15040-intro-s3-p3/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L235 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：口诀法——“人民自信守正，问题系统天下”，每条取核心两字连成一线。
 **关键词**：六句都以“必须坚持”开头，句式统一，只需记住每条的落点，不必逐字硬背。
 **对比**：“两个结合”回答理论的来源，“六个必须坚持”回答理论的运用，一问来源，一问用法。
 **串联**：从立场（人民至上）到精神（自信自立）、品格（守正创新）、指向（问题导向）、方法（系统观念），最后到世界眼光（胸怀天下）。
+
+<!-- ai-block 15040-intro-s3-p3/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L235 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s3-p4（应用）
 
@@ -337,12 +389,16 @@
 - 把“体系”理解成内容越多越好：正确说法是关键在于内容之间的内在联系与整体结构。
 - 用某一句话代替整个理论作解释：正确说法是先弄清这一观点在体系中的位置，再谈它的含义。
 
+<!-- ai-block 15040-intro-s3-p4/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L236 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“三有”标准记——有主题、有联系、有方法，三者齐备才叫体系。
 **关键词**：完整、科学、体系，三个词分别对应覆盖面、真理性、结构性。
 **对比**：零散观点的集合只是材料堆，围绕主题相互支撑的整体才是体系。
 **串联**：先有问题（时代课题），再有回答（主要内容），最后成结构（科学体系）。
+
+<!-- ai-block 15040-intro-s3-p4/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L236 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s4-p1（识记）
 
@@ -356,12 +412,16 @@
 - 把党的指导思想与国家的指导思想混着写：正确说法是两者是同一理论在两个层面的确认，答题时要分开说。
 - 把指导思想当成一般性口号：正确说法是它是根本遵循和行动指南，具有理论基础的定位。
 
+<!-- ai-block 15040-intro-s4-p1/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“两层确认”记——党的层面、国家层面，先党后国。
 **关键词**：指导思想＋根本遵循，前者定名分，后者定作用。
 **对比**：党的指导思想回答“全党以什么为遵循”，国家的指导思想回答“国家事业以什么为遵循”。
 **串联**：党的指导思想、国家的指导思想、“四个伟大”，三条一起构成历史地位的识记部分。
+
+<!-- ai-block 15040-intro-s4-p1/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s4-p2（识记）
 
@@ -375,12 +435,16 @@
 - 把国家的指导思想说成只约束国家机关工作人员：正确说法是它覆盖国家与社会生活的各个方面。
 - 把党的指导思想和国家的指导思想当成两个不同的理论：正确说法是同一思想在两个层面的确认。
 
+<!-- ai-block 15040-intro-s4-p2/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“一理论、两层面”记——理论只有一个，确认它的层面有两个。
 **关键词**：国家事业、根本遵循、共同思想基础，三个词把国家层面的定位说全。
 **对比**：党的层面强调全党的遵循，国家层面强调全体人民的共同思想基础，侧重点不同。
 **顺口溜**：党的遵循、国家遵循，一个理论两处确认。
+
+<!-- ai-block 15040-intro-s4-p2/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s4-p3（识记）
 
@@ -394,6 +458,8 @@
 - 把“四个伟大”写成四个互不相关的概念：正确说法是四者相互贯通，围绕实现伟大梦想展开。
 - 忽略伟大工程的决定性作用：正确说法是在四项之中，党的建设新的伟大工程起决定性作用。
 
+<!-- ai-block 15040-intro-s4-p3/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：按“目标—道路—精神—保证”四步记，把四个伟大排成一条线。
@@ -401,6 +467,8 @@
 **对比**：伟大梦想讲要实现什么，伟大事业讲沿着什么走，二者不能互换。
 **顺口溜**：梦想指方向，事业是道路，斗争看精神，工程作保证。
 **提醒**：四个伟大的内容全部是动宾式概括，不是四项具体工作，答题时不要写成任务清单。
+
+<!-- ai-block 15040-intro-s4-p3/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s4-p4（领会）
 
@@ -415,12 +483,16 @@
 - 只答“当代中国马克思主义”而漏掉“二十一世纪马克思主义”：正确说法是两者并列，缺一不可。
 - 把“时代精华”理解为对传统文化的简单照搬：正确说法是在结合中实现创造性转化、创新性发展。
 
+<!-- ai-block 15040-intro-s4-p4/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L241 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“三顶帽子”记——当代中国的、二十一世纪的、中华文化的，一顶也不能少。
 **关键词**：当代中国马克思主义、二十一世纪马克思主义、中华文化和中国精神的时代精华。
 **对比**：“当代中国”讲地域与主体，“二十一世纪”讲时代与世界，两个限定语不能互相替换。
 **串联**：先记马克思主义这条线（两个马克思主义），再记中华文化这条线（时代精华）。
+
+<!-- ai-block 15040-intro-s4-p4/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L241 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s4-p5（应用）
 
@@ -434,12 +506,16 @@
 - 把“新的飞跃”说成与以往成果没有关系：正确说法是在既有基础上接续发展，而不是另起炉灶。
 - 把飞跃理解为已经终结的状态：正确说法是理论随实践继续发展，飞跃是历史进程中的新高度。
 
+<!-- ai-block 15040-intro-s4-p5/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L243 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：记“两个不”——不割断历史，不停止发展。
 **关键词**：飞跃＋新，前者讲质变，后者讲历史方位。
 **对比**：一般发展讲的是量的积累和局部推进，飞跃讲的是整体形态的跃升，程度不同。
 **串联**：两个结合（怎么来）→ 科学体系（是什么）→ 历史地位（多重要）→ 新的飞跃（到了哪一步）。
+
+<!-- ai-block 15040-intro-s4-p5/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L243 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s5-p1（识记）
 
@@ -453,12 +529,16 @@
 - 只记其中一条：正确说法是“两个确立”必须两条并提，缺一条表述就不完整。
 - 把领导核心的确立与指导思想的确立混为一谈：正确说法是一条讲组织上的核心，一条讲理论上的指导地位。
 
+<!-- ai-block 15040-intro-s5-p1/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“一人一思想”记——一条记核心，一条记理论，两条对齐。
 **关键词**：确立＋核心地位、确立＋指导地位，句式对称，便于成对回忆。
 **对比**：“两个确立”讲确立了什么，“两个维护”讲在实践中怎样维护，一是前提，一是行动。
 **串联**：确立核心与理论（两个确立）→ 形成自觉（四个意识）→ 坚定信念（四个自信）→ 落到行动（两个维护）。
+
+<!-- ai-block 15040-intro-s5-p1/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s5-p2（识记）
 
@@ -472,12 +552,16 @@
 - 把“四个意识”与“四个自信”混记：正确说法是前者讲意识与自觉，后者讲信心与信念，内容完全不同。
 - 把看齐意识理解成向任何上级看齐：正确说法是向党中央看齐，向党的理论和路线方针政策看齐。
 
+<!-- ai-block 15040-intro-s5-p2/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：按“政治、大局、核心、看齐”四字联记，顺序固定。
 **关键词**：立场（政治）、整体（大局）、核心、对齐（看齐），记住四个着力点就不易混。
 **对比**：四个意识回答“思想上怎么自觉”，四个自信回答“信念上信什么”。
 **顺口溜**：政治把方向，大局看整体，核心要维护，看齐不走偏。
+
+<!-- ai-block 15040-intro-s5-p2/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s5-p3（识记）
 
@@ -491,12 +575,16 @@
 - 把“四个自信”与“四个意识”互换：正确说法是自信讲信念，意识讲自觉，两者不能对调。
 - 漏掉文化自信：正确说法是四个方面必须齐全，文化自信在其中具有基础性作用。
 
+<!-- ai-block 15040-intro-s5-p3/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“路、论、制、文”四个字记，各取一字最省力。
 **关键词**：道路、理论、制度、文化，四个对象一一对应四种自信。
 **对比**：四个自信是“信什么”，四个意识是“怎么想”，两个维护是“怎么做”。
 **串联**：两个确立（前提）→ 四个意识（思想）→ 四个自信（信念）→ 两个维护（行动）。
+
+<!-- ai-block 15040-intro-s5-p3/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s5-p4（识记）
 
@@ -510,6 +598,8 @@
 - 把“两个维护”与“两个确立”混同：正确说法是确立讲前提，维护讲行动，不能互相替代。
 - 把维护核心与维护党中央权威对立起来：正确说法是二者高度一致，维护核心就是维护党中央权威。
 
+<!-- ai-block 15040-intro-s5-p4/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“确立—维护”一对记，两个确立是前提，两个维护是行动。
@@ -517,6 +607,8 @@
 **对比**：两个确立解决“认不认”的问题，两个维护解决“做不做”的问题。
 **顺口溜**：确立在前，维护在后，认识落到行动上。
 **检查点**：两条都以“坚决维护”开头，读起来对称，少一条最容易在选择题中被发现。
+
+<!-- ai-block 15040-intro-s5-p4/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s5-p5（领会）
 
@@ -530,12 +622,16 @@
 - 只强调领导核心而忽略科学理论指导：正确说法是两个方面缺一不可，一个管组织，一个管思想。
 - 把这一判断说成只适用于某个具体时期：正确说法是它是对历史经验的规律性总结，具有普遍意义。
 
+<!-- ai-block 15040-intro-s5-p5/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L247 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“两保证”记——组织保证靠核心，思想保证靠理论。
 **关键词**：坚强的领导核心、科学的理论指导，两个定语分别限定两个保证。
 **对比**：领导核心解决“谁来领”，理论指导解决“往哪走”，一问主体，一问方向。
 **串联**：因为有这两个根本性问题（领会），才需要“两个确立”（识记），并落到“两个维护”（行动）。
+
+<!-- ai-block 15040-intro-s5-p5/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L247 | review_state=machine_draft -->
 
 ### 考点精讲：15040-intro-s5-p6（应用）
 
@@ -549,12 +645,16 @@
 - 把“决定性因素”理解成唯一原因：正确说法是它起决定作用，但成就是多方面共同努力的结果。
 - 把三个“最大”当成三个可以随意替换的口号：正确说法是确定性、底气、保证各有侧重，分别对应判断、信心与保障。
 
+<!-- ai-block 15040-intro-s5-p6/explain | generator=agent/explain_point.v1 | evidence_refs=syllabus:15040#L249 | review_state=machine_draft -->
+
 #### 记忆辅助
 
 **记忆法**：用“一决定、三最大”记——决定成就与变革，确定方向、底气与保证。
 **关键词**：历史性成就、历史性变革（两个历史性）；最大确定性、最大底气、最大保证（三个最大）。
 **对比**：“决定性因素”讲原因与结果，“最大确定性”讲面对不确定时的支撑，角度不同。
 **串联**：确立（前提）→ 决定性意义（领会）→ 应对不确定性（应用）→ 落到两个维护（行动）。
+
+<!-- ai-block 15040-intro-s5-p6/memorize | generator=agent/memorize_point.v1 | evidence_refs=syllabus:15040#L249 | review_state=machine_draft -->
 
 ## AI 仿真练习题
 
@@ -579,6 +679,8 @@ D 项否认了变局的长期性与全局性，与“百年未有”“加速演
 
 </details>
 
+<!-- ai-block 15040-intro-s1-p1/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s1-p2（单项选择题）
 
 关于中华民族伟大复兴所处的历史阶段，下列说法中准确的是（ ）。
@@ -599,6 +701,8 @@ C 项否认了已经取得的进展，是另一种片面。
 D 项把复兴说成可以依赖外部条件自然实现，忽略了自身奋斗的根本作用。
 
 </details>
+
+<!-- ai-block 15040-intro-s1-p2/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s1-p3（单项选择题）
 
@@ -621,6 +725,8 @@ D 项割裂现代化建设与本国国情，违背基本经验。
 
 </details>
 
+<!-- ai-block 15040-intro-s1-p3/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s1-p4（单项选择题）
 
 关于科学社会主义在当代中国的发展状况，下列说法正确的是（ ）。
@@ -641,6 +747,8 @@ C 项把证明主体放到别国，弄错了实践所在地。
 D 项把持续发展的过程说成已经终结，属于把进行时写成完成时。
 
 </details>
+
+<!-- ai-block 15040-intro-s1-p4/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s1-p5（单项选择题）
 
@@ -663,6 +771,8 @@ D 项切断党的建设与事业发展的联系，与基本经验不符。
 
 </details>
 
+<!-- ai-block 15040-intro-s1-p5/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L222 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s1-p6（简答题）
 
 近代以来，中华民族走过不同的发展阶段。请结合所学，说明应当如何理解中华民族站起来、富起来、强起来这三个阶段的伟大飞跃。作答要求：先概括三个阶段各自要解决的主要问题，再说明三个阶段之间的递进关系。作答时三个阶段都要写到，并各用一句话说明它们之间的关系，最后概括这一飞跃的整体意义。
@@ -680,6 +790,8 @@ D 项切断党的建设与事业发展的联系，与基本经验不符。
 解析：作答时要体现“飞跃”的整体性和阶段性，把每一次跃升与前一个阶段的基础关系写清楚。
 
 </details>
+
+<!-- ai-block 15040-intro-s1-p6/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L225 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s1-p7（材料题）
 
@@ -700,6 +812,8 @@ D 项切断党的建设与事业发展的联系，与基本经验不符。
 解析：材料题要先扣材料的分歧，再落知识点，最后给出正确做法，不能只复述材料。
 
 </details>
+
+<!-- ai-block 15040-intro-s1-p7/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L226 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s2-p1（单项选择题）
 
@@ -722,6 +836,8 @@ D 项把中华优秀传统文化替换成外国优秀文化，改变了结合的
 
 </details>
 
+<!-- ai-block 15040-intro-s2-p1/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L228 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s2-p2（简答题）
 
 理论的生命力在于它同实践的关系。请结合所学，说明为什么说习近平新时代中国特色社会主义思想是最现实、最鲜活的中国化时代化的马克思主义。作答要求：从“中国化”和“时代化”两个方面分别说明理由，并指出“最现实、最鲜活”强调的是什么。作答时两个方面都要写到，每个方面先给结论，再补一句理由。
@@ -739,6 +855,8 @@ D 项把中华优秀传统文化替换成外国优秀文化，改变了结合的
 解析：作答时先分“中国化”“时代化”两个维度，再用“最现实、最鲜活”收束到实践品格上。
 
 </details>
+
+<!-- ai-block 15040-intro-s2-p2/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L230 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s2-p3（材料题）
 
@@ -759,6 +877,8 @@ D 项把中华优秀传统文化替换成外国优秀文化，改变了结合的
 解析：材料题要先扣材料中的两个做法，再落到规律性认识与最大法宝的定位，最后给出可操作的做法。
 
 </details>
+
+<!-- ai-block 15040-intro-s2-p3/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L231 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s3-p1（单项选择题）
 
@@ -781,6 +901,8 @@ D 项属于国际组织事务，与本题所问的重大时代课题没有对应
 
 </details>
 
+<!-- ai-block 15040-intro-s3-p1/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L234 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s3-p2（单项选择题）
 
 关于习近平新时代中国特色社会主义思想的主要内容，理解正确的是（ ）。
@@ -802,6 +924,8 @@ D 项把理论的主要内容与具体工作部署等同，降低了层次。
 
 </details>
 
+<!-- ai-block 15040-intro-s3-p2/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L234 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s3-p3（简答题）
 
 世界观和方法论是理论的“活的灵魂”。请结合所学，写出“六个必须坚持”的具体内容，并说明它在习近平新时代中国特色社会主义思想的科学体系中处于什么地位。作答要求：先逐条列出六条内容，再说明这六条共同体现了什么，最后说清掌握它对分析新问题有什么作用。
@@ -819,6 +943,8 @@ D 项把理论的主要内容与具体工作部署等同，降低了层次。
 解析：作答时先列六条内容，再回答性质与地位，最后补一句方法论作用，层次才完整。
 
 </details>
+
+<!-- ai-block 15040-intro-s3-p3/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L235 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s3-p4（材料题）
 
@@ -839,6 +965,8 @@ D 项把理论的主要内容与具体工作部署等同，降低了层次。
 解析：材料题先指出材料中的偏差，再落到“体系”的判定标准，最后给出可操作的学习方法。
 
 </details>
+
+<!-- ai-block 15040-intro-s3-p4/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L236 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s4-p1（单项选择题）
 
@@ -861,6 +989,8 @@ D 项把根本遵循降格为可以随意取舍的学术观点。
 
 </details>
 
+<!-- ai-block 15040-intro-s4-p1/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s4-p2（单项选择题）
 
 习近平新时代中国特色社会主义思想作为国家的指导思想，其含义是（ ）。
@@ -881,6 +1011,8 @@ C 项割裂政治生活与社会生活，与覆盖面的完整性不符。
 D 项把同一理论拆成两套主张，属于对两个层面关系的误解。
 
 </details>
+
+<!-- ai-block 15040-intro-s4-p2/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s4-p3（单项选择题）
 
@@ -903,6 +1035,8 @@ D 项漏掉伟大斗争，内容不完整。
 
 </details>
 
+<!-- ai-block 15040-intro-s4-p3/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L238 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s4-p4（简答题）
 
 评价一种理论的历史地位，通常要看它在思想史和文化史上处于什么位置。请结合所学，说明应当从哪几个方面把握这一思想的历史地位。作答要求：分层表述，每一层先给判断，再说明判断的依据；答完三层之后，再用一句话说明这三层之间的关系和它们为什么缺一不可。
@@ -920,6 +1054,8 @@ D 项漏掉伟大斗争，内容不完整。
 解析：作答按“马克思主义发展史—时代与世界意义—文化根脉”三层展开，最后用“新的飞跃”收束，避免只答一层。
 
 </details>
+
+<!-- ai-block 15040-intro-s4-p4/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L241 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s4-p5（材料题）
 
@@ -940,6 +1076,8 @@ D 项漏掉伟大斗争，内容不完整。
 解析：材料题要先判断甲乙谁对，再解释“飞跃”与“新”两层含义，最后给出方法论结论。
 
 </details>
+
+<!-- ai-block 15040-intro-s4-p5/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L243 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s5-p1（单项选择题）
 
@@ -962,6 +1100,8 @@ D 项属于外交领域的理念主张，与本题无关。
 
 </details>
 
+<!-- ai-block 15040-intro-s5-p1/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s5-p2（单项选择题）
 
 增强“四个意识”是把“两个确立”转化为思想自觉的重要要求。“四个意识”是指（ ）。
@@ -982,6 +1122,8 @@ C 项是自拟词汇，不在“四个意识”范围内。
 D 项虽有正面含义，但与“四个意识”的规范表述不符。
 
 </details>
+
+<!-- ai-block 15040-intro-s5-p2/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s5-p3（单项选择题）
 
@@ -1004,6 +1146,8 @@ D 项按时间与空间维度自拟，与考点无关。
 
 </details>
 
+<!-- ai-block 15040-intro-s5-p3/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s5-p4（单项选择题）
 
 “两个维护”的内容是（ ）。
@@ -1025,6 +1169,8 @@ D 项把维护对象换成结论与做法，属于概念的偷换。
 
 </details>
 
+<!-- ai-block 15040-intro-s5-p4/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L246 | review_state=machine_draft -->
+
 ### 练习题：15040-intro-s5-p5（简答题）
 
 历史经验表明，事业能否顺利推进，同一系列根本条件密切相关。请结合所学，说明为什么说领导核心是否坚强、理论指导是否科学，是关乎党和国家前途命运的根本性问题，也是关系党和人民事业成败的根本性问题。作答要求：从历史经验、现实需要和功能分工三个角度说明理由，最后点明这一判断的性质。
@@ -1042,6 +1188,8 @@ D 项把维护对象换成结论与做法，属于概念的偷换。
 解析：作答要按“历史经验—现实需要—功能分工”三层展开，最后点明它是规律性总结，不要只写结论。
 
 </details>
+
+<!-- ai-block 15040-intro-s5-p5/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L247 | review_state=machine_draft -->
 
 ### 练习题：15040-intro-s5-p6（材料题）
 
@@ -1062,6 +1210,8 @@ D 项把维护对象换成结论与做法，属于概念的偷换。
 解析：材料题先扣材料的归因，再落“决定性因素”与三个“最大”，最后给出行动要求，避免空谈结论。
 
 </details>
+
+<!-- ai-block 15040-intro-s5-p6/drill | generator=agent/drill_point.v1 | evidence_refs=syllabus:15040#L249 | review_state=machine_draft -->
 
 ---
 
