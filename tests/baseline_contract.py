@@ -63,8 +63,21 @@ def load_snapshot(root: Path = ROOT) -> dict:
 
 
 def official_urls(baseline: dict) -> set[str]:
-    """baseline 里按**生产判定**（`is_official_url`）算出的官方 URL 集合。"""
-    return {url for url in (baseline.get("urls") or {}) if is_official_url(url)}
+    """baseline 里的官方 URL 集合，判据 = **与生产者逐字一致**的合取：`authoritative` 且 `is_official_url`。
+
+    **I-1（T3 评审，2026-09-12）**：原实现只判 `is_official_url(url)`（域名为 `jseea.cn` 或其子域），
+    而生产者 `scripts/snapshot-official-sources.py:is_official()` 要求
+    `item["authoritative"] and host.endswith("jseea.cn")`。二者不一致时，一条
+    `authoritative=false` 的 jseea URL 会被本函数算作官方、却被生产者排除 →
+    **合法刷新永远无法满足断言**（正是 B2-D4 要消除的形态）。
+    现改为与生产者、以及 `scripts/lib/course_pipeline/evidence.py:283` 的既有口径（合取）一致。
+    """
+    items = baseline.get("urls") or {}
+    return {
+        url
+        for url, item in items.items()
+        if isinstance(item, dict) and item.get("authoritative") and is_official_url(url)
+    }
 
 
 def coherence_problems(root: Path = ROOT) -> list[str]:
@@ -205,11 +218,19 @@ def assert_contract(root: Path = ROOT) -> None:
 
 @contextlib.contextmanager
 def assert_unwritten(paths: "list[Path]") -> Iterator[None]:
-    """块内代码**不得**改动 `paths` 的任何一个字节（写自由 / write-freedom）。"""
+    """块内代码**不得**改动 `paths` 的任何一个字节（写自由 / write-freedom）。
+
+    **M-1（T3 评审，2026-09-12）**：原实现无 `try/finally` —— 块内抛异常时会跳过检查，
+    「先写后抛」即可逃逸（评审已复现）。改为 `finally` 中比对：无论正常退出还是异常，
+    写入都会被断言抓到（异常优先传播，不掩盖原始失败）。
+    """
     before = {path: path.read_bytes() for path in paths}
-    yield
-    for path, original in before.items():
-        assert path.read_bytes() == original, f"{path} was written by the code path under test"
+    try:
+        yield
+    finally:
+        for path, original in before.items():
+            if path.read_bytes() != original:
+                raise AssertionError(f"{path} was written by the code path under test")
 
 
 def assert_page_work_keeps_baseline_intact(work: "Callable[[], object]", root: Path = ROOT) -> None:
