@@ -60,6 +60,14 @@
   8-gram 字符级重合率严格不得超过 20%。语料取自 `evidence.json` 的 `syllabus.path` 并校验其 `sha256`（缺失即失败关闭）。
   **已声明豁免**：`review_schedule.plans[].items[].focus` 是确定性派生标签（章序标签 + 考纲节标题逐字拼接，实测重合率 85%），
   不是 LLM 生成正文，故不在守卫作用域内；它只出现在 `review.md` 的排程表里，且该页带 AI 横幅。
+- **AI 块页面到达性对账**：`ai-content` 层不只校验标注，还要证明每个 AI 产物块**真的落到了页面上**。对账口径是
+  **4 个块类别（`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` / `review_schedule`）**，
+  一个都不能漏：`explain` / `memorize` 按全部章页内的 `#### 要点梳理` / `#### 记忆辅助` 小节数**精确相等**对账（这两个
+  类别没有别的落点，章页是唯一写入点，故不能退化成下界）；`drill` 对账 `practice.md` 的小节数与考核点锚点；
+  `stage_plan` 对账 `plan.md` 的五阶段名与各自 `done_when`；`exam_strategy` 必须落在 `plan.md` 的 `## 应试策略`
+  区块**之内**；`review_schedule` 必须落在 `review.md` 的排程表或 `## 命名缺口` 区块之内。
+  此外，课程**存在 `content.json` 而渲染页目录不存在**时**失败关闭**（不再静默跳过整门课）。
+  这一条覆盖的正是「AI 备考层从未被渲染」的整层丢失形态；变异证明见 `tests/test_ai_content_gate.py`。
 - **渲染页面横幅隔离**：
   - AI 辅助生成的页面（`plan.md`, `practice.md`, `review.md` 及 `knowledge/*.md`）必须呈现含 `本页由 AI 辅助生成` 的警示横幅
     （正文区域靠前位置，位于 frontmatter / 生成注释之后；`practice.md` 另需遵守 canonical H1 首行契约）。闸门按子串 `本页由 AI 辅助生成` 判定。

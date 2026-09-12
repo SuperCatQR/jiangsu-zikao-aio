@@ -81,8 +81,9 @@ def declared_question_types(model: dict) -> list[str]:
 def out_of_scope_prompts(course_code: str) -> list[str]:
     """该课程缺哪些提示词包（模板 frontmatter 的 `course_scope`）；空列表 = 在作用域内。
 
-    plan § Data contracts 4「提示词课程作用域」（F-401）：作用域外的课程必须 fail closed —— 四个 v1
-    提示词只服务 15040，用别人的模板生成会静默产出错课内容，且所有自检都看不出来。
+    plan § Data contracts 4「提示词课程作用域」（F-401）：作用域外的课程必须 fail closed —— 每个 v1
+    提示词只在自身 `course_scope` 列明的课程内可用（B2a 起为 `15040` / `15043`），用作用域外的模板
+    生成会静默产出错课内容，且所有自检都看不出来。
     """
     return [
         f"{prompt_id}.{prompt_version}"
