@@ -1078,6 +1078,104 @@ def test_cli_generate_replay_reproduces_artifact_byte_identically():
     assert CONTENT_PATH.read_bytes() == before, "replay 复跑必须字节一致"
 
 
+# --------------------------------------------------------------------------------------
+# R6 / F-QC3-5：`15043` 的 replay 字节一致必须有**持久**守护（此前只有 `15040` 有）
+# --------------------------------------------------------------------------------------
+
+COURSE_43 = "15043"
+MODEL_43_PATH = Path(f"sources/jiangsu/courses/{COURSE_43}/knowledge-model.json")
+CONTENT_43_PATH = Path(f"sources/jiangsu/courses/{COURSE_43}/content.json")
+
+
+def _artifact_43() -> dict:
+    return _json(ROOT / CONTENT_43_PATH)
+
+
+def _artifact_43_slugs() -> tuple[str, ...]:
+    """`15043` 产物覆盖的章 slug（由 `point_id` 反推，口径与 `_artifact_slugs()` 相同）。"""
+    slugs = {b["point_id"].split("-")[1] for b in _artifact_43()["blocks"] if b.get("point_id")}
+    model = _json(ROOT / MODEL_43_PATH)
+    return tuple(c["slug"] for c in model["chapters"] if c["slug"] in slugs)
+
+
+def _generate_43_replay() -> subprocess.CompletedProcess:
+    """CLI `generate 15043 --backend replay`（全课，不传 `--chapters`）。"""
+    return subprocess.run(
+        [sys.executable, "scripts/build-course-content.py", "generate", COURSE_43, "--backend", "replay"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+
+def test_cli_generate_replay_reproduces_15043_artifact_byte_identically():
+    """R6：`15043` 的 `content.json` = `f(fixture)` —— replay 复跑必须**逐字节**重现 committed 产物。
+
+    改前 `15043` 的唯一覆盖是 `test_cli_generate_accepts_an_in_scope_course` 的 `returncode != 2`
+    弱断言（只锁「作用域放行」），字节一致性只在 `15040` 上被守护（`MODEL_PATH` / `CONTENT_PATH` 钉死
+    `15040`，`tests/test_render_pages.py:15` 亦然）。于是「产物 = f(fixture)」对 `15043` 是一次性人工验证，
+    下一轮改 fixture 或改生成逻辑都不会被这套件发现。
+
+    两次运行都比对 committed 字节：第一次证明「committed 产物可由 fixture 精确重建」，
+    第二次证明「重建是幂等的」（`generated_at` 在 replay 下取自录制响应，故无需归一化）。
+    断言用 sha256 + 精确字节双重口径，失败信息里直接给出摘要便于定位。
+    """
+    import hashlib
+
+    committed_path = ROOT / CONTENT_43_PATH
+    assert committed_path.is_file(), f"committed 产物缺失: {CONTENT_43_PATH}"
+    committed = committed_path.read_bytes()
+    committed_sha = hashlib.sha256(committed).hexdigest()
+
+    # 对照前提：产物确实覆盖全部 10 章、766 块（否则「字节一致」可能只是空跑）
+    artifact = _artifact_43()
+    assert len(artifact["blocks"]) == 766, f"对照前提：15043 blocks 应为 766，实际 {len(artifact['blocks'])}"
+    assert len(_artifact_43_slugs()) == 10, "对照前提：15043 覆盖 10 章"
+
+    # 第一次：replay 重建必须与 committed 逐字节相同
+    proc = _generate_43_replay()
+    assert proc.returncode == 0, f"replay 失败：{proc.stderr}"
+    assert "15043" in proc.stdout, proc.stdout
+    first = committed_path.read_bytes()
+    assert hashlib.sha256(first).hexdigest() == committed_sha, (
+        "replay 未能逐字节重现 committed 产物："
+        f"committed={committed_sha} replayed={hashlib.sha256(first).hexdigest()}"
+    )
+    assert first == committed, "replay 复跑必须与 committed 字节一致"
+
+    # 第二次：再跑一次必须与第一次逐字节相同（幂等）
+    proc2 = _generate_43_replay()
+    assert proc2.returncode == 0, f"replay 复跑失败：{proc2.stderr}"
+    assert committed_path.read_bytes() == first, "replay 二次复跑必须字节一致（幂等）"
+
+
+def test_15043_replay_byte_test_is_falsifiable(tmp_path):
+    """R6 反向验证：committed 产物**扰动一个字节**时，上一条用例的比对口径必须能发现。
+
+    不跑 CLI（那只证明「磁盘变了」），而是把上一条用例的比对逻辑本身当作被测对象：
+    在同一份字节上做 1 字节变异 → sha256 与字节相等都必须判否。这样「字节一致」的断言
+    不会退化成恒真检查。
+    """
+    import hashlib
+
+    committed = (ROOT / CONTENT_43_PATH).read_bytes()
+    assert len(committed) > 1, "对照前提：产物非空"
+
+    # 在空白区做 1 字节替换（保持 JSON 仍可解析，证明检查不是靠「解析失败」侥幸通过）
+    mutated = committed.replace(b'"blocks"', b'"blockz"', 1)
+    assert mutated != committed, "对照前提：1 字节变异必须改变字节"
+    assert len(mutated) == len(committed), "对照前提：变异只改内容、不改长度"
+    assert json.loads(mutated.decode("utf-8")), "对照前提：变异后仍是合法 JSON"
+
+    assert hashlib.sha256(mutated).hexdigest() != hashlib.sha256(committed).hexdigest(), (
+        "1 字节扰动必须改变 sha256（否则字节判定是恒真的）"
+    )
+    assert mutated != committed, "1 字节扰动必须被字节相等判定抓到"
+
+    # 同时钉住：committed 产物本身没被本次变异污染
+    assert (ROOT / CONTENT_43_PATH).read_bytes() == committed, "反向验证不得改动仓内产物"
+
+
 def test_full_course_replay_with_a_missing_fixture_fails_loudly(monkeypatch, tmp_path):
     """F-404 守卫：全课 replay 缺任一条录制响应都必须失败关闭 —— 与切片进度无关（不回落模板）。
 

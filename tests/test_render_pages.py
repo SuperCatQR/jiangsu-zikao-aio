@@ -863,3 +863,82 @@ def test_render_subcommand_routes_through_staging_and_gate(tmp_path: Path):
 
     assert (course_dir / "practice.md").is_file()
     assert len(list((course_dir / "knowledge").glob("*.md"))) == 18
+
+
+# --------------------------------------------------------------------------------------
+# F-QC3-4：`manual:schedules` 标记被剥掉时不得**静默**换成更薄的默认模板
+# --------------------------------------------------------------------------------------
+
+def _schedules_block(text: str) -> str:
+    from lib.course_pipeline.render_pages import extract_manual_blocks
+
+    return extract_manual_blocks(text).get("schedules", "")
+
+
+def test_manual_block_drop_is_detected_not_silently_thinned():
+    """F-QC3-4 的闸门侧守护：committed 两门课的 `manual:schedules` **必须比默认模板更厚**。
+
+    改前没有任何检查覆盖这件事。若编辑器把 `<!-- manual:begin id=schedules -->` 标记删掉，
+    渲染器取不到既有块，就**静默**回落到 288 字符的 `default_schedules`
+    （只剩 `## 通用复习节奏模板（非官方排程）`），`## 14 天压缩复习` 与 `## 7 天冲刺` 整段消失，
+    而 7 层闸门全绿 —— 实测：`15040` 681 → 287、`15043` 626 → 287 字符。
+
+    本用例把「不许变薄」钉成产物不变量：两门课的 committed 块都含三档排程标题，
+    且长度严格大于默认模板。这样「标记被剥掉」这种退化会在 CI 里直接变红，
+    而不是靠人去比对 626 vs 287 的字符数。
+    """
+    from lib.course_pipeline.render_pages import _render_review  # noqa: PLC0415
+
+    # 默认模板的字节长度：渲染器回落时的实际产出（作为「变薄」的阈值基线）
+    rendered_default = _render_review("15043", {}, {}, {})
+    default_block = _schedules_block(rendered_default)
+    assert "通用复习节奏模板（非官方排程）" in default_block, (
+        f"对照前提：无既有块时回落默认模板，实际 {default_block[:80]!r}"
+    )
+
+    for code in ("15040", "15043"):
+        text = (ROOT / "content" / "jiangsu" / "courses" / code / "review.md").read_text(encoding="utf-8")
+        block = _schedules_block(text)
+        assert block, f"{code}: review.md 缺少 `manual:schedules` 块（标记被剥掉？）"
+        assert len(block) > len(default_block), (
+            f"{code}: `manual:schedules` 块（{len(block)} 字符）不得薄于默认模板"
+            f"（{len(default_block)} 字符）—— 标记疑似被剥掉后静默回落"
+        )
+        for heading in ("## 30 天复习", "## 14 天压缩复习", "## 7 天冲刺"):
+            assert heading in block, f"{code}: `manual:schedules` 块丢失 {heading}"
+
+
+def test_manual_block_drop_scenario_can_actually_be_reproduced(tmp_path: Path):
+    """F-QC3-4 反向验证：把标记剥掉后重渲染，块**确实**变薄 —— 证明上面的不变量不是恒真。
+
+    若这条路径永不发生，上面的断言就没有守护对象；这里复现一次真实退化（只动副本），
+    确认「剥标记 → 287 字符默认模板 → 丢掉两档排程」可被观察到。
+    """
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake_root = tmp_path / "repo"
+    shutil.copytree(ROOT / "scripts", fake_root / "scripts")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    page = fake_root / "content" / "jiangsu" / "courses" / "15043" / "review.md"
+    before = _schedules_block(page.read_text(encoding="utf-8"))
+    assert "## 14 天压缩复习" in before, "对照前提：committed 块含 14 天档"
+
+    # 模拟编辑器剥掉标记（仓库副本与暂存区都拿不到块 → 渲染器回落默认值）
+    stripped = re.sub(r"<!--\s*manual:begin\s+id=schedules\s*-->", "", page.read_text(encoding="utf-8"))
+    stripped = re.sub(r"<!--\s*manual:end\s*-->", "", stripped)
+    page.write_text(stripped, encoding="utf-8")
+
+    render_course_pages(fake_root, "15043")
+
+    after = _schedules_block(page.read_text(encoding="utf-8"))
+    assert "通用复习节奏模板（非官方排程）" in after, "退化后应回落默认模板"
+    assert len(after) < len(before), f"退化后应变薄：before={len(before)} after={len(after)}"
+    assert "## 14 天压缩复习" not in after, "退化后 14 天档应丢失"
+    assert "## 7 天冲刺" not in after, "退化后 7 天冲刺档应丢失"
+
+    # 仓内产物未被本次反向验证触碰
+    committed = (ROOT / "content" / "jiangsu" / "courses" / "15043" / "review.md").read_text(encoding="utf-8")
+    assert "## 14 天压缩复习" in _schedules_block(committed), "反向验证不得改动仓内产物"
