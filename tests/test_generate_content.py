@@ -1176,6 +1176,59 @@ def test_15043_replay_byte_test_is_falsifiable(tmp_path):
     assert (ROOT / CONTENT_43_PATH).read_bytes() == committed, "反向验证不得改动仓内产物"
 
 
+def test_committed_fixtures_resolve_every_call_plan_payload_for_each_course():
+    """QC1-S-2：每门有 `content.json` 的课程，`call_plan(model)` 的**每个** `payload_hash` 都必须能在
+    录制文件里解析到响应 —— 这把「replay 可复现」从报告级声明变成机器校验的属性。
+
+    QC1 当初只人工重建了 `15043` 的 766 个键（255 explain / 255 memorize / 255 drill / 1 stage_plan），
+    并在 `qc1.md` 里记为「效果上被 R6 取代、但未交付」。R6 的 replay 用例确实**蕴含**该性质
+    （键缺失时 `complete_json` 会抛 `missing fixture`，字节一致就不可能成立），但那是**间接**蕴含：
+    它只能证明「跑到的那些键在」，键集合一旦漂移只能从 CLI 失败里倒推。本用例把它**直接**钉住，
+    并且按课参数化 —— 下一门课（B2b）接入后**自动**进入守护范围，无需再补一次性重建。
+
+    第三门课的接入前提由此写明：新课程只需让 `call_plan(model)` 的每个 payload 都有录制响应。
+    """
+    courses = sorted(
+        path.parent.name
+        for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/content.json")
+    )
+    # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查
+    assert courses == ["15040", "15043"], f"对照前提：有 content.json 的课程为 15040/15043，实际 {courses}"
+
+    for code in courses:
+        model = _json(ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json")
+        plan = gc.call_plan(model)
+        assert plan, f"{code}: call_plan 不得为空"
+
+        resolved: dict[tuple[str, str], int] = defaultdict(int)
+        misses: list[str] = []
+        for prompt_id, prompt_version, payload in plan:
+            digest = llm.payload_hash(payload)
+            fixture = _json(llm.fixture_path(prompt_id, prompt_version))
+            if digest not in (fixture.get("responses") or {}):
+                misses.append(f"{prompt_id}.{prompt_version}.json#{digest}")
+            resolved[(prompt_id, prompt_version)] += 1
+
+        assert not misses, (
+            f"{code}: {len(misses)} 个 payload 在录制文件里无响应（replay 会失败关闭）—— 首个 {misses[0]}"
+        )
+        assert sum(resolved.values()) == len(plan), f"{code}: 覆盖数必须等于 call_plan 长度"
+
+        # 与产物自身的块数对账（口径独立于 fixture）：产物有多少块，就该有多少条对应该块的调用
+        artifact = _json(ROOT / f"sources/jiangsu/courses/{code}/content.json")
+        blocks = artifact["blocks"]
+        for kind, prompt_id in (("explain", "explain_point"), ("memorize", "memorize_point"), ("drill", "drill_point")):
+            assert resolved[(prompt_id, "v1")] == len([b for b in blocks if b.get("kind") == kind]), (
+                f"{code}: {prompt_id} 的调用数必须等于产物里 {kind} 块数"
+            )
+        # 课程级调用各恰一条：stage_plan 走 prompt（1 条调用 → 5 个阶段条目），
+        # `exam_strategy` 是**无 prompt 的**课程级块（由 `stage_plan` 响应之外的常量/模型派生，不在 call_plan 里）
+        assert resolved[("stage_plan", "v1")] == 1, f"{code}: stage_plan 调用应恰为 1 条"
+        assert len([b for b in blocks if b.get("kind") == "exam_strategy"]) == 1, (
+            f"{code}: 课程级 exam_strategy 块应恰为 1 条"
+        )
+
+
 def test_full_course_replay_with_a_missing_fixture_fails_loudly(monkeypatch, tmp_path):
     """F-404 守卫：全课 replay 缺任一条录制响应都必须失败关闭 —— 与切片进度无关（不回落模板）。
 

@@ -15,6 +15,10 @@ sys.path.insert(0, str(ROOT / "scripts"))
 COURSE_15040 = ROOT / "content" / "jiangsu" / "courses" / "15040"
 SOURCES_15040 = ROOT / "sources" / "jiangsu" / "courses" / "15040"
 
+# Y3：`15043` 的渲染半边守护用同一套口径（下方 `test_15043_render_reproduces_...`）。
+# 修前本文件只渲染 `15040`（`grep -c "courses/15043"` = 0），`15043` 的 16 页字节一致只是报告级声明。
+COURSE_15043 = ROOT / "content" / "jiangsu" / "courses" / "15043"
+
 DERIVED_BEGIN_RE = re.compile(r"<!--\s*derived:begin\s+id=([a-zA-Z0-9_-]+)\s*-->")
 DERIVED_END_RE = re.compile(r"<!--\s*derived:end\s*-->")
 
@@ -942,3 +946,92 @@ def test_manual_block_drop_scenario_can_actually_be_reproduced(tmp_path: Path):
     # 仓内产物未被本次反向验证触碰
     committed = (ROOT / "content" / "jiangsu" / "courses" / "15043" / "review.md").read_text(encoding="utf-8")
     assert "## 14 天压缩复习" in _schedules_block(committed), "反向验证不得改动仓内产物"
+
+
+# --------------------------------------------------------------------------------------
+# Y3：`15043` 的**渲染**字节一致必须有持久守护（此前只有 `15040` 有；replay 半边见
+# `tests/test_generate_content.py::test_cli_generate_replay_reproduces_15043_artifact_byte_identically`）
+# --------------------------------------------------------------------------------------
+
+def _snapshot(directory: Path) -> dict[str, bytes]:
+    """目录下全部文件的相对路径 → 字节（渲染产物的比较口径：路径集合 + 逐字节）。"""
+    return {
+        path.relative_to(directory).as_posix(): path.read_bytes()
+        for path in sorted(directory.rglob("*"))
+        if path.is_file()
+    }
+
+
+def _render_into(source: Path, work_dir: Path, code: str) -> dict[str, bytes]:
+    """把 `source` 拷成工作副本、用真实渲染器重渲染，返回渲染后的字节快照。"""
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    shutil.copytree(source, work_dir)
+    render_course_pages(ROOT, code, target_dir=work_dir)
+    return _snapshot(work_dir)
+
+
+def test_15043_render_reproduces_the_committed_pages_byte_identically(tmp_path: Path):
+    """Y3：`15043` 的 16 个渲染页 = `f(content 真值源)` —— 重渲染必须**逐字节**重现 committed 产物。
+
+    改前 `15043` 的渲染半边没有任何测试拥有（本文件只渲染 `15040`，`grep -c "courses/15043"` = 0）：
+    属性本身成立（QC1 已实测），但下一轮改渲染器或改真值源都不会被这套件发现，只是报告级声明。
+    本用例与 `15040` 的既有用例（`test_render_is_deterministic`）同形，只是把课程换成 `15043`：
+
+    - 第一次渲染：证明 committed 产物可由真值源精确重建（路径集合与逐字节都相等）；
+    - 第二次渲染（在**已渲染**的工作副本上再来一遍）：证明渲染是**幂等**的（固定点）。
+    """
+    committed = _snapshot(COURSE_15043)
+    # 对照前提：产物页面齐备（否则「字节一致」可能只是两边都空跑）
+    assert len(committed) == 16, f"对照前提：15043 应为 16 页，实际 {len(committed)}"
+    assert "knowledge/01-ch01.md" in committed and "plan.md" in committed, sorted(committed)
+
+    first = _render_into(COURSE_15043, tmp_path / "run1", "15043")
+    assert sorted(first) == sorted(committed), (
+        f"渲染产出的页面集合与 committed 不一致：多 {sorted(set(first) - set(committed))}"
+        f" / 少 {sorted(set(committed) - set(first))}"
+    )
+    differing = [rel for rel in committed if first[rel] != committed[rel]]
+    assert not differing, f"重渲染未逐字节重现 committed 产物，首个差异页: {differing[0]}"
+
+    # 幂等：在同一份已渲染产物上再渲染一次，必须仍是同一个固定点
+    second = _render_into(tmp_path / "run1", tmp_path / "run2", "15043")
+    assert second == first, "二次渲染必须字节一致（幂等）"
+
+
+def test_15043_render_byte_test_is_falsifiable(tmp_path: Path):
+    """Y3 反向验证：committed 页面被扰动 **1 字节**时，上一条用例的比对口径必须能发现。
+
+    不满足于「断言写在那儿」：把上一条用例的比较逻辑本身当作被测对象 —— 在工作副本里把某一页的一个字节
+    换成另一个字节（不改变长度），然后确认「渲染后的快照 == committed 快照」这一判据**确实**判否。
+    否则「字节一致」可能退化成恒真检查（例如比了个空集合、或比了归一化后的文本）。
+    """
+    rel = "knowledge/01-ch01.md"
+    committed = _snapshot(COURSE_15043)
+    baseline = _render_into(COURSE_15043, tmp_path / "baseline", "15043")
+    assert baseline == committed, "对照前提：未变异的副本渲染后与 committed 一致"
+
+    work = tmp_path / "perturbed"
+    shutil.copytree(COURSE_15043, work)
+    target = work / rel
+    raw = target.read_bytes()
+    victim = "要点梳理".encode()
+    assert victim in raw, f"对照前提：{rel} 含 `#### 要点梳理` 标题（扰动点存在）"
+    mutated = raw.replace(victim, "要点料理".encode(), 1)
+    assert mutated != raw, "对照前提：1 字节替换必须改变字节"
+    assert len(mutated) == len(raw), "对照前提：扰动只改内容、不改长度"
+    target.write_bytes(mutated)
+
+    # 扰动副本自身的快照与 committed 已经不同 —— 这就是上一条用例的失败形态
+    perturbed = _snapshot(work)
+    assert perturbed != committed, "1 字节扰动必须被逐字节比较判否（否则该断言是恒真的）"
+
+    # 并且渲染器**确实**会读回该页（重渲染把扰动修掉 → 渲染结果又等于 committed），
+    # 因此上一条用例守护的是「committed 页面 = 渲染器输出」这个固定点，而非「文件没被动过」。
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    render_course_pages(ROOT, "15043", target_dir=work)
+    assert _snapshot(work) == committed, "渲染器会重写该页，故重渲染后扰动被修复回 committed 形态"
+
+    # 仓内产物未被本次反向验证触碰
+    assert _snapshot(COURSE_15043) == committed, "反向验证不得改动仓内产物"
