@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "course_code": "15043",
+  "generated_at": "2026-09-11",
+  "course_url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-02-25/7300038163492245504.html",
+  "facts": {
+    "name": {
+      "value": "中国近现代史纲要",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L42"
+      }
+    },
+    "credits": {
+      "value": 3,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L42"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L42"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "extracted",
+    "doc_id": "syllabus:15043",
+    "path": "sources/jiangsu/processed/syllabus/15043-modern-chinese-history-gaogang-2024/document.extracted.md",
+    "sha256": "7fe990e171c9f91bde6a9b66226ea47454d982290a79aea85caf355c66858349",
+    "has_assessment_requirements": true,
+    "has_sample_paper": true,
+    "requirements_heading": "三、考核知识点与考核要求",
+    "locator": "L159"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1977,L1979",
+    "row": "150421 思想道德与法治 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 / 150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代",
+    "row_truncated": true,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1866",
+        "row": "150421 思想道德与法治 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1868",
+        "row": "150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L2148",
+        "row": "150421 思想道德与法治 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L2150",
+        "row": "150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1771",
+        "row": "150421 思想道德与法治 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1773",
+        "row": "150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1977",
+        "row": "150421 思想道德与法治 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1979",
+        "row": "150430 中国近现代史纲要自学考试大纲 2024 年 15043 中国近现代史纲要 考试指导委员会 150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "L1",
+    "reasons": [
+      "syllabus:extracted",
+      "textbook_plan:matched"
+    ]
+  }
+}

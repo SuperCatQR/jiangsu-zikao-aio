@@ -1,0 +1,2790 @@
+{
+  "schema_version": 1,
+  "course_code": "15044",
+  "model_version": "v1",
+  "generated_at": "2026-09-12",
+  "generator": {
+    "kind": "deterministic",
+    "model": null,
+    "prompt_id": null,
+    "prompt_version": null
+  },
+  "source": {
+    "doc_id": "syllabus:15044",
+    "path": "sources/jiangsu/processed/syllabus/15044-marxism-principles-gaogang-2024/document.extracted.md",
+    "sha256": "5df155a18c5e36945129d19f00e75cea1f0a21527d1abd552281c162ad3414a8"
+  },
+  "chapters": [
+    {
+      "ordinal": 0,
+      "index": "第一章",
+      "slug": "intro",
+      "title": "第一章 物质世界及其发展规律",
+      "sections": [
+        {
+          "index": "1",
+          "title": "物质世界和实践",
+          "points": [
+            {
+              "id": "15044-intro-s1-p1",
+              "title": "世界观",
+              "requirement": "识记",
+              "quote": "世界观",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p2",
+              "title": "哲学",
+              "requirement": "识记",
+              "quote": "哲学",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p3",
+              "title": "一元论",
+              "requirement": "识记",
+              "quote": "一元论",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p4",
+              "title": "二元论",
+              "requirement": "识记",
+              "quote": "二元论",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p5",
+              "title": "主观唯心主义",
+              "requirement": "识记",
+              "quote": "主观唯心主义",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p6",
+              "title": "客观唯心主义",
+              "requirement": "识记",
+              "quote": "客观唯心主义",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p7",
+              "title": "可知论和不可知论",
+              "requirement": "识记",
+              "quote": "可知论和不可知论",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p8",
+              "title": "运动和静止",
+              "requirement": "识记",
+              "quote": "运动和静止",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p9",
+              "title": "时间和空间",
+              "requirement": "识记",
+              "quote": "时间和空间",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p10",
+              "title": "实践的本质",
+              "requirement": "识记",
+              "quote": "实践的本质",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p11",
+              "title": "唯物主义的三种基本形态",
+              "requirement": "识记",
+              "quote": "唯物主义的三种基本形态",
+              "locator": "L216"
+            },
+            {
+              "id": "15044-intro-s1-p12",
+              "title": "哲学基本问题",
+              "requirement": "领会",
+              "quote": "哲学基本问题",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p13",
+              "title": "世界的物质统一性原理",
+              "requirement": "领会",
+              "quote": "世界的物质统一性原理",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p14",
+              "title": "运动是物质的根本属性",
+              "requirement": "领会",
+              "quote": "运动是物质的根本属性",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p15",
+              "title": "绝对运动和相对静止的关系",
+              "requirement": "领会",
+              "quote": "绝对运动和相对静止的关系",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p16",
+              "title": "承认事物相对静止的意义",
+              "requirement": "领会",
+              "quote": "承认事物相对静止的意义",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p17",
+              "title": "时间和空间是运动着的物质的存在方式",
+              "requirement": "领会",
+              "quote": "时间和空间是运动着的物质的存在方式",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p18",
+              "title": "时间和空间的绝对性与相对性的关系",
+              "requirement": "领会",
+              "quote": "时间和空间的绝对性与相对性的关系",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p19",
+              "title": "实践的基本特点",
+              "requirement": "领会",
+              "quote": "实践的基本特点",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p20",
+              "title": "实践的基本形式",
+              "requirement": "领会",
+              "quote": "实践的基本形式",
+              "locator": "L219"
+            },
+            {
+              "id": "15044-intro-s1-p21",
+              "title": "我们所把握的物质世界是与人的实践相联系的物质世界",
+              "requirement": "领会",
+              "quote": "我们所把握的物质世界是与人的实践相联系的物质世界",
+              "locator": "L219"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "物质世界的普遍联系和永恒发展",
+          "points": [
+            {
+              "id": "15044-intro-s2-p1",
+              "title": "联系",
+              "requirement": "识记",
+              "quote": "联系",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p2",
+              "title": "新事物和旧事物",
+              "requirement": "识记",
+              "quote": "新事物和旧事物",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p3",
+              "title": "矛盾的同一性和斗争性",
+              "requirement": "识记",
+              "quote": "矛盾的同一性和斗争性",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p4",
+              "title": "内因和外因",
+              "requirement": "识记",
+              "quote": "内因和外因",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p5",
+              "title": "矛盾的普遍性和特殊性",
+              "requirement": "识记",
+              "quote": "矛盾的普遍性和特殊性",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p6",
+              "title": "主要矛盾和次要矛盾",
+              "requirement": "识记",
+              "quote": "主要矛盾和次要矛盾",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p7",
+              "title": "矛盾的主要方面和矛盾的次要方面",
+              "requirement": "识记",
+              "quote": "矛盾的主要方面和矛盾的次要方面",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p8",
+              "title": "质、量、度",
+              "requirement": "识记",
+              "quote": "质、量、度",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p9",
+              "title": "量变和质变",
+              "requirement": "识记",
+              "quote": "量变和质变",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p10",
+              "title": "肯定和否定",
+              "requirement": "识记",
+              "quote": "肯定和否定",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p11",
+              "title": "原因和结果",
+              "requirement": "识记",
+              "quote": "原因和结果",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p12",
+              "title": "必然性和偶然性",
+              "requirement": "识记",
+              "quote": "必然性和偶然性",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p13",
+              "title": "可能性和现实性",
+              "requirement": "识记",
+              "quote": "可能性和现实性",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p14",
+              "title": "内容和形式",
+              "requirement": "识记",
+              "quote": "内容和形式",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p15",
+              "title": "本质和现象",
+              "requirement": "识记",
+              "quote": "本质和现象",
+              "locator": "L225"
+            },
+            {
+              "id": "15044-intro-s2-p16",
+              "title": "联系的客观性",
+              "requirement": "领会",
+              "quote": "联系的客观性",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p17",
+              "title": "联系的普遍性",
+              "requirement": "领会",
+              "quote": "联系的普遍性",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p18",
+              "title": "联系的多样性",
+              "requirement": "领会",
+              "quote": "联系的多样性",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p19",
+              "title": "世界是过程的集合体",
+              "requirement": "领会",
+              "quote": "世界是过程的集合体",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p20",
+              "title": "新事物必然战胜旧事物",
+              "requirement": "领会",
+              "quote": "新事物必然战胜旧事物",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p21",
+              "title": "辩证法和形而上学是两种根本对立的发展观",
+              "requirement": "领会",
+              "quote": "辩证法和形而上学是两种根本对立的发展观",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p22",
+              "title": "对立统一规律是唯物辩证法的实质与核心",
+              "requirement": "领会",
+              "quote": "对立统一规律是唯物辩证法的实质与核心",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p23",
+              "title": "矛盾的同一性和斗争性的相互关系",
+              "requirement": "领会",
+              "quote": "矛盾的同一性和斗争性的相互关系",
+              "locator": "L231"
+            },
+            {
+              "id": "15044-intro-s2-p24",
+              "title": "肯定和否定的辩证统一",
+              "requirement": "领会",
+              "quote": "肯定和否定的辩证统一",
+              "locator": "L231"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "客观规律性与主观能动性",
+          "points": [
+            {
+              "id": "15044-intro-s3-p1",
+              "title": "规律",
+              "requirement": "识记",
+              "quote": "规律",
+              "locator": "L247"
+            },
+            {
+              "id": "15044-intro-s3-p2",
+              "title": "意识",
+              "requirement": "识记",
+              "quote": "意识",
+              "locator": "L247"
+            },
+            {
+              "id": "15044-intro-s3-p3",
+              "title": "意识的能动性",
+              "requirement": "识记",
+              "quote": "意识的能动性",
+              "locator": "L247"
+            },
+            {
+              "id": "15044-intro-s3-p4",
+              "title": "规律的特点",
+              "requirement": "领会",
+              "quote": "规律的特点",
+              "locator": "L248"
+            },
+            {
+              "id": "15044-intro-s3-p5",
+              "title": "意识的起源",
+              "requirement": "领会",
+              "quote": "意识的起源",
+              "locator": "L248"
+            },
+            {
+              "id": "15044-intro-s3-p6",
+              "title": "意识的本质",
+              "requirement": "领会",
+              "quote": "意识的本质",
+              "locator": "L248"
+            },
+            {
+              "id": "15044-intro-s3-p7",
+              "title": "意识能动性的表现",
+              "requirement": "领会",
+              "quote": "意识能动性的表现",
+              "locator": "L248"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "解放思想，实事求是",
+          "points": [
+            {
+              "id": "15044-intro-s4-p1",
+              "title": "解放思想",
+              "requirement": "识记",
+              "quote": "解放思想",
+              "locator": "L252"
+            },
+            {
+              "id": "15044-intro-s4-p2",
+              "title": "实事求是",
+              "requirement": "识记",
+              "quote": "实事求是",
+              "locator": "L252"
+            },
+            {
+              "id": "15044-intro-s4-p3",
+              "title": "党的思想路线",
+              "requirement": "领会",
+              "quote": "党的思想路线",
+              "locator": "L253"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "哲学的基本问题",
+          "locator": "L257"
+        },
+        {
+          "text": "世界物质统一性原理",
+          "locator": "L257"
+        },
+        {
+          "text": "物质的根本属性和物质运动的存在方式",
+          "locator": "L257"
+        },
+        {
+          "text": "马克思主义哲学的基本观点",
+          "locator": "L257"
+        },
+        {
+          "text": "社会生活在本质上是实践的",
+          "locator": "L257"
+        },
+        {
+          "text": "唯物辩证法的总特征",
+          "locator": "L257"
+        },
+        {
+          "text": "两种根本对立的发展观",
+          "locator": "L257"
+        },
+        {
+          "text": "唯物辩证法的实质与核心",
+          "locator": "L257"
+        },
+        {
+          "text": "对立统一规律",
+          "locator": "L257"
+        },
+        {
+          "text": "质量互变规律",
+          "locator": "L257"
+        },
+        {
+          "text": "否定之否定规律",
+          "locator": "L257"
+        },
+        {
+          "text": "世界联系与发展的基本环节",
+          "locator": "L257"
+        },
+        {
+          "text": "规律、自然规律和社会规律",
+          "locator": "L257"
+        },
+        {
+          "text": "意识的起源、本质及能动作用",
+          "locator": "L257"
+        },
+        {
+          "text": "发挥主观能动性和尊重客观规律的辩证关系",
+          "locator": "L257"
+        },
+        {
+          "text": "实事求是是马克思主义哲学的精髓",
+          "locator": "L257"
+        },
+        {
+          "text": "解放思想和实事求是的辩证统一",
+          "locator": "L257"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L223",
+          "title": "简单应用：列宁的物质定义及其现实意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L235",
+          "title": "简单应用：矛盾的特殊性原理及其方法论意义；掌握事物的度的意义；原因和结果关系的原理及其意义；必然性和偶然性关系的原理及其",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L239",
+          "title": "综合应用：内因和外因辩证关系的原理及其现实意义；矛盾的普遍性和特殊性辩证关系的原理及其现实意义；主要矛盾和次要矛盾关系的",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L249",
+          "title": "简单应用：物质和意识关系的原理及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L250",
+          "title": "综合应用：尊重客观规律和发挥主观能动性辩证统一的原理及其现实意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L254",
+          "title": "简单应用：结合实际说明实事求是是马克思主义哲学的精髓",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L255",
+          "title": "综合应用：结合我国改革开放的实际说明解放思想与实事求是是辩证的统一",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 1,
+      "index": "第二章",
+      "slug": "ch01",
+      "title": "第二章 认识的本质及规律",
+      "sections": [
+        {
+          "index": "1",
+          "title": "认识的本质",
+          "points": [
+            {
+              "id": "15044-ch01-s1-p1",
+              "title": "认识主体的含义",
+              "requirement": "识记",
+              "quote": "认识主体的含义",
+              "locator": "L280"
+            },
+            {
+              "id": "15044-ch01-s1-p2",
+              "title": "认识客体的含义",
+              "requirement": "识记",
+              "quote": "认识客体的含义",
+              "locator": "L280"
+            },
+            {
+              "id": "15044-ch01-s1-p3",
+              "title": "实践对认识具有决定性的作用",
+              "requirement": "领会",
+              "quote": "实践对认识具有决定性的作用",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p4",
+              "title": "实践是认识的来源",
+              "requirement": "领会",
+              "quote": "实践是认识的来源",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p5",
+              "title": "实践是认识发展的动力",
+              "requirement": "领会",
+              "quote": "实践是认识发展的动力",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p6",
+              "title": "实践是检验认识真理性的唯一标准",
+              "requirement": "领会",
+              "quote": "实践是检验认识真理性的唯一标准",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p7",
+              "title": "实践是认识的目的",
+              "requirement": "领会",
+              "quote": "实践是认识的目的",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p8",
+              "title": "认识主体的特点",
+              "requirement": "领会",
+              "quote": "认识主体的特点",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p9",
+              "title": "认识主体的结构",
+              "requirement": "领会",
+              "quote": "认识主体的结构",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p10",
+              "title": "认识客体的特点",
+              "requirement": "领会",
+              "quote": "认识客体的特点",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p11",
+              "title": "认识客体的性质",
+              "requirement": "领会",
+              "quote": "认识客体的性质",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p12",
+              "title": "认识主体和认识客体的关系",
+              "requirement": "领会",
+              "quote": "认识主体和认识客体的关系",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p13",
+              "title": "认识的本质",
+              "requirement": "领会",
+              "quote": "认识的本质",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p14",
+              "title": "唯物论的反映论和唯心论的认识论的对立",
+              "requirement": "领会",
+              "quote": "唯物论的反映论和唯心论的认识论的对立",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p15",
+              "title": "可知论和不可知论的对立",
+              "requirement": "领会",
+              "quote": "可知论和不可知论的对立",
+              "locator": "L281"
+            },
+            {
+              "id": "15044-ch01-s1-p16",
+              "title": "辩证唯物主义的能动的反映论和旧唯物论的机械的反映论的对立",
+              "requirement": "领会",
+              "quote": "辩证唯物主义的能动的反映论和旧唯物论的机械的反映论的对立",
+              "locator": "L281"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "认识的辩证运动",
+          "points": [
+            {
+              "id": "15044-ch01-s2-p1",
+              "title": "感性认识的含义和形式",
+              "requirement": "识记",
+              "quote": "感性认识的含义和形式",
+              "locator": "L288"
+            },
+            {
+              "id": "15044-ch01-s2-p2",
+              "title": "理性认识的含义和形式",
+              "requirement": "识记",
+              "quote": "理性认识的含义和形式",
+              "locator": "L288"
+            },
+            {
+              "id": "15044-ch01-s2-p3",
+              "title": "感性认识的特点",
+              "requirement": "领会",
+              "quote": "感性认识的特点",
+              "locator": "L289"
+            },
+            {
+              "id": "15044-ch01-s2-p4",
+              "title": "理性认识的特点",
+              "requirement": "领会",
+              "quote": "理性认识的特点",
+              "locator": "L289"
+            },
+            {
+              "id": "15044-ch01-s2-p5",
+              "title": "感性认识和理性认识的辩证关系",
+              "requirement": "领会",
+              "quote": "感性认识和理性认识的辩证关系",
+              "locator": "L289"
+            },
+            {
+              "id": "15044-ch01-s2-p6",
+              "title": "反对经验主义和教条主义",
+              "requirement": "领会",
+              "quote": "反对经验主义和教条主义",
+              "locator": "L289"
+            },
+            {
+              "id": "15044-ch01-s2-p7",
+              "title": "由感性认识到理性认识的飞跃",
+              "requirement": "领会",
+              "quote": "由感性认识到理性认识的飞跃",
+              "locator": "L289"
+            },
+            {
+              "id": "15044-ch01-s2-p8",
+              "title": "从理性认识到实践的飞跃",
+              "requirement": "领会",
+              "quote": "从理性认识到实践的飞跃",
+              "locator": "L289"
+            },
+            {
+              "id": "15044-ch01-s2-p9",
+              "title": "整个人类的认识是有限与无限的统一",
+              "requirement": "领会",
+              "quote": "整个人类的认识是有限与无限的统一",
+              "locator": "L289"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "真理和价值",
+          "points": [
+            {
+              "id": "15044-ch01-s3-p1",
+              "title": "真理",
+              "requirement": "识记",
+              "quote": "真理",
+              "locator": "L294"
+            },
+            {
+              "id": "15044-ch01-s3-p2",
+              "title": "谬误",
+              "requirement": "识记",
+              "quote": "谬误",
+              "locator": "L294"
+            },
+            {
+              "id": "15044-ch01-s3-p3",
+              "title": "真理的绝对性",
+              "requirement": "识记",
+              "quote": "真理的绝对性",
+              "locator": "L294"
+            },
+            {
+              "id": "15044-ch01-s3-p4",
+              "title": "真理的相对性",
+              "requirement": "识记",
+              "quote": "真理的相对性",
+              "locator": "L294"
+            },
+            {
+              "id": "15044-ch01-s3-p5",
+              "title": "价值的含义",
+              "requirement": "识记",
+              "quote": "价值的含义",
+              "locator": "L294"
+            },
+            {
+              "id": "15044-ch01-s3-p6",
+              "title": "社会主义核心价值观",
+              "requirement": "识记",
+              "quote": "社会主义核心价值观",
+              "locator": "L294"
+            },
+            {
+              "id": "15044-ch01-s3-p7",
+              "title": "真理和谬误的关系",
+              "requirement": "领会",
+              "quote": "真理和谬误的关系",
+              "locator": "L298"
+            },
+            {
+              "id": "15044-ch01-s3-p8",
+              "title": "真理的客观性",
+              "requirement": "领会",
+              "quote": "真理的客观性",
+              "locator": "L298"
+            },
+            {
+              "id": "15044-ch01-s3-p9",
+              "title": "逻辑证明在认识和探索真理中的作用",
+              "requirement": "领会",
+              "quote": "逻辑证明在认识和探索真理中的作用",
+              "locator": "L298"
+            },
+            {
+              "id": "15044-ch01-s3-p10",
+              "title": "实践标准的确定性和不确定性及其相互关系",
+              "requirement": "领会",
+              "quote": "实践标准的确定性和不确定性及其相互关系",
+              "locator": "L298"
+            },
+            {
+              "id": "15044-ch01-s3-p11",
+              "title": "真理与价值的对立统一",
+              "requirement": "领会",
+              "quote": "真理与价值的对立统一",
+              "locator": "L298"
+            },
+            {
+              "id": "15044-ch01-s3-p12",
+              "title": "真理的价值表现在它的功能上",
+              "requirement": "领会",
+              "quote": "真理的价值表现在它的功能上",
+              "locator": "L298"
+            },
+            {
+              "id": "15044-ch01-s3-p13",
+              "title": "社会主义核心价值观的含义和内容",
+              "requirement": "领会",
+              "quote": "社会主义核心价值观的含义和内容",
+              "locator": "L298"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "认识世界与改造世界的统一",
+          "points": [
+            {
+              "id": "15044-ch01-s4-p1",
+              "title": "思想路线",
+              "requirement": "识记",
+              "quote": "思想路线",
+              "locator": "L304"
+            },
+            {
+              "id": "15044-ch01-s4-p2",
+              "title": "党的思想路线的内容",
+              "requirement": "领会",
+              "quote": "党的思想路线的内容",
+              "locator": "L305"
+            },
+            {
+              "id": "15044-ch01-s4-p3",
+              "title": "党的群众路线的内容",
+              "requirement": "领会",
+              "quote": "党的群众路线的内容",
+              "locator": "L305"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "实践是认识的基础",
+          "locator": "L309"
+        },
+        {
+          "text": "认识主体和认识客体的含义及其相互关系",
+          "locator": "L309"
+        },
+        {
+          "text": "认识的本质",
+          "locator": "L309"
+        },
+        {
+          "text": "认识的两次飞跃及其意义",
+          "locator": "L309"
+        },
+        {
+          "text": "感性认识和理性认识的辩证关系",
+          "locator": "L309"
+        },
+        {
+          "text": "真理及其属性",
+          "locator": "L309"
+        },
+        {
+          "text": "实践是检验真理的唯一标准",
+          "locator": "L309"
+        },
+        {
+          "text": "真理与价值的辩证统一",
+          "locator": "L309"
+        },
+        {
+          "text": "社会主义核心价值观",
+          "locator": "L309"
+        },
+        {
+          "text": "一切从实际出发，实事求是",
+          "locator": "L309"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L286",
+          "title": "综合应用：认识的本质及其理论意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L292",
+          "title": "简单应用：一个正确的认识需要经过多次反复才能完成",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L301",
+          "title": "简单应用：实践是检验真理的唯一标准的观点及其现实意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L302",
+          "title": "综合应用：真理的绝对性和相对性辩证关系的原理及其现实意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L306",
+          "title": "简单应用：马克思主义认识论与党的群众路线的一致性",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L307",
+          "title": "综合应用：马克思主义认识论是党的思想路线的理论基础",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "index": "第三章",
+      "slug": "ch02",
+      "title": "第三章 人类社会及其发展规律",
+      "sections": [
+        {
+          "index": "1",
+          "title": "社会基本矛盾及其运动规律",
+          "points": [
+            {
+              "id": "15044-ch02-s1-p1",
+              "title": "社会基本矛盾",
+              "requirement": "识记",
+              "quote": "社会基本矛盾",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p2",
+              "title": "社会存在",
+              "requirement": "识记",
+              "quote": "社会存在",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p3",
+              "title": "地理环境",
+              "requirement": "识记",
+              "quote": "地理环境",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p4",
+              "title": "人口因素",
+              "requirement": "识记",
+              "quote": "人口因素",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p5",
+              "title": "生产方式",
+              "requirement": "识记",
+              "quote": "生产方式",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p6",
+              "title": "社会意识",
+              "requirement": "识记",
+              "quote": "社会意识",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p7",
+              "title": "社会心理",
+              "requirement": "识记",
+              "quote": "社会心理",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p8",
+              "title": "社会意识形式",
+              "requirement": "识记",
+              "quote": "社会意识形式",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p9",
+              "title": "意识形态",
+              "requirement": "识记",
+              "quote": "意识形态",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p10",
+              "title": "非意识形态",
+              "requirement": "识记",
+              "quote": "非意识形态",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p11",
+              "title": "个体意识",
+              "requirement": "识记",
+              "quote": "个体意识",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p12",
+              "title": "群体意识",
+              "requirement": "识记",
+              "quote": "群体意识",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p13",
+              "title": "生产力",
+              "requirement": "识记",
+              "quote": "生产力",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p14",
+              "title": "生产关系",
+              "requirement": "识记",
+              "quote": "生产关系",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p15",
+              "title": "经济基础",
+              "requirement": "识记",
+              "quote": "经济基础",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p16",
+              "title": "上层建筑",
+              "requirement": "识记",
+              "quote": "上层建筑",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p17",
+              "title": "经济社会形态",
+              "requirement": "识记",
+              "quote": "经济社会形态",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p18",
+              "title": "技术社会形态",
+              "requirement": "识记",
+              "quote": "技术社会形态",
+              "locator": "L329"
+            },
+            {
+              "id": "15044-ch02-s1-p19",
+              "title": "地理环境在社会发展中的作用",
+              "requirement": "领会",
+              "quote": "地理环境在社会发展中的作用",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p20",
+              "title": "人口因素在社会发展中的作用",
+              "requirement": "领会",
+              "quote": "人口因素在社会发展中的作用",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p21",
+              "title": "生产方式在社会发展中的作用",
+              "requirement": "领会",
+              "quote": "生产方式在社会发展中的作用",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p22",
+              "title": "社会意识的相对独立性",
+              "requirement": "领会",
+              "quote": "社会意识的相对独立性",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p23",
+              "title": "社会存在和社会意识的关系问题是历史观的基本问题",
+              "requirement": "领会",
+              "quote": "社会存在和社会意识的关系问题是历史观的基本问题",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p24",
+              "title": "生产力系统的要素",
+              "requirement": "领会",
+              "quote": "生产力系统的要素",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p25",
+              "title": "生产关系体系",
+              "requirement": "领会",
+              "quote": "生产关系体系",
+              "locator": "L335"
+            },
+            {
+              "id": "15044-ch02-s1-p26",
+              "title": "三种社会形态划分法和五种社会形态划分法的关系",
+              "requirement": "领会",
+              "quote": "三种社会形态划分法和五种社会形态划分法的关系",
+              "locator": "L335"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "社会历史发展的动力",
+          "points": [
+            {
+              "id": "15044-ch02-s2-p1",
+              "title": "阶级的实质",
+              "requirement": "识记",
+              "quote": "阶级的实质",
+              "locator": "L349"
+            },
+            {
+              "id": "15044-ch02-s2-p2",
+              "title": "社会革命",
+              "requirement": "识记",
+              "quote": "社会革命",
+              "locator": "L349"
+            },
+            {
+              "id": "15044-ch02-s2-p3",
+              "title": "社会改革",
+              "requirement": "识记",
+              "quote": "社会改革",
+              "locator": "L349"
+            },
+            {
+              "id": "15044-ch02-s2-p4",
+              "title": "我国全面深化改革的总目标",
+              "requirement": "识记",
+              "quote": "我国全面深化改革的总目标",
+              "locator": "L349"
+            },
+            {
+              "id": "15044-ch02-s2-p5",
+              "title": "两对社会基本矛盾之间的关系",
+              "requirement": "领会",
+              "quote": "两对社会基本矛盾之间的关系",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p6",
+              "title": "阶级斗争是阶级社会发展的直接动力",
+              "requirement": "领会",
+              "quote": "阶级斗争是阶级社会发展的直接动力",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p7",
+              "title": "社会革命的根源",
+              "requirement": "领会",
+              "quote": "社会革命的根源",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p8",
+              "title": "社会革命的类型",
+              "requirement": "领会",
+              "quote": "社会革命的类型",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p9",
+              "title": "社会革命的形式",
+              "requirement": "领会",
+              "quote": "社会革命的形式",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p10",
+              "title": "社会革命在社会发展中的作用",
+              "requirement": "领会",
+              "quote": "社会革命在社会发展中的作用",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p11",
+              "title": "社会革命与社会改革的区别",
+              "requirement": "领会",
+              "quote": "社会革命与社会改革的区别",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p12",
+              "title": "社会改革在社会发展中的作用",
+              "requirement": "领会",
+              "quote": "社会改革在社会发展中的作用",
+              "locator": "L350"
+            },
+            {
+              "id": "15044-ch02-s2-p13",
+              "title": "当前中国改革的全面性",
+              "requirement": "领会",
+              "quote": "当前中国改革的全面性",
+              "locator": "L350"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "人民群众在历史发展中的作用",
+          "points": [
+            {
+              "id": "15044-ch02-s3-p1",
+              "title": "人民群众的含义和构成",
+              "requirement": "识记",
+              "quote": "人民群众的含义和构成",
+              "locator": "L358"
+            },
+            {
+              "id": "15044-ch02-s3-p2",
+              "title": "普通个人",
+              "requirement": "识记",
+              "quote": "普通个人",
+              "locator": "L358"
+            },
+            {
+              "id": "15044-ch02-s3-p3",
+              "title": "历史人物",
+              "requirement": "识记",
+              "quote": "历史人物",
+              "locator": "L358"
+            },
+            {
+              "id": "15044-ch02-s3-p4",
+              "title": "杰出人物",
+              "requirement": "识记",
+              "quote": "杰出人物",
+              "locator": "L358"
+            },
+            {
+              "id": "15044-ch02-s3-p5",
+              "title": "在历史创造者问题上两种根本对立的观点",
+              "requirement": "领会",
+              "quote": "在历史创造者问题上两种根本对立的观点",
+              "locator": "L359"
+            },
+            {
+              "id": "15044-ch02-s3-p6",
+              "title": "历史唯心主义的两个主要缺点",
+              "requirement": "领会",
+              "quote": "历史唯心主义的两个主要缺点",
+              "locator": "L359"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "社会存在与社会意识的含义及其相互关系",
+          "locator": "L367"
+        },
+        {
+          "text": "社会基本矛盾运动",
+          "locator": "L367"
+        },
+        {
+          "text": "社会形态的划分",
+          "locator": "L367"
+        },
+        {
+          "text": "社会形态的更替与发展",
+          "locator": "L367"
+        },
+        {
+          "text": "阶级斗争及其在阶级社会中的作用",
+          "locator": "L367"
+        },
+        {
+          "text": "革命和改革在社会发展中的作用",
+          "locator": "L367"
+        },
+        {
+          "text": "历史观上两种根本对立的观点",
+          "locator": "L367"
+        },
+        {
+          "text": "人民群众在历史上的作用",
+          "locator": "L367"
+        },
+        {
+          "text": "无产阶级政党的群众观点和群众路线",
+          "locator": "L367"
+        },
+        {
+          "text": "杰出人物在历史上的作用",
+          "locator": "L367"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L339",
+          "title": "简单应用：社会存在和社会意识的关系的原理及其现实意义；生产资料所有制形式是整个生产关系的基础的观点及其现实意义；生产力和",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L344",
+          "title": "综合应用：科学技术是第一生产力；生产关系必须适合生产力性质的规律及其现实意义；上层建筑必须适合经济基础发展要求的规律及其",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L354",
+          "title": "综合应用：结合我国实际说明社会主义社会改革的特点；结合我国改革的实际说明改革是社会主义制度的自我完善；结合我国当前改革的",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L361",
+          "title": "简单应用：结合实际说明人民群众推动历史发展的作用；结合实际说明无产阶级领袖的历史作用；无产阶级政党的群众观点及其现实意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L364",
+          "title": "综合应用：正确评价杰出人物在历史上的作用；在改革开放的新形势下坚持党的群众路线的现实意义",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "index": "第四章",
+      "slug": "ch03",
+      "title": "第四章 资本主义制度的形成及本质",
+      "sections": [
+        {
+          "index": "1",
+          "title": "资本主义制度的形成",
+          "points": [
+            {
+              "id": "15044-ch03-s1-p1",
+              "title": "使用价值",
+              "requirement": "识记",
+              "quote": "使用价值",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p2",
+              "title": "价值",
+              "requirement": "识记",
+              "quote": "价值",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p3",
+              "title": "具体劳动",
+              "requirement": "识记",
+              "quote": "具体劳动",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p4",
+              "title": "抽象劳动",
+              "requirement": "识记",
+              "quote": "抽象劳动",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p5",
+              "title": "货币",
+              "requirement": "识记",
+              "quote": "货币",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p6",
+              "title": "价值规律",
+              "requirement": "识记",
+              "quote": "价值规律",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p7",
+              "title": "资本原始积累",
+              "requirement": "识记",
+              "quote": "资本原始积累",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p8",
+              "title": "产业革命",
+              "requirement": "识记",
+              "quote": "产业革命",
+              "locator": "L394"
+            },
+            {
+              "id": "15044-ch03-s1-p9",
+              "title": "商品经济产生的条件",
+              "requirement": "领会",
+              "quote": "商品经济产生的条件",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p10",
+              "title": "商品二因素",
+              "requirement": "领会",
+              "quote": "商品二因素",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p11",
+              "title": "劳动二重性",
+              "requirement": "领会",
+              "quote": "劳动二重性",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p12",
+              "title": "货币的产生",
+              "requirement": "领会",
+              "quote": "货币的产生",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p13",
+              "title": "货币的本质",
+              "requirement": "领会",
+              "quote": "货币的本质",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p14",
+              "title": "货币的职能",
+              "requirement": "领会",
+              "quote": "货币的职能",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p15",
+              "title": "私人劳动与社会劳动的矛盾是简单商品经济的基本矛盾",
+              "requirement": "领会",
+              "quote": "私人劳动与社会劳动的矛盾是简单商品经济的基本矛盾",
+              "locator": "L396"
+            },
+            {
+              "id": "15044-ch03-s1-p16",
+              "title": "资本主义经济制度的产生",
+              "requirement": "领会",
+              "quote": "资本主义经济制度的产生",
+              "locator": "L396"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "资本主义经济制度的本质特征",
+          "points": [
+            {
+              "id": "15044-ch03-s2-p1",
+              "title": "劳动力商品",
+              "requirement": "识记",
+              "quote": "劳动力商品",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p2",
+              "title": "资本主义劳动过程",
+              "requirement": "识记",
+              "quote": "资本主义劳动过程",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p3",
+              "title": "价值形成过程",
+              "requirement": "识记",
+              "quote": "价值形成过程",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p4",
+              "title": "价值增殖过程",
+              "requirement": "识记",
+              "quote": "价值增殖过程",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p5",
+              "title": "绝对剩余价值",
+              "requirement": "识记",
+              "quote": "绝对剩余价值",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p6",
+              "title": "相对剩余价值",
+              "requirement": "识记",
+              "quote": "相对剩余价值",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p7",
+              "title": "超额剩余价值",
+              "requirement": "识记",
+              "quote": "超额剩余价值",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p8",
+              "title": "不变资本",
+              "requirement": "识记",
+              "quote": "不变资本",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p9",
+              "title": "可变资本",
+              "requirement": "识记",
+              "quote": "可变资本",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p10",
+              "title": "剩余价值率",
+              "requirement": "识记",
+              "quote": "剩余价值率",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p11",
+              "title": "资本有机构成",
+              "requirement": "识记",
+              "quote": "资本有机构成",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p12",
+              "title": "资本积累",
+              "requirement": "识记",
+              "quote": "资本积累",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p13",
+              "title": "相对过剩人口",
+              "requirement": "识记",
+              "quote": "相对过剩人口",
+              "locator": "L406"
+            },
+            {
+              "id": "15044-ch03-s2-p14",
+              "title": "劳动力商品的价值和使用价值",
+              "requirement": "领会",
+              "quote": "劳动力商品的价值和使用价值",
+              "locator": "L409"
+            },
+            {
+              "id": "15044-ch03-s2-p15",
+              "title": "资本主义生产过程是劳动过程和价值增殖过程的统一",
+              "requirement": "领会",
+              "quote": "资本主义生产过程是劳动过程和价值增殖过程的统一",
+              "locator": "L409"
+            },
+            {
+              "id": "15044-ch03-s2-p16",
+              "title": "资本的本质",
+              "requirement": "领会",
+              "quote": "资本的本质",
+              "locator": "L409"
+            },
+            {
+              "id": "15044-ch03-s2-p17",
+              "title": "资本积累的必然性",
+              "requirement": "领会",
+              "quote": "资本积累的必然性",
+              "locator": "L409"
+            },
+            {
+              "id": "15044-ch03-s2-p18",
+              "title": "资本积累的历史作用和历史趋势",
+              "requirement": "领会",
+              "quote": "资本积累的历史作用和历史趋势",
+              "locator": "L409"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "资本的流通过程和剩余价值的分配",
+          "points": [
+            {
+              "id": "15044-ch03-s3-p1",
+              "title": "货币资本",
+              "requirement": "识记",
+              "quote": "货币资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p2",
+              "title": "生产资本",
+              "requirement": "识记",
+              "quote": "生产资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p3",
+              "title": "商品资本",
+              "requirement": "识记",
+              "quote": "商品资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p4",
+              "title": "资本周转",
+              "requirement": "识记",
+              "quote": "资本周转",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p5",
+              "title": "周转时间",
+              "requirement": "识记",
+              "quote": "周转时间",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p6",
+              "title": "周转速度",
+              "requirement": "识记",
+              "quote": "周转速度",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p7",
+              "title": "固定资本",
+              "requirement": "识记",
+              "quote": "固定资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p8",
+              "title": "流动资本",
+              "requirement": "识记",
+              "quote": "流动资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p9",
+              "title": "单个资本",
+              "requirement": "识记",
+              "quote": "单个资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p10",
+              "title": "社会资本",
+              "requirement": "识记",
+              "quote": "社会资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p11",
+              "title": "社会总产品",
+              "requirement": "识记",
+              "quote": "社会总产品",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p12",
+              "title": "利润",
+              "requirement": "识记",
+              "quote": "利润",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p13",
+              "title": "平均利润",
+              "requirement": "识记",
+              "quote": "平均利润",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p14",
+              "title": "商业资本",
+              "requirement": "识记",
+              "quote": "商业资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p15",
+              "title": "商业利润",
+              "requirement": "识记",
+              "quote": "商业利润",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p16",
+              "title": "借贷资本",
+              "requirement": "识记",
+              "quote": "借贷资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p17",
+              "title": "利息",
+              "requirement": "识记",
+              "quote": "利息",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p18",
+              "title": "银行资本",
+              "requirement": "识记",
+              "quote": "银行资本",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p19",
+              "title": "银行利润",
+              "requirement": "识记",
+              "quote": "银行利润",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p20",
+              "title": "地租",
+              "requirement": "识记",
+              "quote": "地租",
+              "locator": "L416"
+            },
+            {
+              "id": "15044-ch03-s3-p21",
+              "title": "产业资本循环的三个阶段",
+              "requirement": "领会",
+              "quote": "产业资本循环的三个阶段",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p22",
+              "title": "产业资本的三种职能形式",
+              "requirement": "领会",
+              "quote": "产业资本的三种职能形式",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p23",
+              "title": "生产时间和流通时间",
+              "requirement": "领会",
+              "quote": "生产时间和流通时间",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p24",
+              "title": "生产资本的构成",
+              "requirement": "领会",
+              "quote": "生产资本的构成",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p25",
+              "title": "社会总产品及其分类",
+              "requirement": "领会",
+              "quote": "社会总产品及其分类",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p26",
+              "title": "社会总产品的构成",
+              "requirement": "领会",
+              "quote": "社会总产品的构成",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p27",
+              "title": "资本主义再生产的比例关系",
+              "requirement": "领会",
+              "quote": "资本主义再生产的比例关系",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p28",
+              "title": "剩余价值转化为利润",
+              "requirement": "领会",
+              "quote": "剩余价值转化为利润",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p29",
+              "title": "商业资本的本质和职能",
+              "requirement": "领会",
+              "quote": "商业资本的本质和职能",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p30",
+              "title": "借贷资本的形成",
+              "requirement": "领会",
+              "quote": "借贷资本的形成",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p31",
+              "title": "借贷资本的本质",
+              "requirement": "领会",
+              "quote": "借贷资本的本质",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p32",
+              "title": "利息的本质和来源",
+              "requirement": "领会",
+              "quote": "利息的本质和来源",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p33",
+              "title": "资本主义农业中剩余价值分配的特点",
+              "requirement": "领会",
+              "quote": "资本主义农业中剩余价值分配的特点",
+              "locator": "L419"
+            },
+            {
+              "id": "15044-ch03-s3-p34",
+              "title": "资本主义经济危机与再生产的周期性",
+              "requirement": "领会",
+              "quote": "资本主义经济危机与再生产的周期性",
+              "locator": "L419"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "资本主义的政治制度和意识形态",
+          "points": [
+            {
+              "id": "15044-ch03-s4-p1",
+              "title": "君主立宪制",
+              "requirement": "识记",
+              "quote": "君主立宪制",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p2",
+              "title": "民主共和制",
+              "requirement": "识记",
+              "quote": "民主共和制",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p3",
+              "title": "资本主义政党制度",
+              "requirement": "识记",
+              "quote": "资本主义政党制度",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p4",
+              "title": "资本主义的普选制度",
+              "requirement": "识记",
+              "quote": "资本主义的普选制度",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p5",
+              "title": "立法权",
+              "requirement": "识记",
+              "quote": "立法权",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p6",
+              "title": "司法权",
+              "requirement": "识记",
+              "quote": "司法权",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p7",
+              "title": "行政权",
+              "requirement": "识记",
+              "quote": "行政权",
+              "locator": "L430"
+            },
+            {
+              "id": "15044-ch03-s4-p8",
+              "title": "资本主义的政治制度的内容",
+              "requirement": "领会",
+              "quote": "资本主义的政治制度的内容",
+              "locator": "L432"
+            },
+            {
+              "id": "15044-ch03-s4-p9",
+              "title": "资本主义的国家制度",
+              "requirement": "领会",
+              "quote": "资本主义的国家制度",
+              "locator": "L432"
+            },
+            {
+              "id": "15044-ch03-s4-p10",
+              "title": "资本主义的民主制度",
+              "requirement": "领会",
+              "quote": "资本主义的民主制度",
+              "locator": "L432"
+            },
+            {
+              "id": "15044-ch03-s4-p11",
+              "title": "资本主义的意识形态及其本质",
+              "requirement": "领会",
+              "quote": "资本主义的意识形态及其本质",
+              "locator": "L432"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "商品经济产生的条件",
+          "locator": "L439"
+        },
+        {
+          "text": "商品二因素与劳动二重性的关系",
+          "locator": "L439"
+        },
+        {
+          "text": "商品价值量的决定及其与劳动生产率的关系",
+          "locator": "L439"
+        },
+        {
+          "text": "货币的产生、本质和职能",
+          "locator": "L439"
+        },
+        {
+          "text": "私人劳动与社会劳动的矛盾是简单商品经济的基本矛盾",
+          "locator": "L439"
+        },
+        {
+          "text": "资本主义经济制度的形成",
+          "locator": "L439"
+        },
+        {
+          "text": "价值规律的内容、表现形式及其作用",
+          "locator": "L439"
+        },
+        {
+          "text": "货币转化为资本",
+          "locator": "L439"
+        },
+        {
+          "text": "劳动力商品的价值和使用价值",
+          "locator": "L439"
+        },
+        {
+          "text": "资本主义生产过程是劳动过程和价值增殖过程的统一",
+          "locator": "L439"
+        },
+        {
+          "text": "资本的本质",
+          "locator": "L439"
+        },
+        {
+          "text": "不变资本和可变资本的划分及其意义",
+          "locator": "L439"
+        },
+        {
+          "text": "剩余价值的两种生产方法及其联系与区别",
+          "locator": "L439"
+        },
+        {
+          "text": "相对剩余价值生产与超额剩余价值生产的关系",
+          "locator": "L439"
+        },
+        {
+          "text": "资本积累的实质、后果、历史作用和历史趋势",
+          "locator": "L439"
+        },
+        {
+          "text": "产业资本循环的三个阶段和三种职能形式",
+          "locator": "L439"
+        },
+        {
+          "text": "资本周转速度对剩余价值生产的影响",
+          "locator": "L439"
+        },
+        {
+          "text": "社会总资本再生产的实现和比例关系",
+          "locator": "L439"
+        },
+        {
+          "text": "剩余价值转化为利润",
+          "locator": "L439"
+        },
+        {
+          "text": "平均利润的形成与本质",
+          "locator": "L439"
+        },
+        {
+          "text": "剩余价值分割的具体形式",
+          "locator": "L439"
+        },
+        {
+          "text": "资本主义经济危机的实质和根源",
+          "locator": "L439"
+        },
+        {
+          "text": "资本主义的政治制度及其本质",
+          "locator": "L439"
+        },
+        {
+          "text": "资本主义意识形态的历史进步性和阶级局限性",
+          "locator": "L439"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L399",
+          "title": "简单应用：商品二因素与劳动二重性的关系；货币的本质和职能的发展变化；价值规律的内容和要求",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L401",
+          "title": "综合应用：商品价值量的决定及其与劳动生产率的关系；在私有制商品经济中价值规律的作用",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L412",
+          "title": "简单应用：劳动力商品的特点；划分不变资本和可变资本的意义；剩余价值两种生产方法的联系与区别；资本积累的实质与后果",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L414",
+          "title": "综合应用：相对剩余价值生产与超额剩余价值生产及其相互关系",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L424",
+          "title": "简单应用：资本循环与价值增殖；影响资本周转速度的因素；社会资本再生产的实现问题；部门之间的竞争形成平均利润；平均利润率水",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L427",
+          "title": "综合应用：资本周转速度对剩余价值生产的影响；平均利润的形成与本质；商业利润的来源",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L434",
+          "title": "简单应用：资本主义的“三权分立”制度；资产阶级的人生观、价值观和道德观；利己主义是资本主义意识形态的核心",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L436",
+          "title": "综合应用：资本主义的政治制度及其本质；资本主义意识形态的历史进步性和阶级局限性",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 4,
+      "index": "第五章",
+      "slug": "ch04",
+      "title": "第五章 资本主义的发展及其趋势",
+      "sections": [
+        {
+          "index": "1",
+          "title": "垄断资本主义的形成与发展",
+          "points": [
+            {
+              "id": "15044-ch04-s1-p1",
+              "title": "垄断的形成",
+              "requirement": "识记",
+              "quote": "垄断的形成",
+              "locator": "L468"
+            },
+            {
+              "id": "15044-ch04-s1-p2",
+              "title": "金融资本",
+              "requirement": "识记",
+              "quote": "金融资本",
+              "locator": "L468"
+            },
+            {
+              "id": "15044-ch04-s1-p3",
+              "title": "金融寡头",
+              "requirement": "识记",
+              "quote": "金融寡头",
+              "locator": "L468"
+            },
+            {
+              "id": "15044-ch04-s1-p4",
+              "title": "资本输出",
+              "requirement": "识记",
+              "quote": "资本输出",
+              "locator": "L468"
+            },
+            {
+              "id": "15044-ch04-s1-p5",
+              "title": "国际垄断组织",
+              "requirement": "识记",
+              "quote": "国际垄断组织",
+              "locator": "L468"
+            },
+            {
+              "id": "15044-ch04-s1-p6",
+              "title": "国家垄断资本主义",
+              "requirement": "识记",
+              "quote": "国家垄断资本主义",
+              "locator": "L468"
+            },
+            {
+              "id": "15044-ch04-s1-p7",
+              "title": "垄断和竞争",
+              "requirement": "领会",
+              "quote": "垄断和竞争",
+              "locator": "L470"
+            },
+            {
+              "id": "15044-ch04-s1-p8",
+              "title": "垄断利润及其来源",
+              "requirement": "领会",
+              "quote": "垄断利润及其来源",
+              "locator": "L470"
+            },
+            {
+              "id": "15044-ch04-s1-p9",
+              "title": "垄断组织的形成与发展",
+              "requirement": "领会",
+              "quote": "垄断组织的形成与发展",
+              "locator": "L470"
+            },
+            {
+              "id": "15044-ch04-s1-p10",
+              "title": "国家垄断资本主义的实质",
+              "requirement": "领会",
+              "quote": "国家垄断资本主义的实质",
+              "locator": "L470"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "经济全球化与当代资本主义的新变化",
+          "points": [
+            {
+              "id": "15044-ch04-s2-p1",
+              "title": "经济全球化",
+              "requirement": "识记",
+              "quote": "经济全球化",
+              "locator": "L481"
+            },
+            {
+              "id": "15044-ch04-s2-p2",
+              "title": "生产全球化",
+              "requirement": "识记",
+              "quote": "生产全球化",
+              "locator": "L481"
+            },
+            {
+              "id": "15044-ch04-s2-p3",
+              "title": "贸易全球化",
+              "requirement": "识记",
+              "quote": "贸易全球化",
+              "locator": "L481"
+            },
+            {
+              "id": "15044-ch04-s2-p4",
+              "title": "金融全球化",
+              "requirement": "识记",
+              "quote": "金融全球化",
+              "locator": "L481"
+            },
+            {
+              "id": "15044-ch04-s2-p5",
+              "title": "经济全球化的原因",
+              "requirement": "领会",
+              "quote": "经济全球化的原因",
+              "locator": "L482"
+            },
+            {
+              "id": "15044-ch04-s2-p6",
+              "title": "经济全球化的主要内容",
+              "requirement": "领会",
+              "quote": "经济全球化的主要内容",
+              "locator": "L482"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "资本主义的历史地位和发展趋势",
+          "points": [
+            {
+              "id": "15044-ch04-s3-p1",
+              "title": "人类社会经济形态的发展和更替的规律",
+              "requirement": "识记",
+              "quote": "人类社会经济形态的发展和更替的规律",
+              "locator": "L487"
+            },
+            {
+              "id": "15044-ch04-s3-p2",
+              "title": "资本主义的基本矛盾",
+              "requirement": "识记",
+              "quote": "资本主义的基本矛盾",
+              "locator": "L487"
+            },
+            {
+              "id": "15044-ch04-s3-p3",
+              "title": "资本主义的历史地位",
+              "requirement": "领会",
+              "quote": "资本主义的历史地位",
+              "locator": "L488"
+            },
+            {
+              "id": "15044-ch04-s3-p4",
+              "title": "资本主义生产方式的历史过渡性质",
+              "requirement": "领会",
+              "quote": "资本主义生产方式的历史过渡性质",
+              "locator": "L488"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "垄断的形成",
+          "locator": "L493"
+        },
+        {
+          "text": "垄断和竞争",
+          "locator": "L493"
+        },
+        {
+          "text": "垄断组织的形成与发展",
+          "locator": "L493"
+        },
+        {
+          "text": "垄断利润及其来源",
+          "locator": "L493"
+        },
+        {
+          "text": "垄断资本主义的基本经济特征",
+          "locator": "L493"
+        },
+        {
+          "text": "国家垄断资本主义的形成和发展",
+          "locator": "L493"
+        },
+        {
+          "text": "国家垄断资本主义的基本形式",
+          "locator": "L493"
+        },
+        {
+          "text": "国家垄断资本主义条件下的宏观经济调控",
+          "locator": "L493"
+        },
+        {
+          "text": "国家垄断资本主义的实质",
+          "locator": "L493"
+        },
+        {
+          "text": "垄断资本主义在世界范围的扩展",
+          "locator": "L493"
+        },
+        {
+          "text": "经济全球化的主要内容",
+          "locator": "L493"
+        },
+        {
+          "text": "经济全球化在当代的发展变化及其原因",
+          "locator": "L493"
+        },
+        {
+          "text": "经济全球化的影响",
+          "locator": "L493"
+        },
+        {
+          "text": "当代资本主义的新变化的主要表现、原因和实质",
+          "locator": "L493"
+        },
+        {
+          "text": "资本主义为社会主义所代替的历史必然性",
+          "locator": "L493"
+        },
+        {
+          "text": "资本主义向社会主义的过渡是一个复杂的、曲折的、长期的历史过程",
+          "locator": "L493"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L472",
+          "title": "简单应用：私人垄断资本主义的基本特征；二战后国家垄断资本主义大发展的原因；国家垄断资本主义的基本形式",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L478",
+          "title": "综合应用：垄断资本主义基本经济特征的发展变化；国家垄断资本主义条件下的宏观经济调控；垄断资本主义在世界范围的扩展",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L483",
+          "title": "简单应用：经济全球化在当代的发展变化及其原因；当代资本主义的新变化在生产力、生产关系和上层建筑方面的主要表现",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L485",
+          "title": "综合应用：资本主义新变化的原因和实质",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L489",
+          "title": "简单应用：资本主义为社会主义所代替的历史必然性",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L490",
+          "title": "综合应用：资本主义向社会主义的过渡是一个复杂的、曲折的、长期的历史过程",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "index": "第六章",
+      "slug": "ch05",
+      "title": "第六章 社会主义的发展及其规律",
+      "sections": [
+        {
+          "index": "1",
+          "title": "社会主义五百年的历史进程",
+          "points": [
+            {
+              "id": "15044-ch05-s1-p1",
+              "title": "空想社会主义",
+              "requirement": "识记",
+              "quote": "空想社会主义",
+              "locator": "L518"
+            },
+            {
+              "id": "15044-ch05-s1-p2",
+              "title": "科学社会主义",
+              "requirement": "识记",
+              "quote": "科学社会主义",
+              "locator": "L518"
+            },
+            {
+              "id": "15044-ch05-s1-p3",
+              "title": "社会主义从空想到科学的发展",
+              "requirement": "领会",
+              "quote": "社会主义从空想到科学的发展",
+              "locator": "L519"
+            },
+            {
+              "id": "15044-ch05-s1-p4",
+              "title": "社会主义从理论到实践的发展",
+              "requirement": "领会",
+              "quote": "社会主义从理论到实践的发展",
+              "locator": "L519"
+            },
+            {
+              "id": "15044-ch05-s1-p5",
+              "title": "社会主义制度从理想到现实，列宁领导下的苏维埃俄国对社会主义的探索",
+              "requirement": "领会",
+              "quote": "社会主义制度从理想到现实，列宁领导下的苏维埃俄国对社会主义的探索",
+              "locator": "L519"
+            },
+            {
+              "id": "15044-ch05-s1-p6",
+              "title": "斯大林领导下的苏联对社会主义的探索",
+              "requirement": "领会",
+              "quote": "斯大林领导下的苏联对社会主义的探索",
+              "locator": "L519"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "科学社会主义一般原则",
+          "points": [
+            {
+              "id": "15044-ch05-s2-p1",
+              "title": "科学社会主义一般原则",
+              "requirement": "识记",
+              "quote": "科学社会主义一般原则",
+              "locator": "L527"
+            },
+            {
+              "id": "15044-ch05-s2-p2",
+              "title": "社会主义公有制",
+              "requirement": "识记",
+              "quote": "社会主义公有制",
+              "locator": "L527"
+            },
+            {
+              "id": "15044-ch05-s2-p3",
+              "title": "按劳分配",
+              "requirement": "识记",
+              "quote": "按劳分配",
+              "locator": "L527"
+            },
+            {
+              "id": "15044-ch05-s2-p4",
+              "title": "无产阶级的历史使命",
+              "requirement": "领会",
+              "quote": "无产阶级的历史使命",
+              "locator": "L528"
+            },
+            {
+              "id": "15044-ch05-s2-p5",
+              "title": "社会主义生产目的",
+              "requirement": "领会",
+              "quote": "社会主义生产目的",
+              "locator": "L528"
+            },
+            {
+              "id": "15044-ch05-s2-p6",
+              "title": "社会主义的计划调节",
+              "requirement": "领会",
+              "quote": "社会主义的计划调节",
+              "locator": "L528"
+            },
+            {
+              "id": "15044-ch05-s2-p7",
+              "title": "社会主义要合乎自然规律地改造和利用自然",
+              "requirement": "领会",
+              "quote": "社会主义要合乎自然规律地改造和利用自然",
+              "locator": "L528"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "在实践中探索现实社会主义的发展规律",
+          "points": [
+            {
+              "id": "15044-ch05-s3-p1",
+              "title": "社会主义发展规律",
+              "requirement": "识记",
+              "quote": "社会主义发展规律",
+              "locator": "L534"
+            },
+            {
+              "id": "15044-ch05-s3-p2",
+              "title": "社会主义的自我完善和改革",
+              "requirement": "识记",
+              "quote": "社会主义的自我完善和改革",
+              "locator": "L534"
+            },
+            {
+              "id": "15044-ch05-s3-p3",
+              "title": "社会主义在经济文化相对落后的国家取得胜利的原因",
+              "requirement": "领会",
+              "quote": "社会主义在经济文化相对落后的国家取得胜利的原因",
+              "locator": "L535"
+            },
+            {
+              "id": "15044-ch05-s3-p4",
+              "title": "社会主义发展道路多样性的原因",
+              "requirement": "领会",
+              "quote": "社会主义发展道路多样性的原因",
+              "locator": "L535"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "马克思主义政党在社会主义事业中的地位和作用",
+          "points": [
+            {
+              "id": "15044-ch05-s4-p1",
+              "title": "马克思主义政党",
+              "requirement": "识记",
+              "quote": "马克思主义政党",
+              "locator": "L541"
+            },
+            {
+              "id": "15044-ch05-s4-p2",
+              "title": "马克思主义政党是社会主义革命的领导核心",
+              "requirement": "领会",
+              "quote": "马克思主义政党是社会主义革命的领导核心",
+              "locator": "L542"
+            },
+            {
+              "id": "15044-ch05-s4-p3",
+              "title": "马克思主义政党是社会主义建设的领导核心",
+              "requirement": "领会",
+              "quote": "马克思主义政党是社会主义建设的领导核心",
+              "locator": "L542"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "社会主义从空想到科学的发展",
+          "locator": "L549"
+        },
+        {
+          "text": "无产阶级革命是人类历史上最广泛、最彻底、最深刻的革命",
+          "locator": "L549"
+        },
+        {
+          "text": "社会主义从理论到实践的发展",
+          "locator": "L549"
+        },
+        {
+          "text": "列宁领导下的苏维埃俄国对社会主义的探索",
+          "locator": "L549"
+        },
+        {
+          "text": "社会主义从一国到数国发展的历史贡献与经验教训",
+          "locator": "L549"
+        },
+        {
+          "text": "新时代中国特色社会主义",
+          "locator": "L549"
+        },
+        {
+          "text": "科学社会主义一般原则的主要内容",
+          "locator": "L549"
+        },
+        {
+          "text": "正确把握科学社会主义的一般原则",
+          "locator": "L549"
+        },
+        {
+          "text": "社会主义在经济文化相对落后的国家取得胜利的原因",
+          "locator": "L549"
+        },
+        {
+          "text": "社会主义发展道路多样性的原因",
+          "locator": "L549"
+        },
+        {
+          "text": "经济文化相对落后的国家社会主义建设的艰巨性和长期性",
+          "locator": "L549"
+        },
+        {
+          "text": "马克思主义政党是新型的革命政党",
+          "locator": "L549"
+        },
+        {
+          "text": "马克思主义政党在社会主义事业中的地位和作用",
+          "locator": "L549"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L522",
+          "title": "简单应用：无产阶级革命是人类历史上最广泛、最彻底、最深刻的革命；社会主义从一国到多国的发展",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L524",
+          "title": "综合应用：社会主义从一国到数国发展的历史贡献与经验教训；习近平新时代中国特色社会主义思想",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L530",
+          "title": "简单应用：社会主义必然胜利的根本依据；社会主义经济制度的基础和基本特征；社会主义社会实行按劳分配的原因和实质",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L532",
+          "title": "综合应用：正确把握科学社会主义一般原则",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L537",
+          "title": "简单应用：经济文化相对落后的国家社会主义建设的艰巨性和长期性",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L538",
+          "title": "综合应用：社会主义在实践探索中开拓前进；社会主义在实践中自我发展和完善",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L544",
+          "title": "简单应用：马克思主义政党是新型的革命政党；坚持和改善马克思主义政党的领导",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L546",
+          "title": "综合应用：马克思主义政党在社会主义事业中的地位和作用",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "index": "第七章",
+      "slug": "ch06",
+      "title": "第七章 共产主义社会是人类最崇高的社会理想",
+      "sections": [
+        {
+          "index": "1",
+          "title": "马克思主义对共产主义社会的展望",
+          "points": [
+            {
+              "id": "15044-ch06-s1-p1",
+              "title": "社会主义社会",
+              "requirement": "识记",
+              "quote": "社会主义社会",
+              "locator": "L575"
+            },
+            {
+              "id": "15044-ch06-s1-p2",
+              "title": "共产主义社会",
+              "requirement": "识记",
+              "quote": "共产主义社会",
+              "locator": "L575"
+            },
+            {
+              "id": "15044-ch06-s1-p3",
+              "title": "社会生产力高度发展和物质财富极大丰富",
+              "requirement": "领会",
+              "quote": "社会生产力高度发展和物质财富极大丰富",
+              "locator": "L576"
+            },
+            {
+              "id": "15044-ch06-s1-p4",
+              "title": "经济的计划调节管理和商品经济的消失",
+              "requirement": "领会",
+              "quote": "经济的计划调节管理和商品经济的消失",
+              "locator": "L576"
+            },
+            {
+              "id": "15044-ch06-s1-p5",
+              "title": "阶级的消灭和国家自行消亡",
+              "requirement": "领会",
+              "quote": "阶级的消灭和国家自行消亡",
+              "locator": "L576"
+            },
+            {
+              "id": "15044-ch06-s1-p6",
+              "title": "精神境界极大提高",
+              "requirement": "领会",
+              "quote": "精神境界极大提高",
+              "locator": "L576"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "共产主义是社会历史发展的必然趋势",
+          "points": [
+            {
+              "id": "15044-ch06-s2-p1",
+              "title": "共产主义社会的两个阶段",
+              "requirement": "识记",
+              "quote": "共产主义社会的两个阶段",
+              "locator": "L581"
+            },
+            {
+              "id": "15044-ch06-s2-p2",
+              "title": "经济落后国家实现共产主义须经历更长的实践过程",
+              "requirement": "领会",
+              "quote": "经济落后国家实现共产主义须经历更长的实践过程",
+              "locator": "L582"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "在建设中国特色社会主义的进程中为实现共产主义而奋斗",
+          "points": [
+            {
+              "id": "15044-ch06-s3-p1",
+              "title": "中国特色社会主义",
+              "requirement": "识记",
+              "quote": "中国特色社会主义",
+              "locator": "L589"
+            },
+            {
+              "id": "15044-ch06-s3-p2",
+              "title": "为实现共产主义创造条件",
+              "requirement": "领会",
+              "quote": "为实现共产主义创造条件",
+              "locator": "L590"
+            },
+            {
+              "id": "15044-ch06-s3-p3",
+              "title": "共产主义远大理想和中国特色社会主义共同理想",
+              "requirement": "领会",
+              "quote": "共产主义远大理想和中国特色社会主义共同理想",
+              "locator": "L590"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "马克思主义经典作家对共产主义社会的展望",
+          "locator": "L595"
+        },
+        {
+          "text": "共产主义社会的两个阶段",
+          "locator": "L595"
+        },
+        {
+          "text": "人类社会历史必然发展到共产主义",
+          "locator": "L595"
+        },
+        {
+          "text": "实现共产主义是一个不断实践的长期过程",
+          "locator": "L595"
+        },
+        {
+          "text": "共产主义在世界范围的实现是长期、曲折、复杂的历史过程",
+          "locator": "L595"
+        },
+        {
+          "text": "社会主义是走向共产主义的必由之路",
+          "locator": "L595"
+        },
+        {
+          "text": "共产主义远大理想和中国特色社会主义共同理想",
+          "locator": "L595"
+        },
+        {
+          "text": "积极投身中国特色社会主义事业",
+          "locator": "L595"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L578",
+          "title": "简单应用：实行社会公有制和按需分配；人的自由而全面发展",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L579",
+          "title": "综合应用：马克思主义经典作家对共产主义社会的展望；全人类的彻底解放",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L585",
+          "title": "简单应用：从社会主义过渡到共产主义的特点；实现共产主义是一个不断实践的长期过程；共产主义在世界范围的实现是长期、曲折、复",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L587",
+          "title": "综合应用：人类社会历史必然发展到共产主义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L592",
+          "title": "简单应用：社会主义是走向共产主义的必由之路",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L593",
+          "title": "综合应用：树立共产主义远大理想；积极投身中国特色社会主义事业",
+          "reason": "unnumbered_section"
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "question_types": [],
+    "question_types_provenance": null,
+    "duration_minutes": null,
+    "duration_status": "named_gap",
+    "sample_paper": {
+      "doc_id": "syllabus:15044",
+      "locator": "L660"
+    }
+  },
+  "coverage": {
+    "official_point_count": 25,
+    "modeled_point_count": 25,
+    "ratio": 1.0,
+    "denominator_rule": "考纲「三、考核知识点与考核要求」中带编号的节数",
+    "manual_reference": null,
+    "diff_vs_manual": []
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "course_code": "15040",
+  "generated_at": "2026-09-11",
+  "course_url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html",
+  "facts": {
+    "name": {
+      "value": "习近平新时代中国特色社会主义思想概论",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L41"
+      }
+    },
+    "credits": {
+      "value": 3,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L41"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L41"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "extracted",
+    "doc_id": "syllabus:15040",
+    "path": "sources/jiangsu/processed/syllabus/15040-xi-thought-gaogang-2024/document.extracted.md",
+    "sha256": "3f8a81f3c675ed3bd37a0bacbfb8cb7328d6cfd7ab5108c98b640fc4342acd3c",
+    "has_assessment_requirements": true,
+    "has_sample_paper": true,
+    "requirements_heading": "三、考核知识点与考核要求",
+    "locator": "L220"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1958,L1962",
+    "row": "习近平新时代中国特色社会主义思 全国高等教育自学 150400 2024 年 习近平新时代中国特色社会主 想概论课程自学考试大纲 考试指导委员会 15040 / 15040 义思想概论 习近平新时代中国特色社会主义思 高等教育出版社 150401 本书编写组 2023 年 想概论 人民出版社 毛泽东思想和中国特色社会主义理 全国高等教育自学",
+    "row_truncated": false,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1848",
+        "row": "习近平新时代中国特色社会主义思 全国高等教育自学 150400 2024 年 习近平新时代中国特色社会 想概论课程自学考试大纲 考试指导委员会 15040",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1852",
+        "row": "15040 主义思想概论 习近平新时代中国特色社会主义思 高等教育出版社 150401 本书编写组 2023 年 想概论 人民出版社 毛泽东思想和中国特色社会主义理 全国高等教育自学",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L2124",
+        "row": "2021 年 习近平新时代中国特色社会主义思 全国高等教育自学 150400 2024 年 习近平新时代中国特色社会 想概论课程自学考试大纲 考试指导委员会 15040",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L2128",
+        "row": "15040 主义思想概论 习近平新时代中国特色社会主义思 高等教育出版社 150401 本书编写组 2023 年 想概论 人民出版社",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1753",
+        "row": "149701 新编日语：重排本(1、2、3 册) 周平、陈小芬 上海外语教育出版社 2024 年 习近平新时代中国特色社会主义思 全国高等教育自学 150400 2024 年 习近平新时代中国特色社会 想概论课程自学考试大纲 考试指导委员会 15040",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1757",
+        "row": "15040 主义思想概论 习近平新时代中国特色社会主义思 高等教育出版社 150401 本书编写组 2023 年 想概论 人民出版社 毛泽东思想和中国特色社会主义理 全国高等教育自学",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1958",
+        "row": "习近平新时代中国特色社会主义思 全国高等教育自学 150400 2024 年 习近平新时代中国特色社会主 想概论课程自学考试大纲 考试指导委员会 15040",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1962",
+        "row": "15040 义思想概论 习近平新时代中国特色社会主义思 高等教育出版社 150401 本书编写组 2023 年 想概论 人民出版社 毛泽东思想和中国特色社会主义理 全国高等教育自学",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "L1",
+    "reasons": [
+      "syllabus:extracted",
+      "textbook_plan:matched"
+    ]
+  }
+}

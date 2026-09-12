@@ -1,0 +1,2738 @@
+{
+  "schema_version": 1,
+  "course_code": "15043",
+  "model_version": "v1",
+  "generated_at": "2026-09-12",
+  "generator": {
+    "kind": "deterministic",
+    "model": null,
+    "prompt_id": null,
+    "prompt_version": null
+  },
+  "source": {
+    "doc_id": "syllabus:15043",
+    "path": "sources/jiangsu/processed/syllabus/15043-modern-chinese-history-gaogang-2024/document.extracted.md",
+    "sha256": "7fe990e171c9f91bde6a9b66226ea47454d982290a79aea85caf355c66858349"
+  },
+  "chapters": [
+    {
+      "ordinal": 0,
+      "index": "第一章",
+      "slug": "intro",
+      "title": "第一章 反对外国侵略的斗争",
+      "sections": [
+        {
+          "index": "1",
+          "title": "鸦片战争前的中国和世界",
+          "points": [
+            {
+              "id": "15043-intro-s1-p1",
+              "title": "中国封建社会的主要矛盾",
+              "requirement": "识记",
+              "quote": "中国封建社会的主要矛盾",
+              "locator": "L161"
+            },
+            {
+              "id": "15043-intro-s1-p2",
+              "title": "中国封建社会的基本特点",
+              "requirement": "领会",
+              "quote": "中国封建社会的基本特点",
+              "locator": "L162"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "西方列强对中国的侵略及近代中国社会的演变",
+          "points": [
+            {
+              "id": "15043-intro-s2-p1",
+              "title": "西方列强发动的侵华战争以及迫使清政府签订的一系列不平等条约",
+              "requirement": "识记",
+              "quote": "西方列强发动的侵华战争以及迫使清政府签订的一系列不平等条约",
+              "locator": "L166"
+            },
+            {
+              "id": "15043-intro-s2-p2",
+              "title": "西方列强制造的屠杀中国人民的惨案",
+              "requirement": "识记",
+              "quote": "西方列强制造的屠杀中国人民的惨案",
+              "locator": "L166"
+            },
+            {
+              "id": "15043-intro-s2-p3",
+              "title": "通商口岸",
+              "requirement": "识记",
+              "quote": "通商口岸",
+              "locator": "L166"
+            },
+            {
+              "id": "15043-intro-s2-p4",
+              "title": "西方列强对中国的政治控制",
+              "requirement": "领会",
+              "quote": "西方列强对中国的政治控制",
+              "locator": "L168"
+            },
+            {
+              "id": "15043-intro-s2-p5",
+              "title": "西方列强对中国的经济掠夺",
+              "requirement": "领会",
+              "quote": "西方列强对中国的经济掠夺",
+              "locator": "L168"
+            },
+            {
+              "id": "15043-intro-s2-p6",
+              "title": "西方列强制造的侵略中国的舆论",
+              "requirement": "领会",
+              "quote": "西方列强制造的侵略中国的舆论",
+              "locator": "L168"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "抵御外来侵略、争取民族独立的斗争",
+          "points": [
+            {
+              "id": "15043-intro-s3-p1",
+              "title": "三元里人民的抗英斗争",
+              "requirement": "识记",
+              "quote": "三元里人民的抗英斗争",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p2",
+              "title": "台湾人民的反侵略斗争",
+              "requirement": "识记",
+              "quote": "台湾人民的反侵略斗争",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p3",
+              "title": "为国捐躯的清政府爱国将领",
+              "requirement": "识记",
+              "quote": "为国捐躯的清政府爱国将领",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p4",
+              "title": "义和团抗击八国联军的斗争",
+              "requirement": "识记",
+              "quote": "义和团抗击八国联军的斗争",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p5",
+              "title": "“边疆危机”与列强在中国划分势力范围",
+              "requirement": "识记",
+              "quote": "“边疆危机”与列强在中国划分势力范围",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p6",
+              "title": "林则徐、魏源与睁眼看世界",
+              "requirement": "识记",
+              "quote": "林则徐、魏源与睁眼看世界",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p7",
+              "title": "严复与“救亡”口号",
+              "requirement": "识记",
+              "quote": "严复与“救亡”口号",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p8",
+              "title": "孙中山与“振兴中华”口号",
+              "requirement": "识记",
+              "quote": "孙中山与“振兴中华”口号",
+              "locator": "L180"
+            },
+            {
+              "id": "15043-intro-s3-p9",
+              "title": "19 世纪末帝国主义列强瓜分中国的图谋及其失败的原因",
+              "requirement": "领会",
+              "quote": "19 世纪末帝国主义列强瓜分中国的图谋及其失败的原因",
+              "locator": "L184"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "西方列强的侵略是近代中国一切灾难的总根源",
+          "locator": "L188"
+        },
+        {
+          "text": "近代中国半殖民地半封建社会的特点、主要矛盾和面临的主要任务",
+          "locator": "L188"
+        },
+        {
+          "text": "从 1840 年至 20 世纪初，中国人民反对外来侵略的斗争",
+          "locator": "L188"
+        },
+        {
+          "text": "反侵略斗争失败的原因和民族意识的觉醒",
+          "locator": "L188"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L163",
+          "title": "简单应用：中国封建社会由盛转衰的主要表现",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L164",
+          "title": "综合应用：资本主义制度在欧美主要国家的确立以及殖民扩张对中国的威胁",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L170",
+          "title": "简单应用：近代中国半殖民地半封建社会的特点；近代中国的农民阶级及其历史地位；近代中国资产阶级的产生及其两部分；近代中国工",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L173",
+          "title": "综合应用：半殖民地半封建社会的两对主要矛盾及其相互关系；实现中华民族伟大复兴必须完成的两大历史任务及其相互关系",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L185",
+          "title": "简单应用：近代中国人民的反侵略斗争及其失败的原因",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L186",
+          "title": "综合应用：第一次鸦片战争至辛亥革命前夕，先进中国人民族意识的觉醒",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 1,
+      "index": "第二章",
+      "slug": "ch01",
+      "title": "第二章 对国家出路的早期探索",
+      "sections": [
+        {
+          "index": "1",
+          "title": "农民群众斗争风暴的起落",
+          "points": [
+            {
+              "id": "15043-ch01-s1-p1",
+              "title": "洪秀全与金田起义",
+              "requirement": "识记",
+              "quote": "洪秀全与金田起义",
+              "locator": "L205"
+            },
+            {
+              "id": "15043-ch01-s1-p2",
+              "title": "天京事变",
+              "requirement": "识记",
+              "quote": "天京事变",
+              "locator": "L205"
+            },
+            {
+              "id": "15043-ch01-s1-p3",
+              "title": "《天朝田亩制度》的性质和主要内容",
+              "requirement": "领会",
+              "quote": "《天朝田亩制度》的性质和主要内容",
+              "locator": "L206"
+            },
+            {
+              "id": "15043-ch01-s1-p4",
+              "title": "《资政新篇》的性质和主要内容",
+              "requirement": "领会",
+              "quote": "《资政新篇》的性质和主要内容",
+              "locator": "L206"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "地主阶级统治集团“自救”活动的兴衰",
+          "points": [
+            {
+              "id": "15043-ch01-s2-p1",
+              "title": "奕䜣与洋务派",
+              "requirement": "识记",
+              "quote": "奕䜣与洋务派",
+              "locator": "L211"
+            },
+            {
+              "id": "15043-ch01-s2-p2",
+              "title": "总理各国事务衙门",
+              "requirement": "识记",
+              "quote": "总理各国事务衙门",
+              "locator": "L211"
+            },
+            {
+              "id": "15043-ch01-s2-p3",
+              "title": "洋务派举办的洋务事业",
+              "requirement": "领会",
+              "quote": "洋务派举办的洋务事业",
+              "locator": "L212"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "维新运动的兴起和夭折",
+          "points": [
+            {
+              "id": "15043-ch01-s3-p1",
+              "title": "早期维新思想家代表人物",
+              "requirement": "识记",
+              "quote": "早期维新思想家代表人物",
+              "locator": "L218"
+            },
+            {
+              "id": "15043-ch01-s3-p2",
+              "title": "康有为、梁启超、谭嗣同与维新派",
+              "requirement": "识记",
+              "quote": "康有为、梁启超、谭嗣同与维新派",
+              "locator": "L218"
+            },
+            {
+              "id": "15043-ch01-s3-p3",
+              "title": "“百日维新”",
+              "requirement": "识记",
+              "quote": "“百日维新”",
+              "locator": "L218"
+            },
+            {
+              "id": "15043-ch01-s3-p4",
+              "title": "“戊戌六君子”",
+              "requirement": "识记",
+              "quote": "“戊戌六君子”",
+              "locator": "L218"
+            },
+            {
+              "id": "15043-ch01-s3-p5",
+              "title": "维新派宣传变法维新主张的活动",
+              "requirement": "领会",
+              "quote": "维新派宣传变法维新主张的活动",
+              "locator": "L220"
+            },
+            {
+              "id": "15043-ch01-s3-p6",
+              "title": "维新派与守旧派的论战",
+              "requirement": "领会",
+              "quote": "维新派与守旧派的论战",
+              "locator": "L220"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "太平天国农民战争、洋务运动、戊戌维新运动的历史背景和历史意义，失败原因和经验教训",
+          "locator": "L224"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L208",
+          "title": "简单应用：太平天国失败的原因",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L209",
+          "title": "综合应用：太平天国的历史意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L213",
+          "title": "简单应用：洋务运动失败的原因",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L216",
+          "title": "综合应用：洋务运动的历史作用",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L221",
+          "title": "简单应用：戊戌维新运动失败的原因和教训",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L222",
+          "title": "综合应用：戊戌维新运动的历史意义和影响",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "index": "第三章",
+      "slug": "ch02",
+      "title": "第三章 辛亥革命",
+      "sections": [
+        {
+          "index": "1",
+          "title": "举起近代民族民主革命的旗帜",
+          "points": [
+            {
+              "id": "15043-ch02-s1-p1",
+              "title": "孙中山与兴中会的建立",
+              "requirement": "识记",
+              "quote": "孙中山与兴中会的建立",
+              "locator": "L242"
+            },
+            {
+              "id": "15043-ch02-s1-p2",
+              "title": "宣传民主革命思想的代表性人物及其著作",
+              "requirement": "识记",
+              "quote": "宣传民主革命思想的代表性人物及其著作",
+              "locator": "L242"
+            },
+            {
+              "id": "15043-ch02-s1-p3",
+              "title": "日俄战争",
+              "requirement": "识记",
+              "quote": "日俄战争",
+              "locator": "L242"
+            },
+            {
+              "id": "15043-ch02-s1-p4",
+              "title": "中国同盟会",
+              "requirement": "识记",
+              "quote": "中国同盟会",
+              "locator": "L242"
+            },
+            {
+              "id": "15043-ch02-s1-p5",
+              "title": "清末“新政”及其破产",
+              "requirement": "领会",
+              "quote": "清末“新政”及其破产",
+              "locator": "L244"
+            },
+            {
+              "id": "15043-ch02-s1-p6",
+              "title": "资产阶级革命派的阶级基础和骨干力量",
+              "requirement": "领会",
+              "quote": "资产阶级革命派的阶级基础和骨干力量",
+              "locator": "L244"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "辛亥革命的胜利与失败",
+          "points": [
+            {
+              "id": "15043-ch02-s2-p1",
+              "title": "保路风潮",
+              "requirement": "识记",
+              "quote": "保路风潮",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p2",
+              "title": "黄花岗起义",
+              "requirement": "识记",
+              "quote": "黄花岗起义",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p3",
+              "title": "武昌起义",
+              "requirement": "识记",
+              "quote": "武昌起义",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p4",
+              "title": "中华民国南京临时政府的成立",
+              "requirement": "识记",
+              "quote": "中华民国南京临时政府的成立",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p5",
+              "title": "《中华民国临时约法》",
+              "requirement": "识记",
+              "quote": "《中华民国临时约法》",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p6",
+              "title": "袁世凯与复辟帝制",
+              "requirement": "识记",
+              "quote": "袁世凯与复辟帝制",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p7",
+              "title": "“二次革命”",
+              "requirement": "识记",
+              "quote": "“二次革命”",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p8",
+              "title": "护法运动",
+              "requirement": "识记",
+              "quote": "护法运动",
+              "locator": "L248"
+            },
+            {
+              "id": "15043-ch02-s2-p9",
+              "title": "中华民国南京临时政府的性质及其局限性",
+              "requirement": "领会",
+              "quote": "中华民国南京临时政府的性质及其局限性",
+              "locator": "L252"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "资产阶级革命派的活动，中国同盟会的成立及其纲领，革命派同改良派的论战",
+          "locator": "L257"
+        },
+        {
+          "text": "武昌起义，中华民国的建立以及《中华民国临时约法》",
+          "locator": "L257"
+        },
+        {
+          "text": "辛亥革命的历史意义及其失败的原因和教训",
+          "locator": "L257"
+        },
+        {
+          "text": "革命派反对北洋军阀统治的努力",
+          "locator": "L257"
+        },
+        {
+          "text": "旧民主主义革命的终结",
+          "locator": "L257"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L245",
+          "title": "简单应用：辛亥革命爆发的历史条件；三民主义学说的基本内容",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L246",
+          "title": "综合应用：革命派与改良派的论战及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L253",
+          "title": "简单应用：北洋军阀的统治以及以孙中山为代表的资产阶级革命派反对北洋军阀的斗争",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L255",
+          "title": "综合应用：辛亥革命的历史意义及其局限性",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "index": "第四章",
+      "slug": "ch03",
+      "title": "第四章 开天辟地的大事变",
+      "sections": [
+        {
+          "index": "1",
+          "title": "新文化运动与五四运动",
+          "points": [
+            {
+              "id": "15043-ch03-s1-p1",
+              "title": "陈独秀与新文化运动的兴起",
+              "requirement": "识记",
+              "quote": "陈独秀与新文化运动的兴起",
+              "locator": "L280"
+            },
+            {
+              "id": "15043-ch03-s1-p2",
+              "title": "五四运动",
+              "requirement": "识记",
+              "quote": "五四运动",
+              "locator": "L280"
+            },
+            {
+              "id": "15043-ch03-s1-p3",
+              "title": "俄国十月革命对中国革命的影响",
+              "requirement": "领会",
+              "quote": "俄国十月革命对中国革命的影响",
+              "locator": "L281"
+            },
+            {
+              "id": "15043-ch03-s1-p4",
+              "title": "五四运动爆发的社会历史条件",
+              "requirement": "领会",
+              "quote": "五四运动爆发的社会历史条件",
+              "locator": "L281"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "马克思主义传播与中国共产党诞生",
+          "points": [
+            {
+              "id": "15043-ch03-s2-p1",
+              "title": "李大钊与马克思主义在中国的传播",
+              "requirement": "识记",
+              "quote": "李大钊与马克思主义在中国的传播",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p2",
+              "title": "中国共产党早期组织",
+              "requirement": "识记",
+              "quote": "中国共产党早期组织",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p3",
+              "title": "中共一大",
+              "requirement": "识记",
+              "quote": "中共一大",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p4",
+              "title": "中共二大",
+              "requirement": "识记",
+              "quote": "中共二大",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p5",
+              "title": "中国劳动组合书记部",
+              "requirement": "识记",
+              "quote": "中国劳动组合书记部",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p6",
+              "title": "中国第一次工人运动高潮",
+              "requirement": "识记",
+              "quote": "中国第一次工人运动高潮",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p7",
+              "title": "浙江省萧山县衙前村农民协会",
+              "requirement": "识记",
+              "quote": "浙江省萧山县衙前村农民协会",
+              "locator": "L288"
+            },
+            {
+              "id": "15043-ch03-s2-p8",
+              "title": "早期马克思主义思想运动的历史特点",
+              "requirement": "领会",
+              "quote": "早期马克思主义思想运动的历史特点",
+              "locator": "L291"
+            },
+            {
+              "id": "15043-ch03-s2-p9",
+              "title": "中国共产党成立初期领导发动的工农运动",
+              "requirement": "领会",
+              "quote": "中国共产党成立初期领导发动的工农运动",
+              "locator": "L291"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "国共合作与国民革命",
+          "points": [
+            {
+              "id": "15043-ch03-s3-p1",
+              "title": "中共三大",
+              "requirement": "识记",
+              "quote": "中共三大",
+              "locator": "L297"
+            },
+            {
+              "id": "15043-ch03-s3-p2",
+              "title": "国民党一大",
+              "requirement": "识记",
+              "quote": "国民党一大",
+              "locator": "L297"
+            },
+            {
+              "id": "15043-ch03-s3-p3",
+              "title": "北伐战争",
+              "requirement": "识记",
+              "quote": "北伐战争",
+              "locator": "L297"
+            },
+            {
+              "id": "15043-ch03-s3-p4",
+              "title": "中共四大",
+              "requirement": "识记",
+              "quote": "中共四大",
+              "locator": "L297"
+            },
+            {
+              "id": "15043-ch03-s3-p5",
+              "title": "五卅运动与省港大罢工",
+              "requirement": "识记",
+              "quote": "五卅运动与省港大罢工",
+              "locator": "L297"
+            },
+            {
+              "id": "15043-ch03-s3-p6",
+              "title": "国民党右派发动的反共政变",
+              "requirement": "识记",
+              "quote": "国民党右派发动的反共政变",
+              "locator": "L297"
+            },
+            {
+              "id": "15043-ch03-s3-p7",
+              "title": "第一次国共合作的政治基础及组织形式",
+              "requirement": "领会",
+              "quote": "第一次国共合作的政治基础及组织形式",
+              "locator": "L299"
+            },
+            {
+              "id": "15043-ch03-s3-p8",
+              "title": "国民革命的兴起",
+              "requirement": "领会",
+              "quote": "国民革命的兴起",
+              "locator": "L299"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "五四运动的发生、发展及其历史意义",
+          "locator": "L303"
+        },
+        {
+          "text": "五四运动后，马克思主义在中国的传播，中国的先进知识分子为什么选择和怎样选择了马克思主义",
+          "locator": "L303"
+        },
+        {
+          "text": "中国共产党成立的历史条件、历史特点以及历史意义",
+          "locator": "L303"
+        },
+        {
+          "text": "第一次国共合作的形成，北伐战争的胜利进展以及大革命失败的原因",
+          "locator": "L303"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L282",
+          "title": "简单应用：五四以前新文化运动的局限；五四运动的直接导火线与斗争目标",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L283",
+          "title": "综合应用：新文化运动的主要内容和历史意义；新民主主义革命的开端；五四运动的历史意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L293",
+          "title": "简单应用：中国共产党的早期组织及其活动；中国共产党人的初心使命和伟大建党精神；中国共产党制定的民主革命纲领及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L295",
+          "title": "综合应用：中国共产党的成立是中华民族发展史上开天辟地的大事变",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L300",
+          "title": "简单应用：北伐战争的胜利进军及其原因",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L301",
+          "title": "综合应用：国民革命的意义以及失败的原因",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 4,
+      "index": "第五章",
+      "slug": "ch04",
+      "title": "第五章 中国革命的新道路",
+      "sections": [
+        {
+          "index": "1",
+          "title": "国民党在全国的统治和中间党派的政治主张",
+          "points": [
+            {
+              "id": "15043-ch04-s1-p1",
+              "title": "东北易帜",
+              "requirement": "识记",
+              "quote": "东北易帜",
+              "locator": "L327"
+            },
+            {
+              "id": "15043-ch04-s1-p2",
+              "title": "官僚资本",
+              "requirement": "识记",
+              "quote": "官僚资本",
+              "locator": "L327"
+            },
+            {
+              "id": "15043-ch04-s1-p3",
+              "title": "中间党派及其社会基础",
+              "requirement": "领会",
+              "quote": "中间党派及其社会基础",
+              "locator": "L328"
+            },
+            {
+              "id": "15043-ch04-s1-p4",
+              "title": "中国民族资本主义经济的特点",
+              "requirement": "领会",
+              "quote": "中国民族资本主义经济的特点",
+              "locator": "L328"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "中国共产党对革命新道路的艰苦探索",
+          "points": [
+            {
+              "id": "15043-ch04-s2-p1",
+              "title": "革命危机时刻加入中国共产党的代表人物",
+              "requirement": "识记",
+              "quote": "革命危机时刻加入中国共产党的代表人物",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p2",
+              "title": "八七会议",
+              "requirement": "识记",
+              "quote": "八七会议",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p3",
+              "title": "毛泽东与湘赣边界秋收起义",
+              "requirement": "识记",
+              "quote": "毛泽东与湘赣边界秋收起义",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p4",
+              "title": "广州起义",
+              "requirement": "识记",
+              "quote": "广州起义",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p5",
+              "title": "《星星之火，可以燎原》与《反对本本主义》",
+              "requirement": "识记",
+              "quote": "《星星之火，可以燎原》与《反对本本主义》",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p6",
+              "title": "古田会议",
+              "requirement": "识记",
+              "quote": "古田会议",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p7",
+              "title": "毛泽东在井冈山主持制定的土地法和在兴国主持制定的土地法",
+              "requirement": "识记",
+              "quote": "毛泽东在井冈山主持制定的土地法和在兴国主持制定的土地法",
+              "locator": "L332"
+            },
+            {
+              "id": "15043-ch04-s2-p8",
+              "title": "南昌起义的意义",
+              "requirement": "领会",
+              "quote": "南昌起义的意义",
+              "locator": "L335"
+            },
+            {
+              "id": "15043-ch04-s2-p9",
+              "title": "“三湾改编”",
+              "requirement": "领会",
+              "quote": "“三湾改编”",
+              "locator": "L335"
+            },
+            {
+              "id": "15043-ch04-s2-p10",
+              "title": "井冈山农村革命根据地创建的意义",
+              "requirement": "领会",
+              "quote": "井冈山农村革命根据地创建的意义",
+              "locator": "L335"
+            },
+            {
+              "id": "15043-ch04-s2-p11",
+              "title": "红军反“围剿”作战的胜利",
+              "requirement": "领会",
+              "quote": "红军反“围剿”作战的胜利",
+              "locator": "L335"
+            },
+            {
+              "id": "15043-ch04-s2-p12",
+              "title": "中央革命根据地",
+              "requirement": "领会",
+              "quote": "中央革命根据地",
+              "locator": "L335"
+            },
+            {
+              "id": "15043-ch04-s2-p13",
+              "title": "土地革命中的阶级路线和土地分配方法",
+              "requirement": "领会",
+              "quote": "土地革命中的阶级路线和土地分配方法",
+              "locator": "L335"
+            },
+            {
+              "id": "15043-ch04-s2-p14",
+              "title": "左翼文化运动",
+              "requirement": "领会",
+              "quote": "左翼文化运动",
+              "locator": "L335"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "中国革命在探索中曲折前进",
+          "points": [
+            {
+              "id": "15043-ch04-s3-p1",
+              "title": "中华苏维埃第一次全国代表大会",
+              "requirement": "识记",
+              "quote": "中华苏维埃第一次全国代表大会",
+              "locator": "L341"
+            },
+            {
+              "id": "15043-ch04-s3-p2",
+              "title": "赣南会议",
+              "requirement": "识记",
+              "quote": "赣南会议",
+              "locator": "L341"
+            },
+            {
+              "id": "15043-ch04-s3-p3",
+              "title": "红军的战略大转移和三大主力红军胜利会师",
+              "requirement": "识记",
+              "quote": "红军的战略大转移和三大主力红军胜利会师",
+              "locator": "L341"
+            },
+            {
+              "id": "15043-ch04-s3-p4",
+              "title": "革命根据地的建设",
+              "requirement": "领会",
+              "quote": "革命根据地的建设",
+              "locator": "L343"
+            },
+            {
+              "id": "15043-ch04-s3-p5",
+              "title": "20 世纪二三十年代中国共产党内连续出现“左”倾错误的原因",
+              "requirement": "领会",
+              "quote": "20 世纪二三十年代中国共产党内连续出现“左”倾错误的原因",
+              "locator": "L343"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "国民党政权的性质",
+          "locator": "L348"
+        },
+        {
+          "text": "国民党统治下的中国社会经济状况",
+          "locator": "L348"
+        },
+        {
+          "text": "中间派别的政治主张",
+          "locator": "L348"
+        },
+        {
+          "text": "中国共产党人对中国革命新道路的艰辛探索",
+          "locator": "L348"
+        },
+        {
+          "text": "农村包围城市、武装夺取政权理论的主要内容",
+          "locator": "L348"
+        },
+        {
+          "text": "三次“左”倾错误原因及其危害，特别是王明“左”倾教条主义的危害",
+          "locator": "L348"
+        },
+        {
+          "text": "遵义会议以及红军长征胜利的历史意义",
+          "locator": "L348"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L329",
+          "title": "简单应用：国民党的独裁统治；中国国民党临时行动委员会",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L330",
+          "title": "综合应用：国民党统治下的中国社会经济",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L338",
+          "title": "简单应用：中国红色政权存在和发展的原因及条件；“工农武装割据”",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L339",
+          "title": "综合应用：以毛泽东为代表的中国共产党人对革命新道路的艰辛探索",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L345",
+          "title": "简单应用：王明“左”倾教条主义的主要错误及其危害；长征精神",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L346",
+          "title": "综合应用：遵义会议的召开及其意义；红军长征的胜利及其意义",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "index": "第六章",
+      "slug": "ch05",
+      "title": "第六章 中华民族的抗日战争",
+      "sections": [
+        {
+          "index": "1",
+          "title": "日本发动灭亡中国的侵略战争",
+          "points": [
+            {
+              "id": "15043-ch05-s1-p1",
+              "title": "九一八事变",
+              "requirement": "识记",
+              "quote": "九一八事变",
+              "locator": "L374"
+            },
+            {
+              "id": "15043-ch05-s1-p2",
+              "title": "华北事变",
+              "requirement": "识记",
+              "quote": "华北事变",
+              "locator": "L374"
+            },
+            {
+              "id": "15043-ch05-s1-p3",
+              "title": "七七卢沟桥事变",
+              "requirement": "识记",
+              "quote": "七七卢沟桥事变",
+              "locator": "L374"
+            },
+            {
+              "id": "15043-ch05-s1-p4",
+              "title": "伪“满洲国”和伪“中华民国国民政府”",
+              "requirement": "识记",
+              "quote": "伪“满洲国”和伪“中华民国国民政府”",
+              "locator": "L374"
+            },
+            {
+              "id": "15043-ch05-s1-p5",
+              "title": "“南京大屠杀”",
+              "requirement": "识记",
+              "quote": "“南京大屠杀”",
+              "locator": "L374"
+            },
+            {
+              "id": "15043-ch05-s1-p6",
+              "title": "日本灭亡中国的计划及其实施",
+              "requirement": "领会",
+              "quote": "日本灭亡中国的计划及其实施",
+              "locator": "L376"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "中国人民奋起抗击日本侵略者",
+          "points": [
+            {
+              "id": "15043-ch05-s2-p1",
+              "title": "察哈尔抗日同盟军",
+              "requirement": "识记",
+              "quote": "察哈尔抗日同盟军",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p2",
+              "title": "国民党第十九路军抗日反蒋事变",
+              "requirement": "识记",
+              "quote": "国民党第十九路军抗日反蒋事变",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p3",
+              "title": "宋庆龄",
+              "requirement": "识记",
+              "quote": "宋庆龄",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p4",
+              "title": "《中国人民对日作战的基本纲领》",
+              "requirement": "识记",
+              "quote": "《中国人民对日作战的基本纲领》",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p5",
+              "title": "保卫中国同盟",
+              "requirement": "识记",
+              "quote": "保卫中国同盟",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p6",
+              "title": "全国各界救国联合会",
+              "requirement": "识记",
+              "quote": "全国各界救国联合会",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p7",
+              "title": "“逼蒋抗日”和国共两党第二次合作",
+              "requirement": "识记",
+              "quote": "“逼蒋抗日”和国共两党第二次合作",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p8",
+              "title": "八路军、新四军",
+              "requirement": "识记",
+              "quote": "八路军、新四军",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p9",
+              "title": "邓玉芬、马本斋、陈嘉庚",
+              "requirement": "识记",
+              "quote": "邓玉芬、马本斋、陈嘉庚",
+              "locator": "L380"
+            },
+            {
+              "id": "15043-ch05-s2-p10",
+              "title": "《为抗日救国告全国同胞书》",
+              "requirement": "领会",
+              "quote": "《为抗日救国告全国同胞书》",
+              "locator": "L383"
+            },
+            {
+              "id": "15043-ch05-s2-p11",
+              "title": "瓦窑堡会议",
+              "requirement": "领会",
+              "quote": "瓦窑堡会议",
+              "locator": "L383"
+            },
+            {
+              "id": "15043-ch05-s2-p12",
+              "title": "中共中央致国民党五届三中全会电",
+              "requirement": "领会",
+              "quote": "中共中央致国民党五届三中全会电",
+              "locator": "L383"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "国民党的正面战场与大后方的抗日民主运动",
+          "points": [
+            {
+              "id": "15043-ch05-s3-p1",
+              "title": "台儿庄战役",
+              "requirement": "识记",
+              "quote": "台儿庄战役",
+              "locator": "L388"
+            },
+            {
+              "id": "15043-ch05-s3-p2",
+              "title": "“八百壮士”和为国捐躯的国民党将领",
+              "requirement": "识记",
+              "quote": "“八百壮士”和为国捐躯的国民党将领",
+              "locator": "L388"
+            },
+            {
+              "id": "15043-ch05-s3-p3",
+              "title": "国民党五届五中全会",
+              "requirement": "识记",
+              "quote": "国民党五届五中全会",
+              "locator": "L388"
+            },
+            {
+              "id": "15043-ch05-s3-p4",
+              "title": "豫湘桂战役",
+              "requirement": "识记",
+              "quote": "豫湘桂战役",
+              "locator": "L388"
+            },
+            {
+              "id": "15043-ch05-s3-p5",
+              "title": "国民参政会",
+              "requirement": "识记",
+              "quote": "国民参政会",
+              "locator": "L388"
+            },
+            {
+              "id": "15043-ch05-s3-p6",
+              "title": "相持阶段到来后国民党的对内对外政策",
+              "requirement": "领会",
+              "quote": "相持阶段到来后国民党的对内对外政策",
+              "locator": "L390"
+            },
+            {
+              "id": "15043-ch05-s3-p7",
+              "title": "中国战区与中国远征军",
+              "requirement": "领会",
+              "quote": "中国战区与中国远征军",
+              "locator": "L390"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "中国共产党成为抗日战争的中流砥柱",
+          "points": [
+            {
+              "id": "15043-ch05-s4-p1",
+              "title": "洛川会议和《抗日救国十大纲领》",
+              "requirement": "识记",
+              "quote": "洛川会议和《抗日救国十大纲领》",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p2",
+              "title": "敌后抗日根据地",
+              "requirement": "识记",
+              "quote": "敌后抗日根据地",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p3",
+              "title": "敌后战场涌现的民族英雄和英雄群体",
+              "requirement": "识记",
+              "quote": "敌后战场涌现的民族英雄和英雄群体",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p4",
+              "title": "国民党顽固派制造的反共摩擦",
+              "requirement": "识记",
+              "quote": "国民党顽固派制造的反共摩擦",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p5",
+              "title": "“三三制”政权",
+              "requirement": "识记",
+              "quote": "“三三制”政权",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p6",
+              "title": "精兵简政",
+              "requirement": "识记",
+              "quote": "精兵简政",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p7",
+              "title": "教条主义",
+              "requirement": "识记",
+              "quote": "教条主义",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p8",
+              "title": "延安精神",
+              "requirement": "识记",
+              "quote": "延安精神",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p9",
+              "title": "平型关战役",
+              "requirement": "识记",
+              "quote": "平型关战役",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p10",
+              "title": "百团大战",
+              "requirement": "识记",
+              "quote": "百团大战",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p11",
+              "title": "中共六届六中全会",
+              "requirement": "识记",
+              "quote": "中共六届六中全会",
+              "locator": "L395"
+            },
+            {
+              "id": "15043-ch05-s4-p12",
+              "title": "中国共产党的全面抗战路线",
+              "requirement": "领会",
+              "quote": "中国共产党的全面抗战路线",
+              "locator": "L398"
+            },
+            {
+              "id": "15043-ch05-s4-p13",
+              "title": "抗日民族统一战线中的独立自主原则",
+              "requirement": "领会",
+              "quote": "抗日民族统一战线中的独立自主原则",
+              "locator": "L398"
+            },
+            {
+              "id": "15043-ch05-s4-p14",
+              "title": "大生产运动",
+              "requirement": "领会",
+              "quote": "大生产运动",
+              "locator": "L398"
+            },
+            {
+              "id": "15043-ch05-s4-p15",
+              "title": "《关于若干历史问题的决议》",
+              "requirement": "领会",
+              "quote": "《关于若干历史问题的决议》",
+              "locator": "L398"
+            },
+            {
+              "id": "15043-ch05-s4-p16",
+              "title": "中共七大",
+              "requirement": "领会",
+              "quote": "中共七大",
+              "locator": "L398"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "抗日战争的胜利及其意义",
+          "points": [
+            {
+              "id": "15043-ch05-s5-p1",
+              "title": "《对日寇的最后一战》",
+              "requirement": "识记",
+              "quote": "《对日寇的最后一战》",
+              "locator": "L407"
+            },
+            {
+              "id": "15043-ch05-s5-p2",
+              "title": "联合国制宪会议",
+              "requirement": "识记",
+              "quote": "联合国制宪会议",
+              "locator": "L407"
+            },
+            {
+              "id": "15043-ch05-s5-p3",
+              "title": "中国人民抗日战争胜利纪念日",
+              "requirement": "识记",
+              "quote": "中国人民抗日战争胜利纪念日",
+              "locator": "L407"
+            },
+            {
+              "id": "15043-ch05-s5-p4",
+              "title": "抗日战争的完全胜利",
+              "requirement": "领会",
+              "quote": "抗日战争的完全胜利",
+              "locator": "L409"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "日本灭亡中国的计划及其侵华罪行",
+          "locator": "L414"
+        },
+        {
+          "text": "西安事变",
+          "locator": "L414"
+        },
+        {
+          "text": "抗日民族统一战线的形成",
+          "locator": "L414"
+        },
+        {
+          "text": "抗日战争防御阶段和相持阶段国民党正面战场",
+          "locator": "L414"
+        },
+        {
+          "text": "中国共产党的人民战争路线和持久战的方针",
+          "locator": "L414"
+        },
+        {
+          "text": "抗日游击战争的战略地位",
+          "locator": "L414"
+        },
+        {
+          "text": "抗日民族统一战线的策略总方针",
+          "locator": "L414"
+        },
+        {
+          "text": "新民主主义理论的系统阐明",
+          "locator": "L414"
+        },
+        {
+          "text": "延安整风运动和毛泽东思想指导地位的确立",
+          "locator": "L414"
+        },
+        {
+          "text": "中国共产党在抗日战争中的中流砥柱作用",
+          "locator": "L414"
+        },
+        {
+          "text": "中国人民抗日战争在世界反法西斯战争中的地位",
+          "locator": "L414"
+        },
+        {
+          "text": "抗日战争胜利的原因和意义",
+          "locator": "L414"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L377",
+          "title": "简单应用：日本在中国占领区的殖民统治",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L378",
+          "title": "综合应用：日本侵略者给中华民族造成的深重灾难",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L385",
+          "title": "简单应用：一二·九运动及其意义；西安事变的和平解决及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L386",
+          "title": "综合应用：中国共产党关于建立抗日民族统一战线的新政策",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L391",
+          "title": "简单应用：国民党正面战场溃退的原因",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L392",
+          "title": "综合应用：中国共产党领导和开展的大后方抗日民主运动和抗日文化工作",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L400",
+          "title": "简单应用：中国抗日战争的两个战场及其关系；抗日游击战争的战略地位和作用",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L402",
+          "title": "综合应用：中国共产党及其领导的人民抗日力量是抗日战争的中流砥柱；毛泽东《论持久战》的主要内容及其意义；中国共产党关于巩固",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L410",
+          "title": "简单应用：抗日战争胜利的主要原因",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L411",
+          "title": "综合应用：抗日战争的胜利为中华民族走向伟大复兴确立了历史转折点；中国人民抗日战争在世界反法西斯战争中的地位",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "index": "第七章",
+      "slug": "ch06",
+      "title": "第七章 为创建新中国而奋斗",
+      "sections": [
+        {
+          "index": "1",
+          "title": "从争取和平民主到进行自卫战争",
+          "points": [
+            {
+              "id": "15043-ch06-s1-p1",
+              "title": "《对目前时局的宣言》",
+              "requirement": "识记",
+              "quote": "《对目前时局的宣言》",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p2",
+              "title": "重庆谈判与双十协定",
+              "requirement": "识记",
+              "quote": "重庆谈判与双十协定",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p3",
+              "title": "“向北发展，向南防御”的战略方针",
+              "requirement": "识记",
+              "quote": "“向北发展，向南防御”的战略方针",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p4",
+              "title": "1946 年 1 月召开的政治协商会议",
+              "requirement": "识记",
+              "quote": "1946 年 1 月召开的政治协商会议",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p5",
+              "title": "校场口惨案",
+              "requirement": "识记",
+              "quote": "校场口惨案",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p6",
+              "title": "下关惨案",
+              "requirement": "识记",
+              "quote": "下关惨案",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p7",
+              "title": "国民党军挑起全国性内战",
+              "requirement": "识记",
+              "quote": "国民党军挑起全国性内战",
+              "locator": "L440"
+            },
+            {
+              "id": "15043-ch06-s1-p8",
+              "title": "抗日战争胜利后的国际格局和国内形势",
+              "requirement": "领会",
+              "quote": "抗日战争胜利后的国际格局和国内形势",
+              "locator": "L443"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "国民党政府处于全民的包围中",
+          "points": [
+            {
+              "id": "15043-ch06-s2-p1",
+              "title": "“打倒蒋介石，解放全中国”的行动口号",
+              "requirement": "识记",
+              "quote": "“打倒蒋介石，解放全中国”的行动口号",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p2",
+              "title": "新民主主义三大经济纲领",
+              "requirement": "识记",
+              "quote": "新民主主义三大经济纲领",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p3",
+              "title": "新民主主义革命总路线",
+              "requirement": "识记",
+              "quote": "新民主主义革命总路线",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p4",
+              "title": "国统区的学生运动",
+              "requirement": "识记",
+              "quote": "国统区的学生运动",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p5",
+              "title": "《五四指示》",
+              "requirement": "识记",
+              "quote": "《五四指示》",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p6",
+              "title": "《中国土地法大纲》",
+              "requirement": "识记",
+              "quote": "《中国土地法大纲》",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p7",
+              "title": "土地改革的总路线",
+              "requirement": "识记",
+              "quote": "土地改革的总路线",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p8",
+              "title": "“五二〇”惨案",
+              "requirement": "识记",
+              "quote": "“五二〇”惨案",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p9",
+              "title": "台湾人民二二八起义",
+              "requirement": "识记",
+              "quote": "台湾人民二二八起义",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p10",
+              "title": "“三区革命”",
+              "requirement": "识记",
+              "quote": "“三区革命”",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p11",
+              "title": "内蒙古自治政府",
+              "requirement": "识记",
+              "quote": "内蒙古自治政府",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p12",
+              "title": "民主党派",
+              "requirement": "识记",
+              "quote": "民主党派",
+              "locator": "L448"
+            },
+            {
+              "id": "15043-ch06-s2-p13",
+              "title": "人民解放军的战略进攻",
+              "requirement": "领会",
+              "quote": "人民解放军的战略进攻",
+              "locator": "L452"
+            },
+            {
+              "id": "15043-ch06-s2-p14",
+              "title": "国民党统治的政治经济危机",
+              "requirement": "领会",
+              "quote": "国民党统治的政治经济危机",
+              "locator": "L452"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "新民主主义革命的胜利",
+          "points": [
+            {
+              "id": "15043-ch06-s3-p1",
+              "title": "战略决战",
+              "requirement": "识记",
+              "quote": "战略决战",
+              "locator": "L457"
+            },
+            {
+              "id": "15043-ch06-s3-p2",
+              "title": "《将革命进行到底》",
+              "requirement": "识记",
+              "quote": "《将革命进行到底》",
+              "locator": "L457"
+            },
+            {
+              "id": "15043-ch06-s3-p3",
+              "title": "国共北平谈判",
+              "requirement": "识记",
+              "quote": "国共北平谈判",
+              "locator": "L457"
+            },
+            {
+              "id": "15043-ch06-s3-p4",
+              "title": "人民解放军占领南京及其向全国进军",
+              "requirement": "识记",
+              "quote": "人民解放军占领南京及其向全国进军",
+              "locator": "L457"
+            },
+            {
+              "id": "15043-ch06-s3-p5",
+              "title": "中共七届二中全会的主要内容",
+              "requirement": "领会",
+              "quote": "中共七届二中全会的主要内容",
+              "locator": "L459"
+            },
+            {
+              "id": "15043-ch06-s3-p6",
+              "title": "中国革命统一战线中存在的两个联盟",
+              "requirement": "领会",
+              "quote": "中国革命统一战线中存在的两个联盟",
+              "locator": "L459"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "抗日战争胜利后的国际格局",
+          "locator": "L465"
+        },
+        {
+          "text": "抗日战争胜利后出现的三种建国方案和两个中国之命运",
+          "locator": "L465"
+        },
+        {
+          "text": "中国共产党争取和平民主的斗争",
+          "locator": "L465"
+        },
+        {
+          "text": "解放战争的胜利进行",
+          "locator": "L465"
+        },
+        {
+          "text": "解放区的土地改革运动",
+          "locator": "L465"
+        },
+        {
+          "text": "国民党政府处在全民的包围中",
+          "locator": "L465"
+        },
+        {
+          "text": "国统区第二条反蒋战线的形成与作用",
+          "locator": "L465"
+        },
+        {
+          "text": "中国共产党在新民主主义革命阶段的总路线和总政策",
+          "locator": "L465"
+        },
+        {
+          "text": "中共领导的多党合作和政治协商格局的形成",
+          "locator": "L465"
+        },
+        {
+          "text": "中共七届二中全会和毛泽东《论人民民主专政》",
+          "locator": "L465"
+        },
+        {
+          "text": "《中国人民政治协商会议共同纲领》",
+          "locator": "L465"
+        },
+        {
+          "text": "“第三条道路”幻想的破灭及其原因",
+          "locator": "L465"
+        },
+        {
+          "text": "新民主主义革命胜利的主要原因和基本经验",
+          "locator": "L465"
+        },
+        {
+          "text": "人民共和国是中国人民的历史性选择",
+          "locator": "L465"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L444",
+          "title": "简单应用：必须和能够打败蒋介石",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L445",
+          "title": "综合应用：抗日战争胜利后中国国内的三种建国方案和两个中国之命运的较量",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L453",
+          "title": "简单应用：中国共产党与各民主党派的团结合作；解放区经过土地改革运动出现的新面貌",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L455",
+          "title": "综合应用：中国共产党领导的多党合作、政治协商格局的形成",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L460",
+          "title": "简单应用：《论人民民主专政》与中国共产党建国主张",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L461",
+          "title": "综合应用：中国人民政治协商会议及其《共同纲领》的主要内容；中国革命胜利的主要原因和基本经验",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 7,
+      "index": "第八章",
+      "slug": "ch07",
+      "title": "第八章 完成社会主义革命和推进社会主义建设",
+      "sections": [
+        {
+          "index": "1",
+          "title": "《共同纲领》的全面实施与新民主主义革命任务的胜利完成",
+          "points": [
+            {
+              "id": "15043-ch07-s1-p1",
+              "title": "《中华人民共和国土地改革法》",
+              "requirement": "识记",
+              "quote": "《中华人民共和国土地改革法》",
+              "locator": "L496"
+            },
+            {
+              "id": "15043-ch07-s1-p2",
+              "title": "《中华人民共和国婚姻法》",
+              "requirement": "识记",
+              "quote": "《中华人民共和国婚姻法》",
+              "locator": "L496"
+            },
+            {
+              "id": "15043-ch07-s1-p3",
+              "title": "中共七届三中全会",
+              "requirement": "识记",
+              "quote": "中共七届三中全会",
+              "locator": "L496"
+            },
+            {
+              "id": "15043-ch07-s1-p4",
+              "title": "“三反”运动",
+              "requirement": "识记",
+              "quote": "“三反”运动",
+              "locator": "L496"
+            },
+            {
+              "id": "15043-ch07-s1-p5",
+              "title": "“五反”运动",
+              "requirement": "识记",
+              "quote": "“五反”运动",
+              "locator": "L496"
+            },
+            {
+              "id": "15043-ch07-s1-p6",
+              "title": "西藏和平解放",
+              "requirement": "领会",
+              "quote": "西藏和平解放",
+              "locator": "L498"
+            },
+            {
+              "id": "15043-ch07-s1-p7",
+              "title": "没收官僚资本",
+              "requirement": "领会",
+              "quote": "没收官僚资本",
+              "locator": "L498"
+            },
+            {
+              "id": "15043-ch07-s1-p8",
+              "title": "独立自主和平外交的初步开展",
+              "requirement": "领会",
+              "quote": "独立自主和平外交的初步开展",
+              "locator": "L498"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "过渡时期总路线的实施和社会主义制度的确立",
+          "points": [
+            {
+              "id": "15043-ch07-s2-p1",
+              "title": "新民主主义社会的建立",
+              "requirement": "识记",
+              "quote": "新民主主义社会的建立",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p2",
+              "title": "过渡时期总路线的内容",
+              "requirement": "识记",
+              "quote": "过渡时期总路线的内容",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p3",
+              "title": "《关于农业合作化问题》",
+              "requirement": "识记",
+              "quote": "《关于农业合作化问题》",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p4",
+              "title": "手工业合作化的组织形式",
+              "requirement": "识记",
+              "quote": "手工业合作化的组织形式",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p5",
+              "title": "“四马分肥”",
+              "requirement": "识记",
+              "quote": "“四马分肥”",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p6",
+              "title": "一届全国人大一次会议与《中华人民共和国宪法》",
+              "requirement": "识记",
+              "quote": "一届全国人大一次会议与《中华人民共和国宪法》",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p7",
+              "title": "民族自治区相继成立",
+              "requirement": "识记",
+              "quote": "民族自治区相继成立",
+              "locator": "L508"
+            },
+            {
+              "id": "15043-ch07-s2-p8",
+              "title": "资本主义工业化与社会主义工业化",
+              "requirement": "领会",
+              "quote": "资本主义工业化与社会主义工业化",
+              "locator": "L511"
+            },
+            {
+              "id": "15043-ch07-s2-p9",
+              "title": "对农业社会主义改造采取的过渡性经济组织形式",
+              "requirement": "领会",
+              "quote": "对农业社会主义改造采取的过渡性经济组织形式",
+              "locator": "L511"
+            },
+            {
+              "id": "15043-ch07-s2-p10",
+              "title": "对资本主义工商业进行社会主义改造的形式",
+              "requirement": "领会",
+              "quote": "对资本主义工商业进行社会主义改造的形式",
+              "locator": "L511"
+            },
+            {
+              "id": "15043-ch07-s2-p11",
+              "title": "第一个五年计划以及工业建设的成就",
+              "requirement": "领会",
+              "quote": "第一个五年计划以及工业建设的成就",
+              "locator": "L511"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "探索中国社会主义建设道路的良好开局",
+          "points": [
+            {
+              "id": "15043-ch07-s3-p1",
+              "title": "社会主义制度确立后中国国内的主要矛盾",
+              "requirement": "识记",
+              "quote": "社会主义制度确立后中国国内的主要矛盾",
+              "locator": "L521"
+            },
+            {
+              "id": "15043-ch07-s3-p2",
+              "title": "“三个主体、三个补充”",
+              "requirement": "识记",
+              "quote": "“三个主体、三个补充”",
+              "locator": "L521"
+            },
+            {
+              "id": "15043-ch07-s3-p3",
+              "title": "《关于正确处理人民内部矛盾的问题》",
+              "requirement": "识记",
+              "quote": "《关于正确处理人民内部矛盾的问题》",
+              "locator": "L521"
+            },
+            {
+              "id": "15043-ch07-s3-p4",
+              "title": "整风运动与反右派斗争",
+              "requirement": "识记",
+              "quote": "整风运动与反右派斗争",
+              "locator": "L521"
+            },
+            {
+              "id": "15043-ch07-s3-p5",
+              "title": "“我们要进行第二次结合，找出在中国进行社会主义革命和建设的正确道路”",
+              "requirement": "领会",
+              "quote": "“我们要进行第二次结合，找出在中国进行社会主义革命和建设的正确道路”",
+              "locator": "L523"
+            },
+            {
+              "id": "15043-ch07-s3-p6",
+              "title": "《论十大关系》及其提出的建设社会主义的基本方针",
+              "requirement": "领会",
+              "quote": "《论十大关系》及其提出的建设社会主义的基本方针",
+              "locator": "L523"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "探索中的严重曲折",
+          "points": [
+            {
+              "id": "15043-ch07-s4-p1",
+              "title": "“大跃进”运动",
+              "requirement": "识记",
+              "quote": "“大跃进”运动",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p2",
+              "title": "人民公社化运动",
+              "requirement": "识记",
+              "quote": "人民公社化运动",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p3",
+              "title": "庐山会议",
+              "requirement": "识记",
+              "quote": "庐山会议",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p4",
+              "title": "“四个现代化”的奋斗目标",
+              "requirement": "识记",
+              "quote": "“四个现代化”的奋斗目标",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p5",
+              "title": "社会主义教育运动",
+              "requirement": "识记",
+              "quote": "社会主义教育运动",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p6",
+              "title": "“二月逆流”",
+              "requirement": "识记",
+              "quote": "“二月逆流”",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p7",
+              "title": "林彪反革命集团",
+              "requirement": "识记",
+              "quote": "林彪反革命集团",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p8",
+              "title": "“四人帮”",
+              "requirement": "识记",
+              "quote": "“四人帮”",
+              "locator": "L530"
+            },
+            {
+              "id": "15043-ch07-s4-p9",
+              "title": "20 世纪 60 年代前期的国民经济调整",
+              "requirement": "领会",
+              "quote": "20 世纪 60 年代前期的国民经济调整",
+              "locator": "L532"
+            },
+            {
+              "id": "15043-ch07-s4-p10",
+              "title": "“文化大革命”的发动",
+              "requirement": "领会",
+              "quote": "“文化大革命”的发动",
+              "locator": "L532"
+            },
+            {
+              "id": "15043-ch07-s4-p11",
+              "title": "“文化大革命”的结束",
+              "requirement": "领会",
+              "quote": "“文化大革命”的结束",
+              "locator": "L532"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "建设的成就 探索的成果",
+          "points": [
+            {
+              "id": "15043-ch07-s5-p1",
+              "title": "“两弹一星”",
+              "requirement": "识记",
+              "quote": "“两弹一星”",
+              "locator": "L543"
+            },
+            {
+              "id": "15043-ch07-s5-p2",
+              "title": "中国恢复在联合国的合法席位",
+              "requirement": "识记",
+              "quote": "中国恢复在联合国的合法席位",
+              "locator": "L543"
+            },
+            {
+              "id": "15043-ch07-s5-p3",
+              "title": "中美关系正常化和中日建交",
+              "requirement": "识记",
+              "quote": "中美关系正常化和中日建交",
+              "locator": "L543"
+            },
+            {
+              "id": "15043-ch07-s5-p4",
+              "title": "“长期共存、互相监督”方针",
+              "requirement": "识记",
+              "quote": "“长期共存、互相监督”方针",
+              "locator": "L543"
+            },
+            {
+              "id": "15043-ch07-s5-p5",
+              "title": "“百花齐放、百家争鸣”和“古为今用、洋为中用、百花齐放、推陈出新”方针",
+              "requirement": "识记",
+              "quote": "“百花齐放、百家争鸣”和“古为今用、洋为中用、百花齐放、推陈出新”方针",
+              "locator": "L543"
+            },
+            {
+              "id": "15043-ch07-s5-p6",
+              "title": "毛泽东关于社会主义发展阶段的思考",
+              "requirement": "领会",
+              "quote": "毛泽东关于社会主义发展阶段的思考",
+              "locator": "L546"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "中华人民共和国成立的历史意义",
+          "locator": "L552"
+        },
+        {
+          "text": "新民主主义革命任务的彻底完成",
+          "locator": "L552"
+        },
+        {
+          "text": "过渡时期总路线反映了历史的必然",
+          "locator": "L552"
+        },
+        {
+          "text": "对农业、手工业和资本主义工商业的社会主义改造",
+          "locator": "L552"
+        },
+        {
+          "text": "第一个五年计划",
+          "locator": "L552"
+        },
+        {
+          "text": "社会主义经济制度、政治制度的确立",
+          "locator": "L552"
+        },
+        {
+          "text": "探索中国社会主义建设道路的良好开局",
+          "locator": "L552"
+        },
+        {
+          "text": "探索中的严重错误，错误的性质和产生错误的原因",
+          "locator": "L552"
+        },
+        {
+          "text": "社会主义建设的成就和探索取得的理论成果",
+          "locator": "L552"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L503",
+          "title": "简单应用：新中国成立初期的各项民主改革；争取国家财政经济状况基本好转的条件；国民经济的迅速恢复及其原因；抗美援朝，保家卫",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L505",
+          "title": "综合应用：中华人民共和国的成立开辟了中国历史的新纪元；中国共产党在全国执政面临的新考验",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L514",
+          "title": "简单应用：新民主主义社会的特点与性质；新中国成立初期开始向社会主义过渡采取的实际步骤；完成对农业社会主义改造的意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L516",
+          "title": "综合应用：过渡时期总路线反映了历史的必然；对农业进行社会主义改造的基本原则和方针；对资本主义工商业采取和平赎买政策的特点",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L525",
+          "title": "简单应用：中共八大制定的路线和指导方针及其意义；毛泽东关于社会主义社会基本矛盾的分析",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L527",
+          "title": "综合应用：毛泽东关于正确区分两类社会矛盾以及正确处理人民内部矛盾的思想及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L534",
+          "title": "简单应用：1958 年秋冬至庐山会议前期的纠“左”努力；“七千人大会”的召开及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L539",
+          "title": "综合应用：探索中国社会主义建设道路的曲折历程；“文化大革命”发生的社会历史原因；科学分析中国共产党在探索中国自己的社会主",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L547",
+          "title": "简单应用：实现社会主义现代化的“两步走”战略；独立的、比较完整的工业体系和国民经济体系的建立及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L549",
+          "title": "综合应用：社会主义建设的成就；毛泽东等老一代革命家探索中国社会主义建设道路的理论贡献及其意义",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 8,
+      "index": "第九章",
+      "slug": "ch08",
+      "title": "第九章 中国特色社会主义的开创与接续发展",
+      "sections": [
+        {
+          "index": "1",
+          "title": "历史性的伟大转折和改革开放的起步",
+          "points": [
+            {
+              "id": "15043-ch08-s1-p1",
+              "title": "四项基本原则",
+              "requirement": "识记",
+              "quote": "四项基本原则",
+              "locator": "L576"
+            },
+            {
+              "id": "15043-ch08-s1-p2",
+              "title": "20 世纪 70 年代末 80 年代初的国民经济调整",
+              "requirement": "识记",
+              "quote": "20 世纪 70 年代末 80 年代初的国民经济调整",
+              "locator": "L576"
+            },
+            {
+              "id": "15043-ch08-s1-p3",
+              "title": "经济特区",
+              "requirement": "识记",
+              "quote": "经济特区",
+              "locator": "L576"
+            },
+            {
+              "id": "15043-ch08-s1-p4",
+              "title": "全国人大常委会《告台湾同胞书》",
+              "requirement": "识记",
+              "quote": "全国人大常委会《告台湾同胞书》",
+              "locator": "L576"
+            },
+            {
+              "id": "15043-ch08-s1-p5",
+              "title": "关于台湾回归祖国、实现和平统一的九项方针政策",
+              "requirement": "识记",
+              "quote": "关于台湾回归祖国、实现和平统一的九项方针政策",
+              "locator": "L576"
+            },
+            {
+              "id": "15043-ch08-s1-p6",
+              "title": "“两个凡是”的影响",
+              "requirement": "领会",
+              "quote": "“两个凡是”的影响",
+              "locator": "L579"
+            },
+            {
+              "id": "15043-ch08-s1-p7",
+              "title": "平反冤假错案",
+              "requirement": "领会",
+              "quote": "平反冤假错案",
+              "locator": "L579"
+            },
+            {
+              "id": "15043-ch08-s1-p8",
+              "title": "“统分结合”的农村家庭联产承包责任制",
+              "requirement": "领会",
+              "quote": "“统分结合”的农村家庭联产承包责任制",
+              "locator": "L579"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "开创中国特色社会主义",
+          "points": [
+            {
+              "id": "15043-ch08-s2-p1",
+              "title": "中共十二大",
+              "requirement": "识记",
+              "quote": "中共十二大",
+              "locator": "L585"
+            },
+            {
+              "id": "15043-ch08-s2-p2",
+              "title": "中共十二届六中全会",
+              "requirement": "识记",
+              "quote": "中共十二届六中全会",
+              "locator": "L585"
+            },
+            {
+              "id": "15043-ch08-s2-p3",
+              "title": "中共十三大",
+              "requirement": "识记",
+              "quote": "中共十三大",
+              "locator": "L585"
+            },
+            {
+              "id": "15043-ch08-s2-p4",
+              "title": "“一个中心，两个基本点”",
+              "requirement": "识记",
+              "quote": "“一个中心，两个基本点”",
+              "locator": "L585"
+            },
+            {
+              "id": "15043-ch08-s2-p5",
+              "title": "开发、开放上海浦东新区",
+              "requirement": "识记",
+              "quote": "开发、开放上海浦东新区",
+              "locator": "L585"
+            },
+            {
+              "id": "15043-ch08-s2-p6",
+              "title": "中共十二届三中全会《关于经济体制改革的决定》",
+              "requirement": "领会",
+              "quote": "中共十二届三中全会《关于经济体制改革的决定》",
+              "locator": "L587"
+            },
+            {
+              "id": "15043-ch08-s2-p7",
+              "title": "多层次对外开放格局",
+              "requirement": "领会",
+              "quote": "多层次对外开放格局",
+              "locator": "L587"
+            },
+            {
+              "id": "15043-ch08-s2-p8",
+              "title": "社会主义精神文明建设",
+              "requirement": "领会",
+              "quote": "社会主义精神文明建设",
+              "locator": "L587"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "把中国特色社会主义推向二十一世纪",
+          "points": [
+            {
+              "id": "15043-ch08-s3-p1",
+              "title": "中共十四大",
+              "requirement": "识记",
+              "quote": "中共十四大",
+              "locator": "L593"
+            },
+            {
+              "id": "15043-ch08-s3-p2",
+              "title": "中共十四届三中全会《关于建立社会主义市场经济体制若干问题的决定》",
+              "requirement": "识记",
+              "quote": "中共十四届三中全会《关于建立社会主义市场经济体制若干问题的决定》",
+              "locator": "L593"
+            },
+            {
+              "id": "15043-ch08-s3-p3",
+              "title": "中共十五大",
+              "requirement": "识记",
+              "quote": "中共十五大",
+              "locator": "L593"
+            },
+            {
+              "id": "15043-ch08-s3-p4",
+              "title": "中国正式加入世界贸易组织",
+              "requirement": "识记",
+              "quote": "中国正式加入世界贸易组织",
+              "locator": "L593"
+            },
+            {
+              "id": "15043-ch08-s3-p5",
+              "title": "“汪辜会谈”",
+              "requirement": "识记",
+              "quote": "“汪辜会谈”",
+              "locator": "L593"
+            },
+            {
+              "id": "15043-ch08-s3-p6",
+              "title": "《为促进祖国统一大业的完成而继续奋斗》",
+              "requirement": "识记",
+              "quote": "《为促进祖国统一大业的完成而继续奋斗》",
+              "locator": "L593"
+            },
+            {
+              "id": "15043-ch08-s3-p7",
+              "title": "20 世纪 90 年代后期改革开放和现代化建设经受的风险考验",
+              "requirement": "领会",
+              "quote": "20 世纪 90 年代后期改革开放和现代化建设经受的风险考验",
+              "locator": "L596"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "在新形势下坚持和发展中国特色社会主义",
+          "points": [
+            {
+              "id": "15043-ch08-s4-p1",
+              "title": "中共十六大",
+              "requirement": "识记",
+              "quote": "中共十六大",
+              "locator": "L602"
+            },
+            {
+              "id": "15043-ch08-s4-p2",
+              "title": "中共十七大",
+              "requirement": "识记",
+              "quote": "中共十七大",
+              "locator": "L602"
+            },
+            {
+              "id": "15043-ch08-s4-p3",
+              "title": "中共十七届六中全会",
+              "requirement": "识记",
+              "quote": "中共十七届六中全会",
+              "locator": "L602"
+            },
+            {
+              "id": "15043-ch08-s4-p4",
+              "title": "建设社会主义新农村",
+              "requirement": "领会",
+              "quote": "建设社会主义新农村",
+              "locator": "L603"
+            },
+            {
+              "id": "15043-ch08-s4-p5",
+              "title": "加强党的执政能力建设",
+              "requirement": "领会",
+              "quote": "加强党的执政能力建设",
+              "locator": "L603"
+            },
+            {
+              "id": "15043-ch08-s4-p6",
+              "title": "应对国际金融危机",
+              "requirement": "领会",
+              "quote": "应对国际金融危机",
+              "locator": "L603"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "中共十一届三中全会的历史意义",
+          "locator": "L608"
+        },
+        {
+          "text": "中国特色社会主义的开创",
+          "locator": "L608"
+        },
+        {
+          "text": "中国特色社会主义的接续发展",
+          "locator": "L608"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L581",
+          "title": "简单应用：关于真理标准问题大讨论",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L582",
+          "title": "综合应用：中共十一届三中全会的历史贡献；第二个历史决议关于毛泽东和毛泽东思想历史地位的科学评价",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L589",
+          "title": "简单应用：“三步走”发展战略；邓小平《党和国家领导制度的改革》；邓小平关于中国农业改革和发展“两个飞跃”的思想",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L591",
+          "title": "综合应用：社会主义初级阶段理论和中国共产党的基本路线",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L597",
+          "title": "简单应用：邓小平提出的“一个国家、两种制度”的构想；香港、澳门的回归",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L599",
+          "title": "综合应用：邓小平南方谈话的主要内容及其意义；“三个代表”重要思想的提出及其意义",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L604",
+          "title": "简单应用：全面建设小康社会；构建社会主义和谐社会；坚持走和平发展的道路",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L606",
+          "title": "综合应用：科学发展观的提出及其意义",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 9,
+      "index": "第十章",
+      "slug": "ch09",
+      "title": "第十章 中国特色社会主义进入新时代",
+      "sections": [
+        {
+          "index": "1",
+          "title": "新时代的不平凡历程",
+          "points": [
+            {
+              "id": "15043-ch09-s1-p1",
+              "title": "中共十八大",
+              "requirement": "识记",
+              "quote": "中共十八大",
+              "locator": "L631"
+            },
+            {
+              "id": "15043-ch09-s1-p2",
+              "title": "中共十九大",
+              "requirement": "识记",
+              "quote": "中共十九大",
+              "locator": "L631"
+            },
+            {
+              "id": "15043-ch09-s1-p3",
+              "title": "十三届全国人大一次会议",
+              "requirement": "识记",
+              "quote": "十三届全国人大一次会议",
+              "locator": "L631"
+            },
+            {
+              "id": "15043-ch09-s1-p4",
+              "title": "中共二十大",
+              "requirement": "识记",
+              "quote": "中共二十大",
+              "locator": "L631"
+            },
+            {
+              "id": "15043-ch09-s1-p5",
+              "title": "中共十八大后党和国家面临的主要任务",
+              "requirement": "领会",
+              "quote": "中共十八大后党和国家面临的主要任务",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p6",
+              "title": "中国特色社会主义进入新时代后我国社会的主要矛盾",
+              "requirement": "领会",
+              "quote": "中国特色社会主义进入新时代后我国社会的主要矛盾",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p7",
+              "title": "国家宪法日",
+              "requirement": "领会",
+              "quote": "国家宪法日",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p8",
+              "title": "全面深化改革总目标",
+              "requirement": "领会",
+              "quote": "全面深化改革总目标",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p9",
+              "title": "全面推进依法治国总目标",
+              "requirement": "领会",
+              "quote": "全面推进依法治国总目标",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p10",
+              "title": "全面建成小康社会新的目标要求",
+              "requirement": "领会",
+              "quote": "全面建成小康社会新的目标要求",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p11",
+              "title": "习近平同志党中央的核心、全党的核心地位的确立",
+              "requirement": "领会",
+              "quote": "习近平同志党中央的核心、全党的核心地位的确立",
+              "locator": "L632"
+            },
+            {
+              "id": "15043-ch09-s1-p12",
+              "title": "党的二十大提出的“三个务必”",
+              "requirement": "领会",
+              "quote": "党的二十大提出的“三个务必”",
+              "locator": "L632"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "新时代的三件大事",
+          "points": [
+            {
+              "id": "15043-ch09-s2-p1",
+              "title": "新时代十年的三件大事",
+              "requirement": "识记",
+              "quote": "新时代十年的三件大事",
+              "locator": "L647"
+            },
+            {
+              "id": "15043-ch09-s2-p2",
+              "title": "“七一勋章”颁授",
+              "requirement": "识记",
+              "quote": "“七一勋章”颁授",
+              "locator": "L647"
+            },
+            {
+              "id": "15043-ch09-s2-p3",
+              "title": "庆祝中国共产党成立100 周年大会",
+              "requirement": "识记",
+              "quote": "庆祝中国共产党成立100 周年大会",
+              "locator": "L647"
+            },
+            {
+              "id": "15043-ch09-s2-p4",
+              "title": "全党开展党史学习教育",
+              "requirement": "领会",
+              "quote": "全党开展党史学习教育",
+              "locator": "L649"
+            },
+            {
+              "id": "15043-ch09-s2-p5",
+              "title": "2020 年 11 月，我国区域性整体贫困得到解决",
+              "requirement": "领会",
+              "quote": "2020 年 11 月，我国区域性整体贫困得到解决",
+              "locator": "L649"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "新时代的伟大成就和伟大变革",
+          "points": [
+            {
+              "id": "15043-ch09-s3-p1",
+              "title": "建设社会主义文化强国",
+              "requirement": "识记",
+              "quote": "建设社会主义文化强国",
+              "locator": "L656"
+            },
+            {
+              "id": "15043-ch09-s3-p2",
+              "title": "全面准确推进“一国两制”实践",
+              "requirement": "识记",
+              "quote": "全面准确推进“一国两制”实践",
+              "locator": "L656"
+            },
+            {
+              "id": "15043-ch09-s3-p3",
+              "title": "全面推进中国特色大国外交",
+              "requirement": "识记",
+              "quote": "全面推进中国特色大国外交",
+              "locator": "L656"
+            },
+            {
+              "id": "15043-ch09-s3-p4",
+              "title": "党对经济工作的战略谋划和统一领导",
+              "requirement": "领会",
+              "quote": "党对经济工作的战略谋划和统一领导",
+              "locator": "L658"
+            },
+            {
+              "id": "15043-ch09-s3-p5",
+              "title": "新时代党的建设总要求",
+              "requirement": "领会",
+              "quote": "新时代党的建设总要求",
+              "locator": "L658"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "中共十八大开启中国特色社会主义新时代",
+          "locator": "L664"
+        },
+        {
+          "text": "中国梦的提出与阐释：统筹推进“五位一体”总体布局、协调推进“四个全面”战略布局",
+          "locator": "L664"
+        },
+        {
+          "text": "新时代十年伟大变革的里程碑意义",
+          "locator": "L664"
+        },
+        {
+          "text": "以中国式现代化全面推进中华民族伟大复兴",
+          "locator": "L664"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L636",
+          "title": "简单应用：实现中华民族伟大复兴的中国梦；中共十九届三中全会提出的深化党和国家机构改革的目标；坚持和完善中国特色社会主义制",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L641",
+          "title": "综合应用：统筹推进“五位一体”总体布局；协调推进“四个全面”战略布局；习近平新时代中国特色社会主义思想的主要内容；中国共",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L651",
+          "title": "简单应用：《关于推动党史学习教育常态化长效化的意见》；坚持和发展中国特色社会主义提供有力宪法保障；脱贫攻坚战取得全面胜利",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L653",
+          "title": "综合应用：中华民族伟大复兴进入不可逆转的历史进程；新时代十年我国高质量发展取得辉煌成就；全面建成小康社会目标的实现及其取",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L659",
+          "title": "简单应用：应对我国经济发展面临的“三期叠加”的复杂局面；全面发展全过程人民民主；建设更高水平的平安中国；新时代强军兴军目",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L661",
+          "title": "综合应用：以党的自我革命全面推动社会革命；开创新时代中国特色社会主义新局面；新时代十年伟大变革的深远意义",
+          "reason": "unnumbered_section"
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "question_types": [],
+    "question_types_provenance": null,
+    "duration_minutes": null,
+    "duration_status": "named_gap",
+    "sample_paper": {
+      "doc_id": "syllabus:15043",
+      "locator": "L718"
+    }
+  },
+  "coverage": {
+    "official_point_count": 34,
+    "modeled_point_count": 34,
+    "ratio": 1.0,
+    "denominator_rule": "考纲「三、考核知识点与考核要求」中带编号的节数",
+    "manual_reference": null,
+    "diff_vs_manual": []
+  }
+}

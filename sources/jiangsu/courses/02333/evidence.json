@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "course_code": "02333",
+  "generated_at": "2026-09-11",
+  "course_url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285132780508286976.html",
+  "facts": {
+    "name": {
+      "value": "软件工程",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L53"
+      }
+    },
+    "credits": {
+      "value": 3,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L53"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L53"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "extracted",
+    "doc_id": "syllabus:02333",
+    "path": "sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md",
+    "sha256": "7f67fe53e9db9a618084ee0dace38dbcd6bd429ef5f1426349dacaad27685ec2",
+    "has_assessment_requirements": true,
+    "has_sample_paper": false,
+    "requirements_heading": "二、考核知识点与考核要求",
+    "locator": "L94"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-04-07",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+    "locator": "L1029,L1031",
+    "row": "02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程 023331 软件工程 瞿中、宋琦等 人民邮电出版社 2016 年 / 023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程 023331 软件工程 瞿中、宋琦等 人民邮电出版社 2016 年",
+    "row_truncated": false,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1151",
+        "row": "02323 操作系统概论 023231 操作系统概论(附大纲) 张琼声 机械工业出版社 2017 年 02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程 023331 软件工程 瞿中、宋琦等 人民邮电出版社 2016 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1153",
+        "row": "023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程 023331 软件工程 瞿中、宋琦等 人民邮电出版社 2016 年 023600 数字通信原理大纲 南京邮电大学 高纲 4028 02360 数字通信原理",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1029",
+        "row": "02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程 023331 软件工程 瞿中、宋琦等 人民邮电出版社 2016 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1031",
+        "row": "023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程 023331 软件工程 瞿中、宋琦等 人民邮电出版社 2016 年",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "L1",
+    "reasons": [
+      "syllabus:extracted",
+      "textbook_plan:matched"
+    ]
+  }
+}

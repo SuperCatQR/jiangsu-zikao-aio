@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "course_code": "04735",
+  "generated_at": "2026-09-11",
+  "course_url": null,
+  "facts": {
+    "name": {
+      "value": "数据库系统原理",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L57"
+      }
+    },
+    "credits": {
+      "value": 4,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L57"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L57"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "missing",
+    "doc_id": "syllabus:04735",
+    "path": null,
+    "sha256": null,
+    "candidate_path": null,
+    "has_assessment_requirements": false,
+    "has_sample_paper": false,
+    "requirements_heading": null,
+    "gap_impact": "缺官方考纲 → 无章目 / 考核要求 / 题型依据，AI 备考层一律不生成（放行等级非 L1）",
+    "next_evidence": "jseea.cn 公开的该课自学考试大纲原件（入库并抽取为 document.extracted.md）"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1384",
+    "row": "04624 工程经济学 046241 工程经济学(附大纲) 杨晓冬 北京大学出版社 2023 年 04729 大学语文 047291 大学语文(附大纲) 徐中玉、陶型传 北京大学出版社 2018 年 04735 数据库系统原理 047351 数据库系统原理(附大纲) 黄靖 机械工业出版社 2018 年",
+    "row_truncated": false,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1495",
+        "row": "04729 大学语文 047291 大学语文(附大纲) 徐中玉、陶型传 北京大学出版社 2018 年 04735 数据库系统原理 047351 数据库系统原理(附大纲) 黄靖 机械工业出版社 2018 年 04737 C++程序设计 047371 C++程序设计(附大纲) 辛运帏、陈朔鹰 机械工业出版社 2019 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1384",
+        "row": "04624 工程经济学 046241 工程经济学(附大纲) 杨晓冬 北京大学出版社 2023 年 04729 大学语文 047291 大学语文(附大纲) 徐中玉、陶型传 北京大学出版社 2018 年 04735 数据库系统原理 047351 数据库系统原理(附大纲) 黄靖 机械工业出版社 2018 年",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "blocked",
+    "reasons": [
+      "syllabus:missing",
+      "textbook_plan:matched"
+    ]
+  }
+}

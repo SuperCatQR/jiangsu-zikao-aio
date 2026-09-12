@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "course_code": "02324",
+  "generated_at": "2026-09-11",
+  "course_url": null,
+  "facts": {
+    "name": {
+      "value": "离散数学",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L46"
+      }
+    },
+    "credits": {
+      "value": 4,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L46"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L46"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "missing",
+    "doc_id": "syllabus:02324",
+    "path": null,
+    "sha256": null,
+    "candidate_path": null,
+    "has_assessment_requirements": false,
+    "has_sample_paper": false,
+    "requirements_heading": null,
+    "gap_impact": "缺官方考纲 → 无章目 / 考核要求 / 题型依据，AI 备考层一律不生成（放行等级非 L1）",
+    "next_evidence": "jseea.cn 公开的该课自学考试大纲原件（入库并抽取为 document.extracted.md）"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1190",
+    "row": "02243 计算机软件基础(一) 022431 计算机软件基础(附大纲) 崔俊凯 机械工业出版社 2007 年 02323 操作系统概论 023231 操作系统概论(附大纲) 张琼声 机械工业出版社 2017 年 02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 02335 网络操作系统 023351 网络操作系统(附大纲) 陈向群、孙卫真 机械工业出版",
+    "row_truncated": true,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1150",
+        "row": "02243 计算机软件基础(一) 022431 计算机软件基础(附大纲) 崔俊凯 机械工业出版社 2007 年 02323 操作系统概论 023231 操作系统概论(附大纲) 张琼声 机械工业出版社 2017 年 02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 023330 软件工程大纲 南京航空航天大学 高纲 4068 02333 软件工程",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1262",
+        "row": "02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 02335 网络操作系统 023351 网络操作系统(附大纲) 陈向群、孙卫真 机械工业出版社 2019 年 023380 光纤通信原理大纲 南京邮电大学 高纲 4282",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1027",
+        "row": "02323 操作系统概论 023231 操作系统概论(附大纲) 张琼声 机械工业出版社 2017 年 02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 023330 软件工程大纲 南京航空航天大学 高纲 4068",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1190",
+        "row": "02243 计算机软件基础(一) 022431 计算机软件基础(附大纲) 崔俊凯 机械工业出版社 2007 年 02323 操作系统概论 023231 操作系统概论(附大纲) 张琼声 机械工业出版社 2017 年 02324 离散数学 023241 离散数学(附大纲) 辛运帏 机械工业出版社 2014 年 02335 网络操作系统 023351 网络操作系统(附大纲) 陈向群、孙卫真 机械工业出版",
+        "row_truncated": true
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "blocked",
+    "reasons": [
+      "syllabus:missing",
+      "textbook_plan:matched"
+    ]
+  }
+}

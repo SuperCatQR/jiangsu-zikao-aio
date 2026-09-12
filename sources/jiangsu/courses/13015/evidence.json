@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "course_code": "13015",
+  "generated_at": "2026-09-11",
+  "course_url": null,
+  "facts": {
+    "name": {
+      "value": "计算机系统原理",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L51"
+      }
+    },
+    "credits": {
+      "value": 4,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L51"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L51"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "missing",
+    "doc_id": "syllabus:13015",
+    "path": null,
+    "sha256": null,
+    "candidate_path": null,
+    "has_assessment_requirements": false,
+    "has_sample_paper": false,
+    "requirements_heading": null,
+    "gap_impact": "缺官方考纲 → 无章目 / 考核要求 / 题型依据，AI 备考层一律不生成（放行等级非 L1）",
+    "next_evidence": "jseea.cn 公开的该课自学考试大纲原件（入库并抽取为 document.extracted.md）"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1603",
+    "row": "— 45 — 13015 计算机系统原理 130151 计算机系统原理(附大纲) 袁春风 机械工业出版社 2023 年 13017 计算机网络与信息安全 130171 计算机网络与信息安全(附大纲) 李全龙 机械工业出版社 2024 年 13124 英语(专) 131241 英语(一)自学教程(附大纲) 张敬源、张虹 外语教学与研究出版社 2012 年",
+    "row_truncated": false,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1540",
+        "row": "13013 高级语言程序设计 130131 高级语言程序设计(附大纲) 郑岩 机械工业出版社 2017 年 13015 计算机系统原理 130151 计算机系统原理(附大纲) 袁春风 机械工业出版社 2023 年 13017 计算机网络与信息安全 130171 计算机网络与信息安全(附大纲) 李全龙 机械工业出版社 2024 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1759",
+        "row": "13013 高级语言程序设计 130131 高级语言程序设计(附大纲) 郑岩 机械工业出版社 2017 年 13015 计算机系统原理 130151 计算机系统原理(附大纲) 袁春风 机械工业出版社 2023 年 13017 计算机网络与信息安全 130171 计算机网络与信息安全(附大纲) 李全龙 机械工业出版社 2024 年 13124 英语(专) 131241 英语(一)自学教程(附大纲) ",
+        "row_truncated": true
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1425",
+        "row": "13013 高级语言程序设计 130131 高级语言程序设计(附大纲) 郑岩 机械工业出版社 2017 年 13015 计算机系统原理 130151 计算机系统原理(附大纲) 袁春风 机械工业出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1603",
+        "row": "— 45 — 13015 计算机系统原理 130151 计算机系统原理(附大纲) 袁春风 机械工业出版社 2023 年 13017 计算机网络与信息安全 130171 计算机网络与信息安全(附大纲) 李全龙 机械工业出版社 2024 年 13124 英语(专) 131241 英语(一)自学教程(附大纲) 张敬源、张虹 外语教学与研究出版社 2012 年",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "blocked",
+    "reasons": [
+      "syllabus:missing",
+      "textbook_plan:matched"
+    ]
+  }
+}

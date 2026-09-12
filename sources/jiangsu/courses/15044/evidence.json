@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "course_code": "15044",
+  "generated_at": "2026-09-11",
+  "course_url": "https://www.jseea.cn/webfile/selflearning_jcdg/2025-02-25/7300038247357353984.html",
+  "facts": {
+    "name": {
+      "value": "马克思主义基本原理",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L43"
+      }
+    },
+    "credits": {
+      "value": 3,
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L43"
+      }
+    },
+    "exam_method": {
+      "value": "笔试",
+      "status": "verified",
+      "provenance": {
+        "doc_id": "major-plan:080901",
+        "kind": "official_major_plan",
+        "url": null,
+        "path": "content/jiangsu/majors/080901-computer-science-and-technology/index.md",
+        "locator": "L43"
+      }
+    }
+  },
+  "syllabus": {
+    "status": "extracted",
+    "doc_id": "syllabus:15044",
+    "path": "sources/jiangsu/processed/syllabus/15044-marxism-principles-gaogang-2024/document.extracted.md",
+    "sha256": "5df155a18c5e36945129d19f00e75cea1f0a21527d1abd552281c162ad3414a8",
+    "has_assessment_requirements": true,
+    "has_sample_paper": true,
+    "requirements_heading": "三、考核知识点与考核要求",
+    "locator": "L175"
+  },
+  "textbook_plan": {
+    "status": "matched",
+    "doc_id": "schedule-textbooks:2026-10-2027-01",
+    "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+    "locator": "L1981,L1983",
+    "row": "150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年 / 150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441",
+    "row_truncated": true,
+    "matches": [
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1870",
+        "row": "150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1872",
+        "row": "150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年 27015 创业教育 270151 创业基础与实务(附大纲) 周稽裘 苏州大学出版社 2000 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L2152",
+        "row": "150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2025-10-2026-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2025-10-2026-01-schedule-textbooks/document.raw.txt",
+        "locator": "L2154",
+        "row": "150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年 270070 应用文写作大纲 南京师范大学 高纲 4222 27007 应用文写作",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1781",
+        "row": "全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-04-07",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-04-07-schedule-textbooks/document.raw.txt",
+        "locator": "L1783",
+        "row": "150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年 27015 创业教育 270151 创业基础与实务(附大纲) 周稽裘 苏州大学出版社 2000 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1981",
+        "row": "150431 中国近现代史纲要 本书编写组 高等教育出版社 2023 年 全国高等教育自学 150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年",
+        "row_truncated": false
+      },
+      {
+        "doc_id": "schedule-textbooks:2026-10-2027-01",
+        "path": "sources/jiangsu/processed/textbooks/jiangsu-2026-10-2027-01-schedule-textbooks/document.raw.txt",
+        "locator": "L1983",
+        "row": "150440 马克思主义基本原理自学考试大纲 2024 年 15044 马克思主义基本原理 考试指导委员会 150441 马克思主义基本原理 本书编写组 高等教育出版社 2023 年 270070 应用文写作大纲 南京师范大学 高纲 4222 27007 应用文写作",
+        "row_truncated": false
+      }
+    ]
+  },
+  "source_snapshot": null,
+  "eligibility": {
+    "level": "L1",
+    "reasons": [
+      "syllabus:extracted",
+      "textbook_plan:matched"
+    ]
+  }
+}
