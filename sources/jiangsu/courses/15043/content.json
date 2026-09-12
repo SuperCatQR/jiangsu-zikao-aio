@@ -1,0 +1,1931 @@
+{
+  "schema_version": 1,
+  "course_code": "15043",
+  "generated_at": "2026-09-13",
+  "generator": {
+    "backend": "agent",
+    "model": "harness-agent",
+    "prompt_versions": {
+      "explain_point": "v1",
+      "memorize_point": "v1",
+      "drill_point": "v1",
+      "stage_plan": "v1"
+    }
+  },
+  "stage_plan": [
+    {
+      "stage": "入门",
+      "goal": "把第一章、第二章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
+      "inputs": [
+        "本轮范围的考纲章节目录（第一章、第二章）与各章「学习目的与要求」",
+        "本课知识模型列出的相关考核点及其要求层级（识记 / 领会）"
+      ],
+      "how": [
+        "按章序通读考纲的课程内容与考核要求，边读边把每章的关键词抄成一行小标题。",
+        "对着考核点清单给每个点标出要求层级：识记的点只求认得出、说得准，领会的点要能讲出道理。",
+        "把读不通、与既有印象冲突的点单独记在待查清单上，不急着下结论。"
+      ],
+      "outputs": [
+        "第一章、第二章的关键词骨架表",
+        "考核点层级标注清单",
+        "待查问题清单"
+      ],
+      "done_when": "能不看材料按顺序说出本轮各章标题，并随机抽三个考核点说明它属于识记还是领会。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "精读",
+      "goal": "逐章把第一章、第二章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
+      "inputs": [
+        "本轮范围（第一章、第二章）的章、节、考核点结构",
+        "本课 AI 讲解块的要点梳理与易错点",
+        "本课 AI 记忆辅助块里的口诀、对比与串联"
+      ],
+      "how": [
+        "按章序推进，先读该节的要点梳理，再用自己的话复述一遍，复述不出来就回到要点上重读。",
+        "每读完一节，把同节的易混考核点两两对比，写清「区别在哪一句、判断依据是什么」。",
+        "遇到事件、人物、文件、口号类的识记点，用记忆辅助块给出的抓手固定顺序，避免张冠李戴。",
+        "把讲不顺的点标回待查清单，下一轮只补这些点。"
+      ],
+      "outputs": [
+        "第一章、第二章的逐章复述笔记",
+        "同节易混点对比表",
+        "仍然讲不顺的遗留点清单"
+      ],
+      "done_when": "本轮每个考核点都能在不看材料的情况下口述一句话，且识记类点的关键用词与考纲一致。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "刷题",
+      "goal": "把本轮每个考核点都过一遍题，错题能归因到「没记住」还是「没理解」。",
+      "inputs": [
+        "本课 AI 练习块（按考纲题型的作答形态出题，含答案与解析）",
+        "本课考纲声明的题型清单",
+        "自建错题表"
+      ],
+      "how": [
+        "按章序做练习，每题先写答案再看解析，不要边看边做。",
+        "每题做完标一个错因：概念记错、层级错位、审题漏条件，还是表述不完整。",
+        "客观题盖住选项先自己想答案；主观题先列分点提纲再展开，写完对照解析补漏。",
+        "同一考核点连续两次做错，回到精读阶段的讲解块重讲一遍。"
+      ],
+      "outputs": [
+        "按章完成的练习记录",
+        "带错因标注的错题表",
+        "回炉重读的考核点清单"
+      ],
+      "done_when": "本轮每个考核点至少做过一道题，且错题表里每一题都有一句话错因。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "冲刺",
+      "goal": "把本轮的高频与易错考核点压缩成可快速回看的清单，形成稳定的作答节奏。",
+      "inputs": [
+        "错题表与回炉清单",
+        "本课 AI 记忆辅助块的记忆抓手",
+        "各章要点梳理的标题行"
+      ],
+      "how": [
+        "只回看错题表、易混点对比表与记忆抓手，不再新增材料。",
+        "按题型各做一次成组练习：客观题练再认速度，主观题练分点与篇幅控制。",
+        "把最容易混的几组概念做成两列对照卡，反复过。",
+        "按题型顺序完整走一遍自测，中途不翻材料。"
+      ],
+      "outputs": [
+        "精简版高频清单",
+        "易混概念对照卡",
+        "一次完整自测的记录"
+      ],
+      "done_when": "能在不翻材料的情况下连续过完清单，且自测中不再出现同一错因重复出现三次以上。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "复盘",
+      "goal": "回顾第一章、第二章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
+      "inputs": [
+        "第一章、第二章的关键词骨架表",
+        "错题表与对照卡",
+        "本课来源页登记的缺口清单"
+      ],
+      "how": [
+        "对照骨架表复述第一章、第二章的主线，哪一章卡住就回看该章要点。",
+        "把仍不确定的考核点列入缺口清单，明确标为「待核验」，不要凭印象补一个说法。",
+        "写下上考场前的检查单：先做哪类题、主观题怎么分点、留出多少时间回看。",
+        "把清单与练习记录归档，便于下一轮复习直接接手。"
+      ],
+      "outputs": [
+        "上考场前检查单",
+        "待核验缺口清单",
+        "归档的错题与对照卡"
+      ],
+      "done_when": "能按检查单完整复述本轮各章主线，且缺口清单上的每一条都写明了缺什么、去哪里找。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "block_id": "15043-ch01-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L161"
+      ],
+      "text_md": "### 要点梳理\n- 鸦片战争前的中国是封建社会，占主导地位的是封建土地所有制：地主占有大部分土地，农民租种土地并交纳地租。\n- 由此形成两对对立的阶级，地主阶级与农民阶级，二者之间的矛盾构成封建社会的主要矛盾。\n- 农民阶级不仅人数最多，还承担着地租、赋税与徭役，是封建社会物质财富的主要生产者，也是被压迫最深的一方。\n- 这一矛盾贯穿整个封建社会，历次农民起义都是它的集中表现，但它本身并不改变封建制度的性质。\n\n### 易错点\n- 把主要矛盾写成「地主阶级与资产阶级的矛盾」：中国封建社会内部尚未形成占主导的资产阶级，正确说法是地主阶级与农民阶级的矛盾。\n- 把封建社会的矛盾与近代中国社会的主要矛盾混为一谈：后者是资本—帝国主义与中华民族、封建主义与人民大众的矛盾，属于鸦片战争之后的形态。\n- 误以为农民起义改变了社会性质：起义打击了封建统治，但未改变封建土地所有制这一经济基础。\n"
+    },
+    {
+      "block_id": "15043-ch01-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L161"
+      ],
+      "text_md": "**关键词**：封建社会 → 土地在地主手里 → 农民租种交租 → 两对头。\n**口诀**：「地主人少地多，农民人多地少，主要矛盾看这两家」。\n**串联**：先有封建土地所有制这个经济基础，才有地主与农民这两个阶级，矛盾才成立——顺序不能倒过来推。\n**对比**：近代中国社会的主要矛盾涉及外来侵略者，本条只讲封建社会内部的矛盾，两对矛盾的对手方不同。"
+    },
+    {
+      "block_id": "15043-ch01-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L161"
+      ],
+      "text_md": "鸦片战争前，中国封建社会的主要矛盾是（ ）。\nA. 地主阶级与农民阶级的矛盾\nB. 资产阶级与无产阶级的矛盾\nC. 封建主义与人民大众的矛盾\nD. 资本—帝国主义与中华民族的矛盾",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项指出封建社会内部两大基本阶级的对立，地主占有土地、农民租种交租，这一矛盾贯穿封建社会始终。\nB 项是无产阶级与资产阶级的矛盾，它以近代机器工业与雇佣劳动为前提，封建社会尚不具备。\nC 项与 D 项是近代中国社会的主要矛盾，出现于鸦片战争之后，时间上晚于本条所问。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L162"
+      ],
+      "text_md": "### 要点梳理\n- 经济上自给自足的自然经济占主导，农业与家庭手工业结合，商品经济发展缓慢。\n- 政治上实行高度中央集权的封建君主专制制度，皇帝之下有层层官僚机构，地方听命于中央。\n- 社会结构上以宗法制度为纽带，家族与乡里组织承担教化与秩序功能，等级身份分明。\n- 文化上以儒家思想为正统，科举制度把读书与做官联系起来，形成稳定的意识形态。\n- 这些特点互相支撑：自然经济提供物质基础，专制制度与宗法结构维持秩序，儒家正统提供观念黏合，使封建制度长期延续。\n\n### 易错点\n- 只记住「自然经济」一条：基本特点包含经济、政治、社会结构、文化四个方面，缺项即为不完整。\n- 把「封建社会的特点」当成「半殖民地半封建社会的主要特点」：前者是鸦片战争之前的中国，后者含列强侵略造成的新因素。\n- 把宗法制度与君主专制当成同一件事：前者是社会组织的纽带，后者是政权形式，二者相互配合但层面不同。\n"
+    },
+    {
+      "block_id": "15043-ch01-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L162"
+      ],
+      "text_md": "**口诀**：经济「自给自足」，政治「高度集权」，社会「宗法为纽」，文化「儒家正统」。\n**记忆法**：把四条按「钱—权—网—理」的顺序串起来，正好覆盖基本特点的四个面。\n**串联**：自然经济是地基，专制制度与宗法结构是墙和梁，儒家正统是屋顶的盖，四层合起来才叫「基本特点」。\n**对比**：这一组是鸦片战争之前的中国；半殖民地半封建社会的特点多了列强侵略带来的新成分，不要混答。"
+    },
+    {
+      "block_id": "15043-ch01-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L162"
+      ],
+      "text_md": "中国封建社会延续了两千多年，其经济、政治、社会结构与文化各有特征。请简述中国封建社会的基本特点，并说明其中哪一项是其余各项赖以成立的基础。",
+      "question_type": "简答题",
+      "answer_md": "（1）经济上，自给自足的自然经济占主导地位，农业与家庭手工业相结合，商品经济发展缓慢。\n（2）政治上，实行高度中央集权的封建君主专制制度，地方听命于中央。\n（3）社会结构上，以宗法制度为纽带，家族与乡里组织承担教化与秩序功能，等级身份分明。\n（4）文化上，以儒家思想为正统，科举制度把读书与做官联系起来。\n这四方面互相支撑：自然经济提供物质基础，专制制度与宗法结构维持秩序，儒家正统提供观念黏合，使封建制度长期延续。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "### 要点梳理\n- 这一考核点要求按时间顺序掌握列强发动的几次主要侵华战争，以及每次战争后强迫清政府签订的不平等条约。\n- 记忆路径是把「战争—条约—后果」串成链条：战争打开缺口，条约把侵略成果固定下来，后果是主权与领土的进一步丧失。\n- 条约的内容集中在几类：割地、赔款、开放通商口岸、协定关税、领事裁判权与片面最惠国待遇等。\n- 这些条约不是孤立事件，而是层层加码的过程，前一个条约取得的特权往往成为后一个条约扩张的基础。\n- 考纲把本条列为识记层级，重点是名称、时间顺序与条约归属的准确对应。\n\n### 易错点\n- 战争与条约张冠李戴：判断依据是「哪一次战争之后签订的哪一个条约」，顺序错则整条错。\n- 只记割地赔款而漏掉特权条款：协定关税、领事裁判权等条款对国家主权的损害更为深远。\n- 把「不平等条约」当成某一部条约的名称：它是这一类条约的总称，具体回答时要写出条约本身的名字。\n"
+    },
+    {
+      "block_id": "15043-ch01-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "**记忆法**：按「战争 → 条约 → 后果」三格链条记，每一格只填一个词，答题时顺着链条复述。\n**口诀**：「先记仗，再记约，最后记丢了什么」。\n**对比**：条约内容分四类——割地、赔款、开口岸、给特权；前三类容易记住，第四类最容易漏。\n**关键词**：协定关税、领事裁判权、片面最惠国待遇，这三项都属于「给特权」，是主权层面的损失。"
+    },
+    {
+      "block_id": "15043-ch01-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "西方列强通过不平等条约在中国取得的下列特权中，直接损害中国司法主权的是（ ）。\nA. 协定关税\nB. 领事裁判权\nC. 片面最惠国待遇\nD. 内河航行权",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项使外国侨民在中国不受中国法律管辖，是对中国司法主权的直接剥夺。\nA 项损害的是关税自主权，属于经济与财政层面的主权。\nC 项使列强相互援引在华特权，是特权扩张的机制，本身不直接指向司法。\nD 项涉及航行范围，损害的是水域管辖权，与司法权不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "### 要点梳理\n- 本条要求掌握列强在侵华战争过程中制造的重大屠杀事件，属于必须准确对应时间与地点的识记点。\n- 这类事件的性质是侵略者对被占领地区平民的暴力行为，与战场上的交战有本质区别。\n- 记忆的关键是把事件与战争阶段挂钩：先确定它发生在哪一次侵华战争期间，再记地点。\n- 这些惨案与不平等条约一起，构成近代中国民族灾难的具体内容，也是当时中国人民反抗的直接动因。\n- 考纲以识记层级要求本条，作答时要点出事件名称与发生地点，不必展开细节描述。\n\n### 易错点\n- 把惨案发生地记成另一座城市：地点是这一条最容易被替换的成分，必须与事件严格配对。\n- 把侵略暴行与中国人民的反抗斗争混在一起：前者是列强制造的灾难，后者是抵御侵略的斗争，分属不同考核点。\n- 误以为这类事件只发生在某一次战争：不同战争期间都有，需按考纲列举逐一对上。\n"
+    },
+    {
+      "block_id": "15043-ch01-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "**记忆法**：两点定位法——先定「哪一次战争」，再定「哪座城市」，两点都对上才算答对。\n**口诀**：「战争定时间，城市定地点」。\n**串联**：把惨案放进这次战争的时间线里，前接战争爆发，后接战后条约，位置自然清楚。\n**对比**：惨案是列强制造的灾难，反侵略斗争是中国人民的抵抗，一问灾难、一问抵抗，作答方向正好相反。"
+    },
+    {
+      "block_id": "15043-ch01-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "关于列强在侵华战争中制造的屠杀中国人民的惨案，下列说法正确的是（ ）。\nA. 这类事件发生在战场交战范围内，属于作战行为\nB. 这类事件是侵略者对被占领地区平民的暴力行为\nC. 这类事件只发生在某一次侵华战争期间\nD. 这类事件与不平等条约的签订没有关联",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了这类事件的性质，即针对平民的暴力，与两军交战有本质区别。\nA 项把屠杀平民等同于作战行为，混淆了性质。\nC 项把范围缩小到一次战争，实际上不同战争期间都曾发生。\nD 项切断了惨案与战后条约的联系，二者同属列强侵略的组成部分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "### 要点梳理\n- 通商口岸是近代中国被迫对外开放的特定城市与港口，其开与关、数量多少由不平等条约规定，不由中国自主决定。\n- 它与今天自主开放的口岸性质完全不同：前者是列强侵略的产物，伴随领事裁判权、租界等特权。\n- 口岸的分布从东南沿海逐步向长江流域与内地延伸，反映列强侵略势力的深入过程。\n- 口岸带来的影响是双重的：一方面便利了列强的商品倾销与原料掠夺，另一方面也客观上聚集了近代工商业与新的社会力量。\n- 考纲以识记层级要求本条，回答时要抓住「被迫开放」与「依条约规定」两个关键词。\n\n### 易错点\n- 把通商口岸等同于租界：口岸是开放通商的城市，租界是列强在其中划定的直接管理区域，两者范围不同。\n- 把被迫开放说成平等互利的通商：条约由列强强加，中国在关税与司法上均丧失自主权。\n- 忽略「依条约开设」这一限定，把通商口岸与近代中国自开的商埠混为一谈。\n"
+    },
+    {
+      "block_id": "15043-ch01-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "**关键词**：被迫开放、依条约规定、丧失自主。三个词缺一个都答不全。\n**口诀**：「不是我要开，是条约要我开」。\n**对比**：通商口岸 = 开放通商的城市；租界 = 列强在其中直接管理的区域；势力范围 = 排他性的控制地盘。三层范围由小到大。\n**串联**：口岸分布从沿海推向长江与内地，这条路线本身就是列强侵略深入的路线图。"
+    },
+    {
+      "block_id": "15043-ch01-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L166"
+      ],
+      "text_md": "对近代中国通商口岸的理解，正确的是（ ）。\nA. 由清政府自主决定开放的城市与港口\nB. 依不平等条约被迫开放的特定城市与港口\nC. 列强在其中直接行使行政管理的区域\nD. 列强约定互不插手、专属于某一国的地盘",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项同时点出「依条约」与「被迫开放」两个关键限定，符合通商口岸的性质。\nA 项把被动开放说成自主决定，方向相反。\nC 项描述的是租界，列强在其中直接管理，范围与口岸不同。\nD 项描述的是势力范围，属于列强相互约定的排他性控制区域。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "### 要点梳理\n- 列强的政治控制首先表现为对清政府的外交支配：通过驻京使节与总理各国事务衙门打交道，直接干预中国的对外决策。\n- 其次是剥夺中国的司法主权，以领事裁判权使本国侨民不受中国法律管辖。\n- 再次是在中国划分势力范围、强占租借地，把中国的大片地区变成各自的势力圈。\n- 还有对海关的控制：海关总税务司长期由外国人把持，关税收入被用于偿还赔款，中国财政因此受制于人。\n- 这些手段的共同点是绕开中国主权、直接行使本应由中国行使的权力，从而使清政府沦为「洋人的朝廷」。\n\n### 易错点\n- 把政治控制只理解为割地：割地是领土层面的侵害，政治控制更强调对主权行使的干预，二者层次不同。\n- 把领事裁判权当成外交豁免：它是对中国司法主权的整体剥夺，适用范围远大于外交人员。\n- 忽视海关这一条：控制海关等于控制财政命脉，是政治控制中最容易被漏记的一项。\n"
+    },
+    {
+      "block_id": "15043-ch01-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "**口诀**：政治控制记住「一使、一权、一范围、一海关」——驻京使节、领事裁判权、势力范围、海关。\n**记忆法**：把四项归成一句话——「管你的外交、管你的官司、划你的地盘、拿你的钱袋」。\n**对比**：割地是领土层面的侵害，政治控制是主权行使层面的侵害，答题时要分清问的是哪一层。\n**关键词**：海关、关税、赔款，这三项连在一起就是财政命脉被抓住的过程。"
+    },
+    {
+      "block_id": "15043-ch01-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "列强对中国的侵略不止于武装进攻与割地赔款，还包括对国家主权行使的直接干预。请简述西方列强对中国的政治控制主要表现在哪些方面，并指出其中哪一项直接剥夺了中国的司法主权。",
+      "question_type": "简答题",
+      "answer_md": "（1）外交支配：通过驻京使节与总理各国事务衙门打交道，直接干预中国的对外决策。\n（2）剥夺司法主权：以领事裁判权使本国侨民不受中国法律管辖。\n（3）划分势力范围、强占租借地，把中国大片地区变成各自的势力圈。\n（4）控制海关：海关总税务司长期由外国人把持，关税收入被用于偿还赔款，中国财政受制于人。\n这些手段的共同点是绕开中国主权、直接行使本应由中国行使的权力，使清政府沦为「洋人的朝廷」。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "### 要点梳理\n- 经济掠夺的第一种方式是商品倾销：凭借协定关税与内河航行等特权，把机器制成品大量输入中国。\n- 第二种方式是原料掠夺：从中国低价收购农产品与矿产，使中国在国际分工中处于被剥夺的一端。\n- 第三种方式是资本输出：在中国开办工厂、修筑铁路、开采矿山、设立银行，直接控制中国的经济命脉。\n- 第四种方式是赔款与借款：战争赔款转化为长期财政负担，附条件的政治借款又让列强取得更多权益。\n- 这几种方式互相配合：商品与资本输出打开市场，赔款与借款则把中国的财政捆在列强的债权上。\n\n### 易错点\n- 把经济掠夺只记成「倾销商品」：资本输出与赔款借款同样是重要方式，缺项即不完整。\n- 把列强在华设厂说成帮助中国工业化：设厂以掠夺原料和占领市场为目的，压制了民族工业的成长空间。\n- 混淆经济掠夺与政治控制：前者针对资源与市场，后者针对主权与决策，回答时要各归其位。\n"
+    },
+    {
+      "block_id": "15043-ch01-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "**口诀**：经济掠夺四条路——「卖进来、买出去、开厂矿、赔借款」。\n**串联**：商品倾销和原料掠夺是贸易层面，资本输出和赔款借款是财政与产业层面，两条线合起来才是完整的经济掠夺。\n**对比**：经济掠夺针对资源和市场，政治控制针对主权和决策，同一段历史的两条不同线索。\n**关键词**：协定关税，它既是政治控制里的特权，也是经济掠夺得以实现的条件，两条线索在这里交汇。"
+    },
+    {
+      "block_id": "15043-ch01-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "列强在华的经济活动往往以条约特权为前提。请简述西方列强对中国进行经济掠夺的主要方式，并说明商品倾销与资本输出在目的上的共同点。",
+      "question_type": "简答题",
+      "answer_md": "（1）商品倾销：凭借协定关税、内河航行等特权，把机器制成品大量输入中国。\n（2）原料掠夺：低价收购农产品与矿产，使中国在国际分工中处于被剥夺的一端。\n（3）资本输出：在中国开办工厂、修筑铁路、开采矿山、设立银行，直接控制经济命脉。\n（4）赔款与借款：战争赔款转化为长期财政负担，附条件的政治借款又让列强取得更多权益。\n几种方式互相配合：商品与资本输出打开市场，赔款与借款则把中国财政捆在列强的债权上。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "### 要点梳理\n- 列强在武装侵略之外，还制造了一套为自己的行为辩护的舆论，试图让侵略显得合理。\n- 这类舆论的共同手法是颠倒因果：把侵略说成「传播文明」，把中国的抵抗说成「排外」与「野蛮」。\n- 另一手法是宣扬种族与文化的优劣论，为列强在中国的特权地位提供所谓依据。\n- 还有一类是借传教与办学进行观念渗透，把侵略与「教化」捆绑在一起。\n- 认清这些舆论的本质，是理解近代中国反侵略斗争正当性的前提：被侵略者的反抗从来不是排外，而是维护国家主权。\n\n### 易错点\n- 把这类舆论当作中立的文化交流：它的出发点是替侵略辩护，与平等交流有本质区别。\n- 因为要批判侵略舆论，就连带否定近代传入的科学技术：技术传播与文化侵略应分开评价，不能一概而论。\n- 把「侵略有理」论只归到某一个国家：这是列强普遍使用的说法，不是个别国家的做法。\n"
+    },
+    {
+      "block_id": "15043-ch01-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "**关键词**：侵略有理、文明优越、教化渗透，三种说法一个目的。\n**口诀**：「把自己的侵略，说成别人的野蛮」。\n**对比**：认清侵略舆论，不等于否定近代传入的科学技术——批判的对象是辩护逻辑，不是全部外来事物。\n**串联**：先有武装侵略，再有辩护舆论，二者是配套的；理解这一点就明白反侵略的正当性从何而来。"
+    },
+    {
+      "block_id": "15043-ch01-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L168"
+      ],
+      "text_md": "列强在武装侵略之外，还制造了一套为自己的行为辩护的说法。请简述西方列强制造的侵略中国的舆论及其主要手法，并说明认清这类舆论对理解反侵略斗争正当性的意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）颠倒因果：把侵略说成「传播文明」，把中国的抵抗说成「排外」与「野蛮」。\n（2）宣扬种族与文化优劣论，为列强在中国的特权地位提供所谓依据。\n（3）借传教与办学进行观念渗透，把侵略与「教化」捆绑在一起。\n这些说法的共同目的是替侵略辩护，使侵略显得合理。认清其本质，是理解近代中国反侵略斗争正当性的前提：被侵略者的反抗从来不是排外，而是维护国家主权。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 三元里人民的抗英斗争发生在鸦片战争期间，是英国军队侵入广州附近时当地民众自发组织的抵抗。\n- 它的主体是农民和手工业者等普通民众，不是清政府的正规军队，因此具有鲜明的自发性和群众性。\n- 斗争的直接起因是侵略军在当地的行为激起民愤，民众以乡里组织为纽带集结起来抗击。\n- 这次斗争的意义在于它表明：中国人民反抗外来侵略的斗争从侵略一开始就已存在，并独立于清政府的和战态度。\n- 考纲以识记层级要求本条，回答时要抓住地点、时间背景与「民众自发」这一性质。\n\n### 易错点\n- 把三元里抗英说成清政府组织的战役：它由当地民众自发发起，与清军的作战是两回事。\n- 把这次斗争与后来的义和团运动混同：二者时间、地点与组织方式都不同。\n- 只记住「抗英」而漏掉民众自发这一性质，就会丢掉本条最具意义的判断。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**关键词**：鸦片战争期间、广州附近、民众自发。三个词组成答案骨架。\n**口诀**：「三元里，百姓打的仗」。\n**对比**：三元里抗英是民众自发抵抗，不是清军战役；后来的义和团时间更晚、范围更大、组织方式也不同。\n**串联**：把这次斗争放在「侵略一开始就存在抵抗」这条线上，它是最早的一环。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "三元里人民的抗英斗争最显著的特点是（ ）。\nA. 由清政府统一组织的正规作战\nB. 当地民众自发组织的抵抗\nC. 由资产阶级革命派领导的起义\nD. 以推翻封建统治为目标的农民战争",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项抓住了这次斗争的主体与性质：农民和手工业者等普通民众自发集结抗击侵略军。\nA 项把它说成清政府的军事行动，与史实不符。\nC 项把时间推后到革命派兴起之后，此时尚无这一领导力量。\nD 项把反侵略斗争的目标换成推翻封建统治，指向不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 台湾人民的反侵略斗争贯穿近代多次列强侵台事件，具有持续时间长、参与阶层广的特点。\n- 斗争形式既有武装抵抗，也有反对割让、反对占领的民众运动，往往在清政府已经妥协之后仍在继续。\n- 台湾地处东南海防要冲，是列强觊觎的目标，因此当地民众的反侵略斗争与保卫家园直接相连。\n- 这类斗争说明，民众的抵抗并不以朝廷的和战决定为准，具有独立的民族立场。\n- 考纲以识记层级要求本条，作答时要点明斗争的主体是台湾当地民众与斗争的对象。\n\n### 易错点\n- 把台湾人民的斗争与清政府的海防政策混为一谈：前者是民众抵抗，后者是官方举措。\n- 把不同时期的侵台事件压缩成一件：需要区分侵略事件与相应的民众抵抗。\n- 忽略「反对割让」这类非武装形式，只记武装冲突，会答不完整。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**关键词**：台湾民众、保卫家园、持续抵抗。\n**记忆法**：记住「朝廷让了、民众没让」这一对比，就抓住了台湾人民反侵略斗争的特点。\n**对比**：武装抵抗与反对割让是两种形式，前者对枪炮、后者对条约，答题时两种都要提到。\n**串联**：台湾处东南海防要冲 → 列强觊觎 → 民众反抗，这条因果链一顺就记牢了。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "近代台湾人民的反侵略斗争（ ）。\nA. 只在清政府下令抵抗时才发生\nB. 在清政府妥协之后仍在继续\nC. 仅限于武装冲突一种形式\nD. 与保卫家园的诉求没有直接关系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了台湾人民斗争的重要特征：民众的抵抗并不以朝廷的和战态度为准。\nA 项把民众抵抗说成听命于官府，与史实相反。\nC 项忽略了反对割让、反对占领等非武装形式。\nD 项切断了斗争与家园保卫的联系，而台湾地处东南海防要冲，正是列强觊觎之地。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 本条要求掌握在反侵略战争中以身殉国的清政府爱国将领，属于人物与战役对应的识记点。\n- 这些将领的共同点是：在武器装备与军事形势均处劣势的情况下，仍坚守阵地、力战不退。\n- 记忆的关键是把人物与其防守的阵地、所属战役绑定，避免人物与地点错配。\n- 他们的牺牲说明，尽管清政府整体上妥协退让，军队中仍有坚持抵抗的力量。\n- 考纲以识记层级要求本条，作答时写出人物及其殉国战役即可，不必展开战况细节。\n\n### 易错点\n- 人物与战役张冠李戴：这是本条最常见的失分方式，务必按对应关系成组记忆。\n- 把爱国将领的抵抗等同于清政府整体的抗战立场：个别人的坚决抵抗不能代表朝廷的妥协方针。\n- 把这一条与「民族意识觉醒」的代表人物混同：后者是思想层面的代表人物，不是战场殉国的将领。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**记忆法**：用「人物—阵地—战役」三列表记，人物与地点必须绑在一起背，不能单独记名字。\n**口诀**：「人配地，地配仗」。\n**对比**：爱国将领属于战场抵抗，思想觉醒的代表人物属于观念层面，两类人物不要混在一起答。\n**关键词**：力战不退、以身殉国，这两个词标示的是本条要考的性质。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "关于反侵略战争中为国捐躯的清政府爱国将领，下列说法正确的是（ ）。\nA. 他们的抵抗代表了清政府整体的抗战方针\nB. 他们在劣势条件下仍坚守阵地、力战不退\nC. 他们属于思想觉醒层面的代表人物\nD. 他们的牺牲使清政府转而坚持抵抗",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项准确描述了这些将领的共同点：在武器装备与形势均处劣势时仍力战不退。\nA 项以个别将领的坚决抵抗代替朝廷的妥协方针，以偏概全。\nC 项把他们归入思想层面，与实际身份不符。\nD 项高估了个别牺牲对清政府决策的影响，清政府并未因此改变妥协立场。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 义和团抗击八国联军的斗争发生在列强联合出兵侵华的背景下，主体是北方地区的农民与手工业者。\n- 义和团以民间结社的方式组织起来，带有浓厚的乡土色彩与信仰色彩，其口号与斗争方式都具有鲜明的自发性。\n- 面对装备精良的联军，义和团群众以简陋武器进行抵抗，付出了重大牺牲，表现出不畏强暴的勇气。\n- 同时也要看到其局限：缺乏统一领导与科学理论指导，对清政府的认识不清，被封建统治者利用后又遭抛弃。\n- 评价这类斗争要既肯定其反侵略的正义性，也指出其历史局限，不能只说一面。\n\n### 易错点\n- 只讲英勇而完全不提局限：对历史事件的评价要求两面兼顾，缺一面即不完整。\n- 把义和团与清政府看成同一阵营：清政府先利用后镇压，二者的立场并不相同。\n- 把义和团等同于一般农民起义：其主要指向是抗击外来侵略，与以推翻封建统治为目标的起义不同。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**关键词**：北方农民、民间结社、简陋武器抗击联军。\n**口诀**：评价记住「一正一限」——正义性加局限性，两面都写才完整。\n**对比**：义和团抗击外来侵略，一般农民起义反抗封建统治，主要指向不同。\n**串联**：先利用后镇压，这是清政府与义和团的关系主线，记住这条线就不会把二者当成同一阵营。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "对义和团抗击八国联军斗争的评价，正确的是（ ）。\nA. 只肯定其反侵略的正义性，不必提局限\nB. 因其存在局限，应否定其正义性\nC. 既肯定反侵略的正义性，也指出其历史局限\nD. 它与清政府始终处于同一阵营",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\n解析：C 项给出了完整评价：既要看到抗击侵略的正义性与勇气，也要指出缺乏统一领导与科学理论指导、对清政府认识不清等局限。\nA 项只讲一面，评价不完整。\nB 项因局限而否定正义性，颠倒了主次。\nD 项忽略了清政府先利用后镇压的态度。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 边疆危机指列强从中国边疆地区入手进行侵略与蚕食，造成沿边一带的普遍紧张局势。\n- 其手法包括武装入侵、支持分裂势力、强迫通商与划定界线等，方向覆盖西北、西南、东南多个方向。\n- 划分势力范围是这一过程的升级：列强以「利益范围」的名义把中国的大片区域视为自己的专属地盘，互相约定不插手。\n- 势力范围虽未直接改变领土名义，却严重损害了中国的行政与主权完整，为日后的直接占领埋下伏笔。\n- 考纲以识记层级要求本条，作答时要点出「边疆危机」与「势力范围」两个术语及其含义。\n\n### 易错点\n- 把势力范围等同于割地：势力范围保持名义上的中国领土，实质是排他性的控制区域。\n- 把边疆危机理解成只发生在某一个方向：它是沿边多方向同时出现的整体态势。\n- 忽略列强之间的相互约定，只讲单个国家的侵略，就讲不出「划分」这一层含义。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**关键词**：边疆危机、势力范围。两个术语都要写出含义。\n**口诀**：「从边上咬，划圈分」。\n**对比**：势力范围保持中国领土名义，割地改变领土归属，二者程度不同。\n**串联**：先有边疆危机，再有划分势力范围，最后走向瓜分狂潮——三步递进。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "列强在中国划分势力范围，其实质是（ ）。\nA. 直接改变中国的领土归属\nB. 在保持中国领土名义下取得排他性控制\nC. 与中国平等协商确定的通商区域\nD. 仅涉及经济贸易而不涉主权",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了势力范围的核心：中国领土名义不变，但该区域成为某一列强的专属地盘，中国的行政与主权完整受到严重损害。\nA 项描述的是割地，与势力范围程度不同。\nC 项把强加的安排说成平等协商。\nD 项否认其主权损害，与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 林则徐以查禁鸦片和了解外情著称，是近代中国最早主动去了解西方世界的人物之一。\n- 他主持组织人员翻译外国书报，搜集西方国家的资料，试图弄清对手的实际情况，这种态度本身就是转折的标志。\n- 魏源在此基础上提出「师夷长技以制夷」的主张，把学习外国技术明确为抵御侵略的手段。\n- 「睁眼看世界」的意义不在于提出了多完整的方案，而在于打破了对世界的封闭想象，开启了了解外部世界的风气。\n- 理解本条要抓住「开眼看世界」与「师夷长技以制夷」这两个标志性表述的先后关系。\n\n### 易错点\n- 把「师夷长技以制夷」记成林则徐的主张：该主张出自魏源，二人的位置不能互换。\n- 把睁眼看世界等同于洋务运动：前者是观念上的开端，后者是几十年后的实践，二者层级与时间都不同。\n- 把学习外国技术理解为崇洋：其目的明确写在对侵略的抵抗上，与一味依附有本质区别。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**记忆法**：一人一句——林则徐主「看世界」，魏源主「师夷长技以制夷」。\n**口诀**：「林看，魏学」。\n**对比**：睁眼看世界是观念开端，洋务运动是几十年后的实践，一在想法、一在行动。\n**串联**：翻译书报 → 了解对手 → 提出学习技术以御敌，这条链把两个人连在一起。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "「师夷长技以制夷」这一主张的提出者是（ ）。\nA. 林则徐\nB. 魏源\nC. 严复\nD. 孙中山",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项正确，魏源在了解外情的基础上明确提出学习外国技术以抵御侵略。\nA 项林则徐的贡献在于查禁鸦片与主动了解外情、组织译介，是「睁眼看世界」的开端。\nC 项严复以译介西方学说和提出「救亡」著称。\nD 项孙中山以「振兴中华」的号召著称。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 严复是近代中国系统介绍西方思想的重要人物，他翻译的著作使中国知识界第一次较完整地接触到西方的进化与政治学说。\n- 他在译述中反复强调「救亡」，把民族存亡的紧迫感作为唤起国人的核心命题。\n- 「救亡」口号的意义在于把亡国灭种的危机从个别事件上升为整体判断，促成民族意识的觉醒。\n- 严复的贡献不只是翻译本身，更在于用中国读者能理解的方式重新表述西方的观念。\n- 考纲以识记层级要求本条，作答时人物与口号必须严格对应。\n\n### 易错点\n- 把「救亡」口号记到别人名下：口号与人物的对应是本条唯一的硬性要求。\n- 只记翻译活动而漏掉「救亡」这一思想主张，就不是考纲要求的那一条。\n- 把严复与早期维新思想家混同：前者以译介西方学说著称，活动时间也更晚。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**记忆法**：口号与人物一对一绑定——严复 = 救亡。\n**对比**：严复的「救亡」强调避免灭亡，孙中山的「振兴中华」强调主动复兴，语气与目标不同。\n**串联**：译介西方学说 → 讲清优胜劣汰的形势 → 喊出救亡，三步连起来就是严复的贡献。\n**关键词**：译述、救亡，两个词概括人物与口号。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "近代中国「救亡」口号的提出者是（ ）。\nA. 魏源\nB. 严复\nC. 孙中山\nD. 康有为",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项正确，严复在译介西方学说的过程中反复强调「救亡」，把民族存亡的紧迫感作为唤起国人的核心命题。\nA 项魏源的主张是「师夷长技以制夷」。\nC 项孙中山的号召是「振兴中华」。\nD 项康有为是维新变法的理论倡导者，不以这一口号著称。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "### 要点梳理\n- 「振兴中华」是孙中山在民族危机深重的背景下提出的号召，指向的是挽救民族危亡、复兴国家。\n- 这一口号把反侵略的诉求与改造国家的主张联系起来，不再停留于抵御某一次侵略。\n- 它的提出标志着先进中国人对出路的思考，从「师夷长技」转向改变国家制度本身。\n- 与严复的「救亡」相比，「振兴中华」更强调主动的复兴目标，而不只是避免灭亡。\n- 考纲以识记层级要求本条，作答时要点明口号与提出者的对应关系。\n\n### 易错点\n- 把「振兴中华」与「救亡」两个口号混淆：前者出自孙中山，后者出自严复。\n- 把口号提出的时间提前到鸦片战争前后：它出现于民族危机加深、革命运动兴起的阶段。\n- 把口号理解成单纯的感情抒发：它同时包含对国家出路的政治主张。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "**记忆法**：口号与人物一对一绑定——孙中山 = 振兴中华。\n**对比**：「救亡」出自严复，「振兴中华」出自孙中山，两个口号不要互换。\n**串联**：民族危机加深 → 从学技术转向改制度 → 提出复兴目标，这条线解释了口号为什么出现在这个阶段。\n**关键词**：挽救危亡、复兴国家，是本条要点的两端。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L180"
+      ],
+      "text_md": "「振兴中华」这一号召的提出者是（ ）。\nA. 严复\nB. 康有为\nC. 孙中山\nD. 梁启超",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\n解析：C 项正确，孙中山在民族危机深重的背景下提出「振兴中华」，把反侵略诉求与改造国家的主张联系起来。\nA 项严复提出的是「救亡」。\nB 项康有为主张变法维新、君主立宪，但这一号召不属于他。\nD 项梁启超以舆论宣传见长，同样不是该号召的提出者。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch01-s3-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch01-s3-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L184"
+      ],
+      "text_md": "### 要点梳理\n- 19 世纪末，列强在中国强占租借地、划分势力范围，掀起瓜分中国的狂潮，民族危机空前严重。\n- 这一图谋最终未能实现，首要原因是中国人民的反抗：义和团等斗争使列强认识到，直接瓜分中国会遭到持续而广泛的抵抗。\n- 第二个原因是列强之间的矛盾：各国在华利益不均，谁都担心他人多占，彼此牵制使瓜分难以形成一致方案。\n- 第三个原因是统治中国需要成本：中国幅员辽阔、人口众多，直接统治的费用与风险都高于维持一个听话的清政府。\n- 因此列强转而采取「以华治华」的策略，保留清政府作为侵略工具，这是本条要抓住的结论。\n\n### 易错点\n- 只答列强之间的矛盾而漏掉中国人民的反抗：反抗斗争是首要原因，删掉它就颠倒了主次。\n- 把「未能瓜分」说成列强放弃了侵略：侵略并未停止，只是改变了方式，转向扶植代理人。\n- 把原因答成清政府的外交努力：清政府的妥协退让恰恰是危机加深的条件，不是图谋失败的原因。\n"
+    },
+    {
+      "block_id": "15043-ch01-s3-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch01-s3-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L184"
+      ],
+      "text_md": "**口诀**：失败三原因——「人民反抗、列强互牵、统治太贵」。\n**记忆法**：三条按重要性排序背，人民反抗排第一，答题顺序本身就是得分点。\n**对比**：「未能瓜分」不等于「停止侵略」：方式从直接占领改为扶植代理人，侵略本身没有停。\n**关键词**：以华治华，这是列强改变策略后的做法，也是本条的结论。"
+    },
+    {
+      "block_id": "15043-ch01-s3-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch01-s3-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L184"
+      ],
+      "text_md": "19 世纪末，列强在中国强占租借地、划分势力范围，民族危机空前严重，但瓜分中国的图谋最终未能实现。试述这一图谋未能实现的原因，并说明列强此后侵略方式发生了怎样的变化。",
+      "question_type": "论述题",
+      "answer_md": "19 世纪末，列强在中国强占租借地、划分势力范围，掀起瓜分中国的狂潮，民族危机空前严重。这一图谋最终未能实现，原因主要有三方面。\n（1）中国人民的反抗是首要原因。义和团等斗争使列强认识到，直接瓜分中国会遭到持续而广泛的抵抗，统治成本远超收益。\n（2）列强之间存在矛盾。各国在华利益不均，谁都担心他人多占，彼此牵制使瓜分难以形成一致方案。\n（3）直接统治中国的代价过高。中国幅员辽阔、人口众多，直接统治的费用与风险都高于维持一个听话的清政府。\n因此列强转而采取「以华治华」的策略，保留清政府作为侵略工具。需要指出的是，未能瓜分并不等于侵略停止，只是方式由直接占领改为扶植代理人。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L205"
+      ],
+      "text_md": "### 要点梳理\n- 洪秀全是太平天国农民战争的主要领导人，他借助拜上帝会的组织形式，把分散的农民聚集为有统一信仰的团体。\n- 起义在广西桂平金田村发动，史称金田起义，它标志着太平天国农民战争的正式开端。\n- 起义能够发动起来，背景是鸦片战争后社会矛盾激化：赔款分摊、赋税加重、大批农民与手工业者失去生计。\n- 拜上帝会的教义经过改造，被用来表达农民对平等与温饱的诉求，这是起义得以迅速扩大的重要条件。\n- 考纲以识记层级要求本条，作答时要点明人物、组织形式、起义地点三个要素。\n\n### 易错点\n- 把起义地点记成别处：金田村是太平天国起义的起点，地点写错整条即失分。\n- 把拜上帝会当成纯粹的宗教团体：它是组织农民起义的形式，具有明确的社会反抗目标。\n- 把太平天国起义说成鸦片战争直接引发的战事：它是战后社会矛盾积累的结果，不是战争的延续。\n"
+    },
+    {
+      "block_id": "15043-ch02-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L205"
+      ],
+      "text_md": "**关键词**：洪秀全、拜上帝会、金田起义。三要素一条线。\n**口诀**：「人组织起来，在哪儿动手」。\n**串联**：战后赔款与赋税加重 → 农民失去生计 → 借拜上帝会聚集 → 金田起义，因果链顺下来就不容易漏。\n**对比**：鸦片战争是外来的侵略战争，太平天国起义是战后社会矛盾引发的农民战争，起因不同。"
+    },
+    {
+      "block_id": "15043-ch02-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L205"
+      ],
+      "text_md": "太平天国农民战争的正式开端是（ ）。\nA. 拜上帝会的创立\nB. 金田起义\nC. 定都天京\nD. 天京事变",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项正确，起义在广西桂平金田村发动，史称金田起义，标志太平天国农民战争正式开端。\nA 项拜上帝会是洪秀全借以聚集农民的组织形式，属于起义的准备。\nC 项定都天京是起义发展后的结果。\nD 项天京事变发生在定都之后，是太平天国由盛转衰的转折点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L205"
+      ],
+      "text_md": "### 要点梳理\n- 天京事变是太平天国领导集团内部为争夺权力而发生的严重内讧，发生在定都天京之后。\n- 事变的直接后果是领导核心分裂，东王、北王等主要领导人相继死于内斗，翼王出走，骨干力量损失惨重。\n- 更深层的影响是信仰体系的动摇：拜上帝会所宣称的兄弟平等在天京事变中暴露为权力争斗，人心由此离散。\n- 从此太平天国由盛转衰，军事上由进攻转入防御，最终未能摆脱失败的结局。\n- 考纲以识记层级要求本条，作答要点明事变性质是内部权力斗争，以及它作为转折点的地位。\n\n### 易错点\n- 把天京事变说成清军的进攻：它是太平天国内部的自相残杀，与外部战争性质不同。\n- 把事变的时间提到定都之前：事变发生在定都天京之后，顺序错会连带影响对转折点的判断。\n- 只记人物死亡而漏掉「由盛转衰的转折点」这一结论性判断。\n"
+    },
+    {
+      "block_id": "15043-ch02-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L205"
+      ],
+      "text_md": "**关键词**：内讧、领导核心分裂、由盛转衰。\n**口诀**：「不是打输的，是自己打自己打输的」。\n**对比**：天京事变是内部权力斗争，清军进攻是外部战争，性质完全不同。\n**串联**：定都天京 → 内部争权 → 事变 → 转攻为守 → 最终失败，这条线把事变钉在转折点上。"
+    },
+    {
+      "block_id": "15043-ch02-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L205"
+      ],
+      "text_md": "天京事变的性质是（ ）。\nA. 清军对太平天国都城发动的进攻\nB. 太平天国领导集团内部的权力斗争\nC. 太平天国反抗外来侵略的战役\nD. 拜上帝会内部的教义之争",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了事变的性质：领导集团为争夺权力而发生的严重内讧，导致核心分裂、骨干损失惨重。\nA 项把内部自相残杀说成外部进攻，性质相反。\nC 项与反侵略无关。\nD 项把权力斗争说成教义分歧，回避了实质。事变后信仰体系动摇、人心离散，太平天国由此由盛转衰。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L206"
+      ],
+      "text_md": "### 要点梳理\n- 《天朝田亩制度》是太平天国颁布的纲领性文件，其核心是土地问题的解决方案。\n- 它的基本主张是废除封建土地所有制，按人口平均分配土地，不论男女，体现绝对平均主义的理想。\n- 除土地外，它还对社会组织作了设想，把生产与生活单位结合起来，试图建立自给自足的基层秩序。\n- 就其性质而言，它是农民阶级反封建要求的集中表达，具有鲜明的革命性；但它以平均主义为原则，脱离了当时的生产力水平。\n- 因此它并未真正实行，其价值主要在于反映了农民对土地的迫切要求。\n\n### 易错点\n- 把《天朝田亩制度》与《资政新篇》混淆：前者解决土地问题、主张平均主义，后者主张学习西方、发展工商业。\n- 只讲革命性而忽略空想性：评价必须两面兼顾，绝对平均主义在当时无法实现。\n- 误以为该制度得到了普遍推行：它基本停留在纲领层面，未能在占领区全面实施。\n"
+    },
+    {
+      "block_id": "15043-ch02-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L206"
+      ],
+      "text_md": "**记忆法**：两个纲领对比记——「田亩」管土地，「资政」管工商。\n**口诀**：《天朝田亩制度》= 分地 + 平均。\n**对比**：它是农民反封建要求的集中表达（革命性），又以绝对平均主义为原则（空想性），两面都要写。\n**关键词**：废除封建土地所有制、按人口平均分配，这两句是性质与内容的核心。"
+    },
+    {
+      "block_id": "15043-ch02-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L206"
+      ],
+      "text_md": "太平天国在定都之后颁布了自己的纲领性文件，对土地问题提出了明确主张。请简述《天朝田亩制度》的性质和主要内容，并说明它为什么未能真正实行。",
+      "question_type": "简答题",
+      "answer_md": "（1）性质：它是太平天国颁布的纲领性文件，是农民阶级反封建要求的集中表达，具有鲜明的革命性；同时以绝对平均主义为原则，脱离了当时的生产力水平，带有空想性。\n（2）主要内容：核心是废除封建土地所有制，按人口平均分配土地，不论男女。\n（3）除土地外，还对生产与生活的基层组织作了设想，试图建立自给自足的秩序。\n由于平均主义脱离实际，该制度基本停留在纲领层面，并未真正实行；其价值主要在于反映了农民对土地的迫切要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L206"
+      ],
+      "text_md": "### 要点梳理\n- 《资政新篇》是太平天国后期提出的施政纲领，作者是洪仁玕，其思路与前一个纲领明显不同。\n- 它的核心主张是学习西方：兴办近代工矿、交通、金融等事业，鼓励私人投资，允许雇佣劳动。\n- 政治方面提出整顿吏治、尊重民意、以法治国等设想，带有近代色彩。\n- 就其性质而言，它是近代中国第一个比较系统的资本主义改革方案，顺应了当时的世界潮流。\n- 但它同样未能实施：太平天国此时已处颓势，且方案没有触及农民最关心的土地问题，缺乏实行的社会基础。\n\n### 易错点\n- 把《资政新篇》说成农民革命纲领：它主张发展资本主义，与《天朝田亩制度》的平均主义路线不同。\n- 把它与《天朝田亩制度》的颁布顺序颠倒：先有前者后有后者，二者分属太平天国不同时期。\n- 因为未能实施就否定其历史地位：它是近代中国最早的系统资本主义方案，这一地位不因未实行而消失。\n"
+    },
+    {
+      "block_id": "15043-ch02-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L206"
+      ],
+      "text_md": "**记忆法**：两个纲领对比记——「资政」学西方、办工商，「田亩」分土地、讲平均。\n**口诀**：《资政新篇》= 洪仁玕 + 学西方。\n**对比**：它是近代中国第一个比较系统的资本主义方案，与前一个纲领的路线相反。\n**串联**：主张先进 → 时机已晚 → 未触及土地 → 无法实施，四点连起来解释它为什么落空。"
+    },
+    {
+      "block_id": "15043-ch02-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L206"
+      ],
+      "text_md": "太平天国后期提出的施政纲领，与此前的纲领在思路上明显不同。请简述《资政新篇》的性质和主要内容，并说明它未能实施的原因。",
+      "question_type": "简答题",
+      "answer_md": "（1）性质：它是太平天国后期由洪仁玕提出的施政纲领，是近代中国第一个比较系统的资本主义改革方案。\n（2）经济方面：主张兴办近代工矿、交通、金融等事业，鼓励私人投资，允许雇佣劳动。\n（3）政治方面：提出整顿吏治、尊重民意、以法治国等带有近代色彩的设想。\n（4）它未能实施：太平天国此时已处颓势，且方案没有触及农民最关心的土地问题，缺乏实行的社会基础。未实行并不影响它在近代中国最早提出系统资本主义方案这一历史地位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L211"
+      ],
+      "text_md": "### 要点梳理\n- 奕䜣是清政府中主持洋务活动的中央代表人物，在总理各国事务衙门中处于核心位置。\n- 洋务派是19 世纪60 年代起出现的统治集团内部派别，主张在维持封建制度的前提下引进西方的器物与技术。\n- 他们的指导思想是「中学为体，西学为用」：制度与纲常不变，只学制造与军事技术。\n- 洋务派在中央以奕䜣为代表，在地方则有掌握军政实权的督抚，二者结合才使洋务事业得以推行。\n- 考纲以识记层级要求本条，作答时要点明人物、派别名称与指导思想。\n\n### 易错点\n- 把洋务派的主张说成变革制度：他们只学技术不改制度，这一点是与维新派的分界线。\n- 把奕䜣与地方洋务督抚混为一谈：前者在中央主持，后者在地方经办，位置不同。\n- 把「中学为体，西学为用」记成洋务派的实际行动：它是指导思想，行动是办军工、办企业、办学堂。\n"
+    },
+    {
+      "block_id": "15043-ch02-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L211"
+      ],
+      "text_md": "**关键词**：奕䜣（中央）、洋务派、中学为体西学为用。\n**口诀**：「架子不换，只换家伙」。\n**对比**：洋务派只学技术不改制度，维新派要改制度，这是两派的分界线。\n**串联**：中央有奕䜣主持，地方有督抚经办，两头合上洋务事业才推得动。"
+    },
+    {
+      "block_id": "15043-ch02-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L211"
+      ],
+      "text_md": "洋务派的指导思想是（ ）。\nA. 中学为体，西学为用\nB. 变法维新，君主立宪\nC. 师夷长技以制夷\nD. 驱除鞑虏，恢复中华",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正确，洋务派主张在维持封建制度与纲常的前提下引进西方器物与技术，即制度不变、只学技术。\nB 项是维新派的主张，恰恰要求改变制度，与洋务派形成分界。\nC 项是魏源在更早时期提出的主张，早于洋务运动。\nD 项是资产阶级革命派的口号，与洋务派无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L211"
+      ],
+      "text_md": "### 要点梳理\n- 总理各国事务衙门是清政府为办理对外事务而设立的中央机构，因洋务活动扩大而成为洋务的中枢。\n- 它的设立本身是外来压力下的产物：此前中国没有专管对外事务的常设中央机构。\n- 除外交外，它还经管通商、海关、海防、军工、学堂与派遣留学生等事务，职权相当广泛。\n- 它的存在使洋务事业有了统一的推动机构，但也使列强得以通过这一渠道直接干预清政府的决策。\n- 考纲以识记层级要求本条，作答时要点明机构名称、设立背景与主要职能。\n\n### 易错点\n- 把总理各国事务衙门当成近代意义上的内阁或外交部：它是为应对列强而设的临时性中枢机构，职权与后者不同。\n- 只记外交职能而漏掉它经管洋务这一面，就会答不出它与洋务运动的关联。\n- 把设立原因说成中国主动改革：它是在对外交往被迫扩大的背景下设立的。\n"
+    },
+    {
+      "block_id": "15043-ch02-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L211"
+      ],
+      "text_md": "**关键词**：总理各国事务衙门、办理对外事务、洋务中枢。\n**口诀**：「先为外交设，后成洋务家」。\n**对比**：它不是近代内阁或外交部，而是应对外来压力设立的机构，职权范围与后者不同。\n**串联**：设机构 → 管外交与通商 → 兼管军工学堂 → 列强借此干预决策，四步走完就是它的全貌。"
+    },
+    {
+      "block_id": "15043-ch02-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L211"
+      ],
+      "text_md": "总理各国事务衙门的设立（ ）。\nA. 是中国主动改革政治制度的举措\nB. 是清政府为办理对外事务而设，后成为洋务中枢\nC. 只负责外交，不涉及通商与军工事务\nD. 相当于近代意义上的内阁",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项准确说明了它的由来与地位：因对外交往被迫扩大而设立，后成为推动洋务事业的中枢。\nA 项把它说成主动的制度改革，与设立背景不符。\nC 项缩小了职权，它还经管通商、海关、海防、军工、学堂与留学等事务。\nD 项把它等同于近代内阁，机构性质与职权都不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L212"
+      ],
+      "text_md": "### 要点梳理\n- 洋务派举办的洋务事业集中在几个方面：兴办近代军事工业，建立新式陆海军，创办近代民用企业，开办新式学堂并派遣留学生。\n- 军事工业以制造枪炮船舰为目标，采用官办形式，产品不进入市场，具有明显的封建性。\n- 民用企业多采取官督商办形式，涉及航运、采矿、纺织、电报等，客观上带动了近代工商业的出现。\n- 新式学堂与留学教育培养出中国第一代近代科技与外交人才，翻译出版也由此展开。\n- 这些事业在甲午战争中的失败面前暴露了局限，但它们在客观上开启了中国的近代化进程。\n\n### 易错点\n- 只记军事工业而漏掉民用企业与新式教育：考纲要求的是洋务事业的整类内容。\n- 把民用企业说成民族资本主义企业：官督商办由官府控制，与民间自主经营的企业性质不同。\n- 因为洋务运动失败就否定其全部作用：失败与客观上的开创作用是两回事，评价需分开陈述。\n"
+    },
+    {
+      "block_id": "15043-ch02-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L212"
+      ],
+      "text_md": "**口诀**：洋务事业四块——「军工、民用、海陆防、学堂留学」。\n**记忆法**：把四块按时间顺序串：先办军工，再办民用，同时建新式军队，最后办学堂派留学。\n**对比**：军事工业是官办、产品不入市场；民用企业多官督商办，二者性质不同。\n**关键词**：官督商办，它既有官府控制，又引入商股，是民用企业最典型的形式。"
+    },
+    {
+      "block_id": "15043-ch02-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L212"
+      ],
+      "text_md": "洋务派在中央与地方都有代表人物，其活动涉及军事、经济与教育多个方面。请简述洋务派举办的洋务事业主要包括哪些方面，并指出其中哪一类在客观上带动了近代工商业的出现。",
+      "question_type": "简答题",
+      "answer_md": "（1）兴办近代军事工业：以制造枪炮船舰为目标，采用官办形式，产品不进入市场。\n（2）建立新式陆海军。\n（3）创办近代民用企业：多采取官督商办形式，涉及航运、采矿、纺织、电报等，客观上带动了近代工商业的出现。\n（4）开办新式学堂并派遣留学生，培养出中国第一代近代科技与外交人才，翻译出版也由此展开。\n这些事业在甲午战争失败面前暴露了局限，但在客观上开启了中国近代化进程。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "### 要点梳理\n- 早期维新思想家是19 世纪七八十年代出现的一批人物，他们从洋务派中分化出来，主张的范围比洋务派更广。\n- 他们的共同主张是：不仅要学西方的技术，还要学其政治制度与思想观念，实行君主立宪、发展工商业。\n- 他们的活动方式以著书立说、办报、讲学为主，把这些主张传播给知识界。\n- 他们的意义在于为后来的戊戌维新运动做了思想准备，是从器物层面转向制度层面认识的关键环节。\n- 考纲以识记层级要求本条，作答时需要能举出代表人物并说明其主张的共性。\n\n### 易错点\n- 把早期维新思想家与洋务派等同：前者主张学制度，后者只主张学技术，这是分界所在。\n- 把早期维新思想家与戊戌维新的领导人混同：前者是先行者，后者是运动的组织者，时间与作用都不同。\n- 只记人物姓名而不记其共同主张，就答不出「思想家」这一层的意义。\n"
+    },
+    {
+      "block_id": "15043-ch02-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "**关键词**：从洋务派分化出来、主张学制度、著书办报讲学。\n**口诀**：「先学器物，再学制度」。\n**对比**：早期维新思想家主张学政治制度，洋务派只主张学技术，一步之差就是分界。\n**串联**：他们的主张为戊戌维新做了思想准备，是器物到制度之间的过渡环节。"
+    },
+    {
+      "block_id": "15043-ch02-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "早期维新思想家与洋务派的主要区别在于（ ）。\nA. 是否主张学习西方的技术\nB. 是否主张学习西方的政治制度\nC. 是否主张兴办近代军事工业\nD. 是否主张派遣留学生",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项抓住了分界：早期维新思想家由洋务派中分化而来，主张不仅要学技术，还要学政治制度与思想观念，实行君主立宪、发展工商业。\nA、C、D 三项都是洋务派同样主张的内容，不构成二者的区别。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "### 要点梳理\n- 康有为、梁启超、谭嗣同是维新派的主要代表人物，他们通过上书、办报、组织学会与学堂把变法主张推向全国。\n- 康有为是变法的理论倡导者与政治推动者，梁启超以舆论宣传见长，谭嗣同以激烈的主张与殉难著称。\n- 维新派的主张集中在：救亡图存、变法维新，实行君主立宪，发展资本主义工商业，改革科举与教育。\n- 与洋务派相比，维新派第一次把制度变革提到日程上，这是二者最根本的区别。\n- 考纲以识记层级要求本条，作答时人物与事迹要严格对应，不能互相替换。\n\n### 易错点\n- 把三个人物的事迹张冠李戴：最典型的是把殉难者与理论倡导者的角色互换。\n- 把维新派与洋务派的主张混为一谈：是否主张改变制度是二者的分水岭。\n- 把维新派的君主立宪主张说成推翻君主制度：他们主张保留君主、改变政体，与革命派不同。\n"
+    },
+    {
+      "block_id": "15043-ch02-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "**记忆法**：三人分工记——康有为理论倡导，梁启超舆论宣传，谭嗣同激烈殉难。\n**口诀**：「康倡、梁传、谭殉」。\n**对比**：维新派主张君主立宪、保留君主；革命派主张推翻君主制度，两者目标不同。\n**关键词**：救亡图存、变法维新、君主立宪，三个词是维新派主张的骨架。"
+    },
+    {
+      "block_id": "15043-ch02-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "维新派在政治制度上的主张是（ ）。\nA. 推翻君主制度，建立共和国\nB. 保留君主，实行君主立宪\nC. 维持封建专制制度不变\nD. 只学西方技术，不改制度",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项正确，维新派主张开议院、行君主立宪，在保留君主的前提下改变政体。\nA 项是革命派的目标，与维新派不同。\nC 项是守旧派的主张，恰是维新派要改变的。\nD 项是洋务派的路线，维新派正是要突破这一限制。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "### 要点梳理\n- 「百日维新」指戊戌年间由光绪帝颁布诏令推行新政的短促时期，因其持续时间不长而得名。\n- 新政内容涉及政治、经济、军事、文教等方面，包括裁撤冗员、鼓励实业、编练新军、废八股改科举、办新式学堂等。\n- 这些诏令大多停留在纸面，地方督抚多持观望态度，真正推行的很少。\n- 变法的推动力量是维新派与光绪帝，而实际权力掌握在守旧势力手中，二者的力量对比决定了变法的结局。\n- 考纲以识记层级要求本条，作答时要点明时期名称、主要推动者与新政涉及的范围。\n\n### 易错点\n- 把「百日维新」与整个戊戌维新运动等同：前者是运动的高潮阶段，后者包含其前后的宣传与组织活动。\n- 把变法失败的原因简单归结为某个人物的决策：根本原因是新旧力量对比悬殊，守旧势力掌握实权。\n- 误以为新政诏令得到了全面执行：绝大多数停留在文书层面。\n"
+    },
+    {
+      "block_id": "15043-ch02-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "**关键词**：光绪帝推行、持续时间短、新政诏令、多未实行。\n**口诀**：「诏书下得多，落地没几个」。\n**对比**：「百日维新」是戊戌维新运动的高潮阶段，不等于整个运动。\n**串联**：维新派推动 → 光绪下诏 → 地方观望 → 守旧政变，四步走完就是它的结局。"
+    },
+    {
+      "block_id": "15043-ch02-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "关于「百日维新」，下列说法正确的是（ ）。\nA. 它等同于整个戊戌维新运动\nB. 它是戊戌维新运动的高潮阶段，新政诏令多未实行\nC. 新政诏令得到了地方督抚的全面执行\nD. 变法的失败应完全归因于某一人物的决策",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了它的时间定位与实际情况：由光绪帝颁布诏令推行新政，持续时间不长，内容涉及政治、经济、军事、文教等方面，但大多停留在纸面。\nA 项把高潮阶段与整个运动等同，范围有误。\nC 项与地方督抚多持观望态度的事实不符。\nD 项忽略了新旧力量对比悬殊这一根本原因。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "### 要点梳理\n- 「戊戌六君子」指变法失败后遇害的六位维新志士，谭嗣同是其中最具代表性的一位。\n- 他们是在守旧势力发动政变、变法被废止后被捕杀的，遇害本身就表明变法触动了守旧势力的根本利益。\n- 谭嗣同拒绝出走、甘愿赴死，以牺牲表明变法主张的正当性，这一选择使维新运动的影响超出其短促的政治实践。\n- 六君子的殉难与变法的失败一起，促使更多人转向革命道路，这是本条的历史意义所在。\n- 考纲以识记层级要求本条，作答时要点明名称所指与殉难的性质。\n\n### 易错点\n- 把六君子与维新派的全体代表人物混同：六君子特指遇害者，康有为、梁启超并不在其列。\n- 把殉难说成战场牺牲：他们是在政变后被捕杀的，不是战死。\n- 只记名称而不记其意义，就答不出这一条在维新运动中的位置。\n"
+    },
+    {
+      "block_id": "15043-ch02-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "**关键词**：六位遇害志士、谭嗣同为代表、政变后被捕杀。\n**口诀**：「六君子是遇害的，不是全体维新派」。\n**对比**：六君子殉难是被捕杀，不是战场牺牲；康有为、梁启超不在其中。\n**串联**：变法失败 → 政变 → 殉难 → 更多人转向革命，这条线是本条的历史意义。"
+    },
+    {
+      "block_id": "15043-ch02-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L218"
+      ],
+      "text_md": "「戊戌六君子」是指（ ）。\nA. 维新派全体代表人物\nB. 变法失败后遇害的六位维新志士\nC. 在战场殉国的六位将领\nD. 主张君主立宪的六位地方督抚",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项界定了名称所指：守旧势力发动政变、变法被废止后被捕杀的六位志士，谭嗣同是其中最具代表性的一位。\nA 项范围过大，康有为、梁启超并不在其中。\nC 项把他们说成战死，性质不符。\nD 项与督抚无关。他们的殉难促使更多人转向革命道路。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L220"
+      ],
+      "text_md": "### 要点梳理\n- 维新派宣传变法主张的手段主要有三类：向皇帝上书，创办报刊，组织学会与学堂。\n- 上书的作用是把变法要求直接提到最高决策层，使维新主张获得合法渠道。\n- 办报的作用是面向社会传播，把变法的理由讲给士人与市民听，形成舆论压力。\n- 组织学会与学堂的作用是聚集同道、培养骨干，把分散的个人主张变成有组织的政治力量。\n- 这三类活动互相配合，使维新运动从少数人的主张发展成具有一定社会影响的政治运动。\n\n### 易错点\n- 只记办报而漏掉上书与组织学会：三类活动共同构成宣传主张的方式，缺项即不完整。\n- 把维新派的活动说成武装起事：他们走的是自上而下的改革路径，不是武装斗争。\n- 把办学堂只当作教育活动：在维新运动中它同时是聚集力量的组织形式。\n"
+    },
+    {
+      "block_id": "15043-ch02-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L220"
+      ],
+      "text_md": "**口诀**：宣传三件事——「上书、办报、组学会」。\n**记忆法**：按受众记——上书对皇帝，办报对士人与市民，学会学堂对同道与骨干。\n**对比**：维新派走的是自上而下的改革路径，不是武装起事。\n**串联**：三类活动互相配合，把少数人的主张变成有影响的政治运动。"
+    },
+    {
+      "block_id": "15043-ch02-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L220"
+      ],
+      "text_md": "维新派把自己的主张从少数人的议论推向了一定的社会影响。请简述维新派宣传变法维新主张的主要活动，并说明这些活动分别面向哪一类对象。",
+      "question_type": "简答题",
+      "answer_md": "（1）向皇帝上书：把变法要求直接提到最高决策层，使维新主张获得合法渠道。\n（2）创办报刊：面向社会传播，把变法的理由讲给士人与市民听，形成舆论压力。\n（3）组织学会与学堂：聚集同道、培养骨干，把分散的个人主张变成有组织的力量。\n三类活动互相配合，使维新运动从少数人的主张发展成具有一定社会影响的政治运动。他们走的是自上而下的改革路径，不是武装斗争。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch02-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch02-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L220"
+      ],
+      "text_md": "### 要点梳理\n- 维新派与守旧派的论战是戊戌维新运动期间的思想交锋，核心是变法与否、如何变。\n- 争论的第一个焦点是要不要变法：维新派以民族危机为据，主张不变则亡；守旧派以祖宗之法不可变为据，主张维持旧制。\n- 第二个焦点是要不要兴民权、设议院：维新派主张开议院、行君主立宪，守旧派认为民权会动摇君权与纲常。\n- 第三个焦点是要不要废八股、改科举、兴新学：维新派主张培养实用人才，守旧派维护旧的教育与选官制度。\n- 这场论战的意义在于它第一次把制度变革的议题公开化，推动了近代思想启蒙。\n\n### 易错点\n- 把论战的一方说成革命派：论战的双方是维新派与守旧派，革命派与改良派的论战是后来的事。\n- 只记「要不要变法」一个焦点：民权与教育同样是争论的核心议题。\n- 用论战的胜负代替对变法结局的解释：论战使维新主张得到传播，但未能改变实际的力量对比。\n"
+    },
+    {
+      "block_id": "15043-ch02-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch02-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L220"
+      ],
+      "text_md": "**口诀**：论战三焦点——「变不变、要不要民权、废不废八股」。\n**记忆法**：每个焦点记成一对反问，维新派答「要」，守旧派答「不要」。\n**对比**：本场论战是维新派对守旧派；革命派与改良派的论战是后来另一场，不要混。\n**串联**：论战把制度变革的议题公开化 → 推动思想启蒙，这一步是它的历史意义。"
+    },
+    {
+      "block_id": "15043-ch02-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch02-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L220"
+      ],
+      "text_md": "戊戌维新运动期间，维新派与守旧派围绕变法展开了公开的思想交锋。试述这场论战的主要焦点，并说明它的历史意义与局限。",
+      "question_type": "论述题",
+      "answer_md": "维新派与守旧派的论战是戊戌维新运动期间的思想交锋，焦点集中在三个方面。\n（1）要不要变法。维新派以民族危机为据，主张不变则亡；守旧派以祖宗之法不可变为据，主张维持旧制。\n（2）要不要兴民权、设议院。维新派主张开议院、行君主立宪；守旧派认为民权会动摇君权与纲常。\n（3）要不要废八股、改科举、兴新学。维新派主张培养实用人才，守旧派维护旧的教育与选官制度。\n这场论战的意义在于：它第一次把制度变革的议题公开化，推动了近代思想启蒙。同时也应看到，论战使维新主张得到传播，却未能改变实际的力量对比，这是变法最终失败的重要原因。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "course/exam_strategy",
+      "kind": "exam_strategy",
+      "point_id": null,
+      "scope": "course",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "knowledge-model:exam"
+      ],
+      "text_md": "本课程考纲声明的主观题型包括简答题、论述题，客观题型为单项选择题，作答顺序建议先做客观题。选择题考的是再认：读完题干先在心里给出答案，再逐个比对选项，只选一项；两个选项都像时回到考点本身，看哪一项的表述与考纲用词一致，不要凭语感挑顺口的。简答题与论述题先审题再落笔：圈出设问的动作词，判断题目要的是「是什么」还是「为什么」；落笔前用十几秒列出分点提纲，一般三到五点，每点先给结论再给依据，点与点之间不重复。如果题目先给了材料，第一句先扣材料说清它讲的现象，再落到对应考核点上，不要跳过材料直接背书。分点作答要用序号或短横线明确分开，一段到底会让阅卷难以对应得分点；术语一律用考纲的规范表述，不自造简称。遇到完全没把握的题不要空着，按同章逻辑写能确定的部分，宁可少写也不要写错概念。最后留出回看的时间：检查有无漏答的小题、主观题是否有只写结论没写依据的点，以及有没有把两个易混概念写反。"
+    }
+  ],
+  "review_schedule": {
+    "exam_date": null,
+    "weekly_hours": null,
+    "status": "named_gap",
+    "plans": [],
+    "ai_generated": true,
+    "review_state": "machine_draft",
+    "generator": {
+      "backend": "agent",
+      "model": "harness-agent",
+      "prompt_id": "stage_plan",
+      "prompt_version": "v1",
+      "generated_at": "2026-09-13"
+    },
+    "evidence_refs": [
+      "knowledge-model:exam"
+    ],
+    "gap_impact": "缺少 exam_date、weekly_hours，无法推导 30 / 14 / 7 天排程",
+    "next_evidence": "用户或官方考期公告提供 exam_date 与 weekly_hours（写入 knowledge-model.json 的 exam 块）"
+  }
+}
