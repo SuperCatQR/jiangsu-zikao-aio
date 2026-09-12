@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -223,6 +224,9 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
     `plan.md` 丢课程级 `exam_strategy`（W1 —— 旧对账只覆盖 3/4 个 `BLOCK_KINDS`），
     以及 B2a 的 N-1 四向：章页丢 `#### 要点梳理`（`explain`）、丢 `#### 记忆辅助`（`memorize`）、
     删掉整个 `knowledge/` 目录、删掉整个课程页目录（旧实现在页面目录缺失时静默 `continue`）。
+    再加 F-QC2-1 两向（(j)/(k)）：章页丢掉**某一个**考核点的整个小节、再在别的章页补一条同名标题
+    把全局计数补平 —— 计数对账（`rendered != expected`）对此 0 错误，必须由**逐点锚点**对账点名缺失的
+    `point_id`，否则闸门只能看出「渲染了几个」而看不出「渲染了哪几个」。
     """
     from lib.ai_content_gate import run_ai_content_gate
 
@@ -325,6 +329,75 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
     errors_i = run_ai_content_gate(root_i)
     # M-1：必须点名「渲染页目录不存在」，而不是任何一条无关错误
     assert any("渲染页目录不存在" in e for e in errors_i), errors_i
+
+    # (j) F-QC2-1（QC2 反例，逐字复现）：只删一个考核点的 `#### 要点梳理` **标题 + 正文**，
+    #     该点锚点小节里的 `#### 记忆辅助` 不受影响；再在别的章页补一条同名标题把全局计数补平
+    #     （255 → 255）。此时计数对账 **0 错误** —— QC2 在改前的闸门上实测 `errors == []` ——
+    #     必须由逐点锚点对账点名缺失的 `point_id`。
+    from lib.ai_content_gate import (
+        EXPLAIN_SUMMARY_RE,
+        MEMORIZE_AID_RE,
+        POINT_ANCHOR_RE,
+    )
+
+    course_43 = "content/jiangsu/courses/15043"
+    victim = "15043-ch01-s1-p1"
+
+    def _chapter_text(root: Path) -> str:
+        return "".join(
+            page.read_text(encoding="utf-8")
+            for page in sorted((root / course_43 / "knowledge").glob("*.md"))
+        )
+
+    def _explain_section(page: Path, point_id: str) -> str:
+        """该 `point_id` 的 `### 考点精讲：<id>` 锚点小节原文（到下一个 H3 或页尾为止）。"""
+        text = page.read_text(encoding="utf-8")
+        start = text.index(f"### 考点精讲：{point_id}（")
+        nxt = re.search(r"(?m)^### ", text[start + 1 :])
+        return text[start : start + 1 + nxt.start()] if nxt else text[start:]
+
+    def _drop_marker_section(page: Path, marker: str) -> None:
+        """删掉页面上**第一条** `marker` 标题及其正文（到下一个标题为止）。"""
+        lines = page.read_text(encoding="utf-8").splitlines(keepends=True)
+        i = next(n for n, line in enumerate(lines) if line.rstrip("\n") == marker)
+        j = next(n for n in range(i + 1, len(lines)) if lines[n].startswith("#"))
+        page.write_text("".join(lines[:i] + lines[j:]), encoding="utf-8")
+
+    root_j = _fresh_root("anchor_explain")
+    page_j = root_j / course_43 / "knowledge" / "01-ch01.md"
+    baseline_page_j = (baseline_root / course_43 / "knowledge" / "01-ch01.md").read_text(encoding="utf-8")
+    assert f"### 考点精讲：{victim}（" in baseline_page_j, "对照前提：受害点在对照页上有渲染器锚点"
+    victim_section = _explain_section(page_j, victim)
+    assert "#### 要点梳理" in victim_section, "对照前提：受害点的锚点小节内含 `#### 要点梳理`"
+    assert "#### 记忆辅助" in victim_section, "对照前提：受害点的锚点小节内含 `#### 记忆辅助`"
+    assert victim_section.count("#### ") == 3, "对照前提：该节含 要点梳理 / 易错点 / 记忆辅助 三个 H4 小节"
+    assert len(re.findall(r"(?m)^### ", victim_section)) == 1, "对照前提：该节的边界只由自己的锚点 H3 划定"
+
+    explain_before = len(EXPLAIN_SUMMARY_RE.findall(_chapter_text(root_j)))
+    memorize_before = len(MEMORIZE_AID_RE.findall(_chapter_text(root_j)))
+    _drop_marker_section(page_j, "#### 要点梳理")
+    # 在别的章页补一条同名标题，把全局计数补平（删一条 + 补一条 = 255 不变）
+    pad_j = root_j / course_43 / "knowledge" / "10-ch10.md"
+    pad_j.write_text(pad_j.read_text(encoding="utf-8") + "\n#### 要点梳理\n", encoding="utf-8")
+    # QC2 的反例前提：全局计数被补平，计数对账看不见这个丢块
+    assert len(EXPLAIN_SUMMARY_RE.findall(_chapter_text(root_j))) == explain_before, "对照前提：计数已补平"
+    assert len(MEMORIZE_AID_RE.findall(_chapter_text(root_j))) == memorize_before, "对照前提：记忆辅助计数未受影响"
+    assert POINT_ANCHOR_RE.search(f"### 考点精讲：{victim}（识记）"), "对照前提：锚点正则匹配渲染器契约标题"
+
+    errors_j = run_ai_content_gate(root_j)
+    # 断言到**具体消息**：必须是逐点对账那条，且点名受害 point_id（只断言「非空」会放过「报了别的错」）
+    assert any("锚点小节内缺少" in e and "要点梳理" in e and victim in e for e in errors_j), errors_j
+
+    # (k) 补强：受害点整个小节（锚点 + explain + memorize）消失时，两个 kind 都要点名它
+    root_k = _fresh_root("anchor_section")
+    page_k = root_k / course_43 / "knowledge" / "01-ch01.md"
+    page_k.write_text(
+        page_k.read_text(encoding="utf-8").replace(_explain_section(page_k, victim), "", 1), encoding="utf-8"
+    )
+    assert f"### 考点精讲：{victim}（" not in page_k.read_text(encoding="utf-8"), "对照前提：整节（含锚点）已删除"
+    errors_k = run_ai_content_gate(root_k)
+    assert any("锚点" in e and victim in e for e in errors_k), errors_k
+    assert len([e for e in errors_k if victim in e]) >= 2, f"explain 与 memorize 都要点名 {victim}: {errors_k}"
 
 
 def _exam_strategy_text(root: Path) -> str:

@@ -8,9 +8,10 @@
    旧实现按目录 glob 找语料、空即**静默跳过**，等于把闸门交给文件命名）；
 3. **页面标记**：页面分类与标记字符串一律取自 `course.schema.json` 的 `generated_page_markers`
    （QC1 F-4 / QC3-003：schema 是唯一真源，同一规则不写两遍）；
-4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1）：对账口径 = **4 个 block kind
+4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1 / F-QC2-1）：对账口径 = **4 个 block kind
    （`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` /
-   `review_schedule`）**：`explain` / `memorize` 的章页小节计数（精确相等）、`practice.md` 的 drill 数、
+   `review_schedule`）**：`explain` / `memorize` 按**逐考核点锚点**对账（`### 考点精讲：<point_id>`
+   小节内必须有对应 H4 小节），并保留全局小节计数（精确相等）作次级页级界限；`practice.md` 的 drill 数、
    `plan.md` 的五阶段与 `## 应试策略`、`review.md` 的排程，逐项与 `content.json` 对账；
    课程存在 `content.json` 而渲染页目录不存在时**失败关闭**，不静默跳过整门课。
    这一条缺失正是「AI 备考层从未被渲染」能过关的原因：先只覆盖 3/4 个 kind（`exam_strategy` 整块删掉仍两层全绿），
@@ -43,6 +44,13 @@ QUESTION_TEXT_RE = re.compile(r"(选择题|填空题|简答题|材料题|下列.
 CHAPTER_PAGE_PATTERN = "knowledge/*.md"
 EXPLAIN_SUMMARY_RE = re.compile(r"(?m)^#### 要点梳理$")
 MEMORIZE_AID_RE = re.compile(r"(?m)^#### 记忆辅助$")
+
+# `explain` / `memorize` 的**逐考核点**锚点：渲染器在 `### 考点精讲：{point_id}（{requirement}）`
+# 之下、紧挨着写出 explain 正文（`#### 要点梳理` 为其中一节）与 memorize 正文（`#### 记忆辅助`），
+# 见 `render_pages.py:798-809`。H3 切分（`^### `）与 `drill` 的 `^### ` 小节口径一致；
+# 该锚点同时是 MkDocs 目录里的稳定定位符，随页面重建而重建。
+ANCHOR_SPLIT_RE = re.compile(r"(?m)^### ")
+POINT_ANCHOR_RE = re.compile(r"^### 考点精讲：(?P<point_id>[^\s（]+)（")
 
 
 def _syllabus_text(root: Path, code: str, rel_content: str, errors: list[str]) -> str:
@@ -102,13 +110,80 @@ def _page_problems(rel_md: str, text: str, markers: dict, errors: list[str], *, 
             errors.append(f"{where}: 引用块出现题文特征: {quote[:40]}...")
 
 
+def _chapter_page_sections(page_text: dict[str, str]) -> tuple[str, dict[str, str]]:
+    """章页正文拼接 + `### 考点精讲：<point_id>` 锚点小节索引（H4 标题留在自己的小节内）。
+
+    以 `^### ` 切分：章页上每个 H3 都是渲染器的**契约标题**（`### {章标题}` / `### 考点精讲：<point_id>`
+    / `### 练习题：<point_id>`，见 `render_pages.py:798,827`），H4 小节因而必定落在其所属锚点小节之内。
+    页面顺序在两门课内**唯一**（`render_pages.py:881-882,927-936` 逐章写一个文件）；真出现重复时后者覆盖
+    前者，`rendered != expected` 的页级计数会兜住。
+    """
+    chapters: list[str] = []
+    sections: dict[str, str] = {}
+    for rel_md, text in page_text.items():
+        if not course_pages_contract.matches_page(rel_md, {CHAPTER_PAGE_PATTERN}):
+            continue
+        chapters.append(text)
+        # `split` 无捕获组：`parts[0]` 是页面前言，`parts[1:]` 每项 = 一个 H3 的标题行 + 其正文，
+        # 正好一节；不能再两两配对（那会把相邻小节拼进来 —— 邻节的 H4 会掩盖本节的缺失）。
+        for chunk in ANCHOR_SPLIT_RE.split(text)[1:]:
+            section = "### " + chunk
+            match = POINT_ANCHOR_RE.match(section)
+            if match:
+                sections[match.group("point_id")] = section
+    return "".join(chapters), sections
+
+
+def _per_point_reached_problems(
+    code: str, content: dict, sections: dict[str, str], errors: list[str]
+) -> None:
+    """逐 `point_id` 对账：块是「真值」，它指名的考核点必须在章页上**有自己那一节**（F-QC2-1）。
+
+    口径 = 锚点小节**内**的 H4 小节：`explain` 块要求 `### 考点精讲：<point_id>` 小节内出现
+    `^#### 要点梳理$`；`memorize` 块要求同一小节内出现 `^#### 记忆辅助$`。因此
+    「删掉某点的整节、再在别处补一条同名标题」不再能蒙混过关（全局计数不变、相邻小节的同名 H4 也不会
+    被误算进来，但该 `point_id` 的锚点/小节确实没了），错误文案**点名缺失的 `point_id`**，
+    与 `drill` 的锚点对账（`practice.md`）同一形态。
+    调用顺序上逐点在前、全局计数在后：计数不匹配只是次级「页级界限」，块级真相优先（否则「丢一节 + 别处补一条」
+    只会报成模糊的计数不符）。有块却无锚点的考核点算失败；没有块的考核点不在此列（无块即无诉求）。
+    """
+    for kind, heading_re, heading in (
+        ("explain", EXPLAIN_SUMMARY_RE, "要点梳理"),
+        ("memorize", MEMORIZE_AID_RE, "记忆辅助"),
+    ):
+        block_points = [
+            str(block["point_id"])
+            for block in content.get("blocks") or []
+            if block.get("kind") == kind and block.get("point_id")
+        ]
+        missing_anchor: list[str] = []
+        missing_heading: list[str] = []
+        for point_id in block_points:
+            section = sections.get(point_id)
+            if section is None:
+                missing_anchor.append(point_id)
+            elif not heading_re.search(section):
+                missing_heading.append(point_id)
+        if missing_anchor:
+            errors.append(
+                f"course {code}: 章页缺少 {len(missing_anchor)} 个考核点的 `### 考点精讲：<point_id>` 锚点"
+                f"（首个 {missing_anchor[0]}）—— 该 point_id 的 {kind} 块未渲染到章页"
+            )
+        if missing_heading:
+            errors.append(
+                f"course {code}: 章页有 {len(missing_heading)} 个考核点的锚点小节内缺少 `#### {heading}`"
+                f"（首个 {missing_heading[0]}）—— 该 point_id 的 {kind} 块未渲染到章页"
+            )
+
+
 def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], errors: list[str]) -> None:
     """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004 / W1 / B2a N-1：闸门只看页面装饰，看不出整层丢失）。
 
     对账口径按 kind —— **4 个 block kind + 2 个课程级顶层产物，一个都不能漏**：
-    - `explain` → 全部章页内 `^#### 要点梳理$` 计数**精确等于**块数；
-    - `memorize` → 全部章页内 `^#### 记忆辅助$` 计数**精确等于**块数；
-    - `drill` → `practice.md` 的 `###` 小节数；
+    - `explain` → 全局章页内 `^#### 要点梳理$` 计数**精确等于**块数（次级页级界限），
+      **且**逐 `point_id`：该点在章页上有 `### 考点精讲：<point_id>` 锚点，且锚点小节内有 `#### 要点梳理`；
+    - `memorize` → 全局 `^#### 记忆辅助$` 计数**精确等于**块数（次级页级界限），**且**同样的逐点锚点口径；
+    - `drill` → `practice.md` 的 `###` 小节数 + 逐 `point_id` 的练习小节锚点；
     - `stage_plan[]`（恰 5 条）→ `plan.md` 逐阶段名 + `done_when`；
     - `exam_strategy`（课程级块）→ `plan.md` 的 `## 应试策略` 区块内的 `text_md`；
     - `review_schedule` → `review.md` 的三档排程或命名缺口。
@@ -116,16 +191,21 @@ def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], 
     `exam_strategy` 这一条是 W1：它曾经既不在渲染器里、也不在本函数里，于是删掉整块
     （1180 → 1179）两层闸门全绿。`explain` / `memorize` 是 B2a 的 N-1：两者有写入者（章页）却无对账，
     于是删掉章页的 `#### 要点梳理` + `#### 记忆辅助`、乃至删掉整个 `knowledge/` 目录都仍然全绿。
-    它们用**精确相等**而不是 `drill` 那样的下界（`rendered < len(drills)`）：这两个 kind 没有别处可落
-    （章页是唯一写入点），下界会让「往章页塞多余的 `#### 要点梳理`」掩盖丢块；口径与 `stage_plan` 的
-    精确比对一致。`blocks[]` 里没有写入者的 kind 由 `validate_content_doc()`（`BLOCK_KINDS` 枚举）拦下，
-    所以这里只需覆盖「有写入者的 kind」。
+    主判据因此是**逐点锚点**（`_per_point_reached_problems`）：块是「真值」，每个有块的 `point_id` 都要在
+    章页上存在自己的 `### 考点精讲：<point_id>` 小节，且该小节内有对应 H4 标题；错误文案点名缺失的
+    `point_id`，与 `drill` 的锚点对账同一形态。注意 F-QC2-1：**精确计数并不能防住 padding** ——
+    删掉 `15043-ch01-s1-p1` 的 `#### 要点梳理` 小节、再在别的章页补一条同名标题，255 == 255 依旧全绿，
+    因为全局计数只回答「渲染了几个」，回答不了「渲染了哪几个」；`drill` 那样的下界（`rendered < len(drills)`）
+    同理。所以计数降级为**次级页级界限**（总量兜底：整页/整目录级丢失、以及多写一条标题），
+    逐点锚点才是主判据。`blocks[]` 里没有写入者的 kind 由
+    `validate_content_doc()`（`BLOCK_KINDS` 枚举）拦下，所以这里只需覆盖「有写入者的 kind」。
     """
-    chapters_text = "".join(
-        text
-        for rel_md, text in page_text.items()
-        if course_pages_contract.matches_page(rel_md, {CHAPTER_PAGE_PATTERN})
-    )
+    chapters_text, sections = _chapter_page_sections(page_text)
+
+    # 主判据：逐考核点（F-QC2-1 —— 能点名是哪个 point_id 丢了）。
+    _per_point_reached_problems(code, content, sections, errors)
+
+    # 次级界限：全局小节计数精确相等（页级总量兜底，message 措辞保持稳定以兼容既有测试）。
     for kind, heading_re, heading in (
         ("explain", EXPLAIN_SUMMARY_RE, "要点梳理"),
         ("memorize", MEMORIZE_AID_RE, "记忆辅助"),
