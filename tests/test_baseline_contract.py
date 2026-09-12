@@ -22,6 +22,7 @@ from tests.baseline_contract import (
     coherence_problems,
     contract_problems,
     official_set_problems,
+    official_urls,
 )
 
 
@@ -128,3 +129,27 @@ def test_missing_files_are_reported_not_raised(tmp_path):
     assert any("missing" in p for p in coherence_problems(empty))
     assert any("missing" in p for p in official_set_problems(empty))
     assert contract_problems(empty), "an empty root must not silently pass"
+
+
+def test_official_set_predicate_matches_the_producer():
+    """N-3（T3 复审，2026-09-12）：`official_urls` 的判据必须与**生产者逐字一致**（合取：
+    `authoritative` **且** 域名是 `jseea.cn` 或其子域），否则合法刷新永远无法满足断言。
+
+    本用例的存在理由：I-1 的修复（`554a816`）只改谓词、**未加测试**，而 committed 数据上旧/新谓词
+    给出**同一个** 10 元素集合 —— 即回退该修复后整套件仍然全绿，修复没有耐久守护。此用例用
+    **合成 baseline**（不依赖 committed 数据）把谓词钉住：构造一条 `jseea.cn` 但
+    `authoritative=False` 的 URL，旧实现会把它算作官方、生产者不会 —— 本断言必须失败。
+    """
+    baseline = {
+        "urls": {
+            "https://www.jseea.cn/a.html": {"authoritative": True},
+            "https://zsb.jseea.cn/sub.html": {"authoritative": True},   # 子域 + authoritative → 官方
+            "https://www.jseea.cn/b.html": {"authoritative": False},    # 域名对但非权威 → **不是**官方
+            "https://eviljseea.cn/c.html": {"authoritative": True},      # 权威标记但域名不符 → **不是**官方
+            "https://example.com/d.html": {"authoritative": True},       # 非官方域 → **不是**官方
+        }
+    }
+    assert official_urls(baseline) == {
+        "https://www.jseea.cn/a.html",
+        "https://zsb.jseea.cn/sub.html",
+    }
