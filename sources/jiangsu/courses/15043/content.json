@@ -15,9 +15,9 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "把第一章、第二章、第三章、第四章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
+      "goal": "把第一章、第二章、第三章、第四章、第五章、第六章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
       "inputs": [
-        "本轮范围的考纲章节目录（第一章、第二章、第三章、第四章）与各章「学习目的与要求」",
+        "本轮范围的考纲章节目录（第一章、第二章、第三章、第四章、第五章、第六章）与各章「学习目的与要求」",
         "本课知识模型列出的相关考核点及其要求层级（识记 / 领会）"
       ],
       "how": [
@@ -26,7 +26,7 @@
         "把读不通、与既有印象冲突的点单独记在待查清单上，不急着下结论。"
       ],
       "outputs": [
-        "第一章、第二章、第三章、第四章的关键词骨架表",
+        "第一章、第二章、第三章、第四章、第五章、第六章的关键词骨架表",
         "考核点层级标注清单",
         "待查问题清单"
       ],
@@ -46,9 +46,9 @@
     },
     {
       "stage": "精读",
-      "goal": "逐章把第一章、第二章、第三章、第四章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
+      "goal": "逐章把第一章、第二章、第三章、第四章、第五章、第六章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
       "inputs": [
-        "本轮范围（第一章、第二章、第三章、第四章）的章、节、考核点结构",
+        "本轮范围（第一章、第二章、第三章、第四章、第五章、第六章）的章、节、考核点结构",
         "本课 AI 讲解块的要点梳理与易错点",
         "本课 AI 记忆辅助块里的口诀、对比与串联"
       ],
@@ -59,7 +59,7 @@
         "把讲不顺的点标回待查清单，下一轮只补这些点。"
       ],
       "outputs": [
-        "第一章、第二章、第三章、第四章的逐章复述笔记",
+        "第一章、第二章、第三章、第四章、第五章、第六章的逐章复述笔记",
         "同节易混点对比表",
         "仍然讲不顺的遗留点清单"
       ],
@@ -145,14 +145,14 @@
     },
     {
       "stage": "复盘",
-      "goal": "回顾第一章、第二章、第三章、第四章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
+      "goal": "回顾第一章、第二章、第三章、第四章、第五章、第六章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
       "inputs": [
-        "第一章、第二章、第三章、第四章的关键词骨架表",
+        "第一章、第二章、第三章、第四章、第五章、第六章的关键词骨架表",
         "错题表与对照卡",
         "本课来源页登记的缺口清单"
       ],
       "how": [
-        "对照骨架表复述第一章、第二章、第三章、第四章的主线，哪一章卡住就回看该章要点。",
+        "对照骨架表复述第一章、第二章、第三章、第四章、第五章、第六章的主线，哪一章卡住就回看该章要点。",
         "把仍不确定的考核点列入缺口清单，明确标为「待核验」，不要凭印象补一个说法。",
         "写下上考场前的检查单：先做哪类题、主观题怎么分点、留出多少时间回看。",
         "把清单与练习记录归档，便于下一轮复习直接接手。"
@@ -3938,6 +3938,3882 @@
       "text_md": "国民革命是在国共合作条件下兴起的革命运动，它一度发展迅速，最终却以失败告终。试述国民革命的兴起及其失败的原因与教训。",
       "question_type": "论述题",
       "answer_md": "兴起：（1）国共合作形成，革命力量实现联合；（2）工农运动迅速发展，群众基础扩大；（3）北伐战争胜利进军，革命势力从南方推进到长江流域。\n过程中工人运动与农民运动互相配合，形成了前所未有的群众动员规模。\n失败原因：（1）革命阵营内部存在严重分歧，国民党右派反对工农运动，最终以突然袭击的方式发动反共政变，屠杀共产党员与革命群众；（2）无产阶级尚未牢牢掌握革命领导权与武装力量，在力量对比中处于不利地位。\n教训：无产阶级必须坚持统一战线中的独立自主，必须掌握革命的领导权与武装力量，才能把革命进行到底。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L327"
+      ],
+      "text_md": "### 要点梳理\n- 东北易帜指掌握东北军政的地方实力派宣布服从南京国民政府、改挂其旗帜的事件，它使南京国民政府在名义上完成了全国的统一。\n- 易帜是在日本企图阻止的情况下实现的，因此它同时具有维护国家统一、抵制外力分裂的意义。\n- 但这种统一是形式上的：东北仍由原地方实力派实际控制，南京国民政府的政令并不能真正贯彻到全国。\n- 与易帜相配套的还有一系列整饬措施，南京国民政府由此取得中央政权的地位，但地方割据的格局并未消除。\n- 考纲以识记层级要求本条，作答时抓住事件名称、性质与「名义上统一」这一分寸。\n\n### 易错点\n- 把东北易帜说成真正的全国统一：它完成的是名义统一，地方实力派仍各据一方。\n- 忽略日本阻挠这一背景，就答不出易帜在维护国家统一方面的意义。\n- 把易帜与南京国民政府的成立混为一谈：后者在前，易帜是统一进程中的一步。\n"
+    },
+    {
+      "block_id": "15043-ch05-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L327"
+      ],
+      "text_md": "**关键词**：改挂旗帜、服从南京、名义统一。\n**口诀**：「旗换了，人没换，统一只是名义上的」。\n**对比**：名义统一 ≠ 真正统一：东北仍由原地方实力派实际控制。\n**串联**：日本企图阻止 → 易帜实现 → 维护国家统一 → 但地方割据格局未消。"
+    },
+    {
+      "block_id": "15043-ch05-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L327"
+      ],
+      "text_md": "东北易帜在当时的直接影响是（ ）。\nA. 使南京国民政府在名义上完成了全国的统一\nB. 使东北的行政管辖完全改为中央直接委派\nC. 使日本放弃了对东北的侵略企图\nD. 使地方实力派的武装被全部收编",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，易帜使南京国民政府在名义上完成全国统一，同时具有抵制外力分裂、维护国家统一的意义。\nB 项不准确，东北仍由原地方实力派实际控制，中央政令并不能真正贯彻。\nC 项与事实不符，日本并未因此放弃侵略。\nD 项与事实不符，地方割据的格局并未消除。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L327"
+      ],
+      "text_md": "### 要点梳理\n- 官僚资本指南京国民政府时期，由掌握政权者凭借政治权力聚敛而成的资本，它以国家名义经营，实际由少数人支配。\n- 它的形成途径主要有三：接收原有官办企业，控制金融与外汇，垄断重要物资的贸易与运输。\n- 凭借政权力量，官僚资本迅速膨胀为控制国民经济命脉的力量，并与外国资本保持着密切的联系。\n- 它的性质是买办的、封建的国家垄断资本，其膨胀严重挤压了民族资本的生存空间，也加重了民众的负担。\n- 考纲以识记层级要求本条，作答时要点明形成途径与性质判断。\n\n### 易错点\n- 把官僚资本等同于一般民族资本：前者靠政治权力聚敛并与外国资本联系密切，后者自主经营且受其挤压。\n- 只记「四大家族」这一说法而说不出形成途径，答案就不完整。\n- 忽略它对民族资本的压制作用，就丢掉了性质判断中最关键的一层。\n"
+    },
+    {
+      "block_id": "15043-ch05-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L327"
+      ],
+      "text_md": "**关键词**：凭政治权力聚敛、国家名义经营、少数人支配。\n**口诀**：「接收、控金融、垄断物资——三招养出官僚资本」。\n**对比**：官僚资本靠政权聚敛并与外国资本联系密切，民族资本自主经营却受其挤压。\n**串联**：形成途径 → 控制国民经济命脉 → 压制民族资本 → 性质是买办的、封建的国家垄断资本。"
+    },
+    {
+      "block_id": "15043-ch05-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L327"
+      ],
+      "text_md": "官僚资本的主要形成途径不包括（ ）。\nA. 接收原有官办企业\nB. 控制金融与外汇\nC. 垄断重要物资的贸易与运输\nD. 依靠民间集股自主经营",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，民间集股自主经营是民族资本的途径，不是官僚资本的形成方式。\nA 项属于官僚资本的形成途径之一。\nB 项属于官僚资本的形成途径之一。\nC 项属于官僚资本的形成途径之一。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L328"
+      ],
+      "text_md": "### 要点梳理\n- 中间党派指南京国民政府时期除国共两党之外、代表中间阶层利益的政治派别，它们既反对国民党的一党专政，也不赞成暴力革命。\n- 它们的政治主张集中在抗日、民主、改良三个方面：要求结束内战、实行民主政治、发展民族经济。\n- 其社会基础主要是民族资产阶级、上层小资产阶级及其知识分子，还有部分开明士绅。\n- 这一基础的两重性决定了它们主张的两重性：有反帝反封建的要求，又害怕民众运动，因而常常动摇于国共两党之间。\n- 领会本条要把「社会基础」与「政治主张」连起来理解，才能说清它们为什么动摇。\n\n### 易错点\n- 把中间党派说成国民党的附庸：它们对一党专政持批评态度，其主张与国民党并不一致。\n- 把中间党派等同于中国共产党：它们不主张暴力革命，路线与共产党不同。\n- 只答主张而漏掉社会基础，就无法解释它们在两党之间的动摇立场。\n"
+    },
+    {
+      "block_id": "15043-ch05-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L328"
+      ],
+      "text_md": "**关键词**：抗日、民主、改良；基础是民族资产阶级与上层小资产阶级。\n**口诀**：「既反一党专政，又不赞成暴力革命」。\n**对比**：与国民党的区别在主张民主抗日，与共产党的区别在不走暴力革命道路。\n**串联**：社会基础的两重性 → 主张的两重性 → 动摇于两党之间，这条因果链是本条核心。"
+    },
+    {
+      "block_id": "15043-ch05-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L328"
+      ],
+      "text_md": "南京国民政府时期，除国共两党之外还存在若干中间党派。请简述中间党派及其社会基础，并说明它们政治主张的特点。",
+      "question_type": "简答题",
+      "answer_md": "（1）中间党派指除国共两党之外、代表中间阶层利益的政治派别，它们既反对国民党的一党专政，也不赞成暴力革命。\n（2）社会基础主要是民族资产阶级、上层小资产阶级及其知识分子，还有部分开明士绅。\n（3）政治主张集中在抗日、民主、改良三个方面：要求结束内战、实行民主政治、发展民族经济。\n（4）其社会基础的两重性决定了主张的两重性：有反帝反封建的要求，又害怕民众运动，因而常常动摇于国共两党之间。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L328"
+      ],
+      "text_md": "### 要点梳理\n- 中国民族资本主义经济的特点是力量弱小、发展不充分，始终没有成为国民经济的主要成分。\n- 结构上以轻工业为主，重工业基础薄弱，机器设备与部分原料依赖进口，技术上也受制于人。\n- 地域分布极不平衡，主要集中在沿海通商口岸，与广大内地农村几乎没有联系。\n- 它与外国资本和封建势力既矛盾又依赖：受其压迫而要求独立发展，又需要借助其资金、技术与市场。\n- 这些特点决定了民族资产阶级在政治上的两面性：有革命要求，又有妥协性。\n\n### 易错点\n- 只答「弱小」而漏掉结构、分布与依赖关系，答案就过于笼统。\n- 把民族资本主义说成与外国资本完全对立：矛盾之外还有依赖的一面。\n- 忽略经济特点与政治两面性之间的联系，就答不出领会层级要求的推论。\n"
+    },
+    {
+      "block_id": "15043-ch05-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L328"
+      ],
+      "text_md": "**口诀**：四个特点——「力量弱、结构偏、分布不平衡、两面依赖」。\n**记忆法**：按「规模—结构—分布—关系」四层背，每层一句话。\n**对比**：与外国资本既矛盾又依赖：受压要求独立，又需借其资金技术与市场。\n**串联**：经济特点 → 政治两面性（有革命要求又有妥协性），这是领会层级要落到的结论。"
+    },
+    {
+      "block_id": "15043-ch05-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L328"
+      ],
+      "text_md": "中国民族资本主义经济在半殖民地半封建社会中发展艰难，形成了自身的特点。请简述中国民族资本主义经济的特点，并说明它对民族资产阶级政治态度的影响。",
+      "question_type": "简答题",
+      "answer_md": "（1）力量弱小、发展不充分，始终没有成为国民经济的主要成分。\n（2）结构上以轻工业为主，重工业基础薄弱，机器设备与部分原料依赖进口。\n（3）地域分布极不平衡，主要集中在沿海通商口岸，与广大内地农村几乎没有联系。\n（4）与外国资本和封建势力既矛盾又依赖：受其压迫而要求独立发展，又需要借助其资金、技术与市场。\n（5）这些特点决定了民族资产阶级在政治上的两面性：有革命要求，又有妥协性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 这一考核点要求掌握在革命处于危机时刻仍然选择加入中国共产党的代表人物。\n- 所谓危机时刻，指国民党右派背叛革命、大批共产党员与革命群众遭到屠杀、革命转入低潮的时期。\n- 这些代表人物在白色恐怖中提出入党要求，有的还放弃了原有的社会地位与优裕生活。\n- 他们的选择表明：革命低潮并未使真正的革命者退缩，反而使党在严峻考验中保持了队伍的纯洁与坚定。\n- 考纲以识记层级要求本条，作答时要点出人物姓名与其加入的特定背景。\n\n### 易错点\n- 忽略「革命危机时刻」这一限定，把一般入党情形当成本条内容。\n- 人物与背景错配：本条考的是白色恐怖下的选择，不是其它时期的入党。\n- 只记姓名而不点明其意义，就答不出这一考核点的用意。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**关键词**：白色恐怖、革命低潮、主动要求入党。\n**口诀**：「越是低潮，越见真心」。\n**对比**：与革命高潮时的入党不同，本条考的是危机时刻的选择。\n**串联**：右派背叛 → 大批人被害 → 有人退缩、有人入党 → 队伍在考验中保持纯洁坚定。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "在革命处于危机时刻加入中国共产党的代表人物，其选择表明（ ）。\nA. 革命低潮使多数革命者选择了退出\nB. 真正的革命者在严峻考验中反而更加坚定\nC. 当时的入党不需要经过任何审查\nD. 革命形势已迅速好转",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，这些人物在白色恐怖中主动要求入党，说明党在考验中保持了队伍的纯洁与坚定。\nA 项与事实相反，有人退缩，也有人毅然入党。\nC 项与本条要点无关，且与事实不符。\nD 项不准确，当时革命正处于低潮。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 八七会议是在国民革命失败、革命处于危急关头召开的一次紧急会议。\n- 会议纠正了此前的右倾错误，确定了实行土地革命和武装反抗国民党反动统治的总方针。\n- 会议提出以武装斗争反抗屠杀政策，并把发动农民举行秋收起义作为当前的主要任务。\n- 毛泽东在会上提出「枪杆子里面出政权」的著名论断，强调了掌握革命武装的极端重要性。\n- 八七会议在危急关头为党指明了继续斗争的方向，中国革命由此开始由大革命失败转向土地革命战争的兴起。\n\n### 易错点\n- 把八七会议说成一般的工作会议：它是在危机关头召开的紧急会议，具有转折意义。\n- 把会议内容只记成「纠正错误」：确定土地革命与武装反抗的总方针才是核心。\n- 把「枪杆子里面出政权」的提出者记错，或把这一论断与会议内容割裂。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**关键词**：紧急会议、纠正右倾、土地革命、武装反抗、枪杆子里面出政权。\n**口诀**：「纠错 + 定方针：土革加武装」。\n**对比**：它不是普通工作会议，而是危急关头的紧急会议，具有转折意义。\n**串联**：国民革命失败 → 八七会议定方针 → 秋收起义等武装斗争兴起，大革命失败转向土地革命战争。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "八七会议确定的总方针是（ ）。\nA. 实行土地革命和武装反抗国民党反动统治\nB. 与国民党继续合作以推进国民革命\nC. 集中力量攻打中心城市\nD. 立即在全国范围内建立工农民主政权",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议纠正右倾错误，确定土地革命与武装反抗的总方针，并把发动秋收起义作为主要任务。\nB 项与会议决定相反，会议正是针对此前的右倾错误。\nC 项不是会议确定的总方针。\nD 项当时不具备这一条件，也不是会议内容。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 湘赣边界秋收起义是由毛泽东领导、在湘赣边界发动的一次武装起义，参加者包括农民、工人与部分革命士兵。\n- 起义原定进攻中心城市，受挫后毛泽东决定放弃原定计划，转向敌人力量薄弱的农村山区。\n- 这一转向的意义在于：它把武装斗争与农村地区结合起来，成为探索革命新道路的开端。\n- 起义队伍经过整编后向井冈山地区进军，为农村革命根据地的创建准备了力量。\n- 考纲以识记层级要求本条，作答时要点明领导人、起义地域与转向农村这一关键转折。\n\n### 易错点\n- 把起义说成成功攻占中心城市：它受挫后转向农村，正是这一转向具有历史意义。\n- 把领导人记错：秋收起义由毛泽东领导，与南昌起义的领导力量不同。\n- 忽略「转向农村」这一决定，只记起义本身，就丢掉了本条的核心。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**关键词**：毛泽东领导、湘赣边界、受挫后转向农村。\n**口诀**：「打不下城，就上山」。\n**对比**：与南昌起义的领导力量不同；本条的核心是「转向农村」这一决定。\n**串联**：原定进攻中心城市 → 受挫 → 转向敌人薄弱的农村山区 → 向井冈山进军 → 探索新道路的开端。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "湘赣边界秋收起义受挫后，毛泽东作出的关键决定是（ ）。\nA. 继续强攻中心城市\nB. 放弃原定计划，转向敌人力量薄弱的农村山区\nC. 就地解散起义队伍\nD. 退往沿海城市保存力量",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，这一转向把武装斗争与农村地区结合起来，成为探索革命新道路的开端。\nA 项与事实相反，起义受挫后并未继续强攻中心城市。\nC 项与事实不符，队伍经整编后向井冈山进军。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 广州起义是继南昌起义、秋收起义之后，中国共产党在城市发动的又一次武装起义。\n- 起义由共产党人领导，参加者包括工人赤卫队、革命士兵与农民，起义后建立了工农政权。\n- 由于敌我力量悬殊，起义很快失败，许多革命者牺牲。\n- 它的意义在于以事实表明：在革命处于低潮、敌人力量强大的中心城市，单靠城市暴动难以取得胜利。\n- 这一教训与秋收起义转向农村形成对照，共同推动党去探索适合中国实际的革命道路。\n\n### 易错点\n- 把广州起义说成一次胜利的起义：它很快失败，其价值在于提供了教训。\n- 把它与秋收起义混同：两次起义地点、领导人不同，且秋收起义后转向农村。\n- 忽略它留下的教训，就答不出「城市中心道路行不通」这一层。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**关键词**：城市起义、工农政权、很快失败、留下教训。\n**口诀**：「广州试了一次城市暴动，试出了行不通」。\n**对比**：与秋收起义对照——一次转向农村，一次坚持城市，两种结局。\n**串联**：敌我力量悬殊 → 起义失败 → 证明中心城市难以取胜 → 推动探索农村道路。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "广州起义留下的重要教训是（ ）。\nA. 城市工人不具备革命性\nB. 在敌人力量强大的中心城市，单靠城市暴动难以取得胜利\nC. 起义不应建立工农政权\nD. 武装斗争应当完全停止",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，起义很快失败，其意义正在于以事实表明城市中心道路难以取胜。\nA 项与事实相反，工人赤卫队是起义的重要力量。\nC 项与事实不符，起义后确实建立了工农政权。\nD 项与事实相反，起义推动了党去探索武装斗争的新道路。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 《星星之火，可以燎原》回答了革命高潮能否到来、农村斗争能否坚持的问题，指出革命力量虽小却必将发展壮大。\n- 它以「星星之火」比喻小块红色政权，说明只要路线正确，农村根据地能够逐步扩展为全国性的革命高潮。\n- 《反对本本主义》则批评脱离实际、照搬书本与教条的做法，提出调查研究是解决问题的前提。\n- 两篇文章分别从革命前途与思想方法两个侧面，为农村包围城市道路提供了理论支撑。\n- 考纲以识记层级要求本条，作答时要点明两篇文章各自回答的问题。\n\n### 易错点\n- 把两篇文章混为一谈：一篇讲革命前途与道路，一篇讲思想方法与调查研究。\n- 把「星星之火，可以燎原」理解成对当时形势的乐观估计：它讲的是发展趋势与必然性。\n- 忽略《反对本本主义》对教条主义的批评，就答不出它对思想方法的意义。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**记忆法**：两篇分工记——一篇答「前途怎样」，一篇答「方法怎样」。\n**口诀**：星火讲前途，本本讲方法。\n**对比**：星火燎原讲发展趋势与必然性，不是对当时形势的乐观估计。\n**串联**：小块红色政权 → 逐步扩展 → 全国性高潮，加上调查研究的思想方法，构成道路的理论支撑。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "《反对本本主义》主要批评的是（ ）。\nA. 脱离实际、照搬书本与教条的做法\nB. 农村包围城市的道路\nC. 土地革命的政策\nD. 武装斗争的必要性",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，该文提出调查研究是解决问题的前提，批评的是把书本与教条当作现成结论的做法。\nB 项与该文主旨不符：农村包围城市的道路正是这篇文章所要论证的方向，而不是它批评的对象。\nC 项与该文主旨不符：土地革命是实践中的具体政策问题，不是这篇文章的批评对象。\nD 项与该文主旨不符：这篇文章强调武装斗争必须从实际出发，并未否定武装斗争的必要性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 古田会议是红军时期召开的一次重要会议，核心是解决如何建设一支新型人民军队的问题。\n- 会议确立了思想建党、政治建军的原则：用无产阶级思想克服各种非无产阶级思想，坚持党对军队的绝对领导。\n- 会议还明确了红军的任务不只是打仗，还要担负宣传群众、组织群众、建设政权的职责。\n- 这些原则解决了在农村环境中、以农民为主要成分的条件下建设人民军队的根本问题。\n- 考纲以识记层级要求本条，作答时要点明会议名称与确立的原则。\n\n### 易错点\n- 把古田会议说成一次军事作战会议：它解决的是建军原则与思想建设问题。\n- 只记「党指挥枪」而漏掉思想建党与红军三大任务，答案就不完整。\n- 忽略会议所处的农村环境与农民成分这一背景，就答不出这些原则为什么重要。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**关键词**：思想建党、政治建军、党对军队绝对领导、红军三大任务。\n**口诀**：「支部建在连上，思想建在脑上」。\n**对比**：它解决的是建军原则与思想建设，不是一次作战会议。\n**串联**：农村环境 + 农民成分 → 需要思想建党 → 确立党指挥枪 → 红军还要做群众工作与政权建设。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "古田会议确立的原则是（ ）。\nA. 思想建党、政治建军，坚持党对军队的绝对领导\nB. 以城市为中心发动起义\nC. 官兵分等、严明等级\nD. 军队只担负作战任务",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议解决了在农村环境中、以农民为主要成分的条件下建设人民军队的根本问题。\nB 项与会议内容无关。\nC 项与会议确立的官兵平等、民主管理相反。\nD 项与会议明确的红军三大任务相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "### 要点梳理\n- 本条要求掌握毛泽东在井冈山与兴国先后主持制定的两部土地法，以及两部土地法之间的联系与变化。\n- 井冈山时期的土地法第一次以法律形式宣布废除封建土地所有制，具有开创意义，但也存在规定过「左」的地方。\n- 兴国时期的土地法在总结实践经验的基础上作了修正，对土地分配的对象与办法规定得更为切合实际。\n- 两部土地法的演进说明：土地政策是在实践中不断修正、逐步完善的，而不是一次定型。\n- 考纲以识记层级要求本条，作答时要点明两部土地法的制定地点与先后关系。\n\n### 易错点\n- 把两部土地法的制定地点或先后顺序颠倒。\n- 把井冈山土地法说成完全正确的政策：它带有开创性，同时也有过「左」的规定。\n- 忽略两部土地法之间的修正关系，就答不出土地政策逐步完善这一层。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "**记忆法**：两部土地法按地点成对记——井冈山在前（开创），兴国在后（修正）。\n**口诀**：「井冈山开先河，兴国改得细」。\n**对比**：井冈山土地法有开创意义但也存在过「左」的规定，不能说它完全正确。\n**串联**：第一部 → 实践检验 → 第二部修正 → 土地政策逐步完善，不是一次定型。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L332"
+      ],
+      "text_md": "关于毛泽东在井冈山与兴国先后主持制定的两部土地法，正确的说法是（ ）。\nA. 两部土地法内容完全相同\nB. 井冈山土地法具有开创意义，兴国土地法对其作了修正\nC. 兴国土地法在前，井冈山土地法在后\nD. 两部土地法都未涉及土地所有权问题",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，第一部具有开创意义但存在过「左」的规定，第二部在总结经验基础上作了修正。\nA 项与事实不符，第二部对分配对象与办法作了修正。\nC 项先后顺序颠倒。\nD 项与事实不符，第一部即宣布废除封建土地所有制。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 南昌起义是中国共产党在国民革命失败后发动的第一次武装起义，它打响了武装反抗国民党反动统治的第一枪。\n- 起义由共产党人独立领导，参加者包括受党影响的国民革命军部队，起义后成立了革命委员会。\n- 它的意义首先在于标志着中国共产党独立领导革命战争、创建人民军队的开始。\n- 其次，它宣告了党以武装斗争反抗屠杀政策的坚定立场，为此后的武装斗争树立了旗帜。\n- 起义军后来转向农村与其它起义力量会合，为农村革命根据地的创建准备了条件。\n\n### 易错点\n- 把南昌起义说成与国民党合作进行的行动：它是共产党独立领导的起义。\n- 只答「第一次起义」而漏掉「创建人民军队的开始」这一意义。\n- 把起义后的进军方向说成继续攻打大城市，忽略其转向农村的一面。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**关键词**：第一次武装起义、独立领导、第一枪、人民军队的开始。\n**口诀**：「第一枪，自己打的」。\n**对比**：它由共产党独立领导，不是与国民党合作的行为。\n**串联**：国民革命失败 → 南昌起义打响第一枪 → 独立领导革命战争、创建人民军队 → 转向农村。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "南昌起义是中国共产党在国民革命失败后发动的一次重要起义，它打响了武装反抗国民党反动统治的第一枪。请简述南昌起义的意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）它打响了武装反抗国民党反动统治的第一枪，宣告了党以武装斗争反抗屠杀政策的坚定立场。\n（2）起义由共产党人独立领导，标志着中国共产党独立领导革命战争、创建人民军队的开始。\n（3）起义后成立了革命委员会，为此后的武装斗争树立了旗帜。\n（4）起义军后来转向农村与其它起义力量会合，为农村革命根据地的创建准备了条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 「三湾改编」是起义部队在向井冈山进军途中进行的一次整编，核心是确立党对军队的领导。\n- 改编的内容主要有三：把支部建在连上，设立士兵委员会，实行官兵平等与民主管理。\n- 「支部建在连上」使党的组织深入到基层，保证了军队在艰苦环境中不散不乱。\n- 官兵平等与民主管理改变了旧军队的等级习气，使部队获得士兵的认同与拥护。\n- 这些做法为建设新型人民军队奠定了组织基础，是党领导军队的重要开端。\n\n### 易错点\n- 把三湾改编说成单纯的队伍缩编：它的核心是确立党对军队的领导与军队内部的民主制度。\n- 把「支部建在连上」记成「支部建在团上」，一字的差别就改变了组织层级。\n- 忽略改编与后来古田会议建军原则之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**口诀**：三湾改编三件事——「支部建在连上、士兵委员会、官兵平等」。\n**记忆法**：一律记层级——「连上」，不是团上。\n**对比**：它不是单纯缩编队伍，核心是确立党对军队的领导与内部民主。\n**串联**：进军途中整编 → 组织深入基层 → 部队不散不乱 → 为古田会议建军原则奠基。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "起义部队在向井冈山进军途中进行了「三湾改编」。请简述「三湾改编」的主要内容及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）改编的核心是确立党对军队的领导。\n（2）主要内容有三：把支部建在连上，设立士兵委员会，实行官兵平等与民主管理。\n（3）「支部建在连上」使党的组织深入到基层，保证了军队在艰苦环境中不散不乱。\n（4）官兵平等与民主管理改变了旧军队的等级习气，使部队获得士兵的认同与拥护。\n（5）这些做法为建设新型人民军队奠定了组织基础，是党领导军队的重要开端。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 井冈山农村革命根据地是秋收起义部队转向农村后创建的，是第一个农村革命根据地。\n- 创建根据地的意义首先在于它保存并发展了革命力量，使革命在低潮中找到立足点。\n- 其次，它把武装斗争、土地革命与根据地建设三者结合起来，形成「工农武装割据」的局面。\n- 再次，它以实践回答了革命道路问题：在敌人力量强大的条件下，可以先在农村积蓄力量，再夺取全国胜利。\n- 因此它是农村包围城市、武装夺取政权道路的起点。\n\n### 易错点\n- 把根据地创建说成单纯的军事撤退：它同时包含土地革命与政权建设的内容。\n- 忽略「第一个农村革命根据地」这一定位。\n- 只记创建事实而漏掉它对革命道路探索的意义。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**关键词**：第一个农村革命根据地、工农武装割据、三者结合。\n**口诀**：「武装 + 土地 + 政权，三件事一起干」。\n**对比**：它不是单纯的军事撤退，同时包含土地革命与政权建设。\n**串联**：保存发展力量 → 三者结合 → 回答革命道路问题 → 农村包围城市道路的起点。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "井冈山农村革命根据地是中国共产党创建的第一块农村革命根据地。请简述井冈山农村革命根据地创建的意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）它保存并发展了革命力量，使革命在低潮中找到立足点。\n（2）它把武装斗争、土地革命与根据地建设三者结合起来，形成「工农武装割据」的局面。\n（3）它以实践回答了革命道路问题：在敌人力量强大的条件下，可以先在农村积蓄力量，再夺取全国胜利。\n（4）因此它是农村包围城市、武装夺取政权道路的起点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p11/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 红军反「围剿」作战，是国民党军队对农村革命根据地发动大规模军事进攻后，红军所进行的防御与反击作战。\n- 红军采取的是积极防御的方针：诱敌深入，集中优势兵力，在运动中各个歼灭敌人。\n- 依靠根据地群众的支持与熟悉地形的条件，红军多次打破进攻，根据地得以扩大。\n- 这些作战的胜利证明，人民军队能够以弱胜强，关键在于正确的战略战术与群众基础。\n- 领会本条要把「战略战术」与「群众支持」两方面结合起来作答。\n\n### 易错点\n- 把反「围剿」说成阵地防御战：红军实行的是积极防御与运动战，不是单纯固守。\n- 只讲军事战术而漏掉群众支持与根据地条件。\n- 忽略这些胜利对根据地存在与发展的意义。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**关键词**：积极防御、诱敌深入、集中优势兵力、群众支持。\n**口诀**：「诱进来，集中打，各个歼」。\n**对比**：是积极防御与运动战，不是单纯固守的阵地战。\n**串联**：正确战术 + 群众与地形条件 → 打破进攻 → 根据地扩大 → 证明能以弱胜强。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p11/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "土地革命战争时期，红军多次打破国民党军队对根据地的军事进攻。请简述红军反「围剿」作战的胜利及其原因。",
+      "question_type": "简答题",
+      "answer_md": "（1）红军采取积极防御的方针：诱敌深入，集中优势兵力，在运动中各个歼灭敌人。\n（2）依靠根据地群众的支持与熟悉地形的条件，红军多次打破进攻，根据地得以扩大。\n（3）这些作战的胜利证明，人民军队能够以弱胜强，关键在于正确的战略战术与群众基础。\n（4）同时也要看到，后来由于「左」倾错误的干扰，反「围剿」也曾遭受失利，这说明正确路线是胜利的前提。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p12/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 中央革命根据地是土地革命战争时期面积最大、影响最广的一块农村革命根据地，由赣南与闽西两块根据地连成。\n- 它是在红四军转战与地方武装配合的基础上逐步形成的，后来成为中共中央所在地。\n- 根据地在区域内建立了比较完整的政权机构，开展了土地革命、经济建设和文化教育。\n- 它的意义在于提供了局部执政的实践经验，也检验了农村包围城市道路的可行性。\n- 由于「左」倾错误与敌我力量悬殊，红军后来被迫撤离，根据地的实践随长征转移而进入新的阶段。\n\n### 易错点\n- 把中央革命根据地与井冈山根据地混同：井冈山根据地是起点，中央革命根据地是其后的更大区域。\n- 只记军事斗争而漏掉政权、经济、文化建设的内容。\n- 忽略它作为局部执政实践的意义。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p12/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**关键词**：面积最大、赣南闽西连成、中共中央所在地、局部执政实践。\n**口诀**：「井冈山是起点，中央根据地是最大那块」。\n**对比**：与井冈山根据地不同，它是其后的更大区域，并成为中央所在地。\n**串联**：逐步形成 → 建立完整政权 → 土地革命与各项建设 → 检验道路可行性 → 后因「左」倾与敌强被迫撤离。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p12/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "中央革命根据地是土地革命战争时期影响最大的一块根据地。请简述中央革命根据地的基本情况及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）它由赣南与闽西两块根据地连成，是当时面积最大、影响最广的农村革命根据地，后来成为中共中央所在地。\n（2）它是在红四军转战与地方武装配合的基础上逐步形成的。\n（3）根据地在区域内建立了比较完整的政权机构，开展了土地革命、经济建设和文化教育。\n（4）它的意义在于提供了局部执政的实践经验，也检验了农村包围城市道路的可行性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p13/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 土地革命中的阶级路线是依靠贫农、雇农，联合中农，限制富农，消灭地主阶级。\n- 这一路线的核心是解决土地所有权问题，把地主占有的土地分给无地少地的农民。\n- 土地分配的方法是以乡为单位，按人口平均分配，在原耕地基础上抽多补少、抽肥补瘦。\n- 依靠贫雇农保证了土地革命的基本力量，联合中农避免了树敌过多，这是路线得以推行的关键。\n- 土地革命使农民在经济上翻身，也因此赢得了农民对革命的支持。\n\n### 易错点\n- 把阶级路线记成「消灭一切剥削阶级」：路线的对象与步骤是有区分的，不能笼统表述。\n- 把「限制富农」与「消灭地主阶级」混淆，二者政策强度不同。\n- 只答分配方法而漏掉阶级路线，或把两者顺序颠倒。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p13/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**口诀**：阶级路线——「依靠贫雇、联合中农、限制富农、消灭地主阶级」。\n**记忆法**：按依靠 → 联合 → 限制 → 消灭四档记，强度递进。\n**对比**：「限制富农」与「消灭地主阶级」强度不同，不要写成一句。\n**串联**：路线定力量 → 方法定分配（以乡为单位、按人口平均、抽多补少抽肥补瘦）→ 农民翻身支持革命。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p13/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "土地革命是农村根据地生存和发展的基础。请简述土地革命中的阶级路线和土地分配方法。",
+      "question_type": "简答题",
+      "answer_md": "（1）阶级路线是依靠贫农、雇农，联合中农，限制富农，消灭地主阶级。\n（2）这一路线的核心是解决土地所有权问题，把地主占有的土地分给无地少地的农民。\n（3）土地分配的方法是以乡为单位，按人口平均分配，在原耕地基础上抽多补少、抽肥补瘦。\n（4）依靠贫雇农保证了土地革命的基本力量，联合中农避免了树敌过多，这是路线得以推行的关键。\n（5）土地革命使农民在经济上翻身，也因此赢得了农民对革命的支持。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s2-p14/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s2-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "### 要点梳理\n- 左翼文化运动是国民党推行文化专制的情况下，进步文化工作者在文艺、社会科学等领域开展的斗争。\n- 它的基本主张是反对国民党的文化专制，宣传进步思想，配合土地革命与抗日救亡的形势。\n- 运动的主要形式包括创办刊物、创作文艺作品、翻译介绍进步理论、开展文艺论争。\n- 它以笔为武器，在思想文化领域扩大了进步力量的影响，培养了一批文化工作者。\n- 领会本条要把它放在「军事斗争之外的另一条战线」这一位置上理解。\n\n### 易错点\n- 把左翼文化运动说成单纯的文学活动：它同时具有明确的政治指向。\n- 忽略它与国民党文化专制的对抗关系。\n- 把它与后来抗日时期的文艺活动混同，两个阶段的形势不同。\n"
+    },
+    {
+      "block_id": "15043-ch05-s2-p14/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s2-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "**关键词**：文化专制下的斗争、办刊物、文艺创作、理论译介。\n**口诀**：「拿笔当枪的另一条战线」。\n**对比**：不是单纯文学活动，它有明确政治指向：反对文化专制。\n**串联**：反对文化专制 → 宣传进步思想 → 配合土地革命与救亡 → 培养一批文化工作者。"
+    },
+    {
+      "block_id": "15043-ch05-s2-p14/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s2-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L335"
+      ],
+      "text_md": "在国民党推行文化专制的情况下，进步文化工作者开展了左翼文化运动。请简述左翼文化运动的基本情况。",
+      "question_type": "简答题",
+      "answer_md": "（1）它是进步文化工作者在文艺、社会科学等领域开展的斗争，基本主张是反对国民党的文化专制、宣传进步思想。\n（2）运动配合土地革命与抗日救亡的形势，具有明确的政治指向。\n（3）主要形式包括创办刊物、创作文艺作品、翻译介绍进步理论、开展文艺论争。\n（4）它以笔为武器，在思想文化领域扩大了进步力量的影响，培养了一批文化工作者。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "### 要点梳理\n- 中华苏维埃第一次全国代表大会是在中央革命根据地召开的，会上宣告成立中华苏维埃共和国临时中央政府。\n- 大会通过了宪法大纲以及土地、劳动、经济等方面的法令，规定了工农民主政权的性质与任务。\n- 大会选举产生了中央执行委员会，组成了临时中央政府，毛泽东任主席。\n- 它的意义在于：这是中国共产党领导人民建立的第一个全国性工农民主政权，是局部执政的重要实践。\n- 由于当时的条件限制，这个政权未能对全国行使有效管辖，但为后来的政权建设积累了经验。\n\n### 易错点\n- 把这次大会与其它会议混同：它是宣告工农民主政权成立的代表大会。\n- 把这一政权说成对全国有效管辖的政权：它实际上是局部执政的政权。\n- 只记成立而漏掉通过法令、规定政权性质这些内容。\n"
+    },
+    {
+      "block_id": "15043-ch05-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "**关键词**：中华苏维埃第一次全国代表大会、临时中央政府、宪法大纲、工农民主政权。\n**口诀**：「第一个全国性工农民主政权」。\n**对比**：它是局部执政的政权，不是对全国有效管辖的政权。\n**串联**：大会 → 通过宪法大纲与各项法令 → 选举中央执行委员会 → 为后来政权建设积累经验。"
+    },
+    {
+      "block_id": "15043-ch05-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "中华苏维埃第一次全国代表大会的历史意义是（ ）。\nA. 宣告成立了中国共产党领导人民建立的第一个全国性工农民主政权\nB. 宣告中国共产党成立\nC. 宣告抗日民族统一战线正式形成\nD. 宣告长征胜利结束",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，大会通过宪法大纲与各项法令，选举产生中央执行委员会，组成临时中央政府。\nB 项与事实不符，中国共产党的成立是中共一大的成果。\nC 项与事实不符，统一战线的形成在抗日战争时期。\nD 项与事实不符，长征胜利在其后。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "### 要点梳理\n- 赣南会议是中央代表团在中央革命根据地召开的一次会议，会上对根据地的实际工作提出了批评。\n- 会议错误地指责毛泽东等人的主张，把适合根据地实际的做法说成右倾，排挤了正确的领导。\n- 它是在「左」倾教条主义影响下召开的，反映了脱离实际、照搬教条的倾向对根据地工作的干扰。\n- 会后，正确的军事与土地政策受到影响，为后来反「围剿」的失利埋下隐患。\n- 考纲以识记层级要求本条，作答时要点明会议名称、主要内容与错误性质。\n\n### 易错点\n- 把赣南会议说成一次正确总结经验的会议：它对根据地实际工作的批评是错误的。\n- 忽略它与「左」倾教条主义之间的联系。\n- 只记会议本身而不答它对根据地工作的影响。\n"
+    },
+    {
+      "block_id": "15043-ch05-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "**关键词**：中央代表团召开、批评根据地实际工作、排挤正确领导。\n**口诀**：「把对的当成右的批」。\n**对比**：它不是正确总结经验的会议，它对实际工作的批评是错误的。\n**串联**：「左」倾教条主义 → 赣南会议 → 正确政策受干扰 → 为反「围剿」失利埋隐患。"
+    },
+    {
+      "block_id": "15043-ch05-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "赣南会议的主要错误在于（ ）。\nA. 对根据地的实际工作提出错误批评，排挤了正确的领导\nB. 放弃了土地革命\nC. 解散了红军主力\nD. 与国民党达成了妥协",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议对根据地的实际工作提出错误批评，把适合实际情况的做法说成右倾，排挤了正确的领导。\nB 项与事实不符：会议并未放弃土地革命，土地政策仍在推行，受影响的是具体做法。\nC 项与事实不符：红军主力并未因这次会议被解散。\nD 项与事实不符：会议是党内的会议，与国民党并无妥协关系。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "### 要点梳理\n- 红军的战略大转移，是在反「围剿」失利、根据地难以坚持的情况下进行的，即长征。\n- 转移途中召开的遵义会议纠正了军事与组织上的错误，确立了正确的领导，成为历史转折点。\n- 此后红军在极端艰苦的条件下四渡赤水、巧渡金沙江、强渡大渡河、飞夺泸定桥，并翻越雪山、穿过草地。\n- 三大主力红军胜利会师，标志着长征的胜利结束，革命力量得以保存并转移到大西北。\n- 长征的胜利表明，中国共产党与红军具有战胜一切困难的顽强生命力，为革命新局面准备了条件。\n\n### 易错点\n- 把战略大转移说成主动的战略进攻：它是在失利情况下为保存力量而进行的转移。\n- 把遵义会议说成一次普通会议：它确立了正确领导，是历史转折点。\n- 把三大主力会师的时间或意义记错，或者忽略长征保存革命力量这一结果。\n"
+    },
+    {
+      "block_id": "15043-ch05-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "**关键词**：战略大转移（长征）、遵义会议、三大主力会师。\n**口诀**：「转移中开会，会师才算完」。\n**对比**：它是失利情况下为保存力量而转移，不是主动的战略进攻。\n**串联**：反「围剿」失利 → 转移 → 遵义会议确立正确领导 → 历尽艰险 → 三大主力会师 → 革命力量保存。"
+    },
+    {
+      "block_id": "15043-ch05-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L341"
+      ],
+      "text_md": "红军战略大转移过程中的历史转折点是（ ）。\nA. 八七会议\nB. 遵义会议\nC. 古田会议\nD. 赣南会议",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，遵义会议纠正了军事与组织上的错误，确立了正确的领导。\nA 项八七会议在转移之前，且不是转移途中的会议。\nC 项古田会议在转移之前。\nD 项赣南会议在转移之前，且其批评是错误的。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L343"
+      ],
+      "text_md": "### 要点梳理\n- 革命根据地的建设包括政权建设、经济建设与文化建设三个方面。\n- 政权建设上，召开工农兵代表大会，建立各级工农民主政权，实行民主选举与议行合一的制度。\n- 经济建设上，开展土地革命，发展农业生产，兴办小型工厂与合作社，保障军需与民用。\n- 文化建设上，开办列宁小学与夜校，开展识字运动，创办报刊，普及文化知识与革命道理。\n- 这些建设使根据地在被封锁的条件下得以维持，也向民众展示了新政权与旧政权的区别。\n\n### 易错点\n- 只答经济建设而漏掉政权与文化建设，答案就不完整。\n- 把根据地建设说成单纯的军事后勤工作，忽略其政治与社会的意义。\n- 忽略封锁这一外部条件，就答不出这些建设为什么重要。\n"
+    },
+    {
+      "block_id": "15043-ch05-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L343"
+      ],
+      "text_md": "**口诀**：建设三块——「政权、经济、文化」。\n**记忆法**：政权记工农兵代表大会与民主选举，经济记土地革命与合作社，文化记列宁小学与识字运动。\n**对比**：不是单纯军事后勤，而是政治、经济、文化的全面建设。\n**串联**：被封锁的条件 → 三方面建设 → 根据地得以维持 → 向民众展示新旧政权的区别。"
+    },
+    {
+      "block_id": "15043-ch05-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L343"
+      ],
+      "text_md": "革命根据地在被封锁的条件下开展建设，形成了自己的经验。请简述革命根据地的建设主要包括哪些方面。",
+      "question_type": "简答题",
+      "answer_md": "（1）政权建设：召开工农兵代表大会，建立各级工农民主政权，实行民主选举与议行合一的制度。\n（2）经济建设：开展土地革命，发展农业生产，兴办小型工厂与合作社，保障军需与民用。\n（3）文化建设：开办列宁小学与夜校，开展识字运动，创办报刊，普及文化知识与革命道理。\n（4）这些建设使根据地在被封锁的条件下得以维持，也向民众展示了新政权与旧政权的区别。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch05-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch05-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L343"
+      ],
+      "text_md": "### 要点梳理\n- 「左」倾错误连续出现，首先与社会历史条件有关：党长期处于分散的农村环境，工人成分较少，小资产阶级思想影响较深。\n- 其次与理论准备不足有关：党成立时间不长，对马克思主义与中国实际的结合还缺乏深刻认识，容易照搬书本与外国经验。\n- 再次与认识方法有关：把马克思主义教条化、把外国经验神圣化，用主观想象代替对实际情况的调查。\n- 从外部条件看，共产国际的错误指导也起了作用，使一些不切实际的主张被强行推行。\n- 这些错误在军事上表现为冒险进攻与消极防御，在组织上表现为排斥不同意见，给革命造成严重损失。\n- 理解本条要把社会根源、理论根源、认识根源与外部影响分开说明，再落到危害上。\n\n### 易错点\n- 把「左」倾错误的原因只归结为个人品质：它是多种条件共同作用的结果，尤其要指出脱离实际这一认识根源。\n- 把「左」与右混淆：「左」表现为超越实际、冒险进攻，右表现为落后于实际、放弃原则。\n- 只答原因而不答危害，或把危害只写成军事失利，忽略其组织上的影响。\n"
+    },
+    {
+      "block_id": "15043-ch05-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch05-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L343"
+      ],
+      "text_md": "**口诀**：原因四条——「社会条件、理论不足、认识方法、外部影响」。\n**记忆法**：前三层是内因（环境、理论、方法），第四条是外部条件，答题按这四层展开。\n**对比**：「左」是超越实际、冒险进攻；右是落后于实际、放弃原则，两者方向相反。\n**串联**：教条化与神圣化 → 军事上冒险与消极防御、组织上排斥异己 → 造成严重损失。"
+    },
+    {
+      "block_id": "15043-ch05-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch05-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L343"
+      ],
+      "text_md": "20 世纪二三十年代，中国共产党内连续出现「左」倾错误，给革命造成严重损失。试述这些「左」倾错误出现的原因及其危害。",
+      "question_type": "论述题",
+      "answer_md": "（1）社会历史条件方面：党长期处于分散的农村环境，工人成分较少，小资产阶级思想影响较深。\n（2）理论准备方面：党成立时间不长，对马克思主义与中国实际的结合还缺乏深刻认识，容易照搬书本与外国经验。\n（3）认识方法方面：把马克思主义教条化、把外国经验神圣化，用主观想象代替对实际情况的调查。\n（4）外部条件方面：共产国际的错误指导也起了作用，使一些不切实际的主张被强行推行。\n（5）危害：在军事上表现为冒险进攻与消极防御，导致反「围剿」失利、根据地丧失；在组织上表现为排斥不同意见，损害党的团结；在思想上造成教条主义蔓延，直到延安整风才得到系统清算。\n（6）总的来看，「左」倾错误的根源在于脱离实际，反「左」必须坚持实事求是的思想路线。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "### 要点梳理\n- 九一八事变是日本关东军在中国东北蓄意制造并发动武装进攻的事件，它标志着日本大规模侵华战争的开始。\n- 事变后日本迅速侵占东北三省，并于次年扶植傀儡政权，把东北变成进一步侵略中国的基地。\n- 面对侵略，当时的南京国民政府采取不抵抗方针，寄希望于国际联盟的调停，结果助长了日本的侵略气焰。\n- 事变激发了全国人民的抗日救亡运动，东北民众与部分爱国军队自发组织抵抗，成为东北抗日斗争的起点。\n- 考纲以识记层级要求本条，作答时要点明事件名称、性质与后果。\n\n### 易错点\n- 把九一八事变说成偶发冲突：它由日本关东军蓄意制造，是既定侵略计划的实施。\n- 把事变后的局面说成国际调停有效：调停未能制止侵略，反而暴露了不抵抗方针的危害。\n- 忽略事变与东北抗日斗争之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "**关键词**：日本关东军蓄意制造、侵占东北、不抵抗、救亡运动起点。\n**口诀**：「九一八，东北失，抗战从此开了头」。\n**对比**：它是大规模侵华的开始，七七事变才是全面侵华的开始。\n**串联**：蓄意制造 → 侵占东北三省 → 扶植傀儡 → 东北民众自发抵抗。"
+    },
+    {
+      "block_id": "15043-ch06-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "九一八事变的历史地位是（ ）。\nA. 标志日本大规模侵华战争的开始\nB. 标志日本全面侵华战争的开始\nC. 标志抗日民族统一战线正式形成\nD. 标志中国全民族抗战的开始",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，事变由日本关东军蓄意制造，此后日本迅速侵占东北三省，是大规模侵华的开始。\nB 项全面侵华的开始是七七卢沟桥事变。\nC 项统一战线的正式形成在七七事变之后。\nD 项全民族抗战的开始同样以七七事变为标志。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "### 要点梳理\n- 华北事变是日本在侵占东北之后，进一步向华北地区扩张而制造的一系列事件的总称。\n- 日本通过军事威胁与政治施压，企图使华北脱离中国中央政府的管辖，实现所谓「特殊化」。\n- 事变使中国的民族危机进一步加深，华北面临沦为第二个东北的危险。\n- 它直接推动了全国抗日救亡运动的高涨，也促使中国共产党调整政策，提出建立抗日民族统一战线的主张。\n- 考纲以识记层级要求本条，作答时要点明它是一系列事件的总称及其严重性。\n\n### 易错点\n- 把华北事变当成单一事件：它是一系列事件的总称，不是某一天的某一个事件。\n- 把它与九一八事变的时间顺序颠倒：九一八在前，华北事变在其后。\n- 忽略它对抗日民族统一战线政策的推动作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "**关键词**：一系列事件的总称、向华北扩张、企图「特殊化」。\n**口诀**：「不是一件事，是一串事」。\n**对比**：它在九一八之后，把侵略从东北推向华北。\n**串联**：华北危机加深 → 救亡运动高涨 → 推动党提出抗日民族统一战线。"
+    },
+    {
+      "block_id": "15043-ch06-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "华北事变是指（ ）。\nA. 日本在侵占东北之后进一步向华北扩张而制造的一系列事件的总称\nB. 一次单独的军事冲突\nC. 中国军队主动收复华北的战役\nD. 国际联盟调停华北问题的会议",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，日本企图使华北脱离中国中央政府管辖，实现所谓「特殊化」，民族危机进一步加深。\nB 项与事实不符，它是一系列事件的总称。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "### 要点梳理\n- 七七卢沟桥事变是日本军队在北平西南卢沟桥附近挑起武装冲突的事件，它标志着日本全面侵华战争的开始。\n- 事变后日本大举增兵，把局部侵华扩大为全面进攻，中国由此进入全民族抗战阶段。\n- 与九一八事变时不同，这次中国的抵抗是明确的：守军奋起还击，全国各界迅速响应。\n- 事变促成了国共两党再次合作，抗日民族统一战线正式形成，全民族抗战的局面由此打开。\n- 考纲以识记层级要求本条，作答时要点明事件名称与「全面侵华、全民族抗战」的双重标志意义。\n\n### 易错点\n- 把七七事变与九一八事变混同：前者标志全面侵华与全民族抗战，后者标志大规模侵华的开始。\n- 把事变说成中国主动挑衅：它由日军挑起。\n- 忽略事变与抗日民族统一战线正式形成之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "**关键词**：卢沟桥、日军挑起、全面侵华、全民族抗战。\n**口诀**：「七七一起，全国都打」。\n**对比**：九一八＝大规模侵华开始；七七＝全面侵华与全民族抗战开始。\n**串联**：日军挑起 → 守军还击 → 全国响应 → 国共再次合作、统一战线正式形成。"
+    },
+    {
+      "block_id": "15043-ch06-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "七七卢沟桥事变标志着（ ）。\nA. 日本全面侵华战争的开始和全民族抗战的开始\nB. 日本大规模侵华战争的开始\nC. 抗日救亡运动的开始\nD. 国民革命的开端",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，事变后日本大举增兵，把局部侵华扩大为全面进攻，中国由此进入全民族抗战阶段。\nB 项大规模侵华的开始是九一八事变。\nC 项救亡运动在事变之前已经兴起。\nD 项国民革命在更早时期。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "### 要点梳理\n- 伪「满洲国」是日本侵占东北后扶植的傀儡政权，名义上由清朝末代皇帝执政，实际完全受日本控制。\n- 伪「中华民国国民政府」是日本在占领区扶植的另一个傀儡政权，用以推行「以华治华」的策略。\n- 两个傀儡政权的共同特点是以中国名义行事、由日本操纵，借以掩盖侵略、维持占领秩序。\n- 它们的存在说明日本的侵华方式并不限于军事占领，还包括制造傀儡、实行殖民统治。\n- 考纲以识记层级要求本条，作答时要点明两个傀儡政权的名称及其傀儡性质。\n\n### 易错点\n- 把伪政权说成中国的地方政权：它们是日本扶植与操纵的傀儡，不具有独立地位。\n- 把两个伪政权混为一个：它们分属不同地区与不同阶段。\n- 忽略傀儡政权与「以华治华」策略之间的关系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "**关键词**：伪满洲国（东北）、伪中华民国国民政府（占领区）、日本操纵。\n**口诀**：「两个傀儡，一个后台」。\n**对比**：傀儡政权不是中国的地方政权，它没有独立地位。\n**串联**：军事占领 → 扶植傀儡 → 以华治华 → 掩盖侵略、维持占领秩序。"
+    },
+    {
+      "block_id": "15043-ch06-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "伪「满洲国」和伪「中华民国国民政府」的共同特点是（ ）。\nA. 以中国名义行事但完全受日本操纵\nB. 具有独立的国家地位\nC. 由中国民众选举产生\nD. 与日本处于平等地位",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，两者都是日本扶植的傀儡政权，借以掩盖侵略、维持占领秩序。\nB 项与事实不符，它们不具有独立地位。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "### 要点梳理\n- 「南京大屠杀」是日军攻占南京后对手无寸铁的居民与放下武器的战俘进行的大规模屠杀。\n- 这一暴行持续数周，遇难者数量巨大，同时还伴随大规模的强奸、抢劫与纵火。\n- 它是日本侵华战争中最集中、最严重的暴行之一，是日本军国主义侵略本质的集中暴露。\n- 战后，这一事实经大量人证、物证与文献所确证，成为不容否认的历史事实。\n- 考纲以识记层级要求本条，作答时要点明事件名称、性质与它作为侵华暴行典型的意义。\n\n### 易错点\n- 把屠杀说成作战行动中的伤亡：对象是平民与战俘，性质是违反人道的大屠杀。\n- 把暴行发生时间说成日军占领南京之前，时序颠倒。\n- 只记事实而不点明其反映的侵略本质。\n"
+    },
+    {
+      "block_id": "15043-ch06-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "**关键词**：攻占南京后、屠杀平民与战俘、持续数周、铁证如山。\n**口诀**：「占城之后的屠杀，不是作战伤亡」。\n**对比**：对象是平民与放下武器的战俘，性质是违反人道的大屠杀。\n**串联**：日军占领南京 → 大规模屠杀 → 伴随强奸抢劫纵火 → 暴露军国主义侵略本质。"
+    },
+    {
+      "block_id": "15043-ch06-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L374"
+      ],
+      "text_md": "「南京大屠杀」的性质是（ ）。\nA. 日军攻占南京后对手无寸铁的居民与放下武器的战俘进行的大规模屠杀\nB. 两军交战中的正常伤亡\nC. 因战斗激烈造成的平民误伤\nD. 战后统计有争议的一般事件",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一暴行持续数周，遇难者数量巨大，是日本军国主义侵略本质的集中暴露。\nB 项混淆了性质，对象是平民与战俘。\nC 项与事实不符。\nD 项与事实不符，这一事实经大量人证、物证与文献确证。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L376"
+      ],
+      "text_md": "### 要点梳理\n- 日本灭亡中国的计划有一个逐步展开的过程：先侵占东北，再向华北扩张，最后发动全面进攻。\n- 其计划的核心是分步骤蚕食中国，把占领区变成殖民地与战争资源基地。\n- 实施手段包括军事进攻、扶植傀儡政权、经济掠夺与思想奴化，几个方面互相配合。\n- 实施过程中，日本的侵略遭到中国军民的顽强抵抗，其速战速决的企图未能实现，被迫陷入长期战争。\n- 领会本条要抓住「计划的分步实施」与「实施受阻」这一对关系。\n\n### 易错点\n- 把日本的侵略说成临时起意的行动：它是有步骤、有计划的。\n- 只答军事进攻而漏掉傀儡扶植、经济掠夺与思想奴化等手段。\n- 忽略中国人民的抵抗使其计划受阻这一结果。\n"
+    },
+    {
+      "block_id": "15043-ch06-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L376"
+      ],
+      "text_md": "**口诀**：计划三步走——「先东北、再华北、后全面」。\n**记忆法**：手段记四样——军事进攻、傀儡扶植、经济掠夺、思想奴化。\n**对比**：不是临时起意，而是有步骤有计划的侵略。\n**串联**：分步实施 → 遭中国军民抵抗 → 速战速决落空 → 被迫陷入长期战争。"
+    },
+    {
+      "block_id": "15043-ch06-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L376"
+      ],
+      "text_md": "日本侵华并非临时起意，而是有步骤地推进，从东北到华北再到全面进攻，形成了一条清晰的侵略路线。请简述日本灭亡中国的计划及其实施。",
+      "question_type": "简答题",
+      "answer_md": "（1）计划有一个逐步展开的过程：先侵占东北，再向华北扩张，最后发动全面进攻。\n（2）其核心是分步骤蚕食中国，把占领区变成殖民地与战争资源基地。\n（3）实施手段包括军事进攻、扶植傀儡政权、经济掠夺与思想奴化，几个方面互相配合。\n（4）实施过程中，日本的侵略遭到中国军民的顽强抵抗，其速战速决的企图未能实现，被迫陷入长期战争。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 察哈尔抗日同盟军是在华北危机加深的背景下，由爱国将领联合各方力量组织的抗日武装。\n- 同盟军主张收复失地、反对妥协，在察哈尔一带对日军作战并取得了局部胜利。\n- 它反映了部分爱国军队与民众要求抗日的强烈愿望，也表明抗日救亡具有广泛的社会基础。\n- 由于受到多方压制与破坏，同盟军最终被迫解散。\n- 考纲以识记层级要求本条，作答时要点明名称、性质与结局。\n\n### 易错点\n- 把同盟军说成政府组织的军队：它由爱国将领联合各方力量自发组织。\n- 忽略它被压制解散这一结局。\n- 把它与国民党第十九路军的抗日反蒋事变混同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：爱国将领联合、察哈尔、局部胜利、被迫解散。\n**口诀**：「自己拉起来的抗日队伍」。\n**对比**：不是政府组织的军队，与第十九路军的事变也不是一回事。\n**串联**：华北危机 → 爱国将领联合 → 收复失地局部胜利 → 受压制解散。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "察哈尔抗日同盟军（ ）。\nA. 由爱国将领联合各方力量组织，主张收复失地，后被压制解散\nB. 是南京国民政府统一组建的正规军\nC. 由外国势力直接指挥\nD. 始终未与日军作战",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，同盟军在察哈尔一带对日军作战并取得局部胜利，反映了部分爱国军队与民众的抗日愿望。\nB 项与事实不符，它由爱国将领联合各方力量自发组织。\nC 项与事实不符。\nD 项与事实不符，它曾对日军作战。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 国民党第十九路军抗日反蒋事变，是该部队在民族危机加深的形势下，主张抗日并反对妥协方针而发动的事变。\n- 事变发生在福建地区，参加者主张停止内战、一致抗日，并在局部地区采取了联共抗日的措施。\n- 它反映了国民党内部抗日力量的存在，说明不抵抗方针并未获得一致认同。\n- 由于力量薄弱与内部分化，事变很快失败。\n- 考纲以识记层级要求本条，作答时要点明部队番号、事变的双重指向与结局。\n\n### 易错点\n- 把事变的矛头只说成反蒋而漏掉抗日，或只说抗日而漏掉反蒋。\n- 把它与察哈尔抗日同盟军混同：两者主体与地点都不同。\n- 忽略事变失败这一结局及其原因。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：第十九路军、福建、既抗日又反蒋、很快失败。\n**口诀**：「两个矛头：一个对日，一个对蒋」。\n**对比**：与察哈尔抗日同盟军主体不同、地点不同。\n**串联**：民族危机加深 → 主张停止内战一致抗日 → 事变失败 → 但反映国民党内抗日力量存在。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "国民党第十九路军抗日反蒋事变的特点是（ ）。\nA. 既主张抗日，又反对当时的妥协方针\nB. 只反对蒋介石而不主张抗日\nC. 由中国共产党直接领导\nD. 发生在东北地区",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，事变在福建地区发生，参加者主张停止内战、一致抗日，并采取过联共抗日的措施。\nB 项只答一个矛头，不完整。\nC 项与事实不符。\nD 项地点记错。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 宋庆龄是近代中国杰出的社会活动家，在抗日救亡运动中发挥了重要的作用。\n- 她参与发起并领导了多个抗日救亡团体，联络国内外进步力量，推动抗日民族统一战线的形成。\n- 她利用自身的社会影响与国际联系，向世界揭露日本侵华的暴行，争取国际同情与支持。\n- 她还为敌后抗日根据地募集物资与医疗援助，支持长期抗战。\n- 考纲以识记层级要求本条，作答时要点明人物与她在抗日救亡运动中的主要贡献。\n\n### 易错点\n- 把宋庆龄的贡献只写成一般的社会公益：她的活动具有明确的抗日救亡指向。\n- 忽略她在争取国际支持方面的作用。\n- 把她与其它救亡团体的关系记错，或与其它人物的事迹混同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：社会活动家、领导救亡团体、国际宣传、募集援助。\n**口诀**：「对内联络，对外发声」。\n**对比**：她的活动有明确抗日救亡指向，不是一般社会公益。\n**串联**：参与发起救亡团体 → 联络国内外进步力量 → 向世界揭露暴行 → 为根据地募集物资。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "宋庆龄在抗日救亡运动中的主要贡献是（ ）。\nA. 参与发起救亡团体、开展国际宣传并为敌后根据地募集援助\nB. 直接指挥正面战场的作战\nC. 领导敌后抗日游击战争\nD. 主持国民参政会的工作",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，她联络国内外进步力量，向世界揭露日本侵华暴行，募集物资与医疗援助支援长期抗战。\nB 项与事实不符。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 《中国人民对日作战的基本纲领》是抗日救亡运动中提出的文件，主张全国一致对日作战。\n- 它的主要内容是号召停止内战、集中全国力量抗击日本侵略，并提出组织抗日联军与国防政府的主张。\n- 它反映了中间阶层与爱国团体要求抗日的政治主张，为抗日民族统一战线的形成做了舆论准备。\n- 文件的主张与中国共产党提出的抗日救国主张相互呼应，推动了救亡运动的发展。\n- 考纲以识记层级要求本条，作答时要点明文件名称与它的核心主张。\n\n### 易错点\n- 把这一纲领说成政府的正式文件：它由救亡团体提出，不具有官方地位。\n- 只记名称而说不出核心主张（停止内战、一致抗日）。\n- 忽略它在推动统一战线方面的作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：救亡团体提出、停止内战、一致对日、国防政府与抗日联军。\n**口诀**：「不是官方文件，是救亡呼声」。\n**对比**：它由救亡团体提出，不具有官方地位。\n**串联**：主张抗日 → 与党的主张呼应 → 推动救亡运动 → 为统一战线做舆论准备。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "《中国人民对日作战的基本纲领》的核心主张是（ ）。\nA. 停止内战、集中全国力量抗击日本侵略\nB. 立即对日媾和\nC. 只依靠政府军队抗战\nD. 推翻南京国民政府",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，文件还提出组织抗日联军与国防政府的主张，为抗日民族统一战线的形成做了舆论准备。\nB 项与文件主张相反。\nC 项与文件主张相反。\nD 项不是文件主张。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 保卫中国同盟是宋庆龄等人在香港发起组织的抗日救亡团体，以争取国际援助、支援抗战为宗旨。\n- 它的主要工作是向海外宣传中国抗战的真实情况，募集药品与医疗物资，支援敌后抗日根据地。\n- 团体还联络国际友人，把一批医务工作者与物资送往前线，对抗日根据地提供了实际帮助。\n- 它的活动说明，抗日救亡不仅有国内的群众运动，还包括国际宣传与援助这条战线。\n- 考纲以识记层级要求本条，作答时要点明团体名称、发起人与主要工作。\n\n### 易错点\n- 把保卫中国同盟说成军事组织：它是救亡团体，主要做宣传与募集援助。\n- 忽略它支援敌后抗日根据地这一具体贡献。\n- 把它与全国各界救国联合会混同，两者的宗旨与活动范围不同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：宋庆龄等发起、香港、国际宣传、支援根据地。\n**口诀**：「对外募捐，对内送药」。\n**对比**：它是救亡团体而非军事组织；与全国各界救国联合会的宗旨范围不同。\n**串联**：向海外宣传 → 募集药品物资 → 联络国际友人 → 支援敌后根据地。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "保卫中国同盟的主要工作是（ ）。\nA. 向海外宣传中国抗战并募集物资支援敌后根据地\nB. 指挥敌后游击战争\nC. 组织正面战场会战\nD. 负责国民政府的对日交涉",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它由宋庆龄等人在香港发起组织，联络国际友人，把医务工作者与物资送往前线。\nB 项它是救亡团体，不是军事组织。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 全国各界救国联合会是抗日救亡运动高涨时期成立的全国性救亡团体，由各地救亡组织联合组成。\n- 它的主张是停止内战、一致对外，要求实行民主、保障人民的抗日权利。\n- 联合会通过宣言、请愿与群众运动的方式推动抗日，是当时救亡运动的重要组织力量。\n- 它的活动与主张反映了中间阶层的抗日要求，对推动抗日民族统一战线的形成起了积极作用。\n- 考纲以识记层级要求本条，作答时要点明团体名称、性质与主要主张。\n\n### 易错点\n- 把联合会说成党派组织：它是救亡团体，不是政党。\n- 只记名称而说不出「停止内战、一致对外」这一核心主张。\n- 忽略它对统一战线形成的推动作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：全国性救亡团体、各地联合组成、停止内战一致对外。\n**口诀**：「救国会：要民主，要抗日」。\n**对比**：它是救亡团体，不是政党。\n**串联**：宣言请愿与群众运动 → 反映中间阶层要求 → 推动统一战线形成。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "全国各界救国联合会的主张是（ ）。\nA. 停止内战、一致对外，要求实行民主、保障抗日权利\nB. 维持现状、避免冲突\nC. 只依靠国际调停解决争端\nD. 立即建立全国性政权",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它由各地救亡组织联合组成，通过宣言、请愿与群众运动推动抗日。\nB 项与主张相反：它要求改变现状，而不是维持现状、回避冲突。\nC 项与主张不符：它主张依靠全国各界的力量抗日，而不是把希望寄托在国际调停上。\nD 项不是该团体的主张：它要求实行民主、推动抗日，并未提出立即建立全国性政权。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 「逼蒋抗日」是中国共产党在民族危机加深的形势下调整策略的结果：由「抗日反蒋」转为「逼蒋抗日」。\n- 这一调整的依据是中日民族矛盾已成为主要矛盾，迫使掌握全国政权者转向抗日比推翻他更有利于抗战全局。\n- 西安事变的和平解决成为时局转换的枢纽，为国共两党再次合作创造了条件。\n- 国共两党第二次合作正式形成后，红军改编为八路军、新四军，抗日民族统一战线由此建立。\n- 考纲以识记层级要求本条，作答时要点明策略调整、事变的作用与合作形成的标志。\n\n### 易错点\n- 把「逼蒋抗日」理解为放弃原则：调整策略是为了实现抗日，独立自主原则仍然坚持。\n- 把西安事变说成解决时局的最终结果：它是时局转换的枢纽，合作正式形成在其后。\n- 把「抗日反蒋」与「逼蒋抗日」两个阶段的顺序颠倒。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**口诀**：策略两步走——先「抗日反蒋」，后「逼蒋抗日」。\n**记忆法**：西安事变＝时局转换的枢纽，合作正式形成在其后，两点不要并成一点。\n**对比**：调整策略不是放弃原则，独立自主始终坚持。\n**串联**：民族矛盾上升为主要矛盾 → 调整策略 → 西安事变和平解决 → 合作形成、红军改编。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "中国共产党把策略由「抗日反蒋」调整为「逼蒋抗日」，其依据是（ ）。\nA. 中日民族矛盾已上升为主要矛盾\nB. 国民党已放弃一党专政\nC. 红军力量已超过国民党军队\nD. 国际联盟要求中国调整政策",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，迫使掌握全国政权者转向抗日比推翻他更有利于抗战全局，西安事变的和平解决成为时局转换的枢纽。\nB 项与事实不符。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 八路军、新四军是抗日战争时期由红军主力与南方游击队改编而成的抗日武装。\n- 改编是在国共两党再次合作的条件下进行的，编入国民革命军序列，但保持共产党对军队的绝对领导。\n- 八路军主要活动在华北，新四军主要活动在华中，两支力量共同开辟与坚持了敌后战场。\n- 在敌后战场，它们发动群众、开展游击战争、建立抗日根据地，成为坚持长期抗战的中坚力量。\n- 考纲以识记层级要求本条，作答时要点明改编来源、活动区域与作用。\n\n### 易错点\n- 忽略改编后仍保持共产党对军队的绝对领导这一关键。\n- 把八路军与新四军的活动区域记反。\n- 把它们说成单纯的正规军：敌后游击战争与根据地建设同样是其主要活动。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**关键词**：红军主力改编为八路军（华北）、南方游击队改编为新四军（华中）。\n**口诀**：「北八路，南新四」。\n**对比**：编入国民革命军序列，但保持共产党对军队的绝对领导。\n**串联**：改编 → 开辟敌后战场 → 游击战争与根据地建设 → 成为长期抗战的中坚力量。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "关于八路军、新四军，下列说法正确的是（ ）。\nA. 由红军主力与南方游击队改编而成，编入国民革命军序列但保持共产党的绝对领导\nB. 是国民党新组建的部队\nC. 主要活动在正面战场\nD. 改编后不再开展游击战争",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，八路军主要活动在华北、新四军主要活动在华中，共同开辟与坚持了敌后战场。\nB 项与事实不符，它们由红军与游击队改编而成。\nC 项与事实不符，它们主要活动在敌后战场。\nD 项与事实相反，游击战争正是其主要作战形式。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "### 要点梳理\n- 这一考核点要求掌握抗日战争中涌现的几位代表性人物：邓玉芬、马本斋、陈嘉庚。\n- 邓玉芬是敌后根据地的普通农村妇女，送亲人参军、支援前线，代表了根据地的群众基础。\n- 马本斋是回族抗日武装的领导人，率部在华北坚持抗日游击战争，代表了少数民族的抗日力量。\n- 陈嘉庚是爱国华侨领袖，组织华侨募捐、支援抗战，代表了海外侨胞的爱国热忱。\n- 三者身份不同，共同说明抗日战争是全民族的战争。\n\n### 易错点\n- 人物身份与事迹张冠李戴，尤其不要把华侨领袖与根据地群众混淆。\n- 只记姓名而不说出各自代表的群体，就答不出本条「全民族抗战」的用意。\n- 把马本斋的抗日武装说成正规军主力部队。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "**记忆法**：三人三类身份——邓玉芬（根据地群众）、马本斋（少数民族武装）、陈嘉庚（海外华侨）。\n**口诀**：「群众、民族、华侨，一个都不少」。\n**对比**：身份不同，共同点是都投入抗日，体现全民族抗战。\n**串联**：三个不同群体 → 汇入同一场战争 → 说明抗日战争是全民族的战争。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L380"
+      ],
+      "text_md": "邓玉芬、马本斋、陈嘉庚三人共同说明（ ）。\nA. 抗日战争是全民族的战争\nB. 抗日主要依靠正规军\nC. 海外华侨是抗战的主要力量\nD. 敌后战场不需要群众支持",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，三人分别代表根据地群众、少数民族抗日武装与海外侨胞，身份不同而共同投入抗日。\nB 项与三人的身份不符。\nC 项夸大了华侨的作用，与三人身份不符。\nD 项与三人的身份不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "### 要点梳理\n- 《为抗日救国告全国同胞书》是中国共产党在民族危机加深时发表的号召性文件，主张停止内战、一致抗日。\n- 它提出组织全中国统一的国防政府与抗日联军，把各方力量联合起来共同对日作战。\n- 文件的发表表明党的政策正在由「抗日反蒋」向联合一切抗日力量的方向调整。\n- 它在社会上产生广泛影响，推动了抗日救亡运动与统一战线的形成。\n- 领会本条要抓住「政策调整的信号」这一层意义，而不只是记住文件名称。\n\n### 易错点\n- 把文件说成政府的对外宣言：它由中国共产党的名义发表。\n- 只记名称而说不出「国防政府与抗日联军」这一主张。\n- 忽略它与后来统一战线政策之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "**关键词**：号召性文件、停止内战一致抗日、国防政府与抗日联军。\n**口诀**：「一纸告同胞，政策要转向」。\n**对比**：它由中国共产党发表，不是政府对外宣言。\n**串联**：民族危机加深 → 发表号召 → 政策由「抗日反蒋」调整 → 推动统一战线形成。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "《为抗日救国告全国同胞书》在抗日救亡运动中产生了重要影响。请简述这一文件的主要内容及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）它主张停止内战、一致抗日，号召全国同胞共同对日作战。\n（2）它提出组织全中国统一的国防政府与抗日联军，把各方力量联合起来。\n（3）文件的发表表明党的政策正在由「抗日反蒋」向联合一切抗日力量的方向调整。\n（4）它在社会上产生广泛影响，推动了抗日救亡运动与抗日民族统一战线的形成。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p11/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "### 要点梳理\n- 瓦窑堡会议是中国共产党在华北危机加深的形势下召开的重要会议，中心是确定抗日民族统一战线的策略方针。\n- 会议分析了形势的变化，指出中日民族矛盾已上升为主要矛盾，国内阶级关系随之发生变动。\n- 会议批判了关门主义，决定建立最广泛的抗日民族统一战线，把一切可能抗日的力量都联合起来。\n- 会议还强调在统一战线中必须坚持独立自主，保持党对统一战线的政治领导。\n- 瓦窑堡会议解决了政治路线与策略问题，为抗日民族统一战线的建立奠定了政策基础。\n\n### 易错点\n- 把瓦窑堡会议说成军事会议：它解决的是政治路线与策略方针问题。\n- 只记「建立统一战线」而漏掉「反对关门主义」与「坚持独立自主」两项内容。\n- 忽略它对主要矛盾变化的判断，就答不出政策调整的依据。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "**关键词**：瓦窑堡会议、抗日民族统一战线策略、反对关门主义、坚持独立自主。\n**口诀**：「矛盾变了，策略就得变」。\n**对比**：它解决政治路线与策略方针，不是军事会议；与洛川会议分工不同。\n**串联**：中日矛盾上升为主要矛盾 → 批判关门主义 → 建立最广泛统一战线 → 保持独立自主。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p11/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "瓦窑堡会议是中国共产党在华北危机加深的形势下召开的重要会议。请简述瓦窑堡会议的主要内容及其意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）会议分析了形势变化，指出中日民族矛盾已上升为主要矛盾，国内阶级关系随之发生变动。\n（2）会议批判了关门主义，决定建立最广泛的抗日民族统一战线。\n（3）会议强调在统一战线中必须坚持独立自主，保持党对统一战线的政治领导。\n（4）瓦窑堡会议解决了政治路线与策略问题，为抗日民族统一战线的建立奠定了政策基础。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s2-p12/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "### 要点梳理\n- 中共中央致国民党五届三中全会电，是中国共产党为推动国共再次合作而发出的正式文电。\n- 文电提出了停止内战、一致抗日等基本要求，并承诺在国民党接受抗日主张的条件下调整政策。\n- 它的意义在于把合作的条件明确化：以是否抗日作为判断标准，为谈判提供了基础。\n- 文电的发出推动了国民党内部抗日力量的增长，为两党再次合作创造了条件。\n- 领会本条要把它放在「逼蒋抗日」这一策略的实施过程中理解。\n\n### 易错点\n- 把文电说成国民党的文件：它由中共中央发出。\n- 只记文电名称而说不出它提出的条件。\n- 忽略它与「逼蒋抗日」策略之间的实施关系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s2-p12/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "**关键词**：中共中央发出、停止内战一致抗日、以是否抗日为条件。\n**口诀**：「把条件摆到桌面上」。\n**对比**：它是中共中央的文电，不是国民党的文件。\n**串联**：「逼蒋抗日」策略 → 明确合作条件 → 推动国民党内抗日力量增长 → 为合作创造条件。"
+    },
+    {
+      "block_id": "15043-ch06-s2-p12/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L383"
+      ],
+      "text_md": "为推动国共再次合作，中共中央发出了致国民党五届三中全会电。请简述这一文电的内容与作用。",
+      "question_type": "简答题",
+      "answer_md": "（1）文电提出了停止内战、一致抗日等基本要求。\n（2）文电承诺在国民党接受抗日主张的条件下调整政策，把合作的条件明确化。\n（3）它以是否抗日作为判断标准，为两党谈判提供了基础。\n（4）文电的发出推动了国民党内部抗日力量的增长，为两党再次合作创造了条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "### 要点梳理\n- 台儿庄战役是抗日战争防御阶段国民党正面战场的一次重要战役，由爱国将领指挥。\n- 战役中中国军队依托阵地与敌军反复争夺，最终取得胜利，歼灭了大量敌军。\n- 它是抗战初期正面战场取得的一次较大胜利，打击了日军的进攻气焰。\n- 战役的胜利对全国军民是一个鼓舞，说明日军并非不可战胜；但它未能改变正面战场整体上的被动局面。\n- 考纲以识记层级要求本条，作答时要点明战役名称、所属战场与它的双重意义。\n\n### 易错点\n- 把台儿庄战役说成敌后战场的战斗：它属于正面战场。\n- 把它夸大为改变了整个战局：它是一次战役胜利，未改变整体被动局面。\n- 把它与平型关战役、百团大战等混同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "**关键词**：正面战场、防御阶段、较大胜利、未改变整体被动。\n**口诀**：「赢了一仗，没赢全局」。\n**对比**：属于正面战场，与平型关、百团大战的战场不同。\n**串联**：依托阵地反复争夺 → 歼敌取胜 → 鼓舞士气 → 但整体被动局面未改。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "台儿庄战役的意义是（ ）。\nA. 作为抗战初期正面战场的一次较大胜利，打击了日军的进攻气焰\nB. 改变了正面战场整体上的被动局面\nC. 标志抗日战争进入反攻阶段\nD. 由八路军在敌后发动",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，中国军队依托阵地与敌军反复争夺并取胜，对全国军民是一个鼓舞。\nB 项夸大了战果，它未能改变整体被动局面。\nC 项与事实不符。\nD 项战场归属记错，它属于正面战场。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "### 要点梳理\n- 本条要求掌握抗日战争中涌现的国民党爱国官兵群体，以及体现其抵抗意志的典型事例。\n- 「八百壮士」指在淞沪会战中坚守阵地、孤军奋战的一支部队，其抵抗行动在当时引起很大反响。\n- 为国捐躯的国民党将领则在各次战役中亲临前线指挥，以身殉国。\n- 这些官兵的抵抗是正面战场的重要组成部分，说明国民党内确有一批坚持抗战的爱国力量。\n- 考纲以识记层级要求本条，作答时要点明典型事例与爱国将领这一群体，不夸大也不抹杀。\n\n### 易错点\n- 把「八百壮士」说成敌后游击部队：它属于正面战场的作战部队。\n- 把爱国将领的牺牲说成国民党整体坚持抗战的证明：他们的抵抗与当局的动摇应区分看待。\n- 只记事例而漏掉它所代表的爱国力量这一层。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "**关键词**：「八百壮士」孤军坚守、为国捐躯的国民党将领。\n**口诀**：「正面战场上也有硬骨头」。\n**对比**：「八百壮士」属正面战场作战部队，不是敌后游击队。\n**串联**：典型事例 + 爱国将领群体 → 说明国民党内存在坚持抗战的力量 → 但与当局的动摇要分开看。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "「八百壮士」指的是（ ）。\nA. 淞沪会战中坚守阵地、孤军奋战的一支部队\nB. 敌后抗日根据地的一支游击队\nC. 中国远征军的一个师\nD. 东北抗日联军的一支部队",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，其抵抗行动在当时引起很大反响；与为国捐躯的国民党将领一起构成正面战场的爱国力量。\nB 项战场归属记错。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "### 要点梳理\n- 国民党五届五中全会是在抗战进入相持阶段后召开的会议，会上确定了「溶共、防共、限共」的方针。\n- 这一方针标志着国民党的政策重心由积极抗日转向消极抗日、积极反共。\n- 会后国民党顽固派加紧制造反共摩擦，抗日民族统一战线内部的矛盾上升。\n- 这一转变的根源在于国民党当局惧怕人民力量在抗战中壮大，动摇其统治基础。\n- 考纲以识记层级要求本条，作答时要点明会议名称、方针内容与政策转变的实质。\n\n### 易错点\n- 把这次会议说成研究抗日作战的军事会议：它确定的是一套针对共产党的政治方针。\n- 只记会议名称而说不出方针内容与政策转变。\n- 忽略这一转变与相持阶段形势之间的关系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "**关键词**：五届五中全会、「溶共、防共、限共」、消极抗日积极反共。\n**口诀**：「相持阶段一到，枪口就转向内」。\n**对比**：它确定的是一套针对共产党的政治方针，不是抗日作战会议。\n**串联**：相持阶段 → 惧怕人民力量壮大 → 确定限共方针 → 制造反共摩擦、统一战线内部矛盾上升。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "国民党五届五中全会确定的方针是（ ）。\nA. 「溶共、防共、限共」\nB. 联共抗日\nC. 全面抗战\nD. 立即对日反攻",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这次会议确定「溶共、防共、限共」方针，标志着政策重心由积极抗日转向消极抗日、积极反共。\nB 项与会议方针相反：联共抗日是抗战初期的做法，此时国民党正转向限共。\nC 项与会议方针不符：全面抗战是中国共产党提出的路线，不是这次会议确定的方针。\nD 项与会议方针不符：会议并未确定立即对日反攻，反而在正面战场趋于消极。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "### 要点梳理\n- 豫湘桂战役是抗日战争后期日军发动的一次大规模进攻，战场覆盖河南、湖南、广西等地。\n- 由于国民党当局消极抗日、指挥失当，正面战场在这次战役中遭受严重失败，丧失大片国土。\n- 这次失败暴露了国民党统治的腐败与军事上的无能，引起全国人民的强烈不满。\n- 它也使更多人认识到，只有坚持抗战、实行民主，才能挽救危局，从而推动了民主运动的发展。\n- 考纲以识记层级要求本条，作答时要点明战役名称、失败原因与后果。\n\n### 易错点\n- 把这次战役说成胜利：它是正面战场的一次严重失败。\n- 把失败原因只归结为武器装备落后，忽略消极抗日与统治腐败这一根本原因。\n- 忽略它对民主运动的推动作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "**关键词**：豫湘桂、正面战场严重失败、丧失大片国土、推动民主运动。\n**口诀**：「消极抗日，一败千里」。\n**对比**：这是失败而不是胜利；原因不只在装备，更在消极抗日与统治腐败。\n**串联**：日军大举进攻 → 指挥失当 → 严重失败 → 引起不满 → 推动民主运动发展。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "豫湘桂战役的失败（ ）。\nA. 暴露了国民党统治的腐败与军事上的无能，推动了民主运动的发展\nB. 是敌后战场的一次失利\nC. 标志抗战已经失败\nD. 由八路军指挥失误造成",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，由于消极抗日、指挥失当，正面战场丧失大片国土，引起全国人民的强烈不满。\nB 项战场归属记错，它是正面战场的一次失败。\nC 项与事实不符，抗战最终取得了胜利。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "### 要点梳理\n- 国民参政会是抗日战争时期设立的一个咨询性机构，成员包括各党派与各界人士的代表。\n- 它由国民政府召集，职能是听取政府报告、提出建议，对政府决策没有约束力。\n- 由于中国共产党的参政员与其它进步人士的参加，参政会成为宣传抗日主张、批评消极抗战的讲坛。\n- 它的局限在于只是咨询机构，不能真正实现民主，但它的存在本身反映了抗日民主的要求。\n- 考纲以识记层级要求本条，作答时要点明机构性质与它的双重性。\n\n### 易错点\n- 把国民参政会说成权力机关或议会：它是咨询性机构，建议没有约束力。\n- 因为它没有实权就否认其作用：它在宣传抗日主张方面仍有影响。\n- 把它与其它机构混同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "**关键词**：咨询性机构、听取报告提出建议、无约束力、抗日讲坛。\n**口诀**：「能说话，不能拍板」。\n**对比**：它不是权力机关或议会；虽无实权，在宣传抗日主张上仍有影响。\n**串联**：各党派与各界代表参加 → 宣传抗日、批评消极抗战 → 反映抗日民主要求。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L388"
+      ],
+      "text_md": "国民参政会的性质是（ ）。\nA. 咨询性机构，建议对政府决策没有约束力\nB. 权力机关，可以决定政府政策\nC. 抗日根据地的政权机构\nD. 负责军事指挥的机构",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它由国民政府召集，成员包括各党派与各界代表，成为宣传抗日主张、批评消极抗战的讲坛。\nB 项与事实不符。\nC 项与事实不符，它不属于根据地政权。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L390"
+      ],
+      "text_md": "### 要点梳理\n- 相持阶段到来后，国民党的对内政策由积极抗日转向消极抗日、积极反共，推行「溶共、防共、限共」方针。\n- 对外政策则由比较积极的抵抗转向动摇妥协：一方面继续维持抗战局面，一方面寻求与日本方面接触。\n- 这一转变的原因在于国民党当局惧怕人民力量壮大，把维护自身统治放在民族利益之上。\n- 政策转变的直接后果是正面战场作战趋于消极，反共摩擦不断发生。\n- 领会本条要把对内与对外两方面政策分开作答，再说明其共同根源。\n\n### 易错点\n- 只答对内政策而漏掉对外政策，或反之，答案就不完整。\n- 把相持阶段的国民党政策说成与抗战初期相同：它发生了明显转变。\n- 忽略政策转变的根源在于维护自身统治。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L390"
+      ],
+      "text_md": "**口诀**：两条线——对内「消极抗日、积极反共」，对外「动摇妥协」。\n**记忆法**：先答对内再答对外，最后答共同根源：维护自身统治。\n**对比**：与抗战初期的比较积极抵抗不同，相持阶段政策明显转变。\n**串联**：惧怕人民力量壮大 → 政策转向 → 正面战场消极、摩擦不断。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L390"
+      ],
+      "text_md": "抗日战争进入相持阶段后，国民党的政策发生了变化。请简述相持阶段到来后国民党的对内对外政策。",
+      "question_type": "简答题",
+      "answer_md": "（1）对内政策由积极抗日转向消极抗日、积极反共，推行「溶共、防共、限共」方针。\n（2）对外政策由比较积极的抵抗转向动摇妥协：一方面继续维持抗战局面，一方面寻求与日本方面接触。\n（3）这一转变的原因在于国民党当局惧怕人民力量壮大，把维护自身统治放在民族利益之上。\n（4）政策转变的直接后果是正面战场作战趋于消极，反共摩擦不断发生。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L390"
+      ],
+      "text_md": "### 要点梳理\n- 中国战区是抗日战争时期为协调中国战场作战而设立的战区划分，中国方面负责指挥境内作战。\n- 中国远征军是为支援盟军、保卫国际交通线而派往缅甸等地作战的部队。\n- 远征军在异国战场上与盟军协同作战，付出了重大牺牲，也取得了重要战果。\n- 远征军的行动表明，中国的抗日战争是世界反法西斯战争的组成部分，中国战场与其它战场相互支援。\n- 领会本条要把「战区划分」与「远征军作战」联系起来，落到中国战场的国际地位上。\n\n### 易错点\n- 把中国战区说成中国国内的行政区划：它是为协调作战而设的战区。\n- 把中国远征军说成在国内作战的部队：它出国作战。\n- 忽略远征军与中国战场国际地位之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L390"
+      ],
+      "text_md": "**关键词**：中国战区（协调作战）、中国远征军（出国作战）、国际交通线。\n**口诀**：「战区管协调，远征军出国打」。\n**对比**：中国战区不是国内行政区划；远征军不是在国境内作战的部队。\n**串联**：与盟军协同 → 付出重大牺牲 → 中国战场成为世界反法西斯战争的组成部分。"
+    },
+    {
+      "block_id": "15043-ch06-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L390"
+      ],
+      "text_md": "抗日战争是世界反法西斯战争的组成部分，中国战场与其它战场相互支援。请简述中国战区与中国远征军的基本情况。",
+      "question_type": "简答题",
+      "answer_md": "（1）中国战区是抗日战争时期为协调中国战场作战而设立的战区划分，中国方面负责指挥境内作战。\n（2）中国远征军是为支援盟军、保卫国际交通线而派往缅甸等地作战的部队。\n（3）远征军在异国战场上与盟军协同作战，付出了重大牺牲，也取得了重要战果。\n（4）远征军的行动表明，中国的抗日战争是世界反法西斯战争的组成部分，中国战场与其它战场相互支援。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 洛川会议是抗日战争全面爆发后中国共产党召开的重要会议，中心是确定全面抗战路线。\n- 会议通过了《抗日救国十大纲领》，提出动员全民族一切力量、实行全面抗战的主张。\n- 纲领的内容包括打倒日本帝国主义、实行全国军事总动员、改善人民生活、实行民主政治等。\n- 会议还确定红军在敌后开展独立自主的游击战争、建立抗日根据地的战略任务。\n- 洛川会议与《抗日救国十大纲领》共同解决了党在抗战中的路线与任务问题。\n\n### 易错点\n- 把洛川会议与瓦窑堡会议混同：后者解决统一战线策略，前者解决抗战路线与任务。\n- 只记会议名称而说不出纲领的内容与游击战争的战略任务。\n- 把全面抗战路线说成单纯依靠军队作战：它强调动员全民族的力量。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：洛川会议、全面抗战路线、《抗日救国十大纲领》、敌后游击战争。\n**口诀**：「全面抗战：动员全民族」。\n**对比**：与瓦窑堡会议分工不同——后者解决统一战线策略，前者解决抗战路线与任务。\n**串联**：会议 → 通过十大纲领 → 确定独立自主的游击战争与建立根据地。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "洛川会议通过的《抗日救国十大纲领》主张（ ）。\nA. 动员全民族一切力量，实行全面抗战\nB. 只依靠政府和军队抗战\nC. 与日本谈判解决争端\nD. 暂缓对日作战以保存实力",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，纲领内容包括实行全国军事总动员、改善人民生活、实行民主政治等，并确定开展独立自主的游击战争。\nB 项与纲领主张相反。\nC 项与纲领主张相反。\nD 项与纲领主张相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 敌后抗日根据地是八路军、新四军在日军占领区后方建立的抗日阵地，是开展游击战争的依托。\n- 根据地的建立方式是：军队开进敌后，发动群众，建立抗日民主政权，开展游击战争。\n- 根据地在政权上实行「三三制」，在经济上实行减租减息，在军事上以游击战为主。\n- 到抗战中后期，敌后根据地连成大片，成为坚持长期抗战、牵制大量日军的重要战场。\n- 考纲以识记层级要求本条，作答时要点明建立方式与它在抗战中的地位。\n\n### 易错点\n- 把敌后根据地与国统区混同：它在日军占领区的后方，由共产党领导。\n- 只记「建立根据地」而说不出政权、经济、军事三方面的建设内容。\n- 忽略敌后战场牵制大量日军这一作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：日军占领区后方、发动群众、抗日民主政权、游击战争。\n**口诀**：「军队开进去，群众发动起来」。\n**对比**：它在敌后、由共产党领导，与国统区不同。\n**串联**：三三制政权 + 减租减息 + 游击战 → 根据地连成大片 → 牵制大量日军。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "敌后抗日根据地的建立方式是（ ）。\nA. 军队开进敌后，发动群众，建立抗日民主政权，开展游击战争\nB. 在国统区内设立办事处\nC. 依靠国际援助划定中立区\nD. 由日军划出非武装区",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，根据地在政权上实行「三三制」，在经济上实行减租减息，在军事上以游击战为主。\nB 项与事实不符。\nC 项与事实不符。\nD 项与事实不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 本条要求掌握敌后战场涌现的民族英雄与英雄群体，如狼牙山五壮士、东北抗联的八位女战士等。\n- 这些英雄群体的共同特点是在极端艰苦的条件下坚持斗争，在生死关头把生的希望留给战友与群众。\n- 他们的行为体现了中华民族不畏强暴、宁死不屈的民族气节。\n- 英雄群体的涌现不是偶然的：它是中国共产党倡导的爱国主义与革命英雄主义教育的结果，也是根据地军民关系的写照。\n- 考纲以识记层级要求本条，作答时要点明典型群体名称与其体现的精神。\n\n### 易错点\n- 把英雄群体与正面战场的爱国官兵混同，两者所属战场不同。\n- 只记名称而不点明其体现的民族气节与精神。\n- 把英雄行为说成个人偶然的壮举，忽略其思想基础与群众基础。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：狼牙山五壮士、东北抗联八位女战士、民族气节。\n**口诀**：「生死关头，把生的希望留给别人」。\n**对比**：属敌后战场的英雄群体，与正面战场爱国官兵分属不同战场。\n**串联**：极端艰苦条件下坚持斗争 → 体现民族气节 → 源于爱国主义教育与会军民关系。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "敌后战场涌现的英雄群体中，狼牙山五壮士、东北抗联八位女战士等事迹共同体现的是（ ）。\nA. 中华民族不畏强暴、宁死不屈的民族气节\nB. 正面战场爱国官兵的作战风格\nC. 根据地军民的生产自救精神\nD. 抗日民族统一战线的策略方针",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，他们在极端艰苦的条件下坚持斗争，在生死关头把生的希望留给战友与群众，体现了民族气节。\nB 项战场归属记错，他们属于敌后战场的英雄群体。\nC 项把英雄事迹与大生产运动混同，两者不是一回事。\nD 项与英雄事迹所体现的内容无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 国民党顽固派制造的反共摩擦，是相持阶段国民党推行「溶共、防共、限共」方针的具体表现。\n- 摩擦事件包括军事进攻、制造惨案、取消抗日团体等，其中以袭击新四军部队的事件最为严重。\n- 中国共产党采取的方针是「坚持抗战、反对投降，坚持团结、反对分裂，坚持进步、反对倒退」。\n- 在斗争中坚持有理、有利、有节的原则，既打退进攻，又维护抗日民族统一战线不破裂。\n- 考纲以识记层级要求本条，作答时要点明摩擦的性质与党应对摩擦的方针。\n\n### 易错点\n- 把反共摩擦说成国共合作的终结：统一战线虽受严重损害，但并未破裂。\n- 只记摩擦事件而漏掉党应对摩擦的三项方针与斗争原则。\n- 把党维护统一战线的做法说成无原则退让：斗争是有理、有利、有节的。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：顽固派制造、袭击新四军事件、三项方针、有理有利有节。\n**口诀**：「坚持抗战团结进步，反对投降分裂倒退」。\n**对比**：摩擦没有使统一战线破裂；斗争不是无原则退让，而是有理有利有节。\n**串联**：限共方针 → 制造摩擦 → 党坚决斗争 → 打退进攻又维护统一战线。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "中国共产党应对国民党顽固派反共摩擦的方针是（ ）。\nA. 坚持抗战、反对投降，坚持团结、反对分裂，坚持进步、反对倒退\nB. 立即以武力推翻国民党统治\nC. 完全退让以避免冲突\nD. 退出抗日民族统一战线",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，在斗争中坚持有理、有利、有节的原则，既打退进攻，又维护统一战线不破裂。\nB 项会破坏统一战线，与当时方针不符。\nC 项与「有理、有利、有节」的斗争原则相反。\nD 项与维护统一战线的方针相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 「三三制」政权是抗日根据地在政权建设上实行的制度，规定政权机构中人员按比例分配。\n- 具体比例是共产党员、非党的左派进步分子、中间派各占三分之一。\n- 这一制度的目的是团结一切赞成抗日的阶级与阶层，把根据地政权建成抗日民族统一战线的政权。\n- 它既保证了共产党在政权中的领导地位，又广泛吸收了党外人士参政，扩大了抗日的社会基础。\n- 考纲以识记层级要求本条，作答时要点明制度名称、比例与它的作用。\n\n### 易错点\n- 把「三三制」说成土地政策或军事编制：它是政权中人员构成的比例规定。\n- 把三个三分之一记错，或说成共产党员占多数。\n- 只记比例而答不出它团结各阶层、扩大社会基础的作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：共产党员、非党左派进步分子、中间派，各占三分之一。\n**口诀**：「三个三分之一，谁也不少谁」。\n**对比**：它是政权人员构成的比例规定，不是土地政策或军事编制。\n**串联**：保证党的领导 + 吸收党外人士 → 团结一切赞成抗日的阶层 → 扩大抗日社会基础。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "抗日根据地「三三制」政权中的人员构成是（ ）。\nA. 共产党员、非党的左派进步分子、中间派各占三分之一\nB. 工人、农民、知识分子各占三分之一\nC. 军队、政府、民众团体各占三分之一\nD. 中央、省、县各占三分之一",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一制度团结了一切赞成抗日的阶级与阶层，既保证共产党的领导地位，又广泛吸收党外人士参政。\nB 项与「三三制」的身份划分不符。\nC 项与「三三制」的身份划分不符。\nD 项与「三三制」的身份划分不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 精兵简政是抗日根据地为了克服困难、减轻人民负担而实行的一项重要政策。\n- 精兵指精简军队机关、提高部队战斗力，简政指精简行政机构、减少脱产人员。\n- 实行的背景是日军残酷「扫荡」与封锁造成根据地缩小、财政经济十分困难。\n- 政策的效果是减轻了人民负担、提高了工作效率，使根据地得以坚持并渡过难关。\n- 考纲以识记层级要求本条，作答时要点明政策名称、内容与实行的背景。\n\n### 易错点\n- 把精兵简政说成裁减抗日力量：精简的是机关与脱产人员，目的是提高战斗力与工作效率。\n- 忽略实行的背景（封锁与困难），就答不出这一政策为什么必要。\n- 只记名称而说不出内容。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：精兵（精简机关提战力）、简政（精简机构减脱产）。\n**口诀**：「兵要精，政要简」。\n**对比**：不是裁减抗日力量，而是减机关、减脱产人员以减轻民众负担。\n**串联**：扫荡与封锁 → 根据地的财政困难 → 精兵简政 → 渡过难关。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "精兵简政政策的直接效果是（ ）。\nA. 减轻了人民负担、提高了工作效率，使根据地渡过难关\nB. 削弱了抗日武装的战斗力\nC. 扩大了脱产人员规模\nD. 取消了一切行政机构",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，精兵指精简军队机关、提高战斗力，简政指精简行政机构、减少脱产人员，背景是日军「扫荡」与封锁造成的困难。\nB 项与政策目标相反。\nC 项与政策内容相反。\nD 项与政策内容不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 教条主义指脱离实际、把书本结论或外国经验当作固定公式照搬的错误倾向。\n- 它的表现形式是：不从实际出发调查研究，用现成结论剪裁现实，对不同意见采取排斥态度。\n- 教条主义在党内曾造成严重危害，在军事上表现为不切实际的指挥，在组织上表现为宗派倾向。\n- 延安整风运动正是以反对主观主义、宗派主义、党八股为主要内容，其中反对教条主义是重点。\n- 考纲以识记层级要求本条，作答时要点明教条主义的含义、表现与危害。\n\n### 易错点\n- 把教条主义说成经验主义：前者照搬书本与外国经验，后者局限于局部经验，两种倾向都要反对但表现不同。\n- 只记含义而答不出危害与它同整风运动的关系。\n- 把教条主义说成个人性格问题，忽略其思想方法的性质。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：脱离实际、照搬书本与外国经验、排斥不同意见。\n**口诀**：「书本剪裁现实」。\n**对比**：教条主义照搬书本与外国经验，经验主义局限于局部经验，两者都是主观主义。\n**串联**：教条主义危害 → 延安整风以反对主观主义为重点 → 弄清思想、团结同志。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "教条主义的主要表现是（ ）。\nA. 脱离实际，把书本结论或外国经验当作固定公式照搬\nB. 只相信局部经验而否认理论指导\nC. 过度强调调查研究\nD. 忽视军队建设",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，其表现是不从实际出发，用现成结论剪裁现实，并对不同意见采取排斥态度。\nB 项这是经验主义的表现，与教条主义相对。\nC 项与教条主义相反，教条主义恰恰不重视调查研究。\nD 项与教条主义的含义无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 延安精神是抗日战争时期在延安形成的革命精神，是中国共产党人在艰苦环境中培育的优良作风的集中体现。\n- 它的主要内容包括：坚定的政治方向，解放思想、实事求是，全心全意为人民服务，自力更生、艰苦奋斗。\n- 延安精神的形成与延安整风、大生产运动等实践密切相关，是长期斗争与建设的产物。\n- 它成为激励根据地军民克服困难、坚持抗战的强大精神力量，对后来的革命与建设也产生了深远影响。\n- 考纲以识记层级要求本条，作答时要点明延安精神的内容与其形成基础。\n\n### 易错点\n- 把延安精神说成一般的道德口号：它是在特定历史条件下形成的精神品格，有明确内容。\n- 只记「艰苦奋斗」一条而漏掉政治方向、实事求是、为人民服务等内容。\n- 忽略它同整风运动、大生产运动等实践的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**口诀**：延安精神四条——「坚定政治方向、解放思想实事求是、为人民服务、自力更生艰苦奋斗」。\n**记忆法**：前两条讲方向与方法，后两条讲宗旨与作风，按这四层背。\n**对比**：它不是一般道德口号，而是在特定历史条件下形成的精神品格。\n**串联**：整风与生产运动 → 培育延安精神 → 激励军民克服困难 → 影响后来的革命与建设。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "延安精神的主要内容是（ ）。\nA. 坚定政治方向，解放思想、实事求是，全心全意为人民服务，自力更生、艰苦奋斗\nB. 严守等级秩序，服从长官意志\nC. 以城市工作为中心\nD. 只求保存实力、避免牺牲",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，延安精神是在延安整风、大生产运动等实践中培育的优良作风的集中体现。\nB 项与延安精神不符。\nC 项与延安精神不符。\nD 项与延安精神不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 平型关战役是八路军开赴抗日前线后取得的一次重要胜利，也是全国抗战初期的一次胜仗。\n- 战役中八路军利用有利地形对日军实施伏击，歼灭其一部并缴获大量物资。\n- 它的意义首先在于打破了日军不可战胜的神话，振奋了全国军民的抗战信心。\n- 其次，它显示了游击战与运动战在抗日战争中的作用，提高了共产党与八路军的威望。\n- 考纲以识记层级要求本条，作答时要点明战役名称、所属战场与它的双重意义。\n\n### 易错点\n- 把平型关战役说成正面战场的战役：它是八路军在敌后方向打的胜仗。\n- 把它与台儿庄战役、百团大战混同。\n- 只记胜利而答不出「打破日军不可战胜神话」这一意义。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：八路军、伏击战、歼灭一部、打破日军不可战胜的神话。\n**口诀**：「第一仗，打掉神话」。\n**对比**：它是八路军在敌后方向打的胜仗，不是正面战场的会战。\n**串联**：利用地形伏击 → 取胜 → 振奋全国信心 → 显示游击战与运动战的作用。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "平型关战役的意义是（ ）。\nA. 打破了日军不可战胜的神话，振奋了全国军民的抗战信心\nB. 使抗日战争转入反攻阶段\nC. 改变了敌后战场的整体态势\nD. 是正面战场规模最大的会战",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，战役中八路军利用有利地形伏击日军并取得胜利，同时显示了游击战与运动战的作用。\nB 项夸大了战果。\nC 项夸大了战果。\nD 项与事实不符，它是八路军在敌后方向打的胜仗。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p10/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 百团大战是八路军在华北发动的一次大规模进攻作战，参战部队数量众多，故名百团大战。\n- 作战目标是破袭日军的交通线、摧毁据点，打击日军的「囚笼政策」。\n- 战役取得了重大战果，提高了共产党与八路军的威望，也鼓舞了全国军民的抗战信心。\n- 同时，战役也过早暴露了八路军的力量，此后日军加紧对根据地的「扫荡」，根据地进入困难时期。\n- 考纲以识记层级要求本条，作答时要点明战役名称、目标与双重后果。\n\n### 易错点\n- 把百团大战说成正面战场的会战：它由八路军在华北敌后发动。\n- 只记战果而漏掉它带来的后续困难，评价就不完整。\n- 把它与平型关战役混同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：八路军大规模进攻、破袭交通线、打击「囚笼政策」、后致根据地困难。\n**口诀**：「打出了威风，也引来了扫荡」。\n**对比**：由八路军在华北敌后发动，与正面战场会战不同。\n**串联**：破袭战果 → 威望提高 → 过早暴露力量 → 日军加紧扫荡 → 根据地进入困难时期。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p10/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "百团大战的作战目标是（ ）。\nA. 破袭日军的交通线、摧毁据点，打击其「囚笼政策」\nB. 攻占日军占领的大城市\nC. 保卫正面战场的主要防线\nD. 配合盟军在太平洋作战",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，战役取得重大战果，但也过早暴露了八路军的力量，此后日军加紧对根据地的「扫荡」。\nB 项与事实不符。\nC 项与事实不符。\nD 项不是本次战役的目标。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p11/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "### 要点梳理\n- 中共六届六中全会是在抗日战争进入相持阶段召开的一次重要会议，中心是明确党在统一战线中的独立自主原则。\n- 会议批评了「一切经过统一战线」的主张，指出必须坚持党对人民军队与抗日根据地的领导。\n- 会议还提出马克思主义中国化的任务，强调要把理论与中国实际结合起来。\n- 会议确定了巩固华北、发展华中的战略部署，对敌后抗战的发展具有重要指导意义。\n- 考纲以识记层级要求本条，作答时要点明会议名称与它解决的主要问题。\n\n### 易错点\n- 把六届六中全会与瓦窑堡会议混同：后者确定统一战线策略，前者强调统一战线中的独立自主。\n- 只记会议名称而答不出独立自主原则与马克思主义中国化这两项内容。\n- 忽略会议对敌后抗战部署的指导作用。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "**关键词**：六届六中全会、独立自主原则、马克思主义中国化、巩固华北发展华中。\n**口诀**：「统一战线里，我自己做主」。\n**对比**：瓦窑堡解决统一战线策略，六届六中全会强调统一战线中的独立自主。\n**串联**：批评「一切经过统一战线」 → 坚持党对军队与根据地的领导 → 提出马克思主义中国化 → 部署敌后抗战。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p11/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L395"
+      ],
+      "text_md": "中共六届六中全会解决的主要问题是（ ）。\nA. 明确党在统一战线中的独立自主原则，并提出马克思主义中国化的任务\nB. 确定抗日民族统一战线的策略方针\nC. 宣告中国共产党成立\nD. 决定实行精兵简政",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，会议批评了「一切经过统一战线」的主张，并确定巩固华北、发展华中的战略部署。\nB 项这是瓦窑堡会议的内容。\nC 项这是一大的成果。\nD 项这是根据地的政策，不是本次会议的内容。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p12/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "### 要点梳理\n- 中国共产党的全面抗战路线，核心是动员全民族一切力量进行抗战，即人民战争路线。\n- 它的基本主张是：实行全国军事总动员、全国人民总动员，改善人民生活，实行民主政治。\n- 与它相对的是单纯依靠政府和军队的片面抗战路线，后者不能持久，也无法取得最后胜利。\n- 全面抗战路线的实现形式是开展独立自主的游击战争，建立与巩固敌后抗日根据地。\n- 领会本条要抓住「动员全民族」这一实质，并用它与片面抗战路线作对比。\n\n### 易错点\n- 把全面抗战路线说成单纯扩大军队规模：它的实质是动员全民族的力量。\n- 把两条路线的区别说成军事部署不同：区别在于依靠什么力量抗战这一根本问题。\n- 只答主张而漏掉它的实现形式（游击战争与根据地）。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p12/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "**关键词**：动员全民族一切力量、人民战争、与片面抗战路线相对。\n**口诀**：「全面抗战靠人民，片面抗战靠军队」。\n**对比**：两条路线的区别在于依靠什么力量抗战，不是单纯的军事部署差异。\n**串联**：动员全民族 → 实行民主与改善民生 → 开展独立自主的游击战争、建立根据地。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p12/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "中国共产党在抗战中提出了与片面抗战路线不同的主张。请简述中国共产党的全面抗战路线。",
+      "question_type": "简答题",
+      "answer_md": "（1）核心是动员全民族一切力量进行抗战，即人民战争路线。\n（2）基本主张是：实行全国军事总动员、全国人民总动员，改善人民生活，实行民主政治。\n（3）与它相对的是单纯依靠政府和军队的片面抗战路线，后者不能持久，也无法取得最后胜利。\n（4）全面抗战路线的实现形式是开展独立自主的游击战争，建立与巩固敌后抗日根据地。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p13/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "### 要点梳理\n- 抗日民族统一战线中的独立自主原则，指在坚持统一战线的同时保持共产党在政治、思想、组织与军事上的独立性。\n- 具体包括：坚持党对人民军队的绝对领导，独立自主地开展敌后游击战争，建立抗日根据地。\n- 在策略上实行又团结又斗争：对顽固派的进攻进行有理、有利、有节的斗争，维护统一战线不破裂。\n- 这一原则之所以必要，是因为统一战线内部存在阶级差别与政策分歧，放弃独立性就会重演大革命失败的教训。\n- 领会本条要把原则的内容与提出这一原则的原因分开作答。\n\n### 易错点\n- 把独立自主说成脱离统一战线：它是在统一战线内部坚持独立性，不是分裂。\n- 只答「保持独立」而说不出具体内容（军队领导、游击战争、根据地）。\n- 忽略它与大革命失败教训之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p13/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "**关键词**：坚持统一战线 + 保持独立性；军队领导、游击战争、根据地；又团结又斗争。\n**口诀**：「统而不失，独而不裂」。\n**对比**：独立自主不是脱离统一战线，而是在统一战线内部保持独立性。\n**串联**：统一战线内部有阶级差别 → 必须独立自主 → 否则重演大革命失败的教训。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p13/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p13",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "在抗日民族统一战线中，中国共产党特别强调独立自主原则。请简述这一原则的内容及其必要性。",
+      "question_type": "简答题",
+      "answer_md": "（1）它指在坚持统一战线的同时保持共产党在政治、思想、组织与军事上的独立性。\n（2）具体包括：坚持党对人民军队的绝对领导，独立自主地开展敌后游击战争，建立抗日根据地。\n（3）在策略上实行又团结又斗争：对顽固派的进攻进行有理、有利、有节的斗争，维护统一战线不破裂。\n（4）这一原则之所以必要，是因为统一战线内部存在阶级差别与政策分歧，放弃独立性就会重演大革命失败的教训。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p14/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "### 要点梳理\n- 大生产运动是抗日根据地为了克服严重的经济困难而开展的生产自救运动。\n- 运动的背景是日军残酷「扫荡」与封锁，加上自然灾害，根据地财政经济陷入极大困难。\n- 运动的口号是「自己动手，丰衣足食」，号召部队、机关、学校一面战斗一面生产。\n- 运动的效果是使根据地实现了粮食与日用品的部分自给，减轻了人民负担，为坚持抗战提供了物质保障。\n- 运动中形成的自力更生、艰苦奋斗精神，成为延安精神的重要组成部分。\n\n### 易错点\n- 把大生产运动说成单纯的农业生产活动：它是为克服困难而开展的全面的生产自救运动。\n- 忽略它的背景（扫荡、封锁与自然灾害）。\n- 只记口号而答不出它的效果与精神意义。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p14/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "**关键词**：生产自救、自己动手丰衣足食、减轻负担、自力更生。\n**口诀**：「一面打仗，一面种地」。\n**对比**：它不是单纯农业生产活动，而是为克服困难开展的全面生产自救运动。\n**串联**：扫荡封锁 + 自然灾害 → 经济困难 → 大生产运动 → 部分自给 → 为坚持抗战提供物质保障。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p14/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p14",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "抗日根据地曾面临严重的经济困难，部队与机关因此开展了生产自救。请简述大生产运动的背景、内容与作用。",
+      "question_type": "简答题",
+      "answer_md": "（1）背景是日军残酷「扫荡」与封锁，加上自然灾害，根据地财政经济陷入极大困难。\n（2）运动的口号是「自己动手，丰衣足食」，号召部队、机关、学校一面战斗一面生产。\n（3）运动使根据地实现了粮食与日用品的部分自给，减轻了人民负担，为坚持抗战提供了物质保障。\n（4）运动中形成的自力更生、艰苦奋斗精神，成为延安精神的重要组成部分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p15/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p15",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "### 要点梳理\n- 《关于若干历史问题的决议》是延安整风后期形成的重要文件，对党的历史经验作了系统总结。\n- 决议分析了历次「左」倾错误的表现与危害，着重清算了教条主义在党内的恶劣影响。\n- 决议肯定了毛泽东关于中国革命的理论与实践，确立了正确的思想路线在全党的指导地位。\n- 它以「惩前毖后、治病救人」的方针处理历史问题，达到了既弄清思想又团结同志的目的。\n- 决议的通过为党的七大召开与抗战胜利准备了思想条件。\n\n### 易错点\n- 把决议说成对历史人物的简单清算：它采取的是弄清思想、团结同志的方针。\n- 只记决议名称而答不出它总结的重点（教条主义的危害）。\n- 忽略它与党的七大之间的准备关系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p15/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p15",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "**关键词**：总结历史经验、清算教条主义危害、确立正确思想路线的指导地位、惩前毖后治病救人。\n**口诀**：「弄清思想，团结同志」。\n**对比**：它不是对历史人物的简单清算，方针是惩前毖后、治病救人。\n**串联**：整风实践 → 形成决议 → 统一全党认识 → 为七大召开准备思想条件。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p15/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p15",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "延安整风后期形成了《关于若干历史问题的决议》，对党的历史经验作出系统总结。请简述这一决议的主要内容与作用。",
+      "question_type": "简答题",
+      "answer_md": "（1）决议对党的历史经验作了系统总结，分析了历次「左」倾错误的表现与危害。\n（2）决议着重清算了教条主义在党内的恶劣影响，肯定了毛泽东关于中国革命的理论与实践。\n（3）决议以「惩前毖后、治病救人」的方针处理历史问题，达到了既弄清思想又团结同志的目的。\n（4）决议的通过为党的七大召开与抗战胜利准备了思想条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s4-p16/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s4-p16",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "### 要点梳理\n- 中共七大是在抗日战争即将取得胜利的前夕召开的全国代表大会，是一次团结的大会、胜利的大会。\n- 大会制定了党的政治路线：放手发动群众，壮大人民力量，打败日本侵略者，建立新民主主义的中国。\n- 大会确立了毛泽东思想为全党的指导思想并写入党章，这是七大的历史性贡献。\n- 大会还总结了党的三大优良作风，即理论和实践相结合、和人民群众紧密联系、自我批评。\n- 七大为争取抗日战争的最后胜利与新民主主义革命在全国的胜利准备了条件。\n\n### 易错点\n- 把七大说成在抗战胜利之后召开：它在抗战胜利前夕召开。\n- 只记会议名称而答不出「确立毛泽东思想为指导思想」这一历史性贡献。\n- 把三大优良作风与其它内容混同。\n"
+    },
+    {
+      "block_id": "15043-ch06-s4-p16/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s4-p16",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "**关键词**：抗战胜利前夕、政治路线、毛泽东思想写入党章、三大优良作风。\n**口诀**：「七大两件大事：定路线、定思想」。\n**对比**：它在抗战胜利前夕召开，不是胜利之后。\n**串联**：制定政治路线 → 确立毛泽东思想为指导 → 总结三大作风 → 为抗战最后胜利与全国胜利准备条件。"
+    },
+    {
+      "block_id": "15043-ch06-s4-p16/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s4-p16",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L398"
+      ],
+      "text_md": "中共七大是在抗日战争即将取得胜利的前夕召开的。请简述中共七大的主要内容与历史意义。",
+      "question_type": "简答题",
+      "answer_md": "（1）大会制定了党的政治路线：放手发动群众，壮大人民力量，打败日本侵略者，建立新民主主义的中国。\n（2）大会确立了毛泽东思想为全党的指导思想并写入党章，这是七大的历史性贡献。\n（3）大会总结了党的三大优良作风：理论和实践相结合、和人民群众紧密联系、自我批评。\n（4）七大为争取抗日战争的最后胜利与新民主主义革命在全国的胜利准备了条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s5-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s5-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "### 要点梳理\n- 《对日寇的最后一战》是抗日战争转入反攻阶段发表的号召性文告，号召解放区军民举行全国规模的反攻。\n- 文告要求抗日武装向日军占领的城镇与交通要道进军，收缴武器，接受投降。\n- 它的发表标志着敌后战场由局部反攻转入全面反攻，加快了中国抗战胜利的进程。\n- 解放区军民遵照文告展开大反攻，收复了大片国土，为抗战胜利作出了重要贡献。\n- 考纲以识记层级要求本条，作答时要点明文告名称与它的号令作用。\n\n### 易错点\n- 把文告说成对日方的通牒：它是对解放区军民的号召。\n- 把反攻的时间提到抗战胜利之后，时序颠倒。\n- 只记名称而答不出它标志全面反攻开始这一意义。\n"
+    },
+    {
+      "block_id": "15043-ch06-s5-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s5-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "**关键词**：《对日寇的最后一战》、号召解放区军民反攻、收复国土。\n**口诀**：「一声号令，全面反攻」。\n**对比**：它是对解放区军民的号召，不是对日方的通牒。\n**串联**：抗战转入反攻 → 发表文告 → 军民大反攻 → 收复大片国土、加快胜利进程。"
+    },
+    {
+      "block_id": "15043-ch06-s5-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s5-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "《对日寇的最后一战》发表的意义是（ ）。\nA. 号召解放区军民举行全国规模的反攻，加快了中国抗战胜利的进程\nB. 标志抗日战争正式开始\nC. 标志抗日民族统一战线形成\nD. 宣布日本已经投降",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，文告要求抗日武装向日军占领的城镇与交通要道进军，收复大片国土。\nB 项与事实不符。\nC 项与事实不符。\nD 项文告发表时日本尚未正式投降。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s5-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s5-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "### 要点梳理\n- 联合国制宪会议是战后建立国际组织的一次重要国际会议，中国派代表团参加并在会议文件上签字。\n- 中国参加这次会议并成为联合国创始会员国与安理会常任理事国之一。\n- 这一地位是中国长期坚持抗日战争、为世界反法西斯战争作出重大贡献的结果。\n- 它表明中国的国际地位在抗战中有了显著提高，中国战场的作用得到国际承认。\n- 考纲以识记层级要求本条，作答时要点明会议名称与中国取得国际地位的原因。\n\n### 易错点\n- 把中国参加制宪会议说成外交上的偶然收获：它源于中国战场的贡献。\n- 只记会议名称而答不出中国国际地位提高这一层意义。\n- 忽略中国战场与世界反法西斯战争的联系。\n"
+    },
+    {
+      "block_id": "15043-ch06-s5-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s5-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "**关键词**：联合国制宪会议、中国派团参加、创始会员国与安理会常任理事国。\n**口诀**：「地位不是捡来的，是打出来的」。\n**对比**：中国国际地位的提高源于长期抗战的贡献，不是偶然的外交收获。\n**串联**：中国战场牵制大量日军 → 为世界反法西斯战争作贡献 → 国际地位提高 → 取得相应国际地位。"
+    },
+    {
+      "block_id": "15043-ch06-s5-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s5-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "中国参加联合国制宪会议并成为安理会常任理事国之一，主要原因是（ ）。\nA. 中国长期坚持抗日战争，为世界反法西斯战争作出重大贡献\nB. 中国当时是经济强国\nC. 国际联盟的特别安排\nD. 中国在战争中未遭受损失",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，这一地位表明中国的国际地位在抗战中显著提高，中国战场的作用得到国际承认。\nB 项与事实不符。\nC 项与事实不符。\nD 项与事实相反，中国遭受了巨大损失。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s5-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s5-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "### 要点梳理\n- 中国人民抗日战争胜利纪念日是国家为纪念抗日战争胜利而设立的纪念日，日期取日本正式投降的日子。\n- 设立纪念日的意义在于铭记历史、缅怀先烈、珍爱和平、开创未来。\n- 它提醒人们不要忘记日本军国主义侵略给中国人民带来的深重灾难，也提醒人们珍视来之不易的和平。\n- 纪念日的设立还表明，中国人民对抗日战争的历史地位与贡献有清醒而庄重的认识。\n- 考纲以识记层级要求本条，作答时要点明纪念日的由来与设立意义。\n\n### 易错点\n- 把纪念日的日期与其它相关日期混淆，应以日本正式投降的日子为准。\n- 只记日期而答不出设立纪念日的意义。\n- 把纪念日说成对某一国的纪念，忽略其铭记历史、珍爱和平的用意。\n"
+    },
+    {
+      "block_id": "15043-ch06-s5-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s5-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "**关键词**：国家设立、取日本正式投降的日子、铭记历史珍爱和平。\n**口诀**：「记住日子，是为了不再有那样的日子」。\n**对比**：日期以日本正式投降的日子为准，不要与其它相关日期混。\n**串联**：设立纪念日 → 缅怀先烈 → 珍视和平 → 表明对抗战历史地位的庄重认识。"
+    },
+    {
+      "block_id": "15043-ch06-s5-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s5-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L407"
+      ],
+      "text_md": "中国人民抗日战争胜利纪念日的日期取（ ）。\nA. 日本正式投降的日子\nB. 七七事变发生的日子\nC. 九一八事变发生的日子\nD. 台儿庄战役结束的日子",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，设立纪念日的意义在于铭记历史、缅怀先烈、珍爱和平、开创未来。\nB 项该日期不是纪念日所取的日期。\nC 项该日期不是纪念日所取的日期。\nD 项该日期不是纪念日所取的日期。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch06-s5-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch06-s5-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L409"
+      ],
+      "text_md": "### 要点梳理\n- 抗日战争的完全胜利，是指中国军民经过长期抗战，最终迫使日本无条件投降，收复了被占领的国土。\n- 胜利的原因是多方位的：第一，抗日民族统一战线的建立与坚持，实现了全民族抗战；第二，中国共产党发挥了中流砥柱作用，提出并坚持全面抗战路线与持久战方针；第三，正面战场与敌后战场相互配合，消耗并牵制了大量日军；第四，世界反法西斯力量的支援与配合。\n- 胜利的意义首先在于它是近代以来中国人民反抗外来侵略取得的第一次完全胜利，洗雪了民族耻辱。\n- 其次，它提高了中国的国际地位，中国成为联合国创始会员国与安理会常任理事国之一。\n- 再次，它为争取新民主主义革命在全国的胜利奠定了基础，并开辟了中华民族伟大复兴的光明前景。\n- 理解本条要把原因与意义分开作答，两者都不能只写一面。\n\n### 易错点\n- 把胜利的原因只归结为国际援助，忽略全民族抗战与中流砥柱作用这两个根本原因。\n- 把「第一次完全胜利」的分量说轻：它改变了近代以来反抗侵略屡战屡败的局面。\n- 只答意义而漏掉原因，或把两者混在一起答。\n"
+    },
+    {
+      "block_id": "15043-ch06-s5-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch06-s5-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L409"
+      ],
+      "text_md": "**口诀**：原因四条——「统一战线、中流砥柱、两个战场、国际配合」。\n**记忆法**：原因与意义分开背，意义三条：第一次完全胜利、国际地位提高、为革命胜利奠基。\n**对比**：不能把原因只归结为国际援助，全民族抗战与中流砥柱作用是根本。\n**串联**：全民族抗战 + 中流砥柱 + 两战场配合 + 国际支援 → 完全胜利 → 洗雪耻辱、提高地位、奠基未来。"
+    },
+    {
+      "block_id": "15043-ch06-s5-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch06-s5-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L409"
+      ],
+      "text_md": "抗日战争的胜利是近代以来中国人民反抗外来侵略取得的第一次完全胜利。试述抗日战争胜利的原因及其历史意义。",
+      "question_type": "论述题",
+      "answer_md": "（1）原因之一：抗日民族统一战线的建立与坚持，实现了全民族抗战，这是胜利的根本保证。\n（2）原因之二：中国共产党发挥了中流砥柱作用，提出并坚持全面抗战路线与持久战方针，开辟并坚持敌后战场。\n（3）原因之三：正面战场与敌后战场相互配合，消耗并牵制了大量日军。\n（4）原因之四：世界反法西斯力量的支援与配合，中国抗战与世界反法西斯战争相互支持。\n（5）意义之一：它是近代以来中国人民反抗外来侵略取得的第一次完全胜利，洗雪了民族耻辱。\n（6）意义之二：它提高了中国的国际地位，中国成为联合国创始会员国与安理会常任理事国之一。\n（7）意义之三：它为争取新民主主义革命在全国的胜利奠定了基础，并开辟了中华民族伟大复兴的光明前景。",
       "source_kind": "ai_generated"
     },
     {
