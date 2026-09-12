@@ -81,6 +81,17 @@ mkdocs build --strict
 mkdocs serve
 ```
 
+### 分层质量门禁（Gates）
+
+`scripts/run-gates.py` 统筹执行分层门禁（默认 7 层，失败关闭）：
+- `content`：版权声明、生命周期与完整度枚举、课码格式、PDF 清单
+- `materials`：`materials://` 跨仓引用有效性及私有路径防泄露
+- `contract`：课程多页模式必选文件与关键锚点结构契约
+- `publish`：`lifecycle=publishable` 发布资格硬门禁
+- `maturity-check`：非变异的公开页面成熟度投影比对
+- `evidence`：官方事实层（`evidence.json`）与知识模型（`knowledge-model.json`）覆盖率、断言状态校验
+- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率及渲染页横幅校验
+
 ### 外链监控
 
 ```bash

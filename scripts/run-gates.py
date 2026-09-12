@@ -2,11 +2,13 @@
 """Unified content gates entrypoint (P1 / Issue #55).
 
 Layers (order):
-  content   — copyright, lifecycle/completeness enums, codes, PDF manifest
-  materials — materials:// refs + private/raw leak scan
-  contract  — course multipage required files/markers
+  content         — copyright, lifecycle/completeness enums, codes, PDF manifest
+  materials       — materials:// refs + private/raw leak scan
+  contract        — course multipage required files/markers
   publish         — lifecycle=publishable hard gate
   maturity-check  — non-mutating public page-maturity projection check (default)
+  evidence        — official facts layer + knowledge model contracts
+  ai-content      — AI prep layer quad annotations + 8-gram + banners
   maturity        — write page-maturity report (optional, non-default)
 
 Usage:
@@ -23,12 +25,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+from lib.ai_content_gate import run_ai_content_gate  # noqa: E402
 from lib.content_gate import run_content_gate  # noqa: E402
 from lib.course_pages_contract import run_course_pages_contract  # noqa: E402
+from lib.evidence_gate import run_evidence_gate  # noqa: E402
 from lib.materials_policy import run_materials_policy  # noqa: E402
 from lib.publish_gate import run_publish_gate  # noqa: E402
 
-DEFAULT_LAYERS = ("content", "materials", "contract", "publish", "maturity-check")
+DEFAULT_LAYERS = (
+    "content",
+    "materials",
+    "contract",
+    "publish",
+    "maturity-check",
+    "evidence",
+    "ai-content",
+)
 ALL_LAYERS = DEFAULT_LAYERS + ("maturity",)
 
 
@@ -110,6 +122,8 @@ def main() -> int:
         "contract": lambda: run_course_pages_contract(ROOT),
         "publish": _publish_errors,
         "maturity-check": lambda: check_public_projection_layer(ROOT),
+        "evidence": lambda: run_evidence_gate(ROOT),
+        "ai-content": lambda: run_ai_content_gate(ROOT),
         "maturity": lambda: run_maturity(ROOT),
     }
 

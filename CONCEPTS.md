@@ -13,6 +13,15 @@ A third-party URL used only to find official sources. It cannot justify a publis
 ### Named gap
 A missing official field recorded with the field name, reader impact, and the next official evidence needed. Silence or inferred filler is not a gap.
 
+### Official facts layer
+Course metadata, authoritative syllabus sources, textbook records, and knowledge model (`evidence.json`, `knowledge-model.json`). Validated by the `evidence` gate layer.
+
+### AI prep layer
+AI-generated study plans, point-by-point explanations, memory aids, and drills (`content.json`). Requires full quad annotations (`ai_generated`, `generator`, `evidence_refs`, `review_state`), 8-gram plagiarism checks against official syllabus text, and is validated by the `ai-content` gate layer.
+
+### L1 eligibility
+The prerequisite standard allowing a course to enter AI prep content generation: authoritative syllabus and official textbook information must both be fully verified. Non-L1 courses are strictly barred from having `content.json`.
+
 ## Lifecycle
 
 ### machine_ready
