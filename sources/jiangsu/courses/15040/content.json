@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "course_code": "15040",
-  "generated_at": "2026-09-11",
+  "generated_at": "2026-09-12",
   "generator": {
     "backend": "agent",
     "model": "harness-agent",
@@ -15,21 +15,21 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "摸清已覆盖各章的知识骨架，知道每节回答什么问题。",
+      "goal": "理清已覆盖的全部十一章的核心脉络与结构框架，明确各章节核心考核指向。",
       "inputs": [
         "考纲章节目录",
         "各章「本章重点」清单",
         "本课全部 AI 讲解块"
       ],
       "how": [
-        "先通读章目录与本章重点，画出知识框架草图",
-        "按节浏览各考点讲解块的标题与首条要点，标注陌生概念"
+        "先按目录通读章名与各节标题，梳理文化强国与民生社会建设逻辑框图",
+        "通览各考点讲解块首条要点，标记核心范畴与理论定位"
       ],
       "outputs": [
-        "知识框架草图",
-        "陌生概念清单"
+        "章节框架脉络图",
+        "重点概念标记清单"
       ],
-      "done_when": "能合上资料说出每一节的中心问题与考点分布。",
+      "done_when": "能够合上讲义清晰复述两章的节次分布与核心命题方向。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -37,7 +37,7 @@
         "model": "harness-agent",
         "prompt_id": "stage_plan",
         "prompt_version": "v1",
-        "generated_at": "2026-09-11"
+        "generated_at": "2026-09-12"
       },
       "evidence_refs": [
         "knowledge-model:chapters"
@@ -45,21 +45,21 @@
     },
     {
       "stage": "精读",
-      "goal": "逐点吃透已覆盖各章的讲解与记忆法，形成第一批笔记。",
+      "goal": "逐点研读已覆盖的全部十一章的知识讲解与记忆抓手，形成完备的复习笔记。",
       "inputs": [
         "各考点讲解块与记忆块",
-        "知识框架草图"
+        "章节框架脉络图"
       ],
       "how": [
-        "按「先读讲解、再背记忆法」的顺序逐点推进",
-        "每读完一节回填框架图，把易错点抄进笔记",
-        "当天用记忆法复述一遍，卡壳处做标记"
+        "按考点顺序先精读要点梳理再结合易错点深挖细节",
+        "对照记忆块的口诀或对比图式进行复述验证",
+        "把易混淆概念与规范提法整理归纳到笔记本中"
       ],
       "outputs": [
-        "逐节补全的框架笔记",
-        "易错点摘抄清单"
+        "逐节细化的复习笔记",
+        "易混易错对比表"
       ],
-      "done_when": "任意抽查一个考点，都能复述其要点与易错点。",
+      "done_when": "随机抽查任一考核点均能准确答出核心要点与辨析关键。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -67,7 +67,7 @@
         "model": "harness-agent",
         "prompt_id": "stage_plan",
         "prompt_version": "v1",
-        "generated_at": "2026-09-11"
+        "generated_at": "2026-09-12"
       },
       "evidence_refs": [
         "knowledge-model:chapters"
@@ -75,21 +75,21 @@
     },
     {
       "stage": "刷题",
-      "goal": "以题带点，检验理解并暴露薄弱环节。",
+      "goal": "通过配套题型自测检验掌握程度，查漏补缺强化实战作答能力。",
       "inputs": [
         "各考点练习题及答案解析",
-        "框架笔记"
+        "复习笔记"
       ],
       "how": [
-        "先遮住答案自测，再对照解析订正",
-        "按题型整理错题，注明错误原因",
-        "对反复出错的考点回看讲解并重做"
+        "遮挡答案独立完成单选、简答与材料题演练",
+        "对照解析认真订正，记录失分原因与知识盲区",
+        "针对薄弱考点重点回看讲解并做二次巩固"
       ],
       "outputs": [
-        "按题型分类的错题本",
-        "重做标记清单"
+        "按题型整理的错题本",
+        "重点考点强化清单"
       ],
-      "done_when": "全部已练题目自测正确率稳定，每道错题都有订正记录。",
+      "done_when": "全课已学题型练习自测正确率达标，所有错题均有订正反思记录。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -97,7 +97,7 @@
         "model": "harness-agent",
         "prompt_id": "stage_plan",
         "prompt_version": "v1",
-        "generated_at": "2026-09-11"
+        "generated_at": "2026-09-12"
       },
       "evidence_refs": [
         "knowledge-model:chapters"
@@ -105,19 +105,19 @@
     },
     {
       "stage": "冲刺",
-      "goal": "收敛到高频易混点，强化快速再认。",
+      "goal": "强化高频核心考点记忆提取速度，熟练掌握规范表述。",
       "inputs": [
         "错题本",
-        "记忆法汇总"
+        "记忆法汇总卡"
       ],
       "how": [
-        "只复盘错题与易混对比，不再全面铺开",
-        "每天用记忆法快速过一遍章节框架"
+        "集中复盘高频考点记忆口诀与逻辑框架",
+        "限时背诵简答题核心得分点，强化关键词精准提取"
       ],
       "outputs": [
-        "考前速记卡"
+        "考前核心速记卡"
       ],
-      "done_when": "速记卡上的条目都能脱口而出。",
+      "done_when": "速记卡上的核心要点与关键词能够做到脱口而出。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -125,7 +125,7 @@
         "model": "harness-agent",
         "prompt_id": "stage_plan",
         "prompt_version": "v1",
-        "generated_at": "2026-09-11"
+        "generated_at": "2026-09-12"
       },
       "evidence_refs": [
         "knowledge-model:chapters"
@@ -133,21 +133,21 @@
     },
     {
       "stage": "复盘",
-      "goal": "把已覆盖各章所学连成课程整体图景。",
+      "goal": "将已覆盖的全部十一章融会贯通到全课理论体系中，形成系统答题思维。",
       "inputs": [
-        "框架笔记",
+        "复习笔记",
         "错题本",
-        "考前速记卡"
+        "考前核心速记卡"
       ],
       "how": [
-        "对照课程整体目录回看所学内容的相互衔接",
-        "总结自己用得最顺的记忆法与答题套路"
+        "对照全课总目录回溯本批内容与其他篇章的有机联系",
+        "总结材料题与简答题的作答套路及知识迁移方法"
       ],
       "outputs": [
-        "阶段学习小结",
-        "下一阶段计划"
+        "阶段学习复盘报告",
+        "后续深化计划"
       ],
-      "done_when": "能独立向他人讲清所学内容的逻辑与常考点。",
+      "done_when": "能系统阐述文化建设与民生保障在现代化全局中的战略定位。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -155,7 +155,7 @@
         "model": "harness-agent",
         "prompt_id": "stage_plan",
         "prompt_version": "v1",
-        "generated_at": "2026-09-11"
+        "generated_at": "2026-09-12"
       },
       "evidence_refs": [
         "knowledge-model:chapters"
@@ -13445,6 +13445,2514 @@
       "source_kind": "ai_generated"
     },
     {
+      "block_id": "15040-ch10-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "### 要点梳理\n（1）文化自信的战略定位：文化自信是一个国家、一个民族发展中最基本、最深沉、最持久的力量。\n（2）与另外三个自信的关系：在道路自信、理论自信、制度自信、文化自信「四个自信」中，文化自信是更基础、更广泛、更深厚的自信。\n（3）底蕴与根基：文化自信植根于五千多年中华文明史，熔铸于革命文化和社会主义先进文化之中，是民族精神血脉的凝聚。\n\n### 易错点\n- 易将文化自信的地位与其他三个自信混同，注意其独具的「更基础、更广泛、更深厚」修饰语。\n- 易误认为文化自信仅指对古代传统文化的自信，忽视革命文化与先进文化同为重要源泉。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "记忆抓手与关键词串联：\n抓牢「三个更」核心词汇——更基础、更广泛、更深厚。\n理解逻辑链条：五千年文明是底色，革命与先进文化是底气；文化是灵魂支柱，基础不牢地动山摇。作答时先报「四个自信」，再单列文化自信的基础性地位。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "文化是一个国家、一个民族的灵魂。在道路自信、理论自信、制度自信、文化自信「四个自信」中，被定位为更基础、更广泛、更深厚的是\nA. 道路自信\nB. 理论自信\nC. 制度自信\nD. 文化自信\n作答要求：精准辨析「四个自信」中各个维度的独特表述，锁定具有基础性地位的维度。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：D。解析：文化自信是更基础、更广泛、更深厚的自信，是一个国家、一个民族发展中最基本、最深沉、最持久的力量。A 项道路自信是实现途径；B 项理论自信是行动指南；C 项制度自信是根本保障，均不能冠以「更基础、更广泛、更深厚」的定位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "### 要点梳理\n（1）唯一正确道路：中国特色社会主义文化发展道路，是推动社会主义文化繁荣兴盛的唯一正确道路。\n（2）根本标志：坚持以马克思主义为指导，坚守中华文化立场，立足当代中国现实，结合当今时代条件。\n（3）实践指向：发展面向现代化、面向世界、面向未来的，民族的科学的大众的社会主义文化，建设社会主义文化强国。\n\n### 易错点\n- 易误选西方自由主义文化发展模式，忽略「中国特色社会主义文化发展道路」的唯一正确性。\n- 易将文化繁荣的根本指针偏离马克思主义，必须紧扣马克思主义在意识形态领域的指导地位。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "记忆口诀与逻辑线索：\n繁荣兴盛一条路，中国特色是归宿；\n马列指引立根本，民族科学大众化。\n抓牢「唯一正确道路」特质，答题紧扣面向现代化、世界与未来的社会主义文化方向。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "繁荣我国文化事业、建设文化强国，必须走符合自身历史脉络与当代实践的康庄大道。党领导人民推进文化建设、实现文化繁盛的唯一必由之路是\nA. 照搬西方模式的文化道路\nB. 中国特色社会主义文化发展道路\nC. 故步自封的复古主义道路\nD. 彻底割裂传统的虚无主义道路\n作答要求：深刻认识这一道路选择的历史必然性与现实唯一性，明辨前行方向。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：中国特色社会主义文化发展道路，是实现文化繁盛、建设文化强国的唯一正确途径，坚持以科学理论为指南，立足当代生动实践。A 项盲目崇洋背离立国之基；C 项抱残守缺阻碍时代进步；D 项割断精神血脉，均非正途。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "### 要点梳理\n（1）科学内涵：“二为”方向即坚持为人民服务、为社会主义服务，是党对文化文艺工作一以贯之的根本指针。\n（2）政治定位：它深刻回答了文化文艺“为了谁、依靠谁、我是谁”的根本问题，决定着社会主义文化事业的政治性质与前途命运。\n（3）人民立场：必须把满足人民精神文化生活新期待作为出发点和落脚点，把人民作为文艺表现的主体和文艺审美的鉴赏家。\n（4）实践指向：广大文化文艺工作者必须深入基层、扎根群众，创作出接地气、传得开、留得下的时代佳作。\n\n### 易错点\n- 易把“二为”方向与商业市场的消费导向混为一谈，文化建设必须始终坚持把社会效益放在首位。\n- 易把“为人民服务”与“为社会主义服务”人为割裂开来，两者是有机统一、相辅相成的政治整体。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "核心抓手对比：\n“二为”方向两服务：一为人民守初心，二为社会固根基。\n对比辨析：“二为”解决的是「为谁服务」的根本导向问题，牢记人民立场与社会主义方向两手抓、不可偏废。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "我国文化艺术事业发展必须牢牢把握根本政治导向。我国发展社会主义文化事业必须长期坚持的“二为”方向是指\nA. 为经济建设服务、为市场开拓服务\nB. 为对外开放服务、为对外宣传服务\nC. 为人民服务、为社会主义服务\nD. 为科技进步服务、为城市建设服务\n作答要求：牢记党对文化文艺工作的根本要求，准确识别“二为”方向的标准规范内涵。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：“二为”方向即坚持为人民服务、为社会主义服务，体现了社会主义文化的根本宗旨与前进方向。A、B、D 项均将文化工作的根本导向混同于具体的经济、外宣或科技等单项事务，非“二为”的规范内涵。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "### 要点梳理\n（1）基本方针：“双百”方针即百花齐放、百家争鸣，是繁荣发展我国社会主义科学文化事业的指导方针。\n（2）科学内涵：艺术问题上百花齐放，提倡不同形式和风格的自由发展；学术问题上百家争鸣，提倡不同学派的自由讨论。\n（3）本质特征：坚持以马克思主义为指导，营造生动活泼、民主宽松的思想文化氛围，不断激发全民族文化创造活力。\n（4）制度支撑：健全鼓励探索、宽容失败的创新机制，引导广大知识分子和文艺工作者解放思想、锐意探索。\n\n### 易错点\n- 易颠倒艺术与学术两个领域的具体要求，切记「艺术百花齐放，学术百家争鸣」的准确对应。\n- 易把“双百”方针误解为放弃政治原则和价值导向的绝对自由，它必须在马克思主义指导原则下健康推进。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "图式与口诀记忆：\n艺术领域——百花齐放（不同风格竞相绽放）；\n学术领域——百家争鸣（不同学派平等讨论）。\n两翼协同促繁荣，自由讨论有底线；区分艺术与学术，配对清晰不混淆。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "我国在推进科学文化事业繁荣发展的长期实践中，形成并坚持了正确的方针政策。其中，作为繁荣发展我国科学文化事业重要指导方针的“双百”方针是指\nA. 百家争鸣、百舸争流\nB. 百花齐放、百家争鸣\nC. 百花盛开、百花争艳\nD. 百舸争流、百花齐放\n作答要求：准确记忆“双百”方针的科学提法，区分艺术发展与学术讨论的各自定位。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：“双百”方针即百花齐放、百家争鸣，艺术上百花齐放促进艺术繁荣，学术上百家争鸣促进科学进步，二者是繁荣发展科学文化事业的重要指导方针。A、C、D 项均为杂糅编造的不规范提法，背离了中央确立的科学文化事业繁荣指导方针。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "### 要点梳理\n（1）提出与地位：习近平文化思想是新时代党领导文化建设实践经验的理论总结，标志着党对中国特色社会主义文化建设规律的认识达到新高度。\n（2）时代价值：是新时代推进文化繁荣、建设文化强国、建设中华民族现代文明的强大思想武器和科学行动指南。\n（3）理论品格：坚持马克思主义魂脉与中华优秀传统文化根脉相融合，具有宏阔战略视野。\n\n### 易错点\n- 易忽视习近平文化思想作为专门思想板块的提出，将其混同于一般的文化政策阐述。\n- 易割裂其与马克思主义理论的承继关系，必须把握其作为马克思主义文化理论中国化时代化最新成果的定位。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "逻辑链条记忆：\n实践出真知：新时代文化建设波澜壮阔，凝结形成思想成果。\n双重定位：既是实践经验的理论结晶，又是建设中华民族现代文明的行动指南。\n两脉融汇：马克思主义魂脉 + 中华文化根脉。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L616"
+      ],
+      "text_md": "党在领导新时代文化建设的伟大实践中不断推进理论创新。标志着我们党对中国特色社会主义文化建设规律的认识达到了新高度的最新理论成果是\nA. 毛泽东文艺思想\nB. 邓小平文化理论\nC. 习近平文化思想\nD. 社会主义荣辱观\n作答要求：准确识别新时代文化理论创新的最新里程碑成果，注意理论形成的时段特征。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：习近平文化思想是新时代党领导文化建设实践经验的理论升华，标志着我们党对中国特色社会主义文化建设规律的认识达到了新高度。A、B 项属前续阶段理论成果；D 项属于思想道德建设板块的具体内容，非综合性文化思想体系。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "### 要点梳理\n（1）统筹推进全局：统筹推进“五位一体”总体布局，文化是重要内容；全面建设社会主义现代化国家，文化是重要支柱。\n（2）凝聚强大力量：实现中华民族伟大复兴，文化是重要支撑，能提供坚强思想保证、强大精神力量和有利文化条件。\n（3）满足美好期待：没有社会主义文化繁荣兴盛，就没有社会主义现代化，满足人民美好生活需要离不开丰富精神食粮。\n\n### 易错点\n- 易把文化建设当作经济发展的从属附庸，忽略文化繁荣是民族复兴硬性指标的战略地位。\n- 简答时易只谈精神激励，漏答文化是现代化强国重要支撑的全局维度。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "三维逻辑链抓手：\n内容位：总体布局五位之一；\n支柱位：现代化强国精神支柱；\n支撑位：民族复兴强大支撑。\n复习口诀：内容、支柱与支撑，缺少文化难复兴；物质丰富精神富，两者兼备现繁荣。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "文化兴国运兴，文化强民族强。实现中华民族伟大复兴必然要求推动社会主义文化繁荣兴盛。\n简述为什么说文化繁荣兴盛是实现中华民族伟大复兴的必然要求。\n作答要求：从总体布局内容、现代化强国支柱、民族复兴支撑以及满足人民精神生活需要等维度分点作答，每点先提炼中心句再作论述。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）文化是总体布局的重要内容：在统筹推进“五位一体”总体布局中，文化建设不可或缺。（2）文化是现代化的重要支柱：全面建设社会主义现代化国家，文化强盛是题中应有之义。（3）文化是民族复兴的重要支撑：为民族复兴提供丰润道德滋养、强大精神动力与坚定文化自信。（4）文化是满足人民精神生活的根本要求：高质量精神文化供给是实现共同富裕的重要体现。解析：作答紧扣战略全局展开，层层递进。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "### 要点梳理\n（1）深化改革创新：深化文化体制机制改革，完善文化管理体制和文化生产经营机制，破除制约文化生产力发展的体制障碍。\n（2）尊重创作规律：坚持以人民为中心的创作导向，尊重艺术家与文化工作者的创造性劳动，发扬学术民主与艺术民主。\n（3）推动数智赋能：顺应数字化发展潮流，推进文化与科技深度融合，催生新型文化业态与文化消费模式。\n\n### 易错点\n- 易把激发活力片面理解为增加财政资金投入，忽视体制机制改革的关键突破作用。\n- 易割裂文化创作自由与政治方向导向，必须强调在正确价值引领下开展自主创新。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "记忆抓手三策：\n一改机制：体制改革破藩篱；\n二重规律：尊重创作扬民主；\n三促融合：科技赋能展宏图。\n关键词串联：体制机制、创作规律、科技融合，三维发力激发全民族文化创造活力。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "创新创造是文化的生命力所在，繁荣发展社会主义先进文化必须充分调动全民族的积极性与创造性。\n简述新时代激发全民族文化创新创造活力的主要举措。\n作答要求：从深化文化体制改革、尊重文化创作规律、促进文化科技深度融合以及培养文化人才队伍四个维度分点回答；要求逻辑清晰、结论突出。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）深化文化体制机制改革：完善文化生产经营机制，破除束缚文化生产力发展的制度壁垒。（2）尊重文艺创作规律：坚持以人民为中心，发扬学术民主与艺术民主，营造鼓励创新、包容探索的环境。（3）促进文化与科技深度融合：运用现代数字化技术革新文化表达方式，培育文化新业态。（4）建强文化人才队伍：完善引才聚才用才机制，为文化繁荣提供智力支撑。解析：从体制、创作、技术与人才四端发力，系统全面。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "### 要点梳理\n（1）深厚历史底蕴：中国特色社会主义文化深深植根于五千多年中华文明史，源自中华优秀传统文化这一深厚沃土。\n（2）实践奋斗熔铸：它熔铸于党领导人民在伟大革命、社会主义建设以及改革开放实践中创造的革命文化和社会主义先进文化。\n（3）时代实践根基：它立足于新时代中国特色社会主义的伟大实践，顺应时代潮流，展现出强大的生命力与凝聚力。\n（4）坚定战略自信：坚定文化自信，必须坚持不忘本来、吸收外来、面向未来，筑牢民族复兴的精神高地。\n\n### 易错点\n- 易把文化自信的源泉片面局限于古代传统文化，切忌忽视革命文化与先进文化所提供的坚实支撑。\n- 易在面对文化碰撞时走向盲目排外或历史虚无主义两个极端，必须坚持辩证分析与科学扬弃。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "三源合一对比记忆：\n传统文化是根脉（五千年文明深厚积淀）；\n革命文化是风骨（百年求索血火洗礼）；\n先进文化是主潮（新时代实践生机勃勃）。\n口诀：源自优秀传统，熔铸革命历程，植根先进实践，坚定文化自信。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L618"
+      ],
+      "text_md": "坚定文化自信是事关国运兴衰、文化安全和民族精神独立性的大问题。\n简述坚定中国特色社会主义文化自信的深厚底气与实践要求。\n作答要求：阐明文化自信的三个来源（优秀传统文化、革命文化、先进文化），并指出坚定文化自信在现实实践中的具体要求；分点作答，条理分明。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）底气源于中华优秀传统文化：五千多年连续不断的文明沃土提供了深厚底蕴。（2）底气熔铸于革命文化：党和人民艰苦卓绝奋斗铸就的鲜明精神风骨。（3）底气植根于社会主义先进文化：伟大实践创造的时代成果提供现实支撑。（4）实践要求：必须坚守马克思主义立场，推动中华文化与时俱进，抵御各种错误思潮侵蚀。解析：按历史源泉到现实实践的逻辑分点回答，要点完备。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s1-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L620"
+      ],
+      "text_md": "### 要点梳理\n（1）根本原则与方向：坚持中国特色社会主义文化发展道路，首要前提是坚持马克思主义在意识形态领域的指导地位。\n（2）坚守本土立场：必须坚守中华文化立场，立足当代中国的基本国情与发展实践，科学回答时代提出的重大理论与实践课题。\n（3）开放包容格局：坚持以我为主、为我所用，积极吸收借鉴人类一切优秀文明成果，在文明交流互鉴中丰富和壮大自己。\n（4）建设文化强国：发展面向现代化、面向世界、面向未来的，民族的科学的大众的社会主义文化，铸就中华文化新辉煌。\n\n### 易错点\n- 易在对待外来文化成果时陷入全盘吸收或闭关排外的错误误区，必须坚持以社会主义核心价值观为引领。\n- 材料分析题作答时易脱离背景材料孤立默写概念，必须紧密结合案例中的文化创新举措展开针对性论述。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L620"
+      ],
+      "text_md": "应用分析抓手：\n立足中国现实（不走封闭僵化老路）；\n坚持马克思主义（不走改旗易帜邪路）；\n开放包容互鉴（古为今用、洋为中用）。\n材料题作答逻辑链：先定道路性质，再联材料事实，最后提炼启示。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s1-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L620"
+      ],
+      "text_md": "材料：某地在推动文旅产业融合过程中，既注重修缮保护历史文化街区、挖掘非遗传统技艺，又引入现代沉浸式光影科技与潮流创意表达，同时设立社会主义先进文化宣传专栏，取得了良好的社会效益与经济效益。\n结合材料，分析该地实践是如何体现坚持中国特色社会主义文化发展道路要求的。\n作答要求：结合材料案例，从坚守中华文化立场、结合现代科技赋能、坚持社会主义导向三个层面展开分析；先摆原理再扣材料，结论明确。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）坚持坚守立场与赓续根脉：该地保护历史街区、挖掘非遗技艺，体现了坚守中华文化立场、传承中华优秀传统文化的道路要求。（2）坚持与时俱进与科技赋能：引入沉浸式光影等现代科技和创意，生动体现了面向现代化、面向未来的创新创造要求。（3）坚持社会主义先进文化导向：设立社会主义先进文化宣传专栏，坚持以正确导向引领文旅发展，确保文化建设始终服务人民、服务社会。解析：三点逐一理论结合材料，逻辑自洽。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "### 要点梳理\n（1）根本性质定位：意识形态决定文化前进方向和发展道路，意识形态工作是为国家立心、为民族立魂的工作。\n（2）极端重要地位：面对复杂的国内外环境，意识形态领域是一项极端重要的工作，关系党的前途命运与国家长治久安。\n（3）巩固两个基础：必须建设具有强大凝聚力和引领力的社会主义意识形态，巩固全党全国人民团结奋斗的共同思想基础。\n\n### 易错点\n- 易误将意识形态工作仅视作宣传技术部门的业务工作，忽视其「立心立魂」的根本政治属性。\n- 易把意识形态安全与其他非传统安全并列，未能突出政治意识形态安全的核心与先导地位。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "记忆口诀与关键词抓手：\n立心立魂指方向，意识形态最端详；\n旗帜鲜明抓引领，思想基石固若汤。\n抓牢「为国家立心、为民族立魂」八个字，精准锁定意识形态工作的本质属性。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "意识形态决定文化前进方向和发展道路，关系社会大局稳定。在党和国家各项事业中，被称为「为国家立心、为民族立魂」的工作是\nA. 经济运行调控工作\nB. 意识形态工作\nC. 基础工程建设工作\nD. 城市交通管理工作\n作答要求：深刻领会意识形态工作的极端重要性，准确对应「立心立魂」的专项领域。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：意识形态工作是为国家立心、为民族立魂的工作，是党的一项极端重要的工作，决定文化前进方向和发展道路。A、C、D 项均属于具体的经济管理或基础设施建设业务范畴，不具备「立心立魂」的根本思想政治定位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "### 要点梳理\n（1）首要根本原则：坚持正确的政治方向是做好党的新闻舆论工作的第一位要求，是新闻舆论工作的灵魂所在。\n（2）全面贯彻落实：党的新闻舆论媒体的所有工作都必须体现党的意志、反映党的主张，坚定维护党中央权威和集中统一领导。\n（3）站稳人民立场：坚持马克思主义新闻观，把对党负责和对人民负责高度统一起来，牢固树立以人民为中心的工作导向。\n（4）牢牢占领阵地：引导广大新闻舆论工作者做党的政策主张的传播者、时代风云的记录者、社会进步的推动者。\n\n### 易错点\n- 易将经济效益、点击传播量或技术水准误当作新闻舆论工作的第一位要求，政治方向永远是第一位生命线。\n- 易把对党负责与对人民负责对立起来，在我国社会主义制度下，二者在本质上是完全一致、高度统一的。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "对比图式抓手：\n第一位要求：政治方向（灵魂本色，不可偏航）；\n工作导向：党性和人民性相统一；\n业务追求：真实客观与传播实效。\n口诀：新闻舆论千万条，政治方向第一条；导向正确旗帜明，主流声音响云霄。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "新闻舆论工作必须时刻保持清醒头脑，明确根本要求。做好党的新闻舆论工作的第一位要求是\nA. 追求最高传播流量\nB. 坚持正确的政治方向\nC. 采用最新数字技术\nD. 降低内容采写成本\n作答要求：牢牢把握新闻舆论工作的政治属性，识别处于首要地位的核心要求。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：坚持正确的政治方向是做好新闻舆论工作的第一位要求，党的新闻舆论媒体的所有工作都要体现党的意志、反映党的主张。A、C、D 项均属于技术或经营维度的考量，不能超越甚至替代政治方向的首要要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "### 要点梳理\n（1）根本工作原则：党性原则是党的新闻舆论工作的根本原则，是新闻舆论工作区别于西方新闻观的本质特征。\n（2）坚持党管媒体：必须毫不动摇坚持党管宣传、党管意识形态、党管媒体，做到所有传播平台都在党的坚强领导之下。\n（3）党性与人民性：党性原则不仅不排斥人民性，而且是人民性的集中体现与根本保证，必须始终坚持一切为了人民、一切依靠人民。\n（4）把牢导向要求：无论传统媒体还是新兴媒体，无论新闻报道还是副刊文娱，都必须讲导向、守纪律，绝不给错误思想提供传播渠道。\n\n### 易错点\n- 易受西方所谓“第四权力”或“绝对新闻自由”错误观念影响，动摇党管媒体这一社会主义根本原则。\n- 易误将业务技能与党性原则割裂对立，党性原则是把舵定向的根本统领，业务工作必须服从服务于政治大局。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "关键词串联与对比：\n根本原则：党性原则（党管宣传、党管意识形态、党管媒体）。\n辩证统一：党性即人民性，维护党的主张就是维护最广大人民的根本利益。\n口诀：党性原则是根本，阵地在前不褪色；党管媒体不动摇，人民至上显初心。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L622"
+      ],
+      "text_md": "做好党的新闻舆论工作，必须强化原则意识，站稳政治立场，把牢正确导向。党的新闻舆论工作的所有活动必须遵循的根本原则是\nA. 经济效益第一原则\nB. 自由竞争经营原则\nC. 党性原则\nD. 流量热度优先原则\n作答要求：深刻把握党性原则是新闻舆论工作的根本原则这一重大政治判断，明确媒体的本质属性。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：党性原则是党的新闻舆论工作的根本原则。党的新闻舆论媒体的所有工作都要体现党的意志、反映党的主张。A、B、D 项将商业利益、市场自发调节或网络流量置于首位，背离了社会主义新闻舆论工作的政治底色与根本原则。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L624"
+      ],
+      "text_md": "### 要点梳理\n（1）制度确立：坚持马克思主义在意识形态领域指导地位的根本制度，是坚持和完善中国特色社会主义制度的重要内容。\n（2）根本指针：把马克思主义科学理论作为全党全国人民团结奋斗的共同思想基础，把习近平新时代中国特色社会主义思想作为指引。\n（3）制度落实要求：完善党委统一领导、宣传部门组织协调、各有关部门分工负责的意识形态工作责任制。\n\n### 易错点\n- 易把指导地位制度误降为一般性工作机制，必须把握其作为「根本制度」的宪制性定位。\n- 易忽略意识形态工作责任制这个制度落地的抓手，答题时须制度与责任制并提。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L624"
+      ],
+      "text_md": "四梁八柱逻辑链：\n根本制度——马克思主义指导地位；\n行动指引——新时代党的创新理论；\n落实抓手——意识形态工作责任制。\n口诀：马克思主义立为本，根本制度定乾坤；责任落实全覆盖，铸牢共同思想魂。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L624"
+      ],
+      "text_md": "意识形态关乎旗帜、关乎道路、关乎国家政治安全。我国在意识形态领域确立了根本制度以正本清源。\n简述坚持马克思主义在意识形态领域指导地位根本制度的重要意义与实践要求。\n作答要求：从维护国家思想安全、巩固团结奋斗基础、推动理论武装走深走实以及严格落实工作责任制四个方面作答；分点回答，要点明确。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）夯实共同思想基础：筑牢全党全国人民团结奋斗的共同思想根基，确保国家事业始终沿着科学轨道前行。（2）保障国家政治与文化安全：有效抵御各种错误思潮侵蚀，牢牢掌握意识形态工作领导权、管理权、话语权。（3）深化新时代思想理论武装：坚持用习近平新时代中国特色社会主义思想凝心铸魂。（4）压实意识形态工作责任制：健全完善各级党委（党组）领导责任体系，守好各类思想阵地。解析：从战略意义到制度实践展开，层层递进。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L624"
+      ],
+      "text_md": "### 要点梳理\n（1）时代背景：面对全媒体时代的传播技术变革，舆论生态、媒体格局和传播方式发生深刻深刻变化。\n（2）推动深度融合：加快推进媒体深度融合发展，推动传统媒体和新兴媒体在内容、渠道、平台、管理等方面实现一体化。\n（3）提升传播效能：牢牢掌握网络意识形态工作主导权，让党的声音传得更开、传得更深、传得更透。\n\n### 易错点\n- 易把媒体融合简单看作开办几个新媒体账号，忽视体制机制与内容生产的深层次变革。\n- 易把流量当成传播力唯一的衡量标准，必须坚持正能量是总要求、管得住是硬道理、用得好是真本事。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L624"
+      ],
+      "text_md": "三步走逻辑图式：\n辨态势——全媒体时代深刻变局；\n建平台——推动主力军挺进主战场；\n强效能——正能量赢得大流量。\n口诀：主力挺进主战场，传统新兴深融合；唱响时代主旋律，主流舆论新格局。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L624"
+      ],
+      "text_md": "当前全媒体不断发展，信息无处不在、无所不及、无人不用，给舆论生态带来了深刻变革。\n简述新时代积极塑造主流舆论新格局的主要路径。\n作答要求：从坚持党管媒体、加快推进媒体深度融合、推动主流媒体挺进主战场以及提升国际传播能力四个层面阐述；结论先行，层次清晰。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）始终坚持党管媒体原则：把牢政治方向与导向要求，确保主流舆论阵地始终姓党为民。（2）加快推进媒体深度融合发展：实现资源通融、内容兼融、宣传互融、利益共融的一体化发展。（3）推动主力军全面挺进主战场：做大做强主流新媒体平台，让主旋律在互联网上更加响亮。（4）加快构建中国话语和叙事体系：提升国际传播效能，展现真实、立体、全面的中国。解析：四点覆盖原则、融合、阵地与国际视野，作答完备。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L626"
+      ],
+      "text_md": "### 要点梳理\n（1）理论创新指引：马克思主义是立党立国、兴党兴国的根本指导思想，必须坚持把马克思主义基本原理同中国具体实际相结合、同中华优秀传统文化相结合。\n（2）实施工程抓手：深入实施马克思主义理论研究和建设工程，加强马克思主义学院和学科建设。\n（3）回答时代课题：立足中国实践提炼原创性概念和理论框架，用中国理论阐释中国实践。\n\n### 易错点\n- 易将理论建设局限在书本教条的注经式研究，忽视理论服务新时代现代化实践的根本导向。\n- 材料题分析时易漏掉“两个结合”的根本途径，必须将原理与传统文化结合深入作答。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L626"
+      ],
+      "text_md": "应用分析抓手：\n一个根本：推进理论创新，回答时代之问；\n两个结合：同具体实际结合 + 同优秀传统文化结合；\n一个工程：马克思主义理论研究和建设工程。\n材料分析链：引材料理论探索案例——扣两个结合实践——结出自主知识体系成果。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L626"
+      ],
+      "text_md": "材料：近年来，多所高校和社科机构围绕中国式现代化进程中的重大理论与实践问题，设立专项攻关课题；大批青年学者走出书斋深入田间地头开展田野调查，从中国生动鲜活的基层治理实践中提炼学术概念；同时积极挖掘中华优秀传统治理智慧，推出了一批高质量理论成果。\n结合材料，分析新时代大力加强马克思主义理论建设的有效途径。\n作答要求：结合材料内容，从坚持“两个结合”、立足中国实践推进理论创新、强化重大问题攻关三个角度展开阐释；理论与材料紧密对应。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）坚持深入推进“两个结合”：材料中挖掘中华传统治理智慧并结合现代治理实际，生动展现了马克思主义同中华优秀传统文化、同中国具体实际深度融合的理论创新路径。（2）立足中国生动实践提炼中国理论：学者深入田间地头调研、从基层经验中凝练学术概念，体现了理论源于实践、回答时代课题的实践导向。（3）聚焦重大时代战略深化攻关：围绕中国式现代化等战略重点设立攻关课题，充分发挥了马克思主义理论对强国建设实践的科学指导作用。解析：三点紧扣材料，条分缕析。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L628"
+      ],
+      "text_md": "### 要点梳理\n（1）三个层面内涵：富强、民主、文明、和谐是国家层面的价值目标；自由、平等、公正、法治是社会层面的价值取向；爱国、敬业、诚信、友善是公民个人层面的价值准则。\n（2）凝心聚力之魂：社会主义核心价值观是当代中国精神的集中体现，凝结着全体人民共同的价值追求。\n（3）时代实践培育：把培育和践行社会主义核心价值观融入国民教育、精神文明建设和法治建设全过程。\n\n### 易错点\n- 易把三个层面的价值要求对应混淆，注意分清国家、社会、个人三个不同层次的对应词。\n- 易忽视核心价值观同中华优秀传统文化的渊源，它深深汲取了传统思想道德的精华。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L628"
+      ],
+      "text_md": "三层二十四字图式抓手：\n国家层面（目标）：富强、民主、文明、和谐；\n社会层面（取向）：自由、平等、公正、法治；\n公民层面（准则）：爱国、敬业、诚信、友善。\n对比辨析：层级分明，由宏观国家目标到微观公民准则，立体覆盖。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L628"
+      ],
+      "text_md": "社会主义核心价值观是当代中国精神的集中体现。在社会主义核心价值观的二十四字基本内容中，属于社会层面价值取向的是\nA. 富强、民主、文明、和谐\nB. 自由、平等、公正、法治\nC. 爱国、敬业、诚信、友善\nD. 民主、富强、敬业、法治\n作答要求：准确区分社会主义核心价值观中三个层面的不同范畴，锁定社会层面的取向。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：自由、平等、公正、法治回答了我们要建设什么样的社会的重大问题，属于社会层面的价值取向。A 项富强、民主、文明、和谐属于国家层面的价值目标；C 项爱国、敬业、诚信、友善属于公民个人层面的价值准则；D 项将各层面词汇混乱拼凑，非规范表述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L628"
+      ],
+      "text_md": "### 要点梳理\n（1）伟大建党精神内涵：坚持真理、坚守理想，践行初心、担当使命，不怕牺牲、英勇斗争，对党忠诚、不负人民。\n（2）精神源头地位：这是中国共产党的精神之源，构建起中国共产党人精神谱系的源头活水，是立党兴党强党的根本滋养。\n（3）丰富实践力量：这一伟大精神跨越时空、历久弥新，深深融入党和人民的奋斗历程，激励无数先锋模范顽强拼搏。\n（4）新征程引领：在新时代新征程上弘扬伟大建党精神，为以中国式现代化全面推进中华民族伟大复兴注入强大动力。\n\n### 易错点\n- 易将四句三十二字内涵与其他历史时期的特定革命精神口号混淆，作答时必须准确完整呈现四句话。\n- 易割裂伟大建党精神与中国共产党人精神谱系的关系，必须牢牢把握其作为“精神之源”的根本统领定位。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L628"
+      ],
+      "text_md": "四句三十二字图式逻辑链：\n思想之旗——坚持真理、坚守理想；\n行动之源——践行初心、担当使命；\n风骨品格——不怕牺牲、英勇斗争；\n道德立场——对党忠诚、不负人民。\n口诀：理想初心不怕难，忠诚为民永相传；源头活水立根本，伟大建党精神明。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L628"
+      ],
+      "text_md": "一百多年前，中国共产党的先驱们在创建中国共产党的早期艰辛探索中，锤炼并形成了中国共产党的精神之源。在以下选项中，准确表述这一精神之源的是\nA. 延安精神\nB. 井冈山精神\nC. 西柏坡精神\nD. 伟大建党精神\n作答要求：准确识别中国共产党的精神之源，把握其在整个中国共产党人精神谱系中的龙头与源头地位。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：伟大建党精神是中国共产党的精神之源，其内涵是坚持真理、坚守理想，践行初心、担当使命，不怕牺牲、英勇斗争，对党忠诚、不负人民。A、B、D 项均为在伟大建党精神指引下在后续各个革命阶段形成的代表性精神，属于精神谱系的重要组成部分而非源头。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L629"
+      ],
+      "text_md": "### 要点梳理\n（1）源与流的关系：伟大建党精神是中国共产党的精神之源，由它生发出一系列具有鲜明时代特征的伟大精神，构建起中国共产党人的精神谱系。\n（2）贯通历史长河：从井冈山精神、长征精神、延安精神、抗美援朝精神，到“两弹一星”精神、抗洪精神、脱贫攻坚精神等，一脉相承、历久弥新。\n（3）实践赓续传扬：发扬党的光荣传统、赓续红色血脉，为推进中国式现代化注入不竭精神动力。\n\n### 易错点\n- 易将精神谱系拆解为孤立片段，必须讲清以伟大建党精神为源头的纵向贯通脉络。\n- 答题时易只罗列历史精神名称，遗漏新时代赓续弘扬、服务强国复兴伟业的实践要求。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L629"
+      ],
+      "text_md": "源流脉络抓手：\n源头一水：伟大建党精神；\n分流汇聚：各历史时期革命精神、建设精神、改革精神与新时代精神；\n归宿指向：铸牢红色血脉，赋能民族复兴。\n复习口诀：源头发端催百川，红色血脉代代传；赓续荣光守初心，精神谱系照征程。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L629"
+      ],
+      "text_md": "中国共产党在长期奋斗中构建起中国共产党人的精神谱系，锤炼出鲜明的政治品格。\n简述弘扬以伟大建党精神为源头的中国共产党人精神谱系的重大意义与时代要求。\n作答要求：从传承红色血脉、坚定理想信念、激发斗争精神以及推进强国建设四个维度分点陈述；逻辑严密，论述充分。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）赓续红色血脉守住红色江山：以精神谱系滋养初心使命，确保党和国家红色江山永不变色。（2）坚定共产主义与社会主义理想信念：引导党员干部筑牢信仰之基、补足精神之钙。（3）锤炼敢于斗争善于斗争的政治风骨：在风高浪急甚至惊涛骇浪的重大考验面前敢于迎难而上。（4）汇聚强国复兴磅礴精神动能：将宝贵精神财富转化为推进中国式现代化建设的实际行动。解析：四点系统阐明承前启后、凝心聚力的历史与时代意蕴。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L630"
+      ],
+      "text_md": "### 要点梳理\n（1）贯穿融入全域：把社会主义核心价值观融入法治建设、国民教育、社会治理和精神文明创建之中，使之内化于心、外化于行。\n（2）强化榜样引领：广泛开展时代楷模、道德模范评选表彰，弘扬志愿服务精神，发挥示范引领作用。\n（3）制度机制支撑：把社会主义核心价值观要求体现到各类公约、守则、规章之中，推动日常守则化、生活化。\n\n### 易错点\n- 易把核心价值观践行等同于单纯的宣讲说教，忽视法治保障与生活化融入的制度化实践。\n- 材料题分析时易忽略法治对德治的保障支撑，必须阐明法律与道德协同发力的要求。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L630"
+      ],
+      "text_md": "践行应用抓手：\n内化于心（思想教育、典型引领）；\n外化于行（志愿服务、文明实践）；\n固化于制（法治保障、村规民约）。\n材料答题链：抓取基层文明实践案例——对照制度化生活化抓手——提出深入践行策略。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L630"
+      ],
+      "text_md": "材料：某城市在社区推行“德治积分超市”机制，居民参与爱心互助、遵规守约、保护环境等文明行为均可积攒积分并兑换日常生活用品；同时，当地人大将文明养犬、分类投放垃圾等行为规范写入地方性法规，有效遏制了不文明现象，形成了崇德向善的良好风气。\n结合材料，分析该市是如何广泛践行社会主义核心价值观的。\n作答要求：结合材料做法，从日常生活融入、利益激励引导、法律法规保障三个维度展开剖析；先提炼要点，再紧扣材料分析。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）将核心价值观融入日常生活实践：材料中通过邻里互助、环境治理等日常微行动落实文明要求，做到了落细落小落实。（2）创新激励机制引导向上向善：建立“积分超市”以正向激励调动居民参与积极性，使崇德向善转化为群众自觉追求。（3）强化法治支撑筑牢道德底线：通过地方立法将文明规范上升为法定准则，实现以法治承载道德理念、以法律护航道德建设。解析：从日常、激励、法治三位一体剖析，逻辑严密紧扣材料。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L630"
+      ],
+      "text_md": "### 要点梳理\n（1）统筹推进创建：深化群众性精神文明创建活动，统筹推进文明城市、文明村镇、文明单位、文明家庭、文明校园创建。\n（2）加强思想道德建设：实施公民道德建设工程，弘扬传统美德，加强诚信建设，引导青少年扣好人生第一粒扣子。\n（3）推动移风易俗：破除铺张浪费、婚丧大操大办等陈规陋习，培育文明乡风、良好家风、淳朴民风。\n\n### 易错点\n- 易把文明程度提高局限在城市环境美化等硬件指标，忽略社会公德、职业道德、家庭美德等内在素质。\n- 材料题分析时易泛泛而谈，必须针对农村移风易俗或诚信建设具体举措作针对性回答。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L630"
+      ],
+      "text_md": "提高文明程度抓手：\n五大创建：城市、村镇、单位、家庭、校园齐抓共管；\n道德工程：社会公德、职业道德、家庭美德、个人品德；\n移风易俗：遏制陋习，树立文明新风尚。\n材料分析逻辑：文明创建活动 + 思想道德素质 + 社会治理协同。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L630"
+      ],
+      "text_md": "材料：某乡村以往存在婚丧嫁娶大操大办、人情攀比严重的问题。近年来，村党支部带领村民修订村规民约，成立红白理事会，明确酒席规模和随礼上限；同时设立“家风家训文化墙”评选“星级文明户”，全村节约开支显著，邻里关系更加融洽，乡风民风焕然一新。\n结合材料，分析新时代如何多措并举提高全社会文明程度。\n作答要求：结合材料做法，从破除陈规陋习、弘扬优良家风家训、发挥群众自治作用三个角度深入分析；论证充分，观点明确。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）深化移风易俗破除陈规陋习：材料中通过规范红白喜事标准遏制人情攀比，切实减轻了群众负担，培育了勤俭节约的新风尚。（2）注重家风家训建设涵养良好品德：打造文化墙、评选文明户，发挥了优良家风对村民道德风貌的潜移默化滋养作用。（3）依托群众自治组织健全制度保障：村规民约与红白理事会使文明要求转化为村民共同遵守的自治规约，形成了共建共享的生动局面。解析：立足材料移风易俗举措，深入阐释提升文明程度的综合施策路径。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s4-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "### 要点梳理\n（1）五个突出特性：中华文明具有突出的连续性、突出的创新性、突出的统一性、突出的包容性、突出的和平性。\n（2）连续性与创新性：连续性决定中华民族走自己的路；创新性决定中华民族守正不守旧、尊古不复古。\n（3）统一性、包容性与和平性：统一性决定国家统一是核心利益；包容性决定交往交流交融；和平性决定走和平发展道路。\n\n### 易错点\n- 易混淆五个突出特性的内涵与对应结论，特别是连续性（走自己的路）与创新性（守正不守旧）的深层意蕴。\n- 易遗漏五个特性之一，必须熟记连续、创新、统一、包容、和平五维完整框架。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "五大特性图式速记：\n连：突出的连续性（薪火相传不中断，决定走自己的路）；\n创：突出的创新性（守正创新求变革，决定不固步自封）；\n统：突出的统一性（九州同心融一体，决定统一是根本）；\n包：突出的包容性（海纳百川兼并蓄，决定多元融一体）；\n和：突出的和平性（亲仁善邻讲和睦，决定永不称霸凌）。\n口诀：连创统包和，五维照千秋。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s4-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "中华文明源远流长、博大精深。在深刻揭示中华文明起源与特质的科学论断中，关于中华文明五个突出特性的完整概括是\nA. 连续性、创新性、统一性、包容性、和平性\nB. 扩张性、排他性、等级性、神权性、停滞性\nC. 封闭性、割裂性、功利性、分散性、脆弱性\nD. 机械性、保守性、盲从性、局限性、附属性\n作答要求：准确识别党对中华优秀传统文化和中华文明特质总结提炼的标准科学范畴。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：中华文明具有五个突出特性，即突出的连续性、突出的创新性、突出的统一性、突出的包容性、突出的和平性。B、C、D 项所列词汇完全违背了中华文明历史特质，充斥着西方中心主义或历史偏见，均属错误选项。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s4-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "### 要点梳理\n（1）崇高历史使命：举精神之旗、立精神支柱、建精神家园，是当代中国文艺工作者必须肩负起的崇高历史使命。\n（2）以人民为中心：坚守人民立场，把人民作为文艺审美的鉴赏家和评判者，把为广大人民群众服务作为文艺工作者的崇高天职。\n（3）坚持质量第一：把创作生产优秀作品作为中心环节，努力追求思想精深、艺术精湛、制作精良的有机高度统一。\n（4）弘扬中国精神：紧扣时代脉搏，以生动的艺术形象展现中国力量与中国气派，为民族复兴提供源源不断的精神动能。\n\n### 易错点\n- 易将文艺的崇高使命片面等同于单纯的商业娱乐或市场牟利，忽视了其在构筑国民精神家园中的独特价值。\n- 易将思想内涵与艺术表现人为对立，优秀文艺作品必须达到“思想精深、艺术精湛、制作精良”三者和谐统一。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "三精神三精良抓手：\n三精神使命：举精神旗、立精神柱、建精神家；\n三精良标准：思想精深、艺术精湛、制作精良。\n口诀：精神旗帜高高举，精神支柱立天地；人民中心记心坎，三精兼备攀高峰。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s4-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "文艺是时代前进的号角，最能代表一个时代的风貌，最能引领一个时代的风气。当代中国文艺的崇高使命是\nA. 追求最高商业票房与利润回报\nB. 举精神之旗、立精神支柱、建精神家园\nC. 迎合低俗受众口味获取高流量\nD. 原样复刻外国先锋派艺术形式\n作答要求：深刻把握文艺工作在筑牢精神基石方面的政治属性与神圣使命。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：举精神之旗、立精神支柱、建精神家园，是当代中国文艺的崇高使命。文艺是铸造灵魂的工程，必须以立德树人、凝聚精神力量为己任。B 项片面强调商业创收；C、D 项偏离文艺在精神引领与价值建构层面的崇高核心定位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s4-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "### 要点梳理\n（1）双轮驱动：繁荣文化事业与壮大文化产业相得益彰，共同构成推动社会主义文化繁荣发展的坚实支撑。\n（2）文化事业要求：坚持政府主导，健全现代公共文化服务体系，保障人民群众基本文化权益。\n（3）文化产业要求：健全现代文化产业体系和市场体系，推动各类文化市场主体高质量发展，把社会效益放在首位、实现社会效益和经济效益相统一。\n\n### 易错点\n- 易把文化事业与文化产业混同，事业重在公益普惠均等，产业重在市场运作与活力。\n- 易忽视两个效益的关系，在发展文化产业时必须始终坚持社会效益第一的根本原则。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "对比图式抓手：\n文化事业——公益性、普惠性、均等性，政府主导保底线；\n文化产业——市场化、竞争性、经营性，市场调节增活力。\n统一原则：始终坚持把社会效益放在首位，实现社会效益与经济效益相统一。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s4-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L632"
+      ],
+      "text_md": "推动文化繁荣发展要坚持事业与产业双轮驱动。发展文化产业在处理效益关系时必须始终坚持的原则是\nA. 经济效益第一，其他效益从属\nB. 把社会效益放在首位，实现社会效益和经济效益相统一\nC. 只算经济大账，不顾社会影响\nD. 彻底脱离市场机制由财政全额包揽\n作答要求：掌握文化产业的特殊属性，认清经济效益与社会效益辩证关系的底线原则。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：发展文化产业在处理效益关系时，必须始终坚持把社会效益放在首位、社会效益和经济效益相统一。A 项将经济效益置于首位背离了文化属性；C、D 项割裂两者辩证关系，不符合繁荣文化产业的科学导向。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s4-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L634"
+      ],
+      "text_md": "### 要点梳理\n（1）科学方针：“两创”方针即推动中华优秀传统文化创造性转化、创新性发展。\n（2）创造性转化内涵：按照时代特点和要求，对传统文化中有借鉴意义的内涵和陈旧的表达形式予以改造，赋予其新的时代内涵和现代表达形式。\n（3）创新性发展内涵：按照时代的新进步新进展，对中华优秀传统文化的内涵加以补充、拓展、完善，增强其影响力和感召力。\n\n### 易错点\n- 易把创造性转化与创新性发展混为一谈，前者侧重形式与内涵的时代改造，后者侧重内涵的补充拓展。\n- 易陷入全盘肯定或全盘否定的误区，必须坚持扬弃继承、转化创新。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L634"
+      ],
+      "text_md": "“两创”对比记忆抓手：\n转化（创造性转化）：改旧为新，古为今用，转换现代表达形式；\n发展（创新性发展）：推陈出新，充实完善，赋予新的时代内涵。\n口诀：传统文化是宝藏，创造转化改形式；创新发展丰内涵，守正创新放光芒。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s4-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L634"
+      ],
+      "text_md": "中华优秀传统文化是中华民族的根和魂，新时代对待传统文化必须坚持科学方针。\n简述推动中华优秀传统文化创造性转化、创新性发展（“两创”）的科学内涵与实践要求。\n作答要求：分别阐释“创造性转化”与“创新性发展”的各自含义，并指出推进“两创”必须坚持的根本原则；条理分明，语言严整。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）创造性转化的内涵：按照时代特点和要求，对传统文化中有借鉴意义的内涵和旧表达形式进行改造，赋予其新的时代内涵和现代表达形式，激活其生命力。（2）创新性发展的内涵：按照时代新进展，对中华传统文化的内涵加以补充、拓展、完善，增强其影响力和感召力。（3）推进实践的原则：坚持以马克思主义为指导，古为今用、洋为中用，辩证取舍，反对厚古薄今与历史虚无主义。解析：两创内涵与实践原则分点作答，全面精准。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch10-s4-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch10-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L635"
+      ],
+      "text_md": "### 要点梳理\n（1）文明互鉴视角：坚持文明交流互鉴，以文明交流超越文明隔阂、文明互鉴超越文明冲突、文明包容超越文明优越。\n（2）叙事体系创新：加快构建中国话语和中国叙事体系，讲好中国故事、传播好中国声音，展现可信、可爱、可敬的中国形象。\n（3）推动走出去走进去：创新人文交流方式，拓展国际传播渠道，增强中华文化的亲和力与全球感召力。\n\n### 易错点\n- 易片面依赖自说自话式外宣，必须注重跨文化传播规律，提升中国叙事的话语说服力。\n- 材料题分析时易只列交流项目，未升华到提升国家软实力与展示中国形象的高度。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch10-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L635"
+      ],
+      "text_md": "应用分析抓手：\n三个超越：超越隔阂、超越冲突、超越优越；\n三个形象：可信、可爱、可敬；\n一个目标：提升中华文化国际影响力与国家文化软实力。\n材料分析链：分析文化出海举措——提炼跨文化交流机制——总结树立中国形象路径。\n复习备考建议：对照考纲要求重点提取关键词，理解逻辑脉络后再做完整复述，答题时先列核心论点再展开说明。"
+    },
+    {
+      "block_id": "15040-ch10-s4-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch10-s4-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L635"
+      ],
+      "text_md": "材料：近年来，中国多款以中国古代神话与建筑为背景的国产高质量数字游戏、科幻影视作品在海外多国热映热销，引发全球年轻人对中国古典神话、古建榫卯和服饰美学的自发探究热潮；同时，我国积极同多国举办联合文物展与艺术节，推动文明对话。\n结合材料，分析新时代如何不断提升国家文化软实力和中华文化影响力。\n作答要求：结合材料案例，从创新文化传播载体、展示中华文化魅力、深化文明交流互鉴三个维度深入作答；摆事实讲道理，层次分明。",
+      "question_type": "材料题",
+      "answer_md": "参考答案：（1）创新数字传播载体与叙事形态：材料中数字游戏、科幻影视等现代视听作品成功破圈，表明运用现代科技与年轻人喜爱的方式能有效提升中华文化传播力。（2）提炼展示中华文明独特精神标识：将古代神话、传统建筑与美学符号融入文艺精品，生动展现了中华文化的独特魅力与丰厚底蕴。（3）深化国际人文交流与文明互鉴：通过文物联合展览与艺术节搭建平等对话平台，以文化人，有效塑造了可信、可爱、可敬的中国形象。解析：结合现代文化出海案例，全面论证提升软实力的实现路径。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "### 要点梳理\n（1）核心理论论断：发展是解决我国一切问题的基础和关键，同样是破解各项民生难题的“总钥匙”。\n（2）物质前提保障：脱离了扎实的经济发展，保障和改善民生就会成为无源之水、无本之木，失去最根本的财富支撑。\n（3）高质量发展导向：新时代解决民生关切，必须紧紧扭住经济建设这个中心，通过高质量发展不断做大做好民生“蛋糕”。\n（4）实践辩证统一：发展不是目的本身，必须将发展的成果源源不断转化为群众看得见、摸得着的物质文化福祉。\n\n### 易错点\n- 易将“总钥匙”与“指南针”的角色定位相混淆，切记推动民生问题解决的根本法宝“总钥匙”是发展。\n- 易误认为离开经济增长也能凭空提升福利水平，忽视了民生必须建立在坚实物质生产基础之上的客观规律。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "比喻逻辑与抓手速记：\n总钥匙——发展：开民生之锁，筑物质之基，做大财富蛋糕；\n指南针——民生：定前行之向，防偏离初衷。\n记忆诀窍：解难题找钥匙，抓经济固根本；不搞无源之水，发展铺就幸福路。复习时牢记：发展是破局法宝，离开经济谈民生是缘木求鱼。答题紧扣发展是物质基础。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "保障和改善民生必须建立在坚实的物质财富基础之上。在深刻阐明经济建设与人民生活福祉关系的科学论断中，被生动比喻为解决民生问题“总钥匙”的是\nA. 扩大对外开放\nB. 发展\nC. 健全社会救助\nD. 强化行政监督\n作答要求：准确辨析解决民生问题的根本依托，牢牢把握推动经济社会发展的核心抓手。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：发展是解决我国一切问题的基础和关键，也是解决民生问题的“总钥匙”。离开经济发展谈改善民生只能是空中楼阁。A 项开放是动力条件；C 项救助是兜底举措；D 项监督是管理保障，均不能冠以“总钥匙”的根本定位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "### 要点梳理\n（1）政治方向导向：民生是抓发展的“指南针”，深刻回答了“为了谁发展、依靠谁发展”的根本价值立场。\n（2）发展的根本归宿：抓发展必须把增进民生福祉作为出发点和落脚点，确保经济前行航向不偏离人民群众美好生活期待。\n（3）需求牵引供给：把满足群众多样化、多层次民生需求作为推动产业升级、激发内需潜力的强大内生动力。\n（4）防范唯GDP论：坚决摒弃脱离群众实际受惠感受的盲目投资与无效扩张，让经济指标更有民生温度。\n\n### 易错点\n- 易把民生仅仅看作消极的财富消耗端，忽视其对发展具有方向校准与动力牵引的“指南针”重大作用。\n- 易将发展的根本目的误置为抽象的数字增长，背离了以人民为中心的发展思想。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "航向导向图式速记：\n指南针定方向——民生导向明确，发展不偏航；\n动力源促内需——群众冷暖挂心头，消费投资增动能。\n记忆口诀：发展犹如巨轮行，民生正是指南针；校准坐标奔共富，为了人民得幸福。备考紧扣民生作为出发点与价值归宿的地位，答题锁定民生的方向引领功能。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "推动经济高质量发展必须时刻校准前进方向。在科学阐明发展为了人民的深刻内涵时，被形象确立为指引抓发展方向的“指南针”的是\nA. 产业结构调整\nB. 货币金融调控\nC. 民生\nD. 区域平衡协作\n作答要求：深刻领悟以人民为中心的发展导向，准确定位指导各项发展决策的根本指引。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：民生是抓发展的“指南针”，发展的根本目的就是增进民生福祉。抓发展必须紧紧围绕满足群众对美好生活的向往来展开。A、B、D 项属于经济运行与政策调控的具体手段，不是校准价值方向的“指南针”。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "### 要点梳理\n（1）首要核心关切：坚决兜住兜牢民生底线，做好重点人群就业生活保障是保障和改善民生的重中之重。\n（2）聚焦重点群体：把高校毕业生、农民工、退役军人以及城乡生活困难家庭等作为政策扶持与服务托底的主攻方向。\n（3）聚焦急难愁盼：着力解决群众在教育、医疗、住房、养老、托幼等领域最直接、最现实的切身利益诉求。\n（4）兜牢安全底线：完善社会保障与救助防护网络，确保在风险挑战面前困难群体基本生活不受冲击、有依有靠。\n\n### 易错点\n- 易误认为保障改善民生的重中之重是搞全覆盖的超高福利供给，实际着力点在于精准兜牢民生底线与护航重点群体。\n- 易忽视基本公共服务均等化的底线原则，把资源分散投入到非急需的形象工程上。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "核心防线抓手梳理：\n兜底线——织牢织密救助与保障网；\n保重点——毕业生、农民工、困难户优先扶助；\n解愁盼——教医住老托精细落实。\n记忆口诀：民生千头又万绪，重中之重在兜底；重点群体重点帮，基本保障暖心房。复习牢记：不搞超阶段盲目攀比，立足保基本、兜底线，精准帮扶关键群体。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L653"
+      ],
+      "text_md": "增进人民福祉必须突出问题导向、把握关键环节。在全方位推进社会民生建设的部署中，保障和改善民生的重中之重是\nA. 普遍推行高福利待遇\nB. 兜牢底线并做好重点群体保障\nC. 全面取消城乡服务差异\nD. 优先扶持营利性教育机构\n作答要求：紧扣党和国家在民生保障中的托底性定位，准确识别政策倾斜的核心着力点。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：保障和改善民生的重中之重是坚决兜住兜牢民生底线，做好高校毕业生、农民工等重点群体的生活就业保障。A 项超阶段搞高福利会陷入陷阱；C、D 项不符合当前阶段基本公共服务均等化与公益属性的基本原则。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "### 要点梳理\n（1）幸福生活的坚实根基：民生是人民幸福之基、社会和谐之本，直接关乎群众日常柴米油盐、安危冷暖的实际感受。\n（2）人心向背的最大政治：民生连着民心，民心是最大的政治。抓民生就是筑牢党执政兴国最深厚、最可靠的群众根基。\n（3）追求长远无终点：民生保障与改善是一项长期的系统工程，没有休止符，只有连续不断的新起点与新目标。\n（4）共建共享同迈进：把民生改善融入现代化建设全过程，让人民群众在共同奋斗中稳步过上更加富足美好的高品质生活。\n\n### 易错点\n- 易把民生单纯看作物质救济层面的事务，忽略民生作为社会和谐根本基石与凝聚党心民心政治前提的深刻内涵。\n- 易把民生建设当作阶段性突击任务，忽略其长期性、连续性与螺旋式上升的客观规律。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "基石逻辑抓手梳理：\n幸福之基——柴米油盐连冷暖，日子安稳人心安；\n最大政治——民生连民心，执政根基在群众；\n行无止境——没有休止符，只有新起点。\n背记口诀：民生乃是幸福基，连通民心聚伟力；常抓不懈无终点，造福群众展新篇。作答按「基石定位—政治意义—长期任务」三层展开。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "中国共产党始终把为人民谋幸福作为初心使命。在统筹推进新时代社会建设的战略部署中，深刻领会并切实把握民生是人民幸福之基、社会和谐之本具有重大指导意义。请简述民生是人民幸福之基的深刻内涵及其实践要求。\n作答要求：紧扣民生与人民幸福、党心民心及长期建设任务的逻辑关联分点作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）民生是群众幸福安康的物质生活与精神寄托之基，直接关乎千家万户最切身的利益与切身感受。（2）民生连着民心，民心是最大的政治，抓好民生是巩固党的执政地位最坚实的群众基石。（3）改善民生没有终点站，只有连续不断的新起点，必须紧扣群众急难愁盼持之以恒推进。（4）坚持依靠人民共建共创，让现代化建设成果更加公平惠及全体人民。\n答题解析：解答该题须立足人民主体地位，从群众生活切身体会上升到党的政治根基，阐明持续发力的实践原则。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "### 要点梳理\n（1）相辅相成有机统一：民生和发展是不可割裂的辩证整体，两者相互支撑、相互促进、良性循环。\n（2）发展为民生提供坚实基础：离开经济增长，改善民生就无从谈起；经济越繁荣，公共服务与民生保障的支撑力就越强。\n（3）民生为发展提供内生动力：改善民生能扩大消费需求、培育高素质劳动力资源，为持续繁荣注入旺盛动能。\n（4）在良性互动中协同推进：坚决避免“只要发展不顾民生”的片面倾向，也坚决防范“脱离发展阶段盲目攀比民生”的误区。\n\n### 易错点\n- 易割裂发展与民生的内在统一性，把民生产生与经济投入对立起来，忽视民生投资对经济周期的拉动效果。\n- 易滑入民生福利超越经济承载能力的陷阱，没有把握好尽力而为与量力而行的动态平衡。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "双轮驱动图式记忆：\n经济发展——造蛋糕，供养民生基础；\n民生改善——分蛋糕，激活内需动力。\n良性互动：发展促民生，民生牵引新发展。\n复习口诀：发展民生双互促，相辅相成走坦途；做大蛋糕夯底座，内需旺盛劲头足。论述题作答把握「基础—动力—互动」三大支柱。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "在推进中国式现代化进程中，必须正确处理好稳增长与惠民生的辩证关系。科学把握民生与发展的深层互动，是推动经济社会协调持续健康发展的关键法则。请简述民生和发展的辩证统一关系。\n作答要求：从物质前提、内生动力、互动机制三个维度展开系统论述，要点条理清晰。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）发展是民生的坚实前提与物质基石，只有保持经济持续健康增长，保障与改善民生才有丰厚的物质资源。（2）民生是发展的根本目的与持久动能，改善民生能有效释放消费活力、提升劳动者素质，转化为新的经济增长点。（3）两者良性互动、相辅相成，必须在发展中保障和改善民生，以民生改善牵引高质量发展，避免相互脱节。\n答题解析：作答需突出辩证法思维，阐明发展创造物质支撑、民生反哺发展活力的双向协同机制。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "### 要点梳理\n（1）三感内涵与逻辑关联：获得感侧重实实在在的发展红利，幸福感体现主观心里的满足感，安全感是稳定预期的防护网。\n（2）坚持普惠共享：健全覆盖全民的基本公共服务体系，着力消除发展不平衡不充分带来的民生痛点。\n（3）聚焦重点难点：把群众在托育养老、上学看病、求职安居等领域的呼声转化为具体民生实事，见行见效。\n（4）共建共享促深化：鼓励群众广泛参与社会治理与劳动创造，在辛勤打拼中品味生活甘甜，增强自我成就感。\n\n### 易错点\n- 易将“三感”机械等同或混用，注意区分获得感的物质性、幸福感的情感认同性与安全感的稳定预期性。\n- 易出现单纯政府包办代替的倾向，忽略了引导群众依靠辛勤奋斗创造幸福生活的重要途径。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "三感联动逻辑抓手：\n获得感——手中有粮、兜里有钱（看得见的实惠）；\n幸福感——心中有暖、脸上有笑（情感上的充实）；\n安全感——背后有靠、未来有底（预期上的稳定）。\n记忆口诀：得实惠有获得感，心里甜是幸福感；社会稳存安全感，三感齐升谱华章。答题按照「内涵—举措—共创」条目作答。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L655"
+      ],
+      "text_md": "检验各项改革与发展成效的试金石，归根结底要看广大人民群众的实际受惠程度。在新征程上，党和国家把提升群众生活品质作为重要着力点，全面增强民生保障实效。请简述不断增强人民群众获得感、幸福感、安全感的实践路径。\n作答要求：明确“三感”的各自着力点，并提出切实可行的民生推进举措。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）强化政策供给增进获得感，扩大优质公共服务资源，使改革发展红利更加公正透明地惠及全体人民。（2）聚焦急难愁盼提升幸福感，在就业、养老、托育、医疗等具体领域办好民生实事，化解群众后顾之忧。（3）织密平安防护网络筑牢安全感，健全社会保障与治安防控机制，维护公平正义与和谐安宁环境。（4）坚持奋斗幸福观，引导人民依靠双手共建美好生活。\n答题解析：考生应分别扣准获得感、幸福感、安全感的针对性施策，结合公共服务、制度保障与奋斗精神展开作答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L657"
+      ],
+      "text_md": "### 要点梳理\n（1）立党为公执政为民：我们党领导经济社会建设，一切奋斗的终极目标都是为了让老百姓过上更加红火的好日子。\n（2）衡量发展的价值尺度：评判一项发展规划是否科学、改革举措是否成功，根本标准看群众生活是否改善、权益是否受到保护。\n（3）成果全民共享：坚持以人民为中心的发展思想，决不走两极分化的道路，在现代化进程中稳步促进全体人民共同富裕。\n（4）全生命周期护航：在幼有所育、学有所教、劳有所得、病有所医、老有所养、住有所居、弱有所扶上不断取得新进展。\n\n### 易错点\n- 易受“GDP崇拜”误导，片面追求排场政绩而忽视群众切身受惠度，脱离了发展的本质初心。\n- 材料分析时易陷入一般化空谈，未能精准结合案例中具体便民惠民公共服务落地成效进行多层次论证。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L657"
+      ],
+      "text_md": "根本目的分析抓手与关键词记忆：\n初心宗旨——立党为公，为民谋福；\n衡量标尺——群众评判，成效看生活；\n民生七有——幼育、学教、劳得、病医、老养、住居、弱扶。\n材料题答题链：提炼民生案例举措——对应以人民为中心思想——阐述增进福祉与共同富裕目标。复习紧扣「为了谁」这一最高目的。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L657"
+      ],
+      "text_md": "材料：某老工业城区在城市更新过程中，并未盲目追求商业地标与豪华景观，而是聚焦群众居住痛点，将财政资金优先投向背街小巷整治、老旧小区加装电梯、建设社区社区长者食堂以及嵌入式便民托育点。改造完成后，周边数万户居民的日常买菜、养老照料、托儿托管难题迎刃而解，群众满意度显著提升。\n根据材料回答：结合上述案例，阐明“增进民生福祉是发展的根本目的”的理论逻辑与实践价值。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐述：坚持以人民为中心，把人民对美好生活的向往作为奋斗目标。发展不是单纯的冰冷数字，其根本归宿是让群众过上舒心幸福的日子。\n二、结合材料分析：该区在城市更新中力戒形式主义，将资金用在老旧小区、长者食堂、托幼等急需项目上，生动践行了把解决群众急难愁盼放在首位的工作导向。\n三、总结升华：必须始终牢记民生是发展的落脚点，在高质量发展中织密服务保障网，推动发展成果普遍惠及人民。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L657"
+      ],
+      "text_md": "### 要点梳理\n（1）科学行动指南：坚持在发展中增进民生福祉，深刻体现了生产力基础与生产关系调整的唯物辩证规律。\n（2）尽力而为抓作为：尽力而为展现政治担当与历史主动，凡是群众关切且条件具备的民生难事，必须倾注全力办实办好。\n（3）量力而行求实效：量力而行遵循客观发展阶段与财力承受限度，不作脱离实际的空头许诺，坚决防止陷入福利养懒人陷阱。\n（4）可持续制度保障：把尽力而为与量力而行有机结合起来，健全常态化、长效化民生改善机制，实现平稳长远迈进。\n\n### 易错点\n- 易片面强调“尽力而为”而盲目开空头支票，搞超越阶段的高福利，造成财政不可承受与可持续性危机。\n- 易片面强调“量力而行”而推诿扯皮、消极不作为，缺乏千方百计为群众排忧解难的责任担当。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L657"
+      ],
+      "text_md": "辩证施策逻辑抓手与对比记忆：\n尽力而为（能办的全力办）——体现初心担当，多谋民生之利；\n量力而行（科学务实办）——基于承载能力，防范脱离实际。\n对比分析抓手：材料答题框架：案例透视（既办实事又合实际）——理论升华（尽力而为+量力而行结合）——制度保障（可持续循序渐进）。"
+    },
+    {
+      "block_id": "15040-ch11-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L657"
+      ],
+      "text_md": "材料：某地在编制民生实事清单时，广泛征集市民意见，排查出乡村道路改造、校舍供暖及供水管网升级等迫切诉求。当地并未追求一蹴而就或包揽一切过高标准，而是严格按照市县两级财政实力与项目储备条件，科学划定工期分步推进，既确保了当年承诺事项如期兑现，又保障了地方财力的平稳可持续运营。\n根据材料回答：结合材料分析，阐述在推动民生建设中如何贯彻“坚持在发展中增进民生福祉”的要求。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、把握辩证统一：坚持在发展中增进民生福祉，要求把尽力而为与量力而行紧密结合，既不消极懈怠也不盲目冒进。\n二、材料结合剖析：该地征集急需诉求体现了尽力而为的责任担当；依据财政实力分步分批落地，践行了量力而行的务实作风，避免了过度负债和空头诺言。\n三、实践启示：增进福祉必须遵循经济发展规律，通过科学规划形成持续稳定的民生供给能力，循序渐进实现富民目标。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "### 要点梳理\n（1）源头活水定位：收入分配是民生之源，是改善人民生活、促进共同富裕最直接、最现实的调节纽带。\n（2）公平正义基石：合理的收入分配机制能够有效激发社会劳动活力，保障各类生产要素参与分配的合法权益。\n（3）推动共同富裕：调节过高收入，增加低收入者劳动报酬，稳步扩大中等收入群体比重，形成两头小中间大的橄榄型格局。\n（4）制度协同保障：统筹构建初次分配、再分配、第三次分配协调配套的基础制度安排，夯实公平分配底座。\n\n### 易错点\n- 易混淆“收入分配是民生之源”与“就业是最基本的民生”的各自论断，作答时必须严谨辨识。\n- 易把收入分配调节误判为搞绝对平均主义的“吃大锅饭”，违背按劳分配与要素贡献激励原则。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "源流图式对比记忆：\n民生之源——收入分配：源头充沛，家家生活有保障；\n基本民生——就业拉动：就业稳固，收入分配有依托。\n橄榄格局：扩中、提低、调高、打非。\n记忆口诀：分配乃是民生源，源远流长生活甜；初次再分三次配，橄榄格局促和谐。抓住源头调节与共同富裕纽带展开备考。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "分配制度是促进全体人民共同富裕的基础性制度安排。在深刻阐述国民财富合理流向与改善群众生活的科学定位中，被誉为“民生之源”的是\nA. 就业扶持\nB. 收入分配\nC. 慈善救济\nD. 商业养老保险\n作答要求：准确识别民生基础源泉的政策命题，把握财富分配在改善民生中的枢纽地位。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：收入分配是民生之源，是改善人民生活、实现共同富裕最重要最直接的方式。A 项就业是最基本的民生；C 项慈善属于第三次分配范畴；D 项商业保险属于多层次保障补充，只有收入分配被准确定位为“民生之源”。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "### 要点梳理\n（1）基本民生基石：就业是最基本的民生，事关广大人民群众的劳动权益与生计来源，牵动亿万家庭的幸福安宁。\n（2）社会生产纽带：就业是劳动力要素与生产资料紧密结合的关键环节，是财富创造源源不断的源头活水。\n（3）大局稳定支柱：就业稳则民心定、社会稳、国家安，是经济良性循环与长治久安的核心压舱石。\n（4）战略优先实施：必须把促进高质量充分就业作为经济社会发展的优先目标，推动财政产业政策与就业政策同频共振。\n\n### 易错点\n- 易把就业与其他专项社会福利混为一谈，必须牢记其独有的“最基本的民生”这一战略基石定位。\n- 易把追求就业率与提升就业质量割裂开来，新时代既要千方百计稳定就业存量，更要提升就业质量。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "基石抓手记忆逻辑：\n最基本民生——就业：一头连着千家万户生计，一头连着国家经济运转。\n核心三维：劳动创造价值、家庭稳定源泉、社会长治久安。\n口诀：最基本是就业基，牵动万家柴米计；岗位充足民心安，充分高质量前行。作答紧抓生计本源与稳大局作用。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "民生工作的关键在于保障群众的基本生计与发展空间。在党和国家对民生各项工作的战略指引中，被明确界定为“最基本的民生”的是\nA. 医疗救助\nB. 就业\nC. 住房改善\nD. 文娱体育\n作答要求：精准把握民生各项构成要素的基础层级，锁定具有支撑生计根本地位的项目。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：就业是最基本的民生，是劳动力与生产资料结合的纽带，事关亿万劳动者切身利益、家庭幸福安宁与国家长治久安。A、C 项属于基本救助与居住保障范畴；D 项属于精神文化生活范畴，均不能冠以“最基本的民生”的基础性战略定位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "### 要点梳理\n（1）三大工程定位：就业是最大的民生工程、民心工程、根基工程，具有全局性、基础性与战略性影响。\n（2）民生工程本色：直接带来稳定报酬，是群众抵御各种生活风险、改善生活质量最直接有效的渠道。\n（3）民心工程导向：让每个劳动者人尽其才、才尽其用，赢得尊严感与社会认同，促进社会安定凝聚民心。\n（4）根基工程地位：为高质量发展提供源源不断的人力资源支撑，筑牢现代化建设的坚实地基。\n\n### 易错点\n- 易遗漏“民生工程、民心工程、根基工程”三位一体的规范提法，答题时注意三者不可缺漏。\n- 易把就业仅看作微观经济现象，忽视其在党赢得民心、筑牢执政根基层面的战略高度。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "三工程图式速记法：\n民生工程——保生活、提品质；\n民心工程——聚共识、暖人心；\n根基工程——育人力、固基石。\n记忆口诀：就业工程大如天，民生民心根基联；劳动尊严得彰显，国家繁荣万代全。三词连读强化提取速度，论述紧扣三大工程展开，复习将三大工程与大局稳定相挂钩。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L659"
+      ],
+      "text_md": "就业关乎经济社会平稳运行与千万家庭幸福生活。在党中央对就业战略价值的高度概括中，就业被生动界定为最大的\nA. 形象工程、枢纽工程、窗口工程\nB. 扶贫工程、应急工程、临时工程\nC. 民生工程、民心工程、根基工程\nD. 效益工程、资本工程、市场工程\n作答要求：准确记忆中央关于就业地位的科学表述，辨别其涵盖生活、民心与根基的系统定性。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：就业是最大的民生工程、民心工程、根基工程，深刻体现了党中央对就业工作战略性、全局性与基础性的精准定位。就业稳则大局稳。A、B、D 项均为杂糅生造的错误选项，背离了中央关于就业战略定位的“三个最大工程”规范表述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "### 要点梳理\n（1）基本分配格局：坚持按劳分配为主体、多种分配方式并存，构建初次分配、再分配、第三次分配协调配套的制度体系。\n（2）初次分配强激励：坚持多劳多得，着重增加一线劳动者报酬，提高劳动报酬在初次分配中的比重，完善要素由市场评价机制。\n（3）再分配强调节：加大税收、社会保障、转移支付等调节力度和精准性，合理调节过高收入，取缔非法收入。\n（4）第三次分配重自愿：引导、支持有意愿有能力的企业、社会组织和个人积极参与公益慈善事业。\n\n### 易错点\n- 易误认为第三次分配具有强制性，必须明确第三次分配以自愿捐赠为原则，通过社会道德与税收激励推进。\n- 易忽略劳动报酬在初次分配中的基础地位，片面依赖政府转移支付进行事后弥补。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "三次分配协同抓手：\n初次分配讲效率与公平——提劳动报酬比重，多劳多得；\n再分配讲调节与兜底——税收社保转移支付，调高扩中；\n第三次分配讲自愿与道德——公益慈善互助奉献。\n口诀：三次分配建机制，劳动报酬比重提；税收转移强兜底，公益慈善乐向善。简答题按分配层次分段答题。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "分配制度是促进共同富裕的基础性制度，直接关乎各阶层劳动者的积极性与社会和谐稳定。在新时代推动高质量发展进程中，必须深化收入分配改革，健全科学合理的财富分配体系。请简述新时代完善分配制度的主要举措。\n作答要求：按照初次分配、再分配与第三次分配的制度架构分条陈述，表述规范完整。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）坚持按劳分配为主体、多种分配方式并存，坚持多劳多得，鼓励勤劳致富。（2）健全初次分配机制，提高劳动报酬在初次分配中的比重，完善按要素分配政策制度。（3）强化再分配调节力度，加大税收、社会保障、转移支付等调节精准性，调节过高收入，取缔非法收入。（4）发挥第三次分配作用，引导支持公益慈善事业健康发展。\n答题解析：解答须严格依循三次分配的内在逻辑，逐层阐述各层次的调节重心与制度保障路径。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "### 要点梳理\n（1）安全网与稳定器：社会保障是保障人民生活、调节社会财富分配、维护社会稳定运行的安全网和稳定器。\n（2）体系建设方针：坚持全覆盖、保基本、多层次、可持续方针，建设更加公平可持续的中国特色社会保障体系。\n（3）深化重点改革：稳步推进养老保险全国统筹，健全基本医疗保险、失业保险、工伤保险制度，优化跨省异地就医结算。\n（4）健全救助与福利：完善分层分类的社会救助体系，统筹做好残疾人、孤儿等特殊群体的关爱服务与权益保障。\n\n### 易错点\n- 易混淆社会保障的“保基本”定位与西方“高福利陷阱”，我国社会保障坚持尽力而为、量力而行。\n- 易忽视社会保障全国统筹的制度意义，忽略跨区域流动人口的参保与待遇落实问题。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "网罗兜底图式速记：\n安全网+稳定器：兜住风险底线，平抑生活震荡。\n十字方针：全覆盖、保基本、多层次、可持续。\n核心三大支柱：基本养老、基本医疗、社会救助托底。\n记忆口诀：社保好比安全网，社会运转稳定器；全面覆盖可持续，老病灾穷皆有济。考点紧抓方针、险种与救助机制。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "社会保障是增进民生福祉、保障人民群众健康长寿和生命安全的基础性制度防线。在新发展阶段，推进中国式现代化必须织密织牢社会保障安全网。请简述新时代健全我国社会保障体系的指导方针与主要任务。\n作答要求：准确阐明社会保障的地位功能、基本方针以及在重点险种与救助方面的推进举措。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）明确功能定位：发挥社会保障作为人民生活安全网和社会运行稳定器的核心功能。（2）坚守工作方针：毫不动摇坚持全覆盖、保基本、多层次、可持续的方针。（3）健全重点险种：深化基本养老保险全国统筹，健全基本医保、失业、工伤保险，推行跨省异地结算。（4）强化兜底救助：完善分层分类社会救助制度，健全弱势与特殊群体福利关爱服务体系。\n答题解析：题目要求系统论述社保体系，答题时应牢记方针口诀，依次对定位、原则及各项具体制度展开。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "### 要点梳理\n（1）战略优先地位：把保障人民健康放在优先发展的战略位置，树立大卫生、大健康理念，全方位守护人民健康。\n（2）健全公卫体系：改革完善疾病预防控制体系，提升突发公共卫生事件应对处置与监测预警能力。\n（3）优质资源下沉：促进优质医疗资源扩容下沉和区域均衡布局，坚持以基层为重点，加快紧密型医联体建设。\n（4）传承中医与健身：坚持中西医并重，大力传承创新中医药文化，广泛开展全民健身运动，引导养成健康生活方式。\n\n### 易错点\n- 易将健康中国建设狭隘理解为“多建大型医院多看病”，忽视“以防为主、预防在先”的大卫生大健康理念。\n- 易忽视基层医疗卫生机构的第一道防线作用，偏离促进优质资源均衡下沉的政策导向。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "大健康全景抓手速记：\n战略优先：把人民健康放在优先发展位置；\n防在前头：改革疾控体系，强化预防与预警；\n强在基层：优质医疗下沉，医联体强根基；\n中西并重：传统中药传承，全民健身体魄健。\n口诀：大健康理念走在前，预防为主强基底；中西并重促均衡，全民健身人人健。论述按「理念—公卫—资源—生活」逻辑作答。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L661"
+      ],
+      "text_md": "健康是人民幸福生活最重要的指标，是民族昌盛和国家富强的重要标志。在新时代推进社会建设中，党中央从全局战略高度作出了全面推进健康中国建设的重大决策。请简述推进健康中国建设的战略要求与重点任务。\n作答要求：从理念确立、公卫体系、医疗资源分布与健康生活方式等方面系统作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）把保障人民健康放在优先发展的战略位置，牢固树立大卫生、大健康发展理念。（2）健全公共卫生防护网，改革完善疾病预防控制体系，提升早期监测与应急处置水平。（3）促进优质医疗资源扩容下沉和区域均衡布局，加强县域与基层医疗服务能力。（4）坚持中西医并重，推动中医药传承创新发展，深入推进全民健身与健康文明生活普及。\n答题解析：该题考查健康中国战略，作答需抓住“防、治、保、健”全周期健康管理脉络，清晰呈现主要维度。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L662"
+      ],
+      "text_md": "### 要点梳理\n（1）战略宏观统筹：把就业优先政策置于宏观调控层面，强化财政、货币、投资等政策与就业政策的系统协同。\n（2）聚焦重点拓渠道：统筹做好高校毕业生求职创业、农民工务工增收、退役军人安置等，强化困难人员就业兜底帮扶。\n（3）以创业促就业：优化创业扶持生态，破除阻碍劳动力流动的体制机制壁垒，支持发展新就业形态与灵活就业。\n（4）提升技能素养：健全覆盖城乡的终身职业技能培训制度，精准对接产业升级需求，有效化解结构性就业矛盾。\n\n### 易错点\n- 易孤立看待就业政策，忽视宏观经济政策与产业规划对岗位扩容的协同联动作用。\n- 材料题分析时易只提政府给补贴，忽视加强职业技能培训以解决“有活没人干、有人没活干”结构性矛盾的深层举措。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L662"
+      ],
+      "text_md": "就业优先四维抓手与串联记忆：\n宏观联动——财税货币政策与就业协同发力；\n重点支撑——毕业生、农民工精准兜底帮扶；\n创业带动——优化营商环境，支持灵活就业；\n技能提升——终身培训，破除结构性就业难题。\n串联分析链：识别困难群体——列出宏观与微观扶助举措——论述技能培训与创业带动长效机制。"
+    },
+    {
+      "block_id": "15040-ch11-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L662"
+      ],
+      "text_md": "材料：针对部分产业青年求职难与先进制造业招工难并存的结构性矛盾，某工业园区实施全方位“促就业专项行动”。一方面设立返乡青年创业孵化中心，提供免租场地与低息贴息贷款；另一方面联手高职院校开办数控、工业互联网定制培训班，毕业即可直通重点企业上岗；同时建立数字就业驿站，精准推送供需匹配岗位。\n根据材料回答：结合上述案例，分析如何全面落实“实施就业优先战略”的总体部署。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、宏观战略导向：实施就业优先战略，必须把促进高质量充分就业作为经济发展的重中之重，推动产业与人才良性互动。\n二、结合案例深入剖析：\n（1）优化创业带动就业环境：设立孵化中心和贴息贷款，有效激发创新创业活力，拓展新增就业空间。\n（2）深化职业技能培训：联合办班推行定制培训，精准对接产业升级需求，从源头化解技能不匹配的结构性矛盾。\n（3）畅通供求匹配机制：运用数字化平台打破信息孤岛，提高用工撮合效率。\n三、总结：实施就业优先战略需综合运用创业扶持、技能提升和精细化服务，构建高质量充分就业长效机制。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L664"
+      ],
+      "text_md": "### 要点梳理\n（1）治理理念内涵：坚持共建共治共享的社会治理理念，核心是建设人人有责、人人尽责、人人享有的社会治理共同体。\n（2）三者辩证统一：共建是治理的前提和基础，共治是治理的关键和途径，共享是治理的落脚点和最终目的。\n（3）激发多元活力：充分调动政府、社会组织、企事业单位与广大群众的积极性，变“单向管理”为“多元协同”。\n（4）凝聚制度优势：把我国制度优势切实转化为社会治理效能，实现社会安定有序与充满活力有机统一。\n\n### 易错点\n- 易把共建、共治、共享三者内在逻辑割裂开来，牢记三者互为因果、相互依存的有机整体关系。\n- 易误认为社会治理仅是政府部门单一行政责任，忽视社会组织和人民群众广泛参与的主体地位。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L664"
+      ],
+      "text_md": "共同体逻辑抓手：\n共建（基础）：人人参与做贡献；\n共治（关键）：多元协同齐治理；\n共享（目的）：幸福成果大家享。\n核心归宿：人人有责、人人尽责、人人享有的治理共同体。\n复习口诀：共建共治共享好，共同体里显神韵；三位一体不可分，社会和谐乐陶陶。牢记共建是基础、共治是关键、共享是目的。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L664"
+      ],
+      "text_md": "推进国家治理体系和治理能力现代化，必须牢牢把握社会治理的正确导向。在推进社会治理现代化的指导理念中，作为社会治理最终目的与落脚点的是\nA. 共建\nB. 共治\nC. 共享\nD. 共赢\n作答要求：深刻理解共建共治共享理念中各组成要素的辩证分工，精准锁定治理追求的终极归宿。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：坚持共建共治共享的社会治理理念，共建是基础，共治是关键，共享是目的。社会治理的最终成效必须落实到让广大群众共享和谐幸福生活上。A 项是基础；B 项是关键途径；D 项不属于共建共治共享的经典三元范畴。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L665"
+      ],
+      "text_md": "### 要点梳理\n（1）总体治理体制：完善党委领导、政府负责、民主协商、社会协同、公众参与、法治保障、科技支撑的社会治理体系。\n（2）基层三治融合：健全党组织领导的自治、法治、德治相结合的城乡基层治理体系，发挥基层群众自治机制积极作用。\n（3）强化法治支撑：善于运用法治思维和法治方式化解矛盾纠纷、维护群众合法权益，在法治轨道上运行治理活动。\n（4）科技数字赋能：强化现代信息技术在社会治理中的深度融合，提升网格化管理与数字化服务水平，推动治理智能化。\n\n### 易错点\n- 易漏记社会治理体系的七大要素或三治结合的具体内容，作答时必须规范完整列举。\n- 易把基层自治与党的领导对立起来，基层治理中必须始终坚持党组织的领导核心地位。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L665"
+      ],
+      "text_md": "体系架构速记图式：\n大体系七要素：党委领导、政府负责、民主协商、社会协同、公众参与、法治保障、科技支撑。\n基层三治结合：党组织统领下的自治、法治、德治。\n口诀：党政统筹协商密，公众协同科技基；基层自治法德融，善治稳妥筑新局。备考依循「大体系要素 + 基层三治」框架展开。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L665"
+      ],
+      "text_md": "社会治理是国家治理的重要基石，健全完善的社会治理制度是实现社会既充满活力又井然有序的重要保证。在新时代全面深化改革进程中，党中央提出了一系列完善社会治理体系的重大部署。请简述新时代完善社会治理体系的基本框架与核心要求。\n作答要求：全面概括社会治理体系的构成要素以及基层治理的具体模式，要点完整严密。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）健全总体治理体系：完善党委领导、政府负责、民主协商、社会协同、公众参与、法治保障、科技支撑的社会治理体系。（2）深化基层三治融合：健全党组织领导的自治、法治、德治相结合的城乡基层治理体系，激发基层活力。（3）坚守法治思维：坚持依法治理，善于运用法治手段防范化解风险、维护公平正义。（4）强化智慧治理：运用现代信息技术推动治理流程再造，提高网格化与精细化服务水平。\n答题解析：该题考查社会治理框架，考生必须熟练答出党委领导等七大要素以及自治法治德治三结合的基层治理体系。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L665"
+      ],
+      "text_md": "### 要点梳理\n（1）社区基础地位：城乡社区是社会治理的基本单元，是党委和政府联系群众、服务群众的第一线与神经末梢。\n（2）推动重心下移：坚持推动治理重心向基层下移，把更多人力、物力、财力等资源下沉到社区，提升基层服务承载力。\n（3）筑牢党建引领：健全社区党组织统一领导下的居委会、业委会、物业企业及社会组织协同共治机制，形成服务合力。\n（4）做实精细服务：推行网格化管理与精细化服务，畅通民意诉求表达渠道，把矛盾纠纷排查化解在萌芽、化解在基层。\n\n### 易错点\n- 易把社区治理看成单纯的行政任务摊派，忽视了赋能基层社区、增强社区自我服务与居民自治能力的关键环节。\n- 易遗漏“党建引领”这一主心骨，社区治理必须以党组织为核心形成各方协同联动机制。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L665"
+      ],
+      "text_md": "末梢神经治理抓手：\n基本单元——社区是连通千家万户的第一线；\n重心下移——人往基层走、钱往基层投、政策基层倾斜；\n党建引领——居委会、业委会、物业、志愿者拧成一股绳；\n网格精细——小网格大服务，化解矛盾在源头。\n记忆口诀：城乡社区是根基，重心下移优服务；党建统领各方动，网格治理暖万家。回答紧扣社区地位、资源下沉与协同服务。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L665"
+      ],
+      "text_md": "基层强则国家强，基层安则天下安。社区作为党和政府联系群众的桥梁纽带，在维护社会安定和谐中发挥着至关重要的作用。在新时代创新基层社会治理过程中，必须把加强城乡社区治理摆在突出位置。请简述加强城乡社区治理的主要途径。\n作答要求：从地位认识、资源配置、体制机制及服务手段等维度进行条理化阐述。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）强化社区底座地位，把社区建设成为感知群众冷暖、提供优质便捷服务、防范化解矛盾的坚固阵地。（2）推动治理重心向基层下移，将更多人财物等优质公共服务资源直接倾斜配置到基层社区。（3）健全党建引领基层治理机制，强化社区党组织领导核心作用，构建居委会、业委会、物业等多方协同共治格局。（4）提高精细化智能化管理水平，做实做细网格化服务，精准对接群众日常急需。（5）拓宽群众参与渠道，提升基层自治水平。\n答题解析：该题聚焦基层社区治理，作答时应先确立社区地位，再从资源下沉、党建统领、精细服务与群众自治四个方面展开论述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch11-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch11-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L666"
+      ],
+      "text_md": "### 要点梳理\n（1）创新治理理念：坚持底线思维和系统观念，加快推进社会治理现代化，切实建设更高水平的平安中国。\n（2）发扬新时代“枫桥经验”：坚持走群众路线，做到“小事不出村、大事不出镇、矛盾不上交”，把矛盾化解在基层萌芽状态。\n（3）健全矛盾调解机制：推进信访工作法治化，健全多元化纠纷调处化解机制，综合运用人民调解、行政调解与司法调解。\n（4）筑牢社会治安防控：健全立体化、信息化社会治安防控体系，严厉打击各类违法犯罪，确保人民安居乐业、社会和谐稳定。\n\n### 易错点\n- 易误认为创新社会治理只靠技术或惩处手段，忽视了坚持群众路线和新时代“枫桥经验”化解矛盾的本色经验。\n- 材料题分析时易忽略法治化轨道要求，必须坚持依靠法律法规与制度规范来妥善处置各类社会矛盾。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch11-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L666"
+      ],
+      "text_md": "矛盾化解核心抓手与联想记忆：\n治本之策——新时代“枫桥经验”，小事不出村、矛盾不上交；\n多元调处——人民调解、行政调解、司法调解联动；\n法治轨道——信访法治化，依法维权与化解；\n平安底线——立体防控，保社会长治久安。\n联想答题思路：提炼基层调解亮点——对接新时代枫桥经验——论述多元解纷与法治化平安建设长效机制。"
+    },
+    {
+      "block_id": "15040-ch11-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch11-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L666"
+      ],
+      "text_md": "材料：某地积极坚持和发展新时代“枫桥经验”，在乡镇街区设立“一站式”矛盾纠纷多元化解服务中心。中心整合了司法所、派出所、综治办以及老党员调解工作室、劳动仲裁等部门力量。对群众反映的邻里纠纷、土地征占、劳资争议等问题，采取“现场受理、联合会诊、依规调处、定期回访”闭环机制，使全区九成以上的矛盾纠纷在基层得到就地妥善化解，连续多年未发生重大恶性案件。\n根据材料回答：结合上述材料，阐述新时代加强和创新社会治理的实践举措与现实意义。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐述：加强和创新社会治理是推进国家治理现代化的重要任务，关键在于把各类矛盾隐患化解在基层、化解在萌芽状态。\n二、结合材料深度剖析：\n（1）坚持和发展新时代“枫桥经验”：搭建“一站式”解纷中心，依靠群众就地化解，做到小事不出村、大事不出镇。\n（2）完善多元纠纷化解机制：整合多部门与社会调解力量协同发力，形成综合施治的联动合力。\n（3）规范法治化调解流程：推行“受理会诊调处回访”闭环，运用法治思维保障群众合法权益。\n三、总结升华：创新社会治理必须坚持党建引领、依靠群众、立足法治，筑牢基层防线，建设更高水平的平安中国。",
+      "source_kind": "ai_generated"
+    },
+    {
       "block_id": "course/exam_strategy",
       "kind": "exam_strategy",
       "point_id": null,
@@ -13456,12 +15964,12 @@
         "model": "harness-agent",
         "prompt_id": "stage_plan",
         "prompt_version": "v1",
-        "generated_at": "2026-09-11"
+        "generated_at": "2026-09-12"
       },
       "evidence_refs": [
         "knowledge-model:exam"
       ],
-      "text_md": "作答纪律三条线。第一条线是顺序：通览全卷后先做有把握的题，把不确定的题留到后面集中处理，避免在单题上耗时过久。第二条线是审题与表达：划出设问限定词，单项选择题逐项辨析并排除；简答题按点作答、先结论后依据；材料题先扣材料再落到知识点，作答与设问一一对应。第三条线是检查：答完预留时间，重点核对漏题、漏点与笔误。考的是知识，比的是纪律，稳定的作答流程本身就是得分能力。"
+      "text_md": "应试备考要强化全局统筹与精准输出意识。考场答题首先把控节奏，通览试卷后依循先易后难、稳扎稳打的次序推进。审题阶段务必划出设问限定词，明确知识领域与题型要求。选择题注重逻辑甄别与原义核对，坚决排除李代桃僵的选项；主观论述题严格落实要点化、层次化书写，按照「亮出观点、阐明原理、引述材料、总结升华」四步推进。在文化、民生等热点板块作答时，语言表达要精准规范，多用专业政治理论表述，少用生活泛化口语。结尾阶段留足检查余量，重点核查有无答题遗漏、笔误及语句歧义，以稳定严谨的应试作风稳固得分基本盘。"
     }
   ],
   "review_schedule": {
@@ -13476,7 +15984,7 @@
       "model": "harness-agent",
       "prompt_id": "stage_plan",
       "prompt_version": "v1",
-      "generated_at": "2026-09-11"
+      "generated_at": "2026-09-12"
     },
     "evidence_refs": [
       "knowledge-model:exam"
