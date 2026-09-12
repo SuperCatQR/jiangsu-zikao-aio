@@ -2,7 +2,7 @@
 from pathlib import Path
 import re
 
-from tests.baseline_contract import assert_page_work_keeps_baseline_intact
+from tests.baseline_contract import assert_page_work_keeps_baseline_intact, baseline_contract_work
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSES = ROOT / "content" / "jiangsu" / "courses"
@@ -144,4 +144,6 @@ def test_15040_plan_keeps_named_gaps_and_rejects_invented_schedule():
     assert "978-" not in plan
     # B2-D4：原断言是「baseline 零 git diff」。实质意图 = 读页面这条路**不得写** baseline。
     # 保留该意图（写自由 + 语义契约），去掉与合法刷新冲突的形式约束。见 tests/baseline_contract.py。
-    assert_page_work_keeps_baseline_intact(lambda: _read("15040", "plan.md"))
+    # R7/F-QC3-6：裸 `_read()` 是 no-op 读取，写自由半边空转 —— 经 `baseline_contract_work()` 包一层，
+    # 让这条路径**真的**去读 baseline（契约读取器），写入才会被 `assert_unwritten` 抓到。
+    assert_page_work_keeps_baseline_intact(baseline_contract_work(lambda: _read("15040", "plan.md")))

@@ -8,9 +8,14 @@ job（`workflow_dispatch(update_baseline=true)`）与 `scripts/check-source-link
 
 1. **自洽**（`coherence_problems`）—— 形态与 `scripts/check-source-links.py` 的
    `serialize_baseline()` 能重新产出的一致：三个顶层键、六个逐条键、状态 / 哈希 / 课码的取值域，
-   以及 `json.dumps(..., ensure_ascii=False, indent=2) + "\\n"` 的规范化字节。
-2. **官方集合与派生快照一致**（`official_set_problems`）—— `is_official_url()` 判定的官方 URL
+   以及 `json.dumps(..., ensure_ascii=False, indent=2) + "\\n"` 的**重新序列化**一致
+   （R8/W-6：抓缩进 / 分隔符 / 尾随换行漂移，**不**抓键序变化 —— 见该处注释）。
+2. **官方集合与派生快照一致**（`official_set_problems`）—— 生产者 `is_official()` 判定的官方 URL
    集合**逐元素等于** `ops/jiangsu/official-source-snapshot.json` 记录的集合。
+
+**官方判定的单一真源（R7/W-5/F-QC3-6）**：官方 URL 的判据只有一处定义 ——
+`scripts/snapshot-official-sources.py` 的 `is_official()`（生产者）。本模块的 `official_urls()`
+**委托**给它，不再自行复述合取式，也不再把 `official_source.is_official_url()`（只管域名）当成等价物。
 
 **刻意不断言 `content_hash` 相等**：它是每次抓取的内容指纹，合法刷新必然改变它；断言哈希相等
 等于把 B2-D4 要拆掉的「任何 diff 即红」换个形式装回来。**跨刷新稳定**的那一层是「哪些来源算官方」
@@ -22,6 +27,7 @@ job（`workflow_dispatch(update_baseline=true)`）与 `scripts/check-source-link
 from __future__ import annotations
 
 import contextlib
+import importlib.util
 import json
 import re
 import shutil
@@ -29,7 +35,8 @@ import tempfile
 from pathlib import Path
 from typing import Callable, Iterator
 
-from lib.course_pipeline.official_source import is_official_url
+# R7/F-QC3-6：官方判定不再从 `official_source.is_official_url()`（只管域名）复述 —— 单一真源 = 生产者，
+# 见 `_producer_is_official()`。本模块的文档字符串第 2 条据此更正。
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -62,21 +69,48 @@ def load_snapshot(root: Path = ROOT) -> dict:
     return _read_json(root / SNAPSHOT_PATH)  # type: ignore[return-value]
 
 
+def _producer_is_official() -> Callable[[str, dict], bool]:
+    """加载**生产者**的官方判据：`scripts/snapshot-official-sources.py:is_official()`。
+
+    R7/W-5/F-QC3-6：该文件是连字符脚本，不是可 import 的模块，故按路径加载。加载失败即失败关闭 ——
+    生产者被改名 / 挪走时必须报错，而不是悄悄退回本模块自己的复述（那正是「三处定义」的成因）。
+    """
+    script = ROOT / "scripts" / "snapshot-official-sources.py"
+    if not script.is_file():
+        raise AssertionError(f"producer predicate source missing: {script}")
+    spec = importlib.util.spec_from_file_location("_snapshot_official_sources", script)
+    if spec is None or spec.loader is None:
+        raise AssertionError(f"cannot load producer predicate from {script}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    predicate = getattr(module, "is_official", None)
+    if not callable(predicate):
+        raise AssertionError(f"{script} no longer exports is_official()")
+    return predicate
+
+
+PRODUCER_IS_OFFICIAL = _producer_is_official()
+
+
 def official_urls(baseline: dict) -> set[str]:
-    """baseline 里的官方 URL 集合，判据 = **与生产者逐字一致**的合取：`authoritative` 且 `is_official_url`。
+    """baseline 里的官方 URL 集合，判据 = **生产者本人**（`is_official()`，R7 单一真源）。
 
     **I-1（T3 评审，2026-09-12）**：原实现只判 `is_official_url(url)`（域名为 `jseea.cn` 或其子域），
-    而生产者 `scripts/snapshot-official-sources.py:is_official()` 要求
-    `item["authoritative"] and host.endswith("jseea.cn")`。二者不一致时，一条
+    而生产者要求 `item["authoritative"] and host.endswith("jseea.cn")`。二者不一致时，一条
     `authoritative=false` 的 jseea URL 会被本函数算作官方、却被生产者排除 →
     **合法刷新永远无法满足断言**（正是 B2-D4 要消除的形态）。
-    现改为与生产者、以及 `scripts/lib/course_pipeline/evidence.py:283` 的既有口径（合取）一致。
+
+    **R7 / F-QC3-6（B2a QC wave 1）**：上一轮把合取式在**本模块内**复述了一遍，于是判定仍有**三处**
+    独立定义（生产者 / `official_source.is_official_url()` / 本模块），而守护测试只测第三处、
+    从不调用生产者 —— 分歧因此抓不到。现改为**直接委托生产者**：本模块不再自带任何判定逻辑，
+    `test_official_set_predicate_matches_the_producer()` 另按合成输入逐例比对二者。
     """
+    predicate = PRODUCER_IS_OFFICIAL
     items = baseline.get("urls") or {}
     return {
         url
         for url, item in items.items()
-        if isinstance(item, dict) and item.get("authoritative") and is_official_url(url)
+        if isinstance(item, dict) and predicate(url, item)
     }
 
 
@@ -163,7 +197,13 @@ def coherence_problems(root: Path = ROOT) -> list[str]:
             if unknown:
                 problems.append(f"{where}: course_codes {unknown} are not in {CATALOG_PATH} (GC11)")
 
-    # 规范化字节：`--update-baseline` 只按这一种形态落盘，手改 / 重排都会偏离。
+    # R8/W-6：这里的判据是「文本 == `json.dumps(..., indent=2)` 的重新序列化结果」。
+    # 它抓得到**缩进 / 分隔符 / 尾随换行 / 转义风格**这类漂移，但**抓不到键序变化** ——
+    # Python 的 `json.loads` 保留插入顺序，而重排后的 `doc` 重新 dump 会得到与重排文本相同的字节，
+    # 于是 `text == canonical` 成立（QC3 已用键序变异探针实测 0 problems）。
+    # 这是**有意的**：`serialize_baseline()` 按 `sorted(findings.items())` 落盘，键序本就是它产出的形态之一，
+    # 断言「键序不得变」等于把 B2-D4 要拆掉的「任何 diff 即红」换个形式装回来。
+    # 真正跨刷新稳定的是「哪些来源算官方」这一层集合身份（见 `official_set_problems`），不是字节布局。
     canonical = json.dumps(doc, ensure_ascii=False, indent=2) + "\n"
     if text != canonical:
         problems.append(f"{BASELINE_PATH}: not canonical serialize_baseline() output (byte-level drift)")
@@ -222,7 +262,12 @@ def assert_unwritten(paths: "list[Path]") -> Iterator[None]:
 
     **M-1（T3 评审，2026-09-12）**：原实现无 `try/finally` —— 块内抛异常时会跳过检查，
     「先写后抛」即可逃逸（评审已复现）。改为 `finally` 中比对：无论正常退出还是异常，
-    写入都会被断言抓到（异常优先传播，不掩盖原始失败）。
+    写入都会被断言抓到。
+
+    **R13 措辞更正**：`finally` 里 `raise` 会**替换**正在传播的异常，原异常只是作为
+    `__context__` 挂在新异常上（Python 的隐式异常链），并**不是**「异常优先传播 / 不掩盖原始失败」。
+    因此「先写后抛」时调用方看到的是 `AssertionError`，原始异常要靠 `__context__` 才能取回 ——
+    这正是测试 `test_assert_unwritten_fails_on_write_then_raise` 锁定的行为。
     """
     before = {path: path.read_bytes() for path in paths}
     try:
@@ -231,6 +276,28 @@ def assert_unwritten(paths: "list[Path]") -> Iterator[None]:
         for path, original in before.items():
             if path.read_bytes() != original:
                 raise AssertionError(f"{path} was written by the code path under test")
+
+
+def baseline_contract_work(reader: "Callable[[], object]", root: Path = ROOT) -> "Callable[[], object]":
+    """把「只读页面」的 work 包成**真正触碰 baseline 路径区**的 work（R7/F-QC3-6 第二半）。
+
+    `assert_page_work_keeps_baseline_intact` 的写自由半边断言「`work()` 不得写 baseline」。
+    若 `work` 只是 `path.read_text()`，那半边是**空转**的：纯读函数本来就不可能写 baseline，
+    断言虽然为真却证明不了任何事（QC3 指出 7 处调用点里有 2 处正是这个形态）。
+
+    本包装让 `work()` 在读完页面之后再走一遍 **baseline 契约读取器**（`coherence_problems` +
+    `official_set_problems`）—— 它们真的解析并读取 `source-links.baseline.json`、
+    `official-source-snapshot.json` 与课程目录。于是「写自由」不再是对 no-op 断言：
+    这条代码路径里的任何一次写入（含将来把读取器改写成读取即回写的回归）都会被 `assert_unwritten` 抓到。
+    语义半边（`assert_contract`）仍由 `assert_page_work_keeps_baseline_intact` 在块后另行执行。
+    """
+    def _work() -> object:
+        result = reader()
+        problems = coherence_problems(root) + official_set_problems(root)
+        assert not problems, f"baseline contract violated inside the code path under test: {problems}"
+        return result
+
+    return _work
 
 
 def assert_page_work_keeps_baseline_intact(work: "Callable[[], object]", root: Path = ROOT) -> None:
