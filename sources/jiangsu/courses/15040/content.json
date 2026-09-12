@@ -15,15 +15,15 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "理清已覆盖的全部十一章的核心脉络与结构框架，明确各章节核心考核指向。",
+      "goal": "理清已完成的导论至第十三章全部考点的核心脉络与结构框架，明确生态文明与国家安全各章节核心考核指向。",
       "inputs": [
         "考纲章节目录",
         "各章「本章重点」清单",
         "本课全部 AI 讲解块"
       ],
       "how": [
-        "先按目录通读章名与各节标题，梳理文化强国与民生社会建设逻辑框图",
-        "通览各考点讲解块首条要点，标记核心范畴与理论定位"
+        "按目录通读章名与各节小标题，梳理生态文明建设与总体国家安全观逻辑框图",
+        "通览各考点讲解块首条要点，标记核心范畴与重大理论定位"
       ],
       "outputs": [
         "章节框架脉络图",
@@ -45,7 +45,7 @@
     },
     {
       "stage": "精读",
-      "goal": "逐点研读已覆盖的全部十一章的知识讲解与记忆抓手，形成完备的复习笔记。",
+      "goal": "逐点研读已完成的导论至第十三章全部考点的知识讲解与记忆抓手，形成完备扎实的复习笔记。",
       "inputs": [
         "各考点讲解块与记忆块",
         "章节框架脉络图"
@@ -89,7 +89,7 @@
         "按题型整理的错题本",
         "重点考点强化清单"
       ],
-      "done_when": "全课已学题型练习自测正确率达标，所有错题均有订正反思记录。",
+      "done_when": "全课覆盖章节自测自测正确率达标，所有错题均有订正反思记录。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -112,12 +112,13 @@
       ],
       "how": [
         "集中复盘高频考点记忆口诀与逻辑框架",
-        "限时背诵简答题核心得分点，强化关键词精准提取"
+        "限时模拟演练各类题型，规范作答书写条理性"
       ],
       "outputs": [
-        "考前核心速记卡"
+        "高频核心考点速记图",
+        "规范答题模板要点"
       ],
-      "done_when": "速记卡上的核心要点与关键词能够做到脱口而出。",
+      "done_when": "能够快速准确背诵核心论断并完整写出论述要点。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -133,21 +134,19 @@
     },
     {
       "stage": "复盘",
-      "goal": "将已覆盖的全部十一章融会贯通到全课理论体系中，形成系统答题思维。",
+      "goal": "全景梳理知识网络，巩固薄弱环节，调整最佳临考状态。",
       "inputs": [
-        "复习笔记",
         "错题本",
-        "考前核心速记卡"
+        "章节框架脉络图"
       ],
       "how": [
-        "对照全课总目录回溯本批内容与其他篇章的有机联系",
-        "总结材料题与简答题的作答套路及知识迁移方法"
+        "对照考纲逐条自查自测，确保考点零盲区",
+        "重温错题涉及的易混点与辨析技巧"
       ],
       "outputs": [
-        "阶段学习复盘报告",
-        "后续深化计划"
+        "最终考前自查确认清单"
       ],
-      "done_when": "能系统阐述文化建设与民生保障在现代化全局中的战略定位。",
+      "done_when": "所有标记薄弱项均完成至少两次针对性复习并熟练掌握。",
       "ai_generated": true,
       "review_state": "machine_draft",
       "generator": {
@@ -15953,6 +15952,2799 @@
       "source_kind": "ai_generated"
     },
     {
+      "block_id": "15040-ch12-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "### 要点梳理\n（1）核心态度与原则：尊重自然、顺应自然、保护自然，是全面建设社会主义现代化国家的内在要求。\n（2）三者辩证统一：尊重自然是首要态度，顺应自然是基本遵循，保护自然是关键责任，三者构成生态文明行为准则。\n（3）纠正征服观念：坚决摒弃“人定胜天”、肆意掠夺自然的粗暴发展模式，确立敬畏自然与绿色共生的生态伦理。\n（4）实践长效机制：把生态保护红线作为不可逾越的底线，在保护中实现高质量发展，留住绿水青山与良好生态环境。\n\n### 易错点\n- 易误将三者对应关系混淆，牢记“尊重自然是态度、顺应自然是遵循、保护自然是责任”的严密逻辑。\n- 易把生态保护与经济发展人为对立起来，忽视保护自然能够催生绿色生产力与可持续发展潜能。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "三维生态伦理对比记忆抓手：\n尊重自然（首要态度）——心怀敬畏，知止有度；\n顺应自然（基本遵循）——遵循规律，道法自然；\n保护自然（关键责任）——主动担当，守护家园。\n口诀：生态文明三准则，敬畏规律责任明；顺天应时护山水，人与自然共荣兴。复习紧扣态度、遵循、责任的准确对应。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "推进人与自然和谐共生的现代化必须确立科学的生态伦理规范。在生态文明建设的基本行为准则中，被明确确立为对待自然的首要态度的是\nA. 征服自然\nB. 改造自然\nC. 尊重自然\nD. 索取自然\n作答要求：准确区分尊重自然、顺应自然与保护自然的不同定位，精准锁定核心态度准则。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：尊重自然是首要态度，顺应自然是基本遵循，保护自然是关键责任。只有尊重自然，才能树立人与自然平等的生态伦理。A、B、D 项体现的是陈旧落后的征服式、掠夺式思维，背离了社会主义生态文明建设的根本准则。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "### 要点梳理\n（1）文明演进规律：生态文明是继原始文明、农业文明、工业文明之后人类文明形态发展的必然历史趋势。\n（2）反思工业文明弊端：传统工业文明以大量消耗资源和牺牲生态为代价，造成资源枯竭和环境危机，难以持续。\n（3）绿色形态超越：生态文明追求人与自然和谐共生，是对工业文明掠夺式发展模式的根本扬弃与深刻超越。\n（4）中国贡献引领：中国走生态优先、绿色发展之路，为人类文明走向更高阶的可持续发展形态贡献了东方智慧。\n\n### 易错点\n- 易误将生态文明看作单纯的环境治理分支，忽视其作为人类文明形态整体跃升的历史必然性。\n- 易把生态文明建设与现代化工业发展割裂开来，生态文明是推动工业转型升级的全新文明导向。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "人类文明演进脉络串联记忆：\n原始文明（依附自然）→ 农业文明（顺应自然）→ 工业文明（征服掠夺）→ 生态文明（和谐共生）。\n规律总览：生态文明是历史必然，超越掠夺走共富。\n口诀：文明演进四台阶，工业掠夺不可续；生态文明是趋势，人与自然促和弦。答题紧扣文明形态跃迁这一历史哲学维度。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "人类社会经历了漫长的演进历程，不同文明阶段展现出截然不同的人与自然关系。在对传统工业文明掠夺式发展进行深刻反思的基础上，被确认为人类文明发展的历史趋势的是\nA. 商业文明\nB. 工业文明\nC. 生态文明\nD. 农业文明\n作答要求：深刻把握文明更替的历史唯物主义逻辑，准确识别代表人类文明前进方向的高级形态。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：生态文明是人类文明发展的历史趋势，是对传统工业文明无序掠夺自然模式的根本超越，体现了可持续发展的必然规律。A 项属于商业经济交往范畴；B、D 项属于传统文明历史阶段，均未能揭示人类走向高阶可持续文明形态的发展方向。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "### 要点梳理\n（1）理论体系结晶：习近平生态文明思想是新时代生态文明建设实践经验的理论升华，是马克思主义人与自然关系理论的飞跃。\n（2）核心内容总揽：系统阐释生态兴衰与文明兴衰规律，深刻揭示保护生态环境就是保护生产力、改善生态环境就是发展生产力。\n（3）行动战略指引：提出“十个坚持”等系统战略原则，成为推动美丽中国建设、实现人与自然和谐共生的根本指针。\n（4）全球价值担当：为全球环境治理提供中国方案，彰显共建地球生命共同体的全球大国担当。\n\n### 易错点\n- 易把这一科学思想片面局限为具体绿化环保举措，忽视其贯通经济、政治、文化、社会的全局统领意义。\n- 易把保护生态与发展生产力机械割裂，必须紧扣“生态就是生产力”的核心理论创新点。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "核心论断图式抓手记忆：\n生产力新论——保护环境即保护生产力，改善环境即发展生产力；\n战略大指针——“十个坚持”科学部署，美丽中国行动旗帜；\n世界大视野——地球生命共同体，引领全球绿色转型。\n口诀：生态思想指方向，保护改善即生产；十个坚持固根本，美丽中国谱新篇。复习紧扣生态文明理论的系统性与创新性。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L682"
+      ],
+      "text_md": "生态兴则文明兴，生态衰则文明衰。在新时代党领导生态文明建设的生动实践中，形成并确立为建设美丽中国根本行动指针的科学思想是\nA. 习近平法治思想\nB. 习近平生态文明思想\nC. 习近平经济思想\nD. 习近平文化思想\n作答要求：准确锁定指导生态文明建设领域的专属理论体系，明晰其理论定位与实践指导意义。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：习近平生态文明思想是推动新时代生态文明建设的根本指针和行动指南。A 项法治思想指导法治中国建设；C 项经济思想统领经济高质量发展；D 项文化思想指导文化强国建设，各司其职，生态领域对应生态文明思想。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "### 要点梳理\n（1）本质联系与依存：人与自然是生命共同体，人类是自然界的一部分，人类的生存与繁衍完全依赖自然界的物质恩赐。\n（2）辩证规律与反噬：人类对自然的伤害最终会伤及人类自身，顺应自然规律则万物生荣，违背规律则必遭无情报复。\n（3）和谐共生要求：必须改变把自然视为征服对象的傲慢态度，在尊重自然法则的前提下合理利用资源、维系生态平衡。\n（4）永续发展追求：实现经济社会系统与自然生态系统物质循环相协调，促进中华民族永续发展。\n\n### 易错点\n- 易把人与自然看作彼此对立、主客二分的关系，忽视人类自身就是自然不可分割的有机组成部分。\n- 简答时易遗漏“伤害自然终将伤及人类自身”这层辩证警示，作答要体现因果联系的深刻性。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "生命共同体因果逻辑串联记忆：\n人源于自然——水土阳光养育人，主客二分不可取；\n损益必相报——善待自然万物荣，伤害自然害自身；\n追求共生路——和谐共存不逾矩，永续发展福万代。\n口诀：人与自然命相连，共生一体若同源；顺应天时物生荣，善待山川福绵延。作答按「同体依存—因果警示—共生路径」展开。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "生态环境是人类生存发展的物质基础。深刻认识和处理人与自然的关系，是人类文明发展进程中始终面临的重大课题。请简述“人与自然是生命共同体”的科学内涵及其实践要求。\n作答要求：从人对自然的依存关系、违背自然规律的后果以及和谐共生的行动要求三个方面条理清晰作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）人与自然是不可分割的生命共同体，人类作为自然有机组成部分，其衣食住行全部建立在自然物质滋养之上。（2）违背自然规律必遭报复，人类对大自然的肆意掠夺与破坏，最终都会通过灾害等形式反噬人类自身生存环境。（3）善待自然则万物生息繁荣，必须牢固树立生态红线观念，在保护自然中利用自然。（4）推动人与自然和谐共生，以绿色发展促使经济生态系统协调循环。\n答题解析：该题考查人与自然生命共同体理论，需从本质归宿、反噬警示与共生原则多层次进行论证。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "### 要点梳理\n（1）历史规律总结：生态兴则文明兴，生态衰则文明衰，这是贯穿古今中外人类文明兴衰史的深刻历史铁律。\n（2）文明兴起的根基：历史上各大古老文明均发祥于水源丰沛、土壤肥沃的优良生态圈，良好生态是繁荣之母。\n（3）文明衰亡的警示：森林遭砍伐、水土流失、荒漠化蔓延曾导致不少古代辉煌文明走向湮灭，教训惨痛。\n（4）新时代战略定力：建设社会主义现代化强国，必须守护好中华民族生态屏障，绝不重蹈西方先污染后治理老路。\n\n### 易错点\n- 易把生态问题仅视为局部环境治理，忽视其直接决定文明存亡与民族复兴命运的宏大战略定位。\n- 答题时易遗漏正反两方面的历史案例逻辑，应阐明“生态兴”与“生态衰”两重对立结局。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "兴衰铁律对比记忆法：\n正向看——水草丰沃孕文明，大河汤汤育繁盛；\n反向看——水土流失沙漫天，文明湮灭成陈迹；\n当下来——护好生态筑根底，民族复兴展宏图。\n口诀：生态兴衰系兴衰，古往今来铁律在；涵养山水留青山，文明永续放异彩。复习紧抓「历史规律—正反对照—战略警示」逻辑线。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "回顾人类历史，生态环境的变迁往往深刻牵动着政权兴衰与文明起伏。在深刻总结人类文明演进历史经验的基础上，党中央提出了“生态兴则文明兴，生态衰则文明衰”的科学论断。请简述这一论断的深刻内涵及其对现代化的启示。\n作答要求：结合历史经验与现实启示分要点回答，语言规范严谨。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）深刻揭示了自然生态是人类社会生存发展的首要前提，优良的生态环境孕育滋养了古今辉煌文明。（2）反面历史教训表明，过度索取、毁坏森林和水源必然导致生态环境恶化，进而引发社会动荡与文明衰亡。（3）彰显了生态环境是关系党的使命宗旨和民生福祉的重大政治问题。（4）启示我们在推进中国式现代化中必须坚守生态底线，实现经济繁荣与生态良好相统一。\n答题解析：解答须紧扣历史兴衰规律，从文明起源、衰亡警示到当代强国建设启示逐层递进作答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "### 要点梳理\n（1）科学发展理念：“绿水青山就是金山银山”生动揭示了经济发展与环境保护之间的辩证统一关系。\n（2）保护即是发展：保护生态环境就是保护自然价值和增值自然资本，改善生态就是拓展经济增长空间。\n（3）价值转化路径：通过生态产业化与产业生态化，让良好的生态环境转化为富民惠民的高品质绿色生产力。\n（4）破除二元对立：坚决破除把发展与保护割裂开来的陈旧观念，走出一条生态美、产业兴、百姓富的高质量发展新路。\n\n### 易错点\n- 易误认为保护生态必然牺牲经济收益，未能领会生态资本能够转化为经济红利的深层逻辑。\n- 易忽视生态产品价值实现机制这一落地关键，空谈口号而脱离转化路径。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "两山转化图式对比记忆：\n绿水青山（生态底色）——涵养生态，守好家底；\n金山银山（经济效益）——绿色产业，点绿成金。\n转化枢纽：生态产业化 + 产业生态化，双轮驱动。\n口诀：绿水青山无价宝，点绿成金见真招；产业生态双转化，百姓富裕生态好。作答把握「辩证关系—资本理念—转化路径」三层要点。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L684"
+      ],
+      "text_md": "处理好经济发展和生态环境保护的关系，是人类社会实现可持续发展必须破解的核心难题。“绿水青山就是金山银山”是新时代生态文明建设的核心理念之一。请简述“绿水青山就是金山银山”理念的科学内涵与实践转化路径。\n作答要求：阐明二者的辩证关系、自然资本属性以及具体的产业转化机制。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）辩证统筹发展与保护，阐明保护环境与发展经济不是对立矛盾，而是内在统一、相得益彰的。（2）确认生态资本属性，保护生态环境就是保护自然价值，改善生态能够源源不断培育新型生产力。（3）畅通两山转化路径，加快推进生态产业化和产业生态化，使生态资源变财富优势。（4）走出兼顾生态美与百姓富的绿色共富新路，造福当代与后代。\n答题解析：该题考查两山理念，考生需从理念辨析切入，重点回答好如何通过机制创新实现由绿色生态向经济财富的顺畅转化。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L687"
+      ],
+      "text_md": "### 要点梳理\n（1）全局战略定位：把生态文明建设摆在党和国家事业发展全局的突出位置，是统筹推进“五位一体”总体布局的关键举措。\n（2）根本民生导向：良好生态环境是最公平的公共产品，是最普惠的民生福祉，直接关系人民生活品质与身体健康。\n（3）系统综合施治：坚持山水林田湖草沙一体化保护和系统治理，把生态约束指标纳入经济社会综合考核评价体系。\n（4）保持战略定力：在高质量发展中经受住各种压力考验，坚决不以牺牲环境为代价换取一时一地的经济增长。\n\n### 易错点\n- 易把生态文明建设当作从属或边缘任务，忽视其在“五位一体”全局中基础性、先导性的战略地位。\n- 材料题分析时易忽略考核评价导向，必须强调政绩考核指挥棒对扭转发展方式的决定性牵引作用。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L687"
+      ],
+      "text_md": "突出位置核心抓手与串联记忆：\n战略融入——统筹五位一体，生态融入各领域；\n民生本色——最普惠民生福祉，回应群众环保期待；\n考核指挥——破唯GDP政绩观，生态红线刚性约束；\n系统治理——全要素综合统筹，保长治久安。\n材料题答题链：提炼案例治理举措——结合五位一体突出位置——分析制度约束与民生收益长远效应。"
+    },
+    {
+      "block_id": "15040-ch12-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L687"
+      ],
+      "text_md": "材料：某资源型工业城市曾因煤炭开采与重化工集聚导致水土重度污染、雾霾频发。近年来，该市痛下决心淘汰落后产能，将生态指标列为各区县考核“一票否决”硬约束；累计投资数百亿元治理采煤沉陷区，打造湿地公园与新能源产业基地，昔日“黑灰矿区”蜕变成为国家级生态宜居样板区，高新技术企业纷至沓来。\n根据材料回答：结合上述材料，分析如何落实“把生态文明建设摆在全局工作的突出位置”的总体要求。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、战略定位阐述：生态文明建设是关系民族复兴与民生福祉的全局性大事，必须将其融入经济社会发展全过程，置于全局突出位置。\n二、紧扣材料深度剖析：\n（1）树立科学政绩导向：该市实行生态指标一票否决，坚决破除单纯追求GDP的偏颇观念，以制度倒逼产业转型升级。\n（2）统筹综合施治：大力实施矿区沉陷综合治理与湿地修复，践行系统治理理念，优化生态人居环境。\n（3）协同推进绿色转型：腾笼换鸟培育新能源与高新技术产业，实现生态保护与经济高质量发展的有机双赢。\n三、总结：必须始终保持生态文明建设的战略定力，把生态优先贯穿全局决策之中。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "### 要点梳理\n（1）新发展理念维度：绿色发展是新发展理念的重要组成部分，是构建高质量现代化经济体系的必然要求。\n（2）核心发展方式：改变传统高消耗、高排放的粗放增长方式，推动形成节约资源和保护环境的空间格局与产业结构。\n（3）源头减量降碳：以全面绿色转型为牵引，把低消耗、低污染、可循环贯穿到生产、流通、消费的各个全链条环节。\n（4）催生全新动能：绿色发展不是发展的阻力，而是催生绿色环保产业、拓展新兴市场需求的全新经济引擎。\n\n### 易错点\n- 易将绿色发展等同于消极不发展或单纯末端治污，实际是全产业链的绿色变革与高质量创新。\n- 易混淆五大新发展理念的各自内涵，绿色发展着重解决的是人与自然和谐共生的问题。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "绿色理念对照记忆抓手：\n绿色发展解决人与自然和谐共生（创新动力、协调平衡、绿色共生、开放内外、共享公平）。\n链条贯通：空间格局优、产业结构绿、生产生活低碳。\n口诀：绿色理念领航程，人与自然促和声；全链节约减排放，绿色动能百业兴。答题紧扣新发展理念与高质量现代化经济体系。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "新发展理念深刻回答了关于发展的目的、动力、方式、路径等一系列理论和实践问题。在五大新发展理念中，主要着力解决人与自然和谐共生问题的是\nA. 创新发展\nB. 协调发展\nC. 绿色发展\nD. 共享发展\n作答要求：准确记忆新发展理念的五大维度及其主攻方向，锁定针对生态保护的维度。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：绿色发展注重解决人与自然和谐共生问题，是新发展理念的重要组成部分。A 项创新注重解决发展动力问题；B 项协调注重解决发展不平衡问题；D 项共享注重解决社会公平正义问题，只有绿色发展明确指向人与自然和谐共生。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "### 要点梳理\n（1）现代化中国特色：人与自然和谐共生是中国式现代化的鲜明特色与本质要求之一。\n（2）摒弃西方老路：坚决破除西方资本主义以资本为中心、先污染后治理的现代化老路，走生产发展与生态良好共赢之路。\n（3）顺应规律节约优先：坚持节约优先、保护优先、自然恢复为主的方针，形成节约资源和保护环境的绿色生活方式。\n（4）永续发展境界：满足人民群众对优美生态环境日益增长的需要，实现经济繁荣、人民幸福与生态良好的永续交融。\n\n### 易错点\n- 易误认为中国式现代化的特色仅限于物质或人口规模，忽视人与自然和谐共生这一不可或缺的鲜明生态底色。\n- 易把自然恢复为主误解为放任不管，它是尊重生态系统自愈规律基础上的积极科学干预。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "特色本质图式对比记忆：\n中国式现代化五大特征之一：人与自然和谐共生。\n对比西方：西方走高污染老路，中国走共赢康庄道。\n工作方针：节约优先、保护优先、自然恢复为主。\n口诀：中国特色现代化，人与自然相融洽；节约保护放前头，自然恢复展生华。答题抓住中国式现代化本质要求这根红线。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "中国式现代化既有各国现代化的共同特征，更有基于自己国情的中国特色。在党的重大理论部署中，被明确界定为中国式现代化鲜明特色之一的是\nA. 追求资本无限增殖的现代化\nB. 先污染后治理的现代化\nC. 人与自然和谐共生的现代化\nD. 破坏资源快速扩张的现代化\n作答要求：准确识记中国式现代化的五大中国特色，排除西方异化发展模式的干扰干扰项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：人与自然和谐共生是中国式现代化的五个鲜明中国特色之一，体现了社会主义现代化对生态价值的崇高追求。A、B、D 项属于西方传统工业化过程中掠夺自然、资本至上、先污染后治理的错误老路，与中国式现代化的生态文明本质背道而驰。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "### 要点梳理\n（1）治本战略举措：推进绿色低碳发展是解决我国生态环境问题、推动经济转型升级的根本之策。\n（2）优化能源体系：加快规划建设新型能源体系，大力推进清洁能源对化石能源的平稳替代，增强能源安全保障。\n（3）推动产业升级：以节能降碳为抓手淘汰高耗能低效能项目，壮大节能环保、新能源与绿色先进制造业。\n（4）全领域协同降碳：协同推进降碳、减污、扩绿、增长，实现生态效益、经济效益与社会效益有机高度统一。\n\n### 易错点\n- 易把绿色低碳简单等同于“限制工业生产”，忽略其是倒逼技术革新、催生新质生产力的战略契机。\n- 易误选单一末端排污指标，必须掌握“降碳、减污、扩绿、增长”四位一体的综合协同布局。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "降碳协同四维抓手速记：\n降碳——关键控总量与强度；\n减污——深入打好污染防治战；\n扩绿——持续开展国土绿化；\n增长——绿色产业支撑新繁荣。\n口诀：绿色低碳是根本，能效提升控温室；降碳减污齐并进，扩绿增长谱华章。复习把握“降碳减污扩绿增长”四词协同。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "推进生态文明建设必须抓住源头防范与产业升级的核心环节。在新发展阶段，被确立为解决生态环境问题根本之策的是\nA. 绿色低碳发展\nB. 扩大化石能源补贴\nC. 异地转移排污产业\nD. 单纯增加末端治理设备\n作答要求：准确识别解决生态环境问题治本之策的规范表述，排除治标不治本的干扰手段。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：推进绿色低碳发展是解决我国生态环境问题的根本之策，必须协同推进降碳、减污、扩绿、增长。B 项依赖化石能源加剧温室气体排放；C、D 项属于被动末端应付或以邻为壑的错误做法，无法从源头根治生态环境危机。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "### 要点梳理\n（1）重大战略抉择：推进碳达峰碳中和是党中央统筹国内国际两个大局作出的重大战略决策，是不可逆转的时代潮流。\n（2）双碳科学目标：力争实现碳达峰，进而稳步迈向碳中和，推动我国经济社会全面绿色转型。\n（3）工作指导方针：坚持“全国统筹、节约优先、双轮驱动、内外畅通、防范风险”的二十字总方针。\n（4）立足基本国情：坚持先立后破，在保障国家能源安全、产业链供应链安全的前提下积极稳妥推进。\n\n### 易错点\n- 易搞混“碳达峰”与“碳中和”的概念内涵，碳达峰是排放量达到峰值后稳中有降，碳中和是排放与吸收达到相对平衡。\n- 易误认为可以搞脱离实际的“碳冲锋”或“运动式减碳”，必须坚持循序渐进、先立后破。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "双碳目标对比速记图式：\n碳达峰——排放达峰值后稳步回落（阶段转折）；\n碳中和——人为排放与自然吸收实现净零平衡（最终状态）。\n原则指针：坚持先立后破，不搞运动式减碳。\n口诀：双碳战略布大局，先立后破保平稳；达峰回落促中和，净零转型绿波翻。牢记达峰与中和的不同界定及先立后破原则。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "积极稳妥推进减碳转型是推动高质量发展的重要支撑。在党中央立足经济社会发展全局作出的重大战略决策中，统称为“双碳”目标的是\nA. 碳交易与碳汇\nB. 碳达峰与碳中和\nC. 碳封存与碳捕集\nD. 碳足迹与碳关税\n作答要求：准确识记国家重大绿色战略目标的核心提法，分清总体战略与具体技术环节。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：“双碳”目标是指碳达峰与碳中和。这是推动高质量发展的内在要求和重大战略举措。A、C 项属于减碳具体技术与市场交易机制；D 项属于核算标准与外贸规则，均非国家层面的“双碳”战略目标总括。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "### 要点梳理\n（1）生态系统安全底盘：构建以国家公园为主体的自然保护地体系，是筑牢国家生态安全屏障的核心举措。\n（2）保护地分级分类：构建以国家公园为主体、自然保护区为基础、各类自然公园为补充的自然保护地新体系。\n（3）核心价值属性：国家公园坚持生态保护第一、国家代表性、全民公益性三大核心理念，保护典型自然生态系统。\n（4）理顺管理体制：改变多头管理、权责不清的传统弊端，实现对重要自然生态资产的统一规范高效管护。\n\n### 易错点\n- 易颠倒自然保护地体系中的层级从属关系，必须牢记“国家公园为主体、自然保护区为基础、自然公园为补充”。\n- 易把国家公园混同于商业风景旅游区，忽视其以生态保护和国家代表性为首要属性。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "保护地三层金字塔图式记忆：\n顶层主体——国家公园（代表性、保护第一、公益性）；\n中层基础——自然保护区（核心资源严密保育）；\n底层补充——各类自然公园（兼顾科教游憩）。\n口诀：国家公园为主体，保护区作坚实基；自然公园为补充，保护屏障立天地。答题牢记主体、基础、补充三者准确对应。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L689"
+      ],
+      "text_md": "守护生物多样性与自然遗产必须推进自然保护地体制改革。在我国全面推进的自然保护地体系建设中，处于主体地位的是\nA. 国家公园\nB. 城市森林公园\nC. 农业生态观光园\nD. 矿山地质公园\n作答要求：熟练掌握自然保护地新体系的层级构成，准确锁定居于核心主体地位的类型。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：我国正在加快构建以国家公园为主体、自然保护区为基础、各类自然公园为补充的自然保护地体系。国家公园具有国家代表性与生态重要性。B、C、D 项属于特定功能公园或基层补充类型，只有国家公园居于核心主体地位。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "### 要点梳理\n（1）生产生活相互促进：推动形成绿色生产方式和生活方式，是建设美丽中国、促进人与自然和谐共生的必由之路。\n（2）绿色生产转型：大力发展循环经济，全面推行清洁生产，推动工业、农业、服务业全产业链实现节能降耗减排。\n（3）绿色生活践行：引导全社会树立勤俭节约理念，广泛倡导绿色出行、光盘行动、垃圾分类，抵制过度消费奢靡浪费。\n（4）完善制度保障：健全绿色产品市场准入标准与税收金融激励机制，让绿色低碳成为每个公民的自律风尚。\n\n### 易错点\n- 易只谈生活方式的微观小事而漏掉生产方式的产业转型，二者相辅相成、缺一不可。\n- 易忽略制度规范在长效推行绿色生活方式中的支撑保障作用。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "生产与生活双轮协同对比记忆：\n生产端（源头控减）——循环利用、清洁生产、节能降耗；\n生活端（微观践行）——低碳出行、光盘减废、垃圾分类；\n支撑端（制度护航）——标准法规、政策激励、风尚养成。\n口诀：绿色生产控源头，低碳生活人人修；光盘分类行绿色，美丽中国共长久。按「生产方式—生活方式—制度支撑」三层次作答。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "生态文明建设既是一场生产技术的深刻革命，也是一场生活观念的深刻变革。实现从源头到末端的全面绿色转型，必须在全社会大力推行绿色生产生活模式。请简述加快形成绿色生产方式和生活方式的主要途径。\n作答要求：从生产领域改革、日常生活倡导及制度保障机制三个维度分点阐述。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）在生产领域推进深度绿色变革：发展循环经济，淘汰落后产能，全面推行工业与农业清洁生产，提高资源综合利用效率。（2）在生活领域倡导绿色低碳风尚：广泛普及节约节俭观念，积极引导绿色出行、低碳居家、光盘行动和垃圾精准分类。（3）健全绿色转型制度激励体系：完善支持绿色发展的财税、金融、投资和价格政策，建立绿色低碳产品认证与推广机制。（4）强化全民生态文明宣传教育，形成人人有责、人人践行的社会新风尚。\n答题解析：该题考查生产生活双向绿色转型，考生需兼顾企业宏观生产与居民微观生活，结合政策制度保障进行条理化回答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "### 要点梳理\n（1）倒逼高质量转型：推进双碳行动能够强力倒逼产业结构、能源结构调整，加速培育绿色低碳新动能。\n（2）守护生态环境根基：从源头大幅削减化石能源消耗与温室气体排放，协同减少空气与水体污染，持续改善环境质量。\n（3）保障国家能源安全：降低对传统化石能源的外部依赖度，大力发展风光水核等清洁能源，筑牢国家安全屏障。\n（4）引领全球环境治理：展现负责任大国的责任担当，积极参与并主导国际气候合作规则制定，提升全球话语权。\n\n### 易错点\n- 易把双碳意义单纯看作环境治理，忽视其对重塑国家产业竞争优势与维护能源安全的深远战略意义。\n- 简答时易遗漏“引领全球治理”的国际大局维度，作答要兼顾国内与国际两个大局。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "双碳意义四维串联记忆抓手：\n内促转型——倒逼产业升级，壮大绿色生产力；\n改善环境——源头减碳降污，守护蓝天白云；\n保障安全——减少石油依存，能源独立自主；\n外塑大国——引领气候谈判，展现大国风范。\n口诀：双碳战略意义深，产业转型动能新；能源安全环境好，全球治理显雄心。作答按「产业—环境—安全—国际」四条主线组织。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "推进碳达峰碳中和是一场广泛而深刻的经济社会系统性变革，事关中华民族永续发展和人类命运共同体构建。在新征程上，我国坚定不移走生态优先、绿色低碳发展道路。请简述积极稳妥推进碳达峰碳中和的重大战略意义。\n作答要求：紧扣产业发展、生态环境保护、能源安全和国际治理责任四个层面展开论述。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）有力倒逼经济结构绿色转型：促进传统高耗能产业深度变革，培育壮大新能源与节能环保产业新动能。（2）显著改善生态环境整体品质：通过源头控碳实现减污降碳协同增效，从根本上解决复合型环境污染问题。（3）有效增强国家能源安全保障：大力开发自主可控的清洁可再生能源，摆脱化石资源依赖，筑牢能源自主防线。（4）积极展现全球治理大国担当：深度融入并引领全球绿色低碳进程，为应对全球气候危机贡献中国方案。\n答题解析：题目要求回答双碳战略意义，作答时应跳出单纯环保视角，从国内产业转型、国家能源自主与国际话语权多维展开。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "### 要点梳理\n（1）全要素系统有机性：山水林田湖草沙是相互依存、紧密联系的生命共同体，构成完整的自然生态巨系统。\n（2）系统整体保护理念：生态环境治理不可“头痛医头、脚痛医脚”，必须统筹考虑各自然生态要素的相互循环关联。\n（3）遵循自然恢复法则：树立全周期系统保护思维，坚持保护优先、自然恢复为主，实施整体保护、系统修复、综合治理。\n（4）划定红线守底线：依据生态系统承载力科学编制国土空间规划，严守生态保护红线，确保生态功能不退化。\n\n### 易错点\n- 易误认为治理可以各管一段，忽略上中下游、水陆空各生态要素互为因果的系统循环特性。\n- 记忆时注意“山水林田湖草沙”七大要素的规范表述，不要漏掉“沙”等关键要素。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "全要素生态系统联想记忆抓手：\n七大要素联想：山、水、林、田、湖、草、沙（全要素大合唱）；\n治理核心：统筹保护、系统修复、综合治理；\n切记警示：治水不治山、只治当下不治源头，均属无效盲动。\n口诀：山水林田湖草沙，生命整体是一家；系统治理不割裂，综合修复绽芳华。作答从「要素整体性—系统治理观—长效保护」分点答题。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L691"
+      ],
+      "text_md": "生态环境是一个复杂的有机系统，各类自然生态要素彼此依存、不可分割。坚持系统观念是新时代推进生态文明建设的科学方法论之一。请简述“山水林田湖草沙是生命共同体”的核心内涵与系统治理要求。\n作答要求：阐释全要素整体性特征，并提出坚持系统治理、统筹施策的具体原则。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）确认全要素自然系统的内在有机性：山、水、林、田、湖、草、沙等要素环环相扣，一损俱损、一荣俱荣。（2）确立统筹兼顾的系统治理思维：坚决克服部门分割、各自为政的弊端，实施全流域、全周期的整体施治。（3）遵循自然规律实施科学修复：坚持保护优先、自然恢复为主，把人为干预与自然修复有机结合。（4）科学实施空间分区管护：以国土空间规划为依据，守牢生态红线，优化生态保护格局。\n答题解析：该题考查系统生态观，考生应重点展现对各要素内在循环规律的把握，强调系统治理、综合施策的方法论要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L693"
+      ],
+      "text_md": "### 要点梳理\n（1）人民主体地位：建设美丽中国是全民共同参与、共同建设、共同享有的崇高事业，必须紧紧依靠人民群众。\n（2）强化生态意识培养：持续深化生态文明宣传教育，引导全社会增强生态文明自觉，从内心深处树立绿色价值导向。\n（3）健全公众参与机制：畅通生态环境监督与公益参与渠道，鼓励群众投身植树造林、环保志愿、节水节电等微行动。\n（4）养成自律生活风尚：推动垃圾分类、低碳出行、光盘节约融入群众日常生活规范，汇聚建设美丽中国的磅礴力量。\n\n### 易错点\n- 易把生态保护看成单纯的行政执法命令，忽视了调动广大人民群众内生动力与自觉行动的关键意义。\n- 材料分析时易陷入宏观说教，必须把案例中的居民参与场景与生态文明行为养成机制有机结合。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L693"
+      ],
+      "text_md": "全民自觉行动串联记忆抓手：\n思想内化——加强生态宣教，树牢生态理念；\n实践外化——从我做起参与垃圾分类、光盘节约；\n机制护航——拓宽监督渠道，赋能志愿行动。\n材料答题框架：案例群众做法——理论对接人民主体与自觉行动——提出全民共治共建长效机制。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L693"
+      ],
+      "text_md": "材料：某流域沿岸社区曾面临生活垃圾乱倾倒、河道水质黑臭困扰。当地街道没有单纯依靠清洁工人，而是组建“民间河长”和“银发护水队”，鼓励居民巡河拍照报修；同时开辟“绿色积分存折”，居民践行垃圾精准分类、自带水杯购物等均可兑换日用品。如今，参与环保志愿的市民超八成，河道再现水清岸绿，周边居民切身感受到生态改善带来的幸福。\n根据材料回答：结合上述材料，阐释“坚持把建设美丽中国转化为全体人民自觉行动”的实践路径与深远价值。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐释：建设美丽中国是一项全民事业，良好生态环境靠全社会共同创造，必须激发全体人民的主翁意识，将外部规范化为内心自觉。\n二、材料深度分析：\n（1）创新参与平台：组建民间河长、护水队，使群众从被动管理者转变为主动治理者与监督者。\n（2）完善正向激励：运用绿色积分机制调动广大居民参与日常分类和节约环保的积极性，形成持久内生动力。\n（3）营造文明新风尚：使低碳环保成为日常生活习惯与社群文化认同，实现人人共建、人人受益。\n三、总结：必须坚持人民主体地位，丰富参与渠道，让绿色低碳理念深深植根群众生活之中。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L693"
+      ],
+      "text_md": "### 要点梳理\n（1）法治根本保障：保护生态环境必须依靠制度、依靠法治，只有实行最严格制度、最严密法治，才能提供可靠保障。\n（2）严守制度硬约束：构建系统完整的生态文明制度体系，建立涵盖源头防范、过程严管、损害赔偿与后果严惩的全闭环。\n（3）长出刚性“铁齿铜牙”：强化生态环境监督检查与司法执法协同，对偷排偷放、破坏自然等违法犯罪行为零容忍、重处罚。\n（4）终身追责倒逼作为：严格落实生态环境损害责任终身追究制，坚决破除地方保护主义，让制度成为不可触碰的高压线。\n\n### 易错点\n- 易误认为依靠道德觉悟就能解决环境污染，必须牢牢把握法治制度才是生态环境最硬核的根本屏障。\n- 材料题分析时易忽略全过程法治监管机制，未能把事前防范、事中严管与事后追责融通分析。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L693"
+      ],
+      "text_md": "最严法治闭环记忆图式抓手：\n源头防范——环保红线、排污许可；\n过程严管——督察巡视、实时监测；\n后果惩戒——天价赔偿、终身追责。\n口诀：法治乃是硬屏障，制度严密铁齿长；偷排违法重问责，不可触碰高压网。作答围绕法治地位、刚性执法与终身追责展开。"
+    },
+    {
+      "block_id": "15040-ch12-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L693"
+      ],
+      "text_md": "材料：某化工园区企业为谋取非法利润，私设暗管向地下深层偷排有毒工业废水，严重威胁周边农田与地下水源安全。生态环境部门联合公安机关迅速立案查处，通过无人机与管网溯源固化证据，不仅对涉案企业处以巨额生态损害赔偿金，还依法对直接负责的主管人员采取刑事强制措施；同时对监管不力的相关公职人员依纪依法严肃问责。\n根据材料回答：结合上述材料，阐述“用最严格制度最严密法治保护生态环境”的必要性与具体要求。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、核心地位阐述：制度和法治是生态文明建设的根本保障。只有筑牢法治底线、实行最严密规则，才能从根本上刹住破坏生态环境的歪风邪气。\n二、紧扣材料深度论证：\n（1）利剑高悬严惩违法犯罪：查处偷排企业并处以巨额赔偿、追究刑事责任，彰显了法治刚性威慑，让破坏者付出沉重代价。\n（2）多部门协同高压执法：环保与公安联动执法，运用高科技手段破解取证难，堵塞监管漏洞。\n（3）严肃责任追究：对监管失职公职人员问责，强化政绩考核监督，落实环境保护“党政同责、一岗双责”。\n三、总结：必须让法治制度长出“铁齿铜牙”，构建源头预防、过程严格、损害惩罚的全闭环法治防护网。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "### 要点梳理\n（1）全球生态视野：面对全球生态环境恶化挑战，中国倡议国际社会共同构建人与自然和谐共生的“地球生命共同体”。\n（2）人类同乘一条船：地球是全人类赖以生存的唯一家园，气候变化、生物多样性丧失是全人类面临的共同挑战，无人能独善其身。\n（3）共商绿色治理：倡导各国携手合作，坚持多边主义，共同保护地球自然生态系统与生物多样性。\n（4）全球绿色担当：中国率先出资设立昆明生物多样性基金，为发展中国家保护生态提供有力支持，推动全球可持续发展。\n\n### 易错点\n- 易混淆“地球生命共同体”与国内的“人与自然是生命共同体”，前者是面向全球治理与全人类未来的重大国际倡议。\n- 易误认为个别大国可以依靠技术优势独善其身，必须树立全球生态休戚与共的命运共同体观念。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "全球共生图式记忆抓手：\n地球同舟——人类唯一家园，休戚与共不可分；\n共同挑战——气候变暖、物种锐减，无国界之别；\n中国担当——倡建地球生命共同体，设立昆明基金助全球。\n口诀：地球母亲唯一家，生命共同体相连；携手多边克危机，同心呵护绿球园。备考把握全球生态整体性与共同体理念。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "面对全球气候变暖、生态退化与生物多样性丧失等全球性生态环境危机，中国展现大国担当，积极向国际社会提出全球治理的中国方案。中国倡导国际社会携手共建的是\nA. 区域封闭自足体\nB. 地球生命共同体\nC. 单边贸易保护体\nD. 传统工业同盟体\n作答要求：深刻把握中国在推动全球生态文明建设中提出的核心理念，准确定位这一重大国际战略构想。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：中国倡导国际社会携手共建地球生命共同体，共同应对全球气候与生态危机，彰显了负责任大国的人类关怀。A、C 项大搞单边主义与封闭脱钩逆流；D 项属于传统高能耗工业同盟，背离了全人类共谋绿色低碳永续发展的正确康庄大道。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "### 要点梳理\n（1）全球治理指引：共商共建共享的全球治理观，是破解全球环境生态治理赤字、应对全球气候危机的正确指引。\n（2）三者有机统一：共商是民主协商，共建是齐心协力，共享是成果普惠，体现了国际关系民主化的时代精神。\n（3）反对单边主义：坚决反对个别发达国家搞绿色壁垒、单边制裁或转嫁环境危机，维护发展中国家正当发展权益。\n（4）真正的多边主义：坚持在联合国框架下开展务实多边合作，维护以国际法为基础的全球环境治理秩序。\n\n### 易错点\n- 易混淆国内社会治理的“共建共治共享”与全球治理的“共商共建共享”，国际层面是“共商”（强调民主协商）。\n- 易忽视绿色壁垒对发展中国家权益的损害，理解共商共建共享是维护全球正义的重要基石。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "国内与国际治理理念对比记忆抓手：\n国内社会治理——共建、共治、共享（治理主体协同）；\n全球生态治理——共商、共建、共享（商量着办，反对单边）。\n核心辨析：国际事务有事好商量，反对独霸与壁垒。\n口诀：全球治理有指南，共商共建共享欢；反对霸权筑壁垒，多边协商护家园。牢记国际治理为“共商共建共享”。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "推进全球环境治理必须坚持正确的治理准则，维护国际公平正义。中国在参与和引领全球环境治理体系改革中所坚守的全球治理观是\nA. 强权垄断、单边主导\nB. 共商共建共享\nC. 贸易壁垒、各自为战\nD. 资本优先、阵营对抗\n作答要求：准确识别中国倡导的全球治理核心准则，区分国内社会治理与国际全球治理的规范表述。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：共商共建共享是指导全球治理的科学理念，强调国际事务由大家共同协商、共同建设、共同分享治理成果，实现国际关系民主化。A、C、D 项搞阵营对抗、单边制裁与绿色壁垒，违背了广大发展中国家的共同意愿与国际公义。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "### 要点梳理\n（1）国际战略角色：中国不仅自身坚定走绿色发展之路，而且成为全球生态文明建设的重要参与者、贡献者、引领者。\n（2）参与者定位：全面履行国际环境公约，积极参加联合国气候变化框架公约等国际多边谈判与规则制定。\n（3）贡献者实绩：推动全球新增绿化面积位居世界前列，水电、风电、光伏等清洁能源装备制造与装机规模均稳居世界第一。\n（4）引领者担当：推动达成巴黎协定实施细则，宣布双碳宏伟目标，为全球绿色低碳转型注入强大确定性与正能量。\n\n### 易错点\n- 易将“参与者、贡献者、引领者”三者顺序或定位颠倒，必须准确把握我国在国际舞台上生态角色演进的梯次跃升。\n- 易误认为中国仅是履约追随者，忽视我国在清洁能源供给与多边协议达成中展现出的引领性作用。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "三者递进角色图式速记法：\n参与者（融入履约）——认真履行公约，积极融入多边谈判；\n贡献者（实打实成效）——世界绿化主力，清洁能源第一；\n引领者（展现担当）——提出双碳目标，推动规则达成。\n口诀：全球生态立潮头，参与贡献引领优；清洁能源走在前，绿色贡献誉全球。牢记由参与到贡献再到引领的递进逻辑。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "中国在推动自身绿色转型的同时，积极为全球可持续发展贡献智慧和力量。在国际社会对中国在生态文明领域发挥积极作用的高度评价中，我国被准确定位为全球生态文明建设的\nA. 被动接受者、技术依附者、边缘观察者\nB. 规则质疑者、单纯索取者、迟延履约者\nC. 重要参与者、贡献者、引领者\nD. 封闭排他者、孤立先行者、规则独占者\n作答要求：准确记忆中央对我国在国际生态治理中角色的三位一体定位，把握其历史主动性。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：我国已成为全球生态文明建设的重要参与者、贡献者、引领者，展现了推动全球绿色可持续发展的大国责任担当。A、B、D 项均为歪曲贬损或不符合我国积极作为事实的错误选项，与我国在国际生态多边治理中的突出贡献完全不符。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "### 要点梳理\n（1）合作发展底色：把绿色作为共建“一带一路”的鲜明底色，倡导走绿色、低碳、循环、可持续的发展道路。\n（2）绿色项目赋能：大力开展绿色基建、绿色能源、绿色交通与绿色金融合作，为共建国家提供清洁电力与低碳装备。\n（3）推动标准互认：推动环保标准与国际接轨，设立绿色发展国际联盟，帮助发展中国家提升环境治理与应对气候危机能力。\n（4）惠及沿线民生：建设一大批“小而美、惠民生”的清洁能源项目，让共建成果实实在在惠及沿线广大普通民众。\n\n### 易错点\n- 易误认为共建“一带一路”主要是传统重工业输出，忽视“绿色”是新时代高质量共建的根本鲜明底色。\n- 易忽视绿色“一带一路”在帮助发展中国家跨越污染陷阱方面的重要赋能意义。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "绿色底色串联记忆抓手：\n鲜明底色——绿色、低碳、可持续；\n四大支撑——绿色基建、绿色能源、绿色交通、绿色金融；\n国际机制——绿色发展国际联盟，小而美项目惠民生。\n口诀：一带一路绿底色，低碳循环合作开；清洁能源惠民生，丝路春风入万家。答题紧扣绿色底色与清洁能源合作。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L696"
+      ],
+      "text_md": "高质量共建“一带一路”注重统筹经济繁荣与生态环境保护。在推动沿线共建国家实现可持续发展的倡议中，被确立为共建“一带一路”鲜明底色的是\nA. 规模优先\nB. 绿色\nC. 高能耗扩张\nD. 商业垄断\n作答要求：准确把握高质量共建“一带一路”的价值取向，锁定代表可持续发展理念的关键词。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：绿色是共建“一带一路”的鲜明底色。中国坚持践行绿色发展理念，致力于打造高标准的绿色丝绸之路，惠及沿线民生。A、C 项违背可持续发展原则；D 项违背互利共赢初衷，只有绿色才是共建“一带一路”一以贯之的鲜明底色。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L698"
+      ],
+      "text_md": "### 要点梳理\n（1）唯一地球家园：地球是人类赖以生存的唯一家园，任何破坏地球生态系统的行为最终都会危及人类生存繁衍。\n（2）应对全球生态挑战：气候变暖、冰川消融、土地荒漠化与极端灾害频发，凸显保护地球家园刻不容缓的紧迫性。\n（3）秉持科学保护理念：坚持人与自然和谐共生，以自然之道养万物之生，全面加强国际生态保育合作。\n（4）全人类休戚与共：摒弃地缘政治私利与意识形态偏见，各国同心协力构建尊崇自然、绿色发展的生态安全家园。\n\n### 易错点\n- 易把保护地球看成某一个国家或区域的事情，忽略地球生态系统是一个无国界的统一有机整体。\n- 简答时易遗漏“摒弃地缘偏见、坚持多边合作”这一政治保障层面的关键要点。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L698"
+      ],
+      "text_md": "共同家园保护四步抓手记忆：\n看家园——地球唯一无退路，生态脆弱须珍惜；\n明危局——极端气候威胁存，行动迟缓遗后患；\n讲科学——道法自然促共生，系统修复保平衡；\n齐协力——同舟共济弃偏见，同心守护碧水天。\n口诀：地球孤岛唯一家，破坏生态祸千家；同舟共济弃成见，共护青山绿水长。作答依循「唯一性—紧迫性—科学性—协作性」答题。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L698"
+      ],
+      "text_md": "宇宙只有一个地球，人类共有一个家园。面对日益严峻的全球气候与环境危机，任何国家都不可能独善其身、独处世外。在新时代全球生态文明倡议中，中国始终把保护人类共同家园摆在崇高位置。请简述保护人类共同家园的时代紧迫性与国际协作要求。\n作答要求：从生态危机现状、共同家园理念及国际务实合作策略三个方面逐条分点回答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）深刻认清地球家园的唯一性与不可替代性，全人类同乘一条命运之舟，破坏自然环境将威胁整个人类文明存续。（2）正视全球气候环境危机的严重紧迫性，极端灾害频发与生物退化要求各国立即采取坚决果断行动。（3）坚持人与自然和谐共生理念，以科学态度尊重自然规律，协同推进大范围自然生态系统保护。（4）坚守多边主义与同舟共济精神，坚决破除地缘对抗与自私自利的单边行径，携手维护全球生态安全底线。\n答题解析：该题考查全球生态危机与国际合作，作答时须紧扣地球唯一性这一根本前提，从危机倒逼、科学施策与多边合力展开论述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L698"
+      ],
+      "text_md": "### 要点梳理\n（1）全球崇高愿景：共建清洁美丽世界是推动构建人类命运共同体的五大宏伟支柱之一，描绘了人与自然相安相荣的美好画卷。\n（2）清洁导向要求：大力发展清洁能源，推动淘汰高污染高排放工业模式，建设天蓝、地绿、水清的优美全球环境。\n（3）公平公正合作：充分照顾发展中国家发展阶段与特殊国情，提供资金、技术与能力建设援助，反对搞绿色贸易歧视。\n（4）全人类代际责任：为子孙后代留下一片纯净星空、绿水青山，实现人类文明跨代际的长久永续发展。\n\n### 易错点\n- 易把“清洁美丽世界”与抽象的外交口号混同，忽略其作为人类命运共同体重要内涵支柱的特定理论定位。\n- 易忽视对广大发展中国家绿色转型实际困难的关切，强调国际合作必须兼顾公平与发展权利。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L698"
+      ],
+      "text_md": "清洁美丽世界图式串联记忆：\n五位一体世界愿景之一：持久和平、普遍安全、共同繁荣、开放包容、清洁美丽。\n清洁维度——能源低碳、空气清新、水质澄澈；\n美丽维度——生态多样、景观和谐、文明永续；\n公平维度——扶持弱小、技术共享、反对壁垒。\n口诀：命运共同体宏图，清洁美丽放光芒；低碳转型公平助，天蓝水清照万邦。牢记清洁美丽世界在人类命运共同体中的定位。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L698"
+      ],
+      "text_md": "让良好生态环境成为全球所有人的福祉，建设一个清洁美丽的世界是人类的共同追求。中国提出的推动构建人类命运共同体倡议，把建设清洁美丽的世界确立为重要奋斗目标。请简述共建清洁美丽世界的核心要求与时代价值。\n作答要求：阐明其在人类命运共同体中的战略定位、绿色转型要求以及国际公平原则。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）明确战略定位：共建清洁美丽世界是构建人类命运共同体的关键支撑，回应了全人类对优美生态环境的热切期待。（2）推动能源与产业深度脱碳：大规模发展清洁可再生能源，推广循环经济模式，逐步降低传统石化能源排放。（3）坚守国际公平与普惠正义：发达国家应当在资金、绿色技术转移等方面切实履行对发展中国家的援助承诺，不得借环保之名推行单边壁垒。（4）履行代际传承责任：为后代子孙构筑可持续的生态家园，实现全球人与自然和谐永续发展。\n答题解析：该题考查清洁美丽世界的构建路径，作答需抓住“减污降碳、国际普惠、代际永续”三大关键维度条理化陈述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L699"
+      ],
+      "text_md": "### 要点梳理\n（1）国际法理基石：共同但有区别的责任原则，是国际气候谈判与全球环境治理的基石，体现历史正义与客观现实。\n（2）“共同责任”内涵：保护全球气候系统是所有国家的共同法律与道德责任，任何国家都不能逃避应有担当。\n（3）“有区别责任”内涵：发达国家负有历史累积排放的主要责任，应当率先大幅减排，并向发展中国家提供充足资金与技术。\n（4）维护发展权益：发展中国家首要任务是消除贫困与改善民生，减碳行动必须与发展阶段、资源禀赋相适应。\n\n### 易错点\n- 易抹杀“有区别的责任”，接受西方企图将历史排放责任平均分摊给发展中国家的不公正主张。\n- 材料分析时易片面强调本国困难，必须坚持“共同责任”与“有区别责任”两手抓，展现大国履约担当。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L699"
+      ],
+      "text_md": "责任两分对比记忆抓手：\n共同责任（同舟共济）——全人类同呼吸，各方皆有减排担当；\n有区别责任（历史公义）——发达国家历史排得多、能力强，当多掏钱早减排；发展中国家促发展与控排放兼顾。\n口诀：环境治理讲公义，共同且有区分责；历史排放算明白，资金技术须兑现。材料题紧扣「历史责任—阶段差异—公平正义」展开。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L699"
+      ],
+      "text_md": "材料：在国际气候谈判进程中，部分发达国家企图淡化自身自工业革命以来的巨量历史排放事实，要求广大发展中国家承担与其同等比例、同等周期的减排指标，甚至动辄以征收“碳边境税”相威胁。中国等广大发展中国家对此坚决反对，严正重申必须毫不动摇坚持联合国气候变化框架公约确立的“共同但有区别的责任原则”，督促发达国家切实兑现向发展中国家提供气候资金与技术支持的诺言。\n根据材料回答：结合上述材料，阐明“坚持共同但有区别的责任原则”的法理依据与现实必要性。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、原则内涵与法理依据：共同但有区别的责任原则是全球气候治理的基石。全人类共享一个地球，保护生态是共同责任；但发达国家自工业革命以来累积了巨量历史排放，且享有雄厚技术资本，理应承担率先减排并援助发展中国家的特殊责任。\n二、结合材料深入剖析：\n（1）揭露个别发达国家的虚伪与霸权：个别国家企图抹杀历史责任、平均分摊减排负担，违背国际法理与道义良知。\n（2）捍卫发展中国家正当发展权益：发展中国家必须兼顾消除贫困、工业化与改善民生，绝不能以剥夺其发展权为代价推进脱碳。\n（3）督促兑现资金与技术支持：国际减碳成效取决于全球协同，发达国家兑现出资和技术转让是帮助发展中国家跨越污染陷阱的关键。\n三、总结：必须坚持公正合理的全球气候治理原则，在维护多边共识中推动全球真正实现可持续发展。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch12-s3-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch12-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L699"
+      ],
+      "text_md": "### 要点梳理\n（1）全球发展命题：推动全球可持续发展，是破解全球发展不平衡、消除贫困、实现人与自然共赢的根本出路。\n（2）提出全球发展倡议：中国提出全球发展倡议，把减贫、粮食安全、绿色低碳、气候变化等列为重点合作领域。\n（3）推动南北务实合作：推动联合国可持续发展议程落实，推动发达国家承担应有义务，增强全球南方国家自主发展能力。\n（4）共筑绿色繁荣之路：依托清洁能源走出去、生态农技普及等务实项目，让可持续发展红利更公平地惠及世界各国人民。\n\n### 易错点\n- 易把可持续发展片面狭隘化为单纯的环境生态保护，忽视其涵盖经济发展、民生减贫与社会公平的多维复合性。\n- 材料题作答时易忽略全球发展倡议的作用，必须突出中国为弥合全球南北鸿沟所提供的制度化平台与公共产品。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch12-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L699"
+      ],
+      "text_md": "全球可持续发展串联记忆抓手：\n破题之策——可持续发展，经济生态社会三赢；\n中国方案——全球发展倡议，八大重点统筹并进；\n南方赋能——技术援助、绿色基建，增强自主造血能力。\n材料答题框架：识别全球发展鸿沟案例——阐明全球发展倡议与绿色合作举措——论证可持续发展对世界和平与繁荣的深远贡献。"
+    },
+    {
+      "block_id": "15040-ch12-s3-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch12-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L699"
+      ],
+      "text_md": "材料：近年来，由于极端干旱与能源短缺，部分非洲与南亚国家陷入粮食不安全与能源匮乏的双重困境。中国通过推进全球发展倡议落地，派出农技专家组赴当地传授杂交水稻与抗旱节水滴灌技术，使当地粮食产量翻番；同时投资承建大型光伏电站与微电网项目，为数十万无电村落点亮生活之光，帮助当地在摆脱贫困的同时避免了高碳排放，赢得国际社会高度赞誉。\n根据材料回答：结合上述材料，阐述中国如何“积极推动全球可持续发展”并为构建人类命运共同体贡献力量。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐述：全球可持续发展是实现世界长治久安和共同繁荣的基础，必须把消除贫困、粮食安全与绿色低碳发展有机统一起来。\n二、紧扣材料深度剖析：\n（1）坚持发展优先导向：中国通过输出杂交水稻和节水农技，有效提高受援国粮食自给能力，打牢可持续发展的生存之基。\n（2）赋能清洁绿色转型：承建光伏电站与微电网，帮助发展中国家跳过高污染阶段直接利用清洁能源，实现跨越式绿色发展。\n（3）践行真实亲诚理念：不附加任何政治条件，增强当地自主造血能力，切实回应发展中国家最迫切的生存与发展诉求。\n三、总结：中国以务实行动推动全球可持续发展，生动诠释了人类命运休戚与共的大国情怀与责任担当。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L715"
+      ],
+      "text_md": "### 要点梳理\n（1）科学内涵界定：国家安全是指国家政权、主权、统一和领土完整、人民福祉、经济社会可持续发展和国家其他重大利益相对处于没有危险和不受内外威胁的状态。\n（2）动态保障能力：国家安全不仅指客观上没有危险的安全状态，还涵盖保障国家持续处于安全状态的综合防御和应对能力。\n（3）时代内涵拓展：突破了传统仅局限于军事防卫与边疆守卫的窄化认知，拓展至政治、经济、文化、网络、生态等全维范畴。\n（4）头等重大意义：国泰民安是人民群众最基本、最普遍的愿望，国家安全是安邦定国的重要基石。\n\n### 易错点\n- 易把国家安全狭隘理解为单纯的“没有战争爆发”，忽视保障持续安全状态的动态能力与非传统安全维度的统筹。\n- 易遗漏“人民福祉”这一核心要素，国家安全归根结底是为了保障人民利益与安居乐业。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L715"
+      ],
+      "text_md": "内涵双维对比记忆抓手：\n客观状态——重大利益无危险、不受内外威胁；\n主观能力——保障持续安全状态的动态综合能力；\n覆盖全域——涵盖政权、主权、统一、领土、福祉与发展。\n口诀：国家安全两层意，无险无患能力强；利益全维牢防护，国泰民安福泽长。答题紧扣“安全状态”与“保障能力”双重内涵。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L715"
+      ],
+      "text_md": "国家安全是安邦定国的重要基石，是实现中华民族伟大复兴的重要保障。在深刻阐释新时代国家安全内涵的科学界定中，国家安全既是指国家重大利益相对处于没有危险和不受内外威胁的客观状态，同时还包括\nA. 实行完全封闭的自给自足状态\nB. 保障持续安全状态的能力\nC. 保持高额军费无节制增长\nD. 消除一切外部竞争与交往\n作答要求：准确领会国家安全概念中的状态与能力双重属性，锁定具有科学能动性特征的选项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：国家安全不仅指国家各方面重大利益没有危险和不受内外威胁的客观状态，还包括保障持续安全状态的能力，是状态与能力的辩证统一。A、D 项走向盲目封闭孤立；C 项偏离综合安全与和平发展道路，均属错误倾向。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L715"
+      ],
+      "text_md": "### 要点梳理\n（1）重大理论创新：总体国家安全观是我们党历史上第一个被确立为国家安全工作指导思想的重大战略理论。\n（2）五大核心要素：必须坚持以人民安全为宗旨、以政治安全为根本、以经济安全为基础、以军事科技文化社会安全为保障、以促进国际安全为依托。\n（3）大安全理念：突破孤立分散的安全治理思维，实现传统安全与非传统安全的系统有机统筹。\n（4）指导行动纲领：为有效防范化解各类重大风险挑战、走中国特色国家安全道路提供了根本指针。\n\n### 易错点\n- 易把五大要素的对应关系颠倒混淆，牢记人民安全是宗旨、政治安全是根本、经济安全是基础。\n- 易把总体国家安全观降格为单纯的某一方面安全预案，忽视其在战略全局中的科学指导地位。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L715"
+      ],
+      "text_md": "五位一体要素图式串联记忆：\n宗旨（出发点）——以人民安全为宗旨；\n根本（生命线）——以政治安全为根本；\n基础（骨架依托）——以经济安全为基础；\n保障（硬核盾牌）——以军事科技文化社会安全为保障；\n依托（国际大局）——以促进国际安全为依托。\n口诀：总体安全观宏瞻，人民宗旨政治根；经济为基军保底，国际依托定乾坤。牢记五大要素严密对应。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L715"
+      ],
+      "text_md": "面对复杂多变的国际战略形势与国内发展环境，党中央创造性提出了总体国家安全观。在总体国家安全观的核心框架中，被明确确立为国家安全根本的是\nA. 经济安全\nB. 军事安全\nC. 政治安全\nD. 人民安全\n作答要求：精准辨析总体国家安全观的五个核心要素分工，锁定具有根本地位的要素。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：总体国家安全观以人民安全为宗旨、以政治安全为根本、以经济安全为基础。A 项经济安全是物质基础；B 项军事安全属于硬核保障范畴；D 项人民安全是崇高宗旨，只有政治安全被明确确立为国家安全的“根本”生命线。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L716"
+      ],
+      "text_md": "### 要点梳理\n（1）战略根基定位：国家安全是民族复兴的根基，社会稳定是国家强盛的前提，两者共同筑牢现代化建设的底座。\n（2）深刻历史印证：近代以来中华民族饱受列强欺凌、生灵涂炭的屈辱历史深刻证明，失去安全保障，一切繁荣发展都成幻影。\n（3）护航复兴全局：在新时代推进中国式现代化进程中，必须有效抵御各类惊涛骇浪冲击，为复兴大业保驾护航。\n（4）造福人民安宁：安全是人民群众对美好生活最基本、最迫切的需求，守护国家安全就是守护万家灯火。\n\n### 易错点\n- 易把安全看成发展的派生产物，忽视安全是发展乃至整个民族存续复兴的绝对前提与根基。\n- 答题时易遗漏“社会稳定是国家强盛的前提”这一呼应命题，作答要做到根基与前提双重阐发。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L716"
+      ],
+      "text_md": "复兴基石因果逻辑抓手记忆：\n根基论断——国家安全是民族复兴根基，动摇根基则万厦倾；\n前提论断——社会稳定是国家强盛前提，动乱贫弱难自强；\n历史反思——近代落后挨打失安全，复兴征程安全第一。\n口诀：民族复兴根基牢，国家安全不可摇；社会稳定强盛路，国泰民安步步高。作答依循「战略根基—历史反思—现实护航」组织要点。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L716"
+      ],
+      "text_md": "没有国家安全，就没有国家的长治久安和人民的幸福安康。在部署推进新时代国家安全工作中，党中央深刻指出“国家安全是民族复兴的根基，社会稳定是国家强盛的前提”。请简述这一重大科学论断的深刻内涵。\n作答要求：从历史经验教训、发展与安全关系以及人民根本利益三个维度展开条理化阐释。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）深刻揭示国家安全在复兴全局中的根基性地位：国家安全是一切建设与发展的前提，根基不牢地动山摇。（2）深刻总结历史兴衰经验教训：近代旧中国主权沦丧、战乱频仍的历史警示我们，没有坚固安全屏障就绝无民族复兴可能。（3）阐明社会稳定是国家强盛的必要前提：保持安定有序的社会环境，才能凝聚民心搞建设、谋发展。（4）生动体现以人民为中心的根本立场：把保障国家安全作为维护人民安宁最根本、最长远的保障。\n答题解析：该题考查国家安全战略定位，答题时须紧扣“根基”与“前提”双重关键词，结合历史与现实深刻阐明其极端重要性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L716"
+      ],
+      "text_md": "### 要点梳理\n（1）坚持党的绝对领导：坚持党中央对国家安全工作的集中统一领导，完善高效权威的国家安全领导体制。\n（2）坚守核心五大要素：坚持以人民安全为宗旨、以政治安全为根本、以经济安全为基础、以军事科技文化社会安全为保障、以促进国际安全为依托。\n（3）推进“五个统筹”：统筹外部安全和内部安全、国土安全和国民安全、传统安全和非传统安全、自身安全和共同安全，统筹维护和塑造国家安全。\n（4）走中国特色安全道路：保持战略主动，防范化解重大风险，开创国家安全工作新局面。\n\n### 易错点\n- 简答时易遗漏“五个统筹”的具体内容，作答时必须严谨呈现外部内部、国土国民、传统非传统、自身共同及维塑结合。\n- 易忽视党对国家安全工作的绝对领导是首要原则与政治保障。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L716"
+      ],
+      "text_md": "总体安全架构图式记忆抓手：\n一个统领——坚持党对国家安全工作的绝对领导；\n五大要素——宗旨、根本、基础、保障、依托；\n五个统筹——外内统筹、国人统筹、传非统筹、自共统筹、维塑统筹。\n口诀：党管安全立顶层，五大要素辨分明；五个统筹全覆盖，中国特色安全行。简答题按「政治原则—核心要素—五个统筹」三段式作答。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L716"
+      ],
+      "text_md": "总体国家安全观顺应时代发展潮流，深化了我们党对国家安全规律的认识，是指导新时代国家安全实践的科学指南。在统筹发展和安全的战略布局中，必须系统把握其核心架构。请简述总体国家安全观的主要内容。\n作答要求：准确阐明总体国家安全观的根本领导原则、五大核心要素以及“五个统筹”的主要要求，条理清晰分点作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）坚持党对国家安全工作的绝对领导，完善集中统一、高效权威的国家安全体制机制。（2）准确把握五大核心要素：坚持以人民安全为宗旨、政治安全为根本、经济安全为基础、军事科技文化社会安全为保障、促进国际安全为依托。（3）扎实推进“五个统筹”：统筹外部安全和内部安全、国土安全和国民安全、传统安全和非传统安全、自身安全和共同安全，统筹维护国家安全和塑造国家安全。（4）走中国特色国家安全道路，构建系统完备的高水平安全防护体系。\n答题解析：该题考查总体国家安全观主要内容，考生应按照“一个统领、五大要素、五个统筹”的权威框架作答，保证要点齐全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L717"
+      ],
+      "text_md": "### 要点梳理\n（1）历史性全方位加强：新时代以来国家安全得到全面加强，经受住了来自政治、经济、意识形态、自然界等多方面的严峻考验。\n（2）健全领导与法律体系：设立中央国家安全委员会，颁布实施国家安全法及系列专门法律，实现法治化制度化运转。\n（3）牢牢掌握斗争主动权：在涉港、涉台、涉疆、涉海、反制外部制裁打压等斗争中坚定有力，坚决捍卫国家主权与安全。\n（4）有效防范重大风险：顶住外部极限施压，保持经济平稳运行与社会大局稳定，筑起维护国家安全的铜墙铁壁。\n\n### 易错点\n- 易把国家安全加强理解为单一防务领域成就，忽视其涵盖法律制度、战略布局、应急处突等全领域的综合性突破。\n- 材料题作答时易泛泛表态，未能紧密结合案例中具体应对外部施压或化解风险的举措展开深入评析。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L717"
+      ],
+      "text_md": "全面加强实践脉络串联记忆：\n机制法治——设立国安委，制定国家安全法网；\n敢于斗争——涉港涉台有力反制，回击外部极限施压；\n成效显著——风雨无阻稳大局，护航强国建设复兴路。\n材料题答题链：提炼案例防范化解风险实绩——结合总体安全体制强化——论证全面加强对国家长治久安的保障价值。"
+    },
+    {
+      "block_id": "15040-ch13-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L717"
+      ],
+      "text_md": "材料：近年来，面对国际风云变幻和某些外部势力在经贸、科技领域的极限施压与围堵遏制，我国沉着应对、精准反制，接连出台反外国制裁法、数据安全法等多部法律法规；同时果断出台香港国安法，推动香港局势实现由乱到治的重大历史性转折；在关键核心技术领域实施攻关，有效维护了产业链供应链自主可控，国家安全防线坚如磐石。\n根据材料回答：结合上述材料，阐释“新时代国家安全得到全面加强”的重大实践成就与历史经验。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐述：新时代国家安全得到全面加强，根本在于确立了总体国家安全观的科学指引，坚决把维护国家安全贯彻到党和国家工作各方面全过程。\n二、紧扣材料深度剖析：\n（1）国家安全法治体系更加完备：制定反外国制裁法、数据安全法等，把国家安全纳入严密法治轨道，提升涉外斗争法律武器储备。（2）关键领域斗争坚决有力：制定实施香港国安法，有效粉碎外部干预与乱港图谋，有力维护政权安全与制度安全。（3）筑牢经济科技安全屏障：围绕产业链自主可控开展攻坚，顶住外部极限施压，展现了防范化解重大风险的坚强能力。\n三、总结升华：新时代国家安全的全方位加强，为全面建设社会主义现代化国家提供了无坚不摧的坚强安全屏障。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）战略格局定位：构建新安全格局是适应国内外安全环境深刻变化、实现高质量发展与高水平安全良性互动的重大布局。\n（2）护航发展新格局：必须坚持以新安全格局保障新发展格局，把安全发展贯穿国家发展各领域和全过程。\n（3）全方位立体防控：统筹传统安全与非传统安全各领域，打造内外协同、系统完备、反应灵敏的高效安全防线。\n（4）防范化解风险：强化底线思维和前瞻预警，牢牢守住不发生系统性风险的底线，确保国家发展行稳致远。\n\n### 易错点\n- 易割裂新安全格局与新发展格局的关系，必须把握“以新安全格局保障新发展格局”的内在统筹要求。\n- 易误认为构建新安全格局是消极防守，它强调防范化解风险与主动塑造安全并重。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "两新格局协同对比记忆：\n新发展格局——以国内大循环为主体、国内国际双循环相互促进（经济主引擎）；\n新安全格局——统筹各领域安全，全方位立体防范（安全压舱石）。\n两格局关系：以新安全格局保障新发展格局。\n口诀：发展安全双轮转，新安全局护新局；全域统筹防风险，风高浪急稳前驱。答题紧扣两大格局良性互动。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "推进中国式现代化必须统筹推进高质量发展和高水平安全。在党中央统筹两个大局作出的重大战略部署中，为确保新发展格局顺利推进而构建的坚固安全体系是\nA. 新安全格局\nB. 区域封闭贸易格局\nC. 传统军事对峙格局\nD. 自由放任竞争格局\n作答要求：深刻把握“以新安全格局保障新发展格局”的战略命题，锁定对应的核心格局表述。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：必须坚持以新安全格局保障新发展格局。构建新安全格局是统筹各领域安全、确保国家长治久安的战略抉择。B、C 项属于落后对峙与封闭倒退；D 项属于缺乏风险防控的放任思维，均不符合统筹发展和安全的战略要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）核心灵魂地位：政治安全是国家安全的根本，是国家生存发展的首要生命线，决定着国家前途命运。\n（2）核心要义内涵：政治安全的核心是政权安全和制度安全，最根本的是维护中国共产党的领导和执政地位、维护中国特色社会主义制度。\n（3）把牢意识形态主导权：坚决防范和打击敌对势力渗透、颠覆、破坏和分裂活动，筑牢意识形态安全屏障。\n（4）制度根本支撑：坚持和完善中国特色社会主义制度，不断推进国家治理体系和治理能力现代化，确保江山永固。\n\n### 易错点\n- 易将政治安全的核心要义泛化，切记其核心始终是“政权安全和制度安全”。\n- 易颠倒政治安全与其他各领域安全的关系，政治安全是根本和统帅，其他各领域安全最终都要服从服务于政治安全。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "根本红线图式串联记忆：\n首要地位——政治安全是国家安全之根本；\n双核要义——核心是政权安全和制度安全；\n底线红线——维护党的领导执政地位，维护社会主义制度；\n防范重点——严防渗透、颠覆、分裂与颜色革命。\n口诀：政治安全是根本，政权制度最核心；红旗不倒江山固，严防渗透守本真。复习把握“根本地位”与“政权制度核心”。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "国家安全涵盖广泛领域，不同领域安全在全局中具有不同层次的功能定位。在各领域安全中居于根本地位，其核心是政权安全和制度安全的是\nA. 生态安全\nB. 政治安全\nC. 科技安全\nD. 文化安全\n作答要求：准确识别各安全领域的层级定位，锁定关系党和国家前途命运的根本安全领域。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：政治安全是国家安全的根本，其核心是政权安全和制度安全，事关国家性质与根本发展方向。A 项生态安全是永续保障；C、D 项属于重要保障支撑领域，只有政治安全是决定国家前途命运的根本生命线与最高统帅。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）立国安民之基：国土安全是立国之基、生存之本，直接关乎国家领土主权完整与中华民族的生存繁衍空间。\n（2）覆盖全域空间：涵盖陆地国土、内水、领海、领空及其底土等全部国家主权管辖空间，不容任何侵犯。\n（3）寸土寸海不让：坚定捍卫领土主权和海洋权益，坚决反对任何形式的分裂行径与外部蚕食挑衅。\n（4）边防海防固防：加强现代边海防建设，构建军警民合力治边管海机制，确保边海防空防安全稳固。\n\n### 易错点\n- 易把国土安全局限于陆地边界，忽略海洋国土、领空以及新兴空间的整体领土主权保护。\n- 易误选其他支撑要素，切记国土安全的科学定位是“立国之基”。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "疆域防线图式记忆抓手：\n立国之基——国土安全是国家立足与生存繁衍的物理空间底盘；\n全域统领——陆地、海洋、空域全维度覆盖；\n寸海不让——边防海防空防一体推进，坚决维护主权完整。\n口诀：国土安全立国基，山河锦绣寸土齐；边海空防齐筑牢，主权完整不可离。答题抓住“立国之基”与领土主权不可侵犯。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "领土是国家存在和行使主权不可或缺的空间载体。在总体国家安全体系中，被明确界定为立国之基、直接关乎国家生存空间的是\nA. 贸易安全\nB. 金融安全\nC. 国土安全\nD. 社交安全\n作答要求：准确定位承载国家领土主权与生存物理空间的要素，排除经济与社交层面的选项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：国土安全是立国之基，涵盖陆地、领水、领海与领空等全部国家主权管辖空间，直接关乎中华民族生存繁衍的物理底盘。A、B 项属于经济金融安全；D 项属于日常社交范畴，只有国土安全是维护主权的坚固立国之基。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）基础支撑定位：经济安全是国家安全的基础，是国家经济健康平稳运行、抵御内外各种重大冲击的核心物质屏障。\n（2）核心支撑支柱：聚焦粮食安全、能源资源安全、产业链供应链自主可控与金融安全四大关键支柱。\n（3）牢守安全底线：把中国人的饭碗牢牢端在自己手中，确保在极端断供封锁情况下国家经济循环不中断。\n（4）统筹开放与自主：在扩大高水平对外开放中提升自主发展能力，防范化解系统性金融风险。\n\n### 易错点\n- 易将经济安全的“基础”地位与政治安全的“根本”地位混为一谈，二者定位严格有别。\n- 易把经济安全片面等同于追求高GDP增速，忽视产业链韧性与抗极限施压能力才是核心指标。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "经济安全四大支柱串联记忆抓手：\n基础地位——经济安全是国家安全的基础支撑；\n四大支柱：\n粮袋子——粮食安全（饭碗端自己手里）；\n油瓶子——能源安全（多能互补保供应）；\n产业链——供应链自主可控（断供不瘫痪）；\n金融闸——金融安全（防范系统性风险）。\n口诀：经济安全是基础，粮食能源底线固；链条韧性金融稳，风雨来袭有退路。牢记经济安全是“基础”及四大支柱。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "经济平稳健康发展是国家长治久安的前提保障。在总体国家安全观的基本架构中，被明确确立为国家安全基础的是\nA. 政治安全\nB. 经济安全\nC. 文化安全\nD. 军事安全\n作答要求：准确记忆总体国家安全观各大要素的专属定位，锁定充当物质基础的领域。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：总体国家安全观明确以政治安全为根本、以经济安全为基础。A 项是根本；C、D 项属于保障范畴，只有经济安全居于坚实的“基础”支撑地位，为国家抵御内外各种重大冲击提供坚不可摧的物质依托与发展支撑。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）公共福祉保障：社会安全事关人民安居乐业、社会安定有序，是人民群众感知国家安全最直接最日常的领域。\n（2）社会治安防控：健全立体化、信息化社会治安防控体系，严厉打击涉枪涉爆、黑恶势力、电信网络诈骗等违法犯罪。\n（3）公共安全治理：坚持安全第一、预防为主，强化安全生产监管，抓好食品药品、防灾减灾等重大公共安全工作。\n（4）基层善治固安：发展新时代“枫桥经验”，健全社会矛盾综合调处机制，把矛盾化解在源头萌芽状态。\n\n### 易错点\n- 易把社会安全与国家安全中的“人民安全宗旨”相混淆，社会安全侧重于社会治安与公共安全层面的具体建设保障。\n- 易忽视安全生产与防灾减灾是社会安全的重要组成部分。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "社会安定图式速记抓手：\n日常感知——万家灯火平安度，安居乐业最直接；\n打击犯罪——黑恶电诈严整治，立体防控织密网；\n公共安全——安全生产防灾害，食药安全严把关；\n源头解纷——新时代枫桥经验，矛盾化解在基层。\n口诀：社会安全暖民心，治安防控除祸因；安全生产严监管，平安祥和乐千家。答题紧扣治安防控与公共安全治理。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "维护公共安全与安定有序的社会秩序是满足群众安全感的重要任务。在统筹各领域安全中，直接关系人民安居乐业、万家灯火祥和的是\nA. 社会安全\nB. 货币安全\nC. 外汇储备安全\nD. 空间探测安全\n作答要求：准确识别直接关乎百姓日常人身财产与公共治安的安全领域，排除专业金融与深空领域干扰项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：社会安全直接关系广大群众生命财产安全与社会安定有序，是人民安居乐业的前提。B、C 项属于宏观货币与外汇储备金融范畴；D 项属于深空科技领域，只有社会安全与群众日常生活安宁直接对接，体现人民切身安全福祉。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）非传统关键前沿：网络、人工智能、数据安全是伴随新一轮科技革命诞生的新型前沿安全领域。\n（2）网络安全底线：“没有网络安全就没有国家安全”，必须强化关键信息基础设施防护，筑牢网络主权阵地。\n（3）人工智能治理：坚持智能向善、以人为本，统筹人工智能发展与安全，健全算法审查与伦理道德规范。\n（4）数据要素保护：强化核心数据、重要数据安全保护与跨境流转监管，严防数据泄露、滥用与外部攻击。\n\n### 易错点\n- 易割裂三者内在联系，网络是通道载体，数据是核心要素，人工智能是关键引擎，三者深度交织。\n- 易忽视网络主权这一核心原则，网络空间不是法外之地，必须坚定捍卫国家网络空间主权。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "数字前沿三位一体图式记忆抓手：\n网络安全——通路防线，没有网络安全就没有国家安全；\n数据安全——核心要素，管住跨境流转、严防泄密；\n智能安全——伦理引擎，坚持智能向善、算法规范。\n口诀：网络数据与智能，数字时代新前沿；关键设施严防护，算法向善数据坚。答题紧扣“网络、人工智能、数据”前沿协同特征。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "现代信息技术的飞速发展深刻重塑了安全边界。在深刻阐述网络空间战略地位的重大论断中，中央明确指出\nA. 网络空间完全属于虚拟领域无须管理\nB. 没有网络安全就没有国家安全\nC. 数据流动可以不受任何主权管辖\nD. 人工智能发展无须设立伦理规则\n作答要求：准确识记关于网络安全极端重要性的权威论断，排除各类虚无主义错误观点。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：“没有网络安全就没有国家安全”深刻揭示了网络空间的战略底线与极端重要性。A、C 项否定网络空间主权管辖的必要性；D 项否定了人工智能伦理道德规范的必要性，均属错误倾向，背离了网络强国建设原则。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）总体安全关键拼图：生物安全和公共卫生安全是人民健康、国家长治久安和中华民族永续发展的重大安全屏障。\n（2）全链条风险防控：防范重大新发突发传染病疫情，严密防控外来物种入侵和生物多样性锐减，严格生物技术研发伦理审查。\n（3）健全公卫应急机制：完善重大疫情监测预警和应急响应体系，健全分级分层救治与物资储备调度网络。\n（4）织密法律制度笼子：全面贯彻生物安全法，健全国家生物安全治理体系，筑牢生物安全国家屏障。\n\n### 易错点\n- 易把生物安全误认为单纯的医学科研问题，必须明确其事关国家战略安全与民族基因资源安全。\n- 易遗漏“外来物种入侵”这一生态维度的重大生物安全隐患。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "生物安全全维防线抓手记忆：\n防疫情——监测预警新发突发传染病；\n御物种——严打走私走私外来入侵物种；\n管研发——严控生物实验室与前沿技术伦理；\n筑屏障——贯彻生物安全法，守护基因与种质资源。\n口诀：生物安全系民生，重大疫情严预警；入侵物种严防控，法治筑牢安全城。答题抓住“疫情防范、物种防控、法律保障”三要素。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "生态环境与生命健康安全关乎人类繁衍与民族永续。在纳入总体国家安全体系的重要非传统安全领域中，直接关系人民生命健康和生物物种安全的是\nA. 外债偿付安全\nB. 生物安全和公共卫生安全\nC. 股市流通安全\nD. 运输通道安全\n作答要求：准确识别关乎生命健康与种质安全的专项安全领域，排除金融与物流干扰项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：生物安全和公共卫生安全关乎人民健康、国家长治久安与中华民族永续发展。A、C 项属于国际债务与证券金融范畴；D 项属于交通运输范畴，只有生物安全和公共卫生安全直接防范重大突发疫情与生物物种入侵风险。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "### 要点梳理\n（1）国际战略空间：外部安全是国家安全的重要支柱，关乎我国在国际大变局中的主权、安全和海外利益拓展。\n（2）统筹内外两个大局：坚持把维护国内安全与维护外部安全紧密结合起来，做到内安外和、良性互动。\n（3）坚定捍卫核心利益：坚定维护国家领土主权与海洋权益，坚决反对外部势力干涉我国内部事务与单边制裁打压。\n（4）保护海外利益安全：健全海外利益安全保障体系，维护我国海外公民、企业、机构与重大战略通道安全。\n\n### 易错点\n- 易割裂内部安全与外部安全的辩证联系，外部安全风险往往会向内部传导，必须一体统筹。\n- 易忽略海外利益保护在外部安全中的比重，新时代海外利益已成为国家重大利益的重要延伸。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "内外互动与海外防护串联记忆：\n内外联动——内安才能外和，外和促进内安；\n主权捍卫——严防外部干涉，回击遏制围堵；\n利益延伸——保护海外公民、企业与航线通道安全。\n口诀：外部安全护远洋，主权利益不可让；海外防线织密网，同舟共济御风浪。复习紧扣“内外统筹”与“海外利益安全”。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L719"
+      ],
+      "text_md": "随着全方位对外开放深入推进，我国海外利益不断拓展。在统筹发展和安全的过程中，有效抵御外部干涉制裁、维护海外公民与机构合法权益的安全领域是\nA. 内部治安安全\nB. 外部安全\nC. 地方财政安全\nD. 基础教育安全\n作答要求：准确区分内部各具体事务安全与面向国际环境维度的安全领域，锁定涉外安全范畴。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：外部安全着力防范应对来自外部的霸权打压、遏制围堵与主权侵犯，保护海外利益安全。A、C、D 项均属于国内社会治安、地方财政与公共教育范畴，不具备统筹国际外部复杂环境、维护海外主权与利益的战略属性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "### 要点梳理\n（1）两件大事辩证统一：发展和安全是一体之两翼、驱动之双轮，两者相辅相成、互为支撑、不可偏废。\n（2）发展是安全的基础：离开发展，国家经济实力和国防能力就无法提升，保障国家安全就会成为无源之水。\n（3）安全是发展的条件：安全是发展的前提和保障，缺乏稳定安全的环境，已取得的发展成果也会毁于一旦。\n（4）实现动态高水平良性互动：坚持在发展中固安全，在安全中谋发展，以高水平安全护航高质量发展。\n\n### 易错点\n- 易把发展与安全割裂为“先搞发展再管安全”或“为了安全停滞发展”，两者必须动态平衡、协同推进。\n- 简答时易忽略“高水平安全保障高质量发展”的新时代重大战略内涵。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "双轮驱动辩证记忆抓手：\n发展——造就物质硬实力，筑牢安全的基石底座；\n安全——创造和平软环境，守护发展的果实不失；\n良性互动——以高水平安全护航高质量发展。\n口诀：发展安全两件宝，一体双翼不能少；发展固基保实力，安全护航乐陶陶。作答按「辩证关系—互为条件—良性互动」三步走。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "统筹发展和安全，增强忧患意识，做到居安思危，是我们党治国理政的一个重大原则。在新发展阶段，科学把握高质量发展与高水平安全的深层互动具有极端重要性。请简述统筹发展和安全的辩证关系及其实践要求。\n作答要求：阐明二者的辩证统一性、各自的独特功能以及如何实现高水平良性互动。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）深刻把握发展和安全相辅相成的辩证关系：发展和安全是一体之两翼、驱动之双轮，必须统筹兼顾。（2）发展是安全的基础和支撑：保持经济持续健康增长，才能为国家安全体系建设提供坚实的物质和科技底座。（3）安全是发展的前提和条件：安全稳定是干事创业的首要前提，缺乏安全保障，经济发展成果极易遭遇风浪侵蚀。（4）实现两者的动态平衡与良性互动：善于在发展中增强安全实力，在安全中拓展发展空间，以高水平安全护航高质量发展。\n答题解析：该题考查发展与安全辩证法，考生需清晰回答二者互为前提、互为支撑的关系，紧扣新时代良性互动要求展开。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p10/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "### 要点梳理\n（1）三者有机统一：政治安全、人民安全与国家利益至上紧密相连、休戚与共，共同构成国家安全理论的核心支柱。\n（2）人民安全是宗旨：国家安全的出发点和归宿是保障人民安危、增进人民福祉，一切安全工作最终依靠人民、为了人民。\n（3）政治安全是根本：政治安全是人民安全与国家利益的根本政治保证，政治安全动摇，人民安全与国家利益就无从谈起。\n（4）国家利益至上是准则：坚决捍卫国家最高利益，为实现人民安全与维护政治安全提供无可动摇的战略屏障。\n\n### 易错点\n- 易把三者割裂开来，甚至受西方错误思潮误导把政治安全与人民安全人为对立，二者本质上高度统一。\n- 简答时易混淆三者地位对应：“宗旨”对应人民安全，“根本”对应政治安全，“准则”对应国家利益至上。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "三位一体图式对比记忆：\n人民安全——宗旨（最高目标，为了人民安宁）；\n政治安全——根本（生命线，政权制度最核心）；\n国家利益至上——准则（最高行为规范，护航全盘利益）。\n三者关系：宗旨为向、根本为柱、准则为盾，辩证统一。\n口诀：人民宗旨挂心头，政治根本固千秋；国家利益为准则，三位一体乐悠悠。作答牢记三者的准确定位与统合逻辑。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p10/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "总体国家安全观深刻阐释了国家安全不同维度之间的内在逻辑纽带，确立了新时代国家安全的核心基石。在构建新安全格局的战略部署中，准确把握各项要素的辩证关联具有重要指导意义。请简述政治安全与人民安全、国家利益至上三者之间的辩证关系。\n作答要求：准确阐明三者的各自定位以及相互依存、相辅相成的统一机制。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）人民安全是国家安全的崇高宗旨：国家安全一切为了人民、一切依靠人民，人民生命健康与幸福安宁是安全工作的根本价值依归。（2）政治安全是国家安全的根本保障：政治安全核心是政权与制度安全，为人民安居乐业和国家长治久安提供不可替代的制度基石。（3）国家利益至上是国家安全的最高准则：国家利益涵盖主权、安全、发展利益，是维护人民安全与政治安全的战略依托。（4）三者紧密相依、辩证统一：必须在坚决捍卫国家利益中筑牢政治安全，在巩固政治安全中最终实现人民安全。\n答题解析：该题考查国家安全三大核心要素，作答时须先界定各自属性（宗旨、根本、准则），再阐明三者互为依托的内在闭环。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p11/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "### 要点梳理\n（1）抓住主要矛盾：维护国家安全必须突出重点，紧紧扭住牵一发而动全身的重点领域安全，筑牢防范堤坝。\n（2）夯实传统安全防线：坚决守住政治安全、国土安全、军事安全红线，巩固边海防与领空领海主权完整。\n（3）突破经济科技命门：聚焦粮食、能源资源、金融系统与核心技术供应链，破除“卡脖子”隐患，实现自主安全可控。\n（4）前瞻布局新兴前沿：强化网络、数据、人工智能、深海、极地、空天、生物安全综合治理，掌握战略博弈主动权。\n\n### 易错点\n- 易把重点领域安全局限于传统军事政治，忽视经济科技非传统安全在当下大国博弈中的制约性影响。\n- 简答时分类应清晰，分为传统安全重点、经济科技基础重点与新兴非传统安全重点三大梯次。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p11/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "梯次布局联想记忆抓手：\n传统底线——政治政权、领土疆界、军事防卫（不可动摇）；\n经济科技——粮食饭碗、能源血液、芯片自主（核心命门）；\n新兴前沿——网络数据、人工智能、深海极地太空（博弈制高点）。\n口诀：重点领域牢布防，传统新兴齐加强；粮食能源链条韧，科技自立铸脊梁。作答按「传统底盘—经济科技—新兴前沿」逐层陈述。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p11/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p11",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L721"
+      ],
+      "text_md": "面对多重安全风险叠加碰头的复杂局面，维护国家安全必须善于抓重点、解难点，推进各领域系统治理。在统筹各领域安全的新安全格局部署中，维护重点领域国家安全具有决定性意义。请简述维护重点领域国家安全的核心布局与具体要求。\n作答要求：从传统安全红线、经济与科技命脉以及新兴非传统前沿三个层面分类作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）筑牢传统安全坚固屏障：毫不动摇维护政治安全根本，强化边海防空防管控，坚决捍卫国家领土完整与军事主权。（2）牢牢把握经济与科技命脉安全：确保粮食自给安全与能源资源供应稳定，加强战略性产业链自主可控，严密防范系统性金融风险。（3）强化科技创新与核心技术攻坚：坚决突破“卡脖子”短板，实现高水平科技自立自强，筑牢技术安全底座。（4）前瞻布局新兴前沿安全：统筹推进网络空间治理、人工智能伦理安全、数据主权保护以及深海、极地、空天等战略领域治理。\n答题解析：该题考查重点领域安全布局，考生需采用分门别类的方法，由传统基石到经济命门再到数字新兴领域层层推进作答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s2-p12/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L725"
+      ],
+      "text_md": "### 要点梳理\n（1）首要核心定位：政治安全是国家安全的根本，在国家安全全局中具有统领全局的地位，必须把维护政治安全放在首要位置。\n（2）捍卫根本制度与政权：把维护政权安全、制度安全作为重中之重，严密防范敌对势力渗透颠覆渗透，确保红色江山永不变色。\n（3）把牢意识形态阵地：坚定马克思主义指导地位，旗帜鲜明反对历史虚无主义等错误思潮，守好思想文化阵地。\n（4）防范重大政治风险：强化政治敏锐性与政治鉴别力，坚决阻断其他领域风险向政治安全领域传导演变。\n\n### 易错点\n- 易把政治安全与其他领域安全等量齐观，未能突出其“放在首要位置”的根本战略统摄性。\n- 材料分析时易忽视“防范非政治风险向政治安全传导”这一重大防范化解机制。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p12/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L725"
+      ],
+      "text_md": "首要位置核心抓手与串联记忆：\n统领地位——政治安全是压舱石，置于首要位置不动摇；\n首要任务——保卫政权安全、维护社会主义根本制度；\n防线前移——守牢意识形态阵地，击碎颜色革命企图；\n阻断传导——严防经济、社会等局部矛盾激化演变为政治风险。\n材料答题框架：提炼案例捍卫政权制度举措——对接政治安全首要位置——论述风险阻断与政治敏锐性长远价值。"
+    },
+    {
+      "block_id": "15040-ch13-s2-p12/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s2-p12",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L725"
+      ],
+      "text_md": "材料：近年来，某些外部势力企图利用互联网社交平台和非政府组织，在我国部分敏感区域策划渗透破坏活动，捏造历史谣言、歪曲党史国史，妄图煽动群体对立、策动“颜色革命”。党中央高度警惕、果断亮剑，强化党对安全工作的统领，坚决依法取缔非法组织，严厉打击境外间谍勾连活动；同时深入推进党史学习教育，筑牢广大干部群众的思想防线，成功粉碎了境外敌对势力的政治颠覆图谋。\n根据材料回答：结合上述材料，阐释为什么必须“把维护政治安全放在首要位置”以及具体的实践防范要求。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、核心地位阐明：政治安全是国家安全的生命线与根本所在，直接关乎党的执政根基、国家主权与中国特色社会主义制度的前途命运，必须始终摆在首要战略位置。\n二、结合材料深入剖析：\n（1）严密防范与坚决回击颠覆图谋：针对敌对势力策划“颜色革命”的危险企图，依法亮剑严惩间谍破坏分子，坚决捍卫政权安全与根本制度安全。\n（2）守牢网络意识形态前沿阵地：严厉查处网络历史虚无主义与不良造谣，以党的创新理论武装全党教育人民，增强全民政治鉴别力。\n（3）阻断外部风险向内传导：善于透过复杂表象把握政治本质，防止外部势力利用偶发社会事件煽动政治风波。\n三、总结：维护政治安全必须保持高度政治警醒，坚持底线思维，健全防范化解体系，确保党和国家长治久安。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "### 要点梳理\n（1）四位一体框架：完善国家安全体系，核心是健全国家安全领导体制、法律法规体系、战略体系和政策体系。\n（2）强化集中领导：坚定不移坚持党中央对国家安全工作的集中统一领导，完善中央国家安全委员会统筹协调机制。\n（3）法治系统完备：构建以宪法为核心、国家安全法为基石、各领域专门法律为配套的国家安全法律体系。\n（4）协同联动运转：健全跨部门、跨地区、跨领域国家安全战略统筹与政策协同机制，提升体系整体作战效能。\n\n### 易错点\n- 易遗漏“领导体制、法律法规体系、战略体系、政策体系”这四个关键组成维度，作答时必须严谨完整。\n- 易把体系建设简单等同于出台几部法规，忽视领导体制与战略政策联动的系统性。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "四位一体体系图式速记抓手：\n领导体制——党中央集中统一领导，国安委统筹协调；\n法规体系——国家安全法为统领，各专项法配合；\n战略体系——国家安全战略规划引航；\n政策体系——跨部门协同联动保障落实。\n口诀：国安体系四维全，领导体制摆在先；法规政策战略合，系统完备固安澜。牢记领导、法规、战略、政策四体系。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "推进国家治理体系和治理能力现代化必须完善国家安全制度设计。在构建新时代国家安全体系的战略部署中，构成国家安全体系框架核心支柱的是国家安全\nA. 商业运营体系与广告营销体系\nB. 领导体制、法律法规体系、战略体系和政策体系\nC. 海外借贷体系与证券投机体系\nD. 基层调解体系与民间联谊体系\n作答要求：准确记忆国家安全体系的四位一体核心架构，排除商业投机与单一民间事务选项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：健全国家安全体系，重点是完善国家安全领导体制、法律法规体系、战略体系和政策体系。A、C 项属于商业金融投机范畴；D 项属于基层微观事务，只有 B 项准确反映了国家安全顶层体系的完整四维架构。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "### 要点梳理\n（1）硬核制胜支撑：国家安全能力是有效抵御内外重大风险、维护国家长治久安的实践力量与行动依托。\n（2）全面增强核心本领：着力增强维护政治安全、反颠覆反分裂能力，提升防范化解经济金融与科技风险能力。\n（3）健全风险监测预警：构建贯通各层级各领域的风险早期监测、情报综合研判与突发事件快速应急处置能力。\n（4）壮大人才与技术支撑：加强国家安全干部队伍实战化专业化建设，强化科技创新对国家安全能力的硬核赋能。\n\n### 易错点\n- 易误认为安全能力仅指军事防御力量，忽视情报研判、风险预警、数字治理等综合实战能力的集成。\n- 易把能力与体系割裂开来，体系是制度框架，能力是实践效能，二者相辅相成。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "安全实战能力四维串联记忆：\n情报预警能力——早发现、早研判、早预警；\n应急处置能力——快速响应、科学处置、有效化解；\n科技赋能能力——高精尖技术守护基础设施；\n队伍专业能力——打造忠诚干净担当的国安铁军。\n口诀：安全能力是硬核，预警研判早破策；科技赋能铁军在，防范风险保无惑。答题紧扣“预警研判、应急处置、科技支撑”。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "制度优势必须转化为实战效能。在提高国家安全治理水平的实践中，确保能够敏锐察觉风险、果断化解重大危机的是全面增强国家安全\nA. 商业盈利能力\nB. 实战防御与综合应对能力\nC. 单边干预他国内政能力\nD. 盲目扩张储备能力\n作答要求：准确识别体现国家安全实战效能与危机化解本领的选项，排除商业与霸权干扰项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：推进国家安全建设必须切实增强国家安全实战防御与综合应对能力，包括监测预警、应急处置和系统抗风险能力。A 项属于企业市场指标；C 项搞霸权干涉背离防御性国策；D 项属于粗放资源堆砌，只有 B 项符合国家安全能力本质。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "### 要点梳理\n（1）国泰民安愿景：建设平安中国是维护国家安全、保障人民安居乐业的宏伟战略目标和重大民生工程。\n（2）建设更高水平：从解决群众最怨最急最盼的安全问题切入，推进更高水平的平安中国建设，提升人民群众满意度。\n（3）大平安工作格局：统筹各领域安全，将平安建设延伸至经济、文化、生态、网络、社会生产各方方面面。\n（4）世界安全典范：中国成为世界上公认最安全的国家之一，社会长期稳定奇迹展现出制度优势与善治效能。\n\n### 易错点\n- 易把平安中国狭义理解为单纯没有刑事犯罪，现代“大平安”涵盖生产安全、食品安全、网络安全等全方位维度。\n- 易忽略平安中国作为“中国奇迹”之一的重大制度展示价值。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "大平安图式记忆抓手：\n大平安视野——不仅无刑事案件，更兼生产安全、食品安全、网络平安；\n人民感受——天下无贼、安居乐业、夜不闭户，群众安全感满满；\n国际赞誉——公认世界最安全国家之一，展现长治久安制度奇迹。\n口诀：平安中国连万家，大平安局绽光华；安居乐业民心顺，世界公认安全家。答题紧扣“更高水平的平安中国”与“大平安格局”。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "安全稳定的社会环境是人民群众幸福生活的首要保障。在统筹发展和安全、造福亿万人民的重大战略部署中，我国全力推进建设的是\nA. 贸易中国\nB. 消费中国\nC. 平安中国\nD. 资本中国\n作答要求：准确识记代表国家安定和谐、人民安居乐业的重大战略工程名称，排除单纯经济概念。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：建设平安中国是维护社会稳定、保障人民安宁的重大战略举措，我国正全力推进建设更高水平的平安中国。A、B、D 项属于经济贸易与商品流通维度的提法，不能体现统筹各领域安全、确保社会长治久安的战略目标。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "### 要点梳理\n（1）科学方法论：坚持底线思维和极限思维，是应对重大风险挑战、掌握战略主动的科学方法论。\n（2）底线思维内涵：客观评估最坏可能性，把风险思考得更深入，见微知著，守牢不发生系统性颠覆性错误的底线。\n（3）极限思维要求：凡事从最坏处着眼，做最充分准备，准备经受风高浪急甚至惊涛骇浪的重大考验。\n（4）主动预筹对策：宁可把困难想得更严重一些，宁可把预案准备得更周密一些，做到有备无患、临危不乱。\n\n### 易错点\n- 易把底线思维和极限思维当成消极悲观情绪，实际上它是未雨绸缪、争取最好结果的主动作为战略方法。\n- 易漏记两者的辩证统筹，底线守住风险边界，极限应对极端考验，二者相辅相成。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "思维方法对比记忆抓手：\n底线思维——划出红线底盘，守住绝不发生系统性风险底线；\n极限思维——设想极端考验，准备经受风高浪急甚至惊涛骇浪；\n行动取向——从最坏处着眼、争取最好结果、预案周全有备无患。\n口诀：底线思维守边界，极限思维御风浪；最坏打算谋完全，惊涛骇浪志如钢。牢记从最坏处着眼、争取最好结果的思维精髓。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L727"
+      ],
+      "text_md": "面对外部风高浪急甚至惊涛骇浪的严峻考验，防范化解重大风险必须树立科学的方法论。中央要求我们在国家安全工作中必须坚持的是\nA. 盲目乐观思维与侥幸思维\nB. 底线思维和极限思维\nC. 听天由命思维与放任思维\nD. 急功近利思维与冒进思维\n作答要求：准确识别我们党防范化解风险隐患的战略方法论，排除消极放任与盲目侥幸思想。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：我们党强调坚持底线思维和极限思维，准备经受风高浪急甚至惊涛骇浪的重大考验，把困难估计充分，争取最好结果。A、C、D 项分别体现了侥幸、放任与盲动冒进，违背了马克思主义科学认识论与方法论。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L728"
+      ],
+      "text_md": "### 要点梳理\n（1）总体推进目标：推进国家安全体系和能力现代化，坚决维护国家安全和社会稳定，是以中国式现代化护航民族复兴的必然要求。\n（2）强化集中统一领导：完善中央国家安全委员会统筹协调机制，健全各级党委国家安全责任制。\n（3）健全法治与风险监测体系：健全国家安全法律法规体系，完善国家安全风险早期监测预警体系与重大突发事件应急管理体系。\n（4）提高全方位防控效能：加强重点领域安全能力建设，强化网络、人工智能、数据等新兴领域防护，筑牢铜墙铁壁。\n\n### 易错点\n- 易只谈“体系”而漏掉“能力”，或者只谈“能力”忽视“体系”，两者是制度框架与实践效能的不可分割双翼。\n- 简答时易遗漏“风险监测预警体系”和“国家应急管理体系”两项制度支撑。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L728"
+      ],
+      "text_md": "现代化推进全景联想记忆抓手：\n领导体制——强化党中央集中领导，国安委高效统领；\n法治基石——完备法律规章，依法防控全覆盖；\n预警应急——监测早发现、应急快处置，打好主动仗；\n能力跃升——重点领域与新兴前沿全面提升实战化能力。\n口诀：安澜体系现代化，体制法治双手抓；监测预警快应急，重点新兴护中华。作答按「领导体制—法治预警—实战能力」组织。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L728"
+      ],
+      "text_md": "推进国家安全体系和能力现代化，是全面建设社会主义现代化国家的重大任务。在新时代新征程上，必须坚定不移贯彻总体国家安全观，加快推进国家安全治理现代化。请简述推进国家安全体系和能力现代化的主要举措。\n作答要求：从领导体制、法律与制度支撑、风险预警机制以及重点安全领域能力建设等层面系统作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）健全集中统一的领导体制：坚持党中央对国家安全工作的集中统一领导，完善中央国家安全委员会高效协调机制。（2）完善国家安全法治体系：健全系统完备的国家安全法律法规体系，强化法律执行力与涉外法治保障。（3）健全风险监测预警与应急机制：构建覆盖各层级的风险早期感知与研判体系，完善国家应急管理和快速协同处置机制。（4）强化重点领域与前沿安全能力：全面提高政治、经济、科技等重点领域防范化解风险能力，加强网络、人工智能等新兴前沿治理。（5）加强全民国家安全宣传教育，筑牢人民防线。\n答题解析：该题考查国家安全现代化任务，答题时须涵盖领导体制、法治保障、预警应急与重点能力四个核心支柱。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L728"
+      ],
+      "text_md": "### 要点梳理\n（1）更高目标要求：建设更高水平的平安中国，追求安全态势更稳固、公共安全更全面、群众感受更满意的崭新格局。\n（2）维护人民生命财产安全：强化社会治安整体防控，依法严厉打击各类违法犯罪活动，提升群众切身安全感。\n（3）推动治理重心下移：坚持和发展新时代“枫桥经验”，把矛盾化解在基层、化解在萌芽状态，推进基层矛盾综合化解。\n（4）提升公共安全治理水平：完善安全生产责任体系，强化食品药品安全与防灾减灾救灾能力，织密公共安全网。\n\n### 易错点\n- 易把建设更高水平平安中国看作单纯的公安警务工作，忽略各部门齐抓共管与全社会共同参与的“大平安”格局。\n- 简答时易遗漏“坚持和发展新时代枫桥经验”这一基层治理核心支点。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L728"
+      ],
+      "text_md": "更高水平平安要素串联记忆抓手：\n治安防控严密——扫黑除恶、打击电诈，保群众平安出行；\n基层枫桥经验——源头化解邻里矛盾，小事不出村、大事不出镇；\n公共安全治理——严格安全生产监管，抓实防灾救灾；\n共建共治共享——发动群众广泛参与，建设人人有责的平安共同体。\n口诀：平安中国更高峰，治安防控势如虹；枫桥经验化矛盾，公共安全暖春风。作答围绕「治安防控—基层治理—公共安全—全民共建」展开。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L728"
+      ],
+      "text_md": "平安是老百姓解决温饱后的第一需求，是极重要的民生。建设更高水平的平安中国，对于确保人民安居乐业、社会安定有序具有十分重大的意义。请简述新时代建设更高水平的平安中国的主要任务与工作着力点。\n作答要求：从社会治安防控、基层矛盾排查化解、公共安全隐患治理以及社会各方共治四个维度分点阐释。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）严密社会治安防控网络：健全立体化、信息化治安防控体系，保持对各类违法犯罪的高压严打态势，保障群众人身财产安全。（2）坚持和发展新时代“枫桥经验”：推动矛盾调解力量下沉，健全多元化排查化解机制，将各类矛盾隐患化解在萌芽和基层。（3）提高公共安全治理水平：严格落实安全生产各方责任，加强食品药品、交通运输和防灾减灾救灾工作，遏制重大安全事故发生。（4）构建共建共治共享格局：调动企事业单位、社会组织和广大人民群众的积极性，筑牢平安中国建设的全民防线。\n答题解析：该题考查更高水平平安中国建设，考生应结合治安、基层矛盾、生产生活安全与群众共治四条主线组织答案。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch13-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch13-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L729"
+      ],
+      "text_md": "### 要点梳理\n（1）忧患意识与历史主动：提高防范化解重大风险能力，是确保党和国家事业在风高浪急甚至惊涛骇浪中始终立于不败之地的制胜法宝。\n（2）下好先手棋：强化风险监测预警，见微知著、防微杜渐，善于敏锐察觉潜在风险并把隐患消除在萌芽状态。\n（3）打好主动仗：制定周密完备的应急处置预案，面对突发风浪果断处置、精准拆弹，坚决阻断风险连锁传导扩散。\n（4）压实主体责任：严格落实各级党委防范化解重大风险政治责任，提高各级领导干部政治敏锐性与应急处突专业本领。\n\n### 易错点\n- 易把风险应对看成被动接招，必须牢牢把握“下好先手棋、打好主动仗”的前瞻主动方法论要求。\n- 材料分析时易忽略风险跨领域传导的特点，论证时应分析如何防范化解“黑天鹅”与“灰犀牛”事件。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch13-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L729"
+      ],
+      "text_md": "风险防控攻防兼备图式记忆抓手：\n先手棋（防未萌）——监测预警、防微杜渐，不让小苗头成大风暴；\n主动仗（克危机）——果断处置、分类拆弹，阻断跨界传导；\n压责任（强队伍）——领导干部强化政治敏锐性，扛起风险化解政治担当。\n口诀：化解风险先手棋，防范未然抓预警；主动出击打胜仗，阻断连锁安大局。材料题紧扣「先手防范—主动应对—压实责任」展开。"
+    },
+    {
+      "block_id": "15040-ch13-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch13-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L729"
+      ],
+      "text_md": "材料：某沿海开放大省面对错综复杂的国内外经济波动和供应链震荡风险，建立全域“重大风险智能监测预警与跨部门响应平台”。平台对辖区内重点外贸企业订单异动、金融领域流动性风险、关键产业链断链苗头以及网络突发舆情进行24小时动态穿透式研判；针对发现的某核心零部件企业断供苗头，迅速启动备用供应商替代和金融纾困“组合拳”，仅用数天就化解了可能波及全产业链的重大停产风险。\n根据材料回答：结合上述材料，阐释在推进中国式现代化进程中如何“提高防范化解重大风险能力”。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐明：防范化解重大风险是我们在充满不确定性的外部环境中战胜困难挑战的必然要求，关键在于坚持底线思维，做到下好先手棋、打好主动仗。\n二、紧扣材料深度论述：\n（1）下好风险监测“先手棋”：该省搭建智能化预警平台，实现全天候穿透式监测，体现了见微知著、把风险隐患防范在早、化解在小的先发优势。（2）打好应急处置“主动仗”：面对断供风险迅速启动替代方案与金融帮扶，有效阻断风险向整个产业链蔓延扩散，展现了果断拆弹的高超处突能力。（3）深化跨部门协同作战机制：打破部门壁垒，推动科技、金融、工信多方联动，形成防范化解系统性风险的强大合力。\n三、总结：提高防范化解风险能力，必须坚持未雨绸缪，以高度政治敏锐性与科学应急机制牢牢守住不发生系统性风险的底线。",
+      "source_kind": "ai_generated"
+    },
+    {
       "block_id": "course/exam_strategy",
       "kind": "exam_strategy",
       "point_id": null,
@@ -15969,7 +18761,7 @@
       "evidence_refs": [
         "knowledge-model:exam"
       ],
-      "text_md": "应试备考要强化全局统筹与精准输出意识。考场答题首先把控节奏，通览试卷后依循先易后难、稳扎稳打的次序推进。审题阶段务必划出设问限定词，明确知识领域与题型要求。选择题注重逻辑甄别与原义核对，坚决排除李代桃僵的选项；主观论述题严格落实要点化、层次化书写，按照「亮出观点、阐明原理、引述材料、总结升华」四步推进。在文化、民生等热点板块作答时，语言表达要精准规范，多用专业政治理论表述，少用生活泛化口语。结尾阶段留足检查余量，重点核查有无答题遗漏、笔误及语句歧义，以稳定严谨的应试作风稳固得分基本盘。"
+      "text_md": "应试作答要严格遵循先易后难原则：拿到试卷后先浏览全卷布局，单选题务必做到快准狠，抓住题干关键词快速锁定正确选项，排除干扰项；简答题审题时要精准抓取核心问题，分点作答、条理清晰，先亮出核心论断再展开阐述，确保关键词突出；材料题作答切忌脱离材料空谈理论，必须采用观点加材料的结合方式，先从材料中提炼反映的问题或做法，再紧扣相关理论知识进行针对性分析与阐述；合理分配作答节奏，答题过程务必预留充裕时间逐题核查答题卡填涂与题目遗漏，确保卷面整洁美观、无笔误。"
     }
   ],
   "review_schedule": {
