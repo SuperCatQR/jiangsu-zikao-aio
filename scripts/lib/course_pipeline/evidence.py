@@ -288,22 +288,43 @@ def _official_urls(root: Path) -> dict[str, str]:
 
 
 def _supporting_locator(root: Path, source: dict, value: Any) -> str:
-    """`provenance.locator`：引用**能支撑 `value` 的那一行**（C2-015）。
+    """`provenance.locator`：引用**能支撑 `value` 的那一行**（C2-015 / W4）。
 
-    专业计划表的课名会折到课码行的下一行（实测 `10993` / `12656`），此时课码行只含课码 / 学分 /
-    考试方式 —— 引它作 `name` 的凭据是错的。策略：以 `sources[].locator` 为中心在 ±2 行窗口内
-    找首个包含该值的行；窗口内找不到就保持原 locator（值可能来自折叠空白，例如全角括号）。
+    专业计划表的课名会折行，且**课码行夹在折行片段中间**：
+
+    ```text
+    L71                工程数学（线性代数、概率论
+    L72  5      10993                            6   笔试
+    L73                与数理统计）
+    ```
+
+    因此逐行包含判定**永远不可能命中**（没有任何单行含全名），而把 ±2 行直接拼成一条字符串同样不行 ——
+    中间的课码行会把名字切开（`…概率论 5 10993 6 笔试 与数理统计）`）。实测 722 门课里正是这样漏掉 8 门。
+
+    策略（两层，先精确后兜底）：
+    1. **整行命中**：窗口内某行的折叠文本含该值 → 引该行（原行为，保留不变）；
+    2. **跨行折名**：值在窗口内被**恰一次**切成两段、且两段分居中心行两侧（`前段…中心行…后段`）→
+       引**前段所在行**（折名的起始行，读得出来源）。
+    3. 都不命中 → 保持原 locator（值可能来自别处的空白折叠，不臆造行号）。
     """
     path = root / source["path"]
     if not path.is_file() or not isinstance(value, str):
         return source["locator"]
     lines = _physical_lines(path)
     center = int(source["locator"][1:])
-    order = sorted(range(max(1, center - ROW_WINDOW_RADIUS), min(len(lines), center + ROW_WINDOW_RADIUS) + 1),
-                   key=lambda number: (abs(number - center), number))
+    low = max(1, center - ROW_WINDOW_RADIUS)
+    high = min(len(lines), center + ROW_WINDOW_RADIUS)
+    order = sorted(range(low, high + 1), key=lambda number: (abs(number - center), number))
     for number in order:
         if value in _fold(lines[number - 1]):
             return f"L{number}"
+
+    before = " ".join(_fold(lines[number - 1]) for number in range(low, center))
+    after = " ".join(_fold(lines[number - 1]) for number in range(center + 1, high + 1))
+    for split in range(1, len(value)):
+        head, tail = value[:split], value[split:]
+        if head in before and tail in after:
+            return f"L{next(number for number in range(low, center) if head in _fold(lines[number - 1]))}"
     return source["locator"]
 
 

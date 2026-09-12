@@ -790,3 +790,50 @@ def test_manual_ledger_fails_closed_on_unparseable_elements(tmp_path: Path):
         km.extract_knowledge_model(root, evidence)
     assert "无法解析" in str(err.value)
     assert ":4" in str(err.value), "错误必须点名行号"
+
+
+def test_manual_ledger_fails_closed_when_the_anchor_heading_is_renamed(tmp_path: Path):
+    """W3 变异证明：锚点标题被改名而编号 `####` 元素仍在 → 必须失败关闭，不得静默返回空台账。
+
+    这是 C2-012 的另一半：旧实现只在**元素解析**这一侧失败关闭；把 `## 章节知识树` 改名成
+    `## 知识点总览`、61 条 `####` 原地不动，`_manual_tree()` 返回 `(None, [], [])`，
+    与「本课没有手工参照」完全同形 —— 于是 `manual_reference: null` + `diff_vs_manual: []`，
+    `evidence` 层的 `manual_only` 检查对这份输入永远空转（PM 实测：两层闸门全绿）。
+
+    真跑 15040 的真实页面（61 条元素）做变异，而不是合成小页：缺口正是「61 条元素在页上」时出现的。
+    """
+    real_page = ROOT / MANUAL_INDEX
+    real_text = real_page.read_text(encoding="utf-8")
+    assert "## 章节知识树" in real_text, "对照前提：真实手工页含锚点标题"
+    element_lines = [ln for ln in real_text.splitlines() if ln.startswith("#### ")]
+    assert len(element_lines) == 61, f"对照前提：15040 手工页有 61 条 `####` 元素，实际 {len(element_lines)}"
+
+    root, evidence = _fragment_root(tmp_path)
+    page = root / "content" / "jiangsu" / "courses" / "99999" / "index.md"
+    page.parent.mkdir(parents=True)
+    page.write_text(real_text.replace("## 章节知识树", "## 知识点总览", 1), encoding="utf-8")
+
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root, evidence)
+    message = str(err.value)
+    assert "61" in message, f"错误必须点名元素条数：{message}"
+    assert "章节知识树" in message, f"错误必须点名缺失的锚点标题：{message}"
+
+    # 对照组：锚点改回去（同一份文件、同一批元素）→ 台账照常写出，证明上面的失败不是别的原因
+    page.write_text(real_text, encoding="utf-8")
+    coverage = km.extract_knowledge_model(root, evidence)["coverage"]
+    assert coverage["manual_reference"] is not None, "对照前提：锚点存在时台账必须写出"
+    assert coverage["manual_reference"]["point_count"] == 61
+    assert len(coverage["diff_vs_manual"]) == 61
+
+
+def test_manual_ledger_still_treats_anchored_empty_tree_as_a_named_gap(tmp_path: Path):
+    """15043 / 15044 的真实形态：**有**锚点但 0 条元素 = 诚实的命名缺口，不是解析失败。"""
+    root, evidence = _fragment_root(tmp_path)
+    page = root / "content" / "jiangsu" / "courses" / "99999" / "index.md"
+    page.parent.mkdir(parents=True)
+    page.write_text("# demo\n\n## 章节知识树\n\n（本章节暂无编号考点，待人工补齐。）\n", encoding="utf-8")
+
+    coverage = km.extract_knowledge_model(root, evidence)["coverage"]
+    assert coverage["manual_reference"] is None
+    assert coverage["diff_vs_manual"] == []

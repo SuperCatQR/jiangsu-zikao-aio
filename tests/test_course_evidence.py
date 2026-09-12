@@ -657,6 +657,83 @@ def test_syllabus_requires_locatable_assessment_requirements(tmp_path: Path):
         assert re.fullmatch(r"[一二三四五六七八九十]+、考核知识点与考核要求", syllabus["requirements_heading"]), code
 
 
+def test_supporting_locator_resolves_folded_course_names(tmp_path: Path):
+    """W4：±2 行窗口把「折行课名」也解析到位，且不改动任何既有 locator。
+
+    真形态（`10993` / `12656` 等 8 门）：课名折行、**课码行夹在两段中间** ——
+
+    ```text
+    L71                工程数学（线性代数、概率论
+    L72  5      10993                            6   笔试
+    L73                与数理统计）
+    ```
+
+    逐行包含判定永远不可能命中（没有单行含全名），把窗口直连同样不行（课码行插在中间）。
+    本用例用**合成**抽取件锁住语义（不依赖某门课的版式），再对全量 722 门课复算双侧计数。
+    """
+    root = tmp_path / "locator-root"
+    doc = root / "majors" / "plan.raw.txt"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        " 4      00023   高等数学（工本）              10     笔试\n"
+        "                工程数学（线性代数、概率论\n"
+        " 5      10993                            6   笔试\n"
+        "                与数理统计）\n"
+        "        13013   高级语言程序设计                 4   笔试\n",
+        encoding="utf-8",
+    )
+    source = {"doc_id": "major-plan:99999", "path": "majors/plan.raw.txt", "locator": "L3"}
+
+    # ① 跨行折名：前段在 L2、后段在 L4 → 引折名起始行 L2（不再回落课码行 L3）
+    assert ev._supporting_locator(root, source, "工程数学（线性代数、概率论与数理统计）") == "L2"
+    # ② 整行命中优先（原行为不变）：值完整落在中心行
+    assert ev._supporting_locator(root, source, "10993") == "L3"
+    # ③ 都命中不了 → 保持原 locator（不臆造行号）
+    assert ev._supporting_locator(root, source, "不存在的课名") == "L3"
+    # ④ 非字符串值（credits 是 int）→ 保持原 locator，不做字符串化匹配
+    assert ev._supporting_locator(root, source, 6) == "L3"
+
+    # 全量复算：722 门课 / 2123 个 (course, field) 对的「所引行是否支撑该值」
+    catalog = json.loads((ROOT / "sources" / "jiangsu" / "catalog" / "courses.json").read_text(encoding="utf-8"))
+    cache: dict[str, list[str]] = {}
+    worsened: list[tuple] = []
+    unresolved: list[tuple] = []
+    pairs = 0
+    for course in catalog["courses"]:
+        for field in ev.FACT_FIELDS:
+            value = course.get(field)
+            if value in (None, ""):
+                continue
+            source_entry = (course.get("sources") or [None])[0]
+            if not source_entry:
+                continue
+            pairs += 1
+            path = source_entry["path"]
+            if path not in cache:
+                cache[path] = _physical_lines(ROOT / path)
+            lines = cache[path]
+            center = int(source_entry["locator"][1:])
+            text = str(value)
+            line_ok = text in " ".join(lines[center - 1].split())
+
+            resolved = ev._supporting_locator(ROOT, source_entry, value)
+
+            def _supports(locator: str) -> bool:
+                """该 locator 是否**读得出来源**：整行含值，或（折名分支）该行含值的前半段。"""
+                line = " ".join(lines[int(locator[1:]) - 1].split())
+                return text in line or (locator != source_entry["locator"] and text[: len(text) // 2] in line)
+
+            if not _supports(resolved):
+                unresolved.append((course["code"], field, text, resolved))
+            elif line_ok and resolved != source_entry["locator"]:
+                worsened.append((course["code"], field, text, resolved))
+
+    assert pairs == 2123, f"722 课程目录的 (course, field) 对数变了：{pairs}"
+    assert not unresolved, f"解析后的 locator 仍不支撑该值：{unresolved}"
+    assert not worsened, f"fix 不得把原本正确的 locator 改坏：{worsened}"
+    assert len(cache) > 0
+
+
 def test_committed_artifacts_match_a_fresh_build():
     """磁盘上的 18 份产物必须与当前来源一致：不得停在旧判定逻辑上（离线，只读）。
 

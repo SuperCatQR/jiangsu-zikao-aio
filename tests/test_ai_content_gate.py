@@ -219,7 +219,8 @@ def test_ai_content_gate_fails_closed_on_missing_syllabus_corpus(tmp_path: Path)
 def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path):
     """B2 变异证明：AI 块没落到页面就必须失败关闭（这正是 QC3-001 能蒙过关的缺口）。
 
-    三个方向各来一次：`practice.md` 丢 drill、`plan.md` 丢五阶段、`review.md` 丢命名缺口。
+    四个方向各来一次：`practice.md` 丢 drill、`plan.md` 丢五阶段、`review.md` 丢命名缺口、
+    `plan.md` 丢课程级 `exam_strategy`（W1 —— 旧对账只覆盖 3/4 个 `BLOCK_KINDS`）。
     """
     from lib.ai_content_gate import run_ai_content_gate
 
@@ -260,3 +261,50 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
     review.write_text(head + "## 边界\n", encoding="utf-8")
     errors_c = run_ai_content_gate(root_c)
     assert any("review.md" in e and "命名缺口" in e for e in errors_c), errors_c
+
+    # (d) W1：plan.md 丢掉整个 `## 应试策略` 区块（课程级 exam_strategy 未渲染）
+    root_d = _fresh_root("exam_strategy")
+    plan_d = root_d / course / "plan.md"
+    text_d = plan_d.read_text(encoding="utf-8")
+    head_d, sep_d, tail_d = text_d.partition("## 应试策略")
+    assert sep_d, "对照前提：页面含 `## 应试策略` 区块"
+    next_h2 = tail_d.find("\n## ")
+    assert next_h2 != -1, "对照前提：`## 应试策略` 之后还有下一个 H2"
+    plan_d.write_text(head_d + tail_d[next_h2 + 1 :], encoding="utf-8")
+    errors_d = run_ai_content_gate(root_d)
+    assert any("应试策略" in e and "exam_strategy" in e for e in errors_d), errors_d
+
+    # (e) W1 第二向：区块还在但正文被换掉 —— 必须按区块**内**内容对账，不能碰巧匹配页面别处
+    root_e = _fresh_root("exam_strategy_text")
+    plan_e = root_e / course / "plan.md"
+    exam_text = _exam_strategy_text(ROOT)
+    assert plan_e.read_text(encoding="utf-8").count(exam_text) == 1, "对照前提：正文只在应试策略区块内出现一次"
+    plan_e.write_text(plan_e.read_text(encoding="utf-8").replace(exam_text, "（被替换掉的策略正文）"), encoding="utf-8")
+    errors_e = run_ai_content_gate(root_e)
+    assert any("应试策略" in e and "text_md" in e for e in errors_e), errors_e
+
+
+def _exam_strategy_text(root: Path) -> str:
+    """committed `content.json` 里课程级 `exam_strategy` 块的 `text_md`（渲染必须逐字带上它）。"""
+    content = json.loads(
+        (root / "sources" / "jiangsu" / "courses" / "15040" / "content.json").read_text(encoding="utf-8")
+    )
+    block = next(b for b in content["blocks"] if b["kind"] == "exam_strategy")
+    return block["text_md"].strip()
+
+
+def test_exam_strategy_block_is_rendered_on_the_committed_plan_page():
+    """W1 产物断言：committed `exam_strategy.text_md` 必须出现在 `plan.md` 的 `## 应试策略` 区块内。"""
+    plan = (ROOT / "content" / "jiangsu" / "courses" / "15040" / "plan.md").read_text(encoding="utf-8")
+    section_start = plan.find("## 应试策略")
+    assert section_start != -1, "plan.md 缺 `## 应试策略` 区块"
+    section = plan[section_start:]
+    next_h2 = section.find("\n## ", 1)
+    if next_h2 != -1:
+        section = section[:next_h2]
+    text = _exam_strategy_text(ROOT)
+    assert len(text) == 248, f"对照前提：committed text_md 为 248 字符，实际 {len(text)}"
+    assert text in section, "课程级 exam_strategy 未落到 plan.md 的应试策略区块"
+    assert "review_state=machine_draft" in section, "AI 块脚注（generator / evidence_refs / review_state）缺失"
+    assert "evidence_refs=knowledge-model:exam" in section, "AI 块脚注缺 evidence_refs"
+

@@ -37,3 +37,17 @@
 ## 需用户/总管提供
 
 - 若已有合法教材、真题、扫描件或购买凭证，请入 private `zikao-materials` 后在此页补 `materials://...` 索引；公开仓不接收原件。
+
+<!-- derived:begin id=release-status -->
+## 放行状态（机器判定）
+
+| 项目 | 取值 | 状态 |
+| --- | --- | --- |
+| 放行等级 | `L1` | 已放行 AI 备考层 |
+| 判定依据 | `syllabus:extracted textbook_plan:matched` | 由 `evidence.json` 的 `eligibility` 复算 |
+| 考纲抽取 | `extracted` | 三、考核知识点与考核要求 |
+| 教材计划 | `matched` | L1958,L1962 |
+| 官方来源 URL | [https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html) | 15040 |
+
+以上取值由 `scripts/build-course-content.py` 从 `sources/jiangsu/courses/15040/evidence.json` 渲染，随该文件刷新。
+<!-- derived:end -->

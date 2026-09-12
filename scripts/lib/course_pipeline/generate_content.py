@@ -636,6 +636,7 @@ def validate_content_doc(doc: dict, model: dict) -> list[str]:
 
     covered: dict[str, set[str]] = defaultdict(set)
     seen_ids: set[str] = set()
+    exam_strategy_count = 0
     for block in doc.get("blocks") or []:
         block_id = block.get("block_id")
         where = f"block {block_id}"
@@ -652,6 +653,7 @@ def validate_content_doc(doc: dict, model: dict) -> list[str]:
         if kind == "exam_strategy":
             if block.get("point_id") is not None or block.get("scope") != "course":
                 problems.append(f"{where}: 课程级块必须是 point_id: null + scope: course")
+            exam_strategy_count += 1
             text = block.get("text_md")
             if not isinstance(text, str) or len(text.strip()) < MIN_DRILL_CHARS:
                 problems.append(f"{where}: text_md 为空或过短")
@@ -690,6 +692,12 @@ def validate_content_doc(doc: dict, model: dict) -> list[str]:
         for kind in ("explain", "memorize"):
             if point_id not in covered[kind]:
                 problems.append(f"point {point_id}: 缺 {kind} 块")
+    # W1：课程级 `exam_strategy` 块必须存在且唯一 —— 旧实现只在它**存在时**校验字段，
+    # 于是整块删除（1180 → 1179）后两层闸门全绿，248 字的应试策略无声消失。
+    if exam_strategy_count != 1:
+        problems.append(
+            f"blocks: 必须恰有 1 个 exam_strategy 课程级块（point_id: null + scope: course），实际 {exam_strategy_count} 个"
+        )
     problems.extend(_review_schedule_problems(doc.get("review_schedule"), point_ids))
     return problems
 

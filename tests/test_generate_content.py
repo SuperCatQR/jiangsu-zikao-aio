@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -483,6 +484,60 @@ def test_agent_backend_lists_every_missing_result(monkeypatch, tmp_path):
     assert len(err.value.missing) == len(gc.call_plan(model)), "必须列出全部缺失结果，不是只报第一个"
 
 
+def test_agent_bundle_index_is_built_once_per_batch(monkeypatch, tmp_path):
+    """W5/QC3-010：目录索引必须**每批构建一次**并被复用，而不是每个 job 重建（O(n²) → O(n)）。
+
+    旧实现 `prepare_agent_tasks` 构建 `indexes[prompt_id]` 后**从不读取**它，下一行仍调用
+    `write_agent_bundle()`（内部又自行 `_bundle_index()`），且 `_call_agent` 每次再来一遍。
+    实测 1196 个 bundle × 60 µs × 2 遍 ≈ 86 秒纯重复解析。
+
+    断言方式：把 `_bundle_index` 计数打桩，跑一批 3+3 个 job（两个 prompt_id），
+    重建次数必须 ≤ prompt_id 数量（每 id 一次），而不是 job 数量。
+    """
+    _wire(monkeypatch, tmp_path, record=False)
+    model = _synthetic_model()
+    jobs = [
+        (prompt_id, version, payload)
+        for prompt_id, version, payload in gc.call_plan(model)
+        if prompt_id in {"explain_point", "drill_point"}
+    ]
+    assert len(jobs) >= 4, f"对照前提：至少两个 prompt_id 的多个 job，实际 {len(jobs)}"
+    prompt_ids = {prompt_id for prompt_id, _v, _p in jobs}
+    assert len(prompt_ids) >= 2
+
+    real_index = llm._bundle_index
+    calls: list[tuple[str, str]] = []
+
+    def _counting(directory, prompt_id):
+        calls.append((str(directory), prompt_id))
+        return real_index(directory, prompt_id)
+
+    monkeypatch.setattr(llm, "_bundle_index", _counting)
+    llm.prepare_agent_tasks(model["course_code"], jobs)
+
+    assert len(calls) <= len(prompt_ids), (
+        f"索引必须每批每 prompt_id 只构建一次；job 数 {len(jobs)}、prompt_id 数 {len(prompt_ids)}、"
+        f"实际重建 {len(calls)} 次"
+    )
+    assert sorted({prompt_id for _dir, prompt_id in calls}) == sorted(prompt_ids)
+
+    # 第三向：索引在**同一目录未变更**时必须命中缓存（跨批次复用，`prepare_agent_tasks` 之外的路径）
+    llm._BUNDLE_INDEX_CACHE.clear()
+    calls.clear()
+    directory = llm.agent_task_dir(model["course_code"])
+    first = llm._bundle_index(directory, "explain_point")
+    again = llm._bundle_index(directory, "explain_point")
+    assert len(calls) == 2, "打桩本身必须被调用（否则断言是空转）"
+    assert again is first, "目录未变更时索引必须走缓存返回同一对象"
+
+    # 目录变更（新增 bundle）→ 缓存失效并重建，新键可见
+    (directory / "explain_point-999.json").write_text(
+        json.dumps({"payload_hash": "sentinel-hash-999"}, ensure_ascii=False), encoding="utf-8"
+    )
+    refreshed = llm._bundle_index(directory, "explain_point")
+    assert "sentinel-hash-999" in refreshed, "目录 mtime 变化后索引必须重建，不得返回陈旧快照"
+
+
 def test_generate_content_labels_every_block(monkeypatch, tmp_path):
     _wire(monkeypatch, tmp_path, record=True)
     model = _synthetic_model()
@@ -752,6 +807,29 @@ def test_b1_artifacts_have_no_official_sample():
     assert {block["source_kind"] for block in drills} == {"ai_generated"}
     assert "official_sample" not in CONTENT_PATH.read_text(encoding="utf-8")
     assert all("provenance" not in block for block in doc["blocks"])
+
+
+def test_exam_strategy_block_is_required_by_the_content_self_check():
+    """W1 变异证明：删掉课程级 `exam_strategy` 块必须在 `validate_content_doc()` 处失败关闭。
+
+    PM 实测的缺口：旧实现只在块**存在时**校验它的字段，于是 1180 → 1179 后
+    `run_ai_content_gate` 与 `run_evidence_gate` 都返回 `[]`，248 字的应试策略无声消失。
+    """
+    model = _model()
+    doc = _artifact()
+    assert gc.validate_content_doc(doc, model) == [], "对照前提：committed content.json 自检通过"
+    assert len(doc["blocks"]) == 1180, f"对照前提：committed blocks 为 1180，实际 {len(doc['blocks'])}"
+
+    without = {**doc, "blocks": [b for b in doc["blocks"] if b["kind"] != "exam_strategy"]}
+    assert len(without["blocks"]) == 1179
+    problems = gc.validate_content_doc(without, model)
+    assert any("exam_strategy" in p for p in problems), problems
+
+    # 第二向：重复的课程级块也不得蒙混过关（闸门按「恰 1 个」对账）
+    duplicated = {**doc, "blocks": [*doc["blocks"], next(b for b in doc["blocks"] if b["kind"] == "exam_strategy")]}
+    dup_problems = gc.validate_content_doc(duplicated, model)
+    assert any("exam_strategy" in p for p in dup_problems), dup_problems
+    assert any("block_id 重复" in p for p in dup_problems), dup_problems
 
 
 def test_content_quality_bar_for_slice():
@@ -1110,3 +1188,82 @@ def test_suite_has_no_silent_xfail_markers(request):
         if mark.kwargs.get("strict") is not True
     ]
     assert offenders == [], f"非严格 xfail 会吞掉真实回归：{offenders}"
+
+
+# --------------------------------------------------------------------------------------
+# W10 / C2-010：`--backend agent` 的**真实 CLI 入口**（子进程）失败关闭路径
+# --------------------------------------------------------------------------------------
+
+def _agent_cli_root(tmp_path: Path) -> Path:
+    """子进程用的副本根：`scripts` + `sources` + `tests/fixtures` 自足，且 `lib` 是**真实拷贝**。
+
+    与 `_cli_root()`（进程内装置，软链复用仓内 `lib`）不同，这里跑的是 `subprocess`，
+    因此把 `scripts` 整棵拷进去 —— 子进程的 `__file__` 推导才会落在副本内（QC3-007 的根对齐），
+    fixture 也必须随根走，否则 agent 后端会因为找不到提示词而失败在与被测行为无关的原因上。
+    """
+    root = tmp_path / "agent-root"
+    shutil.copytree(ROOT / "scripts", root / "scripts")
+    course = root / "sources" / "jiangsu" / "courses" / "15040"
+    course.mkdir(parents=True)
+    for name in ("evidence.json", "knowledge-model.json"):
+        shutil.copy(ROOT / "sources" / "jiangsu" / "courses" / "15040" / name, course / name)
+    (root / "sources" / "jiangsu" / "processed").symlink_to(
+        ROOT / "sources" / "jiangsu" / "processed", target_is_directory=True
+    )
+    fixtures = root / "tests" / "fixtures" / "course_pipeline" / "llm"
+    fixtures.parent.mkdir(parents=True)
+    shutil.copytree(ROOT / "tests" / "fixtures" / "course_pipeline" / "llm", fixtures)
+    return root
+
+
+def test_cli_agent_backend_fails_closed_without_results(tmp_path):
+    """W10 / C2-010 的 CLI 半边：`generate 15040 --backend agent` 在无 key、无回填结果时必须 exit 2。
+
+    spec AC9 的命令就是这条 CLI 调用。库层已有覆盖（`test_agent_backend_bundle_round_trip`），
+    但 CLI 的 `AgentTasksPendingError → exit 2` 映射（`build-course-content.py:146-148`）此前
+    **没有任何子进程级测试** —— 映射写错（比如吞成 exit 0）会让「缺回填结果」静默变成成功。
+
+    三个方向：(a) 缺回填 → exit 2 且点名 `.result.json`，不产出 `content.json`；
+    (b) 任务包真的写出来了（不是空跑）；(c) 回填后同一命令 exit 0 并产出 `content.json`（AC9 的完整口径）。
+    """
+    root = _agent_cli_root(tmp_path)
+    content_path = root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
+    env = {k: v for k, v in os.environ.items() if not k.startswith("ZIKAO_LLM_")}
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+
+    def _run() -> subprocess.CompletedProcess:
+        return subprocess.run(
+            [sys.executable, "scripts/build-course-content.py", "generate", "15040", "--backend", "agent"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            env=env,
+        )
+
+    # (a) 无回填结果 → exit 2（失败关闭），且明确点名缺失的结果文件
+    first = _run()
+    assert first.returncode == 2, f"缺回填结果必须 exit 2：{first.returncode}\n{first.stdout}\n{first.stderr}"
+    assert "stage=generate missing" in first.stderr, first.stderr
+    assert ".result.json" in first.stderr, f"必须点名缺失的回填结果：{first.stderr}"
+    assert not content_path.is_file(), "失败路径不得产出 content.json（不写半成品）"
+
+    task_dir = root / "sources" / "jiangsu" / "courses" / "15040" / ".agent-task"
+    bundles = sorted(p for p in task_dir.glob("*.json") if not p.name.endswith(".result.json"))
+    assert len(bundles) == 1180, f"agent 后端必须把全部任务包写出来：{len(bundles)}"
+    bundle = _json(bundles[0])
+    assert bundle["expect_result"] == bundles[0].with_name(f"{bundles[0].stem}.result.json").name
+    assert "instructions" in bundle and "payload" in bundle
+
+    # (b) 用 **replay fixture** 的录制响应回填（不联网、不伪造），再跑同一命令 → exit 0
+    for path in bundles:
+        job = _json(path)
+        response = llm.complete_json(job["prompt_id"], job["prompt_version"], job["payload"], backend="replay")
+        path.with_name(job["expect_result"]).write_text(
+            json.dumps(response, ensure_ascii=False), encoding="utf-8"
+        )
+
+    second = _run()
+    assert second.returncode == 0, f"回填齐备后必须 exit 0：{second.returncode}\n{second.stdout}\n{second.stderr}"
+    assert content_path.is_file(), "成功路径必须产出 content.json"
+    doc = _json(content_path)
+    assert doc["generator"]["backend"] == "agent"

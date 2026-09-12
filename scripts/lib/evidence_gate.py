@@ -31,7 +31,18 @@ from lib.course_pipeline.official_source import is_official_url
 # 旧实现接受 `unverified` / `missing-source`，而两者在检查链里没有任何分支 —— 等于给
 # 「verified 掉了 provenance」开了一条静默降级通道（C2-003 / QC3-009）。
 VALID_STATUSES = {"verified", "named_gap"}
-POINT_ID_RE = re.compile(r"^\d{5}-(intro|ch\d{2})-s\d+-p\d+$")
+# point id 形态的唯一真源（W7 / QC1 F-10）：`POINT_ID_BODY` 只写一遍，通用形态与课码专属形态都从它派生。
+# 旧实现除了 `POINT_ID_RE`，还在 `_knowledge_model_problems()` 里第二次 `re.compile(...)` 同一规则，
+# 改一处不会改另一处。
+POINT_ID_BODY = r"(intro|ch\d{2})-s\d+-p\d+"
+POINT_ID_RE = re.compile(rf"^\d{{5}}-{POINT_ID_BODY}$")
+
+
+def point_id_pattern(code: str | None):
+    """课码专属的 point id 正则；`code` 为空时返回通用形态（两者共用 `POINT_ID_BODY`）。"""
+    if not code:
+        return POINT_ID_RE
+    return re.compile(rf"^{re.escape(code)}-{POINT_ID_BODY}$")
 SYLLABUS_STATUSES = {"extracted", "missing"}
 TEXTBOOK_STATUSES = {"matched", "missing"}
 CHAPTER_INDEX_HEADING = "### 章目索引"
@@ -191,7 +202,7 @@ def _knowledge_model_problems(root: Path, rel_km: str, code: str | None, km: dic
         errors.append(f"{rel_km}: chapters must be list")
         return
 
-    pattern = re.compile(rf"^{code}-(intro|ch\d{{2}})-s\d+-p\d+$") if code else POINT_ID_RE
+    pattern = point_id_pattern(code)
     seen_point_ids: set[str] = set()
     section_total = 0
     for index, ch in enumerate(chapters):

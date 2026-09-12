@@ -8,8 +8,10 @@
    旧实现按目录 glob 找语料、空即**静默跳过**，等于把闸门交给文件命名）；
 3. **页面标记**：页面分类与标记字符串一律取自 `course.schema.json` 的 `generated_page_markers`
    （QC1 F-4 / QC3-003：schema 是唯一真源，同一规则不写两遍）；
-4. **AI 块必须真正落到页面**（QC3-001 / C2-004）：`practice.md` 的 drill 数、`plan.md` 的五阶段、
-   `review.md` 的排程，逐项与 `content.json` 对账 —— 这一条缺失正是「AI 备考层从未被渲染」能过关的原因。
+4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1）：`practice.md` 的 drill 数、`plan.md` 的五阶段
+   与 `## 应试策略`（课程级 `exam_strategy`）、`review.md` 的排程，逐项与 `content.json` 对账 ——
+   **`BLOCK_KINDS` 的四个 kind 全部覆盖**，而不是三个。这一条缺失正是「AI 备考层从未被渲染」能过关的原因，
+   而只覆盖 3/4 个 kind 正是 `exam_strategy` 被整块删掉却两层全绿的原因。
 
 `rendered_course_dir` / `course_code` 让 `build` 的 `gate` 阶段校验**暂存区**页面而不是仓内既有页面。
 """
@@ -89,12 +91,17 @@ def _page_problems(rel_md: str, text: str, markers: dict, errors: list[str], *, 
 
 
 def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], errors: list[str]) -> None:
-    """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004：闸门只看页面装饰，看不出整层丢失）。
+    """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004 / W1：闸门只看页面装饰，看不出整层丢失）。
 
-    对账口径按 kind：
+    对账口径按 kind —— **`BLOCK_KINDS` 的四个 kind 一个都不能漏**：
     - `drill` → `practice.md` 的 `###` 小节数；
     - `stage_plan[]`（恰 5 条）→ `plan.md` 逐阶段名 + `done_when`；
+    - `exam_strategy`（课程级块）→ `plan.md` 的 `## 应试策略` 区块内的 `text_md`；
     - `review_schedule` → `review.md` 的三档排程或命名缺口。
+
+    `exam_strategy` 这一条是 W1：它曾经既不在渲染器里、也不在本函数里，于是删掉整块
+    （1180 → 1179）两层闸门全绿。`blocks[]` 里没有写入者的 kind 由
+    `validate_content_doc()`（`BLOCK_KINDS` 枚举）拦下，所以这里只需覆盖「有写入者的 kind」。
     """
     practice = page_text.get("practice.md", "")
     drills = [block for block in content.get("blocks") or [] if block.get("kind") == "drill"]
@@ -131,6 +138,23 @@ def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], 
             values = [str(item) for item in stage.get(key) or []] if isinstance(stage.get(key), list) else [stage.get(key)]
             if any(value and value not in plan for value in values):
                 errors.append(f"course {code}: plan.md 缺少阶段「{name}」的{label}（stage_plan 未完整渲染）")
+
+    # 课程级 `exam_strategy`（W1）：必须落在 `plan.md` 的 `## 应试策略` 区块**之内**，
+    # 而不是碰巧出现在页面别处（与 review 的命名缺口同一口径）。
+    strategies = [block for block in content.get("blocks") or [] if block.get("kind") == "exam_strategy"]
+    for block in strategies:
+        block_id = block.get("block_id")
+        section = re.search(r"(?ms)^## 应试策略\s*$(.*?)(?=^## |\Z)", plan)
+        if section is None:
+            errors.append(
+                f"course {code}: plan.md 缺少 `## 应试策略` 区块（AI 课程级块 {block_id} 未渲染到页面）"
+            )
+            continue
+        text = str(block.get("text_md") or "").strip()
+        if text and text not in section.group(1):
+            errors.append(
+                f"course {code}: plan.md 的 `## 应试策略` 区块缺少 {block_id} 的 text_md（exam_strategy 未渲染）"
+            )
 
     review = page_text.get("review.md", "")
     schedule = content.get("review_schedule") or {}

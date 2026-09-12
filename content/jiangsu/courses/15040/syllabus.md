@@ -54,8 +54,24 @@
 | 第十五章 | 第十五章 坚持“一国两制”和推进祖国完全统一 |
 | 第十六章 | 第十六章 中国特色大国外交和推动构建人类命运共同体 |
 | 第十七章 | 第十七章 全面从严治党 |
+<!-- derived:begin id=chapter-links -->
+<!-- derived:begin id=release-status -->
+## 放行状态（机器判定）
+
+| 项目 | 取值 | 状态 |
+| --- | --- | --- |
+| 放行等级 | `L1` | 已放行 AI 备考层 |
+| 判定依据 | `syllabus:extracted textbook_plan:matched` | 由 `evidence.json` 的 `eligibility` 复算 |
+| 考纲抽取 | `extracted` | 三、考核知识点与考核要求 |
+| 教材计划 | `matched` | L1958,L1962 |
+| 官方来源 URL | [https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html](https://www.jseea.cn/webfile/selflearning_jcdg/2025-01-15/7285134977044320256.html) | 15040 |
+
+以上取值由 `scripts/build-course-content.py` 从 `sources/jiangsu/courses/15040/evidence.json` 渲染，随该文件刷新。
+<!-- derived:end -->
 
 ## 章节知识精读
+
+本课程各章核心要点、记忆法与仿真练习：
 
 - [导论](knowledge/00-intro.md)
 - [第一章 新时代坚持和发展中国特色社会主义](knowledge/01-ch01.md)
@@ -75,6 +91,7 @@
 - [第十五章 坚持“一国两制”和推进祖国完全统一](knowledge/15-ch15.md)
 - [第十六章 中国特色大国外交和推动构建人类命运共同体](knowledge/16-ch16.md)
 - [第十七章 全面从严治党](knowledge/17-ch17.md)
+<!-- derived:end -->
 
 ## 核验清单
 

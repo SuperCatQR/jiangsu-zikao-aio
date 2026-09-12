@@ -27,6 +27,33 @@ MANUAL_BLOCK_RE = re.compile(
     r"<!--\s*manual:begin\s+id=([a-zA-Z0-9_-]+)\s*-->(.*?)<!--\s*manual:end\s*-->",
     re.DOTALL,
 )
+# 渲染器**自有**区块（与 `manual:` 相对）：内容每次从 JSON SSOT 重算并原地替换（W6 / QC3-008）。
+# `manual:` 块属于人工，只按 id 原样回填；`derived:` 块属于渲染器，必须可刷新 —— 否则官方页会退化成
+# 「提交时的冻结快照」：`evidence.json` 里 `eligibility.level` 已经变了，页面上却还写着旧状态。
+# 匹配模式由 `render_derived_block()` 按 block_id 现拼（见该函数的注释）。
+
+
+def render_derived_block(block_id: str, content: str, existing_text: str, *, insert_before: str = "") -> str:
+    """按 id 替换渲染器自有区块；页面上没有该 id 时插入（W6）。
+
+    替换而非追加，是为了让官方页能跟上 SSOT。首次插入时：给了 `insert_before`（一个 `## ` 标题）
+    就插在它前面 —— 旧页面的派生内容本来就在那个位置，插在原地才不会挪动手写段落的相对顺序；
+    未给则追加到正文末尾（保证**手写正文永远是前缀**，见 `test_official_page_prose_is_not_rewritten`）。
+    """
+    body = content.strip("\n")
+    rendered = f"<!-- derived:begin id={block_id} -->\n{body}\n<!-- derived:end -->"
+    # 目标块的正则**按 id 定位**（不能先 `search` 再 `sub`：`sub` 会从第一个匹配开始，命中别的 id 就什么都不换）
+    target = re.compile(
+        rf"<!--\s*derived:begin\s+id={re.escape(block_id)}\s*-->.*?<!--\s*derived:end\s*-->",
+        re.DOTALL,
+    )
+    if target.search(existing_text):
+        return target.sub(lambda _match: rendered, existing_text, count=1)
+    if insert_before:
+        anchor = existing_text.find("\n" + insert_before)
+        if anchor != -1:
+            return existing_text[: anchor + 1] + rendered + "\n\n" + existing_text[anchor + 1 :]
+    return existing_text.rstrip("\n") + "\n\n" + rendered + "\n"
 
 
 def extract_manual_blocks(text: str) -> dict[str, str]:
@@ -51,16 +78,20 @@ def render_manual_block(block_id: str, default_content: str, blocks: dict[str, s
 
 
 def get_course_name(evidence: dict[str, Any], code: str) -> str:
-    """课名 = **仅** `status: "verified"` 的 `facts.name`（C2-003）。
+    """课名 = **仅** `status: "verified"` 的 `facts.name`（C2-003），否则回落**课码**。
 
     非 `verified` 的 `value` 一律不作官方事实渲染：`name` 会进 `index.md` / `syllabus.md` 的 H1，
-    而这两页是 `official_only` 页面。未验证却有值 → 回落课码，不把未验证值洗成官方事实。
+    而这两页是 `official_only` 页面。回落目标只有课码 —— 它来自目录而非 `evidence.json`，
+    因此不存在「从证据文件里读一个未受闸门约束的键」这条洗白路径（W2）：
+    旧实现的 `evidence.get("course_name")` 是**契约外键**（无写入者、不在 Data contracts 2），
+    闸门看不见它，于是「`named_gap` 的 `facts.name` + 一个游离的 `course_name`」能把伪造值
+    印成官方 H1。
     """
     facts = evidence.get("facts") or {}
     name_fact = facts.get("name")
     if isinstance(name_fact, dict) and name_fact.get("status") == "verified" and name_fact.get("value"):
         return str(name_fact["value"])
-    return evidence.get("course_name") or code
+    return code
 
 
 def _ai_footnote(block: dict[str, Any]) -> str:
@@ -102,6 +133,62 @@ def _chapter_index_block(model: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _release_status_block(code: str, evidence: dict[str, Any]) -> str:
+    """放行状态区块（W6 / QC3-008）：`eligibility` 与两份放行输入**从 JSON SSOT 渲染**。
+
+    plan § Data contracts 5 把 `index.md` 描述为「概览 + **放行状态**」，spec reader outcome 4 要求读者
+    在官方页上看得到放行判定与依据；旧实现没有任何页面呈现它 ——
+    `grep -rln "L1\\|eligibility" content/jiangsu/courses/15040/*.md` 无命中，而 `evidence.json` 记着 `L1`。
+    值全部来自 JSON（不写死课码字面量），因此它随 SSOT 变化而刷新。
+    """
+    eligibility = evidence.get("eligibility") or {}
+    level = eligibility.get("level") or "unknown"
+    reasons = " ".join(eligibility.get("reasons") or []) or "（无）"
+    syllabus = evidence.get("syllabus") or {}
+    textbook = evidence.get("textbook_plan") or {}
+    url = evidence.get("course_url")
+    lines = [
+        "## 放行状态（机器判定）",
+        "",
+        "| 项目 | 取值 | 状态 |",
+        "| --- | --- | --- |",
+        f"| 放行等级 | `{level}` | {'已放行 AI 备考层' if level == 'L1' else '未放行（零 AI 产物）'} |",
+        f"| 判定依据 | `{reasons}` | 由 `evidence.json` 的 `eligibility` 复算 |",
+        f"| 考纲抽取 | `{syllabus.get('status') or 'unknown'}` | {syllabus.get('requirements_heading') or '未定位考核要求小节'} |",
+        f"| 教材计划 | `{textbook.get('status') or 'unknown'}` | {textbook.get('locator') or '未命中教材计划行'} |",
+        f"| 官方来源 URL | {f'[{url}]({url})' if url else '缺（`course_url` 为 null）'} | {code} |",
+        "",
+        "以上取值由 `scripts/build-course-content.py` 从 `sources/jiangsu/courses/"
+        f"{code}/evidence.json` 渲染，随该文件刷新。",
+    ]
+    return "\n".join(lines)
+
+
+def _apply_derived_blocks(text: str, code: str, evidence: dict[str, Any], model: dict[str, Any]) -> str:
+    """把渲染器自有区块写进官方页（W6）：放行状态 + 章链接，两者都从 JSON 重算（可刷新）。
+
+    首次渲染旧页面时，**旧版无标记**的 `## 章节知识精读` 是裸文本（没有 `derived:` 标记）。
+    接管方式是**原地替换**那一段（到下一个 `## ` 为止）：既不产生第二个同名 H2，也不把它
+    后面的手写段落（`## 核验清单` / `## 缺口`）挪到别处 —— 官方页的段落顺序是人工校对成果的一部分。
+
+    放行状态插在 `## 章节知识精读` 之前（正是 W6 新增内容的位置），章链接插在 `## 核验清单` 之前。
+    """
+    chapter_block = render_derived_block("chapter-links", _chapter_index_block(model), "").strip("\n")
+    if "derived:begin id=chapter-links" not in text:
+        index = text.find("\n## 章节知识精读")
+        if index != -1:
+            rest = text[index + 1 :]
+            end = rest.find("\n## ", 1)
+            text = text[:index] + (rest[end:] if end != -1 else "")
+            text = text[:index] + chapter_block + "\n\n" + text[index:].lstrip("\n")
+    text = render_derived_block(
+        "release-status", _release_status_block(code, evidence), text, insert_before="## 章节知识精读"
+    )
+    if "derived:begin id=chapter-links" not in text:
+        return render_derived_block("chapter-links", _chapter_index_block(model), text, insert_before="## 核验清单")
+    return text
+
+
 def _render_index(
     code: str,
     evidence: dict[str, Any],
@@ -126,8 +213,7 @@ def _render_index(
     if not body.startswith(GENERATED_COMMENT):
         body = f"{GENERATED_COMMENT}\n{body}"
 
-    if "## 章节知识精读" not in body:
-        body = body.rstrip("\n") + "\n\n" + _chapter_index_block(model) + "\n"
+    body = _apply_derived_blocks(body, code, evidence, model)
 
     if raw_fm:
         return raw_fm + body.rstrip("\n") + "\n"
@@ -155,17 +241,17 @@ def _render_syllabus(
     model: dict[str, Any],
     existing_text: str,
 ) -> str:
-    """考纲与范围页（`official_only`）：章目索引与章链接由知识模型派生，其余正文原样保留。"""
+    """考纲与范围页（`official_only`）：手写正文原样保留，派生区块（放行状态 + 章链接）每次从 JSON 重算。
+
+    `derived:` 区块**原地替换**，因此页面的放行状态会随 `evidence.json` 刷新，而不是停在提交时的快照
+    （W6 / QC3-008）。手写正文仍是页面前缀，渲染只追加派生内容。
+    """
     course_name = get_course_name(evidence, code)
     if existing_text:
         text = existing_text
         if not text.startswith(GENERATED_COMMENT):
             text = GENERATED_COMMENT + "\n" + text
-        if "## 章节知识精读" not in text:
-            ch_links = _chapter_index_block(model) + "\n"
-            idx = text.find("## 核验清单")
-            text = (text[:idx] + ch_links + text[idx:]) if idx != -1 else (text.rstrip() + "\n\n" + ch_links)
-        return text
+        return _apply_derived_blocks(text, code, evidence, model)
 
     out = [
         GENERATED_COMMENT,
@@ -191,12 +277,12 @@ def _render_sources(
     evidence: dict[str, Any],
     existing_text: str,
 ) -> str:
-    """来源与核验页（`official_only`）：既有正文原样保留；兜底骨架只写**本课程** JSON 里的官方来源。"""
+    """来源与核验页（`official_only`）：手写正文原样保留，派生区块（放行状态）每次从 JSON 重算。"""
     if existing_text:
         text = existing_text
         if not text.startswith(GENERATED_COMMENT):
             text = GENERATED_COMMENT + "\n" + text
-        return text
+        return render_derived_block("release-status", _release_status_block(code, evidence), text)
 
     course_name = get_course_name(evidence, code)
     url = evidence.get("course_url")
@@ -223,6 +309,30 @@ def _render_sources(
         "",
     ]
     return _render_official_page("", fallback)
+
+
+def _exam_strategy_block(content: dict[str, Any]) -> list[str]:
+    """课程级 `exam_strategy` 块 → `plan.md` 的 `## 应试策略` 区块（W1）。
+
+    四个 `kind`（`explain` / `memorize` / `drill` / `exam_strategy`）**每一个都必须落到页面**：
+    `exam_strategy` 的 `generator.prompt_id` 就是 `stage_plan`、`evidence_refs` 是
+    `knowledge-model:exam`，因此它的落点是与 `stage_plan[]` 同一个课程级页面（`plan.md`）。
+    旧实现不渲染它，于是 248 字的应试策略既不在任何页面上、也不在 `_page_reached_problems()`
+    的对账里 —— 「AI 块没落到页面就失败关闭」只覆盖 3/4 个 kind。
+
+    `text_md` 作为**普通段落**呈现（不是 `>` 引用块）：引用块受 `MAX_BLOCKQUOTE_CHARS = 80` 与
+    题文特征双向约束，而这段课程级策略必然含「单选题 / 简答题 / 材料题」等题型词。
+    """
+    strategies = [block for block in content.get("blocks") or [] if block.get("kind") == "exam_strategy"]
+    if not strategies:
+        return []
+    out = ["## 应试策略", "", "以下策略由 AI 依据考纲题型整理，是考场作答纪律而非官方评分标准：", ""]
+    for block in strategies:
+        out.append(str(block.get("text_md") or "").strip())
+        out.append("")
+        out.append(_ai_footnote(block))
+        out.append("")
+    return out
 
 
 def _render_plan(
@@ -282,6 +392,9 @@ def _render_plan(
             out.append("")
         out.append(_ai_footnote(stage))
         out.append("")
+
+    # 课程级 `exam_strategy` 块（W1）：与 `stage_plan[]` 同一个课程级页面，且必须真的落到页面上
+    out.extend(_exam_strategy_block(content))
 
     out.extend(
         [
@@ -421,9 +534,7 @@ def _render_practice(
 def _render_review(
     code: str,
     evidence: dict[str, Any],
-    model: dict[str, Any],
     content: dict[str, Any],
-    existing_text: str,
     manual_blocks: dict[str, str],
 ) -> str:
     """`review.md`（AI 备考层）：`review_schedule` 的 30 / 14 / 7 三档排程，或命名缺口。
@@ -522,10 +633,8 @@ def _render_review(
 
 
 def _render_chapter_page(
-    code: str,
     chapter: dict[str, Any],
     blocks_by_point: dict[str, dict[str, dict[str, Any]]],
-    manual_blocks: dict[str, str],
     *,
     prev_chapter: dict[str, Any] | None = None,
     next_chapter: dict[str, Any] | None = None,
@@ -732,11 +841,10 @@ def render_course_pages(root: Path, code: str, *, target_dir: Path | None = None
     _write("practice.md", _render_practice(code, evidence, model, content))
 
     # 6. review.md（AI 备考层：30/14/7 排程或命名缺口 + manual:schedules 回填）
-    rev_text = _read_existing("review.md")
     _write(
         "review.md",
         _render_review(
-            code, evidence, model, content, rev_text, get_existing_manual_blocks(out_dir / "review.md", repo_course_dir / "review.md")
+            code, evidence, content, get_existing_manual_blocks(out_dir / "review.md", repo_course_dir / "review.md")
         ),
     )
 
@@ -744,16 +852,13 @@ def render_course_pages(root: Path, code: str, *, target_dir: Path | None = None
     chapters = model.get("chapters", [])
     for i, ch in enumerate(chapters):
         fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
-        ch_text = _read_existing(f"knowledge/{fname}")
         prev_ch = chapters[i - 1] if i > 0 else None
         next_ch = chapters[i + 1] if i < len(chapters) - 1 else None
         _write(
             f"knowledge/{fname}",
             _render_chapter_page(
-                code,
                 ch,
                 blocks_by_point,
-                extract_manual_blocks(ch_text),
                 prev_chapter=prev_ch,
                 next_chapter=next_ch,
             ),

@@ -136,6 +136,14 @@
 
 <!-- ai-block  | generator=agent/stage_plan.v1 | evidence_refs=knowledge-model:chapters | review_state=machine_draft -->
 
+## 应试策略
+
+以下策略由 AI 依据考纲题型整理，是考场作答纪律而非官方评分标准：
+
+应试作答要严格遵循先易后难原则：拿到试卷后先通览试题结构与题型排布，单选题务必精准审题，抓住题干核心关键词快速锁定正确选项，排除混淆干扰项；简答题审题时要明确设问指向与核心内涵，分点作答、条理清晰，先亮出核心论断再展开阐述，确保答题核心关键词突出醒目；材料题作答切忌脱离材料空发议论，必须采用观点加材料的结合方式，先从材料中提炼反映的问题、事实或做法，再紧扣相关理论知识进行针对性分析与阐述；合理分配作答节奏，答题过程务必预留充裕时间逐题核查答题卡填涂与题目遗漏，确保卷面整洁美观、字迹清晰工整。
+
+<!-- ai-block course/exam_strategy | generator=agent/stage_plan.v1 | evidence_refs=knowledge-model:exam | review_state=machine_draft -->
+
 ## 按章学习序列
 
 | 章节 | 学习任务 | 自检方式 | 完成标记 |

@@ -371,10 +371,26 @@ def _manual_tree(path: Path, label: str) -> tuple[int | None, list[dict], list[s
     返回第三项是为了让「台账被静默清空」不可能发生（C2-012）：旧实现跳过不匹配的 `####` 行、
     且在找不到 `## 章节知识树` 时返回空列表，于是 `diff_vs_manual` 变成 `[]`、`manual_only` 检查失去对象。
     调用方必须对「解析不了的行」与「找不到锚点」都失败关闭。
+
+    **锚点缺失但编号元素仍在 → 直接失败关闭**（W3）：把标题改名为 `## 知识点总览` 而 61 条 `####` 元素
+    原地不动，与「本课没有手工参照」在返回值上完全同形，于是 `manual_only` 对这份输入永远空转。
+    「有锚点但无元素」仍是诚实的命名缺口（15043 / 15044 的真实形态），不在此列。
     """
     lines = _physical_lines(path)
     start = next((index for index, line in enumerate(lines) if line.strip() == MANUAL_TREE_HEADING), None)
     if start is None:
+        orphaned = [
+            index + 1
+            for index, line in enumerate(lines)
+            if line.strip().startswith(MANUAL_ELEMENT_PREFIX)
+            and MANUAL_ELEMENT_RE.match(line.strip()[len(MANUAL_ELEMENT_PREFIX):])
+        ]
+        if orphaned:
+            raise ValueError(
+                f"{label}: 含 {len(orphaned)} 条编号 `####` 考点行（{orphaned[0]}–{orphaned[-1]}），"
+                f"但没有手工知识树锚点 `{MANUAL_TREE_HEADING}`（标题被改名或删除？）"
+                "（台账不得静默清空：锚点缺失 + 元素仍在 = 手工参照无法比对）"
+            )
         return None, [], []
 
     end = next((index for index in range(start + 1, len(lines)) if lines[index].startswith("## ")), len(lines))
@@ -412,6 +428,14 @@ def _manual_tree(path: Path, label: str) -> tuple[int | None, list[dict], list[s
 
 
 def _manual_reference(root: Path, code: str) -> tuple[dict | None, list[dict]]:
+    """手工页 →（`manual_reference`, 元素列表）。三种输入各自失败关闭或如实留痕：
+
+    - 锚点缺失 + 有编号 `####` 元素 → `ValueError`（W3：手工参照无法比对，台账不得静默清空）；
+    - 锚点内部有无法解析的行 → `ValueError`（C2-012，带行号）；
+    - 有锚点但无 `####` 元素 = 该页显式声明「章节知识树」为命名缺口（15043 / 15044 的真实形态），
+      这不是解析失败，`manual_reference` 保持 `null`、`diff_vs_manual` 写 `[]` 是诚实结果；
+    - 无手工页 → `(None, [])`。
+    """
     path = root / COURSE_PAGES_DIR / code / "index.md"
     if not path.is_file():
         return None, []
@@ -423,8 +447,6 @@ def _manual_reference(root: Path, code: str) -> tuple[dict | None, list[dict]]:
             "（台账不得静默清空；编号须为 `N.N 标题` 或改用 manual: 块）"
         )
     if not elements:
-        # 有锚点但无 `####` 元素 = 该页显式声明「章节知识树」为命名缺口（15043 / 15044 的真实形态）。
-        # 这不是解析失败，`manual_reference` 保持 `null`、`diff_vs_manual` 写 `[]` 是诚实结果。
         return None, []
     return {"path": label, "locator": f"L{line}", "point_count": len(elements)}, elements
 
