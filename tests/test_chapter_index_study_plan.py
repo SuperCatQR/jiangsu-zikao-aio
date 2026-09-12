@@ -1,7 +1,8 @@
 """Chapter-name index on syllabus.md must match plan.md sequences (official TOC names)."""
 from pathlib import Path
 import re
-import subprocess
+
+from tests.baseline_contract import assert_page_work_keeps_baseline_intact
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSES = ROOT / "content" / "jiangsu" / "courses"
@@ -141,12 +142,6 @@ def test_15040_plan_keeps_named_gaps_and_rejects_invented_schedule():
     assert "30 天" not in plan
     assert not re.search(r"\d{13}", plan)
     assert "978-" not in plan
-    result = subprocess.run(
-        ["git", "diff", "--", "ops/jiangsu/source-links.baseline.json"],
-        cwd=ROOT,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    assert result.stdout == ""
-    assert result.stderr == ""
+    # B2-D4：原断言是「baseline 零 git diff」。实质意图 = 读页面这条路**不得写** baseline。
+    # 保留该意图（写自由 + 语义契约），去掉与合法刷新冲突的形式约束。见 tests/baseline_contract.py。
+    assert_page_work_keeps_baseline_intact(lambda: _read("15040", "plan.md"))
