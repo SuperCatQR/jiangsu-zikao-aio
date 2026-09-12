@@ -15,9 +15,9 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "把第一章、第二章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
+      "goal": "把第一章、第二章、第三章、第四章的骨架和考纲要求层级读通，能说出这一范围里每章讲的是哪一段历史、对应哪几个考核点。",
       "inputs": [
-        "本轮范围的考纲章节目录（第一章、第二章）与各章「学习目的与要求」",
+        "本轮范围的考纲章节目录（第一章、第二章、第三章、第四章）与各章「学习目的与要求」",
         "本课知识模型列出的相关考核点及其要求层级（识记 / 领会）"
       ],
       "how": [
@@ -26,7 +26,7 @@
         "把读不通、与既有印象冲突的点单独记在待查清单上，不急着下结论。"
       ],
       "outputs": [
-        "第一章、第二章的关键词骨架表",
+        "第一章、第二章、第三章、第四章的关键词骨架表",
         "考核点层级标注清单",
         "待查问题清单"
       ],
@@ -46,9 +46,9 @@
     },
     {
       "stage": "精读",
-      "goal": "逐章把第一章、第二章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
+      "goal": "逐章把第一章、第二章、第三章、第四章的考核点讲成自己的话，识记点能准确复述，领会点能说清依据与逻辑。",
       "inputs": [
-        "本轮范围（第一章、第二章）的章、节、考核点结构",
+        "本轮范围（第一章、第二章、第三章、第四章）的章、节、考核点结构",
         "本课 AI 讲解块的要点梳理与易错点",
         "本课 AI 记忆辅助块里的口诀、对比与串联"
       ],
@@ -59,7 +59,7 @@
         "把讲不顺的点标回待查清单，下一轮只补这些点。"
       ],
       "outputs": [
-        "第一章、第二章的逐章复述笔记",
+        "第一章、第二章、第三章、第四章的逐章复述笔记",
         "同节易混点对比表",
         "仍然讲不顺的遗留点清单"
       ],
@@ -145,14 +145,14 @@
     },
     {
       "stage": "复盘",
-      "goal": "回顾第一章、第二章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
+      "goal": "回顾第一章、第二章、第三章、第四章的知识骨架与自己的薄弱点，形成一个可执行的上考场前检查单。",
       "inputs": [
-        "第一章、第二章的关键词骨架表",
+        "第一章、第二章、第三章、第四章的关键词骨架表",
         "错题表与对照卡",
         "本课来源页登记的缺口清单"
       ],
       "how": [
-        "对照骨架表复述第一章、第二章的主线，哪一章卡住就回看该章要点。",
+        "对照骨架表复述第一章、第二章、第三章、第四章的主线，哪一章卡住就回看该章要点。",
         "把仍不确定的考核点列入缺口清单，明确标为「待核验」，不要凭印象补一个说法。",
         "写下上考场前的检查单：先做哪类题、主观题怎么分点、留出多少时间回看。",
         "把清单与练习记录归档，便于下一轮复习直接接手。"
@@ -1886,6 +1886,2058 @@
       "text_md": "戊戌维新运动期间，维新派与守旧派围绕变法展开了公开的思想交锋。试述这场论战的主要焦点，并说明它的历史意义与局限。",
       "question_type": "论述题",
       "answer_md": "维新派与守旧派的论战是戊戌维新运动期间的思想交锋，焦点集中在三个方面。\n（1）要不要变法。维新派以民族危机为据，主张不变则亡；守旧派以祖宗之法不可变为据，主张维持旧制。\n（2）要不要兴民权、设议院。维新派主张开议院、行君主立宪；守旧派认为民权会动摇君权与纲常。\n（3）要不要废八股、改科举、兴新学。维新派主张培养实用人才，守旧派维护旧的教育与选官制度。\n这场论战的意义在于：它第一次把制度变革的议题公开化，推动了近代思想启蒙。同时也应看到，论战使维新主张得到传播，却未能改变实际的力量对比，这是变法最终失败的重要原因。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "### 要点梳理\n- 兴中会是孙中山在海外华侨中建立的第一个革命团体，它的成立标志着孙中山革命活动的开始，也标志着中国出现了第一个立志推翻清朝统治的团体。\n- 兴中会的成员以华侨、会党与部分进步知识分子为主，活动方式包括宣传、联络与组织武装起事。\n- 它的纲领明确提出推翻清朝专制统治、建立合众政府，把反满与建立新式国家联系在一起。\n- 兴中会的意义在于开风气：此前的改良主张走的是上书与变法，而它第一次选择了革命的道路。\n- 考纲以识记层级要求本条，作答时抓住人物、团体名称与团体性质三个要素。\n\n### 易错点\n- 把兴中会与后来的中国同盟会混同：前者是孙中山早期建立的地方性革命团体，后者是全国性的革命政党，成立更晚、联合更广。\n- 把兴中会说成改良派团体：它主张推翻专制统治，与主张变法的维新派路线不同。\n- 只记住成立事实而漏掉「第一个革命团体」这一性质判断。\n"
+    },
+    {
+      "block_id": "15043-ch03-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "**关键词**：孙中山、海外华侨、第一个革命团体。\n**口诀**：「兴中会，兴中华——第一个要革命不要变法的团体」。\n**对比**：兴中会是地方性革命团体，中国同盟会是全国性革命政党，前者在先、后者联合而成。\n**串联**：孙中山建立团体 → 明确推翻专制、建立合众政府 → 开革命道路之先，三步记住它的地位。"
+    },
+    {
+      "block_id": "15043-ch03-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "孙中山在辛亥革命准备时期建立的第一个革命团体是（ ）。\nA. 兴中会\nB. 中国同盟会\nC. 强学会\nD. 保路同志会",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项正确，兴中会是孙中山在海外华侨中建立的第一个革命团体，标志着其革命活动的开始，也标志着中国出现了第一个立志推翻清朝统治的团体。\nB 项中国同盟会成立更晚，是多个革命团体联合而成的全国性革命政党。\nC 项强学会是维新派组织，主张变法而非革命。\nD 项保路同志会是保路风潮中的民众组织，与革命团体不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "### 要点梳理\n- 这一考核点要求掌握辛亥革命准备时期宣传民主革命思想的代表性人物及其著作。\n- 这些人物多在留学日本期间或回国后，通过撰写文章、创办刊物、编译书籍的方式传播革命主张。\n- 他们的著作内容集中在几个方面：揭露清朝统治的腐朽，宣扬民族独立，主张建立共和制度。\n- 这些宣传把革命从少数人的密谋变成一种有社会影响的主张，为革命团体的联合与起事准备了舆论条件。\n- 考纲以识记层级要求本条，作答时人物与著作必须严格对应，不能互换。\n\n### 易错点\n- 人物与著作张冠李戴：这是本条最容易失分的地方，应按「人物—著作」成对记忆。\n- 把革命宣传家与维新派宣传家混同：前者主张推翻清朝、建立共和，后者主张君主立宪。\n- 把宣传著作当成官方文件：它们属于个人著述与报刊文章，不具有官方地位。\n"
+    },
+    {
+      "block_id": "15043-ch03-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "**记忆法**：做「人物—著作」两列表，成对背，绝不单独记名字。\n**口诀**：「人配书，书配人」。\n**对比**：革命宣传家主张推翻清朝、建立共和；维新派宣传家主张君主立宪，两类文章方向不同。\n**串联**：留学与办报 → 传播革命主张 → 为团体联合与起事准备舆论，这条链说明宣传的作用。"
+    },
+    {
+      "block_id": "15043-ch03-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "辛亥革命准备时期，宣传民主革命思想的代表人物及其著作（ ）。\nA. 以创办刊物、编译书籍等方式传播推翻专制、建立共和的主张\nB. 主张君主立宪，希望通过变法改良政治\nC. 以官方文告的形式发布革命纲领\nD. 只在学校内部讲授，不面向社会传播",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项指出了这类宣传的内容与方式：通过撰写文章、创办刊物、编译书籍传播革命主张，把革命从少数人的密谋变成有社会影响的主张。\nB 项把革命宣传家与维新派宣传家混同，主张方向不同。\nC 项错误，他们的著述与报刊文章属于个人与民间言论，不具有官方地位。\nD 项与事实不符，他们恰恰是面向社会广泛传播。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "### 要点梳理\n- 日俄战争是日本与俄国为争夺在中国东北的利益而进行的战争，战场却主要在中国领土上。\n- 这场战争暴露了清政府连自己领土上的战事都无法阻止的处境，主权受损的程度十分明显。\n- 战争的结果是日本取代俄国在中国东北取得优势地位，列强在华的势力格局因此重排。\n- 对中国社会的影响是双重的：一方面刺激了民族危机感，另一方面使部分人误以为立宪制度能救中国，从而推动了清末新政与预备立宪。\n- 考纲以识记层级要求本条，作答时要点明交战双方、战场所在与结果。\n\n### 易错点\n- 把日俄战争说成中国参与的战争：清政府宣布中立，战场却在中国境内，这正是主权受损的表现。\n- 把战争对手记成别的国家：交战双方是日本与俄国。\n- 只记战争本身而漏掉它对清末新政与立宪思潮的刺激作用。\n"
+    },
+    {
+      "block_id": "15043-ch03-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "**关键词**：日俄交战、战场在中国东北、清政府中立。\n**口诀**：「两国打仗，打在别人家」。\n**对比**：这是日俄之间的战争，不是中国参战；主权受损正体现在「战场在自家、自己却中立」。\n**串联**：战争结果 → 日本取代俄国在东北的优势 → 刺激立宪思潮与清末新政。"
+    },
+    {
+      "block_id": "15043-ch03-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "关于日俄战争，下列说法正确的是（ ）。\nA. 清政府参战并取得胜利\nB. 交战双方为日本与俄国，战场主要在中国领土上\nC. 战争因中国要求收回东北而起\nD. 战争未对中国的社会思潮产生影响",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项准确说明了交战双方与战场位置：这是日本与俄国为争夺在中国东北的利益而进行的战争，战场却主要在中国境内，反映出清政府连自己领土上的战事都无法阻止。\nA 项错误，清政府宣布中立。\nC 项与战争起因不符。\nD 项忽略了战争对民族危机感与立宪思潮的刺激作用。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "### 要点梳理\n- 中国同盟会是孙中山联合多个革命团体建立的全国性资产阶级革命政党，它的成立使革命力量由分散走向联合。\n- 同盟会制定并公布了明确的革命纲领，把民族、民权、民生三大主张系统化，作为共同的奋斗目标。\n- 组织上设有统一的领导机构与机关刊物，并在国内外设立分支机构，具备了政党的基本形态。\n- 同盟会成立后，一面继续宣传革命主张，一面联络会党与新军，多次发动武装起义，推动了革命形势的发展。\n- 考纲以识记层级要求本条，作答时要点出名称、性质、纲领与组织形式。\n\n### 易错点\n- 把同盟会说成兴中会的改名：它是多个革命团体联合而成的全国性组织，不是单一团体的延续。\n- 把同盟会纲领与维新派主张混同：同盟会主张以革命手段推翻清朝统治、建立民国，不是君主立宪。\n- 只记成立而漏掉「第一个全国性资产阶级革命政党」这一性质。\n"
+    },
+    {
+      "block_id": "15043-ch03-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "**关键词**：全国性、资产阶级革命政党、三民主义纲领、机关刊物。\n**口诀**：「联合起来才有党」。\n**对比**：同盟会由多个团体联合而成，不是兴中会改名；主张革命，不是君主立宪。\n**串联**：联合团体 → 公布纲领 → 设机构办刊物 → 联络会党新军多次起事，四步是它的完整形态。"
+    },
+    {
+      "block_id": "15043-ch03-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L242"
+      ],
+      "text_md": "中国同盟会的性质是（ ）。\nA. 由兴中会改名而来的地方性团体\nB. 全国性的资产阶级革命政党\nC. 主张君主立宪的改良派组织\nD. 清政府设立的官方机构",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项正确，同盟会由多个革命团体联合建立，制定了系统的革命纲领，设有统一领导机构与机关刊物，具备政党的基本形态。\nA 项错误，它不是单一团体的延续或改名。\nC 项把主张革命的组织说成主张君主立宪，方向相反。\nD 项与事实不符，它是革命组织。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L244"
+      ],
+      "text_md": "### 要点梳理\n- 清末「新政」是清政府在统治危机加深的情况下推行的一系列改革措施，涉及编练新军、兴办新式学堂、奖励实业、改革官制等。\n- 推行新政的初衷是维护清朝统治，而非改变专制制度本身，因此改革始终以不触动皇权为前提。\n- 改革反而产生了出乎意料的结果：新式学堂与留学培养出新型知识分子，新军成为革命党人活动的场所，实业发展壮大了新的社会力量。\n- 「破产」的表现在于：这些措施既没能挽救统治危机，也没能满足社会对制度变革的要求，反而加速了革命的到来。\n- 理解本条要抓住「主观目的与客观后果相反」这一对矛盾。\n\n### 易错点\n- 把清末新政说成清政府主动的民主改革：它不触动专制制度，目的是维护统治，不是交出权力。\n- 把新政与戊戌变法混为一谈：戊戌变法由维新派推动、以改变制度为目标；新政由清政府主持、以维持皇权为前提。\n- 只讲新政的措施而漏掉「破产」这一结论，就答不出考纲要求的判断。\n"
+    },
+    {
+      "block_id": "15043-ch03-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L244"
+      ],
+      "text_md": "**关键词**：清政府主持、不触动皇权、编练新军、兴办学堂、奖励实业。\n**口诀**：「想保自己的位子，结果挖了自己的墙脚」。\n**对比**：新政由清政府主持、以维持皇权为前提；戊戌变法由维新派推动、以改变制度为目标。\n**串联**：新式学堂出新型知识分子 → 新军成革命党活动场所 → 实业壮大新社会力量 → 加速革命，这条反噬链是本条核心。"
+    },
+    {
+      "block_id": "15043-ch03-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L244"
+      ],
+      "text_md": "清末新政是清政府为挽救统治危机而推行的改革，其主要措施涉及多个方面。请简述清末「新政」的主要措施，并说明它为什么被称为「破产」。",
+      "question_type": "简答题",
+      "answer_md": "（1）主要措施：编练新军，兴办新式学堂并派遣留学，奖励实业，改革官制。\n（2）推行初衷是维护清朝统治，而非改变专制制度，改革始终以不触动皇权为前提。\n（3）「破产」的原因在于改革产生了与初衷相反的结果：新式学堂与留学培养出新型知识分子，新军成为革命党人活动的场所，实业发展壮大了新的社会力量。\n（4）这些措施既没能挽救统治危机，也没能满足社会对制度变革的要求，反而加速了革命的到来，因此说它「破产」。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L244"
+      ],
+      "text_md": "### 要点梳理\n- 资产阶级革命派的阶级基础是近代中国民族资产阶级，他们要求摆脱列强与封建势力的双重束缚，获得独立发展的空间。\n- 其骨干力量则是新型知识分子：他们在新式学堂与留学中接受了近代政治学说，成为革命思想的传播者与组织者。\n- 此外还有部分会党成员、新军官兵与华侨，他们提供了组织网络与起事的实际力量。\n- 这一构成决定了革命派的特点：有明确的政治目标，但缺乏广泛的群众基础与严密的组织纪律。\n- 考纲以领会层级要求本条，作答时要分别说明阶级基础与骨干力量，并点出这一构成的局限。\n\n### 易错点\n- 把阶级基础与骨干力量混为一谈：前者指民族资产阶级这一阶级，后者指新型知识分子这一群体。\n- 把农民阶级写成革命派的阶级基础：农民是反封建的主力，但革命派的阶级基础是民族资产阶级。\n- 只答构成而不答局限，就会丢掉领会层级要求的分析成分。\n"
+    },
+    {
+      "block_id": "15043-ch03-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L244"
+      ],
+      "text_md": "**记忆法**：两问分记——阶级基础问「哪个阶级」，骨干力量问「哪群人」。\n**口诀**：「基础是民族资产阶级，骨干是新型知识分子」。\n**对比**：农民是反封建的主力，但不是革命派的阶级基础，两者不要互换。\n**串联**：阶级基础决定政治目标 → 骨干力量承担宣传组织 → 但缺乏群众基础与严密纪律，这就是它的局限。"
+    },
+    {
+      "block_id": "15043-ch03-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L244"
+      ],
+      "text_md": "辛亥革命时期，资产阶级革命派形成了自己的社会基础与骨干队伍。请简述资产阶级革命派的阶级基础和骨干力量，并指出这一构成带来的局限。",
+      "question_type": "简答题",
+      "answer_md": "（1）阶级基础是近代中国民族资产阶级，他们要求摆脱列强与封建势力的双重束缚，获得独立发展的空间。\n（2）骨干力量是新型知识分子，他们在新式学堂与留学中接受了近代政治学说，成为革命思想的传播者与组织者。\n（3）此外还有部分会党成员、新军官兵与华侨，提供了组织网络与起事的实际力量。\n（4）局限在于：革命派有明确的政治目标，但缺乏广泛的群众基础与严密的组织纪律，没有解决农民的土地问题。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 保路风潮是清政府宣布铁路干线收归国有、并准备借外债修筑后，四川等地民众发起的反抗运动。\n- 风潮的核心诉求是反对把已由商民集股修建的铁路路权收归国有并转手抵借外债，实质是保卫路权与民利。\n- 参加者覆盖士绅、商人和普通民众，具有较广的社会基础，成都等地出现了大规模的请愿与罢市活动。\n- 清政府调兵镇压，使矛盾迅速激化，保路风潮因此成为武昌起义的直接导火线之一。\n- 考纲以识记层级要求本条，作答时要点明起因、诉求与它在革命进程中的位置。\n\n### 易错点\n- 把保路风潮说成单纯的商人利益之争：它同时具有反对外债控制、维护国家利权的性质。\n- 把保路风潮与武昌起义混为一件事：前者是民众运动，后者是武装起义，后者受前者推动。\n- 忽略四川是风潮最激烈的地区这一事实。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：铁路收归国有、借外债、保卫路权、四川最激烈。\n**口诀**：「路是我的，债是你的」。\n**对比**：保路风潮是民众运动，武昌起义是武装起义；前者推动后者，但两件事不能合并。\n**串联**：宣布国有 → 民众反抗 → 清政府调兵镇压 → 矛盾激化 → 成为起义导火线。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "保路风潮中民众的核心诉求是（ ）。\nA. 要求增加铁路工人的工资\nB. 反对把商民集股修建的铁路路权收归国有并转手抵借外债\nC. 要求清政府立即实行君主立宪\nD. 要求废除一切不平等条约",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项点出了风潮的实质：清政府宣布铁路干线收归国有并准备借外债修筑，民众反抗的正是路权与民利的丧失。\nA 项把斗争目标缩小为工资问题。\nC 项把保路诉求换成政治制度主张，两者不同。\nD 项扩大了诉求范围，风潮针对的是铁路路权这一具体事项。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 黄花岗起义是同盟会在广州发动的武装起义，因起义者牺牲惨重、事后收葬于黄花岗而得名。\n- 起义由同盟会领导，参加者多为革命党骨干，起事计划在筹备阶段即遭破坏，仍按原定时间发动。\n- 起义失败使同盟会损失了一批重要骨干，但也以牺牲激励了更多人的革命意志。\n- 它是同盟会多次起事中最具影响的一次，说明革命党人采取的是在中心城市发动武装起义的道路。\n- 考纲以识记层级要求本条，作答时要点明领导团体、地点与结果。\n\n### 易错点\n- 把黄花岗起义说成武昌起义：二者地点不同，前者在广州且失败，后者在武昌并引发全国响应。\n- 把起义说成取得胜利：它是一次失败的起义，其意义在于精神激励而非军事成果。\n- 把领导力量记成清政府新军内部的自发行动：它由同盟会组织。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：同盟会领导、广州、失败、黄花岗得名。\n**口诀**：「广州打的，黄花岗埋的」。\n**对比**：黄花岗起义在广州且失败，武昌起义在武昌且成功引发全国响应，地点与结局都不同。\n**串联**：骨干损失惨重 → 精神激励更多人 → 说明走的是中心城市武装起义的道路。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "同盟会在广州发动、事后收葬于黄花岗的武装起义（ ）。\nA. 取得了胜利并建立了革命政权\nB. 由清政府新军内部自发发动\nC. 起义失败，但以牺牲激励了更多人的革命意志\nD. 由保路同志会组织领导",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\n解析：C 项既说明了结局也说明了意义：起义失败使同盟会损失一批骨干，但激励了更多人的革命意志。\nA 项与事实不符，这次起义失败。\nB 项错误，起义由同盟会组织领导。\nD 项把领导力量记错，保路同志会与本次起义无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 武昌起义是革命党人在湖北新军中发动并取得成功的武装起义，它标志着辛亥革命的开端。\n- 起义得以成功，一是革命党人在新军中长期宣传组织积累了力量，二是保路风潮与清政府的镇压激化了矛盾，三是起义后各省相继响应。\n- 起义成功后成立了地方革命政权，并推动各省宣布独立，清朝统治迅速瓦解。\n- 它的历史地位在于：把此前多次失败的局部起事转变为全国规模的革命运动。\n- 考纲以识记层级要求本条，作答时要点明地点、基本力量与历史地位。\n\n### 易错点\n- 把武昌起义等同于辛亥革命的全程：它是开端与起点，革命还包括此后的建立民国与清帝退位。\n- 忽略新军这一基本力量，把起义说成纯粹的民众暴动。\n- 把起义成功的原因只归结为偶然事件，忽略长期的组织准备。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：湖北新军、革命党人发动、辛亥革命开端。\n**口诀**：「新军里埋的火种，武昌点着了」。\n**对比**：武昌起义是辛亥革命的开端，不是全程；建立民国、清帝退位都在其后。\n**串联**：长期在新军宣传组织 → 保路风潮激化矛盾 → 起义成功 → 各省响应 → 清朝瓦解。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "武昌起义的历史地位在于（ ）。\nA. 标志着辛亥革命的胜利结束\nB. 标志着辛亥革命的开端，并推动各省响应\nC. 由清政府主动发起的改革举措\nD. 与保路风潮没有关联",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了它的定位：起义由革命党人在湖北新军中发动并成功，成为辛亥革命的开端，此后各省相继响应，清朝统治迅速瓦解。\nA 项把开端说成结束，建立民国与清帝退位都在其后。\nC 项与事实相反。\nD 项忽略了保路风潮与清政府镇压对矛盾的激化作用。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 中华民国南京临时政府是在武昌起义后各省响应、需要统一中央政权的情况下成立的。\n- 孙中山就任临时大总统，组成以革命党人为主、容纳立宪派与旧官僚的政府机构。\n- 它颁布了具有资产阶级共和国宪法性质的文件，宣布主权属于国民全体，确立共和政体。\n- 它是中国历史上第一个资产阶级共和国性质的政权，结束了延续两千多年的君主专制制度。\n- 同时也应看到，它在财政与军事上受制于列强与旧势力，存在时间很短。\n\n### 易错点\n- 把它说成完全由革命党人组成的政府：机构中同时容纳了立宪派与旧官僚，这是它妥协性的表现。\n- 把它的成立时间与武昌起义混同：起义在前，政府成立在后。\n- 只讲成立而漏掉它的共和国性质与历史地位。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：孙中山任临时大总统、共和政体、第一个资产阶级共和国政权。\n**口诀**：「共和国的头一个」。\n**对比**：政府机构以革命党人为主，同时容纳立宪派与旧官僚——这正是它妥协性的表现。\n**串联**：各省响应需要统一中央 → 成立临时政府 → 颁布宪法性文件 → 结束君主专制。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "中华民国南京临时政府的成立（ ）。\nA. 标志着中国历史上第一个资产阶级共和国性质政权的建立\nB. 由政府中完全由革命党人组成的机构产生\nC. 结束了列强在华的一切特权\nD. 在武昌起义之前即已筹备完成",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项点明了它的历史地位：以共和政体取代君主专制，结束了延续两千多年的君主专制制度。\nB 项不准确，机构以革命党人为主，同时容纳立宪派与旧官僚。\nC 项与事实不符，它反而承认了不平等条约与既得利益。\nD 项时序颠倒，政府成立于起义之后。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 《中华民国临时约法》是南京临时政府颁布的具有资产阶级共和国宪法性质的文件。\n- 它的核心内容是以根本法的形式确认主权属于国民全体，规定国民享有各项自由权利与义务。\n- 政体设计上采用三权分立原则，并改总统制为责任内阁制，以限制行政权力。\n- 它的历史意义在于用法律形式否定了君主专制，使民主共和的观念获得制度表达。\n- 局限在于它未能真正约束此后的北洋军阀统治，很快被践踏。\n\n### 易错点\n- 把《临时约法》说成清政府颁布的文件：它由南京临时政府颁布，是对专制制度的否定。\n- 把它的政体设计与美国宪法完全等同：它采用三权分立，但改总统制为责任内阁制，是针对当时局势的设计。\n- 只记内容而漏掉「未能约束北洋军阀」这一局限。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：主权在民、三权分立、责任内阁制、宪法性质。\n**口诀**：「用根本法把皇帝的制度废掉」。\n**对比**：它采用三权分立，但把总统制改为责任内阁制，是针对当时局势的设计，不等于照搬美国宪法。\n**串联**：确认主权在民 → 规定国民权利 → 设置权力制衡 → 却很快被北洋军阀践踏，两面都要记。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "《中华民国临时约法》的内容与性质是（ ）。\nA. 以根本法形式确认主权属于国民全体，具有资产阶级共和国宪法性质\nB. 由清政府颁布，旨在维持君主专制\nC. 完全照搬美国宪法，采用总统制\nD. 颁布后有效约束了北洋军阀的统治",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项准确概括了它的性质与核心内容：确认主权在民、规定国民权利、采用三权分立，用法律形式否定君主专制。\nB 项把颁布者与宗旨都记错。\nC 项不准确，它虽采用三权分立，但改总统制为责任内阁制。\nD 项与事实相反，它很快被践踏。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 袁世凯在辛亥革命后窃取了临时大总统职位，并逐步集中权力、破坏共和制度。\n- 他解散国会、废弃《临时约法》，以武力镇压反对力量，为复辟帝制扫清障碍。\n- 复辟帝制的活动包括制造舆论、操纵所谓国民代表大会的投票，最终宣布恢复君主制。\n- 复辟遭到全国反对，护国运动兴起，帝制很快被迫取消，袁世凯本人也在失败中死去。\n- 这一过程说明，民主共和已成为不可逆转的时代潮流，逆流而行必然失败。\n\n### 易错点\n- 把袁世凯与北洋军阀中的其他人混同：本条要点是袁本人窃取权力并复辟帝制这一过程。\n- 把复辟说成得到广泛支持：所谓支持来自操纵与压制，全国舆论整体反对。\n- 只记复辟失败而漏掉「民主共和不可逆转」这一结论性判断。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：窃取职位、解散国会、废弃约法、复辟帝制、失败。\n**口诀**：「集权 → 拆共和 → 当皇帝 → 垮台」。\n**对比**：所谓支持复辟的「国民代表大会」来自操纵与压制，全国舆论整体反对。\n**串联**：复辟遭反对 → 护国运动兴起 → 帝制取消 → 说明民主共和不可逆转。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "袁世凯复辟帝制的活动及其结局表明（ ）。\nA. 君主制在中国仍有广泛的社会基础\nB. 复辟得到全国一致拥护\nC. 民主共和已成为不可逆转的时代潮流，逆流而行必然失败\nD. 复辟失败与其个人能力无关，纯属偶然",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\n解析：C 项是本条要得出的结论：复辟遭到全国反对，护国运动兴起，帝制被迫取消，说明民主共和已不可逆转。\nA 项与事实相反，复辟缺乏社会基础。\nB 项把操纵与压制下的所谓支持当成真实拥护。\nD 项回避了逆潮流而动这一根本原因。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 「二次革命」是袁世凯破坏共和、刺杀革命党领导人并派兵南下之后，革命党人发动的武装反抗。\n- 起因是宋教仁案与善后大借款：前者暴露袁氏消除异己的手段，后者暴露其绕过国会举借外债、扩充军力的意图。\n- 战争主要在南方数省展开，革命党人仓促应战，力量分散，很快失败。\n- 失败后孙中山等人被迫流亡海外，北洋军阀的统治进一步巩固。\n- 考纲以识记层级要求本条，作答时要点明起因、性质与结果。\n\n### 易错点\n- 把「二次革命」与护法运动混同：前者反对袁世凯的独裁，后者反对段祺瑞拒绝恢复约法与国会。\n- 把这场斗争说成革命党人主动发动的进攻：它是在袁氏武力压迫下的反抗。\n- 忽略失败后北洋军阀统治进一步巩固这一后果。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：宋教仁案、善后大借款、南方数省、失败。\n**口诀**：「先刺杀，再借债，才逼出二次革命」。\n**对比**：二次革命反对袁世凯独裁；护法运动反对段祺瑞拒绝恢复约法与国会，对手不同。\n**串联**：袁氏破坏共和 → 革命党人仓促应战 → 失败流亡 → 北洋统治进一步巩固。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "「二次革命」的直接起因是（ ）。\nA. 清政府宣布铁路国有\nB. 袁世凯破坏共和、刺杀革命党领导人并派兵南下\nC. 段祺瑞拒绝恢复《临时约法》与国会\nD. 列强掀起瓜分中国的狂潮",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项点出了起因：宋教仁案暴露袁氏消除异己的手段，善后大借款暴露其绕过国会扩充军力的意图，革命党人因此发动武装反抗。\nA 项是保路风潮的起因。\nC 项是护法运动针对的对象，时间更晚。\nD 项发生在更早时期。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "### 要点梳理\n- 护法运动是孙中山为维护《临时约法》与国会而发起的斗争，针对的是北洋军阀拒绝恢复约法与国会。\n- 运动以「护法」为旗帜，在南方建立政权并与北洋政府对抗，但所依靠的仍是西南地方军阀的力量。\n- 由于军阀的真实目的只是借护法之名保存与扩张自己的地盘，运动内部矛盾重重，孙中山屡遭排挤。\n- 运动最终失败，使孙中山认识到依靠军阀力量无法实现共和，这为他后来的转变准备了条件。\n- 护法运动的失败标志着旧民主主义革命的终结。\n\n### 易错点\n- 把护法运动的对象记成袁世凯：此时袁世凯已死，对手是掌握北京政府的北洋军阀。\n- 把运动失败归结为军事力量不足：根本原因是所依靠的军阀力量与护法目标并不一致。\n- 忽略「旧民主主义革命终结」这一历史定位。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "**关键词**：维护临时约法与国会、依靠西南军阀、失败、旧民主主义革命终结。\n**口诀**：「借军阀的兵，护约法的法——注定护不住」。\n**对比**：对手不是袁世凯（已死），而是掌握北京政府的北洋军阀。\n**串联**：屡遭排挤 → 认识到靠军阀无法实现共和 → 为后来转变准备条件 → 旧民主主义革命终结。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L248"
+      ],
+      "text_md": "护法运动失败的根本原因是（ ）。\nA. 军事力量不足\nB. 所依靠的西南军阀与护法目标并不一致\nC. 缺乏国际支持\nD. 斗争对象已经去世",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了根本原因：军阀只是借护法之名保存与扩张地盘，因此孙中山屡遭排挤，运动内部矛盾重重。\nA 项把根本原因归结为军事因素。\nC 项与本条要点无关。\nD 项反而说明斗争对象是掌握北京政府的北洋军阀，而非袁世凯。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch03-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch03-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L252"
+      ],
+      "text_md": "### 要点梳理\n- 南京临时政府的性质是资产阶级共和国性质的革命政权：它以共和政体取代君主专制，以根本法确认主权在民。\n- 其进步性在于结束了延续两千多年的君主专制制度，使民主共和的观念深入人心，并为民族资本主义的发展创造了条件。\n- 其局限性首先表现为妥协性：为换取清帝退位与列强承认，把政权让给了袁世凯。\n- 其次表现为对列强的软弱：承认不平等条约与既得利益，不敢触动列强在华特权。\n- 再次表现为脱离群众：没有解决农民的土地问题，因而缺乏广泛而坚实的社会基础。\n- 评价时要把握「进步性与局限性并存」这一总的判断，两面都要说。\n\n### 易错点\n- 只讲进步性而回避局限性：这是本条失分最集中的地方，必须两面作答。\n- 把妥协性说成策略上的偶然失误：它是民族资产阶级软弱性的必然表现。\n- 把「没有解决土地问题」看作枝节：脱离群众正是革命成果被窃取的根本原因之一。\n"
+    },
+    {
+      "block_id": "15043-ch03-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch03-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L252"
+      ],
+      "text_md": "**口诀**：评价抓住「一进步、三局限」——进步是结束君主专制，局限是妥协性、对列强软弱、脱离群众。\n**记忆法**：三条局限按对象记——对袁世凯妥协、对列强软弱、对农民疏远。\n**对比**：妥协不是偶然失误，而是民族资产阶级软弱性的必然表现。\n**串联**：不敢触动列强特权、不解决土地问题 → 缺乏坚实社会基础 → 成果终被窃取。"
+    },
+    {
+      "block_id": "15043-ch03-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch03-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L252"
+      ],
+      "text_md": "中华民国南京临时政府是中国历史上第一个资产阶级共和国性质的政权，但它存在的时间很短，成果也很快丧失。试述这一政权的性质、进步性与局限性。",
+      "question_type": "论述题",
+      "answer_md": "性质：南京临时政府是资产阶级共和国性质的革命政权，它以共和政体取代君主专制，用根本法确认主权属于国民全体。\n进步性：（1）结束了延续两千多年的君主专制制度；（2）使民主共和的观念深入人心；（3）为民族资本主义的发展创造了条件。\n局限性：（1）妥协性——为换取清帝退位与列强承认，把政权让给了袁世凯；（2）对列强软弱——承认不平等条约与既得利益，不敢触动列强在华特权；（3）脱离群众——没有解决农民的土地问题，缺乏广泛而坚实的社会基础。\n总的判断是进步性与局限性并存。妥协性并非偶然失误，而是民族资产阶级软弱性的必然表现；脱离群众正是革命成果被窃取的根本原因之一。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L280"
+      ],
+      "text_md": "### 要点梳理\n- 新文化运动是五四运动前兴起的思想解放运动，陈独秀是其主要的发起者与组织者。\n- 他以创办刊物、撰写文章的方式聚集了一批进步知识分子，把批判的矛头指向封建礼教与旧道德。\n- 运动高举民主与科学两面旗帜，主张以新思想取代旧观念，反对迷信与盲从。\n- 在文学领域，运动提倡白话文与新文学，使新思想能够传播到更广的读者群。\n- 它的意义在于冲决了封建思想的束缚，为马克思主义在中国的传播准备了思想条件。\n\n### 易错点\n- 把新文化运动等同于五四运动：前者是思想运动，后者是爱国政治运动，后者受前者影响并在时间上更晚。\n- 把新文化运动的性质说成政治革命：它主要是一场思想启蒙运动。\n- 忽略它在为马克思主义传播准备条件方面的作用。\n"
+    },
+    {
+      "block_id": "15043-ch04-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L280"
+      ],
+      "text_md": "**关键词**：陈独秀、民主与科学、白话文、思想解放。\n**口诀**：「请来两位先生：德先生与赛先生」。\n**对比**：新文化运动是思想启蒙运动，五四运动是爱国政治运动，后者更晚并受前者影响。\n**串联**：批判封建礼教 → 传播民主科学 → 提倡白话文 → 为马克思主义传播准备条件。"
+    },
+    {
+      "block_id": "15043-ch04-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L280"
+      ],
+      "text_md": "陈独秀与新文化运动的兴起（ ）。\nA. 以创办刊物、撰写文章的方式聚集进步知识分子，批判封建礼教\nB. 以武装起义的方式推翻北洋军阀统治\nC. 主张以旧道德维系社会秩序\nD. 与文学形式的改革没有任何关系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项概括了陈独秀的主要作用：通过办刊物、写文章聚集进步知识分子，把批判矛头指向封建礼教与旧道德。\nB 项把思想运动说成武装斗争，性质不符。\nC 项方向相反，新文化运动正是要批判旧道德。\nD 项忽略了运动提倡白话文与新文学这一重要内容。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L280"
+      ],
+      "text_md": "### 要点梳理\n- 五四运动是一场以青年学生为先锋、广大群众参加的爱国运动，直接导火线是中国在巴黎和会上的外交失败。\n- 运动经历了从学生罢课到工人罢工、商人罢市的扩展过程，中心由北京转移到上海。\n- 工人阶级以独立的姿态登上政治舞台，成为运动后期的主力，这是五四运动最突出的特点。\n- 斗争取得了初步胜利：迫使当时的政府拒绝在和约上签字，罢免了亲日派官员。\n- 五四运动是中国新民主主义革命的开端。\n\n### 易错点\n- 把五四运动说成旧民主主义革命的一部分：工人阶级登上政治舞台使其成为新民主主义革命的开端。\n- 把导火线与国际背景混同：导火线是外交失败，背景还包括十月革命的影响与新文化运动的开展。\n- 忽略工人阶级作为独立政治力量登场这一关键判断。\n"
+    },
+    {
+      "block_id": "15043-ch04-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L280"
+      ],
+      "text_md": "**关键词**：学生先锋、工人主力、外交失败为导火线、新民主主义革命开端。\n**口诀**：「学生开头，工人接手」。\n**对比**：五四运动属于新民主主义革命的开端，不属于旧民主主义革命——分界就在工人阶级独立登场。\n**串联**：巴黎和会外交失败 → 学生罢课 → 工人罢工商人罢市 → 拒签和约、罢免亲日派。"
+    },
+    {
+      "block_id": "15043-ch04-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L280"
+      ],
+      "text_md": "五四运动成为中国新民主主义革命开端，最突出的特点是（ ）。\nA. 由青年学生单独完成\nB. 工人阶级以独立的姿态登上政治舞台并成为后期主力\nC. 未取得任何实际成果\nD. 与巴黎和会无关",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出运动最突出的特点，也是它区别于旧民主主义革命的关键。\nA 项不准确，学生是先锋，运动后期工人成为主力，并有商人罢市参加。\nC 项与事实相反，斗争迫使当时的政府拒绝在和约上签字、罢免亲日派官员。\nD 项忽略了巴黎和会上中国外交失败这一直接导火线。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L281"
+      ],
+      "text_md": "### 要点梳理\n- 俄国十月革命的胜利，使中国先进分子看到了一个落后国家通过社会主义道路取得胜利的先例。\n- 它证明马克思主义不只是理论学说，而是可以指导实践、取得政权的思想武器，因而具有极大的吸引力。\n- 它改变了先进中国人学习西方的方向：此前主要向西方资本主义国家寻找出路，此后转向研究马克思主义与俄国经验。\n- 它还提供了新的国际视野，使中国的反帝反封建斗争与世界的民族解放运动联系起来。\n- 领会本条要抓住「提供新选择」与「转变学习方向」这两层影响。\n\n### 易错点\n- 把十月革命的影响说成直接导致中国共产党成立：它是思想条件，党的成立还经过了马克思主义传播与工人运动结合的过程。\n- 把影响仅限于思想层面：它还改变了中国先进分子对国际形势与革命道路的整体判断。\n- 误以为十月革命后中国立即选择了社会主义道路：当时只是先进分子的认识发生转变。\n"
+    },
+    {
+      "block_id": "15043-ch04-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L281"
+      ],
+      "text_md": "**记忆法**：两层影响分层记——第一层「提供了新选择」，第二层「改变了学习方向」。\n**口诀**：「原来向西看，从此向北看」。\n**对比**：十月革命是思想条件，不是党成立的直接原因；党的成立还经过传播与工运结合的过程。\n**串联**：落后国家也能取胜 → 马克思主义可指导实践 → 先进分子转向研究马克思主义与俄国经验。"
+    },
+    {
+      "block_id": "15043-ch04-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L281"
+      ],
+      "text_md": "俄国十月革命的胜利发生在中国先进分子寻找出路的过程之中。请简述俄国十月革命对中国革命的影响，并说明它为什么具有极大的吸引力。",
+      "question_type": "简答题",
+      "answer_md": "（1）它使中国先进分子看到了一个落后国家通过社会主义道路取得胜利的先例，证明马克思主义不只是理论学说，而是可以指导实践、取得政权的思想武器。\n（2）它改变了先进中国人学习西方的方向：此前主要向西方资本主义国家寻找出路，此后转向研究马克思主义与俄国经验。\n（3）它提供了新的国际视野，使中国的反帝反封建斗争与世界的民族解放运动联系起来。\n需要指出：它是思想条件，并不是中国共产党成立的全部原因，党的成立还经过了马克思主义传播与工人运动相结合的过程。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L281"
+      ],
+      "text_md": "### 要点梳理\n- 政治上，北洋军阀的黑暗统治与对外妥协使民族危机与社会矛盾不断加深，这是运动爆发的社会根源。\n- 思想上，新文化运动冲决了封建思想的束缚，民主与科学的观念在知识界传播，为运动准备了思想条件。\n- 阶级条件上，中国工人阶级队伍在第一次世界大战期间迅速壮大，具备了登上政治舞台的力量。\n- 国际条件上，十月革命的胜利鼓舞了殖民地半殖民地人民的解放斗争。\n- 直接导火线则是巴黎和会上中国外交的失败，它把上述条件汇合成一场全国性的爱国运动。\n\n### 易错点\n- 把社会历史条件与直接导火线混为一谈：前者是长期积累的原因，后者是触发事件，层次不同。\n- 漏掉工人阶级壮大这一阶级条件，就无法解释运动后期工人成为主力。\n- 只答国内条件而漏掉十月革命这一国际条件。\n"
+    },
+    {
+      "block_id": "15043-ch04-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L281"
+      ],
+      "text_md": "**口诀**：条件四条——「政治黑暗、思想解放、工人壮大、十月革命」，再加一条导火线「外交失败」。\n**记忆法**：前四条按国内政治、思想、阶级、国际排序背，顺序本身就是答题结构。\n**对比**：社会历史条件是长期积累的原因，直接导火线是触发事件，二者层次不同。\n**串联**：工人阶级壮大这一条，正好解释了运动后期工人为什么能成为主力。"
+    },
+    {
+      "block_id": "15043-ch04-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L281"
+      ],
+      "text_md": "五四运动是一场全国规模的爱国运动，它的爆发是多种条件共同作用的结果。请简述五四运动爆发的社会历史条件，并指出它的直接导火线。",
+      "question_type": "简答题",
+      "answer_md": "（1）政治上，北洋军阀的黑暗统治与对外妥协使民族危机与社会矛盾不断加深。\n（2）思想上，新文化运动冲决了封建思想的束缚，民主与科学的观念在知识界传播。\n（3）阶级条件上，中国工人阶级队伍在第一次世界大战期间迅速壮大，具备了登上政治舞台的力量。\n（4）国际条件上，十月革命的胜利鼓舞了殖民地半殖民地人民的解放斗争。\n直接导火线是巴黎和会上中国外交的失败，它把上述条件汇合成一场全国性的爱国运动。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 李大钊是中国最早系统传播马克思主义的代表人物，他在十月革命后连续撰文介绍马克思主义的基本观点。\n- 他的文章把马克思主义的唯物史观与中国的社会改造问题联系起来，回答了为什么中国需要马克思主义。\n- 他还组织研究团体、开设课程与讲演，推动马克思主义在青年知识分子中的传播，并与反马克思主义思潮展开论争。\n- 在他的影响下，一批先进知识分子先后转向马克思主义，为中国共产党成立准备了干部与思想条件。\n- 考纲以识记层级要求本条，作答时要点明人物、传播方式与历史作用。\n\n### 易错点\n- 把李大钊与陈独秀的作用混同：陈独秀是新文化运动的主要发起者，李大钊是最早系统传播马克思主义的代表人物。\n- 把传播方式只说成写文章，漏掉组织团体与讲演等途径。\n- 忽略他与反马克思主义思潮论争这一内容。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：最早系统传播、撰文介绍、组织团体、与反马克思主义思潮论争。\n**口诀**：「李大钊播种，陈独秀开路」。\n**对比**：陈独秀是新文化运动主要发起者，李大钊是最早系统传播马克思主义的代表人物。\n**串联**：撰文介绍 → 组织研究与讲演 → 论争扩大影响 → 一批先进知识分子转向马克思主义。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "李大钊与马克思主义在中国的传播（ ）。\nA. 仅停留在翻译经典著作，不涉及现实问题\nB. 撰文介绍马克思主义，组织研究团体并展开论争\nC. 主要贡献是发起新文化运动\nD. 反对在中国传播马克思主义",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项概括了他的主要活动：撰文介绍马克思主义基本观点，组织研究团体、开设课程与讲演，并与反马克思主义思潮展开论争。\nA 项缩小了范围，他还把理论与中国社会改造问题联系起来。\nC 项把新文化运动的主要发起者记为李大钊，实际是陈独秀。\nD 项与事实相反。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 中国共产党早期组织是在马克思主义传播与工人运动发展的基础上，由具有初步共产主义思想的知识分子建立的。\n- 最早的早期组织在上海建立，随后在北京、武汉、长沙、济南、广州以及日本、法国等地相继建立。\n- 早期组织的主要活动是研究和宣传马克思主义，组织工人团体，创办工人刊物，推动马克思主义与工人运动相结合。\n- 它们是中国共产党成立的组织准备，各地组织还承担了选派代表、筹备全国性代表大会的任务。\n- 考纲以识记层级要求本条，作答时要点明建立基础、主要地点与主要活动。\n\n### 易错点\n- 把早期组织等同于中国共产党本身：它们是成立大会之前的组织准备，还不是全国统一的政党。\n- 忽略国内外都有早期组织，只记国内几个城市。\n- 只记建立而漏掉它们推动马克思主义与工人运动结合这一活动。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：上海最早、多地相继、研究宣传、组织工人、筹备全国代表大会。\n**口诀**：「先有小组，后有全党」。\n**对比**：早期组织是成立大会之前的组织准备，本身还不是全国统一的政党。\n**串联**：传播马克思主义 → 与工人运动结合 → 各地建立组织 → 选派代表筹备一大。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "中国共产党早期组织（ ）。\nA. 是宣告中国共产党成立的组织\nB. 是在马克思主义传播与工人运动发展基础上建立的组织准备\nC. 只在国内少数城市建立\nD. 与工人运动没有联系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了早期组织的性质与建立基础：由具有初步共产主义思想的知识分子建立，是成立大会之前的组织准备。\nA 项把早期组织与党本身混同。\nC 项不准确，除国内多个城市外，日本、法国等地也建立了早期组织。\nD 项与事实相反，早期组织的重要活动之一就是组织工人团体、推动马克思主义与工人运动相结合。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 中共一大是中国共产党第一次全国代表大会，它的召开宣告中国共产党正式成立。\n- 大会通过了党的纲领，确定了党的名称与奋斗目标，并选举产生中央领导机构。\n- 大会还讨论了实际工作方针，决定集中力量领导工人运动。\n- 中国共产党成立的意义在于：中国革命从此有了以马克思主义为指导的、统一的无产阶级政党，中国革命的面貌焕然一新。\n- 考纲以识记层级要求本条，作答时要点明会议名称、主要内容与成立的伟大意义。\n\n### 易错点\n- 把一大与二大混同：一大宣告成立并制定纲领，二大提出民主革命纲领，任务不同。\n- 把成立说成工人运动自发的结果：它是马克思主义与工人运动相结合的产物，有明确的思想与组织准备。\n- 只记会议事实而漏掉「中国革命面貌焕然一新」这一意义判断。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：第一次全国代表大会、宣告成立、通过纲领、选举中央机构。\n**口诀**：「一大成立，二大纲领」。\n**对比**：一大宣告党成立并制定纲领，二大提出民主革命纲领，两次会议贡献不同。\n**串联**：马克思主义传播 + 工人运动发展 → 早期组织 → 一大 → 中国革命面貌焕然一新。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "中共一大的历史贡献是（ ）。\nA. 提出反帝反封建的民主革命纲领\nB. 宣告中国共产党正式成立，通过党的纲领并选举中央领导机构\nC. 决定共产党员以个人身份加入国民党\nD. 提出无产阶级在民主革命中的领导权问题",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项是一大的主要成果：通过党的纲领，确定党的名称与奋斗目标，选举产生中央领导机构，宣告党正式成立。\nA 项是中共二大的贡献。\nC 项是中共三大的决定。\nD 项是中共四大的中心议题。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 中共二大是在党成立后不久召开的全国代表大会，它的突出贡献是提出了明确的反帝反封建的民主革命纲领。\n- 大会分析了中国社会的性质与革命任务，指出当前阶段的革命对象是帝国主义与封建军阀。\n- 在最高纲领之外，大会提出了现阶段的最低纲领，把长远目标与现实任务区分开来。\n- 这一纲领第一次为中国革命指明了当前阶段的斗争方向，也表明党对中国国情的认识有了明显深化。\n- 考纲以识记层级要求本条，作答时要点明会议名称与主要贡献。\n\n### 易错点\n- 把二大的贡献说成宣告党的成立：成立是一大的成果，二大的贡献在于提出民主革命纲领。\n- 把两个纲领的关系颠倒：最高纲领指向长远目标，最低纲领是现阶段的行动纲领。\n- 忽略它「第一次明确提出」这一历史地位。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：民主革命纲领、反帝反封建、最高纲领与最低纲领。\n**口诀**：「二大定方向：先反帝反封建」。\n**对比**：最高纲领指向长远目标，最低纲领是现阶段行动纲领，顺序不能颠倒。\n**串联**：分析社会性质 → 判定革命对象 → 区分两个纲领 → 第一次指明现阶段斗争方向。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "中共二大的突出贡献是（ ）。\nA. 宣告中国共产党成立\nB. 第一次明确提出反帝反封建的民主革命纲领\nC. 确定与国民党合作的方针\nD. 决定集中力量领导工人运动",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项是二大的突出贡献：分析中国社会性质与革命任务，指出革命对象是帝国主义与封建军阀，并把长远目标与现实任务区分开来。\nA 项是一大的成果。\nC 项是中共三大的决定。\nD 项是一大讨论的实际工作方针。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 中国劳动组合书记部是中国共产党成立后为领导工人运动而建立的机构，是当时全国工人运动的领导机关。\n- 它的工作包括出版工人刊物、开办工人夜校、组织工会与领导罢工斗争。\n- 通过这一机构，党把分散的工人团体联系起来，推动各地工会相继建立。\n- 它的活动直接促成了中国第一次工人运动高潮的到来，也锻炼了党的组织与干部。\n- 考纲以识记层级要求本条，作答时要点明机构名称、性质与主要工作。\n\n### 易错点\n- 把它说成工人自发组织的团体：它是党领导工人运动的专门机构。\n- 把它的工作只说成领导罢工，漏掉办刊物、办夜校、组织工会等基础工作。\n- 忽略它与第一次工人运动高潮之间的直接联系。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：领导工人运动的机构、办刊物、办夜校、组织工会。\n**口诀**：「党管工运的专门班子」。\n**对比**：它是党领导的专门机构，不是工人自发的团体。\n**串联**：办刊物夜校 → 组织工会 → 领导罢工 → 促成第一次工人运动高潮。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "中国劳动组合书记部是（ ）。\nA. 工人自发组织的互助团体\nB. 中国共产党成立后为领导工人运动而建立的机构\nC. 负责对外交涉的政府机构\nD. 专门培养军事干部的学校",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项指出了它的性质与职能：党为领导工人运动而建立的机构，出版工人刊物、开办工人夜校、组织工会并领导罢工。\nA 项把它说成自发团体，忽略了党的领导。\nC 项与对外交涉无关。\nD 项与军事教育无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 中国第一次工人运动高潮是在中国共产党成立后不久出现的，以一系列罢工斗争为主要形式。\n- 这一高潮的兴起，与党领导工人运动、建立工会与开展宣传教育直接相关，工人阶级的组织程度明显提高。\n- 斗争中工人提出了增加工资、改善待遇、承认工会等要求，把经济诉求与政治权利结合起来。\n- 高潮也提供了重要教训：单靠工人的罢工斗争，没有强大的同盟军与武装力量，很难取得持久的胜利。\n- 这一教训促使党去寻求与其它革命力量的联合。\n\n### 易错点\n- 把工运高潮说成自发的经济斗争：它由党领导，兼具经济与政治诉求。\n- 只讲斗争的规模而漏掉它提供的教训，就答不出这一条的分析成分。\n- 把高潮的时间提到党成立之前：它出现在党成立之后。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：党成立后、罢工为主要形式、经济诉求加政治权利、教训是要找同盟军。\n**口诀**：「光靠罢工，赢不了持久战」。\n**对比**：它由党领导，不只是自发的经济斗争。\n**串联**：组织程度提高 → 斗争规模扩大 → 遭受镇压 → 得出需要同盟军与武装力量的教训。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "中国第一次工人运动高潮留下的重要教训是（ ）。\nA. 工人不应提出政治权利方面的要求\nB. 单靠工人的罢工斗争，没有强大的同盟军与武装力量，很难取得持久的胜利\nC. 工会组织应当减少，以免遭到镇压\nD. 工人运动应当完全依靠外国支援",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项是这一高潮提供的主要教训，它促使党去寻求与其它革命力量的联合。\nA 项与事实相反，斗争中工人把经济诉求与政治权利结合起来。\nC 项方向错误，高潮的前提正是工人组织程度的提高。\nD 项与本条要点无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "### 要点梳理\n- 浙江省萧山县衙前村农民协会是中国共产党成立后早期领导的农民组织之一，是党开展农民运动的开端。\n- 它由党的地方组织发动农民建立，宗旨是维护农民利益、反对压迫与剥削。\n- 协会成立后领导农民开展减租减息等斗争，在周边乡村产生了一定影响。\n- 它的意义在于表明，党在领导工人运动的同时，已经开始把农民作为重要的革命力量加以组织。\n- 考纲以识记层级要求本条，作答时要点明地点、组织名称与历史地位。\n\n### 易错点\n- 把地点记错：它是浙江萧山衙前村的农民协会，地名与村名都不能替换。\n- 把它说成农民自发的组织：它由党的地方组织领导建立。\n- 忽略它是党领导农民运动开端这一历史地位。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "**关键词**：浙江萧山衙前村、农民协会、党领导、农民运动开端。\n**口诀**：「衙前村，农民运动的头一站」。\n**对比**：它由党的地方组织领导建立，不是农民自发结社。\n**串联**：发动农民 → 建立协会 → 开展减租减息 → 表明党已把农民作为重要革命力量。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L288"
+      ],
+      "text_md": "浙江省萧山县衙前村农民协会的历史地位是（ ）。\nA. 农民自发结社的普通互助组织\nB. 中国共产党成立后早期领导的农民组织之一，是党开展农民运动的开端\nC. 由国民党地方党部建立的机构\nD. 与工农运动没有任何关系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项点出了它的地位：由党的地方组织领导建立，宗旨是维护农民利益，成立后领导农民开展减租减息等斗争。\nA 项忽略了党的领导这一关键。\nC 项与建立者不符。\nD 项与事实相反，它正是工农运动的组成部分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L291"
+      ],
+      "text_md": "### 要点梳理\n- 早期马克思主义思想运动的第一特点是传播与研究并重：既翻译介绍经典著作，也结合中国问题进行讨论。\n- 第二个特点是重视与工人运动相结合：知识分子深入工厂办夜校、办刊物，把理论传播给工人。\n- 第三个特点是与各种非马克思主义思潮展开论争，在比较和辨析中扩大马克思主义的影响。\n- 第四个特点是形成了以青年知识分子为主体的骨干队伍，他们后来成为党的组织基础。\n- 领会本条要把这些特点放在「马克思主义为什么能在中国扎根」这一问题上理解。\n\n### 易错点\n- 把这一运动说成纯粹的学术研究：它同时是面向工人、面向实际斗争的思想运动。\n- 只答传播而漏掉与工人运动相结合这一关键特点。\n- 忽略与其它思潮的论争，而这正是马克思主义扩大影响的重要途径。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L291"
+      ],
+      "text_md": "**口诀**：四个特点——「研究并重、结合工运、展开论争、青年骨干」。\n**记忆法**：把四个特点压缩成四组两字词，答题时逐一展开。\n**对比**：它不是纯学术研究，而是面向工人与实际斗争的思想运动。\n**串联**：翻译介绍 → 深入工厂传播 → 与其它思潮论争 → 形成骨干队伍，这条线回答「为什么能扎根」。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L291"
+      ],
+      "text_md": "马克思主义在中国的传播并非单纯的著译活动，而是一场有特点的思想运动。请简述早期马克思主义思想运动的历史特点。",
+      "question_type": "简答题",
+      "answer_md": "（1）传播与研究并重：既翻译介绍经典著作，也结合中国问题进行讨论。\n（2）重视与工人运动相结合：知识分子深入工厂办夜校、办刊物，把理论传播给工人。\n（3）与各种非马克思主义思潮展开论争，在比较和辨析中扩大马克思主义的影响。\n（4）形成了以青年知识分子为主体的骨干队伍，他们后来成为党的组织基础。\n这些特点共同回答了马克思主义为什么能在中国扎根的问题。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s2-p9/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L291"
+      ],
+      "text_md": "### 要点梳理\n- 党成立初期领导的工农运动首先从工人运动入手，通过专门机构组织工会、领导罢工。\n- 工人运动的成果之一是成立了全国性的工会组织，工人阶级的组织程度与政治觉悟明显提高。\n- 与此同时，党在若干地区发动农民建立农民协会，开展减租减息斗争，农民运动开始兴起。\n- 工农运动的共同指向是反对帝国主义与封建军阀的压迫，服务于党提出的民主革命纲领。\n- 这些斗争锻炼了党的组织与干部，也为后来的国共合作准备了群众基础。\n\n### 易错点\n- 只答工人运动而漏掉农民运动：考纲要求的是工农运动这一整体。\n- 把工农运动的目标说成直接进行社会主义革命：当时阶段的目标是反帝反封建。\n- 忽略这些运动与后来国共合作之间的联系。\n"
+    },
+    {
+      "block_id": "15043-ch04-s2-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L291"
+      ],
+      "text_md": "**关键词**：工人运动、农民协会、反帝反封建、锻炼干部。\n**口诀**：「工运先起，农运跟上」。\n**对比**：当时阶段目标是反帝反封建，不是直接进行社会主义革命。\n**串联**：组织工会领导罢工 → 成立全国性工会 → 发动农民减租减息 → 为国共合作准备群众基础。"
+    },
+    {
+      "block_id": "15043-ch04-s2-p9/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s2-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L291"
+      ],
+      "text_md": "中国共产党成立后，把组织领导工农运动作为重要任务。请简述党成立初期领导发动的工农运动，并说明这些运动的作用。",
+      "question_type": "简答题",
+      "answer_md": "（1）工人运动：通过专门机构组织工会、领导罢工，成立了全国性的工会组织，工人阶级的组织程度与政治觉悟明显提高。\n（2）农民运动：在若干地区发动农民建立农民协会，开展减租减息斗争，农民运动开始兴起。\n（3）共同指向是反对帝国主义与封建军阀的压迫，服务于党提出的民主革命纲领。\n（4）作用：锻炼了党的组织与干部，也为后来的国共合作准备了群众基础。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "### 要点梳理\n- 中共三大是党为确定与国民党合作方针而召开的全国代表大会。\n- 大会分析了当时的形势，决定共产党员以个人身份加入国民党，实行党内合作。\n- 同时强调党必须在政治上、思想上和组织上保持独立性，不能因为合作而放弃自己的主张。\n- 这一决定解决了国共合作的具体形式问题，为第一次国共合作的实现铺平了道路。\n- 考纲以识记层级要求本条，作答时要点明会议名称、主要决定与合作形式。\n\n### 易错点\n- 把中共三大与国民党一大混同：前者决定合作方针，后者标志合作正式形成。\n- 把合作形式记成党外联合：当时采取的是共产党员以个人身份加入国民党的党内合作。\n- 忽略「保持独立性」这一附加要求。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "**关键词**：中共三大、党内合作、个人身份加入国民党、保持独立性。\n**口诀**：「三大定方针，一大定成形」。\n**对比**：三大的决定解决合作形式问题，国民党一大才是合作正式形成的标志。\n**串联**：分析形势 → 决定党内合作 → 强调独立性 → 为合作实现铺路。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "中共三大作出的重要决定是（ ）。\nA. 宣告中国共产党成立\nB. 决定共产党员以个人身份加入国民党，实行党内合作，同时保持党的独立性\nC. 提出反帝反封建的民主革命纲领\nD. 确定土地革命的总方针",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项是三大解决的关键问题：确定合作的具体形式，为第一次国共合作的实现铺平道路，同时强调党必须在政治上、思想上和组织上保持独立性。\nA 项是一大的成果。\nC 项是二大的贡献。\nD 项与三大议题无关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "### 要点梳理\n- 国民党一大是国民党改组后召开的第一次全国代表大会，它的召开标志着第一次国共合作正式形成。\n- 大会重新解释了三民主义，使之与联俄、联共、扶助农工的主张联系起来，成为合作的共同纲领。\n- 大会确定了联俄、联共、扶助农工的三大政策，改组了国民党的组织，吸收共产党员与工农分子参加。\n- 经过改组，国民党由原来的松散团体变成有明确纲领与较严密组织的革命联盟。\n- 考纲以识记层级要求本条，作答时要点明会议名称、三民主义的新解释与三大政策。\n\n### 易错点\n- 把国民党一大与中共三大混同：前者是合作正式形成的标志，后者决定了合作方针。\n- 把三大政策与新三民主义割裂：三大政策是新三民主义得以实现的条件，二者互相支撑。\n- 忽略改组使国民党性质与组织状况发生变化这一结果。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "**关键词**：国民党一大、合作正式形成、新三民主义、三大政策、改组组织。\n**口诀**：「联俄、联共、扶助农工——三句话定合作」。\n**对比**：合作的政治基础是重新解释过的新三民主义，不是旧三民主义。\n**串联**：重新解释三民主义 → 确定三大政策 → 改组组织 → 松散团体变成革命联盟。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "标志第一次国共合作正式形成的是（ ）。\nA. 中共三大\nB. 国民党一大\nC. 中共四大\nD. 中共二大",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项正确，国民党一大重新解释三民主义，确定联俄、联共、扶助农工的三大政策，改组国民党组织，标志合作正式形成。\nA 项中共三大决定的是合作方针，不是形成标志。\nC 项中共四大的议题是领导权与工农联盟。\nD 项中共二大提出民主革命纲领。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "### 要点梳理\n- 北伐战争是国共合作后为推翻北洋军阀统治而进行的革命战争，目标是消灭吴佩孚、孙传芳、张作霖等军阀势力。\n- 战争得到工农群众的广泛支持，工人组织运输队、农民协会支援前线，这是北伐迅速推进的重要原因。\n- 北伐军在短时间内攻占长江流域大片地区，把革命势力从南方推进到中原一带。\n- 战争的胜利进军推动了工农运动的进一步高涨，也引起了帝国主义与国民党右派的恐慌。\n- 考纲以识记层级要求本条，作答时要点明战争目标、群众支持与进军成果。\n\n### 易错点\n- 把北伐战争说成单纯的军事行动：工农支援是它迅速推进的关键条件。\n- 把北伐的对象记成外国侵略军：直接对象是北洋军阀势力。\n- 忽略北伐胜利进军与工农运动高涨之间的相互推动。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "**关键词**：推翻北洋军阀、工农支援、进军长江流域。\n**口诀**：「军队在前，工农在后抬」。\n**对比**：直接对象是北洋军阀势力，不是外国侵略军。\n**串联**：工农支援 → 迅速推进 → 工农运动进一步高涨 → 引起帝国主义与右派恐慌。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "北伐战争迅速推进的重要原因是（ ）。\nA. 得到工农群众的广泛支持\nB. 列强提供了军事援助\nC. 北洋军阀主动投降\nD. 战争规模有限，仅涉及一个省",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项指出了关键条件：工人组织运输队、农民协会支援前线，群众支持是北伐迅速推进的重要原因。\nB 项与事实不符。\nC 项不准确，北伐的目标正是消灭北洋军阀势力。\nD 项与事实相反，北伐军在短时间内攻占长江流域大片地区。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "### 要点梳理\n- 中共四大是在国共合作与工农运动发展的形势下召开的全国代表大会。\n- 大会的中心议题是无产阶级在民主革命中的领导权问题与工农联盟问题。\n- 大会指出，无产阶级应当取得革命的领导地位，而农民是工人阶级最可靠的同盟军，必须建立巩固的工农联盟。\n- 大会还对职工运动与农民运动作出部署，强调在统一战线中保持独立性与警惕右倾危险。\n- 考纲以识记层级要求本条，作答时要点明会议名称与中心议题。\n\n### 易错点\n- 把中共四大与中共二大混同：二大提出民主革命纲领，四大的中心议题是领导权与工农联盟。\n- 把领导权问题说成合作中的一般分工：它是关于革命由谁领导的方向性问题。\n- 忽略「工农联盟」是这一议题的另一半。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "**关键词**：中共四大、领导权问题、工农联盟、保持独立性。\n**口诀**：「四大问一句：谁来领导？——无产阶级，靠工农联盟」。\n**对比**：二大提出民主革命纲领，四大中心议题是领导权与工农联盟，两次会议主题不同。\n**串联**：指出领导权 → 强调农民是最可靠同盟军 → 部署职工与农民运动 → 警惕右倾危险。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "中共四大的中心议题是（ ）。\nA. 提出反帝反封建的民主革命纲领\nB. 无产阶级在民主革命中的领导权问题与工农联盟问题\nC. 决定共产党员以个人身份加入国民党\nD. 宣告中国共产党成立",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项是四大的中心议题：指出无产阶级应当取得革命的领导地位，农民是工人阶级最可靠的同盟军，必须建立巩固的工农联盟。\nA 项是中共二大的贡献。\nC 项是中共三大的决定。\nD 项是中共一大的成果。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "### 要点梳理\n- 五卅运动是因帝国主义者在上海镇压示威群众而引发的全国规模的反帝爱国运动。\n- 运动从上海工人与学生发起，迅速扩展到全国许多城市，工人罢工、学生罢课、商人罢市相互配合。\n- 省港大罢工是其中持续时间最长、影响最大的一次罢工，由香港与广州的工人联合发动。\n- 运动中工人阶级表现出强大的组织力量，农民与其它阶层也参加进来，形成了反帝斗争的联合阵线。\n- 这些斗争标志着国民革命高潮的到来。\n\n### 易错点\n- 把五卅运动说成局部事件：它由上海引起但迅速扩展为全国规模的运动。\n- 把省港大罢工与五卅运动割裂：前者是后者发展中的重要组成部分。\n- 忽略运动中形成的联合阵线这一特征。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "**关键词**：上海起因、全国规模、省港大罢工最长、联合阵线。\n**口诀**：「上海点火，全国烧起来」。\n**对比**：省港大罢工是五卅运动发展中的重要组成部分，不是另一件无关的事。\n**串联**：工人学生发起 → 罢工罢课罢市配合 → 农民与其它阶层参加 → 标志国民革命高潮到来。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "关于五卅运动与省港大罢工，下列说法正确的是（ ）。\nA. 五卅运动只限于上海一地\nB. 省港大罢工是五卅运动发展中的重要组成部分，持续时间最长、影响最大\nC. 运动中没有农民参加\nD. 运动未对国民革命产生影响",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\n解析：B 项说明了两者的关系与省港大罢工的地位：它由香港与广州的工人联合发动，是运动中持续时间最长、影响最大的一次罢工。\nA 项与事实不符，运动由上海引起但迅速扩展到全国许多城市。\nC 项不准确，农民与其它阶层也参加进来，形成反帝斗争的联合阵线。\nD 项忽略了这些斗争标志国民革命高潮到来的意义。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "### 要点梳理\n- 国民党右派发动的反共政变，是在北伐胜利进军、工农运动高涨的形势下发生的。\n- 其直接目的是清除共产党人与工农力量，独占革命成果，维护自身代表的阶级利益。\n- 政变以突然袭击的方式在若干城市相继发生，大量共产党员与革命群众遭到屠杀。\n- 后果是第一次国共合作破裂，国民革命失败，革命转入低潮。\n- 这一事件说明，统一战线中必须坚持独立自主，必须掌握革命武装。\n\n### 易错点\n- 把政变的原因归结为个别事件：它是右派在革命深入触及自身利益后的必然选择。\n- 把政变与国共合作破裂分成两件事：政变正是合作破裂的标志。\n- 只记失败结局而漏掉它留下的教训。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "**关键词**：突然袭击、屠杀共产党人与群众、合作破裂、革命转入低潮。\n**口诀**：「革命越深入，右派越翻脸」。\n**对比**：政变与合作破裂不是两件事，政变正是破裂的标志。\n**串联**：北伐胜利、工农高涨 → 触动右派利益 → 发动政变 → 留下「必须掌握武装」的教训。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L297"
+      ],
+      "text_md": "国民党右派发动反共政变的后果是（ ）。\nA. 第一次国共合作破裂，国民革命失败，革命转入低潮\nB. 北伐战争因此取得最终胜利\nC. 工农运动进一步高涨\nD. 中国共产党因此放弃了独立自主原则",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\n解析：A 项点出了政变的直接后果：大量共产党员与革命群众遭到屠杀，第一次国共合作破裂，国民革命失败，革命转入低潮。\nB 项与事实相反，北伐并未因此取得最终胜利。\nC 项方向相反，工农运动遭受严重挫折。\nD 项与事实相反，这一事件留下的教训恰恰是必须坚持独立自主、必须掌握革命武装。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L299"
+      ],
+      "text_md": "### 要点梳理\n- 第一次国共合作的政治基础是新三民主义：它把旧三民主义发展为与联俄、联共、扶助农工相联系的主张。\n- 这一基础之所以能够成立，是因为新三民主义的政纲与中国共产党的民主革命纲领在现阶段基本一致。\n- 合作的组织形式是党内合作：共产党员以个人身份加入国民党，同时保持党在政治、思想、组织上的独立性。\n- 国民党经过改组成为工人、农民、城市小资产阶级和民族资产阶级的革命联盟，这是合作得以展开的组织条件。\n- 领会本条要把「政治基础」与「组织形式」两问分开作答。\n\n### 易错点\n- 把政治基础答成旧三民主义：合作依据的是重新解释过的新三民主义。\n- 把组织形式答成党外联合：当时采取的是党内合作。\n- 忽略「保持独立性」这一合作中的关键限定，它是后来教训的来源。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L299"
+      ],
+      "text_md": "**记忆法**：两问分记——政治基础答「新三民主义」，组织形式答「党内合作」。\n**口诀**：「基础是三民主义，形式是加入国民党」。\n**对比**：不是党外联合，而是共产党员以个人身份加入国民党，同时保持独立性。\n**串联**：新三民主义与民主革命纲领基本一致 → 构成合作基础 → 国民党改组为革命联盟 → 合作得以展开。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L299"
+      ],
+      "text_md": "第一次国共合作使国民革命获得了联合的力量，合作本身有明确的政治基础与特定的组织形式。请简述第一次国共合作的政治基础及组织形式。",
+      "question_type": "简答题",
+      "answer_md": "（1）政治基础是新三民主义：它把旧三民主义发展为与联俄、联共、扶助农工相联系的主张，其政纲与中国共产党的民主革命纲领在现阶段基本一致。\n（2）组织形式是党内合作：共产党员以个人身份加入国民党，同时保持党在政治、思想、组织上的独立性。\n（3）国民党经过改组成为工人、农民、城市小资产阶级和民族资产阶级的革命联盟，这是合作得以展开的组织条件。\n需要指出，保持独立性是合作中的关键限定，后来右派背叛革命的教训正与此相关。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15043-ch04-s3-p8/explain",
+      "kind": "explain",
+      "point_id": "15043-ch04-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L299"
+      ],
+      "text_md": "### 要点梳理\n- 国民革命是在国共合作条件下、以推翻帝国主义与北洋军阀统治为目标的革命运动。\n- 它的兴起有三个方面：一是国共合作形成，革命力量实现联合；二是工农运动迅速发展，群众基础扩大；三是北伐战争胜利进军，革命势力扩展到长江流域。\n- 革命过程中，工人运动与农民运动互相配合，形成了前所未有的群众动员规模。\n- 但革命阵营内部存在严重分歧：国民党右派反对工农运动，最终以政变方式背叛革命。\n- 国民革命的失败说明，无产阶级必须掌握革命领导权与武装力量，才能把革命进行到底。\n\n### 易错点\n- 把国民革命与辛亥革命混同：前者以反帝反封建为目标并有工农广泛参加，后者是资产阶级领导的旧民主主义革命。\n- 只讲兴起而漏掉失败的结局及其教训。\n- 把失败原因只归结为某一次政变，忽略革命阵营内部力量对比这一根本问题。\n"
+    },
+    {
+      "block_id": "15043-ch04-s3-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15043-ch04-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L299"
+      ],
+      "text_md": "**口诀**：兴起三件事——「合作成形、工农起来、北伐进军」。\n**记忆法**：把兴起三条与失败教训分开记，先答兴起再答失败与教训。\n**对比**：国民革命有工农广泛参加、以反帝反封建为目标，与辛亥革命性质不同。\n**串联**：合作与工农动员 → 北伐推进 → 内部力量对比失衡 → 右派背叛 → 必须掌握领导权与武装。"
+    },
+    {
+      "block_id": "15043-ch04-s3-p8/drill",
+      "kind": "drill",
+      "point_id": "15043-ch04-s3-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-13"
+      },
+      "evidence_refs": [
+        "syllabus:15043#L299"
+      ],
+      "text_md": "国民革命是在国共合作条件下兴起的革命运动，它一度发展迅速，最终却以失败告终。试述国民革命的兴起及其失败的原因与教训。",
+      "question_type": "论述题",
+      "answer_md": "兴起：（1）国共合作形成，革命力量实现联合；（2）工农运动迅速发展，群众基础扩大；（3）北伐战争胜利进军，革命势力从南方推进到长江流域。\n过程中工人运动与农民运动互相配合，形成了前所未有的群众动员规模。\n失败原因：（1）革命阵营内部存在严重分歧，国民党右派反对工农运动，最终以突然袭击的方式发动反共政变，屠杀共产党员与革命群众；（2）无产阶级尚未牢牢掌握革命领导权与武装力量，在力量对比中处于不利地位。\n教训：无产阶级必须坚持统一战线中的独立自主，必须掌握革命的领导权与武装力量，才能把革命进行到底。",
       "source_kind": "ai_generated"
     },
     {
