@@ -424,3 +424,206 @@ def test_exam_strategy_block_is_rendered_on_the_committed_plan_page():
     assert "review_state=machine_draft" in section, "AI 块脚注（generator / evidence_refs / review_state）缺失"
     assert "evidence_refs=knowledge-model:exam" in section, "AI 块脚注缺 evidence_refs"
 
+
+# --------------------------------------------------------------------------------------
+# X2（F-QC3-2）：作用域键不得自我关闭 —— AI 页面在、真值源不在 = 必须报错
+# --------------------------------------------------------------------------------------
+
+def test_scope_key_cannot_switch_itself_off(tmp_path: Path):
+    """X2 变异证明：删掉 `content.json` 但保留 AI 渲染页 → 必须报错（改前为 0 错误 / 7 层全绿）。
+
+    这是发布安全面：真值源缺失时 16 个 AI 页面照常部署，而 `run-gates.py` 主路径 exit 0。
+    """
+    from lib.ai_content_gate import run_ai_content_gate
+
+    def _fresh_root(name: str) -> Path:
+        fake_root = tmp_path / name / "repo"
+        shutil.copytree(ROOT / "sources", fake_root / "sources")
+        shutil.copytree(ROOT / "ops", fake_root / "ops")
+        shutil.copytree(ROOT / "content", fake_root / "content")
+        return fake_root
+
+    root = _fresh_root("x2")
+    assert run_ai_content_gate(root) == [], "未变异的对照根必须全绿"
+
+    # 对照前提：变异前该课程的渲染页确实带 AI 横幅（否则「删 content.json 报错」可能来自无关原因）
+    page = root / "content" / "jiangsu" / "courses" / "15043" / "knowledge" / "01-ch01.md"
+    assert "本页由 AI 辅助生成" in page.read_text(encoding="utf-8"), "对照前提：AI 横幅在渲染页上"
+    (root / "sources" / "jiangsu" / "courses" / "15043" / "content.json").unlink()
+
+    errors = run_ai_content_gate(root)
+    assert any("15043" in e and "content.json" in e for e in errors), errors
+    assert any("真值源缺失" in e for e in errors), errors
+
+
+def test_scope_rule_still_silences_courses_without_any_ai_products(tmp_path: Path):
+    """X2 反向对照：既无 `content.json` 又无 AI 页面的课程**必须保持静默**（不破坏作用域规则）。
+
+    其余 16 门课正是这个形态：只有 3 个非 AI 页（`index.md` / `syllabus.md` / `sources.md`），
+    既没有 AI 横幅、也没有 `content.json`。若 X2 的反向判定认错信号，这里会整片飘红。
+    """
+    from lib.ai_content_gate import run_ai_content_gate
+
+    fake_root = tmp_path / "x2-control" / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    errors = run_ai_content_gate(fake_root)
+    assert errors == [], f"无 AI 产物的课程不得被 X2 反向判定误伤: {errors}"
+    assert not any("03708" in e for e in errors), errors
+
+
+def test_reverse_condition_stays_silent_when_the_ai_pages_are_gone_too(tmp_path: Path):
+    """X2 边界：`content.json` 与 AI 页目录**一起**消失 = 这门课没有 AI 层，保持静默。
+
+    反向判定只在「AI 产物在仓内、真值源不在」时报错；两者都没有时与其余 16 门课同形。
+    """
+    from lib.ai_content_gate import run_ai_content_gate
+
+    fake_root = tmp_path / "x2-both-gone" / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    (fake_root / "sources" / "jiangsu" / "courses" / "15043" / "content.json").unlink()
+    shutil.rmtree(fake_root / "content" / "jiangsu" / "courses" / "15043")
+
+    errors = run_ai_content_gate(fake_root)
+    assert errors == [], f"AI 层整体不存在时不得报错: {errors}"
+
+
+# --------------------------------------------------------------------------------------
+# X1 (a)/(c)（F-QC3-1）：逐点对账必须挡住「清空正文」与「围栏内填充标题」
+# --------------------------------------------------------------------------------------
+
+def test_per_point_reconciliation_rejects_emptied_body_and_fenced_padding(tmp_path: Path):
+    """X1 剩余两种规避的变异证明（QC3 在 `8e8c190` 上复现，改前均 0 错误）。
+
+    (a) 标题保留、**正文被清空**（含只留 `<!-- ai-block -->` 脚注的形态）→ 空壳不算到达；
+    (c) 标题被放进**代码围栏**（` ``` ` / `~~~`）→ 围栏内的行不是渲染证据，等价于标题不存在；
+    另附 (b) 的回归（重复填充标题仍必须被点名）与 15040 的对照（改动不得误伤另一门课）。
+    """
+    from lib.ai_content_gate import run_ai_content_gate
+
+    def _fresh_root(name: str) -> Path:
+        fake_root = tmp_path / name / "repo"
+        shutil.copytree(ROOT / "sources", fake_root / "sources")
+        shutil.copytree(ROOT / "ops", fake_root / "ops")
+        shutil.copytree(ROOT / "content", fake_root / "content")
+        return fake_root
+
+    course = "content/jiangsu/courses/15043"
+    victim = "15043-ch01-s1-p1"
+    baseline_root = _fresh_root("baseline")
+    assert run_ai_content_gate(baseline_root) == [], "未变异的对照根必须全绿"
+
+    page_path = baseline_root / course / "knowledge" / "01-ch01.md"
+    baseline_page = page_path.read_text(encoding="utf-8")
+    assert f"### 考点精讲：{victim}（" in baseline_page, "对照前提：受害点在对照页上有渲染器锚点"
+
+    def _section_page_text(root: Path, name: str) -> str:
+        return (root / course / "knowledge" / name).read_text(encoding="utf-8")
+
+    def _drop_heading_body(page: Path, marker: str) -> None:
+        """删掉 `marker` 标题与其正文（到下一个标题为止），**保留**标题行由调用方决定。"""
+        lines = page.read_text(encoding="utf-8").splitlines(keepends=True)
+        i = next(n for n, line in enumerate(lines) if line.rstrip("\n") == marker)
+        j = next(n for n in range(i + 1, len(lines)) if lines[n].startswith("#"))
+        del lines[i + 1 : j]
+        page.write_text("".join(lines), encoding="utf-8")
+
+    # (a) 正文清空、标题保留 —— 改前 0 错误
+    root_a = _fresh_root("emptied_body")
+    _drop_heading_body(root_a / course / "knowledge" / "01-ch01.md", "#### 要点梳理")
+    errors_a = run_ai_content_gate(root_a)
+    assert any("正文为空" in e and victim in e for e in errors_a), errors_a
+
+    # (a') 清空正文但留下 `<!-- ai-block -->` 脚注 —— 注释不是正文，同样必须失败
+    root_a2 = _fresh_root("emptied_body_footer")
+    page_a2 = root_a2 / course / "knowledge" / "01-ch01.md"
+    text_a2 = page_a2.read_text(encoding="utf-8")
+    i2 = text_a2.index("#### 要点梳理")
+    j2 = text_a2.index("#### 记忆辅助")
+    footer = re.search(r"<!-- ai-block .*?-->", text_a2[i2:j2], re.S)
+    assert footer is not None, "对照前提：explain 块脚注在 要点梳理 与 记忆辅助 之间"
+    page_a2.write_text(
+        text_a2[:i2] + "#### 要点梳理\n\n" + footer.group(0) + "\n\n" + text_a2[j2:], encoding="utf-8"
+    )
+    errors_a2 = run_ai_content_gate(root_a2)
+    assert any("正文为空" in e and victim in e for e in errors_a2), errors_a2
+
+    # (c) 标题被塞进代码围栏（原地：受害点的锚点小节内）—— 改前 0 错误
+    root_c = _fresh_root("fenced_pad")
+    page_c = root_c / course / "knowledge" / "10-ch10.md"
+    lines_c = page_c.read_text(encoding="utf-8").splitlines(keepends=True)
+    heading_index = [n for n, line in enumerate(lines_c) if line.rstrip("\n") == "#### 要点梳理"][-1]
+    anchor_index = max(n for n in range(heading_index) if lines_c[n].startswith("### 考点精讲："))
+    fenced_victim = lines_c[anchor_index].rstrip("\n").split("：", 1)[1].split("（", 1)[0]
+    end_index = next(
+        n for n in range(heading_index + 1, len(lines_c)) if lines_c[n].startswith("#")
+    )
+    del lines_c[heading_index:end_index]
+    lines_c.insert(anchor_index + 1, "\n```markdown\n#### 要点梳理\n- 填充正文\n```\n\n")
+    page_c.write_text("".join(lines_c), encoding="utf-8")
+    assert "```" in _section_page_text(root_c, "10-ch10.md"), "对照前提：围栏已插入"
+    errors_c = run_ai_content_gate(root_c)
+    assert any("锚点小节内缺少" in e and fenced_victim in e for e in errors_c), errors_c
+    assert any("小节数" in e for e in errors_c), f"围栏内的标题不得计入次级计数: {errors_c}"
+
+    # (c') 删标题 + 在**别的章页**用围栏补一条同名标题（把全局裸行计数补平）
+    root_c2 = _fresh_root("fenced_pad_elsewhere")
+    lines_c2 = (root_c2 / course / "knowledge" / "01-ch01.md").read_text(encoding="utf-8").splitlines(
+        keepends=True
+    )
+    i_c2 = next(n for n, line in enumerate(lines_c2) if line.rstrip("\n") == "#### 要点梳理")
+    j_c2 = next(n for n in range(i_c2 + 1, len(lines_c2)) if lines_c2[n].startswith("#"))
+    del lines_c2[i_c2:j_c2]
+    (root_c2 / course / "knowledge" / "01-ch01.md").write_text("".join(lines_c2), encoding="utf-8")
+    pad_c2 = root_c2 / course / "knowledge" / "10-ch10.md"
+    pad_c2.write_text(
+        pad_c2.read_text(encoding="utf-8") + "\n```\n#### 要点梳理\n```\n", encoding="utf-8"
+    )
+    errors_c2 = run_ai_content_gate(root_c2)
+    assert any(victim in e for e in errors_c2), errors_c2
+
+    # (b) 回归：围栏**之外**的重复填充标题仍必须点名受害点（F-QC2-1 不因本次改动回退）
+    root_b = _fresh_root("unfenced_pad")
+    lines_b = (root_b / course / "knowledge" / "01-ch01.md").read_text(encoding="utf-8").splitlines(
+        keepends=True
+    )
+    i_b = next(n for n, line in enumerate(lines_b) if line.rstrip("\n") == "#### 要点梳理")
+    j_b = next(n for n in range(i_b + 1, len(lines_b)) if lines_b[n].startswith("#"))
+    del lines_b[i_b:j_b]
+    (root_b / course / "knowledge" / "01-ch01.md").write_text("".join(lines_b), encoding="utf-8")
+    pad_b = root_b / course / "knowledge" / "10-ch10.md"
+    pad_b.write_text(pad_b.read_text(encoding="utf-8") + "\n#### 要点梳理\n- 填充正文\n", encoding="utf-8")
+    errors_b = run_ai_content_gate(root_b)
+    assert any(victim in e for e in errors_b), errors_b
+
+    # 对照：另一门课（15040）在同样的 fence-aware 口径下仍然全绿
+    root_40 = _fresh_root("course_15040")
+    assert run_ai_content_gate(root_40) == [], "15040 必须零回归"
+
+
+def test_chapter_page_pattern_comes_from_the_schema(tmp_path: Path):
+    """R9/W-2：章页模式由 schema 的 `generated_page_markers.ai_pages` 派生，模块内不再有第二份字面量。
+
+    变异证明：把 schema 里的 `knowledge/*.md` 换成另一个子目录模式后，闸门按**新**模式选章页
+    （若还硬编码旧字面量，则会因为「找不到任何章页」而报出一堆计数/锚点错误）。
+    """
+    import lib.course_pages_contract as cpc
+    from lib.ai_content_gate import _chapter_page_patterns
+
+    markers = cpc.generated_page_markers(cpc.load_schema(ROOT))
+    assert _chapter_page_patterns(markers) == {"knowledge/*.md"}, _chapter_page_patterns(markers)
+
+    def _with_ai_pages(*patterns: str) -> dict:
+        return {**markers, "ai_pages": set(patterns)}
+
+    mutated = _with_ai_pages("plan.md", "practice.md", "review.md", "knowledge/*.md", "chapters/*.md")
+    assert _chapter_page_patterns(mutated) == {"knowledge/*.md", "chapters/*.md"}, "必须随 schema 变化"
+
+    # 不含 `/` 的模式（课程级 AI 页）不得被当成章页模式
+    only_top = _with_ai_pages("plan.md", "practice.md")
+    assert _chapter_page_patterns(only_top) == {"plan.md", "practice.md"}, "退化时仍不得为空集"
