@@ -1036,8 +1036,8 @@ def test_cli_generate_refuses_a_course_without_a_prompt_pack():
 def test_cli_generate_accepts_an_in_scope_course():
     """B-1 的正向面：`15043` 进入作用域后，CLI 必须越过 scope 判据继续推进。
 
-    本片（Task 1）只为 `15043` **解锁** generate；录制响应属 Task 4，故此处断言的是
-    「不再报 `无提示词包`」而非 exit 0 —— 当前实际停在缺 fixture（失败关闭、不伪造、不写半成品）。
+    本片（Task 1）只为 `15043` **解锁** generate。**I-1 裁定（评审后续修，2026-09-12）**：本用例只锁定
+    「作用域守卫已放行」这一件事，断言与 Task 4/Task 5 的进度**无关**，避免被它们的正确工作推翻。
     """
     proc = subprocess.run(
         [sys.executable, "scripts/build-course-content.py", "generate", "15043", "--backend", "replay"],
@@ -1048,9 +1048,10 @@ def test_cli_generate_accepts_an_in_scope_course():
 
     assert "无提示词包" not in proc.stderr, f"B-1 未修好：15043 仍被 scope 判据拦下\n{proc.stderr}"
     assert "course_scope" not in proc.stderr, proc.stderr
-    # 越过 scope 之后停在「该 payload 无录制响应」（Task 4 录制前必然如此），且失败路径不写盘
-    assert "missing fixture" in proc.stderr, f"应停在缺录制响应：{proc.stderr}"
-    assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "失败路径不得写盘"
+    # `exit != 2` = 不再走「无提示词包」那条失败分支；若仍失败，失败路径不得写盘。
+    assert proc.returncode != 2, f"15043 仍被判为 scope 外（exit 2）：{proc.stderr}"
+    if proc.returncode != 0:
+        assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "失败路径不得写盘"
 
 
 def test_cli_generate_replay_reproduces_artifact_byte_identically():
