@@ -683,14 +683,42 @@ def test_select_chapters_rejects_unknown_selector():
 
 
 def test_prompt_pack_declares_course_scope():
-    """F-401：四个提示词模板声明 `course_scope`；作用域外的课程没有提示词包。"""
+    """F-401：四个提示词模板声明 `course_scope`；作用域外的课程没有提示词包。
+
+    P-2（plan § 决议记录 R-1）：B-1 把作用域放宽到 `15043`，但**它不是通配**——
+    作用域仍是一个显式白名单，作用域外的课码必须继续被拒。
+    """
     prompts = ("explain_point", "memorize_point", "drill_point", "stage_plan")
 
     for prompt_id in prompts:
-        assert llm.prompt_course_scope(prompt_id, "v1") == ["15040"], prompt_id
+        scope = llm.prompt_course_scope(prompt_id, "v1")
+        assert "15040" in scope, f"{prompt_id}：15040 必须在作用域内"
+        assert "15043" in scope, f"{prompt_id}：B-1 放宽后 15043 必须在作用域内"
+        assert "*" not in scope and "any" not in scope, f"{prompt_id}：作用域不得放宽成通配"
 
     assert gc.out_of_scope_prompts("15040") == [], "15040 在作用域内，不得误判"
-    assert gc.out_of_scope_prompts("15043") == [f"{prompt_id}.v1" for prompt_id in prompts]
+    assert gc.out_of_scope_prompts("15043") == [], "B-1：15043 在作用域内，generate 必须可推进"
+
+    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 15100 是 L1 课程，
+    # 但仍不在提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
+    assert gc.out_of_scope_prompts("15044") == [f"{prompt_id}.v1" for prompt_id in prompts]
+    assert gc.out_of_scope_prompts("99999") == [f"{prompt_id}.v1" for prompt_id in prompts]
+
+
+def test_prompt_bodies_are_course_agnostic():
+    """B-1 / P-2：模板正文不得绑定某一门课 —— 课码与学科事实一律由 payload 提供。
+
+    只改 `course_scope` 而不改正文，就是用思政课模板给「中国近现代史纲要」出 255 个考点的内容
+    （design note §0 的 P-3，已被 R-1 否决）；本用例锁住「正文去课程化」这一半。
+    """
+    banned = ("习近平", "新时代", "中国特色", "马克思主义", "两个确立", "15040", "15043")
+
+    for prompt_id in ("explain_point", "memorize_point", "drill_point", "stage_plan"):
+        text, _schema = llm.load_prompt(prompt_id, "v1")
+        body = text.split("\n---\n", 1)[1]  # 去 frontmatter：`course_scope` 是唯一允许出现课码的地方
+        for literal in banned:
+            assert literal not in body, f"{prompt_id} 正文仍含课程绑定字面量：{literal}"
+        assert "course_code" in body, f"{prompt_id} 必须把课程归属指向 payload 的 course_code"
 
 
 def test_merge_replaces_course_blocks_and_keeps_point_blocks(monkeypatch, tmp_path):
@@ -985,7 +1013,32 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
 
 
 def test_cli_generate_refuses_a_course_without_a_prompt_pack():
-    """F-401 失败关闭：15043 是真实 L1 课程但没有提示词包 → 拒绝，不得用 15040 的模板出内容。"""
+    """F-401 失败关闭：作用域**外**的 L1 课程没有提示词包 → 拒绝，不得用别人的模板出内容。
+
+    B-1 之后 `15043` 已进入作用域（见 `test_cli_generate_accepts_an_in_scope_course`），
+    故这里改用仍是 L1、但不在作用域内的 `15044`：作用域是白名单而非通配，这一条必须一直是红的。
+    """
+    proc = subprocess.run(
+        [sys.executable, "scripts/build-course-content.py", "generate", "15044", "--backend", "replay"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+    assert proc.returncode != 0, proc.stdout
+    assert "15044" in proc.stderr
+    assert "提示词包" in proc.stderr
+    for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
+        assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
+    assert not (ROOT / "sources/jiangsu/courses/15044/content.json").exists(), "拒绝路径不得写盘"
+
+
+def test_cli_generate_accepts_an_in_scope_course():
+    """B-1 的正向面：`15043` 进入作用域后，CLI 必须越过 scope 判据继续推进。
+
+    本片（Task 1）只为 `15043` **解锁** generate；录制响应属 Task 4，故此处断言的是
+    「不再报 `无提示词包`」而非 exit 0 —— 当前实际停在缺 fixture（失败关闭、不伪造、不写半成品）。
+    """
     proc = subprocess.run(
         [sys.executable, "scripts/build-course-content.py", "generate", "15043", "--backend", "replay"],
         cwd=ROOT,
@@ -993,12 +1046,11 @@ def test_cli_generate_refuses_a_course_without_a_prompt_pack():
         text=True,
     )
 
-    assert proc.returncode != 0, proc.stdout
-    assert "15043" in proc.stderr
-    assert "提示词包" in proc.stderr
-    for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
-        assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
-    assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "拒绝路径不得写盘"
+    assert "无提示词包" not in proc.stderr, f"B-1 未修好：15043 仍被 scope 判据拦下\n{proc.stderr}"
+    assert "course_scope" not in proc.stderr, proc.stderr
+    # 越过 scope 之后停在「该 payload 无录制响应」（Task 4 录制前必然如此），且失败路径不写盘
+    assert "missing fixture" in proc.stderr, f"应停在缺录制响应：{proc.stderr}"
+    assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "失败路径不得写盘"
 
 
 def test_cli_generate_replay_reproduces_artifact_byte_identically():
