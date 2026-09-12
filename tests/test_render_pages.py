@@ -15,6 +15,54 @@ sys.path.insert(0, str(ROOT / "scripts"))
 COURSE_15040 = ROOT / "content" / "jiangsu" / "courses" / "15040"
 SOURCES_15040 = ROOT / "sources" / "jiangsu" / "courses" / "15040"
 
+DERIVED_BEGIN_RE = re.compile(r"<!--\s*derived:begin\s+id=([a-zA-Z0-9_-]+)\s*-->")
+DERIVED_END_RE = re.compile(r"<!--\s*derived:end\s*-->")
+
+
+def _derived_layout_problems(text: str, where: str) -> list[str]:
+    """`derived:` 区块的**结构**问题：未配平（孤儿 begin/end）或区块嵌套（一个区块包住另一个）。
+
+    X1：`chapter-links` 曾包住 `release-status`，而匹配用的是非贪婪「到第一个 `derived:end` 为止」，
+    因此「刷新章节链接」会把内层区块整段吞掉并留下孤儿结束标记。结构必须可独立断言 ——
+    否则这条路径只能靠触发它才发现（两个缺陷当时正互相掩盖）。
+    """
+    markers: list[tuple[int, str, str]] = []
+    for pattern, kind in ((DERIVED_BEGIN_RE, "begin"), (DERIVED_END_RE, "end")):
+        for matched in pattern.finditer(text):
+            markers.append((matched.start(), kind, matched.group(1) if kind == "begin" else ""))
+    problems: list[str] = []
+    stack: list[str] = []
+    for _offset, kind, block_id in sorted(markers):
+        if kind == "begin":
+            if stack:
+                problems.append(f"{where}: {block_id} 区块嵌在 {stack[-1]} 区块内部")
+            stack.append(block_id)
+        elif stack:
+            stack.pop()
+        else:
+            problems.append(f"{where}: 出现无配对 begin 的孤儿 derived:end")
+    problems += [f"{where}: {block_id} 区块缺少配对的 derived:end" for block_id in stack]
+    return problems
+
+
+def _derived_region(text: str, block_id: str) -> str:
+    """取 `id=block_id` 区块的**内部正文**（配平扫描，故嵌套/外层不受影响）。区块缺失即断言失败。"""
+    opened = text.find(f"<!-- derived:begin id={block_id} -->")
+    assert opened != -1, f"缺少 {block_id} 区块"
+    cursor = opened + len(f"<!-- derived:begin id={block_id} -->")
+    depth = 1
+    while depth:
+        nxt_begin = DERIVED_BEGIN_RE.search(text, cursor)
+        nxt_end = DERIVED_END_RE.search(text, cursor)
+        assert nxt_end is not None, f"{block_id} 区块缺少配对的 derived:end"
+        if nxt_begin is not None and nxt_begin.start() < nxt_end.start():
+            depth += 1
+            cursor = nxt_begin.end()
+        else:
+            depth -= 1
+            cursor = nxt_end.end()
+    return text[opened + len(f"<!-- derived:begin id={block_id} -->") : cursor - len("<!-- derived:end -->")]
+
 
 def test_render_is_deterministic(tmp_path: Path):
     """连续渲染两次，除 generated_at 行外字节一致。"""
@@ -221,7 +269,8 @@ def test_no_blockquote_over_80_chars(tmp_path: Path):
     `index.md` / `syllabus.md` / `sources.md` 的正文是**手写官方事实页**，渲染器不得改写
     （plan § Data contracts 5 第 2/3 条；QC3-002 / QC3-006 / C2-011）；对它们的断言见
     `test_official_page_prose_is_not_rewritten`。旧版本把 `index.md` 一并纳入 `rglob`，只有靠渲染器
-    删掉 33 行手写正文的 `>` 前缀才可能变绿 —— 那正是被判定为 Critical 的缺陷本身。
+    删掉 base `index.md` 里 **10** 行手写正文的 `>` 前缀才可能变绿 —— 那正是被判定为 Critical 的缺陷本身
+    （plan F11：按本测试口径复算为 10；「33」是 fix-wave 1 报告里的错误数字，无任何口径可得）。
     """
     from lib.course_pipeline.render_pages import render_course_pages
 
@@ -394,6 +443,108 @@ def test_official_pages_are_idempotent_and_free_of_duplicate_derived_sections(tm
         assert text.count("<!-- derived:end -->") == text.count("<!-- derived:begin "), (
             f"{rel} 的 derived 标记不成对（标记被吞掉会导致每次渲染都追加）"
         )
+
+
+def test_committed_official_pages_have_flat_balanced_derived_regions():
+    """X1 结构不变量：仓内 `official_only` 页的 `derived:` 区块**互不嵌套**，且 begin/end 一一配对。
+
+    这是对**已提交产物**的断言（不是渲染输出）：`chapter-links` 曾包住 `release-status`，
+    并在 EOF 留下一个孤儿 `derived:end`。嵌套 + 非贪婪匹配意味着「刷新外层」会吞掉内层，
+    因此结构本身必须单独锁住，不能只靠渲染后的幂等断言。
+    """
+    for name in ("index.md", "syllabus.md", "sources.md"):
+        text = (COURSE_15040 / name).read_text(encoding="utf-8")
+        assert _derived_layout_problems(text, name) == [], f"{name} 的 derived 区块结构不良"
+
+
+def test_chapter_links_refresh_on_an_already_rendered_page(tmp_path: Path):
+    """X1 刷新不变量：模型变更后，**已带 `chapter-links` 区块**的页面必须更新链接列表。
+
+    旧实现把唯一的 `render_derived_block("chapter-links", …)` 调用挂在
+    `"derived:begin id=chapter-links" not in text` 之下 —— 标记一旦存在，区块就再也不重算：
+    它只在「创建标记的那一次渲染」里刷新，之后永久冻结（QC3 第 2 轮的唯一阻塞项）。
+    本用例对**已渲染页**做模型变异（新增一章 + 改一章标题），断言链接列表随之更新，
+    且手写正文逐字不动。
+    """
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake_root = tmp_path / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    work_dir = fake_root / "content" / "jiangsu" / "courses" / "15040"
+    # 前提：被测页面**已经带** chapter-links 区块（否则本用例是空转）
+    for name in ("index.md", "syllabus.md"):
+        assert "<!-- derived:begin id=chapter-links -->" in (work_dir / name).read_text(encoding="utf-8"), (
+            f"{name} 未带 chapter-links 区块，本用例的前提不成立"
+        )
+    handwritten = {
+        name: (work_dir / name).read_text(encoding="utf-8").split("<!-- derived:begin id=chapter-links -->")[0]
+        for name in ("index.md", "syllabus.md")
+    }
+
+    model_path = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "knowledge-model.json"
+    model = json.loads(model_path.read_text(encoding="utf-8"))
+    renamed = "第二章 以中国式现代化全面推进中华民族伟大复兴"
+    mutated_title = "第二章 改过的章名 X1-MUTATED-TITLE"
+    for chapter in model["chapters"]:
+        if chapter["title"] == renamed:
+            chapter["title"] = mutated_title
+    new_title = "第十八章 X1-ADDED-CHAPTER"
+    model["chapters"].append(
+        {
+            "ordinal": 18,
+            "index": "第十八章",
+            "slug": "ch18",
+            "title": new_title,
+            "sections": [],
+            "chapter_focus": [],
+            "unmodeled": [],
+        }
+    )
+    model_path.write_text(json.dumps(model, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    render_course_pages(fake_root, "15040", target_dir=work_dir)
+
+    for name in ("index.md", "syllabus.md"):
+        after = (work_dir / name).read_text(encoding="utf-8")
+        links = _derived_region(after, "chapter-links")
+        assert new_title in links, f"{name} 的章节链接未随模型刷新（新增章缺失）"
+        assert mutated_title in links, f"{name} 的章节链接未随模型刷新（改名的章仍是旧名）"
+        assert renamed not in links, f"{name} 的章节链接里仍留着改名前的旧标题"
+
+    # 刷新只改派生区块：区块之前的正文（手写官方事实）必须逐字不变
+    for name in ("index.md", "syllabus.md"):
+        after_prefix = (work_dir / name).read_text(encoding="utf-8").split(
+            "<!-- derived:begin id=chapter-links -->"
+        )[0]
+        assert after_prefix == handwritten[name], f"{name} 的刷新改动了区块之前的正文"
+
+
+def test_render_is_a_fixed_point_from_a_fresh_course_directory(tmp_path: Path):
+    """X1 幂等不变量：**没有既有页面**的全新课程目录，一次渲染即达不动点（`render(render(x)) == render(x)`）。
+
+    旧实现的兜底骨架路径不经过 `derived:` 写入，于是新课程的官方页第一遍没有区块、第二遍才有 ——
+    同一类「派生死区只在第二遍出现」的缺陷。B2/B3 的新课码正是这条输入。
+    """
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake_root = tmp_path / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    work_dir = fake_root / "content" / "jiangsu" / "courses" / "15040"
+    work_dir.mkdir(parents=True)
+
+    render_course_pages(fake_root, "15040", target_dir=work_dir)
+    first = {p.relative_to(work_dir): p.read_text(encoding="utf-8") for p in work_dir.rglob("*.md")}
+    render_course_pages(fake_root, "15040", target_dir=work_dir)
+    second = {p.relative_to(work_dir): p.read_text(encoding="utf-8") for p in work_dir.rglob("*.md")}
+
+    differing = sorted(rel.as_posix() for rel in first if first[rel] != second[rel])
+    assert not differing, f"全新课程目录的首次渲染不是不动点（第二遍会再改这些页）：{differing}"
+    for name in ("index.md", "syllabus.md", "sources.md"):
+        text = second[Path(name)]
+        assert _derived_layout_problems(text, name) == [], f"{name} 的 derived 区块结构不良"
+        assert "## 放行状态（机器判定）" in text, f"{name} 的派生死区未在首次渲染落盘"
 
 
 def test_index_compliance_disclosure_survives_render(tmp_path: Path):

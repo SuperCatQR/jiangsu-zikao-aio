@@ -67,8 +67,9 @@ BUNDLE_NAME_RE_TEMPLATE = r"{prompt_id}-(\d+)\.json"
 # `--record-fixtures` 由 CLI 置位（`complete_json()` 签名固定，不加参数）。
 RECORD_FIXTURES = False
 
-# `.agent-task` 目录索引缓存：`(目录, prompt_id)` → (目录 mtime_ns, payload_hash → bundle 路径)。
-# 进程内共享，目录 mtime 变化即失效（见 `_bundle_index()`）。
+# `.agent-task` 目录索引缓存：`(目录, prompt_id)` → (目录内的**文件清单**, payload_hash → bundle 路径)。
+# 进程内共享，清单变化即失效（见 `_bundle_index()`；判据是文件清单而非目录 mtime —— mtime 粒度可能达
+# 秒级，同一批内新写的 bundle 不会改变它，缓存就会返回缺新键的陈旧索引）。
 _BUNDLE_INDEX_CACHE: dict[tuple[str, str], tuple[list[str], dict[str, Path]]] = {}
 
 class SchemaError(ValueError):
@@ -338,7 +339,7 @@ def write_agent_bundle(
     }
     directory.mkdir(parents=True, exist_ok=True)
     bundle.write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    # 新 bundle 落盘 → 目录 mtime 变化，下次 `_bundle_index()` 自然重建；本批内把新键并入索引，
+    # 新 bundle 落盘 → 目录内文件清单变化，下次 `_bundle_index()` 自然重建；本批内把新键并入索引，
     # 使后续同 payload 的 job 复用同一编号（否则整批会各自重建、回到 O(n²)）。
     index[key] = bundle
     return bundle

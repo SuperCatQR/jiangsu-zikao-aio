@@ -304,8 +304,12 @@ def _supporting_locator(root: Path, source: dict, value: Any) -> str:
     策略（两层，先精确后兜底）：
     1. **整行命中**：窗口内某行的折叠文本含该值 → 引该行（原行为，保留不变）；
     2. **跨行折名**：值在窗口内被**恰一次**切成两段、且两段分居中心行两侧（`前段…中心行…后段`）→
-       引**前段所在行**（折名的起始行，读得出来源）。
+       引**前段所在行**中**离中心行最近**的那一行（折名的起始行，读得出来源）。
     3. 都不命中 → 保持原 locator（值可能来自别处的空白折叠，不臆造行号）。
+
+    第 2 层必须**就近取行**（C2-015）：前段可能同时出现在**别的课**的折名行上（`02208` 的前段
+    `电气传动与可编程控制器（PLC）` 也是 `02207` 的完整课名），取窗口内的**最远**一行会把引用指到
+    邻课的行上。就近取行与第 1 层的 `order` 口径一致。
     """
     path = root / source["path"]
     if not path.is_file() or not isinstance(value, str):
@@ -319,14 +323,15 @@ def _supporting_locator(root: Path, source: dict, value: Any) -> str:
         if value in _fold(lines[number - 1]):
             return f"L{number}"
 
-    before = " ".join(_fold(lines[number - 1]) for number in range(low, center))
     after = " ".join(_fold(lines[number - 1]) for number in range(center + 1, high + 1))
     for split in range(1, len(value)):
         head, tail = value[:split], value[split:]
-        if head in before and tail in after:
-            return f"L{next(number for number in range(low, center) if head in _fold(lines[number - 1]))}"
+        if not tail or tail not in after:
+            continue
+        hits = [number for number in range(low, center) if head in _fold(lines[number - 1])]
+        if hits:
+            return f"L{max(hits)}"
     return source["locator"]
-
 
 def _facts(root: Path, code: str) -> dict:
     course = _catalog_course(root, code)

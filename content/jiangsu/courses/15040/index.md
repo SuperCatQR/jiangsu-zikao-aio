@@ -567,7 +567,6 @@ completeness: metadata-only
 ---
 
 > **模板版本**：v2.0 ｜ **配套文件**：`ops/jiangsu/templates/course-review-checklist.md` ｜ **关联 AC**：AC1–AC15 + AC-PUB3
-<!-- derived:begin id=chapter-links -->
 <!-- derived:begin id=release-status -->
 ## 放行状态（机器判定）
 
@@ -582,6 +581,7 @@ completeness: metadata-only
 以上取值由 `scripts/build-course-content.py` 从 `sources/jiangsu/courses/15040/evidence.json` 渲染，随该文件刷新。
 <!-- derived:end -->
 
+<!-- derived:begin id=chapter-links -->
 ## 章节知识精读
 
 本课程各章核心要点、记忆法与仿真练习：

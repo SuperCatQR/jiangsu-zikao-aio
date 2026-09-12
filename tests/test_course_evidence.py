@@ -693,6 +693,28 @@ def test_supporting_locator_resolves_folded_course_names(tmp_path: Path):
     # ④ 非字符串值（credits 是 int）→ 保持原 locator，不做字符串化匹配
     assert ev._supporting_locator(root, source, 6) == "L3"
 
+    # ⑤ C2-015：前段同时出现在**邻课**的折名行上时必须**就近取行**，不得指到更远的那一行。
+    #    `02208 电气传动与可编程控制器（PLC）（实践）` 的前段正是 `02207` 的完整课名 ——
+    #    旧实现取窗口内最远的命中行，把引用指到了邻课行上（跨课误引）。
+    neighbor = root / "majors" / "neighbor.raw.txt"
+    neighbor.write_text(
+        "      02207   电气传动与可编程控制器（PLC）      3   笔试\n"
+        " 10             电气传动与可编程控制器（PLC）\n"
+        "      02208                             1   实践\n"
+        "                 （实践）\n",
+        encoding="utf-8",
+    )
+    neighbor_source = {"doc_id": "major-plan:99998", "path": "majors/neighbor.raw.txt", "locator": "L3"}
+    assert ev._supporting_locator(root, neighbor_source, "电气传动与可编程控制器（PLC）（实践）") == "L2", (
+        "折名起点取到了更远的邻课行（L1）而不是最近的前段行（L2）"
+    )
+
+    # ⑥ 诚实谓词必须**可伪**：错误行号 / 不存在的值都不得判为「支撑」
+    neighbor_lines = _physical_lines(neighbor)
+    assert _citation_supports_value(neighbor_lines, "L2", "电气传动与可编程控制器（PLC）（实践）")
+    assert not _citation_supports_value(neighbor_lines, "L4", "电气传动与可编程控制器（PLC）（实践）")
+    assert not _citation_supports_value(neighbor_lines, "L2", "完全不存在的课名ZZZ")
+
     # 全量复算：722 门课 / 2123 个 (course, field) 对的「所引行是否支撑该值」
     catalog = json.loads((ROOT / "sources" / "jiangsu" / "catalog" / "courses.json").read_text(encoding="utf-8"))
     cache: dict[str, list[str]] = {}
@@ -718,12 +740,7 @@ def test_supporting_locator_resolves_folded_course_names(tmp_path: Path):
 
             resolved = ev._supporting_locator(ROOT, source_entry, value)
 
-            def _supports(locator: str) -> bool:
-                """该 locator 是否**读得出来源**：整行含值，或（折名分支）该行含值的前半段。"""
-                line = " ".join(lines[int(locator[1:]) - 1].split())
-                return text in line or (locator != source_entry["locator"] and text[: len(text) // 2] in line)
-
-            if not _supports(resolved):
+            if not _citation_supports_value(lines, resolved, text):
                 unresolved.append((course["code"], field, text, resolved))
             elif line_ok and resolved != source_entry["locator"]:
                 worsened.append((course["code"], field, text, resolved))
@@ -732,6 +749,31 @@ def test_supporting_locator_resolves_folded_course_names(tmp_path: Path):
     assert not unresolved, f"解析后的 locator 仍不支撑该值：{unresolved}"
     assert not worsened, f"fix 不得把原本正确的 locator 改坏：{worsened}"
     assert len(cache) > 0
+
+
+def _citation_supports_value(lines: list[str], locator: str, value: str) -> bool:
+    """引用是否**支撑**该值（C2-015 的诚实口径，替代旧的「含前半段」弱谓词）。
+
+    两个必要条件，都对着**读者能不能从所引行读出来源**这个性质，而不是「生成器当初怎么选的」：
+    ① **起点**：所引行含该值的某个非空前缀（引用必须指向值**开始**出现的行）；
+    ② **可读全**：从所引行起、在 ±`ROW_WINDOW_RADIUS` 行内按序拼得出**完整**值
+    （折名场景：前段在所引行，后段在紧随的续行）。
+
+    旧谓词 `text in line or (moved and text[: len(text) // 2] in line)` 对移动过的 locator 只要求
+    「行内含值的前半段」，于是「引用指到**邻课**的行」也算通过 —— 指标因此不可伪。
+    本谓词可伪：对不存在的值、对远离值所在处的错误行号，都返回 `False`。
+    """
+    start = int(locator[1:]) - 1
+    if not any(value[:end] in ev._fold(lines[start]) for end in range(1, len(value) + 1)):
+        return False
+    remaining = value
+    for index in range(start, min(len(lines), start + ev.ROW_WINDOW_RADIUS + 1)):
+        folded = ev._fold(lines[index])
+        for end in range(len(remaining), 0, -1):
+            if remaining[:end] in folded:
+                remaining = remaining[end:]
+                break
+    return not remaining
 
 
 def test_committed_artifacts_match_a_fresh_build():

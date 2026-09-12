@@ -30,30 +30,61 @@ MANUAL_BLOCK_RE = re.compile(
 # 渲染器**自有**区块（与 `manual:` 相对）：内容每次从 JSON SSOT 重算并原地替换（W6 / QC3-008）。
 # `manual:` 块属于人工，只按 id 原样回填；`derived:` 块属于渲染器，必须可刷新 —— 否则官方页会退化成
 # 「提交时的冻结快照」：`evidence.json` 里 `eligibility.level` 已经变了，页面上却还写着旧状态。
-# 匹配模式由 `render_derived_block()` 按 block_id 现拼（见该函数的注释）。
+# 定位方式见 `_region_span()`：**配平扫描**（非贪婪「到第一个 derived:end 为止」在嵌套形态下会把
+# 内层区域当成外层的一部分，刷新外层即吞掉内层 —— X1）。结构上两区必须**互不嵌套**：
+# `release-status` 与 `chapter-links` 是兄弟，由 `_apply_derived_blocks()` 作为一对写出。
+DERIVED_BEGIN_RE = re.compile(r"<!--\s*derived:begin\s+id=([a-zA-Z0-9_-]+)\s*-->")
+DERIVED_END_RE = re.compile(r"<!--\s*derived:end\s*-->")
 
 
-def render_derived_block(block_id: str, content: str, existing_text: str, *, insert_before: str = "") -> str:
-    """按 id 替换渲染器自有区块；页面上没有该 id 时插入（W6）。
-
-    替换而非追加，是为了让官方页能跟上 SSOT。首次插入时：给了 `insert_before`（一个 `## ` 标题）
-    就插在它前面 —— 旧页面的派生内容本来就在那个位置，插在原地才不会挪动手写段落的相对顺序；
-    未给则追加到正文末尾（保证**手写正文永远是前缀**，见 `test_official_page_prose_is_not_rewritten`）。
-    """
+def _render_region(block_id: str, content: str) -> str:
     body = content.strip("\n")
-    rendered = f"<!-- derived:begin id={block_id} -->\n{body}\n<!-- derived:end -->"
-    # 目标块的正则**按 id 定位**（不能先 `search` 再 `sub`：`sub` 会从第一个匹配开始，命中别的 id 就什么都不换）
-    target = re.compile(
-        rf"<!--\s*derived:begin\s+id={re.escape(block_id)}\s*-->.*?<!--\s*derived:end\s*-->",
-        re.DOTALL,
-    )
-    if target.search(existing_text):
-        return target.sub(lambda _match: rendered, existing_text, count=1)
-    if insert_before:
-        anchor = existing_text.find("\n" + insert_before)
-        if anchor != -1:
-            return existing_text[: anchor + 1] + rendered + "\n\n" + existing_text[anchor + 1 :]
-    return existing_text.rstrip("\n") + "\n\n" + rendered + "\n"
+    return f"<!-- derived:begin id={block_id} -->\n{body}\n<!-- derived:end -->"
+
+
+def _region_span(text: str, block_id: str) -> tuple[int, int] | None:
+    """区域 `id=block_id` 的 (begin 起点, end 终点)；**配平扫描**，嵌套形态下也只圈自己那一段（X1）。
+
+    非贪婪匹配「到第一个 `derived:end` 为止」在嵌套输入上会连内层区域一起匹配：实测强制刷新
+    `chapter-links` 会吞掉内层 `release-status` 并留下孤儿结束标记。按深度推进则每个区域只替换
+    自己那一段，嵌套输入也不会被破坏。标记不平衡时返回 `None`（不猜跨度）。
+    """
+    for matched in DERIVED_BEGIN_RE.finditer(text):
+        if matched.group(1) != block_id:
+            continue
+        depth, cursor = 1, matched.end()
+        while depth:
+            next_begin = DERIVED_BEGIN_RE.search(text, cursor)
+            next_end = DERIVED_END_RE.search(text, cursor)
+            if next_end is None:
+                return None
+            if next_begin is not None and next_begin.start() < next_end.start():
+                depth += 1
+                cursor = next_begin.end()
+            else:
+                depth -= 1
+                cursor = next_end.end()
+        return (matched.start(), cursor)
+    return None
+
+
+def _replace_region(text: str, block_id: str, content: str) -> str:
+    """原位刷新单个区域；页面上没有该区域（或标记不平衡）时原样返回。"""
+    span = _region_span(text, block_id)
+    if span is None:
+        return text
+    return text[: span[0]] + _render_region(block_id, content) + text[span[1] :]
+
+
+def render_derived_block(block_id: str, content: str, existing_text: str) -> str:
+    """按 id 替换渲染器自有区块；页面上没有该 id 时**追加到正文末尾**（W6）。
+
+    替换而非追加，是为了让官方页能跟上 SSOT。追加位置在正文末尾，保证**手写正文永远是前缀**
+    （见 `test_official_page_prose_is_not_rewritten`）。
+    """
+    if _region_span(existing_text, block_id) is not None:
+        return _replace_region(existing_text, block_id, content)
+    return existing_text.rstrip("\n") + "\n\n" + _render_region(block_id, content) + "\n"
 
 
 def extract_manual_blocks(text: str) -> dict[str, str]:
@@ -164,28 +195,77 @@ def _release_status_block(code: str, evidence: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def _bare_chapter_section_span(text: str) -> tuple[int, int] | None:
+    """**无标记**（旧版）`## 章节知识精读` 段的 (标题起点, 下一个 `## ` 起点)；段不存在时 `None`。"""
+    index = text.find("\n## 章节知识精读")
+    if index == -1:
+        return None
+    start = index + 1
+    end = text.find("\n## ", start + 1)
+    return (start, len(text)) if end == -1 else (start, end)
+
+
 def _apply_derived_blocks(text: str, code: str, evidence: dict[str, Any], model: dict[str, Any]) -> str:
-    """把渲染器自有区块写进官方页（W6）：放行状态 + 章链接，两者都从 JSON 重算（可刷新）。
+    """把渲染器自有区块写进官方页（W6）：放行状态 + 章链接，两者都从 JSON 重算（**每次渲染都刷新**）。
+
+    两区是**兄弟**，写出顺序恒为 `release-status` → `chapter-links`（X1）：`chapter-links` 曾经包住
+    `release-status`，而当时「刷新外层」的匹配到第一个 `derived:end` 为止，于是刷新章节链接会吞掉放行
+    状态并留下孤儿结束标记；同一处守卫又让两区在标记存在后永不重算，两个缺陷互相掩盖。现在按配平
+    跨度定位（`_region_span()`），刷新不再依赖「标记是否存在」。
 
     首次渲染旧页面时，**旧版无标记**的 `## 章节知识精读` 是裸文本（没有 `derived:` 标记）。
     接管方式是**原地替换**那一段（到下一个 `## ` 为止）：既不产生第二个同名 H2，也不把它
     后面的手写段落（`## 核验清单` / `## 缺口`）挪到别处 —— 官方页的段落顺序是人工校对成果的一部分。
-
-    放行状态插在 `## 章节知识精读` 之前（正是 W6 新增内容的位置），章链接插在 `## 核验清单` 之前。
     """
-    chapter_block = render_derived_block("chapter-links", _chapter_index_block(model), "").strip("\n")
-    if "derived:begin id=chapter-links" not in text:
-        index = text.find("\n## 章节知识精读")
-        if index != -1:
-            rest = text[index + 1 :]
-            end = rest.find("\n## ", 1)
-            text = text[:index] + (rest[end:] if end != -1 else "")
-            text = text[:index] + chapter_block + "\n\n" + text[index:].lstrip("\n")
-    text = render_derived_block(
-        "release-status", _release_status_block(code, evidence), text, insert_before="## 章节知识精读"
-    )
-    if "derived:begin id=chapter-links" not in text:
-        return render_derived_block("chapter-links", _chapter_index_block(model), text, insert_before="## 核验清单")
+    release_body = _release_status_block(code, evidence)
+    chapter_body = _chapter_index_block(model)
+
+    chapter_span = _region_span(text, "chapter-links")
+    release_span = _region_span(text, "release-status")
+
+    # (1) 旧提交形态：`release-status` 嵌在 `chapter-links` 内 —— 一次拼接完成「刷新 + 降为兄弟」。
+    if (
+        chapter_span is not None
+        and release_span is not None
+        and chapter_span[0] <= release_span[0]
+        and release_span[1] <= chapter_span[1]
+    ):
+        return (
+            text[: chapter_span[0]]
+            + _render_region("release-status", release_body)
+            + "\n\n"
+            + _render_region("chapter-links", chapter_body)
+            + text[chapter_span[1] :]
+        )
+
+    # (2) 已扁平：两区各自**原位刷新**（不再有「标记已存在就冻结」的守卫）。
+    text = _replace_region(text, "release-status", release_body)
+    text = _replace_region(text, "chapter-links", chapter_body)
+
+    # (3) 缺 `chapter-links`：裸 `## 章节知识精读` 段原地接管为区块，`release-status` 落在它前面。
+    if _region_span(text, "chapter-links") is None:
+        anchor = _bare_chapter_section_span(text)
+        if anchor is None:
+            text = render_derived_block("chapter-links", chapter_body, text)
+        else:
+            text = (
+                text[: anchor[0]].rstrip("\n")
+                + "\n"
+                + _render_region("chapter-links", chapter_body)
+                + "\n\n"
+                + text[anchor[1] :].lstrip("\n")
+            )
+    if _region_span(text, "release-status") is None:
+        chapter_span = _region_span(text, "chapter-links")
+        if chapter_span is None:
+            text = render_derived_block("release-status", release_body, text)
+        else:
+            text = (
+                text[: chapter_span[0]]
+                + _render_region("release-status", release_body)
+                + "\n\n"
+                + text[chapter_span[0] :]
+            )
     return text
 
 
@@ -220,18 +300,12 @@ def _render_index(
     return body.rstrip("\n") + "\n"
 
 
-def _render_official_page(existing_text: str, fallback: list[str]) -> str:
-    """官方事实页（`syllabus.md` / `sources.md`）：既有页面原样保留，缺页时才用兜底骨架。
+def _official_fallback_page(fallback: list[str]) -> str:
+    """官方事实页（`syllabus.md` / `sources.md`）**缺页**时的兜底骨架。
 
-    旧实现用「正文含某个子串」作为早返回条件，于是官方页变成冻结快照：`evidence.json` 的放行判定
-    变成 `L1`、官方 URL 已在基线里，页面却仍写着 `missing-source`（QC3-008）。这里保留既有正文，
-    但**不再**复述任何课程专属的官方事实（URL / 核验日期 / 章数）—— 那类值必须来自 JSON。
+    既有正文由各页自己的渲染函数原样保留（见 `_render_syllabus` / `_render_sources`），不经过这里。
+    兜底骨架**不复述**任何课程专属的官方事实（URL / 核验日期 / 章数）—— 那类值必须来自 JSON。
     """
-    text = existing_text
-    if text:
-        if not text.startswith(GENERATED_COMMENT):
-            text = f"{GENERATED_COMMENT}\n{text}"
-        return text
     return "\n".join([GENERATED_COMMENT, *fallback])
 
 
@@ -268,8 +342,7 @@ def _render_syllabus(
     ]
     for ch in model["chapters"]:
         out.append(f"| {ch['index']} | {ch['title']} |")
-    out.extend(["", _chapter_index_block(model), ""])
-    return "\n".join(out)
+    return _apply_derived_blocks("\n".join(out), code, evidence, model)
 
 
 def _render_sources(
@@ -278,10 +351,10 @@ def _render_sources(
     existing_text: str,
 ) -> str:
     """来源与核验页（`official_only`）：手写正文原样保留，派生区块（放行状态）每次从 JSON 重算。"""
-    if existing_text:
-        text = existing_text
-        if not text.startswith(GENERATED_COMMENT):
-            text = GENERATED_COMMENT + "\n" + text
+    text = existing_text
+    if text and not text.startswith(GENERATED_COMMENT):
+        text = GENERATED_COMMENT + "\n" + text
+    if text:
         return render_derived_block("release-status", _release_status_block(code, evidence), text)
 
     course_name = get_course_name(evidence, code)
@@ -308,7 +381,9 @@ def _render_sources(
         "- 内部资料只写 `materials://...`，不得写 GitHub private raw URL。",
         "",
     ]
-    return _render_official_page("", fallback)
+    return render_derived_block(
+        "release-status", _release_status_block(code, evidence), _official_fallback_page(fallback)
+    )
 
 
 def _exam_strategy_block(content: dict[str, Any]) -> list[str]:

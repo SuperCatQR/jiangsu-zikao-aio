@@ -46,6 +46,7 @@
   - 知识点必须按 `<code>-(intro|ch\d{2})-s\d+-p\d+` 统一规范编号，且全局唯一。
   - 原文摘录（quote）不得超过 60 个字符，防止整段抄袭考纲。
   - 知识点对考纲覆盖率必须达到 90% 以上，且 `diff_vs_manual` 中不得遗留 `manual_only` 缺口。
+- **80 字符块引用块界的适用边界**：`ai-content` 层的「`>` 引用块 ≤ 80 字符」界约束的是**引文**——考纲原文摘录、样卷题文等**可能构成整段转载**的文本；它**不**约束 `official_only` 页（`index.md` / `syllabus.md` / `sources.md`）上的**手写官方元数据说明**，那类文本改由更强的**字节保留不变量**约束（渲染器不得改写手写散文，只允许追加派生区块）。两半各由一个测试锁住：`tests/test_render_pages.py::test_no_blockquote_over_80_chars` 覆盖渲染器产出页（`plan.md` / `practice.md` / `review.md` / `knowledge/*.md`），`test_render_pages.py::test_official_page_prose_is_not_rewritten` 覆盖三张官方事实页。故 `syllabus.md:4` 的 145 字符手写引用块是**有意豁免**（plan F10 裁定維持現状），不是漏检；若将来要收紧为**全树**界，必须先把「引文」与「手写说明」两类文本区分开，再同步改上述测试的作用域说明。
 
 ### 2. AI 备考层（AI Prep Layer）—— `ai-content` 门禁
 - **载体**：`sources/jiangsu/courses/<code>/content.json`。
