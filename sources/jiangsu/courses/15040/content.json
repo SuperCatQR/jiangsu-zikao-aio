@@ -15,15 +15,15 @@
   "stage_plan": [
     {
       "stage": "入门",
-      "goal": "理清已完成的导论至第十三章全部考点的核心脉络与结构框架，明确生态文明与国家安全各章节核心考核指向。",
+      "goal": "理清已完成的导论至第十五章全部考点的核心脉络与结构框架，明确国防强军与一国两制各章节核心考核指向。",
       "inputs": [
         "考纲章节目录",
         "各章「本章重点」清单",
         "本课全部 AI 讲解块"
       ],
       "how": [
-        "按目录通读章名与各节小标题，梳理生态文明建设与总体国家安全观逻辑框图",
-        "通览各考点讲解块首条要点，标记核心范畴与重大理论定位"
+        "按目录通读章名与各节小标题，梳理国防军队建设与推进祖国完全统一逻辑框图",
+        "通览各考点讲解块首条要点，标记核心范畴与强军目标总体方略定位"
       ],
       "outputs": [
         "章节框架脉络图",
@@ -45,7 +45,7 @@
     },
     {
       "stage": "精读",
-      "goal": "逐点研读已完成的导论至第十三章全部考点的知识讲解与记忆抓手，形成完备扎实的复习笔记。",
+      "goal": "逐点研读已完成的导论至第十五章全部考点的知识讲解与记忆抓手，形成完备扎实的复习笔记。",
       "inputs": [
         "各考点讲解块与记忆块",
         "章节框架脉络图"
@@ -18745,6 +18745,1488 @@
       "source_kind": "ai_generated"
     },
     {
+      "block_id": "15040-ch14-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L744"
+      ],
+      "text_md": "### 要点梳理\n（1）国安基石定位：国防和军队建设是国家生存与发展的安全保障，强国必须强军，军强才能国安。\n（2）历史深刻启示：落后就要挨打，贫弱就要受欺，没有坚不可摧的国防盾牌，国家繁荣与人民幸福就无从立足。\n（3）时代战略要求：面对国际战略格局复杂演变，必须全面推进国防和军队现代化，筑牢国家安全钢铁长城。\n（4）战略互促机制：坚持富国和强军相统一，实现经济建设和国防建设协调发展、平衡发展、兼容发展。\n\n### 易错点\n- 易把国防和军队建设看作单纯的军费支出，忽视强大的国防实力对国家经济建设与对外开放的保驾护航作用。\n- 易割裂富国与强军的关系，必须坚持在经济繁荣发展的同时不断壮大国防实力。"
+    },
+    {
+      "block_id": "15040-ch14-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L744"
+      ],
+      "text_md": "强国强军因果逻辑对比记忆抓手：\n强国必强军——经济繁荣需要军事后盾；\n军强才国安——军事底气护航国家长治久安；\n互促发展——富国与强军协调、平衡、兼容发展。\n口诀：强国强军双相连，没有国防难自全；经济军事互促进，长城巍峨保江天。答题紧扣强国与强军内在辩证统一性。"
+    },
+    {
+      "block_id": "15040-ch14-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L744"
+      ],
+      "text_md": "国防和军队建设是国家长治久安与民族繁荣昌盛的重要基石。在科学阐述经济建设与国防建设内在关系的战略论断中，被明确界定为强国建设根本安全保障的是\nA. 强国必须强军，军强才能国安\nB. 只要经济繁荣国防自然强大\nC. 单方面削减国防开支换取和平\nD. 依靠外部军事同盟保障和平\n作答要求：准确领会国防建设在国家发展全局中的战略地位，锁定符合独立自主原则的核心表述。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：“强国必须强军，军强才能国安”深刻揭示了国防和军队建设对于保障国家长治久安和中华民族伟大复兴的极端重要性。B 项忽视了国防建设的主动性与独立性；C、D 项背离了独立自主的国防方针与历史深刻教训，均属错误观点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L744"
+      ],
+      "text_md": "### 要点梳理\n（1）科学理论体系：习近平强军思想是新时代党领导军队建设实践经验的理论结晶，是全面推进国防和军队现代化的行动指南。\n（2）明确强军目标：明确党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军队，把人民军队建设成为世界一流军队。\n（3）确立战略方针：系统确立政治建军、改革强军、科技强军、人才强军、依法治军的全面强军战略布局。\n（4）根本指针地位：坚持把这一思想贯彻落实到军队建设全过程各领域，指引人民军队开启强军兴军历史新征程。\n\n### 易错点\n- 易把强军思想局限于军事训练战术层面，忽视其统领军队政治方向、改革创新、制度建设的全局指导地位。\n- 易误选其他专门领域理论，军事国防领域唯一行动指南是习近平强军思想。"
+    },
+    {
+      "block_id": "15040-ch14-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L744"
+      ],
+      "text_md": "强军思想纲领图式串联记忆：\n旗帜指引——习近平强军思想，马克思主义军事理论新飞跃；\n奋斗目标——听党指挥、能打胜仗、作风优良，建成世界一流军队；\n战略布局——政治、改革、科技、人才、依法五位一体全面推进。\n口诀：强军思想立帅旗，听党指挥胜仗基；五维战略同发力，世界一流铸丰碑。复习把握思想地位、目标内涵与五维布局。"
+    },
+    {
+      "block_id": "15040-ch14-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L744"
+      ],
+      "text_md": "面对深刻演变的国际军事变革与国家安全形势，党在新时代深化了对强军兴军规律的认识。被确立为全面推进国防和军队现代化的根本行动指南的是\nA. 机械化战争防御理论\nB. 习近平强军思想\nC. 传统阵地战战术学说\nD. 单纯武器制胜论\n作答要求：准确识别指导新时代人民军队强军兴军实践的科学理论体系，排除具体战术或片面观点。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：习近平强军思想是新时代全面推进国防和军队现代化的行动指南，深刻回答了新时代建设一支什么样的人民军队、怎样建设人民军队的时代课题。A、C 项属于特定历史时期的战术；D 项是唯心论错误观点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L745"
+      ],
+      "text_md": "### 要点梳理\n（1）时代使命要求：人民军队必须坚决履行党和人民赋予的新时代使命任务，构筑起抵御各种安全风险的坚固屏障。\n（2）四个战略支撑：为巩固中国共产党领导和社会主义制度提供战略支撑，为捍卫国家主权、统一、领土完整提供战略支撑，为拓展我国海外利益提供战略支撑，为促进世界和平与发展提供战略支撑。\n（3）统筹内外安全：既坚决维护国内政治稳定和领土完整，又坚决维护国家海外利益与国际战略安全。\n（4）履行大国军队责任：积极参与联合国维和、海上护航、人道救援，为国际社会提供更多公共安全产品。\n\n### 易错点\n- 简答时易遗漏“四个战略支撑”的具体表述，必须完整答出巩固政权制度、捍卫主权领土、拓展海外利益、促进世界和平四项。\n- 易忽略军队在“拓展海外利益”维度的全新战略支撑功能。"
+    },
+    {
+      "block_id": "15040-ch14-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L745"
+      ],
+      "text_md": "四个战略支撑梯次联想记忆抓手：\n内保政权——巩固党的领导和社会主义制度（根本支撑）；\n固守疆土——捍卫国家主权、统一、领土完整（核心支撑）；\n延伸远洋——拓展和维护国家海外利益（前沿支撑）；\n贡献世界——促进世界和平与全人类共同发展（国际支撑）。\n口诀：使命任务四个支，政权主权利益齐；和平发展大格局，钢铁雄师立天地。作答紧扣“四个战略支撑”展开。"
+    },
+    {
+      "block_id": "15040-ch14-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L745"
+      ],
+      "text_md": "人民军队是保卫红色江山、维护民族尊严的坚强柱石，也是维护地区和世界和平的强大力量。党中央根据国家安全形势与发展利益变化，赋予了人民军队鲜明的新时代使命任务。请简述新时代人民军队的使命任务。\n作答要求：完整准确回答人民军队在新时代需要承担的“四个战略支撑”核心内容，条理分明。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）为巩固中国共产党领导和社会主义制度提供战略支撑，确保政权安全与政治制度稳固。（2）为捍卫国家主权、统一、领土完整提供战略支撑，坚决挫败任何分裂国家和侵犯主权领土行径。（3）为拓展我国海外利益提供战略支撑，有效维护海外公民、中资企业、战略通道与投资安全。（4）为促进世界和平与发展提供战略支撑，积极参与国际维和护航与救援，展现负责任大国军队形象。\n答题解析：该题考查新时代军队使命任务，考生须围绕“四个战略支撑”核心提法，逐条对政权、主权、海外利益和国际和平展开阐述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L747"
+      ],
+      "text_md": "### 要点梳理\n（1）历史接力传承：建设强大军队是党和人民一代又一代接续奋斗的伟大事业，凝结着无数先烈的心血与智慧。\n（2）接续推进脉络：从毛泽东军事思想、邓小平新时期军队建设思想、江泽民国防和军队建设思想、胡锦涛国防和军队建设思想，到习近平强军思想，一脉相承又与时俱进。\n（3）强军兴军新飞跃：新时代国防和军队建设实现历史性变革、系统性重塑，人民军队体制一新、结构一新、格局一新、面貌一新。\n（4）复兴坚实后盾：在接续奋斗中把强军事业不断推向前进，为实现中华民族伟大复兴提供战略支撑力量。\n\n### 易错点\n- 易把新时代的强军飞跃与历史探索割裂开来，忽视建设强大军队是百年大党一以贯之接力推进的伟大历史进程。\n- 易混淆不同历史时期的国防方针，新时代聚焦建军一百年奋斗目标与建设世界一流军队。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L747"
+      ],
+      "text_md": "接力奋进历史图式速记抓手：\n一代又一代——接力探索、一脉相承、与时俱进；\n新时代飞跃——体制一新、结构一新、格局一新、面貌一新；\n根本归宿——筑牢中华民族伟大复兴坚强军事后盾。\n口诀：建军强军接力传，一代又一代重任担；新貌新局展雄风，复兴伟业得保全。答题把握接续奋斗历史唯物主义视角。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L747"
+      ],
+      "text_md": "人民军队从胜利走向胜利的辉煌历程充满艰辛探索。在深刻总结党领导军事斗争与强军兴军历史进程的论述中，建设强大军队被高度概括为\nA. 一代又一代接续奋斗的伟大事业\nB. 短期突击完成的单项任务\nC. 脱离国家建设的孤立行动\nD. 单纯引进外国武器的模仿工程\n作答要求：准确领会强军事业的历史长期性与连续性，锁定体现一代代传承奋斗的科学表述。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：建设强大军队是党和人民一代又一代接续奋斗的伟大事业，凝聚了数代中国共产党人和革命军人的心血与智慧。B 项忽视了国防军队建设的历史长期性规律；C 项割裂了军地协同关系；D 项背离了自主创新道路，均属错误表述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L747"
+      ],
+      "text_md": "### 要点梳理\n（1）总体科学确立：党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军队，把人民军队建设成为世界一流军队。\n（2）灵魂、核心与保证：听党指挥是灵魂，决定军队政治方向；能打胜仗是核心，反映军队根本职能；作风优良是保证，关系军队性质本色。\n（3）建设世界一流：立足世界新军事变革前沿，瞄准世界顶尖水平，全面提升联合作战与威慑实战能力。\n（4）统领全军实践：这一目标明确了强军兴军的总纲领，是指导新时代国防和军队建设全局的根本遵循。\n\n### 易错点\n- 易把强军目标的“灵魂、核心、保证”对应错位，切记听党指挥是灵魂、能打胜仗是核心、作风优良是保证。\n- 易遗漏“把人民军队建设成为世界一流军队”这一最终宏伟远景。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L747"
+      ],
+      "text_md": "三位一体图式对比记忆抓手：\n听党指挥——灵魂（解决听谁指挥、政治方向问题）；\n能打胜仗——核心（解决能不能打仗、根本职能问题）；\n作风优良——保证（解决作风纪律、本色纯洁问题）；\n最终指向——把人民军队建设成为世界一流军队。\n口诀：强军目标旗帜鲜，听党指挥胜仗前；作风优良保底色，世界一流铸铁拳。牢记“灵魂、核心、保证”三维定位。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L747"
+      ],
+      "text_md": "强军兴军必须有明确的目标指引。在党中央立足国家安全与发展大局确立的重大战略中，党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军队，并把人民军队建设成为\nA. 世界一流军队\nB. 区域自足防御部队\nC. 单一机械化陆军队伍\nD. 商业安保武装体系\n作答要求：准确记忆党在新时代强军目标的完整规范表述，锁定最终战略建设目标定位。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：党在新时代的强军目标是建设一支听党指挥、能打胜仗、作风优良的人民军队，把人民军队建设成为世界一流军队。B、C 项属于自我设限的落后定位；D 项背离了人民军队的性质宗旨，只有 A 项是正确的战略目标。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L748"
+      ],
+      "text_md": "### 要点梳理\n（1）听党指挥是灵魂：决定军队建设的政治方向，必须毫不动摇坚持党对军队的绝对领导，确保全军绝对忠诚、绝对纯洁、绝对可靠。\n（2）能打胜仗是核心：反映军队的根本职能和军队建设的根本指向，军队必须能打仗、打胜仗，全部精力聚焦主责主业备战打仗。\n（3）作风优良是保证：关系军队的性质、宗旨、本色，必须继承发扬我军光荣传统和优良作风，严明政治纪律与战斗纪律。\n（4）有机统一的辩证整体：三者相互联系、相辅相成，共同规定了新时代强军兴军的根本要求与前进方向。\n\n### 易错点\n- 简答时易把三者割裂，必须先阐明听党指挥、能打胜仗、作风优良各自的深层内涵，再强调三者作为有机统一整体的不可分割性。\n- 易忽略能打胜仗是军队的“根本职能”这一关键定性。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L748"
+      ],
+      "text_md": "强军三核内涵串联记忆抓手：\n听党指挥（灵魂立命）——政治红线，解决政治定力与忠诚问题；\n能打胜仗（职能核心）——胜战本领，解决打仗打胜仗硬核问题；\n作风优良（底色保证）——军纪传统，解决性质宗旨与优良作风问题；\n系统闭环：灵魂把舵、核心胜战、作风固本，三足鼎立。\n口诀：灵魂把舵听党话，胜战核心威慑发；良风优良本色在，三大内涵铸铠甲。简答按「灵魂—核心—保证—辩证统一」作答。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L748"
+      ],
+      "text_md": "新时代强军目标深刻回答了建设一支什么样的人民军队这一根本历史课题，凝结着鲜明的政治指向与时代特征。请简述党在新时代的强军目标的科学内涵及其辩证统一关系。\n作答要求：准确阐发“听党指挥、能打胜仗、作风优良”各自的定位与功能，并论述三者的有机统一性。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）听党指挥是灵魂：决定着人民军队建设的根本政治方向，必须毫不动摇坚持党对军队绝对领导，确保官兵绝对忠诚、纯洁可靠。（2）能打胜仗是核心：反映军队根本职能与全部建设的根本指向，必须紧盯打赢目标全面提升实战能力。（3）作风优良是保证：关系人民军队的性质、宗旨与革命本色，必须弘扬光荣传统，严明纪律作风，永葆人民子弟兵政治底色。（4）三者相互联系、有机统一：听党指挥是根本政治保障，能打胜仗是核心实战检验，作风优良是持续力量支撑，共同构成不可分割的强军整体。\n答题解析：该题考查强军目标内涵，作答须把“灵魂、核心、保证”三维展开，最后归结到辩证统一的完整逻辑框架。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L748"
+      ],
+      "text_md": "### 要点梳理\n（1）统筹战略时间表：党的重大战略部署对全面推进国防和军队现代化作出了科学清晰的“三步走”战略安排。\n（2）建军一百年奋斗目标：确保如期实现建军一百年奋斗目标，加快机械化信息化智能化融合发展，提高捍卫国家主权安全战略能力。\n（3）远景目标部署：力争到基本实现国防和军队现代化，逐步形成现代军事力量体系与作战指挥体系。\n（4）终极战略愿景：到本世纪中叶把人民军队全面建成世界一流军队，位列全球军事强国前列。\n\n### 易错点\n- 易将三个战略节点的对应目标记混，牢记建军一百年奋斗目标、基本实现国防和军队现代化、全面建成世界一流军队的递进梯度。\n- 简答时不可写错发展方向，是“机械化信息化智能化融合发展”。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L748"
+      ],
+      "text_md": "三步走战略节点图式速记抓手：\n第一步——如期实现建军一百年奋斗目标（三化融合发展）；\n第二步——基本实现国防和军队现代化（体系现代化成型）；\n第三步——本世纪中叶全面建成世界一流军队（综合战力位居世界前列）。\n口诀：强军宏图三步走，百年目标抢先手；世纪中叶成一流，威武之师护神州。答题按照三个时间节点和目标梯次展开。"
+    },
+    {
+      "block_id": "15040-ch14-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L748"
+      ],
+      "text_md": "实现强军目标、建设世界一流军队必须有科学周密的战略路线图。党中央统筹强国强军伟大进程，明确了新时代国防和军队现代化的时间表与路线图。请简述全面推进国防和军队现代化的战略安排。\n作答要求：准确阐明国防和军队现代化“三步走”战略安排的递进阶段与具体奋斗目标。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）第一阶段：确保如期实现建军一百年奋斗目标，推进机械化信息化智能化融合发展，显著提高战略威慑与实战化战备水平。（2）第二阶段：稳步推进国防和军队体系建设，力争基本实现国防和军队现代化，基本形成世界先进水平的现代军事力量体系。（3）第三阶段：到本世纪中叶把人民军队全面建成世界一流军队，综合军事实力、科技水平和战略威慑力跃居世界前列。（4）这一战略安排与中国式现代化总体进程同频共振、梯次递进，构筑起强军兴军的宏伟阶梯。\n答题解析：该题考查军队现代化战略布局，考生须熟练呈现“建军百年目标—基本实现现代化—全面建成世界一流军队”的完整进阶阶段。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "### 要点梳理\n（1）宪法根本制度：军委主席负责制是宪法确立的重大根本制度，是党对人民军队绝对领导的最高实现形式。\n（2）最高统帅指挥：中央军委实行主席负责制，全国武装力量由中央军委主席统一领导和指挥，决定一切重大国防事务。\n（3）维护核心权威：坚决维护党中央权威和集中统一领导，确保全军官兵坚决听从党中央、中央军委和军委主席指挥。\n（4）从严贯彻落实：全面深入贯彻军委主席负责制，健全请示报告、督促检查、严肃问责等全套严密制度机制。\n\n### 易错点\n- 易把军委主席负责制误认为是某一层级的临时工作机制，必须牢记它是“宪法确立的根本制度”与“党对军队绝对领导的最高实现形式”。\n- 易忽视贯彻该制度的机制保障，制度落实需要严密的请示报告与督促问责体系支撑。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "最高统率制度图式记忆抓手：\n宪法确立——最高法律地位，根本军事制度；\n最高形式——党对人民军队绝对领导的最高实现形式；\n令出行随——一切行动听从党中央、中央军委指挥。\n口诀：军委主席负责制，宪法确立根本制；最高形式党统军，三军统帅号令施。答题抓住“最高实现形式”与“宪法确立的根本制度”。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "党对人民军队的绝对领导是我军的军魂。在保证党对军队最高领导权和指挥权的根本制度安排中，作为党对人民军队绝对领导最高实现形式的是\nA. 部队连队军人委员会制\nB. 军委主席负责制\nC. 地方政府双拥共建制\nD. 军事专家顾问咨询制\n作答要求：准确识别党领导军队最高层级的根本制度，区分基层自治组织与顶层领导体制。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：军委主席负责制是宪法确立的根本制度，是党对人民军队绝对领导的最高实现形式。全国武装力量由中央军委主席统一领导和指挥。A 项是基层民主形式；C 项是军民互助机制；D 项是智囊机构，均非最高领导体制。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "### 要点梳理\n（1）唯一根本标准：军队是要准备打仗的，必须牢固树立战斗力这个唯一的根本的标准。\n（2）全部重心聚焦：把全部精力向打仗聚焦，全部工作向打仗用劲，坚决破除一切脱离实战的花架子、形式主义。\n（3）检验一切工作：衡量军队建设成效、选拔使用干部、配置武器装备，根本标准看能不能打赢未来战争。\n（4）弘扬求真务实：大兴实战化训练之风，按照能打仗、打胜仗的要求检验和衡量军队一切工作。\n\n### 易错点\n- 易遗漏“唯一、根本”双重定语修饰，只能表述为“唯一的根本的标准”，不可并列其他标准。\n- 易把军队其他非作战任务等同于核心标准，军队一切任务最终都要服务于战斗力提升。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "唯一根本标准对比记忆抓手：\n唯一性——除战斗力外无其他替代标准；\n根本性——检验军队建设全部成效的终极标尺；\n工作导向——全部精力向打仗聚焦，全部工作向打仗用劲。\n口诀：军队因战而存在，唯有打赢算真才；战斗力是根本标，全部精力聚擂台。答题抓住“唯一的根本的标准”这一不可动摇的定性。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "军队首先是一个战斗队，各项工作成效归根结底要接受实战检验。在指导新时代国防和军队建设的指导标准中，作为军队建设唯一的根本的标准是\nA. 营区环境优美标准\nB. 生产经营创收标准\nC. 战斗力标准\nD. 理论著述发表标准\n作答要求：精准锁定军队核心职能和成效衡量的终极尺度，排除非军事战斗属性选项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：C。解析：战斗力标准是军队建设唯一的根本的标准，全军必须坚持全部精力向打仗聚焦、全部工作向打仗用劲，一切工作成效都要接受战斗力检验。A、B、D 项属于次要辅助或陈旧不当指标，背离了军队聚焦打仗主责主业的本质要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "### 要点梳理\n（1）统筹富国强军：巩固提高一体化国家战略体系和能力，是党中央统筹发展和安全、统筹富国和强军作出的重大战略部署。\n（2）深化军民深度协同：促进国防实力与经济实力同步跃升，加强战略布局一体融合、战略资源一体整合、战略力量一体运用。\n（3）关键领域攻坚突破：深化科技协同创新，强化新兴前沿领域军地联合攻关，打造韧性完备的现代战略储备体系。\n（4）机制制度保障：破除军地体制机制壁垒，构建自上而下、军地协同的高效国家战略动员体系。\n\n### 易错点\n- 易误认为一体化能力只是单纯的军民物资调配，实际上涵盖科技、人才、基础设施与战略储备的全面深度融合。\n- 易把这一战略部署孤立看作军事需求，它是统筹国家经济实力与国防实力的顶层系统工程。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "一体化融合图式速记抓手：\n统筹两大事——统筹富国与强军，统筹发展和安全；\n三个一体化——布局一体融合、资源一体整合、力量一体运用；\n攻坚支撑——科技协同攻关、国防动员响应、韧性战略储备。\n口诀：一体战略大布局，富国强军同发力；资源整合力量聚，国家实力跃新阶。牢记“一体化国家战略体系和能力”及三个一体化。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L750"
+      ],
+      "text_md": "现代化大国竞争是综合国力的系统博弈，需要实现国防与经济的高度协同。党中央统筹富国和强军重大关系作出的战略决策是\nA. 单纯优先扩充地方行政编制\nB. 巩固提高一体化国家战略体系和能力\nC. 实行军民体制绝对割裂分离\nD. 全面缩减国防科技基础设施\n作答要求：准确识别统筹国家经济实力与国防实力深度融合的重大战略部署名称。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：巩固提高一体化国家战略体系和能力，是党中央统筹富国和强军作出的重大战略部署，要求战略布局一体融合、战略资源一体整合、战略力量一体运用。A、C、D 项均属于割裂或削弱综合国力与国防建设的错误做法，不符合战略要求。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "### 要点梳理\n（1）全面强军五维战略：政治建军、改革强军、科技强军、人才强军、依法治军，构成国防和军队现代化的完整战略布局。\n（2）政治建军立根固本：铸牢听党指挥的军魂，从思想上政治上牢牢掌控军队。\n（3）改革强军重塑重构：深化国防和军队改革，构建中国特色现代军事力量体系。\n（4）科技与人才双轮驱动：依靠科技创新赋能战斗力跃升，锻造高素质专业化新型军事人才方阵。\n（5）依法治军强化秩序：推进军事法治建设，把军队全面纳入法治化轨道，按条令条例正规部队秩序。\n\n### 易错点\n- 简答时易遗漏五大强军布局中的某一个维度，作答时必须严密列出政治、改革、科技、人才、依法五个维度。\n- 易把政治建军的“立根固本”地位与改革、科技等技术手段并列，政治建军是根本统帅。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "强军五维战略联想记忆抓手：\n政治建军——立魂固本（思想政治根基）；\n改革强军——改弦更张（组织编制重塑）；\n科技强军——锋利刀刃（技术装备制胜）；\n人才强军——活力之源（新型人才队伍）；\n依法治军——规矩秩序（法治刚性保障）。\n口诀：政治建军立军魂，改革重塑换新春；科技人才双驱动，依法治军立威信。五词连读记忆，按「政治—改革—科技—人才—依法」组织答案。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "加快推进强军兴军实践，必须坚持系统观念，统筹推进各领域治理变革与发展。党中央确立了全面推进国防事业的系统战略布局。请简述政治建军、改革强军、科技强军、人才强军与依法治军的主要内涵。\n作答要求：分别阐明五个维度的核心定位与推进重点，条理清晰、逻辑严密。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）政治建军是立根之本：铸牢听党指挥的军魂，坚持党对军队绝对领导，永葆人民军队性质宗旨与革命本色。（2）改革强军是必由之路：深化国防和军队组织编制改革，重塑军队领导指挥与作战指挥体制，释放体制生机活力。（3）科技强军是核心引擎：加强国防科技自主创新，加快先进装备研发运用，实现战斗力跨越式提升。（4）人才强军是关键支撑：深化军事人力资源政策制度改革，锻造德才兼备的高素质专业化新型军事人才。（5）依法治军是法治保障：严格执行条令条例，全面推进军事治理法治化正规化，提高国防和军队建设效益。\n答题解析：该题考查强军五大战略布局，考生须逐条阐述政治、改革、科技、人才、依法各自的功能与重点任务。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "### 要点梳理\n（1）实战化主责主业：全面加强练兵备战是人民军队的根本职能所在，必须保持常备不懈、随时能战的高度戒备状态。\n（2）紧盯三变深化训练：紧盯科技之变、战争之变、对手之变，推进战训深度耦合，大兴实战化军事训练。\n（3）强化联合作战指挥：深化联合训练、对抗检验与体系作战演练，全面检验和提高一体化联合作战能力。\n（4）加强军事斗争准备：立足最复杂最困难战局，扎实做好各战略方向军事斗争准备，确保召之即来、来之能战、战之必胜。\n\n### 易错点\n- 易把练兵备战当作和平时期的演练考核，忽视“随时准备打仗”的常态化戒备与实战化标准要求。\n- 简答时易遗漏“紧盯科技之变、战争之变、对手之变”这一具有强烈时代感的重大论断。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "练兵备战实战化抓手记忆：\n一个根本——聚焦打仗主责主业；\n紧盯三变——科技之变、战争之变、对手之变；\n核心模式——战训耦合、联合训练、体系对抗；\n最高标准——召之即来、来之能战、战之必胜。\n口诀：练兵备战紧盯变，战训耦合真打练；联合作战显威慑，随时能胜保家眷。作答按「主责主业—紧盯三变—联合演训—战备能力」展开。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "和平是打出来的，安宁是守出来的。能战方能止战，准备打才可能不必打。在新时代强化实战化军事训练的部署中，党中央对军队练兵备战提出了极高要求。请简述全面加强练兵备战的时代要求与实战举措。\n作答要求：围绕战争演变特征、战训耦合机制以及联合作战能力建设分点阐明。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）牢固确立备战打仗鲜明导向：把备战打仗作为全部精力投放点，坚决纠治和平积弊，保持随时能战的高度战备状态。（2）敏锐紧盯现代战争演进方向：深入研究科技之变、战争之变、对手之变，大力探索现代战争机理与智能化作战样式。（3）深化推进战训深度耦合：强化实战实训与按纲施训，大兴对抗性检验性训练，在风浪中锤炼部队硬碰硬实战本领。（4）全面提高联合作战能力：打造高效灵敏的联合作战指挥链，提升各军兵种一体化体系作战效能，做到战之必胜。\n答题解析：该题考查军队核心作战职能，作答时应从导向树立、战争新变、训法变革到联合作战体系依次展开陈述。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "### 要点梳理\n（1）精神利刃制胜密码：战斗精神是军队战斗力的精神利刃，是克服一切艰难险阻、压倒一切敌人的强大精神力量。\n（2）一不怕苦二不怕死：大力发扬一不怕苦、二不怕死的光荣传统，锻造敢打硬仗、恶仗、险仗的血性铁骨。\n（3）砥砺顽强战斗作风：加强革命传统教育与实战硝烟锤炼，培育听令而动、雷厉风行、英勇顽强的过硬战斗作风。\n（4）压倒敌人的英雄气概：在重大演训与危机斗争中砥砺血性胆魄，做到关键时刻拉得出、顶得上、打得赢。\n\n### 易错点\n- 易误认为高科技战争只看武器装备，忽视精神力量与战斗作风在决定战争胜负中的核心关键作用。\n- 简答时易遗漏“一不怕苦、二不怕死”这一我军战斗精神的经典核心表述。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "血性作风串联记忆抓手：\n精神旗帜——一不怕苦、二不怕死的革命英雄主义；\n血性骨气——敢于斗争、敢于亮剑、勇往直前；\n胜战法则——人是决定因素，武器加精神方显神威。\n口诀：血性铁骨铸利剑，不怕苦来不怕死；英雄气概压群丑，战旗猎猎敌胆碎。作答紧抓「光荣传统—血性胆气—精神致胜」三大维度。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L751"
+      ],
+      "text_md": "武器装备固然重要，但人始终是战争胜负的决定因素。在长期的革命与建设实践中，人民军队铸就了独特的英雄气概与铁血精神。请简述新时代大力培育战斗精神的重大价值与实践途径。\n作答要求：阐明精神力量对现代战争的影响，明确战斗精神的核心表述并提出具体培育举措。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）深刻认识战斗精神的制胜价值：精神力量是克敌制胜的强大武器，高科技战争依然必须依靠军人无畏的血性胆气。（2）继承和发扬核心战斗传统：大力传承“一不怕苦、二不怕死”的战斗精神，锤炼不怕流血牺牲的钢铁意志。（3）在近似实战环境中淬炼血性：通过恶劣复杂气候与极限体能对抗演练，砥砺官兵英勇顽强、敢打必胜的战斗作风。（4）厚植革命英雄主义文化：深入开展军史与战斗英模事迹宣讲，引导全军官兵勇于扛红旗、争第一，激发敢于亮剑的精神风貌。\n答题解析：解答该题须立足精神力量与现代胜战的关系，精准点出“两不怕”精神，从实战淬炼和思想浸润两个路径作答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch14-s3-p7/explain",
+      "kind": "explain",
+      "point_id": "15040-ch14-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L753"
+      ],
+      "text_md": "### 要点梳理\n（1）建军之本强军之魂：党对人民军队的绝对领导是人民军队建军之本、强军之魂，是人民军队完全区别于旧军队的本质特征。\n（2）最高领导与指挥权：坚持人民军队最高领导权和指挥权属于党中央和中央军委，全面深入贯彻军委主席负责制。\n（3）严密制度体系支撑：健全军委管总、战区主战、军种主建格局下的党领导军队组织体系，确保支部建在连上制度坚如磐石。\n（4）防范重大政治风险：坚决抵制“军队非党化、非政治化”和“军队国家化”等西方错误思潮侵蚀，确保军魂永不变。\n\n### 易错点\n- 易把党对军队的领导看成一般的行政业务指导，必须牢固把握“绝对领导”这一具有最高政治属性的根本原则。\n- 材料分析时易忽略对西方“军队国家化”错误思潮的批判辨析，作答必须立场鲜明、旗帜严明。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch14-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L753"
+      ],
+      "text_md": "军魂永驻对比记忆抓手：\n定性定位——建军之本、强军之魂；\n体制保证——军委主席负责制，最高指挥权归党中央；\n组织基石——支部建在连上，党组织贯通基层末梢；\n批判错误——坚决破除军队国家化、非党化等毒草。\n口诀：党指挥枪是铁律，军魂永驻基石固；支部建在连队上，强军兴军展宏图。材料题紧扣「建军之本—体制保证—抵制错误思潮」展开。"
+    },
+    {
+      "block_id": "15040-ch14-s3-p7/drill",
+      "kind": "drill",
+      "point_id": "15040-ch14-s3-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L753"
+      ],
+      "text_md": "材料：自南昌起义建立人民军队、三湾改编确立“支部建在连上”以来，无论面对革命战争年代的白色恐怖，还是面对和平时期的糖衣炮弹和意识形态侵蚀，人民军队始终初心如磐、红心向党。在新时代政治建军实践中，中央军委召开古田全军政治工作会议、中央军委政治工作会议，重申政治建军根本原则，严肃查处军队腐败案件，全面贯彻军委主席负责制，彻底肃清各类错误思想毒害，确保全军在任何风浪面前坚决听从党中央和中央军委号令。\n根据材料回答：结合上述材料，阐释为什么必须“坚持党对人民军队的绝对领导”以及新时代如何巩固这一根本原则。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、理论阐释：党对人民军队的绝对领导是人民军队建军之本、强军之魂，决定着人民军队的性质宗旨与国家前途命运。枪杆子必须永远听党指挥。\n二、紧扣材料深度论证：\n（1）历史经验昭示政治原则：从三湾改编到古田会议，历史充分证明，只有坚决置于党的绝对领导下，人民军队才能战无不胜、永不变色。\n（2）贯彻最高实现形式：深入贯彻军委主席负责制，健全请示报告与政治督查，确保全军最高领导权和指挥权集中于党中央和中央军委。\n（3）坚决抵制错误思潮与整肃纲纪：严厉查处腐败、肃清流毒，旗帜鲜明抵制“军队国家化、非党化”错误论调，筑牢政治忠诚。\n三、总结：在新时代新征程上，必须毫不动摇铸牢听党指挥这个军魂，确保人民军队始终成为党和人民完全信赖的钢铁长城。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L770"
+      ],
+      "text_md": "### 要点梳理\n（1）宗旨科学界定：“一国两制”的根本宗旨是维护国家主权、安全、发展利益，保持香港、澳门长期繁荣稳定。\n（2）双重目标统一：前者强调国家根本利益与根本底线，后者关照特别行政区发展福祉，二者辩证统一、不可分割。\n（3）底线与红线意识：任何时候都必须把维护国家主权、安全和发展利益放在第一位，坚决守住国家安全的底线。\n（4）实践根本检验：衡量“一国两制”实践成功与否，关键看这一根本宗旨是否得到全面准确的贯彻落实。\n\n### 易错点\n- 易割裂根本宗旨的双重维度，误以为“一国两制”只为了特区经济繁荣而忽视维护国家主权安全的前提。\n- 易混淆“根本宗旨”与“最高原则”的提法，需准确记忆完整论述表述。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L770"
+      ],
+      "text_md": "根本宗旨双重目标联想记忆抓手：\n外护国家安全——维护国家主权、安全、发展利益（定海神针）；\n内保特区发展——保持香港、澳门长期繁荣稳定（福祉所系）。\n口诀：一国两制立宗旨，主权安全发展立；港澳繁荣常稳定，双重目标永不移。复习紧抓“国家利益”与“港澳繁荣”两大支柱。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L770"
+      ],
+      "text_md": "“一国两制”是中国特色社会主义的伟大创举，也是保持香港、澳门长期繁荣稳定的最佳制度安排。在科学阐明“一国两制”方针各项政策内涵的战略部署中，党明确强调这一伟大构想的根本宗旨是\nA. 维护国家主权、安全、发展利益，保持香港、澳门长期繁荣稳定\nB. 实行完全自治与无条件国际接轨\nC. 优先发展经济而搁置国家安全责任\nD. 单纯维系原有管理体制绝对不变\n作答要求：准确把握“一国两制”方针的双重目标与核心价值取向，排除割裂国家利益与特区发展的片面错误选项。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：A。解析：“一国两制”的根本宗旨是维护国家主权、安全、发展利益，保持香港、澳门长期繁荣稳定。这一宗旨把维护国家根本利益与保持特别行政区繁荣稳定有机结合起来。B 项“完全自治”违背了单一制国家结构与中央全面管治权原则；C 项割裂了国家安全与经济发展的关系；D 项否认了制度体系与时俱进发展的必要性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L770"
+      ],
+      "text_md": "### 要点梳理\n（1）最高原则确立：维护国家主权、安全、发展利益是“一国两制”方针的最高原则。\n（2）统领制度运转：在这一最高原则统领下，特别行政区依法享有高度自治权，保持原有资本主义制度长期不变。\n（3）国家利益至上：没有任何制度安排可以超越国家主权和安全的绝对重要性，皮之不存，毛将焉附。\n（4）行动准则定位：中央全面管治权与特区高度自治权必须在维护国家安全主权的前提下协调运行。\n\n### 易错点\n- 易误将“高度自治”或“保持繁荣”选为“最高原则”，最高原则必须且只能是“维护国家主权、安全、发展利益”。\n- 易把最高原则与特区法制对立，二者内在高度一致。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L770"
+      ],
+      "text_md": "最高原则红线定位串联记忆抓手：\n最高位阶——维护国家主权、安全、发展利益（绝对不可动摇）；\n依归依托——高度自治权必须服从服务于国家最高利益；\n主次关系——国安则港安，国泰方民安。\n口诀：最高原则立如山，主权安全发展先；高度自治有边界，国家利益大过天。牢记“最高原则”题型对应唯一正确答案。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L770"
+      ],
+      "text_md": "全面准确贯彻“一国两制”方针，必须牢牢把握宪制原则与底线思维，确保特别行政区治理始终沿着正确轨道前行。在新时代推进“一国两制”实践的制度建设中，被明确界定为该方针“最高原则”的是\nA. 维护特别行政区各界别固有经济利益\nB. 维护国家主权、安全、发展利益\nC. 片面追求特区社会福利水平最大化\nD. 赋予特别行政区不受中央监督的管治权\n作答要求：深刻领悟国家整体利益与特区局部利益的逻辑位阶，选出符合顶层制度设计的核心原则。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：维护国家主权、安全、发展利益是“一国两制”方针的最高原则。在这个原则下，香港、澳门保持原有的资本主义制度长期不变，享有高度自治权。A、C 项属于局部具体利益或民生诉求，不能上升为最高原则；D 项违背中央对特别行政区拥有全面管治权的宪制秩序。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "### 要点梳理\n（1）一国是根基：在中华人民共和国内，国家主体坚持社会主义制度，世界上只有一个中国。\n（2）两制共存发展：国家主体实行社会主义制度，香港、澳门保持原有资本主义制度和生活方式长期不变。\n（3）全面管治与自治结合：中央政府对特别行政区拥有全面管治权，特别行政区依照基本法享有高度自治权。\n（4）宪制秩序权威：国家宪法和特别行政区基本法共同构成特别行政区的宪制基础，维护行政主导体制。\n\n### 易错点\n- 简答时易把“两制”同等化，忽略“国家主体坚持社会主义制度”这一决定性前提。\n- 易漏掉“宪法和基本法共同构成宪制基础”以及“中央拥有全面管治权”的规范表述。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "科学内涵四梁八柱对比记忆抓手：\n一国为本——社会主义主体坚不可摧；\n两制并存——特区资本主义制度长期不变；\n权责有机——中央全面管治权与特区高度自治权相统一；\n宪制基石——宪法和基本法共同构成宪制基础。\n口诀：科学内涵四方舟，一国为主两制优；管治自治紧结合，宪法基法护千秋。简答紧扣「一国内涵—两制并存—管治体系—宪制基础」四条作答。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "“一国两制”是中国共产党为解决国家统一问题提出的前无古人的制度构想，具有严密的科学性与深刻的法理内涵。请简述“一国两制”的科学内涵。\n作答要求：围绕“一国”与“两制”的主次关系、中央管治与特区自治以及宪制基础等核心方面分点准确阐述，条理清晰。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）“一国”是实行“两制”的前提和基础：中华人民共和国是单一制国家，世界上只有一个中国，国家主体坚决实行社会主义制度。（2）特别行政区保持原有制度长期不变：在国家主体坚持社会主义的前提下，港澳保持原有资本主义制度和生活方式长期不变，享有高度自治权。（3）中央全面管治权与特区高度自治权相统一：中央依法行使全面管治权，同时充分尊重并切实保障特别行政区依法享有的行政管理权、立法权、独立司法权和终审权。（4）宪法和基本法共同构成宪制基础：特别行政区的一切制度均依据宪法和基本法确立与运行，实行以行政长官为核心的行政主导政治体制。\n答题解析：该题考查科学内涵，考生须从主体制度、特区制度、权力配置和法理基石四个层次展开阐明。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "### 要点梳理\n（1）源与流本与枝：一国是根，根深才能叶茂；一国是本，本固才能枝荣。\n（2）前提与从属关系：一国是实行两制的前提和基础，两制从属和派生于一国，并统一于一国内。\n（3）底线红线不可碰：决不允许任何危害国家主权安全、挑战中央权力和基本法权威、利用港澳进行对内地渗透破坏的活动。\n（4）双赢互促格局：在坚持一国原则的前提下，两制相互尊重、相互借鉴，共享祖国繁荣富强伟大荣光。\n\n### 易错点\n- 易把一国与两制等量齐观甚至本末倒置，必须明确一国是绝对前提与决定性基础。\n- 简答时易遗漏“三条底线”（危害主权安全、挑战中央权力、对内地渗透破坏）。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "辩证关系形象联想记忆抓手：\n根与叶、本与枝——一国是树根树干，两制是繁茂枝叶；\n源与流、体与用——两制从属于一国并服务于国家整体利益；\n三条不可触碰的红线——主权安全不能侵、中央权威不能撼、渗透破坏不能搞。\n口诀：一国如根两制叶，本固方能枝繁茂；从属派生是法理，守牢红线福运到。答题牢牢抓住「根与本」、「前提从属」、「坚守红线」三层。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "正确认识和把握“一国”和“两制”的关系，是推进“一国两制”实践行稳致远的根本关键所在。如果对这一辩证关系理解发生偏差，实践就会走样变形。请简述“一国”和“两制”的辩证关系。\n作答要求：深刻阐述两者的主从地位、底线要求以及辩证统一机理，逻辑严密。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）“一国”是“两制”的前提和基础：“一国”是根，根深才能叶茂；“一国”是本，本固才能枝荣。“两制”从属于“一国”并派生于“一国”，没有“一国”就谈不上“两制”。（2）坚决守住“一国”的底线红线：任何危害国家主权安全、挑战中央权力和特别行政区基本法权威、利用港澳对内地进行渗透破坏的活动，都是决不能允许的底线。（3）在“一国”原则下充分发挥“两制”优势：“一国”原则愈坚固，“两制”优势愈彰显。在坚守“一国”之本的同时，充分尊重“两制”差异，促进特区与内地优势互补、共同繁荣发展。\n答题解析：解答该题须牢固把握“一国”的前提主导地位，阐明两制对一国的依存关系，并指出必须坚决守住的政治法律红线。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "### 要点梳理\n（1）国家治理伟大创举：中国共产党对马克思主义国家学说的重大发展，是中国特色社会主义制度的独特创造。\n（2）和平统一最佳路径：开辟了以和平谈判解决历史遗留领土争议的新路径，成功实现港澳顺利回归。\n（3）长期繁荣制度保障：保障了港澳同胞当家作主的民主权利，保持了港澳资本主义市场经济活力与国际竞争力。\n（4）世界治理中国智慧：为国际社会和平解决领土边界争端与历史复杂矛盾贡献了极具包容性的中国智慧和中国方案。\n\n### 易错点\n- 易局限于港澳局部的繁荣稳定，忽视其在马克思主义国家学说创新及全球治理方案中的重大世界意义。\n- 简答时易忽略其在解决国家和平统一问题上的开创性历史功绩。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "重大意义多维串联记忆抓手：\n理论创新——发展马克思主义国家学说；\n国家统一——开辟和平解决历史遗留领土争端新路；\n特区实践——保障港澳长期繁荣稳定与同胞根本福祉；\n全球视野——贡献国际争端和平解决的中国方案。\n口诀：一国两制创举奇，理论实践两相宜；港澳繁荣长久立，中国智慧世人知。从「理论发展—祖国统一—特区发展—全球贡献」四维回答。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "“一国两制”作为一项前无古人的深刻制度实践，不仅顺利完成了香港、澳门的历史回归，而且展现出强大的制度生命力。请简述“一国两制”的重大历史与现实意义。\n作答要求：从马克思主义理论发展、国家和平统一、特区长治久安以及世界和平治理等维度全面分点论述。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）丰富发展了马克思主义国家学说：突破了传统国家结构与单一意识形态模式，为社会主义国家包容不同社会制度提供了生动的中国经验与理论创新。（2）为和平解决历史遗留问题开辟了新途径：坚持和平解决争端，以极大的政治智慧和战略定力实现了香港、澳门的和平顺利回归，推进了祖国统一大业。（3）为保持港澳长期繁荣稳定提供了最佳制度保障：尊重特区历史背景与法治传统，保障港澳居民合法权益，保持国际金融贸易中心地位。（4）为国际社会解决类似争端贡献了中国智慧：展现了中国共产党爱好和平、胸怀天下的博大情怀，向世界提供了非暴力协商解决复杂领土争议的中国方案。\n答题解析：该题考查制度重大意义，考生应兼顾理论维度、实践维度与国际维度，分四点条理作答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "### 要点梳理\n（1）全面准确贯彻方针：长期坚持一国两制、港人治港、澳人治澳、高度自治方针，不动摇、不走样、不变形。\n（2）健全管治权运行机制：依法落实中央全面管治权与保障特区高度自治权有机结合，完善中央对特区行政长官和主要官员的任命监督制度。\n（3）落实爱国者治港治澳：坚定落实爱国者治理根本原则，完善特区选举制度，确保特区管治权牢牢掌握在爱国爱港爱澳力量手中。\n（4）织牢维护国家安全网：健全特区维护国家安全的法律制度和执行机制，坚决防范遏制外部势力干预特区事务。\n\n### 易错点\n- 易把制度体系完善看作权宜之计，必须认识到这是国家治理体系现代化的长期战略部署。\n- 简答时易遗漏“落实爱国者治港治澳原则”和“健全维护国家安全机制”这两大新时代关键支柱。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "制度体系完善五位一体对比记忆抓手：\n贯彻方针——不动摇、不走样、不变形；\n权力配置——全面管治权与高度自治权有机统一；\n政治伦理——爱国者治港、爱国者治澳根本原则；\n安全底线——维护国家安全的法律与执行机制；\n大局融入——便利居民融入国家发展大局。\n口诀：制度体系促完善，方针不移走样难；管治自治紧结合，爱国治港保平安。简答依「贯彻方针—权力协同—治理原则—国安防线」逻辑组织。"
+    },
+    {
+      "block_id": "15040-ch15-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L771"
+      ],
+      "text_md": "在全面推进民族复兴的历史进程中，必须立足宪制基石，持续提升特别行政区治理效能，筑牢长治久安防线。请简述在新征程上如何坚持并健全特别行政区管治法规与制度体系。\n作答要求：阐述方针贯彻、中央管治与高度自治关系、管治队伍原则以及国家安全机制构建等核心举措。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）始终全面准确贯彻“一国两制”方针：坚持“一国两制”、“港人治港”、“澳人治澳”、高度自治方针，确保实践不走样、不变形。（2）完善中央对特别行政区行使全面管治权的体制机制：把中央全面管治权与保障特区高度自治权有机结合起来，健全行政长官对中央负责的制度机制。（3）坚定落实“爱国者治港”、“爱国者治澳”原则：把管治权牢牢掌握在坚定的爱国者手中，完善特别行政区选举制度，筑牢良政善治政治基础。（4）建立健全特别行政区维护国家安全的法律制度和执行机制：完善国安立法与执法司法协同机制，坚决防范制止和惩治危害国家安全的行为，坚决抵御外部势力干预。（5）推动特别行政区更好融入国家发展大局：深化粤港澳合作，促进特区与祖国内地同发展、共繁荣。\n答题解析：该题考查制度体系建设，作答时围绕全面贯彻、权力配置、管治主体、安全保障与区域协同五个要点逐条回答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L774"
+      ],
+      "text_md": "### 要点梳理\n（1）实践举世瞩目：回归以来，港澳战胜各种风浪挑战，经济繁荣、社会稳定，保持长期良好发展态势。\n（2）制度优势显现：依托祖国内地广阔腹地与坚强后盾，一国两制制度红利充分释放，特区综合实力大幅跃升。\n（3）民生福祉提升：特区教育、医疗、社会保障等各项社会事业全面进步，居民民主权利和自由得到依法充分保障。\n（4）国际地位巩固：自由港、独立关税区地位稳固，与世界各地的经贸文化交流更加广泛紧密。\n\n### 易错点\n- 易受西方唱衰舆论影响，忽视港澳回归后背靠祖国所展现的强劲韧性与制度生机。\n- 易把港澳良好态势归因于孤立的区位因素，根本保证在于一国两制制度优势与中央有力支持。"
+    },
+    {
+      "block_id": "15040-ch15-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L774"
+      ],
+      "text_md": "长期稳定良好态势抓手联想记忆：\n坚强后盾——祖国内地永远是特区最强大的避风港与动力源；\n生动实践——经济稳健、社会繁荣、国际影响力持续扩大；\n制度根基——一国两制制度优势转化成治理高效能。\n口诀：港澳归来展宏图，风浪千重有后盾；繁荣稳定显生机，良好态势势不泯。作答紧扣“制度优势”与“祖国坚强后盾”。"
+    },
+    {
+      "block_id": "15040-ch15-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L774"
+      ],
+      "text_md": "回归祖国以来，香港、澳门抵御了多轮金融危机、公共卫生危机与复杂外部冲击，展现出蓬勃的发展活力。实践充分证明，确保香港、澳门保持长期繁荣稳定发展的根本坚强后盾与最大底气是\nA. 依赖外部资本主义大国的经济施舍\nB. 伟大祖国的坚强支持与“一国两制”的制度优势\nC. 脱离国家主体自主发展独立经济体\nD. 单纯依靠离岸金融衍生品交易\n作答要求：正确理解特别行政区发展动力源泉，准确识别保障港澳繁荣稳定的根本力量所在。",
+      "question_type": "单项选择题",
+      "answer_md": "答案：B。解析：香港、澳门回归祖国后保持长期繁荣稳定的根本原因在于“一国两制”的独特制度优势以及伟大祖国作为最坚强的后盾。祖国内地广阔的市场、坚实的产业支撑与中央一系列惠港惠澳政策，为特区发展提供了不竭动力。A、C 项背离历史与客观现实；D 项属于局部金融业态，非根本依托。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L775"
+      ],
+      "text_md": "### 要点梳理\n（1）重大转折实现：中央审时度势、果断决策，推动香港局势实现由乱到治的重大转折，昂首迈向由治及兴的新阶段。\n（2）国安立法筑牢防线：制定实施香港国安法，终结了特区在国家安全领域不设防的历史，为特区繁荣稳定筑牢法治底线。\n（3）选举制度正本清源：修改完善香港特别行政区行政长官和立法会选举制度，确保爱国者治港原则全面贯彻落实。\n（4）开创良政善治新局：行政立法良性互动，司法独立依法行使，社会重回正轨，全力聚焦经济发展和民生改善。\n\n### 易错点\n- 易把由乱到治的转变看作一般性治安整顿，忽视国安立法与选举制度重塑在宪制层面的根本性重塑意义。\n- 简答时易遗漏“由乱到治”与“由治及兴”两个阶段递进逻辑及其制度支撑。"
+    },
+    {
+      "block_id": "15040-ch15-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L775"
+      ],
+      "text_md": "由乱到治走向由治及兴对比记忆抓手：\n乱象之根——反中乱港势力勾结外部干预，危害国家安全；\n治本之策——制定香港国安法，堵塞法律漏洞；\n治本之制——完善特区选举制度，落实爱国者治港；\n发展新局——从由乱到治稳大局，到由治及兴谋繁荣。\n口诀：国安立法立铜墙，爱国治港整纪纲；由乱到治转折现，由治及兴谱新章。答题按「背景形势—国安法出台—选举制度完善—良政善治」层层展开。"
+    },
+    {
+      "block_id": "15040-ch15-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L775"
+      ],
+      "text_md": "面对香港一度出现的严峻复杂局势，党中央统揽全局、沉着应对，采取一系列标本兼治的举措，推动香港局势实现历史性转折。请简述推动香港进入“由乱到治走向由治及兴”新阶段的关键举措与重大成效。\n作答要求：紧扣中央重大决策部署，从法律制度构筑、政治体制净化以及治理效能提升等方面分点作答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）制定实施香港特别行政区维护国家安全法：从国家层面建立健全特区维护国家安全的法律制度和执行机制，有力打击极少数危害国家安全犯罪，筑牢国家安全铜墙铁壁。（2）完善特别行政区选举制度：堵塞制度机制漏洞，全面落实“爱国者治港”原则，形成符合香港实际情况的民主政制体系，把反中乱港势力坚决排除在特区管治架构之外。（3）推动香港实现由乱到治的重大历史转折：迅速扭转香港一度动荡危险的局面，特区法治秩序与社会秩序重回正轨，市民合法权利得到切实保障。（4）开启由治及兴的新征程：促进行政与立法机关良性互动，大力破除利益固化藩篱，凝心聚力发展经济、改善民生，打开良政善治全新局面。\n答题解析：该题考查香港治理转折，作答须阐述国安立法、选举改革、秩序恢复与良政善治四个层面的举措和成效。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L775"
+      ],
+      "text_md": "### 要点梳理\n（1）战略必由之路：融入国家发展大局是特区实现经济转型、拓展发展空间、破除深层次矛盾的根本出路。\n（2）把握国家重大战略：积极对接国家发展战略，主动参与高质量共建一带一路与粤港澳大湾区建设。\n（3）发挥独特优势功能：香港巩固提升国际金融、航运、贸易中心地位，澳门建设世界旅游休闲中心与中葡商贸合作服务平台。\n（4）深化两地互联互通：促进规则衔接和机制对接，推动要素高效流通，持续完善便利特区居民在内地学习就业创业的政策措施。\n\n### 易错点\n- 易产生融入国家大局会淡化特区自身特色的错误认识，实际上融入大局是放大特区独特优势的最佳平台。\n- 简答时易遗漏“粤港澳大湾区”建设和“规则机制衔接”等具体实践抓手。"
+    },
+    {
+      "block_id": "15040-ch15-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L775"
+      ],
+      "text_md": "融入大局战略路径串联记忆抓手：\n战略定位——融入大局是港澳长期繁荣的必由之路与最大机遇；\n核心引擎——以粤港澳大湾区建设和高质量共建一带一路为龙头；\n优势转化——背靠祖国、联通世界，提升金融科技商贸航运中心地位；\n制度协同——规则衔接、机制对接、民生共享。\n口诀：融入大局天地宽，大湾区里谱新篇；规则衔接通要素，两地携手并肩前。答题围绕「必然要求—重大平台—独特优势—机制对接」四条展开。"
+    },
+    {
+      "block_id": "15040-ch15-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L775"
+      ],
+      "text_md": "国家强盛是香港、澳门保持繁荣稳定的最坚强后盾。新时代中央明确支持香港、澳门把自身独特优势与国家发展战略更加紧密地结合起来。请简述支持香港、澳门融入国家发展大局的主要内容与实践举措。\n作答要求：从战略意义、重大依托平台、自身优势发挥以及要素流动机制等方面条理清晰地回答。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）明确融入国家发展大局的重大意义：融入国家发展大局是港澳拓展自身发展空间、培育新增长点的必然要求，有利于在融入中更好发挥特区所长、服务国家所需。（2）高质量推进粤港澳大湾区建设：发挥粤港澳综合优势，打造富有活力和国际竞争力的一流湾区和世界级城市群，搭建深度合作发展新平台。（3）巩固提升特别行政区特色优势地位：支持香港保持国际金融、航运、贸易中心和国际航空枢纽地位，建设国际创新科技中心；支持澳门推进“一中心、一平台、一基地”建设，促进经济适度多元发展。（4）深入推进制度创新与要素便捷流动：加强大湾区各城市在法律、税务、监管等领域的规则衔接与机制对接，便利人员、货物、资金、信息高效流动。（5）完善增进民生福祉政策举措：出台更多便利港澳居民在内地就学、就业、创业、居住的政策措施，促进两地民心相通与融合发展。\n答题解析：该题考查特区融入国家大局，考生应从意义定位、湾区平台、优势升级、机制创新与民生配套等要点完整回答。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L778"
+      ],
+      "text_md": "### 要点梳理\n（1）民族复兴核心标志：解决台湾问题、实现祖国完全统一，是中华民族伟大复兴的时和势所决定的必然历史要求。\n（2）国家弱乱历史创伤：台湾问题因民族弱乱而产生，也必将随着民族复兴而解决，两岸同胞同属中华民族命运共同体。\n（3）领土完整不容分割：国家统一是国家核心利益所在，任何主权国家都不会容忍国土分裂，实现统一是全体中华儿女共同心愿。\n（4）势不可挡历史潮流：国家强大、民族复兴、两岸统一的历史大势不可阻挡，台湾的前途系于国家完全统一。\n\n### 易错点\n- 易把台湾问题视为单纯的历史遗留纠纷，忽略其直接关系中华民族伟大复兴战略全局的深层定位。\n- 简答时易遗漏“台湾问题因民族弱乱而产生，必将随着民族复兴而解决”这一经典精辟论断。"
+    },
+    {
+      "block_id": "15040-ch15-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L778"
+      ],
+      "text_md": "必然要求历史逻辑联想记忆抓手：\n历史起伏——因民族弱乱而产生，随民族复兴而解决；\n核心利益——领土完整不容分割，主权红线坚如磐石；\n前途命运——台湾前途在于国家统一，福祉系于民族复兴；\n大势所趋——中华民族完全统一不可阻挡。\n口诀：宝岛台湾骨肉连，民族复兴盼团圆；弱乱遗恨终当雪，历史大势势冲天。答题紧抓「因果相生—核心利益—前途系于复兴—历史大势」四层。"
+    },
+    {
+      "block_id": "15040-ch15-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L778"
+      ],
+      "text_md": "民族复兴、国家统一是大势所趋、大义所在、民心所向。党中央深刻揭示了台湾问题与中华民族伟大复兴之间的内在必然联系。请简述为什么说“实现祖国完全统一是中华民族伟大复兴的必然要求”。\n作答要求：深刻剖析国家统一与民族复兴的历史渊源、现实必要性以及不可逆转的历史大势，条理清晰。",
+      "question_type": "简答题",
+      "answer_md": "答案要点：（1）台湾问题与民族兴衰休戚与共：近代以来的历史深刻证明，国家蒙辱、人民蒙难、文明蒙尘，台湾随之被外敌侵占；台湾问题因民族弱乱而产生，必将随着民族复兴而终结。（2）祖国完全统一是民族复兴的核心标志：实现中华民族伟大复兴，必须维护国家主权和领土完整，没有完全统一的中国不是真正意义上的现代化强国，统一是民族复兴的题中应有之义。（3）两岸同胞是休戚与共的命运共同体：两岸同胞血脉相连、文脉相通，实现祖国统一是全体中华儿女的共同心愿，符合全体中国人民的根本利益。（4）统一进程具有不可逆转的历史大势：祖国大陆综合实力跨越式提升为推进统一提供了坚实基础，任何分裂势力和外部干涉都无法阻挡国家完全统一的历史车轮。\n答题解析：该题考查祖国统一与民族复兴的关系，考生须从历史联系、核心内涵、同胞命运与不可阻挡的大势展开论证。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L779"
+      ],
+      "text_md": "### 要点梳理\n（1）总体方略行动指南：新时代党解决台湾问题的总体方略深刻回答了新时代推进祖国统一的重大理论和现实课题。\n（2）和平统一一国两制：坚持和平统一、一国两制基本方针，这是解决台湾问题的最包容方案与中华民族最大公约数。\n（3）一个中国与九二共识：坚持一个中国原则和九二共识，这是两岸关系和平发展的政治基石与对话协商的根本前提。\n（4）融合发展民心相通：深化两岸融合发展，壮大中华民族经济，促进同胞心灵契合，坚决反分裂、反干涉。\n\n### 易错点\n- 材料分析时易单纯停留在反台独口号，缺乏对“新时代党解决台湾问题的总体方略”科学体系框架的系统调用。\n- 易误以为和平统一意味着放弃防卫手段，必须准确理解“绝不承诺放弃使用武力”是针对外部干涉和极少数台独势力的威慑底线。"
+    },
+    {
+      "block_id": "15040-ch15-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L779"
+      ],
+      "text_md": "总体方略框架对比记忆抓手：\n方针指引——和平统一、一国两制（最具包容性）；\n政治基石——一个中国原则和九二共识（决不动摇）；\n发展动力——深化两岸融合发展、促进心灵契合（情理交融）；\n防线利剑——坚决反对台独分裂行径与外部干涉（底线威慑）。\n口诀：总体方略指航向，和平统一两制广；一中九二筑基石，融合发展聚力量。材料题按「政治基石—和平两制—融合心灵—坚决反独」展开深度剖析。"
+    },
+    {
+      "block_id": "15040-ch15-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L779"
+      ],
+      "text_md": "材料：当前台海局势依然面临严峻挑战。极少数“台独”分裂势力顽固勾连外部干涉势力，蓄意挑衅谋“独”，企图破坏台海和平稳定。面对错综复杂的涉台斗争形势，党中央保持强大战略定力和历史自信，始终坚持贯彻新时代党解决台湾问题的总体方略，持续深化两岸经济文化交流合作，出台系列支持福建建设两岸融合发展示范区的制度机制，广泛团结台湾各界同胞携手共创民族复兴伟业；同时坚决开展反分裂反干涉重大斗争，有效遏制谋“独”挑衅行径。\n根据材料回答：结合上述材料，阐述“新时代党解决台湾问题的总体方略”的核心内涵及其推进祖国统一的实践路径。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、总体方略的理论定位与核心内涵：新时代党解决台湾问题的总体方略是新征程上推进祖国完全统一的根本指针。其核心在于坚持“和平统一、一国两制”基本方针，筑牢“一个中国原则”和“九二共识”政治基石，坚持走两岸关系和平发展、融合发展道路。\n二、紧扣材料深度论证实践路径：\n（1）深化两岸融合发展，促进心灵契合：正如材料所示，通过支持建设两岸融合发展示范区，促进两岸经济文化深度交融，完善增进台湾同胞福祉的制度政策，壮大中华民族经济，铸牢中华民族共同体意识。\n（2）坚决粉碎“台独”分裂和外部干涉图谋：材料表明面对复杂严峻形势，必须敢于斗争、善于斗争，绝不为任何形式的“台独”分裂行径留下任何空间，坚决挫败外部势力“以台制华”幻想，牢牢捍卫国家主权和领土完整。\n（3）团结广大台湾同胞共创民族复兴伟业：秉持两岸一家亲理念，厚植反“独”促统民意土壤，引导广大台湾同胞明辨大义、看清大势。\n三、总结：贯彻落实总体方略，将有力推动两岸关系克难前行，汇聚起实现祖国完全统一的磅礴力量。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15040-ch15-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15040-ch15-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L779"
+      ],
+      "text_md": "### 要点梳理\n（1）主动权根本依托：牢牢把握两岸关系主导权和主动权，根本在于把国家自身的事情办好，依靠大陆综合实力与制度优势。\n（2）战略定力与战略主动：保持战略清醒和战略从容，不被风浪所惑，准确把握历史发展客观大势，主动设置两岸关系议题。\n（3）全方位扎实反制：坚决挫败台独分裂势力各种渐进式谋独企图，针对外部挑衅有力开展军事演训、法治反制和外交封堵。\n（4）汇聚磅礴统一伟力：持续扩大两岸民间各领域交流交往，构建两岸共同利益网络，扎实推进祖国和平统一大业。\n\n### 易错点\n- 材料题分析时易只看表面军事斗争，忽视大陆自身高质量发展才是把握两岸关系走向的根本决定性因素。\n- 易忽略主导权和主动权在法律、外交、文化等全方位的综合展现。"
+    },
+    {
+      "block_id": "15040-ch15-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15040-ch15-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L779"
+      ],
+      "text_md": "主导权主动权串联记忆抓手：\n根本底气——办好大陆自身事情，壮大国家综合实力；\n战略定力——不被外力挑衅扰乱节奏，牢牢把握时与势；\n有效反制——军事演练、法制利剑、外交包围综合施策；\n民心民意——厚植两岸命运共同体，汇聚统一洪流。\n口诀：主导主动在大陆，自身发展是坦途；战略从容破迷雾，万水千山终归土。材料分析紧抓「自身实力是根本—战略定力防诱导—综合反制显威慑」逻辑线索。"
+    },
+    {
+      "block_id": "15040-ch15-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15040-ch15-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-12"
+      },
+      "evidence_refs": [
+        "syllabus:15040#L779"
+      ],
+      "text_md": "材料：近年来，某些西方大国为了遏制中国发展，频频打“台湾牌”，通过对台军售、高官窜访以及操弄涉台国际议题，企图制造两岸对立与台海紧张。岛内民进党当局妄图“倚外谋独”、“以武谋独”，大搞“去中国化”。面对挑衅，中国大陆始终保持战略清醒与强大定力，坚定推进自身高质量发展，国防实力与综合国力不断实现历史性飞跃；同时针对外部挑衅和分裂行径，常态化开展位台岛周边海空域联合战备警巡与联合演训，出台惩治“台独”顽固分子司法意见，坚决挤压“台独”分裂空间，牢牢掌握了台海局势全局。\n根据材料回答：结合材料，阐明为什么祖国大陆能够“牢牢把握两岸关系主导权和主动权”，以及应当如何进一步巩固和增强这种主导权和主动权。",
+      "question_type": "材料题",
+      "answer_md": "答案分析与作答要点：\n一、把握主导权主动权的根本原因分析：决定两岸关系走向的关键因素是祖国大陆的发展进步。中国大陆政治制度成熟稳健、经济体量庞大、国防实力坚不可摧，构成了台海局势的定海神针。无论外部势力如何挑衅、岛内分裂势力如何挣扎，都无法逆转两岸力量对比的历史性天平。\n二、结合材料论述巩固增强主导权主动权的实践举措：\n（1）保持战略清醒与战略定力：正如材料所体现，从容应对外部挑衅，坚决不随敌起舞，紧扣民族复兴大局推进对台工作，把国家发展主动权牢牢掌握在自己手中。\n（2）展现坚强决心与强大能力：材料中常态化联合演训和惩“独”司法意见彰显了强大的法治和军事威慑力量。通过军事遏“独”、法治惩“独”、外交制“独”，构筑起反分裂反干涉的天罗地网。\n（3）持续深化两岸交流合作与情感交融：不断壮大反“独”促统力量，拓宽两岸人员往来和经贸合作空间，推动两岸同胞携手同心、共创中华民族伟大复兴美好未来。\n三、总结：两岸统一的历史车轮滚滚向前，祖国大陆完全有坚强决心、坚定意志和强大能力牢牢把握台海大势，实现国家完全统一。",
+      "source_kind": "ai_generated"
+    },
+    {
       "block_id": "course/exam_strategy",
       "kind": "exam_strategy",
       "point_id": null,
@@ -18761,7 +20243,7 @@
       "evidence_refs": [
         "knowledge-model:exam"
       ],
-      "text_md": "应试作答要严格遵循先易后难原则：拿到试卷后先浏览全卷布局，单选题务必做到快准狠，抓住题干关键词快速锁定正确选项，排除干扰项；简答题审题时要精准抓取核心问题，分点作答、条理清晰，先亮出核心论断再展开阐述，确保关键词突出；材料题作答切忌脱离材料空谈理论，必须采用观点加材料的结合方式，先从材料中提炼反映的问题或做法，再紧扣相关理论知识进行针对性分析与阐述；合理分配作答节奏，答题过程务必预留充裕时间逐题核查答题卡填涂与题目遗漏，确保卷面整洁美观、无笔误。"
+      "text_md": "应试作答要严格遵循先易后难原则：拿到试卷后先通览试题结构与题型排布，单选题务必精准审题，抓住题干核心关键词快速锁定正确选项，排除混淆干扰项；简答题审题时要明确设问指向与核心内涵，分点作答、条理清晰，先亮出核心论断再展开阐述，确保答题核心关键词突出醒目；材料题作答切忌脱离材料空发议论，必须采用观点加材料的结合方式，先从材料中提炼反映的问题、事实或做法，再紧扣相关理论知识进行针对性分析与阐述；合理分配作答节奏，答题过程务必预留充裕时间逐题核查答题卡填涂与题目遗漏，确保卷面整洁美观、字迹清晰工整。"
     }
   ],
   "review_schedule": {
