@@ -219,8 +219,10 @@ def test_ai_content_gate_fails_closed_on_missing_syllabus_corpus(tmp_path: Path)
 def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path):
     """B2 变异证明：AI 块没落到页面就必须失败关闭（这正是 QC3-001 能蒙过关的缺口）。
 
-    四个方向各来一次：`practice.md` 丢 drill、`plan.md` 丢五阶段、`review.md` 丢命名缺口、
-    `plan.md` 丢课程级 `exam_strategy`（W1 —— 旧对账只覆盖 3/4 个 `BLOCK_KINDS`）。
+    九个方向各来一次：`practice.md` 丢 drill、`plan.md` 丢五阶段、`review.md` 丢命名缺口、
+    `plan.md` 丢课程级 `exam_strategy`（W1 —— 旧对账只覆盖 3/4 个 `BLOCK_KINDS`），
+    以及 B2a 的 N-1 四向：章页丢 `#### 要点梳理`（`explain`）、丢 `#### 记忆辅助`（`memorize`）、
+    删掉整个 `knowledge/` 目录、删掉整个课程页目录（旧实现在页面目录缺失时静默 `continue`）。
     """
     from lib.ai_content_gate import run_ai_content_gate
 
@@ -234,6 +236,12 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
     course = "content/jiangsu/courses/15040"
     baseline_root = _fresh_root("baseline")
     assert run_ai_content_gate(baseline_root) == [], "未变异的对照根必须全绿"
+
+    # N-1 对照前提：未变异章页上两类标题计数均 > 0（否则下面的「删光」变异是空洞通过）
+    chapter = baseline_root / course / "knowledge" / "01-ch01.md"
+    baseline_chapter = chapter.read_text(encoding="utf-8")
+    assert baseline_chapter.count("#### 要点梳理") > 0, "对照前提：章页含 `#### 要点梳理`"
+    assert baseline_chapter.count("#### 记忆辅助") > 0, "对照前提：章页含 `#### 记忆辅助`"
 
     # (a) practice.md 丢掉全部 AI 练习小节（等价于旧实现的「AI 备考层从未渲染」）
     root_a = _fresh_root("practice")
@@ -282,6 +290,38 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
     plan_e.write_text(plan_e.read_text(encoding="utf-8").replace(exam_text, "（被替换掉的策略正文）"), encoding="utf-8")
     errors_e = run_ai_content_gate(root_e)
     assert any("应试策略" in e and "text_md" in e for e in errors_e), errors_e
+
+    # (f) N-1：`01-ch01.md` 丢掉全部 `#### 要点梳理` 小节（该章的 `explain` 块未渲染到章页）
+    root_f = _fresh_root("explain_summary")
+    page_f = root_f / course / "knowledge" / "01-ch01.md"
+    page_f.write_text(
+        "\n".join(line for line in page_f.read_text(encoding="utf-8").splitlines() if line.rstrip() != "#### 要点梳理"),
+        encoding="utf-8",
+    )
+    errors_f = run_ai_content_gate(root_f)
+    assert any("要点梳理" in e and "explain" in e for e in errors_f), errors_f
+
+    # (g) N-1：`01-ch01.md` 丢掉全部 `#### 记忆辅助` 小节（该章的 `memorize` 块未渲染到章页）
+    root_g = _fresh_root("memorize_aid")
+    page_g = root_g / course / "knowledge" / "01-ch01.md"
+    page_g.write_text(
+        "\n".join(line for line in page_g.read_text(encoding="utf-8").splitlines() if line.rstrip() != "#### 记忆辅助"),
+        encoding="utf-8",
+    )
+    errors_g = run_ai_content_gate(root_g)
+    assert any("记忆辅助" in e and "memorize" in e for e in errors_g), errors_g
+
+    # (h) N-1：整个 `knowledge/` 目录消失 —— 旧实现在渲染页目录不存在时静默 `continue`，0 错误
+    root_h = _fresh_root("no_knowledge_dir")
+    shutil.rmtree(root_h / course / "knowledge")
+    errors_h = run_ai_content_gate(root_h)
+    assert errors_h, "整个章页目录消失必须报错（不得静默跳过整门课）"
+
+    # (i) N-1 更极端形态（design note §3.1 第三行）：整个课程渲染页目录消失，旧实现同样 0 错误
+    root_i = _fresh_root("no_course_dir")
+    shutil.rmtree(root_i / course)
+    errors_i = run_ai_content_gate(root_i)
+    assert errors_i, "整个课程页目录消失必须报错（不得静默跳过整门课）"
 
 
 def _exam_strategy_text(root: Path) -> str:

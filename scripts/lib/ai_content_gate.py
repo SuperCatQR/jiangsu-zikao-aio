@@ -8,10 +8,13 @@
    旧实现按目录 glob 找语料、空即**静默跳过**，等于把闸门交给文件命名）；
 3. **页面标记**：页面分类与标记字符串一律取自 `course.schema.json` 的 `generated_page_markers`
    （QC1 F-4 / QC3-003：schema 是唯一真源，同一规则不写两遍）；
-4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1）：`practice.md` 的 drill 数、`plan.md` 的五阶段
-   与 `## 应试策略`（课程级 `exam_strategy`）、`review.md` 的排程，逐项与 `content.json` 对账 ——
-   **`BLOCK_KINDS` 的四个 kind 全部覆盖**，而不是三个。这一条缺失正是「AI 备考层从未被渲染」能过关的原因，
-   而只覆盖 3/4 个 kind 正是 `exam_strategy` 被整块删掉却两层全绿的原因。
+4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1）：对账口径 = **4 个 block kind
+   （`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` /
+   `review_schedule`）**：`explain` / `memorize` 的章页小节计数（精确相等）、`practice.md` 的 drill 数、
+   `plan.md` 的五阶段与 `## 应试策略`、`review.md` 的排程，逐项与 `content.json` 对账；
+   课程存在 `content.json` 而渲染页目录不存在时**失败关闭**，不静默跳过整门课。
+   这一条缺失正是「AI 备考层从未被渲染」能过关的原因：先只覆盖 3/4 个 kind（`exam_strategy` 整块删掉仍两层全绿），
+   后又是 `explain` / `memorize` 无对账 + 目录缺失静默 `continue`。
 
 `rendered_course_dir` / `course_code` 让 `build` 的 `gate` 阶段校验**暂存区**页面而不是仓内既有页面。
 """
@@ -31,6 +34,15 @@ from lib.course_pipeline.generate_content import (
 # 8-gram 之外的文本边界（plan § Data contracts 5 / design-notes §2 invariant 5）：`>` 引用块 ≤ 80 字符。
 MAX_BLOCKQUOTE_CHARS = 80
 QUESTION_TEXT_RE = re.compile(r"(选择题|填空题|简答题|材料题|下列.*正确)")
+
+# `explain` / `memorize` 的唯一落点 = 渲染器的章页（`out_dir/knowledge/<NN>-<slug>.md`：
+# `render_pages.py:881-882` 建目录、`:927-936` 逐章写入）。两个小节标题是**契约字面量**：
+# `#### 记忆辅助` 由渲染器产出（`:807`）；`#### 要点梳理` 来自提示词常量
+# （`generate_content.py:54` 的 `EXPLAIN_SUMMARY_HEADING`，由 `validate_content_doc()` 强制每个 explain
+# 块必含），经 `_clean_explain_headings()`（`:141-155`）由 H3 降为 H4。计数一律按 H4 精确整行。
+CHAPTER_PAGE_PATTERN = "knowledge/*.md"
+EXPLAIN_SUMMARY_RE = re.compile(r"(?m)^#### 要点梳理$")
+MEMORIZE_AID_RE = re.compile(r"(?m)^#### 记忆辅助$")
 
 
 def _syllabus_text(root: Path, code: str, rel_content: str, errors: list[str]) -> str:
@@ -91,18 +103,41 @@ def _page_problems(rel_md: str, text: str, markers: dict, errors: list[str], *, 
 
 
 def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], errors: list[str]) -> None:
-    """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004 / W1：闸门只看页面装饰，看不出整层丢失）。
+    """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004 / W1 / B2a N-1：闸门只看页面装饰，看不出整层丢失）。
 
-    对账口径按 kind —— **`BLOCK_KINDS` 的四个 kind 一个都不能漏**：
+    对账口径按 kind —— **4 个 block kind + 2 个课程级顶层产物，一个都不能漏**：
+    - `explain` → 全部章页内 `^#### 要点梳理$` 计数**精确等于**块数；
+    - `memorize` → 全部章页内 `^#### 记忆辅助$` 计数**精确等于**块数；
     - `drill` → `practice.md` 的 `###` 小节数；
     - `stage_plan[]`（恰 5 条）→ `plan.md` 逐阶段名 + `done_when`；
     - `exam_strategy`（课程级块）→ `plan.md` 的 `## 应试策略` 区块内的 `text_md`；
     - `review_schedule` → `review.md` 的三档排程或命名缺口。
 
     `exam_strategy` 这一条是 W1：它曾经既不在渲染器里、也不在本函数里，于是删掉整块
-    （1180 → 1179）两层闸门全绿。`blocks[]` 里没有写入者的 kind 由
-    `validate_content_doc()`（`BLOCK_KINDS` 枚举）拦下，所以这里只需覆盖「有写入者的 kind」。
+    （1180 → 1179）两层闸门全绿。`explain` / `memorize` 是 B2a 的 N-1：两者有写入者（章页）却无对账，
+    于是删掉章页的 `#### 要点梳理` + `#### 记忆辅助`、乃至删掉整个 `knowledge/` 目录都仍然全绿。
+    它们用**精确相等**而不是 `drill` 那样的下界（`rendered < len(drills)`）：这两个 kind 没有别处可落
+    （章页是唯一写入点），下界会让「往章页塞多余的 `#### 要点梳理`」掩盖丢块；口径与 `stage_plan` 的
+    精确比对一致。`blocks[]` 里没有写入者的 kind 由 `validate_content_doc()`（`BLOCK_KINDS` 枚举）拦下，
+    所以这里只需覆盖「有写入者的 kind」。
     """
+    chapters_text = "".join(
+        text
+        for rel_md, text in page_text.items()
+        if course_pages_contract.matches_page(rel_md, {CHAPTER_PAGE_PATTERN})
+    )
+    for kind, heading_re, heading in (
+        ("explain", EXPLAIN_SUMMARY_RE, "要点梳理"),
+        ("memorize", MEMORIZE_AID_RE, "记忆辅助"),
+    ):
+        expected = len([b for b in content.get("blocks") or [] if b.get("kind") == kind])
+        rendered = len(heading_re.findall(chapters_text))
+        if rendered != expected:
+            errors.append(
+                f"course {code}: 章页的 `#### {heading}` 小节数 {rendered} 与 content.json 的 {kind} 块数 {expected} "
+                f"不一致（{kind} 块未渲染到章页）"
+            )
+
     practice = page_text.get("practice.md", "")
     drills = [block for block in content.get("blocks") or [] if block.get("kind") == "drill"]
     if drills:
@@ -241,6 +276,12 @@ def run_ai_content_gate(
             root / "content" / "jiangsu" / "courses" / code
         )
         if not rendered_dir.is_dir():
+            # 有 `content.json` 却没有渲染页目录 = 「AI 块从未被渲染」的极端形态（B2a N-1）：
+            # 旧实现在这里静默 `continue`，于是删掉整个课程页目录也全绿。
+            errors.append(
+                f"course {code}: 存在 {rel_content} 但渲染页目录不存在: {rendered_dir}"
+                "（AI 备考层未渲染到页面）"
+            )
             continue
         page_text: dict[str, str] = {}
         for md_file in sorted(rendered_dir.rglob("*.md")):
