@@ -65,6 +65,22 @@ def _clean_blockquotes(lines: list[str]) -> list[str]:
     return cleaned
 
 
+def _clean_explain_headings(text: str) -> str:
+    """Demote explain subheadings (e.g. ### 要点梳理 / ### 易错点) to H4.
+
+    This keeps the MkDocs TOC (depth 3) clean, showing only 考点 and drills.
+    """
+    cleaned_lines = []
+    for line in text.splitlines():
+        m = re.match(r"^(#{1,3}(?:\s*#{1,3})*)\s+(.*)$", line)
+        if m:
+            heading_text = m.group(2).strip()
+            cleaned_lines.append(f"#### {heading_text}")
+        else:
+            cleaned_lines.append(line)
+    return "\n".join(cleaned_lines)
+
+
 def _render_index(
     code: str,
     evidence: dict[str, Any],
@@ -297,7 +313,10 @@ def _render_plan(
         "| --- | --- | --- | --- |",
     ]
     for ch in model["chapters"]:
-        out.append(f"| {ch['title']} | 通读该章大纲范围；记录不理解点；自检章末要求。 | 能对照章名说出该章大纲范围，并列出待查项。 | ☐ |")
+        fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
+        out.append(
+            f"| {ch['title']} | [进入考点精读与自测](knowledge/{fname})；通读该章大纲范围；记录不理解点；自检章末要求。 | 能对照章名说出该章大纲范围，并列出待查项。 | ☐ |"
+        )
     out.extend(
         [
             "",
@@ -356,7 +375,7 @@ def _render_practice(
     ]
     for ch in model["chapters"]:
         fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
-        out.append(f"- [{ch['title']} 练习题](knowledge/{fname})")
+        out.append(f"- [{ch['title']} 练习题](knowledge/{fname}#ai)")
     out.extend(
         [
             "",
@@ -450,8 +469,28 @@ def _render_chapter_page(
     chapter: dict[str, Any],
     blocks_by_point: dict[str, dict[str, dict[str, Any]]],
     manual_blocks: dict[str, str],
+    *,
+    prev_chapter: dict[str, Any] | None = None,
+    next_chapter: dict[str, Any] | None = None,
 ) -> str:
     title = chapter["title"]
+
+    chapter_nav_items = []
+    if prev_chapter:
+        prev_fn = f"{prev_chapter['ordinal']:02d}-{prev_chapter['slug']}.md"
+        chapter_nav_items.append(f"[← 上一章：{prev_chapter['title']}]({prev_fn})")
+    else:
+        chapter_nav_items.append("这是第一章")
+
+    chapter_nav_items.append("[返回课程概览](../index.md)")
+
+    if next_chapter:
+        next_fn = f"{next_chapter['ordinal']:02d}-{next_chapter['slug']}.md"
+        chapter_nav_items.append(f"[下一章：{next_chapter['title']} →]({next_fn})")
+    else:
+        chapter_nav_items.append("这是最后一章")
+
+    chapter_nav_bar = " ｜ ".join(chapter_nav_items)
 
     out = [
         GENERATED_COMMENT,
@@ -460,6 +499,8 @@ def _render_chapter_page(
         AI_BANNER,
         "",
         "[返回课程概览](../index.md) ｜ [学习计划](../plan.md) ｜ [考纲与范围](../syllabus.md) ｜ [练习与真题](../practice.md)",
+        "",
+        f"**章节导航**：{chapter_nav_bar}",
         "",
         "## 章节概览",
         "",
@@ -490,7 +531,15 @@ def _render_chapter_page(
             ]
         )
         for focus in chapter["chapter_focus"]:
-            out.append(f"- {focus}")
+            if isinstance(focus, dict):
+                text = focus.get("text", "")
+                loc = focus.get("locator")
+                if loc:
+                    out.append(f"- **{text}**（考纲依据：`{loc}`）")
+                else:
+                    out.append(f"- **{text}**")
+            else:
+                out.append(f"- {focus}")
         out.append("")
 
     out.extend(
@@ -508,7 +557,8 @@ def _render_chapter_page(
             out.append(f"### 考点精讲：{pid}（{p['requirement']}）")
             out.append("")
             if explain and explain.get("text_md"):
-                out.append(explain["text_md"].strip())
+                cleaned_explain = _clean_explain_headings(explain["text_md"].strip())
+                out.append(cleaned_explain)
                 out.append("")
             if memorize and memorize.get("text_md"):
                 out.append("#### 记忆辅助")
@@ -542,6 +592,15 @@ def _render_chapter_page(
                 out.append("")
                 out.append("</details>")
                 out.append("")
+
+    out.extend(
+        [
+            "---",
+            "",
+            f"**章节导航**：{chapter_nav_bar}",
+            "",
+        ]
+    )
 
     return "\n".join(out)
 
@@ -632,10 +691,20 @@ def render_course_pages(root: Path, code: str, *, target_dir: Path | None = None
     written.append(p_rev)
 
     # 7. 18 knowledge chapters
-    for ch in model.get("chapters", []):
+    chapters = model.get("chapters", [])
+    for i, ch in enumerate(chapters):
         fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
         ch_text, ch_manual = _read_existing(f"knowledge/{fname}")
-        ch_content = _render_chapter_page(code, ch, blocks_by_point, ch_manual)
+        prev_ch = chapters[i - 1] if i > 0 else None
+        next_ch = chapters[i + 1] if i < len(chapters) - 1 else None
+        ch_content = _render_chapter_page(
+            code,
+            ch,
+            blocks_by_point,
+            ch_manual,
+            prev_chapter=prev_ch,
+            next_chapter=next_ch,
+        )
         p_ch = knowledge_dir / fname
         p_ch.write_text(ch_content, encoding="utf-8")
         written.append(p_ch)

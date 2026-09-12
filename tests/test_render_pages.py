@@ -306,3 +306,48 @@ def test_failed_build_writes_nothing(tmp_path: Path):
 
     snapshot_after = {p.relative_to(course_dir): p.stat().st_mtime_ns for p in course_dir.rglob("*") if p.is_file()}
     assert snapshot_before == snapshot_after, "Failed build must write nothing"
+
+
+def test_inter_chapter_navigation_and_formatting(tmp_path: Path):
+    """P0/P1 UI/UX: 校验章节流转、标题降级(H4)、无字典泄露及计划/练习直链。"""
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    work_dir = tmp_path / "course"
+    shutil.copytree(COURSE_15040, work_dir)
+
+    render_course_pages(ROOT, "15040", target_dir=work_dir)
+
+    km = json.loads((SOURCES_15040 / "knowledge-model.json").read_text(encoding="utf-8"))
+    ch_list = km["chapters"]
+
+    # 1. Inter-chapter navigation
+    intro_txt = (work_dir / "knowledge" / f"{ch_list[0]['ordinal']:02d}-{ch_list[0]['slug']}.md").read_text(encoding="utf-8")
+    assert "这是第一章" in intro_txt
+    assert "下一章：" in intro_txt
+
+    last_txt = (work_dir / "knowledge" / f"{ch_list[-1]['ordinal']:02d}-{ch_list[-1]['slug']}.md").read_text(encoding="utf-8")
+    assert "上一章：" in last_txt
+    assert "这是最后一章" in last_txt
+
+    mid_txt = (work_dir / "knowledge" / f"{ch_list[1]['ordinal']:02d}-{ch_list[1]['slug']}.md").read_text(encoding="utf-8")
+    assert "上一章：" in mid_txt
+    assert "下一章：" in mid_txt
+    assert mid_txt.count("**章节导航**：") == 2
+
+    # 2. Heading demotion & dict prevention across all chapter pages
+    for ch in ch_list:
+        fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
+        ch_txt = (work_dir / "knowledge" / fname).read_text(encoding="utf-8")
+        lines = [line.strip() for line in ch_txt.splitlines()]
+        assert not any(line.startswith("### 要点梳理") for line in lines), f"{fname} contains H3 要点梳理"
+        assert not any(line.startswith("### 易错点") for line in lines), f"{fname} contains H3 易错点"
+        assert any(line.startswith("#### 要点梳理") for line in lines), f"{fname} missing H4 要点梳理"
+        assert any(line.startswith("#### 易错点") for line in lines), f"{fname} missing H4 易错点"
+        assert "{'text':" not in ch_txt, f"{fname} leaked dict in chapter_focus"
+
+    # 3. Plan and practice direct links
+    plan_txt = (work_dir / "plan.md").read_text(encoding="utf-8")
+    assert "[进入考点精读与自测](knowledge/00-intro.md)" in plan_txt
+
+    prac_txt = (work_dir / "practice.md").read_text(encoding="utf-8")
+    assert "(knowledge/00-intro.md#ai)" in prac_txt
