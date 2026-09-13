@@ -1110,3 +1110,221 @@ def test_artifact_matches_fresh_build_for_fallback_courses():
             for section in chapter["sections"]:
                 for point in section["points"]:
                     assert point["quote"].strip() and len(point["quote"]) <= 60, point["id"]
+
+
+# ---- 修复轮 F-1…F-4：真实版式（页码粘连 / 一行多标签 / 节级守卫） ---------------------------
+#
+# 上一轮的用例全部用**规整**片段（一行恰好一个标签、页码独占行、无粘连），所以 335 条全绿
+# 而 `00898` 的产物仍丢了 5 个真考核节。本批用例直接照抄 `00898` 抽取件的**真实形态**
+# （行号即 `document.extracted.md` 的行号），让缺陷可证伪。
+
+SAMPLE_898_DOC = (
+    "sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/"
+    "document.extracted.md"
+)
+
+
+def _paren_label_count(text: str) -> int:
+    """文本里 `（N）` 标签的个数（测试自备判据，不调用生产正则）。"""
+    return len(re.findall(r"（[一二三四五六七八九十]+）", text))
+
+
+def _sample_898_lines() -> list[str]:
+    """`00898` 抽取件的物理行（F-1 的真实形态来源）。"""
+    return (ROOT / SAMPLE_898_DOC).read_text(encoding="utf-8").split("\n")
+
+
+def test_page_marker_glued_to_a_section_label_does_not_swallow_it():
+    """F-1 形态 A：页码行把下一行的节标题并走 —— `00898` L167/L168、L367/L368 实测。
+
+    真实版式是「页码独占一行、标签在**下一行**」；旧实现只丢**整行都是页码**的行（`^...$` 锚定），
+    于是页码行留在逻辑流里；它不以 `。` 收尾，下一行的 `（七）企业应用开发架构` 被并进它，
+    而 `_section_label` 又锚 `^`，嵌入的 `（N）` 看不见 —— 整节消失、其 5 条短语被并进**上一节**
+    （`ch01` 只有 6 节而非 7 节，`软件编程体系简介` 拿到 9 个 point 而不是 4 个）。
+
+    断言直接取自真实物理行：这一形态就是缺陷本体，不靠合成片段。
+    """
+    lines = _sample_898_lines()
+    # 前提：源里确实是「页码独占一行 + 下一行是标签」（考纲换版会让这条前提先失败）
+    assert km.PAGE_MARKER_RE.fullmatch(km._fold(lines[166])), repr(lines[166])
+    assert km._section_label(km._fold(lines[167])) == ("7", "企业应用开发架构"), repr(lines[167])
+
+    raw = [(number, lines[number - 1]) for number in range(167, 172)]
+    logical = km._logical_lines(raw)
+    assert [item["text"] for item in logical][0] == "（七）企业应用开发架构", logical
+    assert all(not km.PAGE_MARKER_RE.search(item["text"]) for item in logical), logical
+
+    sections, unmodeled, _ = km._parse_requirement_block(
+        logical, "00898", "ch01", "第1章 JSP 与 Web 技术概论"
+    )
+    assert [s["index"] for s in sections] == ["7"], sections
+    assert sections[0]["title"] == "企业应用开发架构"
+    # （七）自己的 5 条短语全在本节内（旧缺陷：它们落在上一节 s6）
+    assert [p["title"] for p in sections[0]["points"]] == [
+        "①两层、三层、N 层架构的组成",
+        "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
+        "③J2EE 的分布",
+        "①开发架构之间的比较",
+        "②J2EE 典型的 4 层架构",
+    ], sections[0]["points"]
+    assert unmodeled == [], unmodeled
+    # 页码既不是考核点，也不是命名缺口
+    assert all(km.PAGE_MARKER_RE.search(p["title"]) is None for s in sections for p in s["points"])
+
+
+def test_two_labels_on_one_logical_line_are_both_kept():
+    """F-1 形态 B：相邻的 `（三）`/`（四）` 必须各成一节 —— `00898` L195/L196 实测。
+
+    真实版式是**两个标签各占一行**，但 `（三）…（本节内容不作考核要求）` 不以 `。` 收尾，
+    旧实现把 `（四）其他 JSP 开发环境。` 当 `passage` 并进上一行 —— 结果只认到第一个标签，
+    B 节整节消失、其 `识记：` 行还被冠上 `reason: "not_assessed"`（把官方**考核**内容说成
+    官方**不考**）。把 `（N）` 行认成行边界后，两节都在场，限定语只作用于自己那一节。
+    """
+    lines = _sample_898_lines()
+    first, second = km._fold(lines[194]), km._fold(lines[195])  # L195 / L196
+    assert _paren_label_count(first) == 1 and km.NOT_ASSESSED_MARKER in first, first
+    assert _paren_label_count(second) == 1, second
+    assert not first.endswith("。"), "对照前提：限定语行不以句号收尾，旧实现因此会吞掉下一行"
+
+    logical = km._logical_lines([(195, lines[194]), (196, lines[195]), (197, lines[196])])
+    assert [item["text"] for item in logical] == [first, second, km._fold(lines[196])], logical
+
+    sections, unmodeled, _ = km._parse_requirement_block(
+        logical, "00898", "ch02", "第2章 JSP 的开发和运行环境"
+    )
+    assert [s["index"] for s in sections] == ["4"], sections
+    assert sections[0]["title"] == "其他 JSP 开发环境。"
+    # B 节的 `识记：` 行必须成为该节的 point，绝不记成 not_assessed
+    assert [p["requirement"] for p in sections[0]["points"]] == ["识记"]
+    assert [u["reason"] for u in unmodeled] == ["not_assessed"]
+    assert "不作考核要求" in unmodeled[0]["title"]
+
+
+def test_requirement_line_is_never_stamped_not_assessed():
+    """AC2：`识记/领会/应用：` 行自证该单元参与考核 —— 任何情况下都不得记为 `not_assessed`。
+
+    旧实现把 `skip_reason` 保留到下一个**有效且不带限定语**的标签为止，于是限定语之后的非标签行
+    全部继承 `not_assessed`（`00898` L197/L458/L502 三条真要求行中招）。这里遍历七个真实考纲的
+    产物：只要出现 `not_assessed`，其标题就必须真含 `不作考核要求`，且带考核前缀的行绝不在其中。
+    """
+    for code in ("00898", "02333", "04747", "04751", "15040", "15043", "15044"):
+        doc = km.build_knowledge_model(ROOT, code)
+        for chapter in doc["chapters"]:
+            for item in chapter["unmodeled"]:
+                if item["reason"] == "not_assessed":
+                    assert km.NOT_ASSESSED_MARKER in item["title"], (code, item)
+                if km.REQUIREMENT_RE.match(item["title"]):
+                    assert item["reason"] != "not_assessed", (code, chapter["slug"], item)
+
+
+def test_section_continuity_guard_fails_closed_and_names_the_missing_section():
+    """F-3：节级守卫必须失败关闭，并**指名**缺哪一节（章级守卫看不见丢节）。
+
+    变异证明：把声明里的 `（二）` 那一节从产出里去掉（`sections` 只给 1、3），守卫必须报第2节。
+    对照：声明与产出一致时守卫静默（不得把正常输入判成缺口）。
+    """
+    problems = km._section_continuity_problems(
+        "99999", "ch01", "第1章 甲", ["1", "2", "3"], [{"index": "1"}, {"index": "3"}], []
+    )
+    assert len(problems) == 1, problems
+    message = problems[0]
+    assert "缺第2节" in message, message
+    assert "99999" in message and "ch01" in message, message
+
+    assert km._section_continuity_problems(
+        "99999", "ch01", "第1章 甲", ["1", "2"], [{"index": "1"}, {"index": "2"}], []
+    ) == []
+    # 明确不考核的节不进分母，但已留痕 → 不算缺节（否则「不考」会被误报成「抽取失败」）
+    assert km._section_continuity_problems(
+        "99999", "ch01", "第1章 甲",
+        ["1", "2"],
+        [{"index": "1"}],
+        [{"locator": "L9", "title": "（二）不考的节（本节内容不作考核要求）", "reason": "not_assessed"}],
+    ) == []
+
+
+def test_model_build_fails_closed_when_a_section_is_dropped(tmp_path: Path):
+    """F-3 端到端：**声明了** `（三）` 而产出没有它时，构建必须 raise（不只靠纯函数单测）。
+
+    三个子例覆盖守卫的判别力：
+    1. 真实版式（页码独占一行、标签在下一行）→ 3 节全在场；
+    2. 整节连页码一起删掉 → 声明 2、产出 2，守卫必须静默（证明不是恒定 raise）；
+    3. **历史缺陷形态**：标签被并进页码行（`第 7 页 共 9 页（三）第三节`）→ 标签仍被声明（3），
+       但 `sections[]` 只有 2 → 守卫必须失败关闭。第 3 例正是 `00898` 出厂时全绿的那种输入。
+    """
+    text = (
+        "Ⅰ 课程性质与课程目标\n示例。\n\nⅢ 课程内容与考核要求\n\n第1章 甲\n"
+        "一、学习目的与要求\n示例。\n" + FALLBACK_HEADING + "\n"
+        "（一）第一节\n识记：示例。\n"
+        "（二）第二节\n领会：示例。\n"
+        "第 7 页 共 9 页\n（三）第三节\n应用：示例。\n"
+        "四、本章重点\n示例。\n"
+    )
+    root, evidence = _fragment_root(tmp_path, text)
+    doc = km.extract_knowledge_model(root, evidence)
+    assert [s["index"] for s in doc["chapters"][0]["sections"]] == ["1", "2", "3"], doc["chapters"][0]["sections"]
+
+    # 子例 2：声明数与产出数一致时守卫静默
+    narrowed = text.replace("（三）第三节\n应用：示例。\n", "").replace("第 7 页 共 9 页\n", "")
+    root2, evidence2 = _fragment_root(tmp_path / "narrowed", narrowed)
+    doc2 = km.extract_knowledge_model(root2, evidence2)
+    assert [s["index"] for s in doc2["chapters"][0]["sections"]] == ["1", "2"]
+
+    # 子例 3：标签被页码粘连 → 声明 3、产出 2 → 失败关闭且指名缺第3节
+    glued = text.replace("第 7 页 共 9 页\n（三）第三节", "第 7 页 共 9 页（三）第三节")
+    root3, evidence3 = _fragment_root(tmp_path / "glued", glued)
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root3, evidence3)
+    assert "缺第3节" in str(err.value), str(err.value)
+
+
+def test_denominator_rule_describes_the_denominator_actually_used():
+    """F-2：`denominator_rule` 必须描述**实际用的分母** —— 两门真实课各占一种形状。
+
+    `00898` 是节级考纲（50 个 `（N）` 节 / 16 章），`02333` 是章级考纲（13 个考核章 / 14 章）。
+    旧实现按「任一章是章级」的 OR 选规则，`00898` 只因 6 个不考核章的空要求块就被判成章级，
+    产物便自称「该考纲不分子节」—— 分母实为节数，是可被下游当事实读的假话。
+    """
+    section_level = km.build_knowledge_model(ROOT, "00898")["coverage"]
+    assert section_level["official_point_count"] == 50, "分母是节数（50），不是章数（16）"
+    assert "章即考核单元" not in section_level["denominator_rule"], section_level["denominator_rule"]
+    assert "节数" in section_level["denominator_rule"], section_level["denominator_rule"]
+
+    chapter_level = km.build_knowledge_model(ROOT, "02333")["coverage"]
+    assert chapter_level["official_point_count"] == 13, "分母是考核章数（13）"
+    assert "章即考核单元" in chapter_level["denominator_rule"], chapter_level["denominator_rule"]
+
+
+def test_00898_real_artifact_keeps_all_fifty_assessed_sections_and_no_misattribution():
+    """AC1：`00898` 的 50 个考核节全部在场，且短语不跨节错位（真实产物断言）。
+
+    旧产物只有 45 节、`ch01` 缺 `（七）`（9 个 point 全挂到 `s6`）、`ch06` 缺 `（二）`。
+    这里钉死：50 节、`ch01` 是 7 节且 `s6`/`s7` 各自成节、每个 point id 的节号与所在节一致。
+    """
+    doc = json.loads((ROOT / "sources/jiangsu/courses/00898/knowledge-model.json").read_text(encoding="utf-8"))
+    sections = [section for chapter in doc["chapters"] for section in chapter["sections"]]
+    assert len(sections) == 50, f"考核节数应为 50，实际 {len(sections)}"
+    assert doc["coverage"]["official_point_count"] == 50
+    assert doc["coverage"]["ratio"] == 1.0
+
+    ch01 = next(chapter for chapter in doc["chapters"] if chapter["slug"] == "ch01")
+    assert [s["index"] for s in ch01["sections"]] == ["1", "2", "3", "4", "5", "6", "7"], ch01["sections"]
+    s6, s7 = ch01["sections"][5], ch01["sections"][6]
+    assert s7["title"] == "企业应用开发架构"
+    # （七）的 5 条短语必须落在 s7，不得留在 s6（旧缺陷：s6 拿到 9 个 point）
+    assert [p["title"] for p in s7["points"]] == [
+        "①两层、三层、N 层架构的组成",
+        "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
+        "③J2EE 的分布",
+        "①开发架构之间的比较",
+        "②J2EE 典型的 4 层架构",
+    ], s7["points"]
+    assert all("架构" not in point["title"] or "B/S" in point["title"] for point in s6["points"]), s6["points"]
+
+    # 每个 point 的 id 必须与其所在节的 index 一致（跨节错位的机器可读判据）
+    for chapter in doc["chapters"]:
+        for section in chapter["sections"]:
+            for point in section["points"]:
+                assert point["id"] == f"00898-{chapter['slug']}-s{section['index']}-p{point['id'].rsplit('-p', 1)[1]}", point["id"]
+                assert point["title"].strip() and point["quote"].strip(), point["id"]
+

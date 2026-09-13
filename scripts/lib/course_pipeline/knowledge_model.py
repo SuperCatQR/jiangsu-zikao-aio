@@ -81,10 +81,13 @@ CHAPTER_RE = re.compile(
 # 章序标签前缀（`_chapter_index` 用）：只取标签段，不要求标签后面还有标题
 CHAPTER_LABEL_PREFIX_RE = re.compile(rf"^(?:{CHAPTER_LABEL}|{NUMBERED_CHAPTER_LABEL})")
 SECTION_RE = re.compile(r"^(\d+)\.(.*)$")
-# 节标题的第二种版式（KB-4）：`（一）标题`。`00898` 的考核要求小节用它编号（实测 53 个节），
-# 而 `15040` / `15043` / `15044` 用 `1.标题`（三课实测 0 个 `（N）` 行）—— 两种都要认，
-# 否则 `00898` 一个节都切不出来（全章落进 `unmodeled[]`、`coverage.ratio` 退化成 0.0）。
+# 节标题的第二种版式（KB-4）：`（一）标题`。`00898` 的考核要求小节用它编号（实测 63 个 `（N）` 标签，
+# 其中 50 个参与考核），而 `15040` / `15043` / `15044` 用 `1.标题`（三课实测 0 个 `（N）` 行）——
+# 两种都要认，否则 `00898` 一个节都切不出来（全章落进 `unmodeled[]`、`coverage.ratio` 退化成 0.0）。
 PAREN_SECTION_RE = re.compile(r"^（([一二三四五六七八九十]+)）\s*(.*)$")
+# 逻辑行里**任意位置**的 `（N）` 标签（不带 `^` 锚点）：折行合并会把相邻的节标题连成一行，
+# 只认行首标签会让第二个节整节消失（F-1）。判据本身不锚定，所以“标签在哪”不影响识别。
+PAREN_LABEL_RE = re.compile(r"（([一二三四五六七八九十]+)）")
 NOT_ASSESSED_MARKER = "不作考核要求"
 # 抽取件里页码行会粘进考核要求小节（`00898` 实测 3 处），必须先剔除，否则会被当成考核段落
 PAGE_MARKER_RE = re.compile(r"^第\s*\d+\s*页\s*共\s*\d+\s*页$")
@@ -316,15 +319,27 @@ def _body_slices(lines: list[str], titles: list[str], start: int) -> list[list[t
 # ---- 折行 / 页码归一化 ---------------------------------------------------------
 
 def _logical_lines(raw_lines: list[tuple[int, str]]) -> list[dict]:
-    """物理行 → 逻辑行：丢弃页码与空行，折行续行并入上一条逻辑行。"""
+    """物理行 → 逻辑行：丢弃页码与空行，折行续行并入上一条逻辑行。
+
+    **节标题是行边界，两种版式一视同仁**（F-1）：`（一）标题` 与 `1.标题` 都恒为独立逻辑行，
+    也不吸收续行。旧实现只把 `1.标题` 认成 `section`，`（一）标题` 落进 `passage` —— 于是
+    「上一行不以 `。` 收尾」时它会被**并进上一条逻辑行**，第二个标签随之消失：`00898` 实测
+    `L195` 的 `（三）…（本节内容不作考核要求）` 把 `L196` 的 `（四）其他 JSP 开发环境。` 整行吞掉，
+    该节既不在 `sections[]`、其 `识记` 行还被冠上 `reason: not_assessed`。
+
+    **页码行在归一化阶段丢弃**（F-1）：`第N页 共M页` 与裸页码一样，既不是考核内容也不是缺口
+    （本模块 docstring §2 早已如此声明，旧实现只丢了裸页码）。页码行若留在逻辑流里，
+    下一行的 `（N）` 标签会被并进它、整节消失（`00898` 实测 4 处：L167/L367/L467/L500）；
+    页码粘进 `识记：` 续行时还会污染 point 正文（`00898-ch03-s3-p3` / `02333-ch05-s1-p11`）。
+    """
     logical: list[dict] = []
     for number, raw in raw_lines:
         text = _fold(raw)
-        if not text or PAGE_NUMBER_RE.fullmatch(text):
+        if not text or PAGE_NUMBER_RE.fullmatch(text) or PAGE_MARKER_RE.fullmatch(text):
             continue
         if TOP_HEADING_RE.match(text):
             kind = "heading"
-        elif SECTION_RE.match(text):
+        elif SECTION_RE.match(text) or PAREN_SECTION_RE.match(text):
             kind = "section"
         elif REQUIREMENT_RE.match(text):
             kind = "requirement"
@@ -342,6 +357,60 @@ def _logical_lines(raw_lines: list[tuple[int, str]]) -> list[dict]:
             continue
         logical.append({"line": number, "text": text, "kind": kind})
     return logical
+
+
+def _declared_section_indexes(block: list[dict]) -> list[str]:
+    """块内**声明**的节号（切分前采集，用于节级连续性守卫 F-3）。
+
+    `（N）` 标签按文本任意位置扫（不锚行首）：标签被页码粘连时同样计入声明，
+    守卫才能发现「声明了但没成节」。`1.标题` 版式另按行首计（该版式恒为独立逻辑行）。
+    """
+    declared: list[str] = []
+    for item in block:
+        text = item["text"]
+        section = SECTION_RE.match(text)
+        if section:
+            declared.append(section.group(1))
+        for match in PAREN_LABEL_RE.finditer(text):
+            number = _chinese_number(match.group(1))
+            declared.append(str(number) if number else match.group(0))
+    return declared
+
+
+def _section_continuity_problems(
+    code: str, slug: str, chapter_title: str, declared: list[str], sections: list[dict], unmodeled: list[dict]
+) -> list[str]:
+    """节级连续性守卫（F-3）：**源侧声明的节号**必须都在 `sections[]` 或「不考核」留痕里现身。
+
+    章级守卫只看章目，看不见**丢了一节**：`official_point_count` 与 `sum(len(sections))` 两侧
+    都出自同一次解析，节被丢弃时两边同时变小、比值仍然 1.0（`evidence_gate.py` 的
+    「分母自洽」核对因此永远为真）。`00898` 就是这样带着 `ch01=[1..6]`（真值 7 节）、
+    `ch10=[1,2,5,6,7]`（真值 11 节）全绿出厂的。本守卫改用与产出**互相独立**的源侧声明对账，
+    故丢节不再隐形。
+
+    失败关闭且**指名缺哪些节号**（与章级守卫同风格）：只丢 1 个也报，绝不静默。
+    """
+    if not declared:
+        return []
+    accounted = {section["index"] for section in sections}
+    # 明确不考核的节不进分母，但必须留痕（`not_assessed`），故同样算「已交代」。
+    # 只看 `not_assessed`：其它 reason 的行可能只是**提到**某个标签（如未编号段落里夹着 `（三）`），
+    # 那不是「该节已被交代」，算进去会让守卫对真正丢掉的节视而不见。
+    accounted |= {
+        str(_chinese_number(label))
+        for item in unmodeled
+        if item["reason"] == "not_assessed"
+        for label in PAREN_LABEL_RE.findall(item["title"])
+        if _chinese_number(label)
+    }
+    missing = [index for index in dict.fromkeys(declared) if index not in accounted]
+    if not missing:
+        return []
+    return [
+        f"{code}: {slug}（{chapter_title}）声明了 {len(set(declared))} 个节，"
+        f"但缺第{'、'.join(missing)}节（声明 {declared}，产出 {[s['index'] for s in sections]}）："
+        "节被静默丢弃（节级连续性守卫）"
+    ]
 
 
 def _requirement_block(logical: list[dict], heading: str) -> list[dict] | None:
@@ -409,9 +478,13 @@ def _parse_requirement_block(
     `title` 取章标题），否则整章要求会全部落进 `unmodeled[]`、`coverage.ratio` 退化成 `0.0`。
     有节边界的课（`15040` / `15043` / `15044`）不受影响。
 
-    **明确不考核的单元不进分母**：标题带 `（本节内容不作考核要求）` 的节（`00898` 实测 8 个）
+    **明确不考核的单元不进分母**：标题带 `（本节内容不作考核要求）` 的节（`00898` 实测 13 个）
     与带 `（本章内容不作考核要求）` 的章（`02333` 第 14 章）本身就没有考核要求，
     把它们算作「未抽出的节」会把「不考」误报成「抽取失败」；改为只留痕（`reason: not_assessed`）。
+
+    **限定语只作用于自己那一段**（F-1）：标签先经 `_split_labelled()`, 一行多个标签各成一条，
+    故 A 标签的 `不作考核要求` 不会压掉同一行的 B 标签 —— 只有真带限定语的那一段才记为不考核。
+    调用方（`extract_knowledge_model`）另用 `_declared_section_indexes()` 复核声明与产出是否吻合。
     """
     sections: list[dict] = []
     unmodeled: list[dict] = []
@@ -715,13 +788,20 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
         )
 
     chapters = []
-    chapter_level_model = False
+    # 分母形状由**实际参与分母的单元**决定（F-2）：`chapter_level` 只在某章真的产出了考核单元时
+    # 才参与投票，且要求**所有**产出单元都是章级形态。旧实现用 `or` 汇总所有章（含 6 个不考核、
+    # 要求块为空、因而 `numbered=False` 的章），于是一份节级考纲被误标成章级。
+    unit_shapes: list[bool] = []
+    section_problems: list[str] = []
     for position, title in enumerate(titles):
         ordinal, slug = identities[position]
         logical = _logical_lines(slices[position])
         block = _requirement_block(logical, heading)
+        declared = _declared_section_indexes(block or [])
         sections, unmodeled, chapter_level = _parse_requirement_block(block or [], code, slug, title)
-        chapter_level_model = chapter_level_model or chapter_level
+        if sections:
+            unit_shapes.append(chapter_level)
+        section_problems += _section_continuity_problems(code, slug, title, declared, sections, unmodeled)
         chapters.append({
             "ordinal": ordinal,
             "index": _chapter_index(title),
@@ -731,6 +811,10 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
             "chapter_focus": _chapter_focus(logical),
             "unmodeled": unmodeled,
         })
+
+    if section_problems:
+        raise ValueError("考纲节号不连续：" + "；".join(section_problems))
+    chapter_level_model = bool(unit_shapes) and all(unit_shapes)
 
     official = sum(len(chapter["sections"]) for chapter in chapters)
     modeled = sum(1 for chapter in chapters for section in chapter["sections"] if section["points"])
@@ -748,6 +832,10 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
             "official_point_count": official,
             "modeled_point_count": modeled,
             "ratio": round(modeled / official, 4) if official else 0.0,
+            # 规则串必须描述**实际用的分母**（F-2）：旧实现用「任一章是章级」的 OR 选全局规则，
+            # 于是一份**节级**考纲（`00898`：50 个 `（N）` 节）只因 6 个不考核章的空要求块也点亮了
+            # 章级标记，产物便自称「该考纲不分子节，章即考核单元」—— 分母实为节数 50、章数才 16，
+            # 是可被下游（B3b）当事实读的假话。现在只有**确实没有节号**时才发章级规则。
             "denominator_rule": (
                 DENOMINATOR_RULE_CHAPTER_TEMPLATE.format(heading=heading)
                 if chapter_level_model

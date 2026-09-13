@@ -257,37 +257,43 @@
               "requirement": "领会",
               "quote": "①B/S 模式和 C/S 模式的工作优缺点",
               "locator": "L163"
-            },
+            }
+          ]
+        },
+        {
+          "index": "7",
+          "title": "企业应用开发架构",
+          "points": [
             {
-              "id": "00898-ch01-s6-p5",
+              "id": "00898-ch01-s7-p1",
               "title": "①两层、三层、N 层架构的组成",
               "requirement": "识记",
               "quote": "①两层、三层、N 层架构的组成",
               "locator": "L169"
             },
             {
-              "id": "00898-ch01-s6-p6",
+              "id": "00898-ch01-s7-p2",
               "title": "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
               "requirement": "识记",
               "quote": "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
               "locator": "L169"
             },
             {
-              "id": "00898-ch01-s6-p7",
+              "id": "00898-ch01-s7-p3",
               "title": "③J2EE 的分布",
               "requirement": "识记",
               "quote": "③J2EE 的分布",
               "locator": "L169"
             },
             {
-              "id": "00898-ch01-s6-p8",
+              "id": "00898-ch01-s7-p4",
               "title": "①开发架构之间的比较",
               "requirement": "领会",
               "quote": "①开发架构之间的比较",
               "locator": "L171"
             },
             {
-              "id": "00898-ch01-s6-p9",
+              "id": "00898-ch01-s7-p5",
               "title": "②J2EE 典型的 4 层架构",
               "requirement": "领会",
               "quote": "②J2EE 典型的 4 层架构",
@@ -307,11 +313,6 @@
         }
       ],
       "unmodeled": [
-        {
-          "locator": "L167",
-          "title": "第 5 页 共 22 页（七）企业应用开发架构",
-          "reason": "unnumbered_section"
-        },
         {
           "locator": "L172",
           "title": "（八）JSP 知识体系及学习之路（本节内容不作考核要求）",
@@ -399,6 +400,19 @@
               "locator": "L194"
             }
           ]
+        },
+        {
+          "index": "4",
+          "title": "其他 JSP 开发环境。",
+          "points": [
+            {
+              "id": "00898-ch02-s4-p1",
+              "title": "①JSP 的相关开发环境的种类",
+              "requirement": "识记",
+              "quote": "①JSP 的相关开发环境的种类",
+              "locator": "L197"
+            }
+          ]
         }
       ],
       "chapter_focus": [
@@ -410,12 +424,7 @@
       "unmodeled": [
         {
           "locator": "L195",
-          "title": "（三）MyEclipse 开发环境（本节内容不作考核要求）（四）其他 JSP 开发环境",
-          "reason": "not_assessed"
-        },
-        {
-          "locator": "L197",
-          "title": "识记：①JSP 的相关开发环境的种类",
+          "title": "（三）MyEclipse 开发环境（本节内容不作考核要求）",
           "reason": "not_assessed"
         }
       ]
@@ -556,9 +565,9 @@
             },
             {
               "id": "00898-ch03-s3-p3",
-              "title": "③include 指令，包括作用、语第 7 页 共 22 页法、路径的类型、包含的文件类型、处理、注意点",
+              "title": "③include 指令，包括作用、语法、路径的类型、包含的文件类型、处理、注意点",
               "requirement": "识记",
-              "quote": "③include 指令，包括作用、语第 7 页 共 22 页法、路径的类型、包含的文件类型、处理、注意点",
+              "quote": "③include 指令，包括作用、语法、路径的类型、包含的文件类型、处理、注意点",
               "locator": "L231"
             },
             {
@@ -1076,9 +1085,9 @@
             },
             {
               "id": "00898-ch05-s2-p8",
-              "title": "②JSP 写第 10 页 共 22 页Cookie 到客户端",
+              "title": "②JSP 写Cookie 到客户端",
               "requirement": "领会",
-              "quote": "②JSP 写第 10 页 共 22 页Cookie 到客户端",
+              "quote": "②JSP 写Cookie 到客户端",
               "locator": "L332"
             },
             {
@@ -1254,30 +1263,36 @@
               "requirement": "领会",
               "quote": "②JSP+JavaBean 的优点",
               "locator": "L365"
-            },
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "MVC 编程模式（Model2）",
+          "points": [
             {
-              "id": "00898-ch06-s1-p6",
+              "id": "00898-ch06-s2-p1",
               "title": "①MVC 模式的概念、控制器的概念和作用/角色、JSP 的作用/角色",
               "requirement": "识记",
               "quote": "①MVC 模式的概念、控制器的概念和作用/角色、JSP 的作用/角色",
               "locator": "L369"
             },
             {
-              "id": "00898-ch06-s1-p7",
+              "id": "00898-ch06-s2-p2",
               "title": "②MVC 模式在 Web 编程中的应用（包括 M、V、C 分别代表了什么角色）",
               "requirement": "识记",
               "quote": "②MVC 模式在 Web 编程中的应用（包括 M、V、C 分别代表了什么角色）",
               "locator": "L369"
             },
             {
-              "id": "00898-ch06-s1-p8",
+              "id": "00898-ch06-s2-p3",
               "title": "①Model2 的工作过程",
               "requirement": "领会",
               "quote": "①Model2 的工作过程",
               "locator": "L371"
             },
             {
-              "id": "00898-ch06-s1-p9",
+              "id": "00898-ch06-s2-p4",
               "title": "②MVC 的优点",
               "requirement": "领会",
               "quote": "②MVC 的优点",
@@ -1437,13 +1452,7 @@
           "locator": "L390"
         }
       ],
-      "unmodeled": [
-        {
-          "locator": "L367",
-          "title": "第 11 页 共 22 页（二）MVC 编程模式（Model2）",
-          "reason": "unnumbered_section"
-        }
-      ]
+      "unmodeled": []
     },
     {
       "ordinal": 7,
@@ -1593,7 +1602,12 @@
       "unmodeled": [
         {
           "locator": "L423",
-          "title": "（六）使用 jspSmartUpload 上传包（本节内容不作考核要求）（七）使用 Commons-FilUpload",
+          "title": "（六）使用 jspSmartUpload 上传包（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L424",
+          "title": "（七）使用 Commons-FilUpload 上传包（本节内容不作考核要求）",
           "reason": "not_assessed"
         }
       ]
@@ -1714,6 +1728,19 @@
           ]
         },
         {
+          "index": "5",
+          "title": "使用 JDBC 连接不同的数据库",
+          "points": [
+            {
+              "id": "00898-ch08-s5-p1",
+              "title": "①典型的驱动程序名/字符串",
+              "requirement": "识记",
+              "quote": "①典型的驱动程序名/字符串",
+              "locator": "L458"
+            }
+          ]
+        },
+        {
           "index": "6",
           "title": "连接池",
           "points": [
@@ -1754,17 +1781,17 @@
       "unmodeled": [
         {
           "locator": "L456",
-          "title": "（四）Java 与 SQL 的数据类型转换（本节内容不作考核要求）（五）使用 JDBC 连接不同的数据库",
-          "reason": "not_assessed"
-        },
-        {
-          "locator": "L458",
-          "title": "识记：①典型的驱动程序名/字符串",
+          "title": "（四）Java 与 SQL 的数据类型转换（本节内容不作考核要求）",
           "reason": "not_assessed"
         },
         {
           "locator": "L463",
-          "title": "（七）存取二进制文件（本节内容不作考核要求）第 14 页 共 22 页（八）实现分页显示（本节内容不作考核要求）",
+          "title": "（七）存取二进制文件（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L468",
+          "title": "（八）实现分页显示（本节内容不作考核要求）",
           "reason": "not_assessed"
         }
       ]
@@ -1881,6 +1908,19 @@
           ]
         },
         {
+          "index": "4",
+          "title": "Servlet 请求和响应相关",
+          "points": [
+            {
+              "id": "00898-ch10-s4-p1",
+              "title": "①HttpServletRequest、HttpServletResponse 接口的作用、所属包",
+              "requirement": "识记",
+              "quote": "①HttpServletRequest、HttpServletResponse 接口的作用、所属包",
+              "locator": "L502"
+            }
+          ]
+        },
+        {
           "index": "5",
           "title": "Servlet 配置相关",
           "points": [
@@ -1985,17 +2025,27 @@
       "unmodeled": [
         {
           "locator": "L498",
-          "title": "（三）Servlet 实现相关的接口和类（本节内容不作考核要求）第 15 页 共 22 页（四）Servlet 请求和响",
-          "reason": "not_assessed"
-        },
-        {
-          "locator": "L502",
-          "title": "识记：①HttpServletRequest、HttpServletResponse 接口的作用、所属包",
+          "title": "（三）Servlet 实现相关的接口和类（本节内容不作考核要求）",
           "reason": "not_assessed"
         },
         {
           "locator": "L517",
-          "title": "（八）Servlet 协作（本节内容不作考核要求）（九）Servlet 异常相关（本节内容不作考核要求）（十）Servl",
+          "title": "（八）Servlet 协作（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L518",
+          "title": "（九）Servlet 异常相关（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L519",
+          "title": "（十）Servlet3.0 注解（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L520",
+          "title": "（十一）Servlet 应用实例（本节内容不作考核要求）",
           "reason": "not_assessed"
         }
       ]
@@ -2182,10 +2232,10 @@
     "question_types_next_evidence": "官方考纲「考试命题的主要题型」段落（或等效的官方说明）"
   },
   "coverage": {
-    "official_point_count": 45,
-    "modeled_point_count": 45,
+    "official_point_count": 50,
+    "modeled_point_count": 50,
     "ratio": 1.0,
-    "denominator_rule": "考纲「二、考核知识点与考核要求」中的章数（该考纲不分子节，章即考核单元）",
+    "denominator_rule": "考纲「二、考核知识点与考核要求」中带编号的节数",
     "manual_reference": null,
     "diff_vs_manual": []
   }
