@@ -17,7 +17,7 @@
 | 章节正文 | 不得从 PDF/抽取稿粘贴考核要求或知识点 | `sources.md` | missing-source |
 | 指定教材 ISBN | 官方页未给出 | `sources.md` | missing-source |
 | 真题索引 | 无官方公开原件/授权索引 | `practice.md` | missing-source |
-| 替代关系 | 官方页未声明 | `index.md` `replacement_confirmed` | missing-source |
+| 替代/衔接关系 | 官方**已出版**新旧计划对照表，把旧代码与本课程列于同一行（横向替代原则）；过渡适用为条件式 | `sources/jiangsu/processed/documents/jiangsu-plan-handbook-2026-05/document.extracted.md` `L833`/`L87-88`/`L156-163`；`index.md` | verified-metadata |
 | 内部资料 | 私仓归档后仅写 `materials://` | `zikao-materials` | metadata-only |
 
 ## 有界公开索引
@@ -55,7 +55,7 @@
 | 1 | 已核验江苏省教育考试院公开考纲页与 PDF | URL、标题、代码/课名 match 已记入 `sources.md` |
 | 2 | 适用考期仍待官方正文声明 | 未声明则保持 `未声明`，不推断 |
 | 3 | 若仅有内部资料，登记 `materials://` 索引 | 不暴露 private raw 链接 |
-| 4 | 教材 ISBN、真题、替代关系、章节正文 | 各为独立缺口，见下 |
+| 4 | 教材 ISBN、真题、章节正文 | 各为独立缺口，见下 |
 | 5 | 章名索引 | 与官方 PDF `大纲目录` 切片十章一致；Ⅰ–Ⅳ 不作章 |
 
 ## 缺口（读者影响 / 下一证据）
@@ -65,7 +65,7 @@
 - **章节正文**：读者仍无法按考核要求细读各章知识点。下一证据：官方授权转载或合法内部 `materials://`；公开仓不贴 PDF/抽取稿正文。
 - **教材 ISBN**：读者无法采购核对指定教材。下一证据：考试院或主考学校书目页。
 - **真题**：读者无法按官方原卷自测。下一证据：授权索引或 `materials://` 指针。
-- **替代关系**：读者无法判断旧课代码是否仍有效。下一证据：官方计划表替代栏。
+- **替代/衔接关系**：读者可据官方对照表确认旧代码与本课程的对应（同一行、横向替代原则），并据本科思政课过渡规则判断自己是否仍需报考本课程；本页不把它简化为「一律顶替」。
 
 <!-- derived:begin id=release-status -->
 ## 放行状态（机器判定）

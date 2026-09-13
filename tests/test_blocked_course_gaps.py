@@ -12,7 +12,13 @@
 **硬不变量（AC8 / GC1）**：这些课保持**零 AI 产物** —— 不得出现 `ai_generated` 块、不得出现 AI 横幅。
 下面用**可证伪**的方式钉住：横幅字面量取自 `course.schema.json` 的 `generated_page_markers.ai_banner`
 （schema 是唯一真源，不在测试里另抄一遍），并额外断言这些页面**没有**任何 AI 页面标记。
+
+**AC8 的读法（F2 修订）**：不变量约束的是**机器产物**（横幅 / `ai_generated` / `content.json`），
+而 4 门课（`00023` `04735` `13000` `13003`）另有**迁移期手写 AI 署名**与自己的 `## AI 生成声明` 表。
+它们是既有的、由各自声明表治理的内容，本片**不动**；B3c owns 的是**缺口叙事的真值性**：
+因此本条额外要求「绝对零 AI 断言」**不得与该页自己的 AI 署名共现**。
 """
+
 from __future__ import annotations
 
 import json
@@ -39,6 +45,27 @@ MISSING_BOTH = {"13000"}
 
 # 三节标题是契约：读者必须能读到「缺什么 / 为什么 / 下一步」（plan § Data contracts 1）。
 REQUIRED_SUBSECTIONS = ("### 缺什么", "### 为什么", "### 下一步")
+
+# 缺口区块里**声称本页「已核验/已命中教材计划行」**的措辞（F1）。成因是共享句把它当成无条件事实，
+# 而 `13000` 的 `textbook_plan.status = "missing"`，于是同一页的 blockquote 与自己的表格互相矛盾。
+TEXTBOOK_MATCHED_CLAIM = "已核验的教材计划行"
+
+# AC8 的读法（F2）：`blocked` 课**不含 AI 备考层**；但若页面自身带 AI 署名区块，就**不得**出现
+# 「本页没有任何 AI 内容」式的绝对断言。这些短语是 4 门课真实存在的**合法**署名，因此只作
+# 「共现检测」的触发器，绝不禁止其出现。
+AI_ATTRIBUTION = re.compile(r"AI\s*(?:辅助|初稿|原创|撰写|整理|生成)")
+ABSOLUTE_NO_AI_CLAIM = re.compile(
+    r"(?:零|无|没有|不含|不包含|不产出|不生成|未产出|未生成)\s*(?:任何)?\s*AI\s*(?:内容|产物|文字|文本|元素|区块)"
+)
+
+# 「考纲缺第 N 章」式断言（F7）：`04747` / `04751` 的考纲实测**完整**（13 章、1–13 连续）。
+# 上一版只认三种写法，对 `缺少第 6 章` / `缺了第 6 章` / `考纲第 6 章缺失` / `第 6 章未收录` 全部漏判。
+MISSING_CHAPTER_CLAIM = re.compile(
+    r"缺\s*[少了]?\s*第\s*[\d\-–—]+\s*章"                        # 缺第6章 / 缺少第 6 章 / 缺了第 6 章
+    r"|第\s*[\d\-–—]+\s*章\s*缺\s*[失少]"                        # 考纲第 6 章缺失
+    r"|第\s*[\d\-–—]+\s*章\s*未\s*(?:收录|覆盖|包含|列出|纳入)"   # 第 6 章未收录
+    r"|考纲\s*缺\s*章"                                              # 考纲缺章
+)
 
 
 def _blocked_codes() -> list[str]:
@@ -67,6 +94,46 @@ def _gap_block(code: str) -> str:
     block = text.split(START, 1)[1].split(END, 1)[0]
     assert block.strip(), f"{code}/index.md 缺口区块为空"
     return block
+
+
+def _banner_violations(text: str, *, banner: str | None = None) -> list[str]:
+    """AC8 判定谓词：文本里出现的 AI 页面标记。
+
+    **守卫与它的自检必须调用同一个谓词**（F5 的教训）：上一版自检写的是
+    `assert banner in (page + banner)` —— 那只是字符串拼接的性质，把真实守卫换成 `assert True`
+    它照样绿。抽成谓词后，「注入即判否、干净即判空」才真的在检验守卫本体。
+    """
+    banner = banner if banner is not None else _ai_banner()
+    found = []
+    if banner in text:
+        found.append("ai_banner")
+    if "ai_generated" in text:
+        found.append("ai_generated")
+    return found
+
+
+def _textbook_claim_offenders(code: str, text: str) -> list[str]:
+    """F1 判定谓词：文本在 `textbook_plan.status != "matched"` 时仍声称教材计划行已核验。"""
+    doc = json.loads((EVIDENCE / code / "evidence.json").read_text(encoding="utf-8"))
+    matched = (doc.get("textbook_plan") or {}).get("status") == "matched"
+    if not matched and TEXTBOOK_MATCHED_CLAIM in text:
+        return [code]
+    return []
+
+
+def _absolute_no_ai_offenders(text: str) -> list[str]:
+    """F2 判定谓词：同一页既含 AI 署名、又含「本页没有 AI 内容」式绝对断言 → 返回命中的断言。
+
+    谓词**不**把 AI 署名本身当违规 —— 只报二者的共现冲突。
+    """
+    if not AI_ATTRIBUTION.search(text):
+        return []
+    return sorted({m.group(0) for m in ABSOLUTE_NO_AI_CLAIM.finditer(text)})
+
+
+def _missing_chapter_offenders(text: str) -> list[str]:
+    """F7 判定谓词：「考纲缺第 N 章」式未经证实断言的命中片段。"""
+    return sorted({m.group(0) for m in MISSING_CHAPTER_CLAIM.finditer(text)})
 
 
 def _ai_banner() -> str:
@@ -120,7 +187,7 @@ def test_gap_statements_cite_the_machine_verdict_not_a_hand_list():
 
 
 def test_gap_statements_do_not_claim_unverified_missing_chapters():
-    """**回归守护**：不得出现「考纲缺第 N 章」式断言。
+    r"""**回归守护**：不得出现「考纲缺第 N 章」式断言。
 
     `04747` / `04751` 的考纲实测**完整**（13 章、1–13 连续）。规划期一度以为它们缺章，
     成因是探针正则 `^\\s*第(\\d+)章` 匹配不到带空格的 `第 6 章`；若把这个假象写进读者页，
