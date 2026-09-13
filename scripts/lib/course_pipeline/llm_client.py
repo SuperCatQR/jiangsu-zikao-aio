@@ -182,7 +182,7 @@ def load_prompt(prompt_id: str, prompt_version: str) -> tuple[str, dict]:
 
 
 def prompt_course_scope(prompt_id: str, prompt_version: str) -> list[str]:
-    """模板 frontmatter 声明的课程作用域（`course_scope: ["15040"]`，plan § Data contracts 4 / F-401）。"""
+    """模板 frontmatter 声明的课程作用域（当前的 `course_scope: ["15040", "15043"]`，plan § Data contracts 4 / F-401）。"""
     path = prompt_path(prompt_id, prompt_version)
     if not path.is_file():
         raise RuntimeError(f"提示词缺失: {path.name}")

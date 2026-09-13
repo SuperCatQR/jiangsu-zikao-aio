@@ -34,14 +34,14 @@ joined by a **fullwidth semicolon** （`；` U+FF1B）:
 
 `BARE_URL_RE = re.compile(r"(?<![(\[])\bhttps?://[^\s)\]<>`\"']+")` treated `；` as part of the URL
 (it is not in the excluded character class), so the two URLs were extracted as **one** merged string.
-During probing, `urllib.request` encoded the request line in ASCII and raised
+During probing, Python's `urllib` request layer encoded the request line in ASCII and raised
 `UnicodeEncodeError` — which `probe()` did not catch (its except clauses cover
-`URLError`/`OSError`/`socket.timeout`/`ssl.SSLError`), aborting the **entire** run
+a URLError / OSError / socket timeout / SSL error), aborting the **entire** run
 instead of recording the URL as `inconclusive`.
 
 ## Symptoms
 
-- `python scripts/check-source-links.py --update-baseline` crashed with
+- Running `scripts/check-source-links.py` with `--update-baseline` crashed with
   `UnicodeEncodeError: 'ascii' codec can't encode character '\uff1b'` (position 65).
 - `--offline` extraction printed the merged URL `...html；...pdf` as a single entry.
 - The stale baseline carried the merged URL as `inconclusive` forever.
@@ -76,4 +76,4 @@ running even if a URL with an unusual character slips through.
   never fullwidth punctuation.
 - Any change to `BARE_URL_RE` should keep the CJK separators（`，`、`；`、`、`）excluded.
 - The monitor run should be re-verified after adding any new official URL row
-  (`python scripts/check-source-links.py --offline` smoke).
+  (a `scripts/check-source-links.py` smoke run with `--offline`).

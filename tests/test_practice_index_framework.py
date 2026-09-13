@@ -2,8 +2,9 @@
 from __future__ import annotations
 
 import re
-import subprocess
 from pathlib import Path
+
+from tests.baseline_contract import assert_page_work_keeps_baseline_intact
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSES = ROOT / "content" / "jiangsu" / "courses"
@@ -101,12 +102,14 @@ def test_practice_pages_have_no_quoted_question_passages():
 
 
 def test_source_links_baseline_unchanged():
-    result = subprocess.run(
-        ["git", "diff", "--", "ops/jiangsu/source-links.baseline.json"],
-        cwd=ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    assert result.returncode == 0, result.stderr
-    assert result.stdout == "", "ops/jiangsu/source-links.baseline.json must stay unchanged"
+    """练习页框架的工作**不得写** baseline（B2-D4 保留的实质意图）。
+
+    原断言是「baseline 零 git diff」；baseline 可被 `--update-baseline` / `refresh-baseline`
+    job 合法刷新，故改为「读全部 practice 页不改 baseline 一个字节」+ 语义契约。
+    见 tests/baseline_contract.py。
+    """
+
+    def _read_all_practice_pages():
+        return [path.read_text(encoding="utf-8") for path in _practice_pages()]
+
+    assert_page_work_keeps_baseline_intact(_read_all_practice_pages)

@@ -683,14 +683,42 @@ def test_select_chapters_rejects_unknown_selector():
 
 
 def test_prompt_pack_declares_course_scope():
-    """F-401：四个提示词模板声明 `course_scope`；作用域外的课程没有提示词包。"""
+    """F-401：四个提示词模板声明 `course_scope`；作用域外的课程没有提示词包。
+
+    P-2（plan § 决议记录 R-1）：B-1 把作用域放宽到 `15043`，但**它不是通配**——
+    作用域仍是一个显式白名单，作用域外的课码必须继续被拒。
+    """
     prompts = ("explain_point", "memorize_point", "drill_point", "stage_plan")
 
     for prompt_id in prompts:
-        assert llm.prompt_course_scope(prompt_id, "v1") == ["15040"], prompt_id
+        scope = llm.prompt_course_scope(prompt_id, "v1")
+        assert "15040" in scope, f"{prompt_id}：15040 必须在作用域内"
+        assert "15043" in scope, f"{prompt_id}：B-1 放宽后 15043 必须在作用域内"
+        assert "*" not in scope and "any" not in scope, f"{prompt_id}：作用域不得放宽成通配"
 
     assert gc.out_of_scope_prompts("15040") == [], "15040 在作用域内，不得误判"
-    assert gc.out_of_scope_prompts("15043") == [f"{prompt_id}.v1" for prompt_id in prompts]
+    assert gc.out_of_scope_prompts("15043") == [], "B-1：15043 在作用域内，generate 必须可推进"
+
+    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 15100 是 L1 课程，
+    # 但仍不在提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
+    assert gc.out_of_scope_prompts("15044") == [f"{prompt_id}.v1" for prompt_id in prompts]
+    assert gc.out_of_scope_prompts("99999") == [f"{prompt_id}.v1" for prompt_id in prompts]
+
+
+def test_prompt_bodies_are_course_agnostic():
+    """B-1 / P-2：模板正文不得绑定某一门课 —— 课码与学科事实一律由 payload 提供。
+
+    只改 `course_scope` 而不改正文，就是用思政课模板给「中国近现代史纲要」出 255 个考点的内容
+    （design note §0 的 P-3，已被 R-1 否决）；本用例锁住「正文去课程化」这一半。
+    """
+    banned = ("习近平", "新时代", "中国特色", "马克思主义", "两个确立", "15040", "15043")
+
+    for prompt_id in ("explain_point", "memorize_point", "drill_point", "stage_plan"):
+        text, _schema = llm.load_prompt(prompt_id, "v1")
+        body = text.split("\n---\n", 1)[1]  # 去 frontmatter：`course_scope` 是唯一允许出现课码的地方
+        for literal in banned:
+            assert literal not in body, f"{prompt_id} 正文仍含课程绑定字面量：{literal}"
+        assert "course_code" in body, f"{prompt_id} 必须把课程归属指向 payload 的 course_code"
 
 
 def test_merge_replaces_course_blocks_and_keeps_point_blocks(monkeypatch, tmp_path):
@@ -985,7 +1013,32 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
 
 
 def test_cli_generate_refuses_a_course_without_a_prompt_pack():
-    """F-401 失败关闭：15043 是真实 L1 课程但没有提示词包 → 拒绝，不得用 15040 的模板出内容。"""
+    """F-401 失败关闭：作用域**外**的 L1 课程没有提示词包 → 拒绝，不得用别人的模板出内容。
+
+    B-1 之后 `15043` 已进入作用域（见 `test_cli_generate_accepts_an_in_scope_course`），
+    故这里改用仍是 L1、但不在作用域内的 `15044`：作用域是白名单而非通配，这一条必须一直是红的。
+    """
+    proc = subprocess.run(
+        [sys.executable, "scripts/build-course-content.py", "generate", "15044", "--backend", "replay"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+    assert proc.returncode != 0, proc.stdout
+    assert "15044" in proc.stderr
+    assert "提示词包" in proc.stderr
+    for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
+        assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
+    assert not (ROOT / "sources/jiangsu/courses/15044/content.json").exists(), "拒绝路径不得写盘"
+
+
+def test_cli_generate_accepts_an_in_scope_course():
+    """B-1 的正向面：`15043` 进入作用域后，CLI 必须越过 scope 判据继续推进。
+
+    本片（Task 1）只为 `15043` **解锁** generate。**I-1 裁定（评审后续修，2026-09-12）**：本用例只锁定
+    「作用域守卫已放行」这一件事，断言与 Task 4/Task 5 的进度**无关**，避免被它们的正确工作推翻。
+    """
     proc = subprocess.run(
         [sys.executable, "scripts/build-course-content.py", "generate", "15043", "--backend", "replay"],
         cwd=ROOT,
@@ -993,12 +1046,12 @@ def test_cli_generate_refuses_a_course_without_a_prompt_pack():
         text=True,
     )
 
-    assert proc.returncode != 0, proc.stdout
-    assert "15043" in proc.stderr
-    assert "提示词包" in proc.stderr
-    for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
-        assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
-    assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "拒绝路径不得写盘"
+    assert "无提示词包" not in proc.stderr, f"B-1 未修好：15043 仍被 scope 判据拦下\n{proc.stderr}"
+    assert "course_scope" not in proc.stderr, proc.stderr
+    # `exit != 2` = 不再走「无提示词包」那条失败分支；若仍失败，失败路径不得写盘。
+    assert proc.returncode != 2, f"15043 仍被判为 scope 外（exit 2）：{proc.stderr}"
+    if proc.returncode != 0:
+        assert not (ROOT / "sources/jiangsu/courses/15043/content.json").exists(), "失败路径不得写盘"
 
 
 def test_cli_generate_replay_reproduces_artifact_byte_identically():
@@ -1023,6 +1076,157 @@ def test_cli_generate_replay_reproduces_artifact_byte_identically():
     assert proc.returncode == 0, proc.stderr
     assert "blocks=" in proc.stdout
     assert CONTENT_PATH.read_bytes() == before, "replay 复跑必须字节一致"
+
+
+# --------------------------------------------------------------------------------------
+# R6 / F-QC3-5：`15043` 的 replay 字节一致必须有**持久**守护（此前只有 `15040` 有）
+# --------------------------------------------------------------------------------------
+
+COURSE_43 = "15043"
+MODEL_43_PATH = Path(f"sources/jiangsu/courses/{COURSE_43}/knowledge-model.json")
+CONTENT_43_PATH = Path(f"sources/jiangsu/courses/{COURSE_43}/content.json")
+
+
+def _artifact_43() -> dict:
+    return _json(ROOT / CONTENT_43_PATH)
+
+
+def _artifact_43_slugs() -> tuple[str, ...]:
+    """`15043` 产物覆盖的章 slug（由 `point_id` 反推，口径与 `_artifact_slugs()` 相同）。"""
+    slugs = {b["point_id"].split("-")[1] for b in _artifact_43()["blocks"] if b.get("point_id")}
+    model = _json(ROOT / MODEL_43_PATH)
+    return tuple(c["slug"] for c in model["chapters"] if c["slug"] in slugs)
+
+
+def _generate_43_replay() -> subprocess.CompletedProcess:
+    """CLI `generate 15043 --backend replay`（全课，不传 `--chapters`）。"""
+    return subprocess.run(
+        [sys.executable, "scripts/build-course-content.py", "generate", COURSE_43, "--backend", "replay"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+
+def test_cli_generate_replay_reproduces_15043_artifact_byte_identically():
+    """R6：`15043` 的 `content.json` = `f(fixture)` —— replay 复跑必须**逐字节**重现 committed 产物。
+
+    改前 `15043` 的唯一覆盖是 `test_cli_generate_accepts_an_in_scope_course` 的 `returncode != 2`
+    弱断言（只锁「作用域放行」），字节一致性只在 `15040` 上被守护（`MODEL_PATH` / `CONTENT_PATH` 钉死
+    `15040`，`tests/test_render_pages.py:15` 亦然）。于是「产物 = f(fixture)」对 `15043` 是一次性人工验证，
+    下一轮改 fixture 或改生成逻辑都不会被这套件发现。
+
+    两次运行都比对 committed 字节：第一次证明「committed 产物可由 fixture 精确重建」，
+    第二次证明「重建是幂等的」（`generated_at` 在 replay 下取自录制响应，故无需归一化）。
+    断言用 sha256 + 精确字节双重口径，失败信息里直接给出摘要便于定位。
+    """
+    import hashlib
+
+    committed_path = ROOT / CONTENT_43_PATH
+    assert committed_path.is_file(), f"committed 产物缺失: {CONTENT_43_PATH}"
+    committed = committed_path.read_bytes()
+    committed_sha = hashlib.sha256(committed).hexdigest()
+
+    # 对照前提：产物确实覆盖全部 10 章、766 块（否则「字节一致」可能只是空跑）
+    artifact = _artifact_43()
+    assert len(artifact["blocks"]) == 766, f"对照前提：15043 blocks 应为 766，实际 {len(artifact['blocks'])}"
+    assert len(_artifact_43_slugs()) == 10, "对照前提：15043 覆盖 10 章"
+
+    # 第一次：replay 重建必须与 committed 逐字节相同
+    proc = _generate_43_replay()
+    assert proc.returncode == 0, f"replay 失败：{proc.stderr}"
+    assert "15043" in proc.stdout, proc.stdout
+    first = committed_path.read_bytes()
+    assert hashlib.sha256(first).hexdigest() == committed_sha, (
+        "replay 未能逐字节重现 committed 产物："
+        f"committed={committed_sha} replayed={hashlib.sha256(first).hexdigest()}"
+    )
+    assert first == committed, "replay 复跑必须与 committed 字节一致"
+
+    # 第二次：再跑一次必须与第一次逐字节相同（幂等）
+    proc2 = _generate_43_replay()
+    assert proc2.returncode == 0, f"replay 复跑失败：{proc2.stderr}"
+    assert committed_path.read_bytes() == first, "replay 二次复跑必须字节一致（幂等）"
+
+
+def test_15043_replay_byte_test_is_falsifiable(tmp_path):
+    """R6 反向验证：committed 产物**扰动一个字节**时，上一条用例的比对口径必须能发现。
+
+    不跑 CLI（那只证明「磁盘变了」），而是把上一条用例的比对逻辑本身当作被测对象：
+    在同一份字节上做 1 字节变异 → sha256 与字节相等都必须判否。这样「字节一致」的断言
+    不会退化成恒真检查。
+    """
+    import hashlib
+
+    committed = (ROOT / CONTENT_43_PATH).read_bytes()
+    assert len(committed) > 1, "对照前提：产物非空"
+
+    # 在空白区做 1 字节替换（保持 JSON 仍可解析，证明检查不是靠「解析失败」侥幸通过）
+    mutated = committed.replace(b'"blocks"', b'"blockz"', 1)
+    assert mutated != committed, "对照前提：1 字节变异必须改变字节"
+    assert len(mutated) == len(committed), "对照前提：变异只改内容、不改长度"
+    assert json.loads(mutated.decode("utf-8")), "对照前提：变异后仍是合法 JSON"
+
+    assert hashlib.sha256(mutated).hexdigest() != hashlib.sha256(committed).hexdigest(), (
+        "1 字节扰动必须改变 sha256（否则字节判定是恒真的）"
+    )
+    assert mutated != committed, "1 字节扰动必须被字节相等判定抓到"
+
+    # 同时钉住：committed 产物本身没被本次变异污染
+    assert (ROOT / CONTENT_43_PATH).read_bytes() == committed, "反向验证不得改动仓内产物"
+
+
+def test_committed_fixtures_resolve_every_call_plan_payload_for_each_course():
+    """QC1-S-2：每门有 `content.json` 的课程，`call_plan(model)` 的**每个** `payload_hash` 都必须能在
+    录制文件里解析到响应 —— 这把「replay 可复现」从报告级声明变成机器校验的属性。
+
+    QC1 当初只人工重建了 `15043` 的 766 个键（255 explain / 255 memorize / 255 drill / 1 stage_plan），
+    并在 `qc1.md` 里记为「效果上被 R6 取代、但未交付」。R6 的 replay 用例确实**蕴含**该性质
+    （键缺失时 `complete_json` 会抛 `missing fixture`，字节一致就不可能成立），但那是**间接**蕴含：
+    它只能证明「跑到的那些键在」，键集合一旦漂移只能从 CLI 失败里倒推。本用例把它**直接**钉住，
+    并且按课参数化 —— 下一门课（B2b）接入后**自动**进入守护范围，无需再补一次性重建。
+
+    第三门课的接入前提由此写明：新课程只需让 `call_plan(model)` 的每个 payload 都有录制响应。
+    """
+    courses = sorted(
+        path.parent.name
+        for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/content.json")
+    )
+    # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查
+    assert courses == ["15040", "15043"], f"对照前提：有 content.json 的课程为 15040/15043，实际 {courses}"
+
+    for code in courses:
+        model = _json(ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json")
+        plan = gc.call_plan(model)
+        assert plan, f"{code}: call_plan 不得为空"
+
+        resolved: dict[tuple[str, str], int] = defaultdict(int)
+        misses: list[str] = []
+        for prompt_id, prompt_version, payload in plan:
+            digest = llm.payload_hash(payload)
+            fixture = _json(llm.fixture_path(prompt_id, prompt_version))
+            if digest not in (fixture.get("responses") or {}):
+                misses.append(f"{prompt_id}.{prompt_version}.json#{digest}")
+            resolved[(prompt_id, prompt_version)] += 1
+
+        assert not misses, (
+            f"{code}: {len(misses)} 个 payload 在录制文件里无响应（replay 会失败关闭）—— 首个 {misses[0]}"
+        )
+        assert sum(resolved.values()) == len(plan), f"{code}: 覆盖数必须等于 call_plan 长度"
+
+        # 与产物自身的块数对账（口径独立于 fixture）：产物有多少块，就该有多少条对应该块的调用
+        artifact = _json(ROOT / f"sources/jiangsu/courses/{code}/content.json")
+        blocks = artifact["blocks"]
+        for kind, prompt_id in (("explain", "explain_point"), ("memorize", "memorize_point"), ("drill", "drill_point")):
+            assert resolved[(prompt_id, "v1")] == len([b for b in blocks if b.get("kind") == kind]), (
+                f"{code}: {prompt_id} 的调用数必须等于产物里 {kind} 块数"
+            )
+        # 课程级调用各恰一条：stage_plan 走 prompt（1 条调用 → 5 个阶段条目），
+        # `exam_strategy` 是**无 prompt 的**课程级块（由 `stage_plan` 响应之外的常量/模型派生，不在 call_plan 里）
+        assert resolved[("stage_plan", "v1")] == 1, f"{code}: stage_plan 调用应恰为 1 条"
+        assert len([b for b in blocks if b.get("kind") == "exam_strategy"]) == 1, (
+            f"{code}: 课程级 exam_strategy 块应恰为 1 条"
+        )
 
 
 def test_full_course_replay_with_a_missing_fixture_fails_loudly(monkeypatch, tmp_path):
