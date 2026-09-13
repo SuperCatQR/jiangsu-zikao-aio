@@ -1,0 +1,1462 @@
+{
+  "schema_version": 1,
+  "course_code": "02333",
+  "model_version": "v1",
+  "generated_at": "2026-09-13",
+  "generator": {
+    "kind": "deterministic",
+    "model": null,
+    "prompt_id": null,
+    "prompt_version": null
+  },
+  "source": {
+    "doc_id": "syllabus:02333",
+    "path": "sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/document.extracted.md",
+    "sha256": "7f67fe53e9db9a618084ee0dace38dbcd6bd429ef5f1426349dacaad27685ec2"
+  },
+  "chapters": [
+    {
+      "ordinal": 1,
+      "index": "第1章",
+      "slug": "ch01",
+      "title": "第1章 概论",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第1章 概论",
+          "points": [
+            {
+              "id": "02333-ch01-s1-p1",
+              "title": "①软件工程的定义、特点、基本原理",
+              "requirement": "识记",
+              "quote": "①软件工程的定义、特点、基本原理",
+              "locator": "L95"
+            },
+            {
+              "id": "02333-ch01-s1-p2",
+              "title": "②软件危机的定义和原因",
+              "requirement": "识记",
+              "quote": "②软件危机的定义和原因",
+              "locator": "L95"
+            },
+            {
+              "id": "02333-ch01-s1-p3",
+              "title": "③软件工程的生命周期",
+              "requirement": "识记",
+              "quote": "③软件工程的生命周期",
+              "locator": "L95"
+            },
+            {
+              "id": "02333-ch01-s1-p4",
+              "title": "④软件开发过程模型",
+              "requirement": "识记",
+              "quote": "④软件开发过程模型",
+              "locator": "L95"
+            },
+            {
+              "id": "02333-ch01-s1-p5",
+              "title": "⑤软件开发方法，软件开发工具",
+              "requirement": "识记",
+              "quote": "⑤软件开发方法，软件开发工具",
+              "locator": "L95"
+            },
+            {
+              "id": "02333-ch01-s1-p6",
+              "title": "⑥软件工程的最新发展动向",
+              "requirement": "识记",
+              "quote": "⑥软件工程的最新发展动向",
+              "locator": "L95"
+            },
+            {
+              "id": "02333-ch01-s1-p7",
+              "title": "①软件开发过程模型：瀑布模型、快速原型模型、螺旋模型、增量模型、喷泉模型、RUP 过程、极限编程等",
+              "requirement": "应用",
+              "quote": "①软件开发过程模型：瀑布模型、快速原型模型、螺旋模型、增量模型、喷泉模型、RUP 过程、极限编程等",
+              "locator": "L98"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件工程的定义、特点、基本原理",
+          "locator": "L103"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 2,
+      "index": "第2章",
+      "slug": "ch02",
+      "title": "第2章 分析阶段",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第2章 分析阶段",
+          "points": [
+            {
+              "id": "02333-ch02-s1-p1",
+              "title": "①可行性研究的任务、内容和步骤",
+              "requirement": "识记",
+              "quote": "①可行性研究的任务、内容和步骤",
+              "locator": "L111"
+            },
+            {
+              "id": "02333-ch02-s1-p2",
+              "title": "②需求规格说明书的写法",
+              "requirement": "识记",
+              "quote": "②需求规格说明书的写法",
+              "locator": "L111"
+            },
+            {
+              "id": "02333-ch02-s1-p3",
+              "title": "①问题定义",
+              "requirement": "领会",
+              "quote": "①问题定义",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p4",
+              "title": "②系统流程图的画法",
+              "requirement": "领会",
+              "quote": "②系统流程图的画法",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p5",
+              "title": "③软件计划的制定",
+              "requirement": "领会",
+              "quote": "③软件计划的制定",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p6",
+              "title": "④成本估算方法和效益分析方法",
+              "requirement": "领会",
+              "quote": "④成本估算方法和效益分析方法",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p7",
+              "title": "⑤需求分析的概念、目标和任务",
+              "requirement": "领会",
+              "quote": "⑤需求分析的概念、目标和任务",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p8",
+              "title": "⑥需求分析的原则、过程和方法",
+              "requirement": "领会",
+              "quote": "⑥需求分析的原则、过程和方法",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p9",
+              "title": "⑦需求评审规则",
+              "requirement": "领会",
+              "quote": "⑦需求评审规则",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p10",
+              "title": "⑧传统软件建模方法",
+              "requirement": "领会",
+              "quote": "⑧传统软件建模方法",
+              "locator": "L112"
+            },
+            {
+              "id": "02333-ch02-s1-p11",
+              "title": "①系统流程图的符号",
+              "requirement": "应用",
+              "quote": "①系统流程图的符号",
+              "locator": "L115"
+            },
+            {
+              "id": "02333-ch02-s1-p12",
+              "title": "②数据模型",
+              "requirement": "应用",
+              "quote": "②数据模型",
+              "locator": "L115"
+            },
+            {
+              "id": "02333-ch02-s1-p13",
+              "title": "③功能模型",
+              "requirement": "应用",
+              "quote": "③功能模型",
+              "locator": "L115"
+            },
+            {
+              "id": "02333-ch02-s1-p14",
+              "title": "④行为模型",
+              "requirement": "应用",
+              "quote": "④行为模型",
+              "locator": "L115"
+            },
+            {
+              "id": "02333-ch02-s1-p15",
+              "title": "⑤数据字典",
+              "requirement": "应用",
+              "quote": "⑤数据字典",
+              "locator": "L115"
+            },
+            {
+              "id": "02333-ch02-s1-p16",
+              "title": "⑥DFD 图",
+              "requirement": "应用",
+              "quote": "⑥DFD 图",
+              "locator": "L115"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①问题定义",
+          "locator": "L118"
+        },
+        {
+          "text": "②可行性研究的任务、内容和步骤",
+          "locator": "L118"
+        },
+        {
+          "text": "③DFD 图的画法",
+          "locator": "L118"
+        },
+        {
+          "text": "（注：纠错：书 54 页图 2-25 数据流：“用户情况”应改为“用户信息”“音乐情况”应改为“音乐信息”。）",
+          "locator": "L120"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 3,
+      "index": "第3章",
+      "slug": "ch03",
+      "title": "第3章 总体设计",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第3章 总体设计",
+          "points": [
+            {
+              "id": "02333-ch03-s1-p1",
+              "title": "①总体设计工具、总体设计说明书的编写规范",
+              "requirement": "识记",
+              "quote": "①总体设计工具、总体设计说明书的编写规范",
+              "locator": "L129"
+            },
+            {
+              "id": "02333-ch03-s1-p2",
+              "title": "②软件体系结构的概念、现状和描述方法",
+              "requirement": "识记",
+              "quote": "②软件体系结构的概念、现状和描述方法",
+              "locator": "L129"
+            },
+            {
+              "id": "02333-ch03-s1-p3",
+              "title": "①总体设计的任务、过程",
+              "requirement": "领会",
+              "quote": "①总体设计的任务、过程",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p4",
+              "title": "②模块设计、结构设计原理",
+              "requirement": "领会",
+              "quote": "②模块设计、结构设计原理",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p5",
+              "title": "③设计准则",
+              "requirement": "领会",
+              "quote": "③设计准则",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p6",
+              "title": "④面向数据流的设计方法",
+              "requirement": "领会",
+              "quote": "④面向数据流的设计方法",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p7",
+              "title": "⑤模块结构设计方法",
+              "requirement": "领会",
+              "quote": "⑤模块结构设计方法",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p8",
+              "title": "⑥数据存储设计方法",
+              "requirement": "领会",
+              "quote": "⑥数据存储设计方法",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p9",
+              "title": "⑦MVC 框架的模式和实现",
+              "requirement": "领会",
+              "quote": "⑦MVC 框架的模式和实现",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p10",
+              "title": "⑧分层结构和微内核结构",
+              "requirement": "领会",
+              "quote": "⑧分层结构和微内核结构",
+              "locator": "L131"
+            },
+            {
+              "id": "02333-ch03-s1-p11",
+              "title": "①模块设计方法",
+              "requirement": "应用",
+              "quote": "①模块设计方法",
+              "locator": "L136"
+            },
+            {
+              "id": "02333-ch03-s1-p12",
+              "title": "②结构设计方法",
+              "requirement": "应用",
+              "quote": "②结构设计方法",
+              "locator": "L136"
+            },
+            {
+              "id": "02333-ch03-s1-p13",
+              "title": "③数据流设计方法",
+              "requirement": "应用",
+              "quote": "③数据流设计方法",
+              "locator": "L136"
+            },
+            {
+              "id": "02333-ch03-s1-p14",
+              "title": "④MVC 框架",
+              "requirement": "应用",
+              "quote": "④MVC 框架",
+              "locator": "L136"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①模块设计准则、设计方法",
+          "locator": "L138"
+        },
+        {
+          "text": "②结构设计方法",
+          "locator": "L138"
+        },
+        {
+          "text": "③数据流设计方法",
+          "locator": "L138"
+        },
+        {
+          "text": "④MVC 框架",
+          "locator": "L138"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 4,
+      "index": "第4章",
+      "slug": "ch04",
+      "title": "第4章 详细设计",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第4章 详细设计",
+          "points": [
+            {
+              "id": "02333-ch04-s1-p1",
+              "title": "①详细设计的任务",
+              "requirement": "识记",
+              "quote": "①详细设计的任务",
+              "locator": "L148"
+            },
+            {
+              "id": "02333-ch04-s1-p2",
+              "title": "②详细设计的原则",
+              "requirement": "识记",
+              "quote": "②详细设计的原则",
+              "locator": "L148"
+            },
+            {
+              "id": "02333-ch04-s1-p3",
+              "title": "①详细设计的方法、工具",
+              "requirement": "领会",
+              "quote": "①详细设计的方法、工具",
+              "locator": "L149"
+            },
+            {
+              "id": "02333-ch04-s1-p4",
+              "title": "②详细设计说明与复审",
+              "requirement": "领会",
+              "quote": "②详细设计说明与复审",
+              "locator": "L149"
+            },
+            {
+              "id": "02333-ch04-s1-p5",
+              "title": "③Jackson 程序设计方法、Warnier 程序设计方法",
+              "requirement": "领会",
+              "quote": "③Jackson 程序设计方法、Warnier 程序设计方法",
+              "locator": "L149"
+            },
+            {
+              "id": "02333-ch04-s1-p6",
+              "title": "④基于组件的设计方法",
+              "requirement": "领会",
+              "quote": "④基于组件的设计方法",
+              "locator": "L149"
+            },
+            {
+              "id": "02333-ch04-s1-p7",
+              "title": "⑤用户界面设计、字符界面设计、菜单设计、对话框设计、多窗口界面设计",
+              "requirement": "领会",
+              "quote": "⑤用户界面设计、字符界面设计、菜单设计、对话框设计、多窗口界面设计",
+              "locator": "L149"
+            },
+            {
+              "id": "02333-ch04-s1-p8",
+              "title": "①详细设计的方法和工具",
+              "requirement": "应用",
+              "quote": "①详细设计的方法和工具",
+              "locator": "L152"
+            },
+            {
+              "id": "02333-ch04-s1-p9",
+              "title": "②用户界面设计原则",
+              "requirement": "应用",
+              "quote": "②用户界面设计原则",
+              "locator": "L152"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①详细设计的方法和工具",
+          "locator": "L154"
+        },
+        {
+          "text": "②用户界面设计原则",
+          "locator": "L154"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 5,
+      "index": "第5章",
+      "slug": "ch05",
+      "title": "第5章 编码及测试",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第5章 编码及测试",
+          "points": [
+            {
+              "id": "02333-ch05-s1-p1",
+              "title": "①程序设计语言的发展、分类和选择标准",
+              "requirement": "识记",
+              "quote": "①程序设计语言的发展、分类和选择标准",
+              "locator": "L163"
+            },
+            {
+              "id": "02333-ch05-s1-p2",
+              "title": "②软件测试的文档说明",
+              "requirement": "识记",
+              "quote": "②软件测试的文档说明",
+              "locator": "L163"
+            },
+            {
+              "id": "02333-ch05-s1-p3",
+              "title": "①程序文档化和数据说明",
+              "requirement": "领会",
+              "quote": "①程序文档化和数据说明",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p4",
+              "title": "②程序表达式和语句结构，输入输出规范",
+              "requirement": "领会",
+              "quote": "②程序表达式和语句结构，输入输出规范",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p5",
+              "title": "③程序代码效率、存储器效率和输入、输出效率",
+              "requirement": "领会",
+              "quote": "③程序代码效率、存储器效率和输入、输出效率",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p6",
+              "title": "④冗余程序设计和防错程序设计",
+              "requirement": "领会",
+              "quote": "④冗余程序设计和防错程序设计",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p7",
+              "title": "⑤结构化程序设计方法",
+              "requirement": "领会",
+              "quote": "⑤结构化程序设计方法",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p8",
+              "title": "⑥代码行度量方法、McCabe 度量法、Halstead 度量法",
+              "requirement": "领会",
+              "quote": "⑥代码行度量方法、McCabe 度量法、Halstead 度量法",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p9",
+              "title": "⑦软件测试的意义、目的和原则",
+              "requirement": "领会",
+              "quote": "⑦软件测试的意义、目的和原则",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p10",
+              "title": "⑧软件静态测试和动态测试方法",
+              "requirement": "领会",
+              "quote": "⑧软件静态测试和动态测试方法",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p11",
+              "title": "⑨软件黑盒测试方法和第 5 页 共 16 页白盒测试方法",
+              "requirement": "领会",
+              "quote": "⑨软件黑盒测试方法和第 5 页 共 16 页白盒测试方法",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p12",
+              "title": "⑩单元测试、集成测试、确认测试、系统测试和验收测试",
+              "requirement": "领会",
+              "quote": "⑩单元测试、集成测试、确认测试、系统测试和验收测试",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p13",
+              "title": "⑪软件调试过程和调试途径",
+              "requirement": "领会",
+              "quote": "⑪软件调试过程和调试途径",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p14",
+              "title": "⑫软件测试用例设计方法和错误曲线",
+              "requirement": "领会",
+              "quote": "⑫软件测试用例设计方法和错误曲线",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p15",
+              "title": "⑬软件测试工具和软件自动测试",
+              "requirement": "领会",
+              "quote": "⑬软件测试工具和软件自动测试",
+              "locator": "L164"
+            },
+            {
+              "id": "02333-ch05-s1-p16",
+              "title": "①程序设计风格",
+              "requirement": "应用",
+              "quote": "①程序设计风格",
+              "locator": "L173"
+            },
+            {
+              "id": "02333-ch05-s1-p17",
+              "title": "②代码行度量法",
+              "requirement": "应用",
+              "quote": "②代码行度量法",
+              "locator": "L173"
+            },
+            {
+              "id": "02333-ch05-s1-p18",
+              "title": "③黑盒测试、白盒测试",
+              "requirement": "应用",
+              "quote": "③黑盒测试、白盒测试",
+              "locator": "L173"
+            },
+            {
+              "id": "02333-ch05-s1-p19",
+              "title": "④测试用例设计",
+              "requirement": "应用",
+              "quote": "④测试用例设计",
+              "locator": "L173"
+            },
+            {
+              "id": "02333-ch05-s1-p20",
+              "title": "⑤自动测试",
+              "requirement": "应用",
+              "quote": "⑤自动测试",
+              "locator": "L173"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①程序设计风格",
+          "locator": "L176"
+        },
+        {
+          "text": "②代码行度量法",
+          "locator": "L176"
+        },
+        {
+          "text": "③黑盒测试、白盒测试",
+          "locator": "L176"
+        },
+        {
+          "text": "④测试用例设计",
+          "locator": "L176"
+        },
+        {
+          "text": "⑤自动测试",
+          "locator": "L176"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 6,
+      "index": "第6章",
+      "slug": "ch06",
+      "title": "第6章 软件维护及软件再工程",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第6章 软件维护及软件再工程",
+          "points": [
+            {
+              "id": "02333-ch06-s1-p1",
+              "title": "①软件维护的定义、分类和特点",
+              "requirement": "识记",
+              "quote": "①软件维护的定义、分类和特点",
+              "locator": "L185"
+            },
+            {
+              "id": "02333-ch06-s1-p2",
+              "title": "②软件维护过程",
+              "requirement": "识记",
+              "quote": "②软件维护过程",
+              "locator": "L185"
+            },
+            {
+              "id": "02333-ch06-s1-p3",
+              "title": "③软件可维护性度量和提高软件的可维护性方法",
+              "requirement": "识记",
+              "quote": "③软件可维护性度量和提高软件的可维护性方法",
+              "locator": "L185"
+            },
+            {
+              "id": "02333-ch06-s1-p4",
+              "title": "④软件的逆向工程和再工程过程、方法",
+              "requirement": "识记",
+              "quote": "④软件的逆向工程和再工程过程、方法",
+              "locator": "L185"
+            },
+            {
+              "id": "02333-ch06-s1-p5",
+              "title": "①软件可维护度量方法",
+              "requirement": "领会",
+              "quote": "①软件可维护度量方法",
+              "locator": "L187"
+            },
+            {
+              "id": "02333-ch06-s1-p6",
+              "title": "②软件再工程方法",
+              "requirement": "领会",
+              "quote": "②软件再工程方法",
+              "locator": "L187"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件可维护度量方法",
+          "locator": "L189"
+        },
+        {
+          "text": "②软件再工程方法",
+          "locator": "L189"
+        },
+        {
+          "text": "第二篇 面向对象的软件工程",
+          "locator": "L191"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 7,
+      "index": "第7章",
+      "slug": "ch07",
+      "title": "第7章 面向对象方法学",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第7章 面向对象方法学",
+          "points": [
+            {
+              "id": "02333-ch07-s1-p1",
+              "title": "①面向对象方法学的优点",
+              "requirement": "识记",
+              "quote": "①面向对象方法学的优点",
+              "locator": "L200"
+            },
+            {
+              "id": "02333-ch07-s1-p2",
+              "title": "②面向对象方法学的基本概念",
+              "requirement": "识记",
+              "quote": "②面向对象方法学的基本概念",
+              "locator": "L200"
+            },
+            {
+              "id": "02333-ch07-s1-p3",
+              "title": "③面向对象建模方法",
+              "requirement": "识记",
+              "quote": "③面向对象建模方法",
+              "locator": "L200"
+            },
+            {
+              "id": "02333-ch07-s1-p4",
+              "title": "④对象模型建立方法",
+              "requirement": "识记",
+              "quote": "④对象模型建立方法",
+              "locator": "L200"
+            },
+            {
+              "id": "02333-ch07-s1-p5",
+              "title": "⑤动态模型建立方法",
+              "requirement": "识记",
+              "quote": "⑤动态模型建立方法",
+              "locator": "L200"
+            },
+            {
+              "id": "02333-ch07-s1-p6",
+              "title": "⑥功能模型建立方法",
+              "requirement": "识记",
+              "quote": "⑥功能模型建立方法",
+              "locator": "L200"
+            },
+            {
+              "id": "02333-ch07-s1-p7",
+              "title": "①对象模型",
+              "requirement": "领会",
+              "quote": "①对象模型",
+              "locator": "L202"
+            },
+            {
+              "id": "02333-ch07-s1-p8",
+              "title": "②动态模型",
+              "requirement": "领会",
+              "quote": "②动态模型",
+              "locator": "L202"
+            },
+            {
+              "id": "02333-ch07-s1-p9",
+              "title": "③功能模型",
+              "requirement": "领会",
+              "quote": "③功能模型",
+              "locator": "L202"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①面向对象方法",
+          "locator": "L207"
+        },
+        {
+          "text": "②对象模型",
+          "locator": "L207"
+        },
+        {
+          "text": "③动态模型",
+          "locator": "L207"
+        },
+        {
+          "text": "④功能模型",
+          "locator": "L207"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 8,
+      "index": "第8章",
+      "slug": "ch08",
+      "title": "第8章 面向对象分析",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第8章 面向对象分析",
+          "points": [
+            {
+              "id": "02333-ch08-s1-p1",
+              "title": "①面向对象分析概述",
+              "requirement": "识记",
+              "quote": "①面向对象分析概述",
+              "locator": "L215"
+            },
+            {
+              "id": "02333-ch08-s1-p2",
+              "title": "②面向对象的 3 个子模型和 5 个层次",
+              "requirement": "识记",
+              "quote": "②面向对象的 3 个子模型和 5 个层次",
+              "locator": "L215"
+            },
+            {
+              "id": "02333-ch08-s1-p3",
+              "title": "①确定类与对象、确定关联、划分主题、确定属性、识别继承关系和反复修改",
+              "requirement": "领会",
+              "quote": "①确定类与对象、确定关联、划分主题、确定属性、识别继承关系和反复修改",
+              "locator": "L216"
+            },
+            {
+              "id": "02333-ch08-s1-p4",
+              "title": "②编写脚本、设想用户界面、绘制事件跟踪图、绘制状态图、审查动态模型",
+              "requirement": "领会",
+              "quote": "②编写脚本、设想用户界面、绘制事件跟踪图、绘制状态图、审查动态模型",
+              "locator": "L216"
+            },
+            {
+              "id": "02333-ch08-s1-p5",
+              "title": "③绘制基本系统模型图、绘制功能级数据流图、描述处理框功能",
+              "requirement": "领会",
+              "quote": "③绘制基本系统模型图、绘制功能级数据流图、描述处理框功能",
+              "locator": "L216"
+            },
+            {
+              "id": "02333-ch08-s1-p6",
+              "title": "④定义服务",
+              "requirement": "领会",
+              "quote": "④定义服务",
+              "locator": "L216"
+            },
+            {
+              "id": "02333-ch08-s1-p7",
+              "title": "①建立对象模型",
+              "requirement": "应用",
+              "quote": "①建立对象模型",
+              "locator": "L219"
+            },
+            {
+              "id": "02333-ch08-s1-p8",
+              "title": "②建立动态模型",
+              "requirement": "应用",
+              "quote": "②建立动态模型",
+              "locator": "L219"
+            },
+            {
+              "id": "02333-ch08-s1-p9",
+              "title": "③建立功能模型",
+              "requirement": "应用",
+              "quote": "③建立功能模型",
+              "locator": "L219"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①面向对象分析的基本过程和三种模型的建立",
+          "locator": "L221"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 9,
+      "index": "第9章",
+      "slug": "ch09",
+      "title": "第9章 面向对象设计",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第9章 面向对象设计",
+          "points": [
+            {
+              "id": "02333-ch09-s1-p1",
+              "title": "①面向对象设计准则、启发规则",
+              "requirement": "识记",
+              "quote": "①面向对象设计准则、启发规则",
+              "locator": "L229"
+            },
+            {
+              "id": "02333-ch09-s1-p2",
+              "title": "①软件类构建和重用的效益",
+              "requirement": "领会",
+              "quote": "①软件类构建和重用的效益",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p3",
+              "title": "②软件子系统之间的交互方式、组织系统方案和拓扑结构",
+              "requirement": "领会",
+              "quote": "②软件子系统之间的交互方式、组织系统方案和拓扑结构",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p4",
+              "title": "③设计问题域子系统、人机交互子系统、任务管理子系统和数据管理子系统",
+              "requirement": "领会",
+              "quote": "③设计问题域子系统、人机交互子系统、任务管理子系统和数据管理子系统",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p5",
+              "title": "④确定类中应有的服务、设计实现服务的方法",
+              "requirement": "领会",
+              "quote": "④确定类中应有的服务、设计实现服务的方法",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p6",
+              "title": "⑤设计类的关联",
+              "requirement": "领会",
+              "quote": "⑤设计类的关联",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p7",
+              "title": "⑥设计优化",
+              "requirement": "领会",
+              "quote": "⑥设计优化",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p8",
+              "title": "⑦设计模式的概念和常用设计模式",
+              "requirement": "领会",
+              "quote": "⑦设计模式的概念和常用设计模式",
+              "locator": "L230"
+            },
+            {
+              "id": "02333-ch09-s1-p9",
+              "title": "①设计子系统",
+              "requirement": "应用",
+              "quote": "①设计子系统",
+              "locator": "L234"
+            },
+            {
+              "id": "02333-ch09-s1-p10",
+              "title": "②设计类中的服务",
+              "requirement": "应用",
+              "quote": "②设计类中的服务",
+              "locator": "L234"
+            },
+            {
+              "id": "02333-ch09-s1-p11",
+              "title": "③设计关联",
+              "requirement": "应用",
+              "quote": "③设计关联",
+              "locator": "L234"
+            },
+            {
+              "id": "02333-ch09-s1-p12",
+              "title": "④设计模式",
+              "requirement": "应用",
+              "quote": "④设计模式",
+              "locator": "L234"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①面向对象的准则和启发规则",
+          "locator": "L236"
+        },
+        {
+          "text": "②设计子系统",
+          "locator": "L236"
+        },
+        {
+          "text": "③设计类中的服务",
+          "locator": "L236"
+        },
+        {
+          "text": "④设计关联",
+          "locator": "L236"
+        },
+        {
+          "text": "⑤设计模式",
+          "locator": "L236"
+        },
+        {
+          "text": "第 7 页 共 16 页",
+          "locator": "L239"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 10,
+      "index": "第10章",
+      "slug": "ch10",
+      "title": "第 10 章 面向对象实现",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 10 章 面向对象实现",
+          "points": [
+            {
+              "id": "02333-ch10-s1-p1",
+              "title": "①面向对象语言的优点及选择原则",
+              "requirement": "识记",
+              "quote": "①面向对象语言的优点及选择原则",
+              "locator": "L246"
+            },
+            {
+              "id": "02333-ch10-s1-p2",
+              "title": "①面向对象程序设计风格",
+              "requirement": "领会",
+              "quote": "①面向对象程序设计风格",
+              "locator": "L247"
+            },
+            {
+              "id": "02333-ch10-s1-p3",
+              "title": "②面向对象测试模型及面向对象各阶段的测试方法",
+              "requirement": "领会",
+              "quote": "②面向对象测试模型及面向对象各阶段的测试方法",
+              "locator": "L247"
+            },
+            {
+              "id": "02333-ch10-s1-p4",
+              "title": "③类内测试及类间测试用例的设计",
+              "requirement": "领会",
+              "quote": "③类内测试及类间测试用例的设计",
+              "locator": "L247"
+            },
+            {
+              "id": "02333-ch10-s1-p5",
+              "title": "①设计测试用例",
+              "requirement": "应用",
+              "quote": "①设计测试用例",
+              "locator": "L249"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①面向对象设计风格",
+          "locator": "L251"
+        },
+        {
+          "text": "②设计测试用例",
+          "locator": "L251"
+        },
+        {
+          "text": "第三篇 软件工程管理及开发实例",
+          "locator": "L253"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 11,
+      "index": "第11章",
+      "slug": "ch11",
+      "title": "第 11 章 软件工程标准化和软件文档",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 11 章 软件工程标准化和软件文档",
+          "points": [
+            {
+              "id": "02333-ch11-s1-p1",
+              "title": "①软件工程标准化的概念、类型和意义",
+              "requirement": "识记",
+              "quote": "①软件工程标准化的概念、类型和意义",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p2",
+              "title": "②软件工程标准的制定与推行",
+              "requirement": "识记",
+              "quote": "②软件工程标准的制定与推行",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p3",
+              "title": "③软件工程标准的层次和体系框架",
+              "requirement": "识记",
+              "quote": "③软件工程标准的层次和体系框架",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p4",
+              "title": "④ISO9000 国际标准介绍",
+              "requirement": "识记",
+              "quote": "④ISO9000 国际标准介绍",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p5",
+              "title": "⑤软件文档的作用和分类",
+              "requirement": "识记",
+              "quote": "⑤软件文档的作用和分类",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p6",
+              "title": "⑥软件文档编制的质量要求",
+              "requirement": "识记",
+              "quote": "⑥软件文档编制的质量要求",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p7",
+              "title": "⑦软件文档的管理和维护",
+              "requirement": "识记",
+              "quote": "⑦软件文档的管理和维护",
+              "locator": "L263"
+            },
+            {
+              "id": "02333-ch11-s1-p8",
+              "title": "①软件文档的作用和分类",
+              "requirement": "领会",
+              "quote": "①软件文档的作用和分类",
+              "locator": "L266"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件工程标准化的概念、类型和意义",
+          "locator": "L268"
+        },
+        {
+          "text": "②软件文档的作用和分类",
+          "locator": "L268"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 12,
+      "index": "第12章",
+      "slug": "ch12",
+      "title": "第 12 章 软件工程质量",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 12 章 软件工程质量",
+          "points": [
+            {
+              "id": "02333-ch12-s1-p1",
+              "title": "①软件质量的定义、特性",
+              "requirement": "识记",
+              "quote": "①软件质量的定义、特性",
+              "locator": "L280"
+            },
+            {
+              "id": "02333-ch12-s1-p2",
+              "title": "②软件度量和软件质量的度量",
+              "requirement": "识记",
+              "quote": "②软件度量和软件质量的度量",
+              "locator": "L280"
+            },
+            {
+              "id": "02333-ch12-s1-p3",
+              "title": "③软件质量的度量模型",
+              "requirement": "识记",
+              "quote": "③软件质量的度量模型",
+              "locator": "L280"
+            },
+            {
+              "id": "02333-ch12-s1-p4",
+              "title": "④软件质量保证的概念、任务和策略",
+              "requirement": "识记",
+              "quote": "④软件质量保证的概念、任务和策略",
+              "locator": "L280"
+            },
+            {
+              "id": "02333-ch12-s1-p5",
+              "title": "⑤软件技术评审",
+              "requirement": "识记",
+              "quote": "⑤软件技术评审",
+              "locator": "L280"
+            },
+            {
+              "id": "02333-ch12-s1-p6",
+              "title": "⑥软件产品质量管理的特点、指导思想和管理体系",
+              "requirement": "识记",
+              "quote": "⑥软件产品质量管理的特点、指导思想和管理体系",
+              "locator": "L280"
+            },
+            {
+              "id": "02333-ch12-s1-p7",
+              "title": "①软件质量度量模型",
+              "requirement": "领会",
+              "quote": "①软件质量度量模型",
+              "locator": "L283"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件质量的定义、度量和软件质量度量模型",
+          "locator": "L285"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 13,
+      "index": "第13章",
+      "slug": "ch13",
+      "title": "第 13 章 软件工程项目管理",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 13 章 软件工程项目管理",
+          "points": [
+            {
+              "id": "02333-ch13-s1-p1",
+              "title": "①软件项目管理的特点、主要职能和主要内容",
+              "requirement": "识记",
+              "quote": "①软件项目管理的特点、主要职能和主要内容",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p2",
+              "title": "②软件项目管理活动",
+              "requirement": "识记",
+              "quote": "②软件项目管理活动",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p3",
+              "title": "③基于 CASE 技术的开发工具",
+              "requirement": "识记",
+              "quote": "③基于 CASE 技术的开发工具",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p4",
+              "title": "④软件成本估算",
+              "requirement": "识记",
+              "quote": "④软件成本估算",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p5",
+              "title": "⑤软件项目计划的制定、人员组织和管理",
+              "requirement": "识记",
+              "quote": "⑤软件项目计划的制定、人员组织和管理",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p6",
+              "title": "⑥软件开发进度计划的制定",
+              "requirement": "识记",
+              "quote": "⑥软件开发进度计划的制定",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p7",
+              "title": "⑦甘特图与时间管理",
+              "requirement": "识记",
+              "quote": "⑦甘特图与时间管理",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p8",
+              "title": "⑧工程网络与关键路径",
+              "requirement": "识记",
+              "quote": "⑧工程网络与关键路径",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p9",
+              "title": "⑨项目进度跟踪与控制",
+              "requirement": "识记",
+              "quote": "⑨项目进度跟踪与控制",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p10",
+              "title": "⑩软件项目风险识别与分类",
+              "requirement": "识记",
+              "quote": "⑩软件项目风险识别与分类",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p11",
+              "title": "⑪软件项目风险评估与分析",
+              "requirement": "识记",
+              "quote": "⑪软件项目风险评估与分析",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p12",
+              "title": "⑫软件项目风险策划与管理",
+              "requirement": "识记",
+              "quote": "⑫软件项目风险策划与管理",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p13",
+              "title": "⑬软件项目风险规避与监控",
+              "requirement": "识记",
+              "quote": "⑬软件项目风险规避与监控",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p14",
+              "title": "⑭软件配置的概念、任务及过程",
+              "requirement": "识记",
+              "quote": "⑭软件配置的概念、任务及过程",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p15",
+              "title": "⑮项目管理认证体系",
+              "requirement": "识记",
+              "quote": "⑮项目管理认证体系",
+              "locator": "L294"
+            },
+            {
+              "id": "02333-ch13-s1-p16",
+              "title": "①基于 CASE 技术的开发工具",
+              "requirement": "领会",
+              "quote": "①基于 CASE 技术的开发工具",
+              "locator": "L300"
+            },
+            {
+              "id": "02333-ch13-s1-p17",
+              "title": "②成本估算",
+              "requirement": "领会",
+              "quote": "②成本估算",
+              "locator": "L300"
+            },
+            {
+              "id": "02333-ch13-s1-p18",
+              "title": "③开发进度计划的制定",
+              "requirement": "领会",
+              "quote": "③开发进度计划的制定",
+              "locator": "L300"
+            },
+            {
+              "id": "02333-ch13-s1-p19",
+              "title": "④甘特图",
+              "requirement": "领会",
+              "quote": "④甘特图",
+              "locator": "L300"
+            },
+            {
+              "id": "02333-ch13-s1-p20",
+              "title": "⑤工程网络与关键路径",
+              "requirement": "领会",
+              "quote": "⑤工程网络与关键路径",
+              "locator": "L300"
+            },
+            {
+              "id": "02333-ch13-s1-p21",
+              "title": "⑥项目跟踪与控制",
+              "requirement": "领会",
+              "quote": "⑥项目跟踪与控制",
+              "locator": "L300"
+            },
+            {
+              "id": "02333-ch13-s1-p22",
+              "title": "⑦软件配置",
+              "requirement": "领会",
+              "quote": "⑦软件配置",
+              "locator": "L300"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件工程项目管理的概念",
+          "locator": "L303"
+        },
+        {
+          "text": "②成本估算",
+          "locator": "L303"
+        },
+        {
+          "text": "③开发进度计划的制定",
+          "locator": "L303"
+        },
+        {
+          "text": "④甘特图",
+          "locator": "L303"
+        },
+        {
+          "text": "⑤工程网络与关键路径",
+          "locator": "L303"
+        },
+        {
+          "text": "⑥项目跟踪与控制",
+          "locator": "L303"
+        },
+        {
+          "text": "⑦软件配置",
+          "locator": "L303"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 14,
+      "index": "第14章",
+      "slug": "ch14",
+      "title": "第 14 章 简单的人事管理系统设计与开发（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①可行性研究报告的内容和书写格式",
+          "locator": "L317"
+        },
+        {
+          "text": "附录二 需求规格说明书",
+          "locator": "L319"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L315",
+          "title": "识记：①可行性研究报告的内容和书写格式",
+          "reason": "unnumbered_section"
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "question_types": [],
+    "question_types_provenance": null,
+    "duration_minutes": null,
+    "duration_status": "named_gap",
+    "sample_paper": null,
+    "question_types_status": "named_gap",
+    "question_types_gap_impact": "考纲未声明题型 → 无法按官方题型生成练习，AI 备考层的 drill 不得产出",
+    "question_types_next_evidence": "官方考纲「考试命题的主要题型」段落（或等效的官方说明）"
+  },
+  "coverage": {
+    "official_point_count": 13,
+    "modeled_point_count": 13,
+    "ratio": 1.0,
+    "denominator_rule": "考纲「二、考核知识点与考核要求」中的章数（该考纲不分子节，章即考核单元）",
+    "manual_reference": null,
+    "diff_vs_manual": []
+  }
+}

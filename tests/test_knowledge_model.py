@@ -837,3 +837,276 @@ def test_manual_ledger_still_treats_anchored_empty_tree_as_a_named_gap(tmp_path:
     coverage = km.extract_knowledge_model(root, evidence)["coverage"]
     assert coverage["manual_reference"] is None
     assert coverage["diff_vs_manual"] == []
+
+
+# ---- B3a / KB-1…KB-4：章目回退、章号标签与考核单元 ------------------------------------------
+#
+# 背景（可复现的缺陷类）：`00898` / `02333` / `04747` / `04751` 四门 L1 课的考纲**天生没有
+# `大纲目录` 页**（实测 `00898` 第 14 行是页码、第 15 行即 `Ⅰ 课程性质与课程目标`），
+# 原判据直接 ValueError，四门课产不出知识模型。规划期探针只认 `第6章`（数字两侧无空格），
+# 而抽取件两种写法混用，于是「漏章」看起来像考纲缺章 —— 实测 4 门课**页码齐全、章号 1–N 连续**，
+# 缺口是探针缺陷而非考纲事实。这批用例把该缺陷类钉死。
+
+FALLBACK_HEADING = "三、考核知识点与考核要求"  # 与 `_fragment_root()` 的 `requirements_heading` 同值
+
+
+def _fallback_fragment(titles: list[str], *, paren: bool = False) -> str:
+    """合成无目录页考纲：Ⅰ/Ⅱ/Ⅲ 部次齐全、**无** `大纲目录`，`Ⅲ` 之下列 `第N章` + 考核要求。
+
+    `paren=True` 用 `（一）` 节版式（`00898` 的形态）；否则章级直接列要求（`02333` 的形态）。
+    """
+    body = []
+    for title in titles:
+        lines = [title, "一、学习目的与要求", "通过本章学习，能说出示例。", FALLBACK_HEADING]
+        if paren:
+            lines += ["（一）示例节", "识记：示例识记内容。", "（二）第二示例节", "领会：示例领会内容。"]
+        else:
+            lines += ["识记：示例识记内容。", "领会：示例领会内容。"]
+        lines += ["四、本章重点", "示例。"]
+        body.append("\n".join(lines))
+    return (
+        "Ⅰ 课程性质与课程目标\n示例。\n\nⅡ 考核目标\n示例。\n\nⅢ 课程内容与考核要求\n\n"
+        + "\n\n".join(body)
+        + "\n\nⅣ 关于大纲的说明与考核实施要求\n示例。\n"
+    )
+
+
+def test_chapter_predicate_tolerates_spacing_and_arabic_numerals():
+    """KB-1 回归（PM 规划期探针缺陷）：`第 6 章 X` 与 `第6章 X` 必须**同样**被识别为章标题。
+
+    探针只认 `第6章`（数字两侧无空格），而抽取件两种写法混用（`00898:120` `第1章   …` 与
+    `:475` `第 10 章   …` 同课并存）—— 只认一种会把双位数的章整批漏掉，于是「漏章」在
+    `ordinal` 上看起来就像考纲真缺章（`04747` 的 `第 6 章` 就是这样被漏掉、误报缺第 6 章）。
+    """
+    for loose, tight in (
+        ("第 6 章 Java 语言中的异常", "第6章 Java 语言中的异常"),
+        ("第 10 章 面向对象实现", "第10章 面向对象实现"),
+        ("第 1 章 网络安全概述", "第1章 网络安全概述"),
+    ):
+        assert km.CHAPTER_RE.match(loose) and km.CHAPTER_RE.match(tight), (loose, tight)
+        # 章号与标签必须一致：两种写法推出同一个 `ordinal` / `slug` / `index`
+        assert km._ordinal_for(loose) == km._ordinal_for(tight)
+        assert km._slug_for(loose) == km._slug_for(tight)
+        assert km._chapter_index(loose) == km._chapter_index(tight)
+
+    # `50` 之上的中文数字与阿拉伯数字都要能算章号
+    assert km._ordinal_for("第 16 章 Web 应用开发实践") == 16
+    assert km._ordinal_for("第十七章 全面从严治党") == 17
+    # `章` 后直接跟标题（`00898:523` 实测 `第 11 章使用 Servlet 过滤器和监听器`）也算章标题
+    assert km._ordinal_for("第 11 章使用 Servlet 过滤器和监听器") == 11
+
+
+def test_intro_label_without_separator_is_not_a_chapter():
+    """KB-1 反向守卫：`导论` / `绪 论` 没有数字锚点，正文句首的 `绪论的核心是…` 不得被当成章标题。
+
+    `15044:161` 实测该行 —— 若放开标签后的分隔要求，它会被误判成章，`绪 论` 就会出现两次。
+    """
+    assert not km.CHAPTER_RE.match("绪论的核心是阐明马克思主义的产生、发展及基本特征。")
+    assert not km.CHAPTER_TITLE_RE.match("绪论的核心是阐明马克思主义的产生、发展及基本特征。")
+    assert not km.CHAPTER_RE.match("导论部分说明了本课程的性质。")
+    # 合法形态仍必须认
+    assert km.CHAPTER_RE.match("绪 论") and km.CHAPTER_RE.match("导论")
+
+
+def test_fallback_from_iii_section_when_toc_missing(tmp_path: Path):
+    """KB-2：无 `大纲目录` 时从 `Ⅲ 课程内容与考核要求` 推章目，返回同一契约 `(end_index, titles)`。"""
+    text = _fallback_fragment(["第1章 甲", "第2章 乙", "第 3 章 丙"])
+    root, evidence = _fragment_root(tmp_path, text)
+    lines = text.split("\n")
+
+    start, titles = km._chapter_titles(lines)
+    assert [title for title in titles] == ["第1章 甲", "第2章 乙", "第 3 章 丙"]
+    assert lines[start].strip().endswith("Ⅲ 课程内容与考核要求"), "`end_index` 必须取 Ⅲ 节起点"
+
+    doc = km.extract_knowledge_model(root, evidence)
+    assert [c["ordinal"] for c in doc["chapters"]] == [1, 2, 3]
+    assert [c["slug"] for c in doc["chapters"]] == ["ch01", "ch02", "ch03"]
+    assert doc["coverage"]["ratio"] == 1.0
+    assert doc["generator"]["kind"] == "deterministic"
+
+
+def test_fallback_is_unreachable_when_toc_exists(tmp_path: Path):
+    """KB-2 / AC3 的结构保证：有 `大纲目录` 时走原判据，回退分支不可达（产物逐字节不变的理由）。
+
+    变异证明：把回退函数换成「只返回空章目」，有 TOC 的片段必须**不受影响**；无 TOC 的片段才变。
+    """
+    root, evidence = _fragment_root(tmp_path, FRAGMENT)  # FRAGMENT 含 `大纲目录`
+    original = km._section_chapters
+    try:
+        km._section_chapters = lambda lines: (_ for _ in ()).throw(AssertionError("回退不得被调用"))
+        doc = km.extract_knowledge_model(root, evidence)
+    finally:
+        km._section_chapters = original
+    assert [c["title"] for c in doc["chapters"]] == ["导论", "第一章 示例章"]
+
+    # 对照组：同一批章、但**去掉** `大纲目录`（改由 `Ⅲ` 节推）→ 必须能产出，
+    # 证明上面的断言不是因为回退坏了才「没被调用」。
+    fb_root, fb_evidence = _fragment_root(
+        tmp_path / "second", _fallback_fragment(["导论", "第一章 示例章"])
+    )
+    doc2 = km.extract_knowledge_model(fb_root, fb_evidence)
+    assert [c["title"] for c in doc2["chapters"]] == ["导论", "第一章 示例章"]
+    assert not any(line == km.TOC_MARKER for line in (fb_root / fb_evidence["syllabus"]["path"]).read_text(encoding="utf-8").split("\n"))
+
+
+def test_fallback_fails_closed_without_iii_section_or_chapters(tmp_path: Path):
+    """KB-2 失败关闭：既无 `大纲目录`、又无 `Ⅲ` 节（或 `Ⅲ` 后无章标题）→ 仍 raise，绝不产出空章目。"""
+    root, evidence = _fragment_root(tmp_path, "Ⅰ 课程性质与课程目标\n示例。\n\nⅣ 关于大纲的说明\n示例。\n")
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root, evidence)
+    assert "无法确定章目" in str(err.value)
+
+    # `Ⅲ` 节在、但它后面一个章标题都没有
+    root2, evidence2 = _fragment_root(tmp_path / "second", "Ⅲ 课程内容与考核要求\n本大纲不列章。\n")
+    with pytest.raises(ValueError) as err2:
+        km.extract_knowledge_model(root2, evidence2)
+    assert "没有章标题行" in str(err2.value)
+
+
+def test_missing_gap_is_named_with_runs():
+    """KB-3：缺失章号必须**指名**并压缩成区间；前部缺口与内部缺口两种形态都要报。"""
+    cases = (
+        ((1, 2, 3, 4, 5, 7, 8, 9), [6], "第6章"),              # 内部缺口（04747 规划期误报的形态）
+        ((4, 5, 6, 7, 8, 9), [1, 2, 3], "第1–3章"),             # 前部缺口（04751 规划期误报的形态）
+        ((0, 1, 3, 4), [2], "第2章"),                           # 导论 + 内部缺口：导论不计章号
+        ((1, 4, 5, 9), [2, 3, 6, 7, 8], "第2–3章、第6–8章"),     # 多段缺口
+        (tuple(range(1, 17)), [], ""),                          # 连续：无缺口
+        ((0, 1, 2, 3), [], ""),
+    )
+    for ordinals, expected, rendered in cases:
+        numbers = km._missing_chapters(list(ordinals))
+        assert numbers == expected, ordinals
+        assert km._format_chapter_runs(numbers) == rendered, ordinals
+
+
+def test_continuity_guard_still_fails_closed_and_names_the_gap(tmp_path: Path):
+    """KB-3 / GC2：章序连续性守卫**不放宽** —— 非连续章目必须失败关闭，且错误点名缺的章号。
+
+    两条分支各命中一次：内部缺口（`第1,2,4章`）与前部缺口（首章为 `第4章`）。
+    """
+    for labels, fragment_ordinals, rendered in (
+        (["第一章 甲", "第二章 乙", "第四章 丁"], [1, 2, 4], "第3章"),
+        (["第四章 丁", "第五章 戊", "第六章 己"], [4, 5, 6], "第1–3章"),
+    ):
+        # 有 TOC 的路径（原判据）
+        toc_text = "大纲目录\n\n" + "\n\n".join(labels) + "\n\nⅣ 关于大纲的说明\n\n" + "\n\n".join(
+            f"{label}\n一、学习目的与要求\n示例。\n{FALLBACK_HEADING}\n1.示例节\n识记：示例。" for label in labels
+        )
+        root, evidence = _fragment_root(tmp_path / rendered, toc_text)
+        with pytest.raises(ValueError) as err:
+            km.extract_knowledge_model(root, evidence)
+        message = str(err.value)
+        assert rendered in message, f"错误必须点名缺失章号：{message}"
+        assert "不连续" in message
+        assert str(fragment_ordinals) in message
+
+        # 无 TOC 的回退路径：同一守卫也必须生效（守卫在章目判定**之后**，两条路径共用）
+        fb_root, fb_evidence = _fragment_root(
+            tmp_path / f"fb-{rendered}", _fallback_fragment(labels)
+        )
+        with pytest.raises(ValueError) as fb_err:
+            km.extract_knowledge_model(fb_root, fb_evidence)
+        assert rendered in str(fb_err.value), str(fb_err.value)
+
+
+def test_named_gap_error_message_has_no_artifact(tmp_path: Path):
+    """KB-3：失败关闭时不得落盘任何产物（`write_knowledge_model` 先算后写）。"""
+    root, evidence = _fragment_root(
+        tmp_path, _fallback_fragment(["第1章 甲", "第2章 乙", "第4章 丁"])
+    )
+    _write_evidence(root, evidence)
+    with pytest.raises(ValueError):
+        km.write_knowledge_model(root, "99999")
+    assert not (root / "sources/jiangsu/courses/99999/knowledge-model.json").exists()
+
+
+def test_paren_sections_and_chapter_level_units(tmp_path: Path):
+    """KB-4：`（一）` 节版式与「整章即考核单元」两种形态都要产出正确的 `sections[]` 与分母。"""
+    # （一）版式：两个节各自成单元
+    root, evidence = _fragment_root(tmp_path, _fallback_fragment(["第1章 甲"], paren=True))
+    doc = km.extract_knowledge_model(root, evidence)
+    sections = doc["chapters"][0]["sections"]
+    assert [s["index"] for s in sections] == ["1", "2"], sections
+    assert [s["title"] for s in sections] == ["示例节", "第二示例节"]
+    assert doc["coverage"]["official_point_count"] == 2
+    assert doc["coverage"]["ratio"] == 1.0
+
+    # 章级形态：无任何节号 → 章本身是唯一考核单元（否则整章要求会全落进 unmodeled）
+    root2, evidence2 = _fragment_root(tmp_path / "chapter-level", _fallback_fragment(["第1章 甲", "第2章 乙"]))
+    doc2 = km.extract_knowledge_model(root2, evidence2)
+    assert [len(c["sections"]) for c in doc2["chapters"]] == [1, 1]
+    assert [c["sections"][0]["title"] for c in doc2["chapters"]] == ["第1章 甲", "第2章 乙"]
+    assert doc2["coverage"]["official_point_count"] == 2
+    assert doc2["coverage"]["ratio"] == 1.0
+    assert "章即考核单元" in doc2["coverage"]["denominator_rule"]
+
+
+def test_not_assessed_units_are_left_out_of_the_denominator():
+    """KB-4：标题带 `不作考核要求` 的单元只留痕，不进分母 —— 「不考」不等于「抽取失败」。
+
+    真实形态：`02333` 第 14 章与 `04747` 第 7/11/12/13 章标题都带 `（本章内容不作考核要求）`，
+    这些章没有考核要求小节。把它们算作「未抽出的节」会把「官方声明不考」误报成抽取失败。
+    """
+    text = _fallback_fragment(["第1章 甲（本章内容不作考核要求）", "第2章 乙"])
+    root, evidence = _fragment_root(Path(tempfile.mkdtemp()), text)
+    doc = km.extract_knowledge_model(root, evidence)
+    first = doc["chapters"][0]
+    assert first["sections"] == [], "官方声明不考核的章不得造出考核单元"
+    assert doc["chapters"][1]["sections"], "对照：正常章必须有考核单元"
+    assert doc["coverage"]["official_point_count"] == 1, "分母只算参与考核的章"
+    assert doc["coverage"]["ratio"] == 1.0, "分母只含参与考核的单元时不得出现假缺口"
+
+    # 节级限定语（`00898` 的形态）：该节不进分母，但同章其他节照常计入
+    paren_text = _fallback_fragment(["第1章 甲"], paren=True).replace(
+        "（二）第二示例节", "（二）第二示例节（本节内容不作考核要求）"
+    )
+    root2, evidence2 = _fragment_root(Path(tempfile.mkdtemp()), paren_text)
+    doc2 = km.extract_knowledge_model(root2, evidence2)
+    chapter = doc2["chapters"][0]
+    assert [s["title"] for s in chapter["sections"]] == ["示例节"], chapter["sections"]
+    # 该节标题行与其下 `领会：` 行都归入「明确不考核」，不得被读成抽取失败
+    assert {u["reason"] for u in chapter["unmodeled"]} == {"not_assessed"}, chapter["unmodeled"]
+    assert doc2["coverage"]["official_point_count"] == 1
+    assert doc2["coverage"]["ratio"] == 1.0
+
+
+def test_artifact_matches_fresh_build_for_fallback_courses():
+    """KB-1…KB-4 产物契约：`00898` / `02333` 的模型 = 现算结果，章号 1–N 连续、分母自洽。
+
+    这两门课是「无目录页」的真实回归样本（各有 16 / 14 章）；`ratio == 1.0` 表示考纲每个考核单元
+    都抽出了 point。测试直接读真实仓产物，故章数变化会在这里失败而不是静默漂移。
+    """
+    for code, expected in (("00898", 16), ("02333", 14)):
+        doc = km.build_knowledge_model(ROOT, code)
+        artifact = json.loads((ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json").read_text(encoding="utf-8"))
+        assert {**doc, "generated_at": artifact["generated_at"]} == artifact, code
+
+        assert len(doc["chapters"]) == expected, code
+        assert [c["ordinal"] for c in doc["chapters"]] == list(range(1, expected + 1)), code
+        assert [c["slug"] for c in doc["chapters"]] == [f"ch{n:02d}" for n in range(1, expected + 1)], code
+        coverage = doc["coverage"]
+        assert coverage["ratio"] == 1.0, code
+        assert coverage["official_point_count"] == sum(len(c["sections"]) for c in doc["chapters"]), code
+        assert coverage["modeled_point_count"] == coverage["official_point_count"], code
+        assert doc["generator"] == {
+            "kind": "deterministic", "model": None, "prompt_id": None, "prompt_version": None,
+        }, code
+        # 章标题必须与已发布 `syllabus.md` 的章名索引逐字一致（折叠空白后）。这两课的索引标题列
+        # 是 `## 章节名称索引` / `## 章名索引（标题照录，机器抽取件）`，**不是**闸门认的
+        # `### 章目索引`，故 evidence 层不做这项交叉核对 —— 这里独立读表比对，防止模型与读者页漂移。
+        # 索引列照录抽取件的原始多空格（`第1章   JSP 与 Web 技术概论`），模型按契约折叠为单空格，
+        # 故比对前两边都折叠（与 `tests/test_knowledge_model.py::test_chapter_names_verbatim` 同口径）。
+        page = (ROOT / f"content/jiangsu/courses/{code}/syllabus.md").read_text(encoding="utf-8")
+        published = [
+            cells[1]
+            for line in page[page.index("## 章") :].splitlines()
+            for cells in [[cell.strip() for cell in line.strip().strip("|").split("|")]]
+            if line.startswith("|") and len(cells) >= 2 and cells[0].startswith("第") and cells[0].endswith("章")
+        ]
+        assert len(published) == expected, (code, published)
+        assert [km._fold(title) for title in published] == [c["title"] for c in doc["chapters"]], code
+        # 每个 point 的 quote 都非空且 ≤ 60 字符（闸门失败关闭条件）
+        for chapter in doc["chapters"]:
+            for section in chapter["sections"]:
+                for point in section["points"]:
+                    assert point["quote"].strip() and len(point["quote"]) <= 60, point["id"]

@@ -46,19 +46,48 @@ COURSE_PAGES_DIR = Path("content") / "jiangsu" / "courses"
 MODEL_FILENAME = "knowledge-model.json"
 
 TOC_MARKER = "大纲目录"
+SECTION_MARKER = "课程内容与考核要求"
 SAMPLE_PAPER_HEADING = "参考样卷"
 FOCUS_MARKER = "本章重点"
 MANUAL_TREE_HEADING = "## 章节知识树"
 MANUAL_REFERENCE_ROW = "章节知识树"
 MANUAL_ELEMENT_PREFIX = "#### "
 
-# 章标题形态（B6）：章序标签 `导论` / `绪 论`（考纲版式用空格分隔，**同一门课的 syllabus.md 也这样写**）
-# 或 `第N章 …`。`CHAPTER_RE` 额外要求「标签 + 空格 + 标题」；`CHAPTER_TITLE_RE` 只判形态，
+# 章标题形态（B6 / KB-1）：章序标签 `导论` / `绪 论` 或 `第N章 …`（N 可用中文数字或阿拉伯数字；
+# 抽取件里两种写法混用，见下）。`CHAPTER_RE` 额外捕获标题部分；`CHAPTER_TITLE_RE` 只判形态，
 # 供闸门验证模型章标题。
-CHAPTER_LABEL = r"(导论|绪\s*论|第[一二三四五六七八九十]+章)"
-CHAPTER_TITLE_RE = re.compile(rf"^{CHAPTER_LABEL}(?:\s+.+)?$")
-CHAPTER_RE = re.compile(rf"^{CHAPTER_LABEL}(?:\s+(.+))?$")
+#
+# **章序标签内的空白必须容忍**（KB-1）：机器抽取件在数字两侧随机插空格 —— `00898` 实测
+# `第1章   JSP 与 Web 技术概论`（L120）与 `第 10 章   Servlet 基础`（L475）同课并存。只认
+# `第N章`（无空格）会把双位数的章整批漏掉，于是「漏章」在 `ordinal` 上看起来就像考纲真缺章。
+#
+# **数字形态**：`00898` / `02333` / `04747` / `04751` 四门考纲全部用**阿拉伯数字**（`第1章`），
+# 而 `15040` / `15043` / `15044` 用中文数字（`第一章`）—— 两种都要认（`_chapter_number` 同步处理）。
+#
+# **分隔符**：`第N章` 的数字形态自证，标题前的分隔空格**可以缺失** —— `00898:523` 实测
+# `第 11 章使用 Servlet 过滤器和监听器`（`章` 后直接跟标题，无空格）。若强制 `\s+`，该章会被漏掉，
+# 1–16 变成 1–10、12–16，连续性守卫反过来把一门**完整**的考纲判成缺章。
+# 反之 `导论` / `绪 论` 没有数字锚点，若也允许无分隔，正文句首的
+# `绪论的核心是阐明马克思主义的产生…`（`15044:161` 实测）就会被误判成章标题 —— 故这两个标签
+# 后面必须有空白或行尾。
+CHAPTER_LABEL = r"(导论|绪\s*论)"
+NUMBERED_CHAPTER_LABEL = r"第\s*(?:[一二三四五六七八九十]+|\d+)\s*章"
+CHAPTER_TITLE_RE = re.compile(
+    rf"^(?:{CHAPTER_LABEL}(?=\s|$)(?:\s+.+)?|{NUMBERED_CHAPTER_LABEL}(?:\s*.+)?)$"
+)
+CHAPTER_RE = re.compile(
+    rf"^(?:{CHAPTER_LABEL}(?=\s|$)(?:\s+(.+))?|{NUMBERED_CHAPTER_LABEL}(?:\s*(.+))?)$"
+)
+# 章序标签前缀（`_chapter_index` 用）：只取标签段，不要求标签后面还有标题
+CHAPTER_LABEL_PREFIX_RE = re.compile(rf"^(?:{CHAPTER_LABEL}|{NUMBERED_CHAPTER_LABEL})")
 SECTION_RE = re.compile(r"^(\d+)\.(.*)$")
+# 节标题的第二种版式（KB-4）：`（一）标题`。`00898` 的考核要求小节用它编号（实测 53 个节），
+# 而 `15040` / `15043` / `15044` 用 `1.标题`（三课实测 0 个 `（N）` 行）—— 两种都要认，
+# 否则 `00898` 一个节都切不出来（全章落进 `unmodeled[]`、`coverage.ratio` 退化成 0.0）。
+PAREN_SECTION_RE = re.compile(r"^（([一二三四五六七八九十]+)）\s*(.*)$")
+NOT_ASSESSED_MARKER = "不作考核要求"
+# 抽取件里页码行会粘进考核要求小节（`00898` 实测 3 处），必须先剔除，否则会被当成考核段落
+PAGE_MARKER_RE = re.compile(r"^第\s*\d+\s*页\s*共\s*\d+\s*页$")
 REQUIREMENT_RE = re.compile(r"^(识记|领会|应用)：(.*)$")
 TOP_HEADING_RE = re.compile(r"^[一二三四五六七八九十]+、")
 PAGE_NUMBER_RE = re.compile(r"^\d{1,3}$")
@@ -76,6 +105,7 @@ SENTENCE_END = ("。", "！", "？")
 CLAUSE_END = "，、：,;"
 QUOTE_STYLE = str.maketrans({"「": "“", "」": "”", "『": "‘", "』": "’"})
 DENOMINATOR_RULE_TEMPLATE = "考纲「{heading}」中带编号的节数"
+DENOMINATOR_RULE_CHAPTER_TEMPLATE = "考纲「{heading}」中的章数（该考纲不分子节，章即考核单元）"
 MANUAL_MARKERS = {"🟢": "识记", "🟡": "领会", "🔴": "应用"}
 REQUIREMENT_ORDER = ("识记", "领会", "应用")
 
@@ -98,13 +128,9 @@ def _slug(ordinal: int) -> str:
     return "intro" if ordinal == 0 else f"ch{ordinal:02d}"
 
 
-def _chapter_number(label: str) -> int | None:
-    """`第N章` 的中文数字 → 整数（`第一章` → 1 … `第十七章` → 17）；非 `第N章` 返回 `None`。"""
-    match = re.fullmatch(r"第([一二三四五六七八九十]+)章", label)
-    if match is None:
-        return None
+def _chinese_number(text: str) -> int | None:
+    """中文数字 → 整数（`一` → 1 … `十` → 10 … `十七` → 17）；无法识别返回 `None`。"""
     digits = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
-    text = match.group(1)
     if text == "十":
         return 10
     if text.startswith("十"):
@@ -113,6 +139,19 @@ def _chapter_number(label: str) -> int | None:
         head, _, tail = text.partition("十")
         return digits.get(head, 0) * 10 + (digits.get(tail, 0) if tail else 0)
     return digits.get(text)
+
+
+def _chapter_number(label: str) -> int | None:
+    """`第N章` 的章号 → 整数（`第一章` / `第 1 章` → 1 … `第十七章` → 17）；非 `第N章` 返回 `None`。
+
+    中文数字与阿拉伯数字两种形态都认（KB-1）：四门缺目录页的考纲（`00898` / `02333` / `04747` /
+    `04751`）用阿拉伯数字，三门有目录页的用中文数字。章号两侧的空格一并容忍（`第 10 章`）。
+    """
+    match = re.fullmatch(r"第\s*([一二三四五六七八九十]+|\d+)\s*章", label)
+    if match is None:
+        return None
+    text = match.group(1)
+    return int(text) if text.isdigit() else _chinese_number(text)
 
 
 def _slug_for(title: str) -> str:
@@ -137,13 +176,14 @@ def _ordinal_for(title: str) -> int:
 
 
 def _chapter_index(title: str) -> str:
-    """章序标签（`导论` / `绪论` / `第一章`）：取标签段并折叠**内部**空白。
+    """章序标签（`导论` / `绪论` / `第一章` / `第 1 章`）：取标签段并折叠**内部**空白。
 
     考纲目录里 `绪 论` 带一个内部空格（`15044`），而 `syllabus.md` 的章序列写 `绪论` —— 标签必须折叠，
     `title` 才保留原文（Data contracts 3：`title` 逐字、`index` 是章序标签）。
+    章号两侧的抽取件空格（`第 10 章`）同样折叠：`index` 恒为 `第10章`（KB-1）。
     """
-    match = CHAPTER_TITLE_RE.match(title.strip())
-    label = match.group(1) if match else title.split(" ", 1)[0]
+    match = CHAPTER_LABEL_PREFIX_RE.match(title.strip())
+    label = match.group(0) if match else title.split(" ", 1)[0]
     return re.sub(r"\s+", "", label)
 
 
@@ -169,6 +209,82 @@ def _toc_chapters(lines: list[str]) -> tuple[int, list[str]]:
     if not titles:
         raise ValueError(f"「{TOC_MARKER}」切片内没有章标题行")
     return end, titles
+
+
+def _section_chapters(lines: list[str]) -> tuple[int, list[str]]:
+    """章目回退（KB-2）：从 `Ⅲ 课程内容与考核要求` 节推章目 → 同一返回契约 `(end_index, titles)`。
+
+    **仅当 `_toc_chapters()` 抛 `ValueError` 时调用** —— 有 `大纲目录` 切片的课走原判据，本函数对其
+    不可达（AC3 逐字节不变的结构保证）。
+
+    四门 `L1` 课的考纲**天生没有目录页**（`00898` 第 14 行是页码、第 15 行即 `Ⅰ 课程性质与课程目标`），
+    但正文里章标题齐全；`Ⅲ` 节是章正文的起点，故 `end_index` 取该节**起点**，使 `_body_slices` 从
+    `Ⅲ` 起算（`_body_slices` 仍按「标题在切片后的首次出现」定位章首）。
+
+    失败关闭（不允许无声产出空章目）：找不到 `Ⅲ` 节、或该节之后没有任何章标题 → `ValueError`。
+    """
+    start = next(
+        (index for index, line in enumerate(lines) if SECTION_MARKER in _fold(line)),
+        None,
+    )
+    if start is None:
+        raise ValueError(f"考纲缺少「{TOC_MARKER}」切片，也缺少「{SECTION_MARKER}」节，无法确定章目")
+    titles: list[str] = []
+    for line in lines[start + 1:]:
+        text = _fold(line)
+        if text and CHAPTER_RE.match(text) and text not in titles:
+            titles.append(text)
+    if not titles:
+        raise ValueError(f"「{SECTION_MARKER}」节之后没有章标题行，无法确定章目")
+    return start, titles
+
+
+def _chapter_titles(lines: list[str]) -> tuple[int, list[str]]:
+    """章目判定：**先试 `大纲目录`，失败才回退** 到 `Ⅲ 课程内容与考核要求` 节（KB-2）。
+
+    顺序即回归保证（AC3）：有目录页的课（`15040` / `15043` / `15044`）在原判据上就成功返回，
+    回退分支对其**不可达**，故其产物逐字节不变。
+
+    两种失败模式都走回退（缺 `大纲目录` 切片 / 切片内无章标题行）：两者都只是「目录页取不到章目」，
+    此时从正文推是同一意图的恢复动作。回退自身失败关闭（找不到 `Ⅲ` 节或其后无章标题 → `ValueError`），
+    所以「两边都取不到」时仍然 raise，绝不无声产出空章目。
+    """
+    try:
+        return _toc_chapters(lines)
+    except ValueError:
+        return _section_chapters(lines)
+
+
+def _missing_chapters(ordinals: list[int]) -> list[int]:
+    """章序标签推出的 `ordinal` 序列 → 缺失章号（升序去重；`0` = 导论，不参与章号）。
+
+    两种缺口都要报（KB-3）：**前部缺口**（首章不是 1，如 `第4章` 打头 → 缺 1–3）与
+    **内部缺口**（相邻章号跳号 → 缺中间那些）。
+    """
+    numbers: set[int] = set()
+    if ordinals[0] not in (0, 1):
+        numbers.update(range(1, ordinals[0]))
+    for left, right in zip(ordinals, ordinals[1:]):
+        if right - left > 1:
+            numbers.update(range(left + 1, right))
+    return sorted(number for number in numbers if number > 0)
+
+
+def _format_chapter_runs(numbers: list[int]) -> str:
+    """章号 → 压缩表述：`[1, 2, 3, 6]` → `第1–3章、第6章`（连续段折叠成一个区间）。"""
+    parts: list[str] = []
+    start = previous = None
+    for number in [*numbers, None]:
+        if number is not None and start is None:
+            start = previous = number
+            continue
+        if number is not None and number == previous + 1:
+            previous = number
+            continue
+        if start is not None:
+            parts.append(f"第{start}章" if start == previous else f"第{start}–{previous}章")
+        start = previous = number
+    return "、".join(parts)
 
 
 def _body_slices(lines: list[str], titles: list[str], start: int) -> list[list[tuple[int, str]]]:
@@ -271,19 +387,62 @@ def _point(code: str, slug: str, section_index: str, seq: int, requirement: str 
     }
 
 
-def _parse_requirement_block(block: list[dict], code: str, slug: str) -> tuple[list[dict], list[dict]]:
-    """考核要求小节 → (`sections[]`, `unmodeled[]`)。"""
+def _section_label(text: str) -> tuple[str, str] | None:
+    """节标题 → `(index, title)`；两种版式：`1.标题` 与 `（一）标题`（KB-4）。"""
+    section = SECTION_RE.match(text)
+    if section:
+        return section.group(1), section.group(2).strip()
+    paren = PAREN_SECTION_RE.match(text)
+    if paren:
+        number = _chinese_number(paren.group(1))
+        return (str(number) if number else paren.group(1)), paren.group(2).strip()
+    return None
+
+
+def _parse_requirement_block(
+    block: list[dict], code: str, slug: str, chapter_title: str
+) -> tuple[list[dict], list[dict], bool]:
+    """考核要求小节 → (`sections[]`, `unmodeled[]`, `chapter_level`)。
+
+    **无节边界时整章即考核单元**（KB-4）：`02333` / `04747` / `04751` 的 `二、考核知识点与考核要求`
+    直接列 `识记：` / `领会：` / `应用：`，没有任何节号 —— 此时该小节本身就是考核单元（`index` 取 `1`，
+    `title` 取章标题），否则整章要求会全部落进 `unmodeled[]`、`coverage.ratio` 退化成 `0.0`。
+    有节边界的课（`15040` / `15043` / `15044`）不受影响。
+
+    **明确不考核的单元不进分母**：标题带 `（本节内容不作考核要求）` 的节（`00898` 实测 8 个）
+    与带 `（本章内容不作考核要求）` 的章（`02333` 第 14 章）本身就没有考核要求，
+    把它们算作「未抽出的节」会把「不考」误报成「抽取失败」；改为只留痕（`reason: not_assessed`）。
+    """
     sections: list[dict] = []
     unmodeled: list[dict] = []
+    numbered = any(_section_label(item["text"]) for item in block)
+    chapter_level = not numbered
     current: dict | None = None
+    skip_reason: str | None = None
+    if chapter_level and NOT_ASSESSED_MARKER not in chapter_title:
+        current = {"index": "1", "title": chapter_title, "points": []}
+        sections.append(current)
     prefixed = False
     for item in block:
         text = item["text"]
-        section = SECTION_RE.match(text)
-        if section:
-            current = {"index": section.group(1), "title": section.group(2).strip(), "points": []}
+        if PAGE_MARKER_RE.match(text):
+            continue  # 页码行既不是考核内容，也不是缺口
+        label = _section_label(text)
+        if label is not None:
+            index, title = label
+            if NOT_ASSESSED_MARKER in title:
+                current = None
+                skip_reason = "not_assessed"
+                unmodeled.append({
+                    "locator": f"L{item['line']}",
+                    "title": text[:MAX_QUOTE_CHARS].rstrip("。").strip(),
+                    "reason": "not_assessed",
+                })
+                continue
+            current = {"index": index, "title": title, "points": []}
             sections.append(current)
             prefixed = False
+            skip_reason = None
             continue
         requirement = REQUIREMENT_RE.match(text)
         if requirement is not None and current is not None:
@@ -292,12 +451,14 @@ def _parse_requirement_block(block: list[dict], code: str, slug: str) -> tuple[l
         elif current is not None and not prefixed:
             requirement_name, body = None, text
         else:
-            # `current is None`（本行不属于任何编号节，含 `识记：` / `领会：` / `应用：` 行本身）
-            # 或该节已出现带前缀要求 → 未编号考核段落，只留痕、不生成 point、不编造 index（GC3）
+            # `current is None`（本行不属于任何考核单元 —— 含无考核单元的章、明确不考核的节，
+            # 以及 `识记：` / `领会：` / `应用：` 行本身）或该单元已出现带前缀要求 → 未编号段落，
+            # 只留痕、不生成 point、不编造 index（GC3）。留在「明确不考核」单元内的行沿用该原因，
+            # 免得读者把「官方声明不考」误读成「抽取失败」。
             unmodeled.append({
                 "locator": f"L{item['line']}",
                 "title": text[:MAX_QUOTE_CHARS].rstrip("。").strip(),
-                "reason": "unnumbered_section",
+                "reason": skip_reason or "unnumbered_section",
             })
             continue
         for phrase in _phrases(body):
@@ -305,7 +466,7 @@ def _parse_requirement_block(block: list[dict], code: str, slug: str) -> tuple[l
             current["points"].append(
                 _point(code, slug, current["index"], seq, requirement_name, phrase, item["line"])
             )
-    return sections, unmodeled
+    return sections, unmodeled, chapter_level
 
 
 def _chapter_focus(logical: list[dict]) -> list[dict]:
@@ -535,26 +696,32 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
         raise ValueError(f"考纲未抽取或未记录考核要求小节：{code} 不生成知识模型（放行等级非 L1）")
 
     lines = _physical_lines(root / syllabus["path"])
-    toc_end, titles = _toc_chapters(lines)
+    toc_end, titles = _chapter_titles(lines)
     slices = _body_slices(lines, titles, toc_end)
 
     # 章身份由章序**标签**推导（B6）：`ordinal` 必须严格递增且步长恒为 1，且首章只能是 0（导论类）
     # 或 1（无导论课程）。任何缺口 = 有章被静默丢弃 —— 旧实现按列表位置编号，丢章后序号整体前移
     # 而无人可见（15044 的 `绪 论` 就是这样消失、且 `第一章` 顶到 `ordinal 0` / `slug intro` 的）。
+    # 缺口**指名缺的章号**（KB-3）：读者侧缺口呈现直接复用这句话，不必再去解析裸序号列表。
     identities = [(_ordinal_for(title), _slug_for(title)) for title in titles]
     ordinals = [ordinal for ordinal, _ in identities]
     gaps = [right - left for left, right in zip(ordinals, ordinals[1:])]
     if ordinals[0] not in (0, 1) or any(gap != 1 for gap in gaps):
+        missing = _missing_chapters(ordinals)
+        detail = f"缺 {_format_chapter_runs(missing)}" if missing else "章序标签无法识别"
         raise ValueError(
-            f"{code}: 考纲目录的章序不连续 {ordinals}（缺章，或章序标签无法识别）：{'、'.join(titles[:8])}…"
+            f"{code}: 考纲章目不连续（{detail}，章序标签推出的章号 {ordinals}）："
+            f"{'、'.join(titles[:8])}…"
         )
 
     chapters = []
+    chapter_level_model = False
     for position, title in enumerate(titles):
         ordinal, slug = identities[position]
         logical = _logical_lines(slices[position])
         block = _requirement_block(logical, heading)
-        sections, unmodeled = _parse_requirement_block(block or [], code, slug)
+        sections, unmodeled, chapter_level = _parse_requirement_block(block or [], code, slug, title)
+        chapter_level_model = chapter_level_model or chapter_level
         chapters.append({
             "ordinal": ordinal,
             "index": _chapter_index(title),
@@ -581,7 +748,11 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
             "official_point_count": official,
             "modeled_point_count": modeled,
             "ratio": round(modeled / official, 4) if official else 0.0,
-            "denominator_rule": DENOMINATOR_RULE_TEMPLATE.format(heading=heading),
+            "denominator_rule": (
+                DENOMINATOR_RULE_CHAPTER_TEMPLATE.format(heading=heading)
+                if chapter_level_model
+                else DENOMINATOR_RULE_TEMPLATE.format(heading=heading)
+            ),
             "manual_reference": manual_reference,
             # 每次生成都写：无手工参照写 []；有手工参照则逐条留痕（无差异时全为 matched）
             "diff_vs_manual": _diff_vs_manual(manual_elements, chapters) if manual_reference else [],
