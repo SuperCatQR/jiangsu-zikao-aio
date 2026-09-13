@@ -192,23 +192,36 @@ def test_gap_statements_do_not_claim_unverified_missing_chapters():
     `04747` / `04751` 的考纲实测**完整**（13 章、1–13 连续）。规划期一度以为它们缺章，
     成因是探针正则 `^\\s*第(\\d+)章` 匹配不到带空格的 `第 6 章`；若把这个假象写进读者页，
     读者会误以为官方考纲有缺陷。这条把该类断言钉死，避免日后重新引入。
+
+    判定由 `_missing_chapter_offenders` 给出（F7）：旧写法在测试里内联重编一份**窄**正则
+    （`缺\\s*第\\s*\\d+\\s*章|缺第\\s*[\\d\\-–—]+\\s*章|考纲缺章`），对 `缺少第 6 章` /
+    `缺了第 6 章` / `考纲第 6 章缺失` / `第 6 章未收录` 全部漏判。谓词是唯一判据，宽化只此一处。
     """
-    pattern = re.compile(r"缺\s*第\s*\d+\s*章|缺第\s*[\d\-–—]+\s*章|考纲缺章")
     offenders = []
     for code in _blocked_codes():
-        block = _gap_block(code)
-        if pattern.search(block):
-            offenders.append(code)
+        hits = _missing_chapter_offenders(_gap_block(code))
+        if hits:
+            offenders.append((code, hits))
     assert offenders == [], f"这些课的缺口区块断言了未经证实的「考纲缺章」：{offenders}"
 
 
 def test_gap_cause_classification_matches_evidence():
-    """三类原因必须与 `evidence.json` 的实际缺失项一致（不套模板）。"""
+    """三类原因必须与 `evidence.json` 的实际缺失项一致（不套模板）。
+
+    F1 的判定由 `_textbook_claim_offenders` 给出，**不**靠内联子串检查：旧写法
+    `assert "教材计划行" in block` 恰好被它要挡的那句话（「学分与**已核验的教材计划行**」）
+    满足，所以整个缺陷类都能漏过去。
+    """
     for code in _blocked_codes():
         doc = json.loads((EVIDENCE / code / "evidence.json").read_text(encoding="utf-8"))
         syl = (doc.get("syllabus") or {}).get("status") == "extracted"
         tb = (doc.get("textbook_plan") or {}).get("status") == "matched"
         block = _gap_block(code)
+
+        offenders = _textbook_claim_offenders(code, block)
+        assert offenders == [], (
+            f"{code} 教材计划未命中却声称「{TEXTBOOK_MATCHED_CLAIM}」（F1 缺陷类回归）：{offenders}"
+        )
 
         if code in LEGACY_REDIRECT:
             live = LEGACY_REDIRECT[code]
@@ -229,24 +242,41 @@ def test_gap_cause_classification_matches_evidence():
 
 
 def test_blocked_courses_have_no_ai_banner_and_no_ai_generated_block():
-    """AC8 硬不变量：零 AI 产物。横幅字面量取自 schema，不在此另抄。"""
-    banner = _ai_banner()
+    """AC8 硬不变量：零 AI 产物。横幅字面量取自 schema，不在此另抄。
+
+    判定**全部**由 `_banner_violations` 给出（守卫与它的自检共用同一谓词，见 F5 的教训）。
+    同一条 AC8 还要求：页面对「绝对零 AI」的断言**不得**与本页自己的 AI 署名共现（F2）——
+    4 门课（`00023` `04735` `13000` `13003`）有迁移期手写 AI 署名与自己的 `## AI 生成声明`，
+    对它们说「不产出任何 AI 内容」是页面自相矛盾。谓词只报共现冲突，不禁止署名本身。
+    """
     for code in _blocked_codes():
         text = _read(code)
-        assert banner not in text, f"{code}/index.md 出现 AI 横幅（违反零 AI 产物不变量）"
-        assert "ai_generated" not in text, f"{code}/index.md 出现 ai_generated 标记"
+        violations = _banner_violations(text)
+        assert violations == [], f"{code}/index.md 违反零 AI 产物不变量：{violations}"
+        offenders = _absolute_no_ai_offenders(text)
+        assert offenders == [], (
+            f"{code}/index.md 既有 AI 署名又断言「绝对零 AI」（F2 缺陷类回归）：{offenders}"
+        )
 
 
 def test_ai_banner_guard_is_falsifiable():
     """反身证明：这条守卫**能**失败 —— 否则它是装饰。
 
-    做法：把 schema 的横幅字面量注入一份**内存中**的页面文本，确认判定确实命中；
-    不落盘、不改动任何文件。
+    做法：把 schema 的横幅字面量注入一份**内存中**的页面文本，确认**守卫本体调用的那个谓词**
+    （`_banner_violations`）确实命中；不落盘、不改动任何文件。
+
+    上一版写的是 `assert banner in (page + banner)` —— 那只是字符串拼接的性质：把真实守卫换成
+    `assert True`，这条自检照样绿。**守卫与它的自检必须调用同一谓词**，这条才在检验守卫本体（F5）。
     """
-    banner = _ai_banner()
-    poisoned = _read(_blocked_codes()[0]) + f"\n> {banner} 注入\n"
-    assert banner in poisoned, "注入装置本身失效"
-    assert banner not in _read(_blocked_codes()[0]), "未注入的页面不应含横幅"
+    clean = _read(_blocked_codes()[0])
+    assert _banner_violations(clean) == [], "未注入的页面不应报违规"
+
+    poisoned = clean + f"\n> {_ai_banner()} 注入\n"
+    assert _banner_violations(poisoned) == ["ai_banner"], (
+        "注入 AI 横幅后谓词未命中：守卫已失去可证伪性"
+    )
+    # 守卫断言的是**两个**标记，自检就要覆盖两个，否则另一半仍是装饰
+    assert _banner_violations(clean + '\nai_generated: "true"\n') == ["ai_generated"]
 
 
 def test_blocked_courses_have_no_ai_generated_pages_beyond_index():
