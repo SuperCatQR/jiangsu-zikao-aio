@@ -90,7 +90,7 @@ mkdocs serve
 - `publish`：`lifecycle=publishable` 发布资格硬门禁
 - `maturity-check`：非变异的公开页面成熟度投影比对
 - `evidence`：官方事实层（`evidence.json`）与知识模型（`knowledge-model.json`）覆盖率、断言状态校验
-- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率及渲染页横幅校验
+- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率、渲染页横幅校验，以及 AI 块**页面到达性对账**（作用域 = 已产出 `content.json` 的课程：`15040` / `15043`）
 
 ### 课程内容流水线（`scripts/build-course-content.py`）
 
@@ -109,9 +109,14 @@ mkdocs serve
 常用开关：`--backend cli|agent|replay`（默认 `cli`；CI 与本地复算用 `replay`）、
 `--stages a,b,c`（只跑指定阶段）、`--dry-run`（只演练不落盘）、`--record-fixtures`（录制 fixture）。
 
+提示词有课程作用域：四个 v1 提示词模板的 `course_scope` 现覆盖 **`15040`（习近平新时代中国特色社会主义思想概论）
+与 `15043`（中国近现代史纲要）两门课程** —— 即当前已端到端产出 AI 备考层的全部课程。作用域外的课码（即使已 `L1`）
+在 `generate` 阶段 fail closed（exit 2），绝不借用其它课程的模板产出内容。
+
 ```bash
-# 端到端复算试点课程（离线 fixture，不联网、不调用 LLM）
+# 端到端复算（离线 fixture，不联网、不调用 LLM）
 python scripts/build-course-content.py build 15040 --backend replay
+python scripts/build-course-content.py build 15043 --backend replay
 
 # 分步：先取证与知识模型，再生成 AI 备考层，最后渲染
 python scripts/build-course-content.py evidence 15040

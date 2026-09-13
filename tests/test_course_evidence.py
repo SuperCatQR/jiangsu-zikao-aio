@@ -23,6 +23,7 @@ import pytest
 import shutil
 
 from lib.course_pipeline import evidence as ev
+from tests.baseline_contract import assert_contract, assert_unwritten
 
 ROOT = Path(__file__).resolve().parents[1]
 COURSES_DIR = Path("sources/jiangsu/courses")
@@ -499,16 +500,27 @@ def test_build_evidence_is_byte_stable():
     assert digests == {hashlib.sha256(first.encode("utf-8")).hexdigest()}
 
 
-def test_baseline_and_official_tree_untouched():
-    """GC14 / GC15：跑完取证后基线与官方原件树的 `git diff` 必须为空。"""
-    baseline = ROOT / BASELINE
-    before = hashlib.sha256(baseline.read_bytes()).hexdigest()
+def test_baseline_untouched_by_evidence_path():
+    """B2-D4 / GC14：跑完取证后 baseline 必须**一个字节都没被写**。
+
+    原断言把 baseline 与 `OFFICIAL_TREE` 合在一条 `git diff --quiet` 里。baseline 可被
+    `--update-baseline` / `refresh-baseline` job 合法刷新，故 baseline 这一半改为
+    「取证路径不写 baseline」（写自由）+ 语义契约；`OFFICIAL_TREE` 那一半不再弱化，
+    单独保留零 diff（GC15，见下一个用例）。见 tests/baseline_contract.py。
+    """
+    with assert_unwritten([ROOT / BASELINE]):
+        for code in EXISTING_COURSE_CODES:
+            ev.build_evidence(ROOT, code)
+    assert_contract(ROOT)
+
+
+def test_official_tree_untouched_by_evidence_path():
+    """GC15：跑完取证后官方原件树零改动（`sources/jiangsu/public-official/**`，受 Git LFS 管辖）。"""
     for code in EXISTING_COURSE_CODES:
         ev.build_evidence(ROOT, code)
-    assert hashlib.sha256(baseline.read_bytes()).hexdigest() == before
 
     result = subprocess.run(
-        ["git", "diff", "--quiet", "--", str(BASELINE), OFFICIAL_TREE],
+        ["git", "diff", "--quiet", "--", OFFICIAL_TREE],
         cwd=ROOT,
         capture_output=True,
         text=True,

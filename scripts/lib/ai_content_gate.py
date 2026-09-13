@@ -1,17 +1,34 @@
 """AI Content Gate: validates AI prep layer contracts (Issue #55 / Task 6).
 
-覆盖对象 = **存在 `content.json` 的课程**（作用域规则：新层只对存在产物的课程生效，
-其余 17 门课保持全绿）。四类校验：
+覆盖对象 = **存在 `content.json` 的课程**，外加一条**反向失败关闭**（F-QC3-2 / X2）：渲染页上已有带 AI
+横幅的 AI 页面、而 `content.json` 缺失时同样报错 —— 作用域键不得替自己关闸，否则删掉真值源就能让
+整层 AI 页面照常发布。既无 `content.json` 又无 AI 页面的课程保持全绿（其余 16 门课）。五类校验：
 
 1. **标注四件套**（`validate_content_doc`）：`blocks[]` / `stage_plan[]` / `review_schedule` 及其 `plans[]`；
 2. **8-gram 抄袭守卫**：语料取自 `evidence.json` 的 `syllabus.path`，并**校验 `sha256`**（QC1 F-5：
    旧实现按目录 glob 找语料、空即**静默跳过**，等于把闸门交给文件命名）；
 3. **页面标记**：页面分类与标记字符串一律取自 `course.schema.json` 的 `generated_page_markers`
-   （QC1 F-4 / QC3-003：schema 是唯一真源，同一规则不写两遍）；
-4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1）：`practice.md` 的 drill 数、`plan.md` 的五阶段
-   与 `## 应试策略`（课程级 `exam_strategy`）、`review.md` 的排程，逐项与 `content.json` 对账 ——
-   **`BLOCK_KINDS` 的四个 kind 全部覆盖**，而不是三个。这一条缺失正是「AI 备考层从未被渲染」能过关的原因，
-   而只覆盖 3/4 个 kind 正是 `exam_strategy` 被整块删掉却两层全绿的原因。
+   （QC1 F-4 / QC3-003 / R9：schema 是唯一真源，同一规则不写两遍 —— 章页模式也由
+   `_chapter_page_patterns()` 从该键派生，模块内不再自带 `knowledge/*.md` 字面量）；
+4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1 / F-QC2-1 / F-QC3-1 / Y2）：对账口径 = **4 个
+   block kind（`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` /
+   `review_schedule`）**：`explain` / `memorize` 按**逐考核点锚点**对账（`### 考点精讲：<point_id>`
+   小节内必须有对应 H4 小节、**且其正文非空**、且该 H4 标题是**读者可见的**——既不在代码围栏内，
+   也不在 HTML 注释内），并保留**可见行**里的全局小节计数（精确相等）作**次级**页级界限；
+   `practice.md` 的 drill 数、`plan.md` 的五阶段与
+   `## 应试策略`、`review.md` 的排程，逐项与 `content.json` 对账；
+   课程存在 `content.json` 而渲染页目录不存在时**失败关闭**，不静默跳过整门课。
+   这一条缺失正是「AI 备考层从未被渲染」能过关的原因：先只覆盖 3/4 个 kind（`exam_strategy` 整块删掉仍两层全绿），
+   后又是 `explain` / `memorize` 无对账 + 目录缺失静默 `continue`。
+5. **反向失败关闭**（F-QC3-2 / X2 / Y1）：渲染页存在带 AI 横幅的页面而真值源不在 → 报错。作用域键取
+   **源侧 ∪ 产物侧**的课码并集 —— 「产物存在」蕴含「源存在」，而不是以源的单个文件为前提：
+   X2 只认 `content.json` 单文件缺失，于是**删掉整个源目录**时源侧迭代器里已经没有这门课，
+   整门课连同 16 个渲染页一起逃出作用域（Y1）；把产物侧的课码并进来后，这一形态同样报错。
+
+**为什么主判据是逐点锚点、而不是全局精确计数**（X3，更正此前写反的理由）：精确相等**并不能**防住
+padding —— 删掉一个 `point_id` 的 `#### 要点梳理`、再在别处补一条同名标题，255 == 255 依旧全绿。
+计数只回答「渲染了几个」，回答不了「渲染了哪几个」；`drill` 那样的下界同理。只有**按 `point_id` 锚点**
+对账才防得住丢块，计数因此降级为次级页级界限（总量兜底）。
 
 `rendered_course_dir` / `course_code` 让 `build` 的 `gate` 阶段校验**暂存区**页面而不是仓内既有页面。
 """
@@ -31,6 +48,132 @@ from lib.course_pipeline.generate_content import (
 # 8-gram 之外的文本边界（plan § Data contracts 5 / design-notes §2 invariant 5）：`>` 引用块 ≤ 80 字符。
 MAX_BLOCKQUOTE_CHARS = 80
 QUESTION_TEXT_RE = re.compile(r"(选择题|填空题|简答题|材料题|下列.*正确)")
+
+# `explain` / `memorize` 的唯一落点 = 渲染器的章页（`out_dir/knowledge/<NN>-<slug>.md`：
+# `render_pages.py:881-882` 建目录、`:927-936` 逐章写入）。两个小节标题是**契约字面量**：
+# `#### 记忆辅助` 由渲染器产出（`:807`）；`#### 要点梳理` 来自提示词常量
+# （`generate_content.py:54` 的 `EXPLAIN_SUMMARY_HEADING`，由 `validate_content_doc()` 强制每个 explain
+# 块必含），经 `_clean_explain_headings()`（`:141-155`）由 H3 降为 H4。判定一律按 H4 精确整行、
+# **且只看代码围栏之外的行**（F-QC3-1(c)）。章页模式不自带字面量：见 `_chapter_page_patterns()`（R9/W-2）。
+EXPLAIN_SUMMARY_HEADING = "#### 要点梳理"
+MEMORIZE_AID_HEADING = "#### 记忆辅助"
+# 裸行匹配仅供测试表达「全局计数」这一对照前提（`tests/test_ai_content_gate.py`）；闸门本身不用它们判定 ——
+# 裸行匹配会把代码围栏内的同名行也算作渲染证据，那正是 F-QC3-1(c) 的漏洞。
+EXPLAIN_SUMMARY_RE = re.compile(rf"(?m)^{re.escape(EXPLAIN_SUMMARY_HEADING)}$")
+MEMORIZE_AID_RE = re.compile(rf"(?m)^{re.escape(MEMORIZE_AID_HEADING)}$")
+
+# `explain` / `memorize` 的**逐考核点**锚点：渲染器在 `### 考点精讲：{point_id}（{requirement}）`
+# 之下、紧挨着写出 explain 正文（`#### 要点梳理` 为其中一节）与 memorize 正文（`#### 记忆辅助`），
+# 见 `render_pages.py:798-809`。H3 切分（`^### `）与 `drill` 的 `^### ` 小节口径一致；
+# 该锚点同时是 MkDocs 目录里的稳定定位符，随页面重建而重建。
+POINT_ANCHOR_RE = re.compile(r"^### 考点精讲：(?P<point_id>[^\s（]+)（")
+
+# Markdown 代码围栏（``` / ~~~）：闭合需**同一字符**且不短于开启长度；围栏内的行不是渲染证据。
+_FENCE_LINE_RE = re.compile(r"^ {0,3}(?P<fence>`{3,}|~{3,})")
+_HEADING_LINE_RE = re.compile(r"^#{1,6} ")
+_COMMENT_RE = re.compile(r"<!--.*?-->", re.S)
+
+
+def _blank_comments(text: str) -> str:
+    """把 HTML 注释的**内容**换成空行（保留行数，行结构不变）—— 注释里的行不是渲染证据（Y2）。
+
+    注释剥离必须发生在**标题扫描之前**。旧实现只在 `_heading_body()` 取到的**正文切片**里剥注释
+    （`_is_empty_body`），于是两种形状的判定不对称：
+
+    - 标题在注释**之外**、正文被注释包裹 → 正文切片内剥离后为空 → **能**抓到（QC3 的对照形状）；
+    - `<!--` 开在标题行**之前**、`-->` 收在正文之后（标题 + 正文整段被包住）→ `<!--` 落在切片之外，
+      切片里只剩注释的尾巴与脚注，剥完仍非空 → 判「已到达」，**0 错误**。
+
+    对读者而言两种形状完全等价（该节都不可见），判定必须同形。与 `_unfenced_lines()` 同一手法：
+    **不是渲染证据的行不参与判定**。
+
+    只剥**配对完整**的注释。围栏里的 `<!--` 示例若按「直到文末」处理，会把其后真正的标题一并吞掉、
+    反过来制造误报；两门课实测跨行注释 0 处（`<!-- generated … -->` / `<!-- ai-block … -->` 均单行闭合），
+    故这一层只拦对抗路径、不动既有产物。
+    """
+    return _COMMENT_RE.sub(lambda match: "\n" * match.group(0).count("\n"), text)
+
+
+def _unfenced_lines(text: str) -> list[str]:
+    """`text` 中**不在代码围栏内**的行（围栏行本身也一并丢弃）。
+
+    F-QC3-1(c)：`^#### 要点梳理$` 是纯行匹配，代码块里塞一条同名行即可满足它。判定必须只看围栏外的行，
+    否则「删掉真标题、在围栏里补一条」就能让闸门放行。渲染器从不产出围栏（两门课实测围栏行均为 0），
+    所以这一层只拦对抗路径、不动既有产物。
+    """
+    lines: list[str] = []
+    fence: str | None = None
+    for line in text.splitlines():
+        match = _FENCE_LINE_RE.match(line)
+        if fence is None:
+            if match:
+                fence = match.group("fence")
+                continue
+            lines.append(line)
+        elif match and match.group("fence")[0] == fence[0] and len(match.group("fence")) >= len(fence):
+            fence = None
+    return lines
+
+
+def _evidence_lines(text: str) -> list[str]:
+    """**读者可见的行** = 先剥 HTML 注释（Y2）、再看代码围栏之外（F-QC3-1(c)）的行。
+
+    两层同形：注释与围栏里的内容都不是渲染证据，因而标题扫描、正文切片、小节计数一律走这一个入口 ——
+    三个判定若各写一套剥离顺序，正是 Y2 那个「一半修好」缺口的来源。
+    先剥注释再看围栏：注释里的 ``` 不会凭空开出围栏；围栏里的配对注释被剥掉也不影响围栏闭合判定
+    （围栏内的内容本就不作证据）。
+    """
+    return _unfenced_lines(_blank_comments(text))
+
+
+def _heading_body(section: str, heading: str) -> str | None:
+    """`heading` 整行之后、到下一个标题行之前的正文（只看可见行）；标题不存在时返回 `None`。
+
+    `None` 与空串是**两件事**，对应两种必须分别报错的规避（F-QC3-1）：
+    (c) 标题在围栏里 → `None`（该标题根本没渲染到页面）；(a) 标题在、正文被清空 → `""`（渲染了空壳）。
+    Y2 之后 (c) 扩为「标题不是渲染证据」：围栏**内**、或注释**内**（含注释包住标题整段的形状）都是 `None`。
+    """
+    lines = _evidence_lines(section)
+    for index, line in enumerate(lines):
+        if line != heading:
+            continue
+        body: list[str] = []
+        for following in lines[index + 1 :]:
+            if _HEADING_LINE_RE.match(following):
+                break
+            body.append(following)
+        return "\n".join(body)
+    return None
+
+
+def _is_empty_body(body: str) -> bool:
+    """正文去掉 HTML 注释后是否为空（`<!-- ai-block ... -->` 脚注不是正文，不能拿它充数）。
+
+    `body` 来自 `_heading_body()`，注释在那之前已被 `_evidence_lines()` 换成空行，故剥注释这一步在此
+    已是幂等的兜底（契约不变，单独调用本函数同样成立）。
+    """
+    return not _COMMENT_RE.sub("", body).strip()
+
+
+def _count_visible_headings(text: str, heading: str) -> int:
+    """**可见行**里 `heading` 的精确整行计数（**次级**页级界限；主判据是逐点锚点）。
+
+    注释内的同名标题不计入（Y2）：计数回答的是「渲染到页面上几条」，而注释里的行读者看不见。
+    """
+    return sum(1 for line in _evidence_lines(text) if line == heading)
+
+
+def _chapter_page_patterns(markers: dict) -> set[str]:
+    """章页模式 = schema `generated_page_markers.ai_pages` 里的**子目录**模式（即 `knowledge/*.md`）。
+
+    R9/W-2：本模块不再自带第二份 `knowledge/*.md` 字面量 —— 页面分类的唯一真源是 schema
+    （模块 docstring 第 3 条），经 `course_pages_contract.generated_page_markers()` 读取（schema 缺键时
+    该访问器自己回落到同一份默认值）。章页与课程级 AI 页（`plan.md` / `practice.md` / `review.md`）的
+    区别是**目录层级**：章页在 `knowledge/` 之下，故取含 `/` 的模式；一个都没有时退回全部 AI 页
+    （只会让次级计数更宽，主判据仍是逐点锚点）。
+    """
+    chapter = {str(pattern) for pattern in markers["ai_pages"] if "/" in str(pattern)}
+    return chapter or {str(pattern) for pattern in markers["ai_pages"]}
 
 
 def _syllabus_text(root: Path, code: str, rel_content: str, errors: list[str]) -> str:
@@ -90,19 +233,148 @@ def _page_problems(rel_md: str, text: str, markers: dict, errors: list[str], *, 
             errors.append(f"{where}: 引用块出现题文特征: {quote[:40]}...")
 
 
-def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], errors: list[str]) -> None:
-    """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004 / W1：闸门只看页面装饰，看不出整层丢失）。
+def _chapter_page_sections(page_text: dict[str, str], chapter_patterns: set[str]) -> tuple[str, dict[str, str]]:
+    """章页正文拼接 + `### 考点精讲：<point_id>` 锚点小节索引（H4 标题留在自己的小节内）。
 
-    对账口径按 kind —— **`BLOCK_KINDS` 的四个 kind 一个都不能漏**：
-    - `drill` → `practice.md` 的 `###` 小节数；
+    以 `^### ` 切分：章页上每个 H3 都是渲染器的**契约标题**（`### {章标题}` / `### 考点精讲：<point_id>`
+    / `### 练习题：<point_id>`，见 `render_pages.py:798,827`），H4 小节因而必定落在其所属锚点小节之内。
+    切分**只看可见行**（`_evidence_lines()`：剥 HTML 注释 + 跳过围栏，F-QC3-1(c) / Y2）：围栏里的
+    `### ` 不是渲染器的 H3，不能拿来凭空造一个锚点小节，
+    否则「真小节删掉、围栏里补一个假锚点」就能让逐点对账误判为已到达；注释包住整段的 `### ` 同理
+    （那些行读者看不见）。页面顺序在两门课内**唯一**
+    （`render_pages.py:881-882,927-936` 逐章写一个文件）；真出现重复时后者覆盖
+    前者，`rendered != expected` 的页级计数会兜住。
+    """
+    chapters: list[str] = []
+    sections: dict[str, str] = {}
+    for rel_md, text in page_text.items():
+        if not course_pages_contract.matches_page(rel_md, chapter_patterns):
+            continue
+        chapters.append(text)
+        # 按「围栏外的 `^### ` 行」切分（与 `^### ` 正则 split 同形：`### ` 前缀由下面的 `section` 补回）。
+        # `chunk` 每项 = 一个 H3 的标题行 + 其正文，正好一节；不能再两两配对（那会把相邻小节拼进来
+        # —— 邻节的 H4 会掩盖本节的缺失）。切分口径 = `_evidence_lines()`（剥注释 + 跳过围栏），
+        # 注释包住整段的 H3 不再凭空造出锚点小节（Y2）。
+        current: list[str] = []
+        chunks: list[str] = []
+        for line in _evidence_lines(text):
+            if line.startswith("### "):
+                if current:
+                    chunks.append("\n".join(current))
+                current = [line[4:]]
+            else:
+                current.append(line)
+        if current:
+            chunks.append("\n".join(current))
+        for chunk in chunks:
+            section = "### " + chunk
+            match = POINT_ANCHOR_RE.match(section)
+            if match:
+                sections[match.group("point_id")] = section
+    return "".join(chapters), sections
+
+
+def _per_point_reached_problems(
+    code: str, content: dict, sections: dict[str, str], errors: list[str]
+) -> None:
+    """逐 `point_id` 对账：块是「真值」，它指名的考核点必须在章页上**有自己那一节**（F-QC2-1）。
+
+    口径 = 锚点小节**内**的 H4 小节：`explain` 块要求 `### 考点精讲：<point_id>` 小节内出现
+    可见的 `#### 要点梳理` **且其正文非空**；`memorize` 块同理要求 `#### 记忆辅助`。因此
+    「删掉某点的整节、再在别处补一条同名标题」不再能蒙混过关（全局计数不变、相邻小节的同名 H4 也不会
+    被误算进来，但该 `point_id` 的锚点/小节确实没了），错误文案**点名缺失的 `point_id`**，
+    与 `drill` 的锚点对账（`practice.md`）同一形态。
+    F-QC3-1 / Y2 的三种剩余规避也在此闭合（判定一律走 `_evidence_lines()`：剥注释 + 跳过围栏）：
+    - (a) **标题在、正文被清空** → 空壳不算到达（`_is_empty_body`；AI 块脚注不算正文）；
+    - (c) **标题被塞进代码围栏** → 围栏内的行不是渲染证据，等价于「标题不存在」；
+    - Y2 **标题被 HTML 注释包住**（`<!--` 开在标题行之前）→ 该节对读者不可见，同样等价于「标题不存在」；
+      与之对称的「正文被注释、标题在注释外」本就被 `_is_empty_body()` 判为空壳 —— 两种形状现在同形。
+    调用顺序上逐点在前、全局计数在后：计数不匹配只是次级「页级界限」，块级真相优先（否则「丢一节 + 别处补一条」
+    只会报成模糊的计数不符）。有块却无锚点的考核点算失败；没有块的考核点不在此列（无块即无诉求）。
+    """
+    for kind, heading in (
+        ("explain", EXPLAIN_SUMMARY_HEADING),
+        ("memorize", MEMORIZE_AID_HEADING),
+    ):
+        block_points = [
+            str(block["point_id"])
+            for block in content.get("blocks") or []
+            if block.get("kind") == kind and block.get("point_id")
+        ]
+        missing_anchor: list[str] = []
+        missing_heading: list[str] = []
+        empty_body: list[str] = []
+        for point_id in block_points:
+            section = sections.get(point_id)
+            if section is None:
+                missing_anchor.append(point_id)
+                continue
+            body = _heading_body(section, heading)
+            if body is None:
+                missing_heading.append(point_id)
+            elif _is_empty_body(body):
+                empty_body.append(point_id)
+        if missing_anchor:
+            errors.append(
+                f"course {code}: 章页缺少 {len(missing_anchor)} 个考核点的 `### 考点精讲：<point_id>` 锚点"
+                f"（首个 {missing_anchor[0]}）—— 该 point_id 的 {kind} 块未渲染到章页"
+            )
+        if missing_heading:
+            errors.append(
+                f"course {code}: 章页有 {len(missing_heading)} 个考核点的锚点小节内缺少 `{heading}`"
+                f"（首个 {missing_heading[0]}）—— 该 point_id 的 {kind} 块未渲染到章页"
+            )
+        if empty_body:
+            errors.append(
+                f"course {code}: 章页有 {len(empty_body)} 个考核点的 `{heading}` 小节正文为空"
+                f"（首个 {empty_body[0]}）—— 该 point_id 的 {kind} 块未渲染到章页"
+            )
+
+
+def _page_reached_problems(
+    code: str, content: dict, page_text: dict[str, str], markers: dict, errors: list[str]
+) -> None:
+    """每个 AI 产物块都必须真的落到页面上（QC3-001 / C2-004 / W1 / B2a N-1：闸门只看页面装饰，看不出整层丢失）。
+
+    对账口径按 kind —— **4 个 block kind + 2 个课程级顶层产物，一个都不能漏**：
+    - `explain` → 逐 `point_id`：该点在章页上有 `### 考点精讲：<point_id>` 锚点，且锚点小节内有
+      `#### 要点梳理` **且正文非空**；**再**以可见行里的全局标题计数**精确相等**作次级页级界限；
+    - `memorize` → 同样的逐点锚点口径（`#### 记忆辅助`）+ 同样的次级计数；
+    - `drill` → `practice.md` 的 `###` 小节数 + 逐 `point_id` 的练习小节锚点；
     - `stage_plan[]`（恰 5 条）→ `plan.md` 逐阶段名 + `done_when`；
     - `exam_strategy`（课程级块）→ `plan.md` 的 `## 应试策略` 区块内的 `text_md`；
     - `review_schedule` → `review.md` 的三档排程或命名缺口。
 
     `exam_strategy` 这一条是 W1：它曾经既不在渲染器里、也不在本函数里，于是删掉整块
-    （1180 → 1179）两层闸门全绿。`blocks[]` 里没有写入者的 kind 由
+    （1180 → 1179）两层闸门全绿。`explain` / `memorize` 是 B2a 的 N-1：两者有写入者（章页）却无对账，
+    于是删掉章页的 `#### 要点梳理` + `#### 记忆辅助`、乃至删掉整个 `knowledge/` 目录都仍然全绿。
+    主判据因此是**逐点锚点**（`_per_point_reached_problems`）：块是「真值」，每个有块的 `point_id` 都要在
+    章页上存在自己的 `### 考点精讲：<point_id>` 小节，且该小节内有对应 H4 标题、且其正文非空；错误文案
+    点名缺失的 `point_id`，与 `drill` 的锚点对账同一形态。注意 F-QC2-1：**精确计数并不能防住 padding** ——
+    删掉 `15043-ch01-s1-p1` 的 `#### 要点梳理` 小节、再在别的章页补一条同名标题，255 == 255 依旧全绿，
+    因为全局计数只回答「渲染了几个」，回答不了「渲染了哪几个」；`drill` 那样的下界（`rendered < len(drills)`）
+    同理。所以计数降级为**次级页级界限**（总量兜底：整页/整目录级丢失、以及多写一条标题），
+    逐点锚点才是主判据。`blocks[]` 里没有写入者的 kind 由
     `validate_content_doc()`（`BLOCK_KINDS` 枚举）拦下，所以这里只需覆盖「有写入者的 kind」。
     """
+    chapters_text, sections = _chapter_page_sections(page_text, _chapter_page_patterns(markers))
+
+    # 主判据：逐考核点（F-QC2-1 —— 能点名是哪个 point_id 丢了）。
+    _per_point_reached_problems(code, content, sections, errors)
+
+    # 次级界限：可见行里的全局小节计数精确相等（页级总量兜底，message 措辞保持稳定以兼容既有测试）。
+    for kind, heading in (
+        ("explain", EXPLAIN_SUMMARY_HEADING),
+        ("memorize", MEMORIZE_AID_HEADING),
+    ):
+        expected = len([b for b in content.get("blocks") or [] if b.get("kind") == kind])
+        rendered = _count_visible_headings(chapters_text, heading)
+        if rendered != expected:
+            errors.append(
+                f"course {code}: 章页的 `{heading}` 小节数 {rendered} 与 content.json 的 {kind} 块数 {expected} "
+                f"不一致（{kind} 块未渲染到章页）"
+            )
+
     practice = page_text.get("practice.md", "")
     drills = [block for block in content.get("blocks") or [] if block.get("kind") == "drill"]
     if drills:
@@ -177,30 +449,111 @@ def _page_reached_problems(code: str, content: dict, page_text: dict[str, str], 
                 errors.append(f"course {code}: review.md 缺少排程档位 {tier}（review_schedule 未渲染）")
 
 
+def _rendered_ai_pages(rendered_dir: Path, markers: dict) -> list[str]:
+    """`rendered_dir` 下带 **AI 横幅**的 AI 分类页面（相对路径排序）—— 「这页是 AI 生成物」的判据。
+
+    判据取 schema 声明的两个标记（`ai_pages` 分类 + `ai_banner` 横幅，`_page_problems()` 用的同一对），
+    不猜「看起来像不像 AI 写的」：横幅是渲染器写进 AI 页的契约字面量，非 AI 页带横幅本身就被
+    `_page_problems()` 判错。因此这一层不会把「有页面但没有 AI 内容」的课程误判成 AI 产物。
+    """
+    pages: list[str] = []
+    if not rendered_dir.is_dir():
+        return pages
+    for md_file in sorted(rendered_dir.rglob("*.md")):
+        rel_md = md_file.relative_to(rendered_dir).as_posix()
+        if not course_pages_contract.matches_page(rel_md, markers["ai_pages"]):
+            continue
+        if markers["ai_banner"] in md_file.read_text(encoding="utf-8"):
+            pages.append(rel_md)
+    return pages
+
+
+def _rendered_course_dirs(root: Path) -> dict[str, Path]:
+    """产物侧的作用域键：`content/jiangsu/courses/<code>/` 目录（课码 → 目录）。
+
+    与源侧同样只取目录（`content/jiangsu/courses/` 下还有一个 `index.md` 文件，天然被排除）。
+    """
+    courses_dir = root / "content" / "jiangsu" / "courses"
+    if not courses_dir.is_dir():
+        return {}
+    return {entry.name: entry for entry in sorted(courses_dir.iterdir()) if entry.is_dir()}
+
+
+def _missing_source_problem(root: Path, code: str, rendered_dir: Path, markers: dict) -> str | None:
+    """「AI 产物在、真值源不在」的失败关闭报文；无 AI 产物时返回 `None`（该课只是没有 AI 层）。
+
+    报错文案点名缺失的源路径：源目录整份不存在时报目录（Y1 的形态），只缺 `content.json` 时报该文件
+    （X2 的形态）。两种形态共用同一条判定，因此不存在「删得更彻底反而更安全」的阶梯。
+    """
+    orphans = _rendered_ai_pages(rendered_dir, markers)
+    if not orphans:
+        return None
+    source_dir = root / "sources" / "jiangsu" / "courses" / code
+    missing = (
+        f"{source_dir.relative_to(root).as_posix()}/content.json"
+        if source_dir.is_dir()
+        else f"{source_dir.relative_to(root).as_posix()}/（整个源目录缺失）"
+    )
+    rel_rendered = (
+        rendered_dir.relative_to(root).as_posix() if rendered_dir.is_relative_to(root) else rendered_dir.as_posix()
+    )
+    return (
+        f"course {code}: 渲染页 {rel_rendered} 存在 {len(orphans)} 个 AI 生成页面"
+        f"（首个 {orphans[0]}）但真值源缺失: {missing}"
+        "（AI 备考层无来源可校验，禁止静默跳过）"
+    )
+
+
 def run_ai_content_gate(
     root: Path,
     *,
     rendered_course_dir: Path | None = None,
     course_code: str | None = None,
 ) -> list[str]:
-    """校验 AI 备考层产物（默认校仓内页面；给定 `rendered_course_dir` 时校该目录，供暂存区复用）。"""
+    """校验 AI 备考层产物（默认校仓内页面；给定 `rendered_course_dir` 时校该目录，供暂存区复用）。
+
+    作用域规则 = **源侧 ∪ 产物侧**的课码并集（F-QC3-2 / X2 / Y1）：源侧是
+    `sources/jiangsu/courses/<code>/`，产物侧是 `content/jiangsu/courses/<code>/`。两者取并集而不是
+    以源侧为准，是因为**作用域键不得自我关闭**：只要渲染页上**确实带着 AI 横幅**（= AI 产物已在仓内）
+    而真值源不在，那正是「真值源缺失、AI 页面照样发布」的形态，必须**报错**而不是被作用域规则静默跳过 ——
+    否则删掉 `content.json`（X2）乃至删掉整个源目录（Y1）都能让 7 层闸门全绿、16 个 AI 页面照常部署。
+    反向判定只认 schema 声明的 AI 横幅，因此**没有任何 AI 页面的课程仍然完全静默**（其余 16 门课既无
+    `content.json` 也无横幅 → 0 错误），作用域规则对它们的原意不变。
+
+    `rendered_course_dir` 给定时为暂存区形态（只校一门课）：作用域键由 `course_code` 收窄，
+    此路径下产物侧目录可能尚不存在，故并集退化为源侧单键。
+    """
     errors: list[str] = []
     courses_dir = root / "sources" / "jiangsu" / "courses"
-    if not courses_dir.is_dir():
+    if not courses_dir.is_dir() and not (root / "content" / "jiangsu" / "courses").is_dir():
         return errors
 
     markers = course_pages_contract.generated_page_markers(course_pages_contract.load_schema(root))
 
-    for course_dir in sorted(courses_dir.iterdir()):
-        if not course_dir.is_dir():
-            continue
-        content_path = course_dir / "content.json"
-        if not content_path.is_file():
-            continue
+    source_dirs = (
+        {entry.name: entry for entry in sorted(courses_dir.iterdir()) if entry.is_dir()}
+        if courses_dir.is_dir()
+        else {}
+    )
+    rendered_dirs = {} if rendered_course_dir is not None else _rendered_course_dirs(root)
 
-        code = course_dir.name
+    for code in sorted(set(source_dirs) | set(rendered_dirs)):
         if course_code is not None and code != course_code:
             continue
+
+        course_dir = source_dirs.get(code)
+        rendered_dir = rendered_course_dir if rendered_course_dir is not None else (
+            root / "content" / "jiangsu" / "courses" / code
+        )
+
+        content_path = course_dir / "content.json" if course_dir is not None else None
+        if content_path is None or not content_path.is_file():
+            # X2 / Y1 反向判定：AI 产物在页面上，真值源却不在 —— 作用域键不能替自己关闸。
+            problem = _missing_source_problem(root, code, rendered_dir, markers)
+            if problem is not None:
+                errors.append(problem)
+            continue
+
         rel_content = content_path.relative_to(root).as_posix()
 
         try:
@@ -237,10 +590,13 @@ def run_ai_content_gate(
                 errors.append(f"course {code} 8-gram overlap: {p}")
 
         # 4. 渲染页标记 + 文本边界 + AI 块是否真的落到页面
-        rendered_dir = rendered_course_dir if rendered_course_dir is not None else (
-            root / "content" / "jiangsu" / "courses" / code
-        )
         if not rendered_dir.is_dir():
+            # 有 `content.json` 却没有渲染页目录 = 「AI 块从未被渲染」的极端形态（B2a N-1）：
+            # 旧实现在这里静默 `continue`，于是删掉整个课程页目录也全绿。
+            errors.append(
+                f"course {code}: 存在 {rel_content} 但渲染页目录不存在: {rendered_dir}"
+                "（AI 备考层未渲染到页面）"
+            )
             continue
         page_text: dict[str, str] = {}
         for md_file in sorted(rendered_dir.rglob("*.md")):
@@ -249,6 +605,6 @@ def run_ai_content_gate(
             page_text[rel_md] = text
             # 页面分类按**相对路径**判定，报错文案才带课程前缀（前缀会破坏 glob 匹配）
             _page_problems(rel_md, text, markers, errors, label=f"course {code} {rel_md}")
-        _page_reached_problems(code, content, page_text, errors)
+        _page_reached_problems(code, content, page_text, markers, errors)
 
     return errors
