@@ -29,7 +29,10 @@
 
 1. 内容达到 `machine_ready` 后开 PR 审查 → `in_review`。
 2. 审查与法务通过后，人类将 `lifecycle` 设为 `publishable` 并填写 `reviewed`/`reviewer`。
-3. CI：`validate-content` → **`validate-publish-gate`** → `pytest` → `check-source-links --offline` → **`mkdocs build --strict`**。
+3. CI（`deploy-pages.yml`：`push: main` + `workflow_dispatch`，**不**在 PR 上运行）：**`run-gates.py`（7 层，含 `ai-content`）** → `pytest -q` → `ruff check scripts tests` → `check-source-links --offline` → **`mkdocs build --strict`**。
+   **更正（2026-09-13）**：本文此前写作 `validate-content` → `validate-publish-gate` → `pytest` → …，与 CI 实际步骤**不符** ——
+   实际入口是 `run-gates.py`；`validate-content.py` 只跑 content 层、`validate-publish-gate.py` 是发布门限校验，
+   两者都**不**覆盖 `ai-content` 层的页面到达性与 R20/R21。人工预提交请用 `run-gates.py`。
 4. 真题原件仍由 `zikao-materials` 链路负责；未入库时相关区块保持空态。
 
 ## 四、命令
