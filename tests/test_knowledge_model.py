@@ -837,3 +837,643 @@ def test_manual_ledger_still_treats_anchored_empty_tree_as_a_named_gap(tmp_path:
     coverage = km.extract_knowledge_model(root, evidence)["coverage"]
     assert coverage["manual_reference"] is None
     assert coverage["diff_vs_manual"] == []
+
+
+# ---- B3a / KB-1…KB-4：章目回退、章号标签与考核单元 ------------------------------------------
+#
+# 背景（可复现的缺陷类）：`00898` / `02333` / `04747` / `04751` 四门 L1 课的考纲**天生没有
+# `大纲目录` 页**（实测 `00898` 第 14 行是页码、第 15 行即 `Ⅰ 课程性质与课程目标`），
+# 原判据直接 ValueError，四门课产不出知识模型。规划期探针只认 `第6章`（数字两侧无空格），
+# 而抽取件两种写法混用，于是「漏章」看起来像考纲缺章 —— 实测 4 门课**页码齐全、章号 1–N 连续**，
+# 缺口是探针缺陷而非考纲事实。这批用例把该缺陷类钉死。
+
+FALLBACK_HEADING = "三、考核知识点与考核要求"  # 与 `_fragment_root()` 的 `requirements_heading` 同值
+
+
+def _fallback_fragment(titles: list[str], *, paren: bool = False) -> str:
+    """合成无目录页考纲：Ⅰ/Ⅱ/Ⅲ 部次齐全、**无** `大纲目录`，`Ⅲ` 之下列 `第N章` + 考核要求。
+
+    `paren=True` 用 `（一）` 节版式（`00898` 的形态）；否则章级直接列要求（`02333` 的形态）。
+    """
+    body = []
+    for title in titles:
+        lines = [title, "一、学习目的与要求", "通过本章学习，能说出示例。", FALLBACK_HEADING]
+        if paren:
+            lines += ["（一）示例节", "识记：示例识记内容。", "（二）第二示例节", "领会：示例领会内容。"]
+        else:
+            lines += ["识记：示例识记内容。", "领会：示例领会内容。"]
+        lines += ["四、本章重点", "示例。"]
+        body.append("\n".join(lines))
+    return (
+        "Ⅰ 课程性质与课程目标\n示例。\n\nⅡ 考核目标\n示例。\n\nⅢ 课程内容与考核要求\n\n"
+        + "\n\n".join(body)
+        + "\n\nⅣ 关于大纲的说明与考核实施要求\n示例。\n"
+    )
+
+
+def test_chapter_predicate_tolerates_spacing_and_arabic_numerals():
+    """KB-1 回归（PM 规划期探针缺陷）：`第 6 章 X` 与 `第6章 X` 必须**同样**被识别为章标题。
+
+    探针只认 `第6章`（数字两侧无空格），而抽取件两种写法混用（`00898:120` `第1章   …` 与
+    `:475` `第 10 章   …` 同课并存）—— 只认一种会把双位数的章整批漏掉，于是「漏章」在
+    `ordinal` 上看起来就像考纲真缺章（`04747` 的 `第 6 章` 就是这样被漏掉、误报缺第 6 章）。
+    """
+    for loose, tight in (
+        ("第 6 章 Java 语言中的异常", "第6章 Java 语言中的异常"),
+        ("第 10 章 面向对象实现", "第10章 面向对象实现"),
+        ("第 1 章 网络安全概述", "第1章 网络安全概述"),
+    ):
+        assert km.CHAPTER_RE.match(loose) and km.CHAPTER_RE.match(tight), (loose, tight)
+        # 章号与标签必须一致：两种写法推出同一个 `ordinal` / `slug` / `index`
+        assert km._ordinal_for(loose) == km._ordinal_for(tight)
+        assert km._slug_for(loose) == km._slug_for(tight)
+        assert km._chapter_index(loose) == km._chapter_index(tight)
+
+    # `50` 之上的中文数字与阿拉伯数字都要能算章号
+    assert km._ordinal_for("第 16 章 Web 应用开发实践") == 16
+    assert km._ordinal_for("第十七章 全面从严治党") == 17
+    # `章` 后直接跟标题（`00898:523` 实测 `第 11 章使用 Servlet 过滤器和监听器`）也算章标题
+    assert km._ordinal_for("第 11 章使用 Servlet 过滤器和监听器") == 11
+
+
+def test_intro_label_without_separator_is_not_a_chapter():
+    """KB-1 反向守卫：`导论` / `绪 论` 没有数字锚点，正文句首的 `绪论的核心是…` 不得被当成章标题。
+
+    `15044:161` 实测该行 —— 若放开标签后的分隔要求，它会被误判成章，`绪 论` 就会出现两次。
+    """
+    assert not km.CHAPTER_RE.match("绪论的核心是阐明马克思主义的产生、发展及基本特征。")
+    assert not km.CHAPTER_TITLE_RE.match("绪论的核心是阐明马克思主义的产生、发展及基本特征。")
+    assert not km.CHAPTER_RE.match("导论部分说明了本课程的性质。")
+    # 合法形态仍必须认
+    assert km.CHAPTER_RE.match("绪 论") and km.CHAPTER_RE.match("导论")
+
+
+def test_fallback_from_iii_section_when_toc_missing(tmp_path: Path):
+    """KB-2：无 `大纲目录` 时从 `Ⅲ 课程内容与考核要求` 推章目，返回同一契约 `(end_index, titles)`。"""
+    text = _fallback_fragment(["第1章 甲", "第2章 乙", "第 3 章 丙"])
+    root, evidence = _fragment_root(tmp_path, text)
+    lines = text.split("\n")
+
+    start, titles = km._chapter_titles(lines)
+    assert [title for title in titles] == ["第1章 甲", "第2章 乙", "第 3 章 丙"]
+    assert lines[start].strip().endswith("Ⅲ 课程内容与考核要求"), "`end_index` 必须取 Ⅲ 节起点"
+
+    doc = km.extract_knowledge_model(root, evidence)
+    assert [c["ordinal"] for c in doc["chapters"]] == [1, 2, 3]
+    assert [c["slug"] for c in doc["chapters"]] == ["ch01", "ch02", "ch03"]
+    assert doc["coverage"]["ratio"] == 1.0
+    assert doc["generator"]["kind"] == "deterministic"
+
+
+def test_fallback_is_unreachable_when_toc_exists(tmp_path: Path):
+    """KB-2 / AC3 的结构保证：有 `大纲目录` 时走原判据，回退分支不可达（产物逐字节不变的理由）。
+
+    变异证明：把回退函数换成「只返回空章目」，有 TOC 的片段必须**不受影响**；无 TOC 的片段才变。
+    """
+    root, evidence = _fragment_root(tmp_path, FRAGMENT)  # FRAGMENT 含 `大纲目录`
+    original = km._section_chapters
+    try:
+        km._section_chapters = lambda lines: (_ for _ in ()).throw(AssertionError("回退不得被调用"))
+        doc = km.extract_knowledge_model(root, evidence)
+    finally:
+        km._section_chapters = original
+    assert [c["title"] for c in doc["chapters"]] == ["导论", "第一章 示例章"]
+
+    # 对照组：同一批章、但**去掉** `大纲目录`（改由 `Ⅲ` 节推）→ 必须能产出，
+    # 证明上面的断言不是因为回退坏了才「没被调用」。
+    fb_root, fb_evidence = _fragment_root(
+        tmp_path / "second", _fallback_fragment(["导论", "第一章 示例章"])
+    )
+    doc2 = km.extract_knowledge_model(fb_root, fb_evidence)
+    assert [c["title"] for c in doc2["chapters"]] == ["导论", "第一章 示例章"]
+    assert not any(line == km.TOC_MARKER for line in (fb_root / fb_evidence["syllabus"]["path"]).read_text(encoding="utf-8").split("\n"))
+
+
+def test_fallback_fails_closed_without_iii_section_or_chapters(tmp_path: Path):
+    """KB-2 失败关闭：既无 `大纲目录`、又无 `Ⅲ` 节（或 `Ⅲ` 后无章标题）→ 仍 raise，绝不产出空章目。"""
+    root, evidence = _fragment_root(tmp_path, "Ⅰ 课程性质与课程目标\n示例。\n\nⅣ 关于大纲的说明\n示例。\n")
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root, evidence)
+    assert "无法确定章目" in str(err.value)
+
+    # `Ⅲ` 节在、但它后面一个章标题都没有
+    root2, evidence2 = _fragment_root(tmp_path / "second", "Ⅲ 课程内容与考核要求\n本大纲不列章。\n")
+    with pytest.raises(ValueError) as err2:
+        km.extract_knowledge_model(root2, evidence2)
+    assert "没有章标题行" in str(err2.value)
+
+
+def test_missing_gap_is_named_with_runs():
+    """KB-3：缺失章号必须**指名**并压缩成区间；前部缺口与内部缺口两种形态都要报。"""
+    cases = (
+        ((1, 2, 3, 4, 5, 7, 8, 9), [6], "第6章"),              # 内部缺口（04747 规划期误报的形态）
+        ((4, 5, 6, 7, 8, 9), [1, 2, 3], "第1–3章"),             # 前部缺口（04751 规划期误报的形态）
+        ((0, 1, 3, 4), [2], "第2章"),                           # 导论 + 内部缺口：导论不计章号
+        ((1, 4, 5, 9), [2, 3, 6, 7, 8], "第2–3章、第6–8章"),     # 多段缺口
+        (tuple(range(1, 17)), [], ""),                          # 连续：无缺口
+        ((0, 1, 2, 3), [], ""),
+    )
+    for ordinals, expected, rendered in cases:
+        numbers = km._missing_chapters(list(ordinals))
+        assert numbers == expected, ordinals
+        assert km._format_chapter_runs(numbers) == rendered, ordinals
+
+
+def test_continuity_guard_still_fails_closed_and_names_the_gap(tmp_path: Path):
+    """KB-3 / GC2：章序连续性守卫**不放宽** —— 非连续章目必须失败关闭，且错误点名缺的章号。
+
+    两条分支各命中一次：内部缺口（`第1,2,4章`）与前部缺口（首章为 `第4章`）。
+    """
+    for labels, fragment_ordinals, rendered in (
+        (["第一章 甲", "第二章 乙", "第四章 丁"], [1, 2, 4], "第3章"),
+        (["第四章 丁", "第五章 戊", "第六章 己"], [4, 5, 6], "第1–3章"),
+    ):
+        # 有 TOC 的路径（原判据）
+        toc_text = "大纲目录\n\n" + "\n\n".join(labels) + "\n\nⅣ 关于大纲的说明\n\n" + "\n\n".join(
+            f"{label}\n一、学习目的与要求\n示例。\n{FALLBACK_HEADING}\n1.示例节\n识记：示例。" for label in labels
+        )
+        root, evidence = _fragment_root(tmp_path / rendered, toc_text)
+        with pytest.raises(ValueError) as err:
+            km.extract_knowledge_model(root, evidence)
+        message = str(err.value)
+        assert rendered in message, f"错误必须点名缺失章号：{message}"
+        assert "不连续" in message
+        assert str(fragment_ordinals) in message
+
+        # 无 TOC 的回退路径：同一守卫也必须生效（守卫在章目判定**之后**，两条路径共用）
+        fb_root, fb_evidence = _fragment_root(
+            tmp_path / f"fb-{rendered}", _fallback_fragment(labels)
+        )
+        with pytest.raises(ValueError) as fb_err:
+            km.extract_knowledge_model(fb_root, fb_evidence)
+        assert rendered in str(fb_err.value), str(fb_err.value)
+
+
+def test_named_gap_error_message_has_no_artifact(tmp_path: Path):
+    """KB-3：失败关闭时不得落盘任何产物（`write_knowledge_model` 先算后写）。"""
+    root, evidence = _fragment_root(
+        tmp_path, _fallback_fragment(["第1章 甲", "第2章 乙", "第4章 丁"])
+    )
+    _write_evidence(root, evidence)
+    with pytest.raises(ValueError):
+        km.write_knowledge_model(root, "99999")
+    assert not (root / "sources/jiangsu/courses/99999/knowledge-model.json").exists()
+
+
+def test_paren_sections_and_chapter_level_units(tmp_path: Path):
+    """KB-4：`（一）` 节版式与「整章即考核单元」两种形态都要产出正确的 `sections[]` 与分母。"""
+    # （一）版式：两个节各自成单元
+    root, evidence = _fragment_root(tmp_path, _fallback_fragment(["第1章 甲"], paren=True))
+    doc = km.extract_knowledge_model(root, evidence)
+    sections = doc["chapters"][0]["sections"]
+    assert [s["index"] for s in sections] == ["1", "2"], sections
+    assert [s["title"] for s in sections] == ["示例节", "第二示例节"]
+    assert doc["coverage"]["official_point_count"] == 2
+    assert doc["coverage"]["ratio"] == 1.0
+
+    # 章级形态：无任何节号 → 章本身是唯一考核单元（否则整章要求会全落进 unmodeled）
+    root2, evidence2 = _fragment_root(tmp_path / "chapter-level", _fallback_fragment(["第1章 甲", "第2章 乙"]))
+    doc2 = km.extract_knowledge_model(root2, evidence2)
+    assert [len(c["sections"]) for c in doc2["chapters"]] == [1, 1]
+    assert [c["sections"][0]["title"] for c in doc2["chapters"]] == ["第1章 甲", "第2章 乙"]
+    assert doc2["coverage"]["official_point_count"] == 2
+    assert doc2["coverage"]["ratio"] == 1.0
+    assert "章即考核单元" in doc2["coverage"]["denominator_rule"]
+
+
+def test_not_assessed_units_are_left_out_of_the_denominator():
+    """KB-4：标题带 `不作考核要求` 的单元只留痕，不进分母 —— 「不考」不等于「抽取失败」。
+
+    真实形态：`02333` 第 14 章与 `04747` 第 7/11/12/13 章标题都带 `（本章内容不作考核要求）`，
+    这些章没有考核要求小节。把它们算作「未抽出的节」会把「官方声明不考」误报成抽取失败。
+    """
+    text = _fallback_fragment(["第1章 甲（本章内容不作考核要求）", "第2章 乙"])
+    root, evidence = _fragment_root(Path(tempfile.mkdtemp()), text)
+    doc = km.extract_knowledge_model(root, evidence)
+    first = doc["chapters"][0]
+    assert first["sections"] == [], "官方声明不考核的章不得造出考核单元"
+    assert doc["chapters"][1]["sections"], "对照：正常章必须有考核单元"
+    assert doc["coverage"]["official_point_count"] == 1, "分母只算参与考核的章"
+    assert doc["coverage"]["ratio"] == 1.0, "分母只含参与考核的单元时不得出现假缺口"
+
+    # 节级限定语（`00898` 的形态）：该节不进分母，但同章其他节照常计入
+    paren_text = _fallback_fragment(["第1章 甲"], paren=True).replace(
+        "（二）第二示例节", "（二）第二示例节（本节内容不作考核要求）"
+    )
+    root2, evidence2 = _fragment_root(Path(tempfile.mkdtemp()), paren_text)
+    doc2 = km.extract_knowledge_model(root2, evidence2)
+    chapter = doc2["chapters"][0]
+    assert [s["title"] for s in chapter["sections"]] == ["示例节"], chapter["sections"]
+    # 该节标题行与其下 `领会：` 行都归入「明确不考核」，不得被读成抽取失败
+    assert {u["reason"] for u in chapter["unmodeled"]} == {"not_assessed"}, chapter["unmodeled"]
+    assert doc2["coverage"]["official_point_count"] == 1
+    assert doc2["coverage"]["ratio"] == 1.0
+
+
+def test_artifact_matches_fresh_build_for_fallback_courses():
+    """KB-1…KB-4 产物契约：`00898` / `02333` 的模型 = 现算结果，章号 1–N 连续、分母自洽。
+
+    这两门课是「无目录页」的真实回归样本（各有 16 / 14 章）；`ratio == 1.0` 表示考纲每个考核单元
+    都抽出了 point。测试直接读真实仓产物，故章数变化会在这里失败而不是静默漂移。
+    """
+    for code, expected in (("00898", 16), ("02333", 14)):
+        doc = km.build_knowledge_model(ROOT, code)
+        artifact = json.loads((ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json").read_text(encoding="utf-8"))
+        assert {**doc, "generated_at": artifact["generated_at"]} == artifact, code
+
+        assert len(doc["chapters"]) == expected, code
+        assert [c["ordinal"] for c in doc["chapters"]] == list(range(1, expected + 1)), code
+        assert [c["slug"] for c in doc["chapters"]] == [f"ch{n:02d}" for n in range(1, expected + 1)], code
+        coverage = doc["coverage"]
+        assert coverage["ratio"] == 1.0, code
+        assert coverage["official_point_count"] == sum(len(c["sections"]) for c in doc["chapters"]), code
+        assert coverage["modeled_point_count"] == coverage["official_point_count"], code
+        assert doc["generator"] == {
+            "kind": "deterministic", "model": None, "prompt_id": None, "prompt_version": None,
+        }, code
+        # 章标题必须与已发布 `syllabus.md` 的章名索引逐字一致（折叠空白后）。这两课的索引标题列
+        # 是 `## 章节名称索引` / `## 章名索引（标题照录，机器抽取件）`，**不是**闸门认的
+        # `### 章目索引`，故 evidence 层不做这项交叉核对 —— 这里独立读表比对，防止模型与读者页漂移。
+        # 索引列照录抽取件的原始多空格（`第1章   JSP 与 Web 技术概论`），模型按契约折叠为单空格，
+        # 故比对前两边都折叠（与 `tests/test_knowledge_model.py::test_chapter_names_verbatim` 同口径）。
+        page = (ROOT / f"content/jiangsu/courses/{code}/syllabus.md").read_text(encoding="utf-8")
+        published = [
+            cells[1]
+            for line in page[page.index("## 章") :].splitlines()
+            for cells in [[cell.strip() for cell in line.strip().strip("|").split("|")]]
+            if line.startswith("|") and len(cells) >= 2 and cells[0].startswith("第") and cells[0].endswith("章")
+        ]
+        assert len(published) == expected, (code, published)
+        assert [km._fold(title) for title in published] == [c["title"] for c in doc["chapters"]], code
+        # 每个 point 的 quote 都非空且 ≤ 60 字符（闸门失败关闭条件）
+        for chapter in doc["chapters"]:
+            for section in chapter["sections"]:
+                for point in section["points"]:
+                    assert point["quote"].strip() and len(point["quote"]) <= 60, point["id"]
+
+
+# ---- 修复轮 F-1…F-4：真实版式（页码粘连 / 一行多标签 / 节级守卫） ---------------------------
+#
+# 上一轮的用例全部用**规整**片段（一行恰好一个标签、页码独占行、无粘连），所以 335 条全绿
+# 而 `00898` 的产物仍丢了 5 个真考核节。本批用例直接照抄 `00898` 抽取件的**真实形态**
+# （行号即 `document.extracted.md` 的行号），让缺陷可证伪。
+
+SAMPLE_898_DOC = (
+    "sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/"
+    "document.extracted.md"
+)
+
+
+def _paren_label_count(text: str) -> int:
+    """文本里 `（N）` 标签的个数（测试自备判据，不调用生产正则）。"""
+    return len(re.findall(r"（[一二三四五六七八九十]+）", text))
+
+
+def _sample_898_lines() -> list[str]:
+    """`00898` 抽取件的物理行（F-1 的真实形态来源）。"""
+    return (ROOT / SAMPLE_898_DOC).read_text(encoding="utf-8").split("\n")
+
+
+def test_page_marker_glued_to_a_section_label_does_not_swallow_it():
+    """F-1 形态 A：页码行把下一行的节标题并走 —— `00898` L167/L168、L367/L368 实测。
+
+    真实版式是「页码独占一行、标签在**下一行**」；旧实现只丢**整行都是页码**的行（`^...$` 锚定），
+    于是页码行留在逻辑流里；它不以 `。` 收尾，下一行的 `（七）企业应用开发架构` 被并进它，
+    而 `_section_label` 又锚 `^`，嵌入的 `（N）` 看不见 —— 整节消失、其 5 条短语被并进**上一节**
+    （`ch01` 只有 6 节而非 7 节，`软件编程体系简介` 拿到 9 个 point 而不是 4 个）。
+
+    断言直接取自真实物理行：这一形态就是缺陷本体，不靠合成片段。
+    """
+    lines = _sample_898_lines()
+    # 前提：源里确实是「页码独占一行 + 下一行是标签」（考纲换版会让这条前提先失败）
+    assert km.PAGE_MARKER_RE.fullmatch(km._fold(lines[166])), repr(lines[166])
+    assert km._section_label(km._fold(lines[167])) == ("7", "企业应用开发架构"), repr(lines[167])
+
+    raw = [(number, lines[number - 1]) for number in range(167, 172)]
+    logical = km._logical_lines(raw)
+    assert [item["text"] for item in logical][0] == "（七）企业应用开发架构", logical
+    assert all(not km.PAGE_MARKER_RE.search(item["text"]) for item in logical), logical
+
+    sections, unmodeled, _ = km._parse_requirement_block(
+        logical, "00898", "ch01", "第1章 JSP 与 Web 技术概论"
+    )
+    assert [s["index"] for s in sections] == ["7"], sections
+    assert sections[0]["title"] == "企业应用开发架构"
+    # （七）自己的 5 条短语全在本节内（旧缺陷：它们落在上一节 s6）
+    assert [p["title"] for p in sections[0]["points"]] == [
+        "①两层、三层、N 层架构的组成",
+        "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
+        "③J2EE 的分布",
+        "①开发架构之间的比较",
+        "②J2EE 典型的 4 层架构",
+    ], sections[0]["points"]
+    assert unmodeled == [], unmodeled
+    # 页码既不是考核点，也不是命名缺口
+    assert all(km.PAGE_MARKER_RE.search(p["title"]) is None for s in sections for p in s["points"])
+
+
+def test_two_labels_on_one_logical_line_are_both_kept():
+    """F-1 形态 B：相邻的 `（三）`/`（四）` 必须各成一节 —— `00898` L195/L196 实测。
+
+    真实版式是**两个标签各占一行**，但 `（三）…（本节内容不作考核要求）` 不以 `。` 收尾，
+    旧实现把 `（四）其他 JSP 开发环境。` 当 `passage` 并进上一行 —— 结果只认到第一个标签，
+    B 节整节消失、其 `识记：` 行还被冠上 `reason: "not_assessed"`（把官方**考核**内容说成
+    官方**不考**）。把 `（N）` 行认成行边界后，两节都在场，限定语只作用于自己那一节。
+    """
+    lines = _sample_898_lines()
+    first, second = km._fold(lines[194]), km._fold(lines[195])  # L195 / L196
+    assert _paren_label_count(first) == 1 and km.NOT_ASSESSED_MARKER in first, first
+    assert _paren_label_count(second) == 1, second
+    assert not first.endswith("。"), "对照前提：限定语行不以句号收尾，旧实现因此会吞掉下一行"
+
+    logical = km._logical_lines([(195, lines[194]), (196, lines[195]), (197, lines[196])])
+    assert [item["text"] for item in logical] == [first, second, km._fold(lines[196])], logical
+
+    sections, unmodeled, _ = km._parse_requirement_block(
+        logical, "00898", "ch02", "第2章 JSP 的开发和运行环境"
+    )
+    assert [s["index"] for s in sections] == ["4"], sections
+    assert sections[0]["title"] == "其他 JSP 开发环境。"
+    # B 节的 `识记：` 行必须成为该节的 point，绝不记成 not_assessed
+    assert [p["requirement"] for p in sections[0]["points"]] == ["识记"]
+    assert [u["reason"] for u in unmodeled] == ["not_assessed"]
+    assert "不作考核要求" in unmodeled[0]["title"]
+
+
+def test_requirement_line_is_never_stamped_not_assessed():
+    """AC2：`识记/领会/应用：` 行自证该单元参与考核 —— 任何情况下都不得记为 `not_assessed`。
+
+    旧实现把 `skip_reason` 保留到下一个**有效且不带限定语**的标签为止，于是限定语之后的非标签行
+    全部继承 `not_assessed`（`00898` L197/L458/L502 三条真要求行中招）。这里遍历七个真实考纲的
+    产物：只要出现 `not_assessed`，其标题就必须真含 `不作考核要求`，且带考核前缀的行绝不在其中。
+    """
+    for code in ("00898", "02333", "04747", "04751", "15040", "15043", "15044"):
+        doc = km.build_knowledge_model(ROOT, code)
+        for chapter in doc["chapters"]:
+            for item in chapter["unmodeled"]:
+                if item["reason"] == "not_assessed":
+                    assert km.NOT_ASSESSED_MARKER in item["title"], (code, item)
+                if km.REQUIREMENT_RE.match(item["title"]):
+                    assert item["reason"] != "not_assessed", (code, chapter["slug"], item)
+
+
+def test_section_continuity_guard_fails_closed_and_names_the_missing_section():
+    """F-3：节级守卫必须失败关闭，并**指名**缺哪一节（章级守卫看不见丢节）。
+
+    变异证明：把声明里的 `（二）` 那一节从产出里去掉（`sections` 只给 1、3），守卫必须报第2节。
+    对照：声明与产出一致时守卫静默（不得把正常输入判成缺口）。
+    """
+    problems = km._section_continuity_problems(
+        "99999", "ch01", "第1章 甲", ["1", "2", "3"], [{"index": "1"}, {"index": "3"}], []
+    )
+    assert len(problems) == 1, problems
+    message = problems[0]
+    assert "缺第2节" in message, message
+    assert "99999" in message and "ch01" in message, message
+
+    assert km._section_continuity_problems(
+        "99999", "ch01", "第1章 甲", ["1", "2"], [{"index": "1"}, {"index": "2"}], []
+    ) == []
+    # 明确不考核的节不进分母，但已留痕 → 不算缺节（否则「不考」会被误报成「抽取失败」）
+    assert km._section_continuity_problems(
+        "99999", "ch01", "第1章 甲",
+        ["1", "2"],
+        [{"index": "1"}],
+        [{"locator": "L9", "title": "（二）不考的节（本节内容不作考核要求）", "reason": "not_assessed"}],
+    ) == []
+
+
+def test_model_build_fails_closed_when_a_section_is_dropped(tmp_path: Path):
+    """F-3 端到端：**声明了** `（三）` 而产出没有它时，构建必须 raise（不只靠纯函数单测）。
+
+    三个子例覆盖守卫的判别力：
+    1. 真实版式（页码独占一行、标签在下一行）→ 3 节全在场；
+    2. 整节连页码一起删掉 → 声明 2、产出 2，守卫必须静默（证明不是恒定 raise）；
+    3. **历史缺陷形态**：标签被并进页码行（`第 7 页 共 9 页（三）第三节`）→ 标签仍被声明（3），
+       但 `sections[]` 只有 2 → 守卫必须失败关闭。第 3 例正是 `00898` 出厂时全绿的那种输入。
+    """
+    text = (
+        "Ⅰ 课程性质与课程目标\n示例。\n\nⅢ 课程内容与考核要求\n\n第1章 甲\n"
+        "一、学习目的与要求\n示例。\n" + FALLBACK_HEADING + "\n"
+        "（一）第一节\n识记：示例。\n"
+        "（二）第二节\n领会：示例。\n"
+        "第 7 页 共 9 页\n（三）第三节\n应用：示例。\n"
+        "四、本章重点\n示例。\n"
+    )
+    root, evidence = _fragment_root(tmp_path, text)
+    doc = km.extract_knowledge_model(root, evidence)
+    assert [s["index"] for s in doc["chapters"][0]["sections"]] == ["1", "2", "3"], doc["chapters"][0]["sections"]
+
+    # 子例 2：声明数与产出数一致时守卫静默
+    narrowed = text.replace("（三）第三节\n应用：示例。\n", "").replace("第 7 页 共 9 页\n", "")
+    root2, evidence2 = _fragment_root(tmp_path / "narrowed", narrowed)
+    doc2 = km.extract_knowledge_model(root2, evidence2)
+    assert [s["index"] for s in doc2["chapters"][0]["sections"]] == ["1", "2"]
+
+    # 子例 3：标签被页码粘连 → 声明 3、产出 2 → 失败关闭且指名缺第3节
+    glued = text.replace("第 7 页 共 9 页\n（三）第三节", "第 7 页 共 9 页（三）第三节")
+    root3, evidence3 = _fragment_root(tmp_path / "glued", glued)
+    with pytest.raises(ValueError) as err:
+        km.extract_knowledge_model(root3, evidence3)
+    assert "缺第3节" in str(err.value), str(err.value)
+
+
+def test_not_assessed_absolution_is_symmetric_across_both_section_grammars():
+    """QC wave-1 F-1：销账侧必须与声明侧认**同一套版式**，否则官方「不考核」的节被误报成丢节。
+
+    改前 `_declared_section_indexes()` 认两种版式（`1.` + `（N）`），而 `_section_continuity_problems()`
+    的 `accounted` 只用 `PAREN_LABEL_RE` 扫 `not_assessed` 标题 —— 按 `1.` 版式书写的「明确不考核」节
+    **声明了却永不被销账**，守卫对合法输入报假缺口（QC1 `F-1` 的复现：声明 `['1']`、产出 `[]`）。
+    真实数据今日未触发（7 份考纲里 `1.` 版式与 `不作考核要求` 不共存），故本用例用纯函数把两个版式
+    钉成对称；同时钉住**判别力** —— 修掉假阳性不得把真阳性一起修掉，且销账仍只认 `not_assessed`。
+    """
+    def problems(declared: list[str], sections: list[dict], unmodeled: list[dict]) -> list[str]:
+        return km._section_continuity_problems("99999", "ch01", "第1章 甲", declared, sections, unmodeled)
+
+    # 1. `1.` 与 `（一）` 两种版式的「不考核」节都已交代 → 守卫必须静默（改前 `1.` 版式报假缺口）
+    for label in ("1.", "（一）"):
+        title = f"{label}乙节（本节内容不作考核要求）"
+        declared = km._declared_section_indexes([{"text": title}])
+        assert declared == ["1"], (label, declared)
+        assert problems(declared, [], [{"locator": "L9", "title": title, "reason": "not_assessed"}]) == [], label
+
+    # 2. 真阳性：声明 2 节、产出 1 节 → **两种版式**都必须失败关闭且指名第2节（判别力不得被削弱）
+    for labels in (["1.甲节", "2.乙节"], ["（一）甲节", "（二）乙节"]):
+        declared = km._declared_section_indexes([{"text": text} for text in labels])
+        assert declared == ["1", "2"], (labels, declared)
+        found = problems(declared, [{"index": "1"}], [])
+        assert len(found) == 1 and "缺第2节" in found[0], (labels, found)
+
+    # 3. 销账**只**认 `not_assessed`：其它 reason 不得为丢掉的节销账，否则守卫被蒙住
+    title = "2.乙节（本节内容不作考核要求）"
+    declared = km._declared_section_indexes([{"text": "1.甲节"}, {"text": title}])
+    found = problems(declared, [{"index": "1"}], [{"locator": "L9", "title": title, "reason": "unnumbered_section"}])
+    assert len(found) == 1 and "缺第2节" in found[0], found
+
+
+def test_1_dot_not_assessed_section_builds_while_a_dropped_one_still_raises(tmp_path: Path):
+    """QC wave-1 F-1 端到端：`1.` 版式的「明确不考核」节必须能建模；同一版式真丢节仍失败关闭。
+
+    上一条只覆盖 `_section_continuity_problems()` 的入参形态。本用例从 `document.extracted.md` 走到
+    `extract_knowledge_model()`，证明守卫在真实调用链上不再误报（改前此处 `ValueError`），
+    且该版式下被丢掉的节仍被抓住 —— 「不考」与「抽取失败」在产物里各自可辨。
+    """
+    def extract(name: str, requirements: str) -> dict:
+        text = (
+            "Ⅰ 课程性质与课程目标\n示例。\n\nⅢ 课程内容与考核要求\n\n第1章 甲\n"
+            "一、学习目的与要求\n示例。\n" + FALLBACK_HEADING + "\n" + requirements + "四、本章重点\n示例。\n"
+        )
+        root, evidence = _fragment_root(tmp_path / name, text)
+        return km.extract_knowledge_model(root, evidence)
+
+    # `1.` 版式的不考核节：不进分母、留痕、守卫静默（改前 `缺第1节` 假缺口）
+    chapter = extract("not_assessed", "1.乙节（本节内容不作考核要求）\n")["chapters"][0]
+    assert chapter["sections"] == [], chapter["sections"]
+    assert [(item["reason"], item["title"]) for item in chapter["unmodeled"]] == [
+        ("not_assessed", "1.乙节（本节内容不作考核要求）")
+    ], chapter["unmodeled"]
+
+    # 真阳性：`（二）` 与 `1.甲节` 同处一逻辑行（解析器一行至多取一个标签）→ 声明 2、产出 1
+    with pytest.raises(ValueError) as err:
+        extract("dropped", "1.甲节（二）乙节\n识记：示例。\n")
+    assert "缺第2节" in str(err.value), str(err.value)
+
+
+def test_denominator_rule_describes_the_denominator_actually_used():
+    """F-2：`denominator_rule` 必须描述**实际用的分母** —— 两门真实课各占一种形状。
+
+    `00898` 是节级考纲（50 个 `（N）` 节 / 16 章），`02333` 是章级考纲（13 个考核章 / 14 章）。
+    旧实现按「任一章是章级」的 OR 选规则，`00898` 只因 6 个不考核章的空要求块就被判成章级，
+    产物便自称「该考纲不分子节」—— 分母实为节数，是可被下游当事实读的假话。
+    """
+    section_level = km.build_knowledge_model(ROOT, "00898")["coverage"]
+    assert section_level["official_point_count"] == 50, "分母是节数（50），不是章数（16）"
+    assert "章即考核单元" not in section_level["denominator_rule"], section_level["denominator_rule"]
+    assert "节数" in section_level["denominator_rule"], section_level["denominator_rule"]
+
+    chapter_level = km.build_knowledge_model(ROOT, "02333")["coverage"]
+    assert chapter_level["official_point_count"] == 13, "分母是考核章数（13）"
+    assert "章即考核单元" in chapter_level["denominator_rule"], chapter_level["denominator_rule"]
+
+
+def test_00898_real_artifact_keeps_all_fifty_assessed_sections_and_no_misattribution():
+    """AC1：`00898` 的 50 个考核节全部在场，且短语不跨节错位（真实产物断言）。
+
+    旧产物只有 45 节、`ch01` 缺 `（七）`（9 个 point 全挂到 `s6`）、`ch06` 缺 `（二）`。
+    这里钉死：50 节、`ch01` 是 7 节且 `s6`/`s7` 各自成节、每个 point id 的节号与所在节一致。
+    """
+    doc = json.loads((ROOT / "sources/jiangsu/courses/00898/knowledge-model.json").read_text(encoding="utf-8"))
+    sections = [section for chapter in doc["chapters"] for section in chapter["sections"]]
+    assert len(sections) == 50, f"考核节数应为 50，实际 {len(sections)}"
+    assert doc["coverage"]["official_point_count"] == 50
+    assert doc["coverage"]["ratio"] == 1.0
+
+    ch01 = next(chapter for chapter in doc["chapters"] if chapter["slug"] == "ch01")
+    assert [s["index"] for s in ch01["sections"]] == ["1", "2", "3", "4", "5", "6", "7"], ch01["sections"]
+    s6, s7 = ch01["sections"][5], ch01["sections"][6]
+    assert s7["title"] == "企业应用开发架构"
+    # （七）的 5 条短语必须落在 s7，不得留在 s6（旧缺陷：s6 拿到 9 个 point）
+    assert [p["title"] for p in s7["points"]] == [
+        "①两层、三层、N 层架构的组成",
+        "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
+        "③J2EE 的分布",
+        "①开发架构之间的比较",
+        "②J2EE 典型的 4 层架构",
+    ], s7["points"]
+    assert all("架构" not in point["title"] or "B/S" in point["title"] for point in s6["points"]), s6["points"]
+
+    # 每个 point 的 id 必须与其所在节的 index 一致（跨节错位的机器可读判据）
+    for chapter in doc["chapters"]:
+        for section in chapter["sections"]:
+            for point in section["points"]:
+                assert point["id"] == f"00898-{chapter['slug']}-s{section['index']}-p{point['id'].rsplit('-p', 1)[1]}", point["id"]
+                assert point["title"].strip() and point["quote"].strip(), point["id"]
+
+
+
+# ---- QC wave-1 F-2：AC3 冻结基线（`15043` / `15044` 逐字节不变） -----------------------------
+#
+# AC3 是本切片的头号不变量（回退是 fallback、不是替换）：新分支只应影响「无目录页」的课，
+# 三门既有课的模型必须与基线 `334d637` 逐字节一致。此前只有 `15040` 有守护
+# （`test_artifact_matches_fresh_build_and_is_hash_seed_independent`），`15043`/`15044`
+# 的字节一致只是**报告级声明** —— 下一轮改动共享代码或重跑生成都会静默漂移。
+# 与本文件 `15040` 的既有口径一致：既比对 committed 字节，也比对「产物 = f(现算)」。
+
+FROZEN_MODEL_SHA256 = {
+    # 基线 `334d637`（= 本切片基线，未经 B3a 改动）的原始字节摘要
+    "15043": "b6dea4b3c6427511710cb99b9f11d093ad9d3c83ee80d96cdf47974aac786f25",
+    "15044": "ccfc9eebf96d1eac321951373eacba826eed31a7eb393f093d9a9d03b8aeb14d",
+}
+
+
+def _frozen_model_path(code: str) -> Path:
+    return ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json"
+
+
+def _model_digest(path: Path) -> str:
+    """产物文件的原始字节摘要（比较口径：路径无关、逐字节，不做任何归一化）。"""
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_frozen_models_stay_byte_identical_to_the_base_commit():
+    """AC3 持久守护：`15043` / `15044` 的模型必须与基线 `334d637` 逐字节一致。
+
+    两半各有不可替代的判别力：
+    1. **字节摘要**钉住 committed 文件本身 —— 重跑生成、改序列化、手工编辑都会让它失败
+       （这正是 AC3「逐字节不变」的字面含义）；
+    2. **现算重建**钉住「产物 = f(源码)」—— 共享抽取代码被改坏、但产物没重生成时，
+       文件摘要仍与基线相同，只有重建比对能发现「代码已不再复现冻结模型」。
+    `generated_at` 是生成日（`date.today()`），故重建半边按既有 `15040` 口径归一化该字段；
+    字节半边不归一化 —— 该字段变化即意味着重新生成过，而 AC3 禁止重新生成。
+    """
+    for code, expected_sha in FROZEN_MODEL_SHA256.items():
+        path = _frozen_model_path(code)
+        assert path.is_file(), f"冻结产物缺失: {path.relative_to(ROOT)}"
+        actual = _model_digest(path)
+        assert actual == expected_sha, (
+            f"{code} 的 knowledge-model.json 偏离基线 334d637："
+            f"expected={expected_sha} actual={actual}。AC3 要求逐字节不变 —— "
+            "请用 `git checkout 334d637 -- "
+            f"sources/jiangsu/courses/{code}/knowledge-model.json` 还原，不要重新生成。"
+        )
+
+        # 重建半边：现算结果（仅 `generated_at` 归一化）必须仍等于 committed 产物
+        artifact = json.loads(path.read_text(encoding="utf-8"))
+        fresh = km.build_knowledge_model(ROOT, code)
+        assert {**fresh, "generated_at": artifact["generated_at"]} == artifact, (
+            f"{code}：现算模型已不再复现冻结产物（共享抽取代码漂移？）"
+        )
+        assert km.serialize({**fresh, "generated_at": artifact["generated_at"]}) == path.read_text(encoding="utf-8"), code
+
+
+def test_frozen_model_byte_pin_is_falsifiable(tmp_path: Path):
+    """上一条用例的反向验证：产物被扰动**1 字节**时，同一比较口径必须判否。
+
+    不满足于「断言写在那儿」——若摘要比对退化成恒真（比错文件、比了归一化文本、或字典为空），
+    上一条用例将永远绿灯。这里在工作副本上做 1 字节替换（长度不变），确认同一套
+    `_model_digest()` + 冻结摘要确实**判否**，并确认反向验证没有触碰仓内产物。
+    """
+    for code, expected_sha in FROZEN_MODEL_SHA256.items():
+        source = _frozen_model_path(code)
+        committed = source.read_bytes()
+        assert _model_digest(source) == expected_sha, f"对照前提：{code} 当前与基线一致"
+
+        work = tmp_path / f"{code}.json"
+        work.write_bytes(committed)
+
+        # 选一个**确实存在**的正文串做扰动点（考前提，避免扰动落空导致假验证）
+        victim = "马克思主义".encode()
+        assert victim in committed, f"对照前提：{code} 含扰动点 `马克思主义`"
+        mutated = committed.replace(victim, "马克思主意".encode(), 1)
+        assert mutated != committed, "对照前提：1 字节替换必须改变字节"
+        assert len(mutated) == len(committed), "对照前提：扰动只改内容、不改长度"
+        work.write_bytes(mutated)
+
+        assert _model_digest(work) != expected_sha, (
+            f"{code}：1 字节扰动未被冻结摘要判否 —— 上一条用例的断言是恒真的"
+        )
+        assert _model_digest(work) != _model_digest(source), code
+
+    # 仓内产物未被本次反向验证触碰
+    for code, expected_sha in FROZEN_MODEL_SHA256.items():
+        assert _model_digest(_frozen_model_path(code)) == expected_sha, f"反向验证不得改动仓内产物：{code}"
