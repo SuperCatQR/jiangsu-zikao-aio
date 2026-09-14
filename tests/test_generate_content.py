@@ -698,11 +698,15 @@ def test_prompt_pack_declares_course_scope():
 
     assert gc.out_of_scope_prompts("15040") == [], "15040 在作用域内，不得误判"
     assert gc.out_of_scope_prompts("15043") == [], "B-1：15043 在作用域内，generate 必须可推进"
+    # B3b（DP-3 逐课放宽）：B3 迭代把作用域扩展到本轮生成的三门课。
+    for code in ("15044", "00898", "02333"):
+        assert gc.out_of_scope_prompts(code) == [], f"B3b：{code} 在作用域内，generate 必须可推进"
 
-    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 15100 是 L1 课程，
-    # 但仍不在提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
-    assert gc.out_of_scope_prompts("15044") == [f"{prompt_id}.v1" for prompt_id in prompts]
-    assert gc.out_of_scope_prompts("99999") == [f"{prompt_id}.v1" for prompt_id in prompts]
+    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 04747/04751 是 L1 课程、
+    # 考纲完整，但**不在**本轮提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
+    # 注：B3b 之前本用例用 15044 当反例；它已进入作用域，故改用真正作用域外的课码。
+    for code in ("04747", "04751", "99999"):
+        assert gc.out_of_scope_prompts(code) == [f"{prompt_id}.v1" for prompt_id in prompts], code
 
 
 def test_prompt_bodies_are_course_agnostic():
@@ -1015,22 +1019,23 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
 def test_cli_generate_refuses_a_course_without_a_prompt_pack():
     """F-401 失败关闭：作用域**外**的 L1 课程没有提示词包 → 拒绝，不得用别人的模板出内容。
 
-    B-1 之后 `15043` 已进入作用域（见 `test_cli_generate_accepts_an_in_scope_course`），
-    故这里改用仍是 L1、但不在作用域内的 `15044`：作用域是白名单而非通配，这一条必须一直是红的。
+    B-1 后 `15043` 进入作用域，B3b（DP-3）又把 `15044`/`00898`/`02333` 一并放宽，
+    故这里改用仍是 L1、考纲完整、但**不在**本轮作用域内的 `04747`：作用域是白名单而非通配，
+    这一条必须一直是红的。
     """
     proc = subprocess.run(
-        [sys.executable, "scripts/build-course-content.py", "generate", "15044", "--backend", "replay"],
+        [sys.executable, "scripts/build-course-content.py", "generate", "04747", "--backend", "replay"],
         cwd=ROOT,
         capture_output=True,
         text=True,
     )
 
     assert proc.returncode != 0, proc.stdout
-    assert "15044" in proc.stderr
+    assert "04747" in proc.stderr
     assert "提示词包" in proc.stderr
     for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
         assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
-    assert not (ROOT / "sources/jiangsu/courses/15044/content.json").exists(), "拒绝路径不得写盘"
+    assert not (ROOT / "sources/jiangsu/courses/04747/content.json").exists(), "拒绝路径不得写盘"
 
 
 def test_cli_generate_accepts_an_in_scope_course():
