@@ -909,33 +909,37 @@ def _reader_lost_lines(text: str) -> list[str]:
     只算**整行**：开记号自己那一行的剩余文本（如 `<!-- 未闭合的示例注释`）仍渲染出半行，
     与「整段标题消失」不同量级 —— 闸门口径见 `_comment_hides_content()`。
     围栏内的记号不隐藏任何东西，故先取围栏外的行。
+
+    R42 更正：**记号定位**与**尾巴切片**是两个视图。记号**是不是**注释只能在围栏视图里问（上一段），
+    但尾巴必须在**原文视图**里量 —— 未闭合注释吞掉其后的一切，**包括围栏记号本身**；
+    若尾巴仍在围栏视图里取，记号**之后**的未闭合围栏会删掉整段尾巴，量出「没丢内容」。
+    两个视图靠**原文行号**对齐：围栏出现在记号之前时，拿围栏视图的行号去切原文会切错位置
+    （R20 的 (d) 形状），把「确实丢了标题」误判成没丢。
     """
     lines = text.splitlines()
     fence = re.compile(r"^ {0,3}(?P<fence>`{3,}|~{3,})")
-    visible: list[str] = []
+    visible: list[tuple[int, str]] = []
     open_fence: str | None = None
-    for line in lines:
+    for index, line in enumerate(lines):
         match = fence.match(line)
         if open_fence is None:
             if match:
                 open_fence = match.group("fence")
                 continue
-            visible.append(line)
+            visible.append((index, line))
         elif match and match.group("fence")[0] == open_fence[0] and len(match.group("fence")) >= len(open_fence):
             open_fence = None
 
     cursor = 0
-    joined = "\n".join(visible)
+    joined = "\n".join(line for _, line in visible)
     while True:
         start = joined.find("<!--", cursor)
         if start < 0:
             return []
         end = joined.find("-->", start + 4)
         if end < 0:
-            # 行号必须**在同一个视图里**取（`visible` 与 `joined` 同源）：若拿原文行号来切，
-            # 记号之前存在的围栏行会让行号错位、切到空区间，把「确实丢了标题」误判成没丢。
-            marker_line = joined.count("\n", 0, start)
-            return [line for line in visible[marker_line + 1 :] if line.strip()]
+            marker_line = visible[joined.count("\n", 0, start)][0]
+            return [line for line in lines[marker_line + 1 :] if line.strip()]
         cursor = end + 3
 
 
@@ -1074,6 +1078,62 @@ def test_unclosed_comment_that_hides_nothing_does_not_fire(tmp_path: Path):
     )
     errors_b = run_ai_content_gate(root_b)
     assert errors_b == [], f"围栏内的未闭合记号不隐藏读者可见内容，不得报错: {errors_b}"
+
+
+# --------------------------------------------------------------------------------------
+# R42：未闭合注释**之后**又开一个未闭合围栏 → 尾巴不得被围栏视图删掉（R20 的次序缺口）
+# --------------------------------------------------------------------------------------
+
+def test_unclosed_comment_is_not_hidden_by_a_later_unclosed_fence(tmp_path: Path):
+    """R42 变异证明：记号之后出现未闭合围栏时，R20 的判据**必须仍报错**；改前为 **False / 0 错误**。
+
+    缺口成因：`_comment_hides_content()` 先取 `_unfenced_lines()`、再在这次**围栏视图**里找记号**并**切尾巴。
+    两个问题因此共用一个视图，而它们要的视图相反：
+
+    - 「这个 `<!--` 是不是注释」只能在围栏视图里问（围栏内的记号不是注释，见上一条对称控制）；
+    - 「它后面是否还有内容」必须在**原文视图**里量 —— 未闭合注释吞掉其后的一切，**包括围栏记号本身**。
+
+    于是 `<!--` + ``` + `#### 要点梳理` + 正文 这一形状里，记号之后的未闭合围栏把整段尾巴删空，
+    谓词反过来判「没隐藏任何内容」→ `False`。这**不是**只此一处的语义瑕疵：同一个 `_page_problems()`
+    调用点上的 R20 守卫也一并静默，端到端 `run_ai_content_gate()` 实测 **0 错误**（本用例 (a) 段断言）。
+
+    两点控制：围栏开在记号**之前**时不得把尾巴切错（R20 的 (d) 形状）；对称控制里那两条不得被本改动翻红。
+    """
+    from lib.ai_content_gate import _comment_hides_content, run_ai_content_gate
+
+    # (a) 谓词层：三形态逐一钉住（前后两例改前也报，是为了证明本用例量的是同一个谓词而非恒真条件）
+    assert _comment_hides_content("<!--\n#### 要点梳理\n内容\n") is True, (
+        "对照前提：记号之后有可见内容 → 改前即为 True"
+    )
+    assert _comment_hides_content("<!--\n```\n#### 要点梳理\n内容\n") is True, (
+        "R42：记号之后的未闭合围栏不得把尾巴删掉（改前 False）"
+    )
+    assert _comment_hides_content("<!--\n```\nhidden\n```\n#### 要点梳理\n") is True, (
+        "对照前提：记号之后是**已闭合**围栏 → 改前即为 True"
+    )
+
+    # (b) 端到端：同一个形状在真实页面上改前是 0 错误 —— 这里量「读者确实丢了整段 AI 小节」，
+    #     且丢的内容不是逐点锚点（`#### 要点梳理` 在锚点小节内、锚点小节本身仍在），
+    #     所以 R20 之外的次级守卫也全绿，闸门确实静默。
+    fake_root = tmp_path / "r42" / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+    assert run_ai_content_gate(fake_root) == [], "未变异的对照根必须全绿"
+
+    page = fake_root / "content" / "jiangsu" / "courses" / "15043" / "knowledge" / "01-ch01.md"
+    lines = page.read_text(encoding="utf-8").splitlines(keepends=True)
+    heading = next(n for n, line in enumerate(lines) if line.rstrip("\n") == "#### 要点梳理")
+    page.write_text("".join(lines[:heading] + ["<!--\n", "```\n"] + lines[heading:]), encoding="utf-8")
+
+    lost = _reader_lost_lines(page.read_text(encoding="utf-8"))
+    assert any(line.strip() == "#### 要点梳理" for line in lost), (
+        "对照前提：该形状下读者确实丢了一整行 `#### 要点梳理`（否则本用例没有守护对象）"
+    )
+    errors = run_ai_content_gate(fake_root)
+    assert any("未闭合" in e and "01-ch01.md" in e for e in errors), (
+        f"(b) 记号之后的未闭合围栏不得掩盖未闭合注释（改前 0 错误）: {errors}"
+    )
 
 
 # --------------------------------------------------------------------------------------

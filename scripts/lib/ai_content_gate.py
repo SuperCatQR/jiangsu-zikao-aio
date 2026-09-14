@@ -137,15 +137,24 @@ def _comment_hides_content(text: str) -> bool:
       与「整段标题消失」不同量级，判它会误伤示例注释（Y2 反向控制用例已钉住这一侧不得报错）。
 
     围栏内的 `<!--` 示例同判：围栏里的记号不参与渲染，对读者不隐藏任何东西，故不报错 ——
-    与 `_blank_comments()` 只剥配对注释同一立场。**先取围栏外的行、再在这次视图里找记号与切片**：
-    两处必须用同一个行视图，否则「围栏行被丢掉」会让行号错位 —— 例如围栏出现在记号之前时，
-    裸用原文行号去切围栏视图会切到空区间，把「确实隐藏了标题」误判成不报错。
+    与 `_blank_comments()` 只剥配对注释同一立场。
+
+    **记号定位与尾巴切片用两个不同的视图**（R42 更正 R20 的写法）。二者回答的是两个不同的问题：
+
+    - 「这个 `<!--` 是不是注释」只能在**围栏视图**里问 —— 围栏内的记号不是注释（上一段）；
+    - 「它后面是否还有内容」必须在**原文视图**里量 —— 未闭合注释吞掉其后的一切，**包括围栏记号本身**。
+      若尾巴仍在围栏视图里取，一个**开在记号之后**的未闭合围栏就会把整段尾巴删掉，谓词反过来判
+      「没隐藏任何内容」：`<!--` + ``` + `#### 要点梳理` + 正文 曾因此返回 `False`，而读者什么都看不见。
+
+    两个视图靠 `_unfenced_indexed_lines()` 的原文行号对齐，而不是各切各的 —— 围栏出现在记号**之前**时，
+    裸用围栏视图的行号去切原文会切错位置，把「确实隐藏了标题」误判成不报错（R20 的 (d) 形状）。
     """
-    lines = _unfenced_lines(text)
-    start = _unclosed_comment_line("\n".join(lines))
+    indexed = _unfenced_indexed_lines(text)
+    start = _unclosed_comment_line("\n".join(line for _, line in indexed))
     if start is None:
         return False
-    return any(line.strip() for line in lines[start + 1 :])
+    marker_line = indexed[start][0]
+    return any(line.strip() for line in text.splitlines()[marker_line + 1 :])
 
 
 def _unfenced_lines(text: str) -> list[str]:
@@ -155,15 +164,24 @@ def _unfenced_lines(text: str) -> list[str]:
     否则「删掉真标题、在围栏里补一条」就能让闸门放行。渲染器从不产出围栏（两门课实测围栏行均为 0），
     所以这一层只拦对抗路径、不动既有产物。
     """
-    lines: list[str] = []
+    return [line for _, line in _unfenced_indexed_lines(text)]
+
+
+def _unfenced_indexed_lines(text: str) -> list[tuple[int, str]]:
+    """`_unfenced_lines()` 的**带原文行号**版本：`(0 基原文行号, 行内容)`，围栏内的行（含围栏行）不返回。
+
+    行号是「围栏视图 ↔ 原文视图」之间唯一的对齐手段：围栏行被丢掉后行号不再相同，谁要跨视图取位置
+    （`_comment_hides_content()` 的尾巴切片）就必须换回原文行号，否则切到的是错位区间。
+    """
+    lines: list[tuple[int, str]] = []
     fence: str | None = None
-    for line in text.splitlines():
+    for index, line in enumerate(text.splitlines()):
         match = _FENCE_LINE_RE.match(line)
         if fence is None:
             if match:
                 fence = match.group("fence")
                 continue
-            lines.append(line)
+            lines.append((index, line))
         elif match and match.group("fence")[0] == fence[0] and len(match.group("fence")) >= len(fence):
             fence = None
     return lines
