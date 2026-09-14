@@ -1635,14 +1635,19 @@
     }
   ],
   "exam": {
-    "question_types": [],
-    "question_types_provenance": null,
+    "question_types": [
+      "单项选择题",
+      "名词解释题",
+      "简答题",
+      "综合应用题"
+    ],
+    "question_types_provenance": {
+      "doc_id": "syllabus:02333",
+      "locator": "L464"
+    },
     "duration_minutes": null,
     "duration_status": "named_gap",
-    "sample_paper": null,
-    "question_types_status": "named_gap",
-    "question_types_gap_impact": "考纲未声明题型 → 无法按官方题型生成练习，AI 备考层的 drill 不得产出",
-    "question_types_next_evidence": "官方考纲「考试命题的主要题型」段落（或等效的官方说明）"
+    "sample_paper": null
   },
   "coverage": {
     "official_point_count": 20,

@@ -127,8 +127,13 @@ PAGE_MARKER_RE = re.compile(r"^第\s*\d+\s*页\s*共\s*\d+\s*页$")
 REQUIREMENT_RE = re.compile(r"^(识记|领会|应用)：(.*)$")
 TOP_HEADING_RE = re.compile(r"^[一二三四五六七八九十]+、")
 PAGE_NUMBER_RE = re.compile(r"^\d{1,3}$")
-# 题型声明行有两种版式（15040 `…等题型。` / 15043·15044 `…论述题等。各…`），词表按顿号切分后过滤
-QUESTION_TYPE_RE = re.compile(r"主要题型一般有(.+?)等")
+# 题型声明行有**两种**版式，此前只覆盖了第一种（B3b 修）：
+#   ① `主要题型一般有…等`（15040 / 15043 / 15044）
+#   ② `可能采用的题型有：…`（00898 / 02333 / 04747 / 04751 —— 四门，**且有的无「等」字**）
+# 第二种此前不被匹配 → `question_types: []` + `named_gap`，下游 `generate` 直接以
+# 「知识模型未声明题型，无法生成 drill」抛错（B3b 实测 00898/02333 双双受阻）。
+# 结尾用 `等|。|$` 以兼容无「等」字的版式；词表仍按顿号切分后过滤。
+QUESTION_TYPE_RE = re.compile(r"(?:主要题型一般有|可能采用的题型有[：:]?)(.+?)(?:等|。|$)")
 QUESTION_TYPE_SUFFIX_RE = re.compile(r"题型$")
 MANUAL_ELEMENT_RE = re.compile(r"^(\d+)\.(\d+)\s+(.*)$")
 MANUAL_MARKER_SUFFIX_RE = re.compile(r"\s*—\s*[🟢🟡🔴\s]+$")
@@ -721,14 +726,25 @@ def _exam(lines: list[str], doc_id: str) -> dict:
     for number, raw in enumerate(lines, start=1):
         text = _fold(raw)
         if types_line is None:
-            match = QUESTION_TYPE_RE.search(text)
-            if match:
-                types_line = number
-                question_types = [
-                    item.strip()
-                    for item in match.group(1).split("、")
-                    if item.strip() and not QUESTION_TYPE_SUFFIX_RE.search(item.strip())
-                ]
+            # 题型表述可能在行尾断开，下一行续写（00898）—— 甚至**词中间**断开（02333 的
+            # `…简答题、综` + `合应用题等。`）。故命中后**继续拼接后续行**，直到遇见句号
+            # 或已拼够 4 个词条，否则会把 `综合应用题` 截成 `综`。
+            if QUESTION_TYPE_RE.search(text):
+                merged = text
+                for follow in lines[number:]:
+                    merged += _fold(follow)
+                    if merged.rstrip().endswith("。") or merged.count("、") >= 4:
+                        break
+                match = QUESTION_TYPE_RE.search(merged)
+                if match:
+                    types_line = number
+                    question_types = [
+                        item.strip()
+                        for item in match.group(1).split("、")
+                        if item.strip() and not QUESTION_TYPE_SUFFIX_RE.search(item.strip())
+                    ]
+        if sample_line is None and text == SAMPLE_PAPER_HEADING:
+            sample_line = number
         if sample_line is None and text == SAMPLE_PAPER_HEADING:
             sample_line = number
     exam = {
