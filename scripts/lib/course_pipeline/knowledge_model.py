@@ -383,22 +383,28 @@ def _logical_lines(raw_lines: list[tuple[int, str]]) -> list[dict]:
     return logical
 
 
-def _declared_section_indexes(block: list[dict]) -> list[str]:
-    """块内**声明**的节号（切分前采集，用于节级连续性守卫 F-3）。
+def _section_indexes_in(text: str) -> list[str]:
+    """单条文本里出现的节号，**两种版式一视同仁**（`1.标题` / `（一）标题`）。
 
-    `（N）` 标签按文本任意位置扫（不锚行首）：标签被页码粘连时同样计入声明，
-    守卫才能发现「声明了但没成节」。`1.标题` 版式另按行首计（该版式恒为独立逻辑行）。
+    `（N）` 标签按文本任意位置扫（不锚行首）：标签被页码粘连时同样计入声明，守卫才能发现
+    「声明了但没成节」。`1.标题` 版式按行首锚定计（该版式恒为独立逻辑行）。
+
+    **声明侧与「已交代」侧共用本函数**（F-1）：两侧各写一套语法时，只用 `（N）` 扫描的
+    销账侧无法为按 `1.` 声明的节销账 —— 官方明确不考核的节被误报成「被静默丢弃」。
     """
-    declared: list[str] = []
-    for item in block:
-        text = item["text"]
-        section = SECTION_RE.match(text)
-        if section:
-            declared.append(section.group(1))
-        for match in PAREN_LABEL_RE.finditer(text):
-            number = _chinese_number(match.group(1))
-            declared.append(str(number) if number else match.group(0))
-    return declared
+    indexes: list[str] = []
+    section = SECTION_RE.match(text)
+    if section:
+        indexes.append(section.group(1))
+    for match in PAREN_LABEL_RE.finditer(text):
+        number = _chinese_number(match.group(1))
+        indexes.append(str(number) if number else match.group(0))
+    return indexes
+
+
+def _declared_section_indexes(block: list[dict]) -> list[str]:
+    """块内**声明**的节号（切分前采集，用于节级连续性守卫 F-3）。"""
+    return [index for item in block for index in _section_indexes_in(item["text"])]
 
 
 def _section_continuity_problems(
@@ -418,14 +424,15 @@ def _section_continuity_problems(
         return []
     accounted = {section["index"] for section in sections}
     # 明确不考核的节不进分母，但必须留痕（`not_assessed`），故同样算「已交代」。
+    # 销账与声明**共用同一套版式语法**（`_section_indexes_in`）：只用 `（N）` 扫标题时，
+    # 按 `1.` 版式声明的「不考核」节永远销不掉账、被误报成「节被静默丢弃」（F-1）。
     # 只看 `not_assessed`：其它 reason 的行可能只是**提到**某个标签（如未编号段落里夹着 `（三）`），
     # 那不是「该节已被交代」，算进去会让守卫对真正丢掉的节视而不见。
     accounted |= {
-        str(_chinese_number(label))
+        index
         for item in unmodeled
         if item["reason"] == "not_assessed"
-        for label in PAREN_LABEL_RE.findall(item["title"])
-        if _chinese_number(label)
+        for index in _section_indexes_in(item["title"])
     }
     missing = [index for index in dict.fromkeys(declared) if index not in accounted]
     if not missing:

@@ -1278,6 +1278,67 @@ def test_model_build_fails_closed_when_a_section_is_dropped(tmp_path: Path):
     assert "缺第3节" in str(err.value), str(err.value)
 
 
+def test_not_assessed_absolution_is_symmetric_across_both_section_grammars():
+    """QC wave-1 F-1：销账侧必须与声明侧认**同一套版式**，否则官方「不考核」的节被误报成丢节。
+
+    改前 `_declared_section_indexes()` 认两种版式（`1.` + `（N）`），而 `_section_continuity_problems()`
+    的 `accounted` 只用 `PAREN_LABEL_RE` 扫 `not_assessed` 标题 —— 按 `1.` 版式书写的「明确不考核」节
+    **声明了却永不被销账**，守卫对合法输入报假缺口（QC1 `F-1` 的复现：声明 `['1']`、产出 `[]`）。
+    真实数据今日未触发（7 份考纲里 `1.` 版式与 `不作考核要求` 不共存），故本用例用纯函数把两个版式
+    钉成对称；同时钉住**判别力** —— 修掉假阳性不得把真阳性一起修掉，且销账仍只认 `not_assessed`。
+    """
+    def problems(declared: list[str], sections: list[dict], unmodeled: list[dict]) -> list[str]:
+        return km._section_continuity_problems("99999", "ch01", "第1章 甲", declared, sections, unmodeled)
+
+    # 1. `1.` 与 `（一）` 两种版式的「不考核」节都已交代 → 守卫必须静默（改前 `1.` 版式报假缺口）
+    for label in ("1.", "（一）"):
+        title = f"{label}乙节（本节内容不作考核要求）"
+        declared = km._declared_section_indexes([{"text": title}])
+        assert declared == ["1"], (label, declared)
+        assert problems(declared, [], [{"locator": "L9", "title": title, "reason": "not_assessed"}]) == [], label
+
+    # 2. 真阳性：声明 2 节、产出 1 节 → **两种版式**都必须失败关闭且指名第2节（判别力不得被削弱）
+    for labels in (["1.甲节", "2.乙节"], ["（一）甲节", "（二）乙节"]):
+        declared = km._declared_section_indexes([{"text": text} for text in labels])
+        assert declared == ["1", "2"], (labels, declared)
+        found = problems(declared, [{"index": "1"}], [])
+        assert len(found) == 1 and "缺第2节" in found[0], (labels, found)
+
+    # 3. 销账**只**认 `not_assessed`：其它 reason 不得为丢掉的节销账，否则守卫被蒙住
+    title = "2.乙节（本节内容不作考核要求）"
+    declared = km._declared_section_indexes([{"text": "1.甲节"}, {"text": title}])
+    found = problems(declared, [{"index": "1"}], [{"locator": "L9", "title": title, "reason": "unnumbered_section"}])
+    assert len(found) == 1 and "缺第2节" in found[0], found
+
+
+def test_1_dot_not_assessed_section_builds_while_a_dropped_one_still_raises(tmp_path: Path):
+    """QC wave-1 F-1 端到端：`1.` 版式的「明确不考核」节必须能建模；同一版式真丢节仍失败关闭。
+
+    上一条只覆盖 `_section_continuity_problems()` 的入参形态。本用例从 `document.extracted.md` 走到
+    `extract_knowledge_model()`，证明守卫在真实调用链上不再误报（改前此处 `ValueError`），
+    且该版式下被丢掉的节仍被抓住 —— 「不考」与「抽取失败」在产物里各自可辨。
+    """
+    def extract(name: str, requirements: str) -> dict:
+        text = (
+            "Ⅰ 课程性质与课程目标\n示例。\n\nⅢ 课程内容与考核要求\n\n第1章 甲\n"
+            "一、学习目的与要求\n示例。\n" + FALLBACK_HEADING + "\n" + requirements + "四、本章重点\n示例。\n"
+        )
+        root, evidence = _fragment_root(tmp_path / name, text)
+        return km.extract_knowledge_model(root, evidence)
+
+    # `1.` 版式的不考核节：不进分母、留痕、守卫静默（改前 `缺第1节` 假缺口）
+    chapter = extract("not_assessed", "1.乙节（本节内容不作考核要求）\n")["chapters"][0]
+    assert chapter["sections"] == [], chapter["sections"]
+    assert [(item["reason"], item["title"]) for item in chapter["unmodeled"]] == [
+        ("not_assessed", "1.乙节（本节内容不作考核要求）")
+    ], chapter["unmodeled"]
+
+    # 真阳性：`（二）` 与 `1.甲节` 同处一逻辑行（解析器一行至多取一个标签）→ 声明 2、产出 1
+    with pytest.raises(ValueError) as err:
+        extract("dropped", "1.甲节（二）乙节\n识记：示例。\n")
+    assert "缺第2节" in str(err.value), str(err.value)
+
+
 def test_denominator_rule_describes_the_denominator_actually_used():
     """F-2：`denominator_rule` 必须描述**实际用的分母** —— 两门真实课各占一种形状。
 
@@ -1328,3 +1389,91 @@ def test_00898_real_artifact_keeps_all_fifty_assessed_sections_and_no_misattribu
                 assert point["id"] == f"00898-{chapter['slug']}-s{section['index']}-p{point['id'].rsplit('-p', 1)[1]}", point["id"]
                 assert point["title"].strip() and point["quote"].strip(), point["id"]
 
+
+
+# ---- QC wave-1 F-2：AC3 冻结基线（`15043` / `15044` 逐字节不变） -----------------------------
+#
+# AC3 是本切片的头号不变量（回退是 fallback、不是替换）：新分支只应影响「无目录页」的课，
+# 三门既有课的模型必须与基线 `334d637` 逐字节一致。此前只有 `15040` 有守护
+# （`test_artifact_matches_fresh_build_and_is_hash_seed_independent`），`15043`/`15044`
+# 的字节一致只是**报告级声明** —— 下一轮改动共享代码或重跑生成都会静默漂移。
+# 与本文件 `15040` 的既有口径一致：既比对 committed 字节，也比对「产物 = f(现算)」。
+
+FROZEN_MODEL_SHA256 = {
+    # 基线 `334d637`（= 本切片基线，未经 B3a 改动）的原始字节摘要
+    "15043": "b6dea4b3c6427511710cb99b9f11d093ad9d3c83ee80d96cdf47974aac786f25",
+    "15044": "ccfc9eebf96d1eac321951373eacba826eed31a7eb393f093d9a9d03b8aeb14d",
+}
+
+
+def _frozen_model_path(code: str) -> Path:
+    return ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json"
+
+
+def _model_digest(path: Path) -> str:
+    """产物文件的原始字节摘要（比较口径：路径无关、逐字节，不做任何归一化）。"""
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def test_frozen_models_stay_byte_identical_to_the_base_commit():
+    """AC3 持久守护：`15043` / `15044` 的模型必须与基线 `334d637` 逐字节一致。
+
+    两半各有不可替代的判别力：
+    1. **字节摘要**钉住 committed 文件本身 —— 重跑生成、改序列化、手工编辑都会让它失败
+       （这正是 AC3「逐字节不变」的字面含义）；
+    2. **现算重建**钉住「产物 = f(源码)」—— 共享抽取代码被改坏、但产物没重生成时，
+       文件摘要仍与基线相同，只有重建比对能发现「代码已不再复现冻结模型」。
+    `generated_at` 是生成日（`date.today()`），故重建半边按既有 `15040` 口径归一化该字段；
+    字节半边不归一化 —— 该字段变化即意味着重新生成过，而 AC3 禁止重新生成。
+    """
+    for code, expected_sha in FROZEN_MODEL_SHA256.items():
+        path = _frozen_model_path(code)
+        assert path.is_file(), f"冻结产物缺失: {path.relative_to(ROOT)}"
+        actual = _model_digest(path)
+        assert actual == expected_sha, (
+            f"{code} 的 knowledge-model.json 偏离基线 334d637："
+            f"expected={expected_sha} actual={actual}。AC3 要求逐字节不变 —— "
+            "请用 `git checkout 334d637 -- "
+            f"sources/jiangsu/courses/{code}/knowledge-model.json` 还原，不要重新生成。"
+        )
+
+        # 重建半边：现算结果（仅 `generated_at` 归一化）必须仍等于 committed 产物
+        artifact = json.loads(path.read_text(encoding="utf-8"))
+        fresh = km.build_knowledge_model(ROOT, code)
+        assert {**fresh, "generated_at": artifact["generated_at"]} == artifact, (
+            f"{code}：现算模型已不再复现冻结产物（共享抽取代码漂移？）"
+        )
+        assert km.serialize({**fresh, "generated_at": artifact["generated_at"]}) == path.read_text(encoding="utf-8"), code
+
+
+def test_frozen_model_byte_pin_is_falsifiable(tmp_path: Path):
+    """上一条用例的反向验证：产物被扰动**1 字节**时，同一比较口径必须判否。
+
+    不满足于「断言写在那儿」——若摘要比对退化成恒真（比错文件、比了归一化文本、或字典为空），
+    上一条用例将永远绿灯。这里在工作副本上做 1 字节替换（长度不变），确认同一套
+    `_model_digest()` + 冻结摘要确实**判否**，并确认反向验证没有触碰仓内产物。
+    """
+    for code, expected_sha in FROZEN_MODEL_SHA256.items():
+        source = _frozen_model_path(code)
+        committed = source.read_bytes()
+        assert _model_digest(source) == expected_sha, f"对照前提：{code} 当前与基线一致"
+
+        work = tmp_path / f"{code}.json"
+        work.write_bytes(committed)
+
+        # 选一个**确实存在**的正文串做扰动点（考前提，避免扰动落空导致假验证）
+        victim = "马克思主义".encode()
+        assert victim in committed, f"对照前提：{code} 含扰动点 `马克思主义`"
+        mutated = committed.replace(victim, "马克思主意".encode(), 1)
+        assert mutated != committed, "对照前提：1 字节替换必须改变字节"
+        assert len(mutated) == len(committed), "对照前提：扰动只改内容、不改长度"
+        work.write_bytes(mutated)
+
+        assert _model_digest(work) != expected_sha, (
+            f"{code}：1 字节扰动未被冻结摘要判否 —— 上一条用例的断言是恒真的"
+        )
+        assert _model_digest(work) != _model_digest(source), code
+
+    # 仓内产物未被本次反向验证触碰
+    for code, expected_sha in FROZEN_MODEL_SHA256.items():
+        assert _model_digest(_frozen_model_path(code)) == expected_sha, f"反向验证不得改动仓内产物：{code}"
