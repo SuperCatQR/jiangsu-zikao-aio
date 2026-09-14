@@ -1197,8 +1197,11 @@ def test_committed_fixtures_resolve_every_call_plan_payload_for_each_course():
         path.parent.name
         for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/content.json")
     )
-    # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查
-    assert courses == ["15040", "15043"], f"对照前提：有 content.json 的课程为 15040/15043，实际 {courses}"
+    # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查。
+    # B3b（2026-09-13）接入 `15044`：本用例按 `*/content.json` **自动**枚举，故新课只需让
+    # `call_plan(model)` 的每个 payload 都有录制响应即自动进入守护范围（见上方 docstring）。
+    # 下方列表只作**对照前提**使用，随课程接入递增。
+    assert courses == ["15040", "15043", "15044"], f"对照前提：有 content.json 的课程为 15040/15043/15044，实际 {courses}"
 
     for code in courses:
         model = _json(ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json")
