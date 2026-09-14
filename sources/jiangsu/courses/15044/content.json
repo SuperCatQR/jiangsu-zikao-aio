@@ -8998,6 +8998,1146 @@
       "source_kind": "ai_generated"
     },
     {
+      "block_id": "15044-ch05-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "### 要点梳理\n- 起点是自由竞争：自由竞争引起生产集中和资本集中，当二者发展到相当高的程度，就具备了产生垄断的物质基础。\n- 含义：垄断指少数资本主义大企业为获取高额利润，通过相互协议或联合，对一个或几个部门商品的生产、销售和价格进行操纵与控制。\n- 必然性之一：少数大企业规模巨大，容易联合起来操纵和控制本部门的生产与销售，从而取得高额利润。\n- 必然性之二：企业规模巨大本身构成对竞争的限制，新企业难以进入，竞争受到抑制。\n- 必然性之三：激烈竞争使各方损失惨重，为避免两败俱伤，大企业之间会达成妥协、实行联合。\n### 易错点\n- 把垄断说成消灭了竞争：正确说法是垄断凌驾于竞争之上，与竞争并存，并未取消竞争。\n- 只记得生产集中而漏掉资本集中：两者是同一过程的两个方面，共同为垄断准备条件。\n- 把垄断当成个别企业的偶然行为：它是少数大企业有组织的联合，通常以协议或垄断组织的形式稳定存在。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "**关键词**：生产集中、资本集中、少数大企业、协议或联合、操纵与控制。\n**记忆法**：按「自由竞争—生产与资本集中—垄断」一条线记：竞争引起集中，集中到相当高的程度就必然产生垄断，记住「必然」二字，说明它是规律而不是偶然现象。\n**串联**：三条成因缩成「规模大、难进入、怕两伤」——少数大企业规模巨大，可以联手操纵本部门生产销售；企业规模巨大本身限制竞争；激烈竞争会两败俱伤，促成妥协联合。\n**对比**：卡特尔、辛迪加、托拉斯、康采恩是垄断组织的具体形式，属「垄断组织的形成与发展」那一考点，答本题点到即可，不要展开。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "垄断是自由竞争发展到一定阶段的产物。下列关于垄断形成的表述，正确的是（ ）。\nA. 垄断是少数企业在自由竞争中偶然出现的临时行为\nB. 生产集中和资本集中发展到相当高的程度，必然引起垄断\nC. 企业规模越大就越容易开展竞争，因而不会产生垄断\nD. 生产集中与资本集中互不相关，只有前者才引起垄断",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，自由竞争引起生产集中和资本集中，二者发展到相当高的程度，少数大企业既有能力也有必要联手操纵生产和销售，垄断由此必然产生。\nA 项错在「偶然」「临时」两处限定：垄断是生产集中发展到一定阶段的必然结果，而且通常以协议或联合的稳定形式存在。\nC 项说反了：企业规模巨大本身构成对竞争的限制，新企业难以进入，反而为垄断提供了条件。\nD 项割裂了二者的联系：生产集中和资本集中是同一过程的两个方面，共同为垄断准备条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "### 要点梳理\n- 含义：金融资本是工业垄断资本和银行垄断资本融合在一起而形成的一种垄断资本，它不是两种资本的简单相加。\n- 形成基础：银行业同样经历自由竞争引起集中、集中走向垄断的过程，银行由普通的中介人变成万能的垄断者。\n- 融合途径之一：金融联系，银行与工业企业之间形成长期而固定的资金往来关系。\n- 融合途径之二：资本参与，双方相互购买对方的股票，互相成为股东。\n- 融合途径之三：人事参与，双方互派人员进入对方的领导机构任职。\n### 易错点\n- 把金融资本等同于银行资本：只有工业垄断资本与银行垄断资本相融合，才形成金融资本。\n- 把融合途径只记一条：金融联系、资本参与、人事参与三条要写全，漏一条即不完整。\n- 混淆金融资本与金融寡头：前者是资本形态，后者是掌握这种资本并进而控制经济与政权的少数资本家或资本家集团。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "**关键词**：工业垄断资本、银行垄断资本、融合。\n**记忆法**：一句话记牢——金融资本是工业垄断资本与银行垄断资本融合而成，不是两者并列相加，所以叫金融资本而不叫银行资本；看到题干省略任何一种资本，都可以直接判定为错。\n**串联**：融合的三条途径按「钱—股—人」记：金融联系是资金往来上有长期固定关系，资本参与是互相购买股票，人事参与是互相派人兼职。\n**对比**：银行的新角色要一起记——自由竞争时期银行是普通的中介人，银行业集中并走向垄断后变成万能的垄断者，这一转变正是金融资本得以形成的前提。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "金融资本的形成是垄断资本主义的重要特征。下列关于金融资本的表述，正确的是（ ）。\nA. 金融资本就是银行资本，与工业资本无关\nB. 金融资本是工业资本与银行资本两种资本的简单相加\nC. 金融资本是工业垄断资本和银行垄断资本融合而成的一种垄断资本\nD. 金融资本形成后，银行仍然只是普通的资金中介人",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\nC 项正确，它点明了两种资本主体和「融合」这一关键，说明金融资本是在垄断基础上生长出来的新型资本。\nA 项把范围缩小了：只有工业垄断资本与银行垄断资本相融合才形成金融资本，单说银行资本不合题意。\nB 项混淆了「融合」与「相加」：金融资本不是两种资本并存相加，而是相互渗透、融为一体。\nD 项与事实相反：银行业集中并走向垄断后，银行由普通的中介人变成了万能的垄断者，这正是金融资本形成的前提。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "### 要点梳理\n- 含义：金融寡头指操纵国民经济命脉、并在实际上控制国家政权的少数垄断资本家或垄断资本家集团。\n- 它是金融资本人格化的体现，是垄断资本主义国家实际上的统治者。\n- 经济统治的核心机制是参与制：通过掌握一定数量的股票层层控制企业，以少量资本支配大量资本。\n- 政治统治的基本途径是个人联合：金融寡头亲自或派人到政府中担任要职，或把政府官员请进自己的公司任职。\n- 此外还通过掌握舆论工具、资助竞选、设立政策研究机构等方式影响国家的内外政策。\n### 易错点\n- 把金融寡头说成一家大企业：它是少数垄断资本家或垄断资本家集团，不是某一家公司。\n- 把参与制理解为必须持有过半股票：参与制的关键在于以少量股票层层控制，靠的是控制链条而非持股比例。\n- 两种统治手段张冠李戴：经济上靠参与制，政治上靠个人联合，答题时不能互换。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "**关键词**：少数垄断资本家或集团、操纵国民经济命脉、控制国家政权。\n**记忆法**：先记「两个控制」——控制国民经济，控制国家政权；再记「两个手段」——经济上用参与制，政治上用个人联合。\n**串联**：参与制的精髓是层层控制：以少量股票控制一家公司，再由这家公司去控制更多公司，像金字塔一样向下延伸，因此少量资本能够支配大量资本，这是它能在经济上居于统治地位的关键。\n**对比**：金融资本是「资本」，金融寡头是「人」。前者是两种垄断资本融合而成的资本形态，后者是掌握这种资本的少数资本家或资本家集团，答题时主语不要错位。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "金融寡头在垄断资本主义国家中居于统治地位。下列关于金融寡头的表述，正确的是（ ）。\nA. 金融寡头是指垄断资本主义国家中资产规模最大的一家企业\nB. 金融寡头在政治上的统治主要靠直接占有生产资料来实现\nC. 金融寡头只活动于经济领域，不干预国家的政治生活\nD. 金融寡头在经济上通过参与制实行控制，在政治上通过个人联合实行控制",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，经济上的统治靠参与制，即以少量股票层层控制企业；政治上的统治靠个人联合，即金融寡头与政府官员互相任职。\nA 项把主体弄错了：金融寡头是少数垄断资本家或垄断资本家集团，不是一家企业。\nB 项张冠李戴：占有生产资料是对企业实行经济控制的基础，政治上起作用主要依靠个人联合等途径。\nC 项与事实相反：金融寡头是垄断资本主义国家实际上的统治者，经济领域和政治领域都要控制。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "### 要点梳理\n- 含义：资本输出是垄断资本为获取高额利润而向国外输出资本。\n- 必要性：垄断统治确立后，国内有利的投资场所已被瓜分完毕，垄断资本手中积累了大量所谓过剩资本，需要到国外寻找出路。\n- 同时国外存在廉价的原料和劳动力、广阔的商品销售市场，输出资本能够带来比国内更高的利润。\n- 基本形式之一：借贷资本输出，即由垄断资本或国家向外国政府、企业提供贷款。\n- 基本形式之二：生产资本输出，即直接在外国投资办厂、开矿、设银行，从事生产经营活动。\n### 易错点\n- 把资本输出与商品输出混为一谈：商品输出是自由竞争阶段的显著特征，资本输出才是垄断阶段的显著特征。\n- 漏记形式：资本输出只有借贷资本输出和生产资本输出两种基本形式，不要另造名目。\n- 把过剩资本理解为国内真的用不完：它指的是在国内无法取得高额垄断利润、因而需要向外转移的资本。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "**关键词**：垄断资本、向国外输出资本、高额利润。\n**记忆法**：按「为什么出去—出去做什么—怎么出去」三层记：国内有利的投资场所已被瓜分完毕，出现了所谓过剩资本，所以要向国外寻找出路。\n**对比**：把两个阶段的显著特征分开——自由竞争阶段以商品输出为显著特征，垄断阶段以资本输出为显著特征，这一组对比常被用来设置干扰项。\n**串联**：两种基本形式用「借钱」和「办厂」记：借贷资本输出相当于把钱借给外国的政府或企业，生产资本输出则是直接到外国投资办厂开矿。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "资本输出是垄断资本主义的重要经济特征。下列关于资本输出的表述，正确的是（ ）。\nA. 资本输出的基本形式是借贷资本输出和生产资本输出\nB. 资本输出就是把国内多余的剩余产品运到国外销售\nC. 资本输出在自由竞争资本主义阶段就已成为显著特征\nD. 资本输出只采取向外国政府提供贷款这一种形式",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，借贷资本输出是借钱给外国的政府或企业，生产资本输出是直接到外国投资办厂开矿，二者构成两种基本形式。\nB 项把资本输出与商品输出混同了：把产品运到国外销售属于商品输出，不是资本输出。\nC 项时代错位：自由竞争资本主义阶段的显著特征是商品输出，资本输出成为显著特征是在垄断阶段。\nD 项以偏概全：提供贷款只是借贷资本输出，漏掉了生产资本输出这一形式。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "### 要点梳理\n- 含义：国际垄断组织又称国际垄断同盟，是各国垄断资本为在世界范围内争夺市场、原料产地和投资场所，通过协议结成的国际性垄断同盟。\n- 直接动因是各国垄断资本在国外市场上的激烈争夺，争夺各方为避免两败俱伤而达成妥协。\n- 早期的主要形式是国际卡特尔，由各国同行业垄断企业就划分销售市场、规定价格等事项订立协议。\n- 当代的主要形式是跨国公司：以本国的母公司为中心，通过对外直接投资在多个国家设立分支机构和子公司。\n- 另一重要形式是国家垄断资本主义的国际联盟，即由国家出面协调国际经济关系。\n### 易错点\n- 把国际垄断组织与国内垄断组织混同：前者的成员是不同国家的垄断资本，靠跨国协议结盟。\n- 说它消除了国际竞争：国际垄断同盟本身正是国际竞争激化的产物，它并不能消除竞争。\n- 只记国际卡特尔一种形式：当代跨国公司已成为主要形式，答题时不能只写早期形式。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "**关键词**：各国垄断资本、协议结盟、争夺市场与原料产地。\n**记忆法**：先记动因再记形式——动因是各国垄断资本在世界范围内争夺市场、原料产地和投资场所，为避免两败俱伤才坐下来订立协议，因此它同时带有「国际」与「垄断同盟」两个限定。\n**串联**：按时间顺序记形式，早期以国际卡特尔为代表，当代以跨国公司为主要形式，此外还有由国家出面组成的国际联盟。\n**对比**：国内垄断组织是在一国范围内通过协议或联合形成的组织，国际垄断组织的成员则是不同国家的垄断资本，是否跨越国界是二者的分水岭。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "国际垄断组织是垄断资本向世界范围扩张的产物。下列关于国际垄断组织的表述，正确的是（ ）。\nA. 国际垄断组织形成后，各国垄断资本之间的竞争随之消除\nB. 国际垄断组织是各国垄断资本通过协议结成的国际性垄断同盟\nC. 国际垄断组织是一国范围内若干企业相互联合而成的组织\nD. 国际垄断组织的成员全部是各国的政府机构",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，它由不同国家的垄断资本为争夺世界市场、原料产地和投资场所而订立协议结成。\nA 项与事实相反：国际垄断同盟本身正是国际竞争激化的产物，它不可能消除竞争，成员之间的争夺仍在继续。\nC 项范围错了：国际垄断组织的成员是不同国家的垄断资本，不是一国之内的企业联合。\nD 项主体错了：它的成员是各国的垄断资本；由国家出面组成的国际联盟只是其中一种形式，不能以偏概全。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "### 要点梳理\n- 含义：国家垄断资本主义是国家政权和私人垄断资本融合在一起的垄断资本主义。\n- 产生根源是资本主义基本矛盾的深化：社会化大生产要求突破私人垄断资本的局限，需要国家力量出面承担。\n- 形式之一：国家所有并直接经营的国有企业，以及国家与私人共有的合营企业。\n- 形式之二：国家通过订货、采购、补贴等方式参与私人垄断资本的再生产过程。\n- 形式之三：宏观调节与微观规制，即运用财政政策、货币政策调节经济运行，并用法制手段规范企业行为。\n### 易错点\n- 理解为国家取代了私人垄断资本：国家政权与私人垄断资本是融合关系，私人垄断仍是基础。\n- 形式只记两三种就收笔：国有企业、国家与私人合营、国家参与再生产过程、宏观调节、微观规制要答全。\n- 把它当成与垄断资本主义并列的独立社会形态：它只是垄断资本主义发展的一个阶段。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "**关键词**：国家政权、私人垄断资本、融合。\n**记忆法**：把定义压缩成一句话——国家政权与私人垄断资本融合在一起，抓住「融合」二字，就不会误写成国家取代了私人垄断资本。\n**串联**：基本形式按「有企业、有参与、有调控」记：国有企业和国家与私人合营企业属于前者，国家订货与采购属于参与再生产过程，宏观调节和微观规制属于调控。\n**对比**：它的产生不是偶然的，而是资本主义基本矛盾深化的结果，社会化大生产要求突破私人垄断资本的局限，才需要国家力量介入，这一因果链要能顺手说出来。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L468"
+      ],
+      "text_md": "国家垄断资本主义是垄断资本主义发展的新阶段。下列关于国家垄断资本主义的表述，正确的是（ ）。\nA. 国家垄断资本主义意味着国家已经取代了私人垄断资本\nB. 国家垄断资本主义是一种与垄断资本主义并列的独立社会形态\nC. 国家垄断资本主义是国家政权和私人垄断资本融合在一起的垄断资本主义\nD. 国家垄断资本主义的产生与资本主义基本矛盾没有关系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\nC 项正确，「融合」是理解国家垄断资本主义的关键限定，双方不是取代关系。\nA 项错在「取代」：国家政权与私人垄断资本相互融合，私人垄断资本仍然是基础。\nB 项把一个发展阶段拔高成了独立社会形态，层级弄错了。\nD 项切断了因果关系：国家垄断资本主义正是资本主义基本矛盾深化的结果，社会化大生产要求突破私人垄断资本的局限。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "### 要点梳理\n- 垄断没有消除竞争：它凌驾于竞争之上，与竞争并存，这是垄断资本主义经济运行的基本状态。\n- 原因之一：商品经济依然是垄断资本主义的经济基础，竞争赖以存在的经济条件并未消失。\n- 原因之二：垄断组织必须通过竞争来维持自己的垄断地位，垄断组织之间同样存在激烈争夺。\n- 原因之三：社会生产复杂多样，任何垄断组织都不可能把包罗万象的生产全部包下来，局外企业之间仍有竞争。\n- 与自由竞争相比，垄断条件下的竞争在目的、手段、范围和程度上都发生了变化，争夺的是高额垄断利润，手段包含非经济手段，范围扩展到国际，程度更激烈更持久。\n### 易错点\n- 说垄断消灭了竞争：正确说法是垄断与竞争并存，而且使竞争更复杂、更激烈。\n- 把垄断阶段的竞争等同于自由竞争：目的、手段、范围、程度均已改变，不能简单等同。\n- 把凌驾于竞争之上理解为两者互不相容：并存关系，不是替代关系。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "**关键词**：并存、凌驾于竞争之上、竞争条件仍在。\n**记忆法**：先背下一句总判断——垄断没有消除竞争，而是凌驾于竞争之上与竞争并存，答题时「并存」二字必须出现，这是本题的得分点。\n**串联**：三条理由按「基础—自身—对象」记：商品经济还在，竞争赖以存在的条件就没有消失；垄断地位要靠竞争来维持；社会生产复杂多样，没有哪个垄断组织能把一切生产都包下来。\n**对比**：与自由竞争相比，垄断条件下的竞争目的变成争夺高额垄断利润，手段增加非经济手段，范围由国内扩展到国际，程度上更激烈也更持久。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "垄断和竞争的关系，是理解垄断资本主义经济运行的基本问题。请简述垄断与竞争的关系，并说明垄断条件下竞争的特点发生了哪些变化。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）总判断：垄断没有消除竞争，而是凌驾于竞争之上，与竞争并存，这是垄断资本主义经济运行的基本状态。\n（2）竞争的经济条件仍在：商品经济依然是垄断资本主义的经济基础，竞争赖以存在的条件并未消失。\n（3）垄断自身离不开竞争：垄断组织必须通过竞争来维持自己的垄断地位，垄断组织之间同样存在激烈争夺。\n（4）竞争对象依然众多：社会生产复杂多样，任何垄断组织都不可能把包罗万象的生产全部包下来，局外企业之间的竞争仍然存在。\n（5）特点变化：与自由竞争相比，垄断条件下竞争的目的变为获取高额垄断利润，手段包含非经济手段，范围由国内扩展到国际，程度上更加激烈和持久。\n解析：作答要先给出「并存」这一总判断，再分条说明理由，最后落到竞争特点的变化，不能只答「垄断消灭了竞争」，也不能只答理由而漏掉特点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "### 要点梳理\n- 含义：垄断利润是垄断资本家凭借其在社会生产和流通中的垄断地位而获得的超过平均利润的高额利润。\n- 它与平均利润的差别在于依据不同：平均利润靠资本在部门之间的自由转移形成，垄断利润则靠垄断地位取得。\n- 来源之一：来自对本国工人阶级的剥削，即工人所创造的剩余价值。\n- 来源之二：来自对其他国家特别是经济落后国家劳动人民的剥削。\n- 来源之三：通过垄断价格把其他中小企业的一部分利润转移过来，以及通过国家订货、财政补贴等再分配途径取得。\n### 易错点\n- 认为垄断利润是流通过程中凭空产生的：它归根到底来源于剩余价值，流通领域只是实现和再分配的环节。\n- 把垄断利润等同于平均利润：垄断利润是超过平均利润的高额利润，二者的形成依据不同。\n- 把来源只记一条：剥削本国工人、剥削国外劳动人民、占有中小企业利润与再分配所得要答全。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "**关键词**：垄断地位、超过平均利润、高额利润。\n**记忆法**：先咬住「超过」二字——垄断利润不是平均利润，而是凭借垄断地位取得的超过平均利润的高额利润，答题时把参照物写出来就不容易走偏。\n**串联**：来源按「国内—国外—中小—再分配」四条线记：剥削本国工人创造的剩余价值；剥削其他国家尤其是落后国家的劳动人民；凭借垄断价格把中小企业的一部分利润转移过来；通过国家订货、补贴等途径参与再分配。\n**对比**：平均利润依靠资本在部门之间的自由转移形成，垄断利润依靠垄断地位形成，形成依据不同，这一点常被用来设置干扰项。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "垄断利润是垄断资本主义生产的直接目的和决定性动机。请简述垄断利润的含义及其主要来源。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）含义：垄断利润是垄断资本家凭借其在社会生产和流通中的垄断地位而获得的超过平均利润的高额利润，它与平均利润的区别在于形成依据不同。\n（2）来源之一：来自对本国工人阶级的剥削，即工人所创造的剩余价值。\n（3）来源之二：来自对其他国家的剥削，特别是对经济落后国家劳动人民的剥削。\n（4）来源之三：通过垄断价格把其他中小企业的一部分利润转移过来，使非垄断企业所得利润减少。\n（5）来源之四：通过国家订货、财政补贴等再分配途径，把国民收入的一部分转归垄断资本所有。\n解析：作答要先给含义并点出「超过平均利润」这一关键，再分条列出四条来源；只答「靠抬高价格赚来的」不完整，因为垄断利润归根到底来源于剩余价值。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p9/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "### 要点梳理\n- 垄断组织的形成有一个由松到紧的过程，联合的紧密程度逐步提高。\n- 卡特尔：各企业在销售方面订立协议，划分市场、规定价格和产量，生产上仍各自独立，是最松散的联合。\n- 辛迪加：各企业统一由共同的销售机构销售产品和采购原料，销售环节已经集中，但生产上仍保持独立。\n- 托拉斯：各企业合并为一个统一的大企业，由董事会统一经营管理，参加者丧失法律上的独立性。\n- 康采恩：以一家实力雄厚的大企业或银行为核心，通过持股等方式把分属不同部门的企业联合起来，是更为复杂的垄断形式。\n### 易错点\n- 把四种形式的紧密程度记乱：由松到紧的顺序是卡特尔、辛迪加、托拉斯、康采恩，托拉斯的参加者已失去独立性。\n- 混淆辛迪加与托拉斯：辛迪加只在销售和采购上统一，生产仍各自独立；托拉斯则合并为一个统一经营的大企业。\n- 把康采恩理解为同行业企业的联合：它往往跨越不同部门，以持股控制为纽带。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p9/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "**关键词**：卡特尔、辛迪加、托拉斯、康采恩；由松到紧。\n**记忆法**：按紧密程度排一条线——「卡（特尔）—辛（迪加）—托（拉斯）—康（采恩）」，越往后联系越紧，记住顺序就记住了演化过程。\n**串联**：用「销—购—合—跨」记四者的区别：卡特尔只在销售上订协议；辛迪加销售和采购统一；托拉斯合并为统一经营的大企业，参加者丧失独立性；康采恩跨部门，以持股把众多企业控制在一个核心周围。\n**对比**：托拉斯与辛迪加最易混，判断的口诀是看生产是否还各自独立——还独立的是辛迪加，已合并的是托拉斯。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p9/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "垄断组织的形式随着垄断的发展而变化。请简述垄断组织的形成与发展过程，并说明卡特尔、辛迪加、托拉斯、康采恩四种形式的主要区别。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）总过程：垄断组织随生产集中和资本集中程度的提高而发展，联合的紧密程度由松到紧逐步加深。\n（2）卡特尔：各企业在销售方面订立协议，划分市场、规定价格和产量，生产上仍各自独立，是最松散的联合形式。\n（3）辛迪加：各企业统一由共同的销售机构销售产品和采购原料，销售环节集中，但生产上仍保持独立。\n（4）托拉斯：各企业合并为一个统一的大企业，由董事会统一经营管理，参加者丧失法律上的独立性。\n（5）康采恩：以实力雄厚的大企业或银行为核心，通过持股等方式把分属不同部门的企业联合起来，形式更为复杂。\n解析：答题要按由松到紧的顺序排列，并抓住「生产是否仍然独立」这一区分标准；把辛迪加与托拉斯说成一回事，或认为康采恩只是同行业联合，都属于常见的失分点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s1-p10/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s1-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "### 要点梳理\n- 实质的总判断：国家垄断资本主义是私人垄断资本利用国家政权来为自己服务、谋取高额垄断利润的一种形式。\n- 从产生看，它没有改变资本主义的经济基础，私人垄断资本仍然是全部经济关系的基础。\n- 从手段看，国家政权被用来维护垄断统治：通过国有化、订货、补贴、信贷等途径把社会财富向垄断资本倾斜。\n- 从分配看，它服务于垄断资本的利益，并不能解决资本主义基本矛盾，反而使矛盾在新的形式上积累和加深。\n- 从结果看，它在一定程度上缓解了个别企业有组织性与整个社会生产无政府状态的冲突，但只是缓和而不是消除。\n### 易错点\n- 把国家垄断资本主义说成社会主义性质或超阶级的力量：国家政权在这里仍然是为垄断资本服务的工具。\n- 认为它能够从根本上解决资本主义基本矛盾：它只能在有限范围内缓和矛盾，同时使矛盾积累。\n- 把它与「国家干预经济」画等号：干预是形式，实质在于私人垄断资本利用国家机器谋取高额利润。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p10/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s1-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "**关键词**：私人垄断资本、利用国家政权、高额垄断利润。\n**记忆法**：把实质压缩成一句话——私人垄断资本利用国家政权为自己服务、谋取高额垄断利润。主语是私人垄断资本，工具是国家政权，目的是高额垄断利润，三者缺一不可。\n**串联**：说明它在哪些环节起作用，可以按「生产—分配—调控」记：国家通过国有化与订货参与生产，通过补贴与信贷影响分配，通过财政货币政策进行调控。\n**对比**：它没有改变资本主义的经济基础，所以不能称为社会主义性质，也不能说它解决了资本主义基本矛盾，它只是把矛盾缓和并在新的形式上积累起来。"
+    },
+    {
+      "block_id": "15044-ch05-s1-p10/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s1-p10",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L470"
+      ],
+      "text_md": "国家垄断资本主义是在私人垄断资本的基础上发展起来的。请简述国家垄断资本主义的实质。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）实质的总判断：国家垄断资本主义是私人垄断资本利用国家政权为自己服务、谋取高额垄断利润的一种形式。\n（2）从经济基础看：它没有改变资本主义的经济基础，私人垄断资本仍然是全部经济关系的基础。\n（3）从手段看：国家政权被用来维护垄断统治，通过国有化、订货、补贴、信贷等途径使社会财富向垄断资本倾斜。\n（4）从目的看：它服务于垄断资本的利益，其出发点是保证垄断资本获得稳定的高额利润。\n（5）从结果看：它能在一定范围内缓和资本主义基本矛盾，却不能从根本上解决矛盾，反而使矛盾在新的形式上积累和加深。\n解析：作答必须以「私人垄断资本利用国家政权」为落点，不能写成国家超然于阶级之上；同时要答出「缓和而非消除矛盾」这一界限。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "### 要点梳理\n- 含义：经济全球化是指生产、贸易、金融等经济活动超越国界，在世界范围内广泛联系、相互依存、逐渐融为一体的过程。\n- 主体力量是发达资本主义国家的垄断资本，它凭借经济与技术优势在世界范围内扩展自己的势力。\n- 主要表现可以从生产、贸易、金融三个层面把握，三者相互带动、彼此支撑。\n- 它建立在国际分工深化和生产社会化程度提高的基础之上，是生产社会化向世界范围延伸的结果。\n- 它是一把双刃剑：既促进了生产要素在世界范围内的流动和配置，也带来发展不平衡、风险跨国传导等问题。\n### 易错点\n- 把经济全球化等同于经济一体化：全球化强调联系日益紧密、相互依存，不等于各国经济制度与政策已经统一。\n- 认为它起源于当代：它的基础是国际分工与生产社会化的长期发展，不能只从最近几十年的现象去理解。\n- 把它说成只有好处或只有坏处：它一方面促进资源流动和技术扩散，另一方面加剧不平衡，要两面都答。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "**关键词**：超越国界、相互依存、逐渐融为一体。\n**记忆法**：抓住三个递进的动词——超越国界、相互依存、融为一体，答题时按这个顺序展开，就不会把它写成「各国做买卖」这么单薄。\n**串联**：三大表现用「产—贸—融」三个字串起来：生产全球化讲生产环节的跨国分工，贸易全球化讲商品和服务交换的扩大，金融全球化讲资本融通的跨国联系。\n**对比**：经济全球化不等于经济一体化。全球化说的是联系日益紧密、彼此依存，一体化则指制度与政策层面的统一安排，二者不能画等号。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "经济全球化是当代世界经济发展的重要趋势。下列关于经济全球化的表述，正确的是（ ）。\nA. 经济全球化意味着各国的经济制度与经济政策已经统一\nB. 经济全球化只是最近几十年才出现的全新现象，与生产社会化无关\nC. 经济全球化只有促进作用，不会带来任何风险和问题\nD. 经济全球化是指生产、贸易、金融等活动超越国界而相互联系、逐渐融为一体的过程",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，它从生产、贸易、金融三个层面界定了经济全球化的范围，并点出「超越国界、相互依存、融为一体」这一过程性特征。\nA 项把全球化与一体化混同：全球化讲联系日益紧密、彼此依存，不等于各国制度与政策已经统一，各国仍保持独立的经济制度和政策选择。\nB 项割裂了它与生产社会化的关系：经济全球化建立在国际分工深化和生产社会化程度提高的基础之上，不是凭空出现的新现象。\nC 项以偏概全：经济全球化是一把双刃剑，既促进生产要素流动和配置，也带来发展不平衡与风险跨国传导等问题。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "### 要点梳理\n- 含义：生产全球化是指产品生产过程的各环节突破国界，由不同国家和地区的企业分工协作来完成。\n- 它的基础是国际分工的深化，一个产品往往由多个国家分别承担零部件生产与组装环节。\n- 主要方式是对外直接投资：跨国公司在多个国家设立生产基地和分支机构，就地组织生产。\n- 它推动了技术、设备与管理经验在世界范围内的扩散，也带动了相应国家的就业和产业发展。\n- 它同时使参与分工的国家相互依赖加深，一国的生产波动容易沿产业链传导到其他国家。\n### 易错点\n- 把生产全球化与贸易全球化混同：前者讲生产环节的跨国分工，后者讲商品和服务买卖跨越国界。\n- 认为生产全球化就是企业把产品卖给外国：那是销售环节的国际化，不等于生产过程的跨国分工。\n- 把它说成只有发达国家受益：不同国家在分工中的地位和获利并不相同，这种差别本身正是全球化争论的焦点。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "**关键词**：生产过程、突破国界、分工协作。\n**记忆法**：记「一个产品的诞生要过几道国门」——从零部件到组装，再由不同国家的企业分别承担，这就是生产全球化的直观画面。\n**串联**：实现方式主要靠对外直接投资，跨国公司在多个国家设立生产基地和分支机构，就地组织生产、就地销售。\n**对比**：与贸易全球化分清环节——生产全球化看的是生产过程的跨国分工，贸易全球化看的是商品和服务跨越国界的交换，考题常把两者对调来设错。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "生产全球化是经济全球化的重要内容。下列关于生产全球化的表述，正确的是（ ）。\nA. 生产全球化是指产品生产过程的各环节突破国界，由不同国家和地区的企业分工协作完成\nB. 生产全球化是指企业把在本国生产的产品销售到国外市场\nC. 生产全球化意味着各国在生产分工中的地位完全相同、获利相同\nD. 生产全球化只涉及生产环节，与对外直接投资没有关系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，它抓住了生产环节跨国分工这一核心，并强调由不同国家和地区的企业协作完成。\nB 项把销售国际化当成了生产全球化：把本国产品卖到国外属于交换环节，不是生产过程的跨国分工。\nC 项抹平了差别：不同国家在分工中所处地位和获利水平并不相同，地位差异本身正是全球化争论的焦点之一。\nD 项割断了联系：对外直接投资、跨国公司在多国设立生产机构，正是生产全球化的主要实现方式。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "### 要点梳理\n- 含义：贸易全球化是指商品和服务在世界各国之间的交换规模不断扩大、联系日益紧密的过程。\n- 表现之一是各国对外贸易额在国际经济总量中的比重不断上升。\n- 表现之二是参与世界市场交换的国家和地区数量增多，交换的商品与服务种类不断扩展。\n- 表现之三是多边贸易规则逐步建立和完善，关税与非关税壁垒在总体趋势上受到约束。\n- 它对全球经济的带动作用体现在：各国得以发挥各自优势、取得规模效益，同时也使本国产业面临外部竞争压力。\n### 易错点\n- 把贸易全球化窄化为商品买卖：服务贸易同样是它的重要内容。\n- 与生产全球化混同：贸易全球化考察交换环节，生产全球化考察生产环节的跨国分工。\n- 认为贸易全球化意味着壁垒完全消失：各国仍普遍采用各种贸易管理措施，规则化的过程伴随着反复的摩擦。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "**关键词**：商品和服务、跨国交换、规模扩大。\n**记忆法**：先记两点常被忽略的内容——它既包括商品也包括服务；它不只是数量增长，还包括参与国家增多和种类的扩展。\n**串联**：按理顺一条线——交换规模不断扩大，参与的国家和地区越来越多，交换的种类越来越广，多边贸易规则逐步建立和完善。\n**对比**：与生产全球化分环节记，贸易全球化落在「买卖」上；同时注意各国仍普遍保留各种贸易管理措施，说壁垒完全消失是不成立的。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "贸易全球化是经济全球化的先导和重要内容。下列关于贸易全球化的表述，正确的是（ ）。\nA. 贸易全球化只包括商品的跨国买卖，不包括服务贸易\nB. 贸易全球化是指商品和服务在世界各国之间的交换规模不断扩大、联系日益紧密\nC. 贸易全球化表明各国的贸易壁垒已经完全消失\nD. 贸易全球化考察的是生产环节的跨国分工，与交换环节无关",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，它同时点出交换对象包括商品和服务，并强调规模扩大与联系紧密这一过程特征。\nA 项范围过窄：服务贸易同样是贸易全球化的重要内容，漏掉它即构成以偏概全。\nC 项与事实不符：各国仍普遍采用各种贸易管理措施，多边贸易规则的建立伴随着反复的摩擦。\nD 项把环节弄反了：考察生产环节跨国分工的是生产全球化，贸易全球化落在商品和服务的跨国交换上。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "### 要点梳理\n- 含义：金融全球化是指各国货币金融活动超越国界、相互联系与渗透不断加强，逐步形成全球性金融体系的过程。\n- 表现之一是国际资本流动规模扩大，资本跨国借贷、投资和证券交易空前活跃。\n- 表现之二是金融市场连成整体，各国或地区的金融市场在时间上相互衔接、价格上相互影响。\n- 表现之三是金融机构国际化，跨国银行和各类金融机构在多个国家设立分支机构并开展业务。\n- 它与生产全球化、贸易全球化相互带动：生产经营的跨国布局要求相应的融资与结算安排，金融流动又反过来支持投资与贸易。\n### 易错点\n- 把金融全球化等同于「钱变多了」：它讲的是货币金融活动的跨国联系与体系化，不是货币数量的变化。\n- 认为金融全球化只有积极作用：资本流动加快的同时也会带来投机冲击和风险跨国传导。\n- 与贸易全球化混同：金融全球化考察资本融通环节，贸易全球化考察商品和服务的交换环节。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "**关键词**：货币金融活动、超越国界、全球性金融体系。\n**记忆法**：抓住三个「化」的表现——资本流动国际化，金融市场连成整体，金融机构跨国经营，答题时按「钱、市、店」三字提示逐条展开。\n**串联**：它与生产、贸易两类全球化相互带动：生产经营的跨国布局需要相应的融资和结算，金融流动又反过来支持投资与贸易，三者互为条件。\n**对比**：金融全球化带来的是双向效应，资本流动加快、配置效率提高，同时也意味着投机冲击和风险跨国传导的可能性上升，不能只答一面。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L481"
+      ],
+      "text_md": "金融全球化是经济全球化深入发展的重要标志。下列关于金融全球化的表述，正确的是（ ）。\nA. 金融全球化是指各国货币的数量不断增加\nB. 金融全球化只有提高资本配置效率的作用，不会带来风险\nC. 金融全球化是指各国货币金融活动超越国界、相互联系与渗透不断加强，逐步形成全球性金融体系\nD. 金融全球化与生产全球化、贸易全球化之间没有任何联系",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\nC 项正确，它从货币金融活动的跨国联系与体系化两个方面界定了金融全球化，落点在「过程」而非货币数量。\nA 项偷换了对象：金融全球化讲的是货币金融活动的跨国联系不断加强，不是货币数量增多。\nB 项只答一面：资本流动加快、配置效率提高的同时，投机冲击和风险跨国传导的可能性也在上升。\nD 项割断了相互带动关系：生产经营的跨国布局需要相应的融资和结算安排，金融流动又反过来支持投资与贸易，三者互为条件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L482"
+      ],
+      "text_md": "### 要点梳理\n- 根本动力：社会生产力发展到新高度，特别是科技革命推动生产社会化程度提高，要求在世界范围内配置资源、组织生产。\n- 国际分工深化：各国在资源、技术、市场等方面各有长短，分工由传统的产业间分工走向产业内部的分工协作。\n- 技术条件：交通运输、通信和信息技术的发展大幅降低了跨国的物流成本与信息成本，使远距离组织经济活动成为可能。\n- 体制条件：越来越多的国家实行对外开放、发展市场经济，为资本、商品和技术在世界范围内流动提供了制度环境。\n- 主体推动：跨国公司的迅猛发展和国际经济组织的协调，使全球化获得了具体的组织载体和规则框架。\n### 易错点\n- 只答科技革命一条：技术只是条件之一，根本动力在于生产力发展与生产社会化程度的提高。\n- 认为全球化是由少数国家的意愿凭空造出来的：它是生产力发展的客观要求，同时又被发达国家的垄断资本所主导。\n- 把原因与表现混同：生产、贸易、金融的跨国联系日益紧密属于表现，不是原因。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L482"
+      ],
+      "text_md": "**关键词**：生产社会化、国际分工、科技革命、对外开放、跨国公司。\n**记忆法**：按「根本—条件—载体」三层记：根本动力是社会生产力发展带来的生产社会化程度提高，技术条件与体制条件是它得以实现的土壤，跨国公司与国际经济组织则是它的组织载体。\n**串联**：把原因串成一句——生产力长高了，分工变细了，交通通信便宜了，开放体制铺开了，跨国公司跑起来了，五者叠加才有全球化。\n**对比**：不要把原因与表现搞混：生产、贸易、金融的跨国联系日益紧密是它的表现，而生产力发展、国际分工深化、技术条件改善才是它的原因。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L482"
+      ],
+      "text_md": "经济全球化是当代世界经济的重要趋势，其形成和发展有多方面的原因。请简述经济全球化形成和发展的主要原因，并说明其中最根本的动力是什么。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）根本动力：社会生产力发展到新的高度，生产社会化程度不断提高，要求在世界范围内配置资源、组织生产。\n（2）国际分工深化：各国在资源、技术、市场等方面各有长短，分工由传统的产业间分工走向产业内部的分工协作。\n（3）技术条件：交通运输、通信和信息技术的发展大幅降低了跨国物流成本与信息成本，使远距离组织经济活动成为可能。\n（4）体制条件：越来越多的国家实行对外开放、发展市场经济，为资本、商品和技术在世界范围内流动提供了制度环境。\n（5）主体推动：跨国公司的迅猛发展和国际经济组织的协调，为全球化提供了组织载体和规则框架。\n解析：作答要按「根本动力—条件—载体」分条展开，不能只答科技革命一条；同时要避免把全球化的表现误当作原因来写。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L482"
+      ],
+      "text_md": "### 要点梳理\n- 主要内容包括三个方面：生产全球化、贸易全球化和金融全球化，三者相互带动、彼此支撑。\n- 生产全球化：生产过程的各环节突破国界，由不同国家和地区的企业分工协作来完成。\n- 贸易全球化：商品和服务在世界各国之间的交换规模不断扩大、联系日益紧密。\n- 金融全球化：各国货币金融活动超越国界、相互联系与渗透不断加强，逐步形成全球性金融体系。\n- 三者的内在联系是：生产的跨国布局带动了原材料、零部件的跨国流动，交换的扩大要求相应的融资与结算安排，金融的国际化又反过来支持投资与贸易的扩展。\n### 易错点\n- 只答生产、贸易两条，把金融全球化漏掉：三者在考纲中并列，缺一即不完整。\n- 把主要内容写成「原因」或「影响」：原因讲的是生产力与分工的发展，影响讲的是双刃剑作用，与「主要内容」不是一回事。\n- 把三者割裂开来背：它们是同一过程的不同侧面，答题时最好点出相互带动的关系。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L482"
+      ],
+      "text_md": "**关键词**：生产全球化、贸易全球化、金融全球化。\n**记忆法**：用「产—贸—融」三字诀把主要内容串起来，考场上按这三个字依次展开，一条不落。\n**串联**：三者有内在的带动关系——生产环节的跨国分工需要原材料和零部件跨境流动，交换规模的扩大需要相应的融资与结算安排，金融国际化又反过来支持投资和贸易，环环相扣。\n**对比**：这个考点问的是「是什么」，全球化原因问的是「为什么」，全球化影响问的是「有什么后果」。三问之间不要串题，尤其不要把双刃剑的表述答到主要内容里去。"
+    },
+    {
+      "block_id": "15044-ch05-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L482"
+      ],
+      "text_md": "经济全球化在内容上表现为若干相互联系的方面。请简述经济全球化的主要内容，并说明这几方面之间的内在联系。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）生产全球化：产品生产过程的各环节突破国界，由不同国家和地区的企业分工协作来完成。\n（2）贸易全球化：商品和服务在世界各国之间的交换规模不断扩大、联系日益紧密。\n（3）金融全球化：各国货币金融活动超越国界、相互联系与渗透不断加强，逐步形成全球性金融体系。\n（4）内在联系之一：生产的跨国布局带动了原材料、零部件与技术的跨境流动，为贸易扩大提供了物质内容。\n（5）内在联系之二：交换规模的扩大要求相应的融资、结算与保险安排，金融国际化又反过来支持投资与贸易的扩展，三者相互带动。\n解析：三方面缺一不可；只罗列三条而不说明相互带动关系，属于答而不析，是常见的失分点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L487"
+      ],
+      "text_md": "### 要点梳理\n- 基本规律：生产关系一定要适合生产力的状况，这是人类社会发展的客观规律，也是理解社会形态更替的钥匙。\n- 作用方式：生产力是社会发展的最终决定力量，生产力发展到一定阶段，原来适合它的生产关系就变得不适合，从而引起生产关系的变革。\n- 更替顺序：人类社会大体经历原始社会、奴隶社会、封建社会、资本主义社会和社会主义社会等社会形态，由低级向高级依次演进。\n- 演进特点：五种社会形态的更替是总趋势，但并非每个国家、每个民族都按照同一模式依次走完，进程可以有跳跃和曲折。\n- 结论指向：资本主义社会同以往一切社会形态一样具有历史的暂时性，为社会主义所代替是历史发展的必然趋势。\n### 易错点\n- 把规律说成生产力与生产关系互相决定：生产力决定生产关系，生产关系对生产力有反作用，决定关系不能颠倒。\n- 把五种社会形态的更替理解为每个国家的机械公式：总趋势与具体道路不是一回事，个别国家可以跨越某一阶段。\n- 只答「依次更替」而丢掉动力机制：要答出生产关系一定要适合生产力状况这一规律，才算答到根上。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L487"
+      ],
+      "text_md": "**关键词**：生产关系一定要适合生产力的状况；由低级到高级。\n**记忆法**：先把规律原文记准——生产关系一定要适合生产力的状况，这是全部社会形态更替的总依据；答题时这句话几乎可以直接用。\n**串联**：社会形态更替顺序按「原—奴—封—资—社」背下来，记的是总趋势，是历史发展的方向。\n**对比**：总趋势不等于机械公式。个别国家在特定历史条件下可以跨越某个阶段，进程也可能出现曲折和反复，说「每个国家必须依次走完五个阶段」是把规律公式化了。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L487"
+      ],
+      "text_md": "人类社会经济形态的发展和更替有其内在规律。下列关于这一规律的表述，正确的是（ ）。\nA. 生产力与生产关系相互决定，社会形态的更替没有确定方向\nB. 每个国家和民族都必须完整地依次经历五种社会形态，不容许任何跨越\nC. 社会形态的更替取决于杰出人物的意志与选择\nD. 生产关系一定要适合生产力的状况，社会形态由此由低级向高级更替",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，生产关系一定要适合生产力的状况是社会形态更替的根本规律，更替的总方向是由低级向高级发展。\nA 项颠倒了决定关系：生产力决定生产关系，生产关系对生产力只有反作用，二者不是相互决定。\nB 项把规律公式化了：五种社会形态的更替是总趋势，个别国家在特定条件下可以跨越某一阶段，进程也会有曲折。\nC 项犯了唯心史观的错误：社会形态更替是生产力与生产关系矛盾运动的结果，不取决于个别人的意志。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s3-p2/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L487"
+      ],
+      "text_md": "### 要点梳理\n- 含义：资本主义的基本矛盾是生产社会化和生产资料资本主义私人占有之间的矛盾。\n- 生产社会化表现在三个方面：生产资料的使用社会化、生产过程社会化和劳动产品社会化。\n- 矛盾的另一方面：生产资料和劳动产品却被资本家私人占有，生产服从于追逐剩余价值的目的。\n- 具体表现之一：单个企业生产的有组织性与整个社会生产的无政府状态之间的矛盾。\n- 具体表现之二：社会生产无限扩大的趋势与劳动人民有支付能力的需求相对缩小之间的矛盾。\n### 易错点\n- 把基本矛盾说成无产阶级与资产阶级的矛盾：后者是基本矛盾在阶级关系上的表现，二者不能颠倒。\n- 漏掉「生产社会化」的三个方面：生产资料使用、生产过程、劳动产品三者都是社会化的，只答一项不完整。\n- 认为这个矛盾可以在资本主义制度内自行消除：它可以被缓和，但不可能从根本上解决，这是理解资本主义历史趋势的关键。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L487"
+      ],
+      "text_md": "**关键词**：生产社会化、生产资料资本主义私人占有。\n**记忆法**：把基本矛盾压成一句话——一边是社会化，一边是私人占有。看到「生产社会化与生产资料资本主义私人占有之间的矛盾」，就是标准表述。\n**串联**：生产社会化展开为三点，用「料、程、品」记：生产资料的使用社会化、生产过程社会化、劳动产品社会化。\n**对比**：基本矛盾与阶级矛盾的关系要分清——无产阶级与资产阶级的矛盾是基本矛盾在阶级关系上的集中表现，一个是根，一个是表现，不能把两者说成同一个概念。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p2/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s3-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L487"
+      ],
+      "text_md": "资本主义的基本矛盾贯穿于资本主义发展的全过程。下列关于资本主义基本矛盾的表述，正确的是（ ）。\nA. 它是生产社会化和生产资料资本主义私人占有之间的矛盾\nB. 它是无产阶级与资产阶级之间的矛盾，与其他矛盾无关\nC. 它在资本主义制度内部可以通过改良从根本上得到解决\nD. 它只表现为单个企业生产的有组织性，不涉及社会生产",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，生产社会化与私人占有之间的对立是资本主义一切矛盾的总根源，标准表述中「社会化」与「私人占有」两个限定缺一不可。\nB 项层级弄错了：无产阶级与资产阶级的矛盾是基本矛盾在阶级关系上的集中表现，把表现当成基本矛盾本身即失分。\nC 项过于乐观：基本矛盾可以在一定范围内被缓和，但不可能在资本主义制度内从根本上解决。\nD 项只说了矛盾一方的表现：单个企业生产的有组织性与整个社会生产的无政府状态之间的矛盾，正是基本矛盾的具体表现之一。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s3-p3/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L488"
+      ],
+      "text_md": "### 要点梳理\n- 基本判断：资本主义相对于封建社会是一个巨大的历史进步，同时它同以往的社会形态一样具有历史的暂时性。\n- 进步性之一：它把分散的小生产变成社会化的大生产，极大地促进了生产力发展。\n- 进步性之二：它打破了封建的人身依附关系和等级制度，推动了政治制度和社会关系的变革，为人类文明进步作出了贡献。\n- 局限性：资本主义生产方式建立在雇佣劳动和剥削的基础之上，其基本矛盾不可能在自身范围内得到根本解决。\n- 历史定位：它只是人类社会由低级向高级发展过程中的一个特定阶段，是走向更高社会形态的过渡形式，而不是历史的终点。\n### 易错点\n- 只答进步性不答局限性：历史地位要求两面都答，只说一面即不完整。\n- 用「永恒合理」来定性：资本主义具有历史暂时性，不是从来就有也不会永远存在。\n- 把进步性与局限性相互否定：二者并存，进步是相对于封建社会而言的，局限则源于它自身的生产方式。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L488"
+      ],
+      "text_md": "**关键词**：历史进步、历史暂时性。\n**记忆法**：用一对词锁住这一考点——进步性加暂时性，答题时这两面都要出现，只写一面就丢分。\n**串联**：进步性按「生产力—社会关系—文明」记：把分散的小生产变成社会化的大生产，打破了封建的人身依附与等级束缚，推动了人类文明的进步。\n**对比**：进步性是相对于封建社会而言的，局限则来自它自身的剥削关系与基本矛盾，二者并不互相否定，而是同一制度的两面。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p3/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s3-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L488"
+      ],
+      "text_md": "正确认识资本主义的历史地位，是理解人类社会发展趋势的重要环节。请简述资本主义的历史地位。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n（1）基本判断：资本主义相对于封建社会是一个巨大的历史进步，同时它同以往一切社会形态一样具有历史的暂时性。\n（2）进步性之一：它把分散的小生产变成社会化的大生产，极大地促进了生产力的发展。\n（3）进步性之二：它打破了封建的人身依附关系和等级制度，推动了政治制度与社会关系的变革，为人类文明进步作出了贡献。\n（4）局限性：资本主义生产方式建立在雇佣劳动和剥削的基础之上，其基本矛盾不可能在自身范围内得到根本解决。\n（5）历史定位：它只是人类社会由低级向高级发展进程中的一个特定阶段，是走向更高社会形态的过渡形式，而不是历史的终点。\n解析：本题必须两面作答，只写进步性或只写局限性都不完整；把资本主义说成永恒合理的制度，与讲清它的历史暂时性是相冲突的。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-ch05-s3-p4/explain",
+      "kind": "explain",
+      "point_id": "15044-ch05-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L488"
+      ],
+      "text_md": "### 要点梳理\n- 总判断：资本主义生产方式具有历史过渡性质，它是人类社会漫长发展进程中的一个阶段，而不是永恒的制度。\n- 依据之一：生产社会化与私人占有的基本矛盾在资本主义制度内无法根除，只能被缓和，并随发展不断积累和加深。\n- 依据之二：资本主义的发展为新的社会形态准备了物质条件和阶级力量，社会化大生产与无产阶级都是在这一过程中成长起来的。\n- 过渡的复杂性：资本主义的发展具有自我调节能力，会通过改良、调整等形式延长自身存在，过渡过程因而呈现长期性。\n- 过渡的曲折性：这一过程中会出现反复和震荡，某些国家甚至出现倒退，但总趋势不会因此改变。\n### 易错点\n- 把过渡理解为一个很快完成的短期过程：它是复杂的、曲折的、长期的历史过程，不能简单化。\n- 认为有了自我调节能力就不会被代替：自我调节只是缓和矛盾、延长时间，不能改变总趋势。\n- 把必然性讲成机械的宿命论：必然性建立在矛盾运动的基础上，同时要承认过程的长期性和曲折性。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15044-ch05-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L488"
+      ],
+      "text_md": "**关键词**：历史过渡性质、复杂的、曲折的、长期的历史过程。\n**记忆法**：把结论背成四段——具有历史过渡性质；为社会主义所代替是历史必然；这一过程是复杂的；这一过程是曲折的、长期的。前三段讲必然，第四段讲限度。\n**串联**：必然性来自基本矛盾无法在自身范围内根除，也来自资本主义发展本身准备了新的社会形态所需的物质条件和阶级力量。\n**对比**：要承认资本主义具有自我调节能力，能够通过调整延长存在，但自我调节只缓和矛盾、延长时间，改变不了总趋势，这与讲过渡的长期性并不冲突。"
+    },
+    {
+      "block_id": "15044-ch05-s3-p4/drill",
+      "kind": "drill",
+      "point_id": "15044-ch05-s3-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L488"
+      ],
+      "text_md": "有人认为，资本主义具有较强的自我调节能力，能够通过不断调整延续自身，因此不必谈论它被更高的社会形态所代替的问题。请结合资本主义生产方式的历史过渡性质，评析这一观点。",
+      "question_type": "论述题",
+      "answer_md": "参考答案：\n（1）辨明观点：该观点看到了资本主义具有自我调节能力这一事实，但据此否认其历史过渡性质，是把延长存在当成了永恒存在。\n（2）必然性的根据：生产社会化与私人占有的基本矛盾在资本主义制度内无法根除，只能被缓和，并随发展不断积累和加深，这是过渡性质的深层依据。\n（3）物质与阶级条件的准备：资本主义的发展本身准备了新的社会形态所需的物质条件，社会化大生产和无产阶级都是在资本主义条件下成长起来的。\n（4）自我调节的限度：改良与调整确实能够缓和矛盾、延长存在，但改变不了矛盾的性质，只能为更高的社会形态积累条件。\n（5）过程的特征：这一过渡是复杂的、曲折的、长期的历史过程，过程中会有反复甚至倒退，但总趋势不会因此改变——既不能因过程的长期性而否认必然性，也不能因必然性而把过程简单化。\n解析：论述题要「先评后论」：先指出观点的合理之处与破绽，再分层给出依据，最后落到过程的长期性与曲折性上，不能只表态不分析。",
+      "source_kind": "ai_generated"
+    },
+    {
       "block_id": "15044-ch07-s1-p1/explain",
       "kind": "explain",
       "point_id": "15044-ch07-s1-p1",
