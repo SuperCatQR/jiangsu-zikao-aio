@@ -279,6 +279,89 @@ def test_ai_banner_guard_is_falsifiable():
     assert _banner_violations(clean + '\nai_generated: "true"\n') == ["ai_generated"]
 
 
+# ---- 谓词自检：每个守卫都必须能被证明「仍然有效」（W-1） ------------------------
+# `_textbook_claim_offenders` / `_absolute_no_ai_offenders` / `_missing_chapter_offenders` 是
+# F1 / F2 / F7 的**唯一可执行执法**。把任一个改成 `return []`，全部守卫静默失效而测试仍绿 ——
+# 与 R29 是同一类缺陷，只是低一层。所以每个谓词都要有一条反身证明：干净 → `[]`，注入 → 命中预期。
+
+
+def test_textbook_claim_guard_is_falsifiable():
+    """反身证明（F1）：`_textbook_claim_offenders` **能**失败 —— 否则 F1 没有可执行的守卫。
+
+    同一句真实措辞「已核验的教材计划行」分别喂给 `textbook_plan.status` **未命中**的课
+    （`13000`）与**已命中**的课（`00023`）：谓词按 `evidence.json` 判定，所以前者必须命中、后者
+    必须为空 —— 该措辞本身不是缺陷，**与机器判定不符**才是。置为 `return []` 时正控失败；
+    改成「见句即报」时负控失败（`00023` 的命中是**合法**的）。
+    """
+    unmatched_code, matched_code = "13000", "00023"
+
+    def textbook_status(course: str) -> str | None:
+        doc = json.loads((EVIDENCE / course / "evidence.json").read_text(encoding="utf-8"))
+        return (doc.get("textbook_plan") or {}).get("status")
+
+    assert textbook_status(unmatched_code) != "matched", f"{unmatched_code} 的 evidence 已变：正控前提失效"
+    assert textbook_status(matched_code) == "matched", f"{matched_code} 的 evidence 已变：负控前提失效"
+
+    claim = f"学分与{TEXTBOOK_MATCHED_CLAIM}均取自 `{unmatched_code}` 的 evidence。"
+    assert _textbook_claim_offenders(unmatched_code, claim) == [unmatched_code], (
+        "教材计划未命中却声称「已核验的教材计划行」，谓词未命中：F1 守卫已失去可证伪性"
+    )
+    assert _textbook_claim_offenders(matched_code, claim) == [], (
+        f"{matched_code} 的教材计划确有命中，同一句话不构成 F1 违规（假阳性）"
+    )
+
+
+def test_absolute_no_ai_guard_is_falsifiable():
+    """反身证明（F2）：`_absolute_no_ai_offenders` **能**失败 —— 否则「共现冲突」无人执法。
+
+    谓词报的是共现**冲突**而非署名本身：4 门课（`00023` `04735` `13000` `13003`）真实带着迁移期
+    手写 AI 署名，禁止署名是错的。故负控 =「有署名、无绝对断言 → `[]`」，正控 =「署名 + 绝对断言
+    → 命中该断言」。正控底稿用 `00023` 真实页面文本，并先断言底稿本身干净，否则「命中」可能来自
+    底稿而非注入物。置为 `return []` 时正控失败；改成「见署名即报」时负控失败。
+    """
+    page = _read("00023")
+    assert AI_ATTRIBUTION.search(page), "00023 已无 AI 署名：负控前提失效，请改用其他署名页"
+    assert _absolute_no_ai_offenders(page) == [], "00023 本身不应报 F2 冲突（假阳性）"
+
+    absolute = "不含任何 AI 内容"
+    assert ABSOLUTE_NO_AI_CLAIM.fullmatch(absolute), "正控短语与谓词正则不再一致，请更新本条"
+    assert _absolute_no_ai_offenders(f"{page}\n> {absolute}。\n") == [absolute], (
+        "既有 AI 署名又断言「绝对零 AI」，谓词未命中：F2 守卫已失去可证伪性"
+    )
+
+    attribution_only = "本页由 AI 辅助整理，供自学者参考。"
+    assert _absolute_no_ai_offenders(attribution_only) == [], (
+        "只有 AI 署名、没有绝对断言时不得报违规 —— 谓词必须只报共现冲突"
+    )
+
+
+def test_missing_chapter_guard_is_falsifiable():
+    r"""反身证明（F7）：`_missing_chapter_offenders` **能**失败 —— 否则宽化正则只是装饰。
+
+    上一版正则只认三种写法，对 `缺少第 6 章` / `缺了第 6 章` / `考纲第 6 章缺失` / `第 6 章未收录`
+    全部漏判 —— 与 `04747` / `04751` 的完整考纲被误判成「缺章」是同款假象。六个变体逐一注入（另含
+    `考纲缺章`，覆盖正则第 4 个分支）必须逐一命中；负控是**中性提及**（「第 6 章已收录」／「考纲第
+    6 章的内容见教材第 3 章」），真实 `04747` / `04751` 页面实测即此类写法，必须 `[]`。
+    """
+    cases = [
+        ("缺第 6 章", "考纲缺第 6 章，需补件。"),
+        ("缺少第 6 章", "经复核，官方考纲缺少第 6 章。"),
+        ("缺了第 6 章", "官方考纲缺了第 6 章，备考存在盲区。"),
+        ("第 6 章缺失", "考纲第 6 章缺失，暂无法覆盖该考点。"),
+        ("第 6 章未收录", "第 6 章未收录于现行考纲。"),
+        ("考纲缺章", "考纲缺章，需补件后重算。"),
+    ]
+    for expected, sentence in cases:
+        assert _missing_chapter_offenders(sentence) == [expected], (
+            f"变体 {expected!r} 未命中（F7 回归：宽化正则被削弱）—— 句子：{sentence!r}"
+        )
+
+    neutral = "官方考纲 13 章连续（第 1–13 章），第 6 章已收录；考纲第 6 章的内容见教材第 3 章。"
+    assert _missing_chapter_offenders(neutral) == [], (
+        "中性提及（第 N 章已收录 / 见教材）不得报违规：谓词只能报「缺章」断言（假阳性）"
+    )
+
+
 def test_blocked_courses_have_no_ai_generated_pages_beyond_index():
     """零 AI 产物不止 `index.md`：这些课**整门**都不应有 AI 横幅页。
 
