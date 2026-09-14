@@ -1,0 +1,1003 @@
+{
+  "schema_version": 1,
+  "course_code": "15044",
+  "generated_at": "2026-09-14",
+  "generator": {
+    "backend": "agent",
+    "model": "harness-agent",
+    "prompt_versions": {
+      "explain_point": "v1",
+      "memorize_point": "v1",
+      "drill_point": "v1",
+      "stage_plan": "v1"
+    }
+  },
+  "stage_plan": [
+    {
+      "stage": "入门",
+      "goal": "先看清这门课考什么、怎么考，建立整体框架，不急于背细节。",
+      "inputs": [
+        "考纲章节目录与各章考核点清单",
+        "本课应试总览（题型与作答纪律）"
+      ],
+      "how": [
+        "通读考纲目录，把绪论到第七章的标题抄成一页提纲，标出每章大致考什么。",
+        "按章翻一遍要点梳理，只求认出概念名称与它属于哪一章，不要求记住内容。"
+      ],
+      "outputs": [
+        "一页纸的课程提纲（含各章标题与自己标注的重点章）"
+      ],
+      "done_when": "能不看资料说出本课共有哪几章、每章考什么主题，并指出自己最陌生的两章。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "精读",
+      "goal": "按考纲要求层级逐点吃透，把识记点背准、领会点讲通。",
+      "inputs": [
+        "各章要点梳理与记忆辅助",
+        "考纲对每个考核点的要求层级（识记／领会／应用）"
+      ],
+      "how": [
+        "按章顺序推进，先看要点梳理理解，再用记忆辅助里的关键词与记忆法把识记点背下来。",
+        "对领会层级的点，合上资料用自己的话讲一遍，讲不通就回去重看。",
+        "每章读完立刻做该章的单选题，错题当场回到对应考核点核对。"
+      ],
+      "outputs": [
+        "分章笔记或关键词卡片",
+        "逐章错题清单（记录错因与对应考核点）"
+      ],
+      "done_when": "任抽一个识记点能说出准确界定；任抽一个领会点能讲出它的道理，不靠原文照念。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "刷题",
+      "goal": "用题目把知识转成得分能力，重点是识别干扰项为什么错。",
+      "inputs": [
+        "本课全部练习题（单选／简答／论述）",
+        "已积累的错题清单"
+      ],
+      "how": [
+        "按章成组做题，做完再对答案，强迫自己先写出判断理由。",
+        "对每道错题，读解析里逐个选项的说明，弄清错项错在哪个概念上。",
+        "简答与论述题先列要点提纲再落笔，对照要点梳理检查有没有漏点。"
+      ],
+      "outputs": [
+        "刷题记录（正确率按章统计）",
+        "精简后的高频错题清单"
+      ],
+      "done_when": "连续两轮做题时，同一考点的同类错不再重复出现。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "冲刺",
+      "goal": "抓住高频与薄弱环节，把知识压缩到能在考场上快速调用。",
+      "inputs": [
+        "高频错题清单",
+        "各章要点梳理（只用标题与关键词部分）"
+      ],
+      "how": [
+        "只看关键词与提纲，尝试复述内容，能复述的划掉，复述不出的重新回到讲解。",
+        "把易错点集中过一遍，重点记正确说法与常见混淆的对照。",
+        "按题型分别练一次完整作答，控制每题的作答篇幅与结构。"
+      ],
+      "outputs": [
+        "一页纸的临考速览（高频考点与易错对照）"
+      ],
+      "done_when": "能在不看资料的情况下按章复述主要内容，并说出每章最容易混的地方。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "复盘",
+      "goal": "把最后阶段的错题与薄弱点收口，稳定状态上考场。",
+      "inputs": [
+        "临考速览",
+        "剩余错题清单",
+        "本课应试总览里的作答纪律"
+      ],
+      "how": [
+        "只过错题与易错点，不再铺开新内容，避免打乱已建立的框架。",
+        "默想一遍作答顺序与分点作答的要求，确认时间安排留有检查余地。",
+        "对仍然记不牢的两三个考点单独强化，其余不再纠缠。"
+      ],
+      "outputs": [
+        "最终错题清零记录（或明确记为已知薄弱点）"
+      ],
+      "done_when": "错题清单上不再有讲不清来由的题目，且能说清每道错题的正确说法。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "block_id": "15044-intro-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "### 要点梳理\n- 从创立者和继承者看，马克思主义由马克思和恩格斯创立，并由他们的后继者在实践中不断丰富和发展，因而是开放的、发展着的理论体系。\n- 从研究对象看，它研究自然、社会和人类思维发展的一般规律，而不是某一门具体科学所研究的特殊规律。\n- 从阶级属性看，它公开申明为无产阶级和广大劳动人民服务，是关于无产阶级解放和整个人类解放的学说。\n- 从内容构成看，马克思主义哲学、马克思主义政治经济学和科学社会主义是它的三个基本组成部分，三者相互支撑、有机统一。\n- 从广狭两义看，狭义指马克思和恩格斯创立的基本理论、基本观点和学说体系，广义还包括后继者的发展成果。\n### 易错点\n- 把研究对象记成一切具体规律：正确说法是自然、社会和人类思维发展的一般规律，各门具体科学才研究各自的特殊规律。\n- 把马克思主义等同于两位创始人的著作汇编：它是发展着的体系，后继者的发展成果同样属于马克思主义。\n- 把三个基本组成部分割裂开来背：它们是一个有机整体，哲学提供立场观点方法，政治经济学揭示经济规律，科学社会主义指明发展方向。"
+    },
+    {
+      "block_id": "15044-intro-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "**关键词**：创立者、发展者、研究对象、阶级属性、三个组成部分。\n**记忆法**：按“创—发—研—属—分”五个字往下数，马克思和恩格斯创立，后继者不断发展，研究自然、社会和人类思维发展的一般规律，为无产阶级和劳动人民服务，由哲学、政治经济学、科学社会主义三块构成。\n**对比**：狭义只算马克思和恩格斯创立的基本理论和学说体系，广义还要加上后继者的发展成果，答科学内涵时两层都要写到。\n**串联**：先答由谁创立、由谁发展，再答研究什么、为谁服务、由哪几块构成，顺序固定下来就不会漏项。"
+    },
+    {
+      "block_id": "15044-intro-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "马克思主义的三个基本组成部分是（ ）。\nA. 马克思主义哲学、马克思主义政治经济学和科学社会主义\nB. 德国古典哲学、英国古典政治经济学和英法两国的空想社会主义学说\nC. 辩证唯物主义、历史唯物主义和科学社会主义\nD. 劳动价值论、剩余价值学说和唯物史观",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，马克思主义哲学、马克思主义政治经济学和科学社会主义是它的三个基本组成部分，三者相互支撑、有机统一。\nB 项是马克思主义的直接理论来源，回答的是它从哪里来，而不是它由哪几块构成。\nC 项把马克思主义哲学内部的两大组成部分当成了整个马克思主义的构成，范围弄错了。\nD 项是分属哲学和政治经济学的具体理论成果，不能与三个基本组成部分并列。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "### 要点梳理\n- 德国古典哲学是十八世纪末到十九世纪初德国的哲学，它是马克思主义哲学的直接理论来源。\n- 它的重要代表人物是黑格尔和费尔巴哈，辩证法方面的成果主要在黑格尔，唯物主义方面的成果主要在费尔巴哈。\n- 马克思和恩格斯对它采取批判继承的态度，分别吸取了黑格尔辩证法的合理内核和费尔巴哈唯物主义的基本内核。\n- 这一继承与改造的结果，是创立了辩证唯物主义和历史唯物主义，实现了唯物主义与辩证法、自然观与历史观的统一。\n- 在绪论第一节的逻辑链条里，它与英国古典政治经济学、英法两国的空想社会主义学说并列为马克思主义的三个直接理论来源。\n### 易错点\n- 把批判继承记成全盘照搬：正确说法是有取有舍地改造，吸取其中的合理成分，而不是原样搬运。\n- 把两位代表人物的贡献对调：辩证法看黑格尔，唯物主义看费尔巴哈，二者不可互换。\n- 把德国古典哲学当成马克思主义唯一的理论来源：它只是三个直接理论来源中的哲学来源。"
+    },
+    {
+      "block_id": "15044-intro-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "**关键词**：黑格尔—辩证法，费尔巴哈—唯物主义。\n**记忆法**：记两个内核，批判继承黑格尔辩证法的合理内核与费尔巴哈唯物主义的基本内核，二者结合，形成辩证唯物主义和历史唯物主义。\n**对比**：两位代表人物的贡献不能对调，辩证法看黑格尔，唯物主义看费尔巴哈。\n**串联**：把它放进三个直接理论来源里记，德国古典哲学负责哲学这一块，与英国古典政治经济学、英法两国的空想社会主义学说并列。"
+    },
+    {
+      "block_id": "15044-intro-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "德国古典哲学中，辩证法与唯物主义的重要代表人物分别是（ ）。\nA. 黑格尔和费尔巴哈\nB. 费尔巴哈和黑格尔\nC. 亚当·斯密和大卫·李嘉图\nD. 圣西门和傅立叶",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，德国古典哲学在辩证法方面的重要代表是黑格尔，在唯物主义方面的重要代表是费尔巴哈。\nB 项把两位代表人物对调了，辩证法不属于费尔巴哈，唯物主义也不属于黑格尔。\nC 项是英国古典政治经济学的代表人物，与德国古典哲学不是一回事。\nD 项是法国空想社会主义的代表人物，属于另一个理论来源。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "### 要点梳理\n- 英国古典政治经济学是马克思主义政治经济学的直接理论来源，主要代表人物是亚当·斯密和大卫·李嘉图。\n- 它的重要理论贡献是提出并论证了劳动价值论，即商品的价值由生产它所耗费的劳动决定。\n- 马克思和恩格斯批判地继承了这一成果，在劳动价值论的基础上创立剩余价值学说，揭示了资本主义剥削的秘密。\n- 它的局限在于把资本主义生产方式看成永恒不变的自然形式，看不到这种生产方式在历史上的暂时性。\n- 在绪论第一节里，它与德国古典哲学、英法两国的空想社会主义学说并列，共同构成马克思主义的三个直接理论来源。\n### 易错点\n- 把主要贡献记成剩余价值学说：那是马克思和恩格斯的理论创造，古典政治经济学提供的是劳动价值论。\n- 把古典政治经济学与空想社会主义混为一谈：前者研究经济关系，后者批判资本主义并设想未来社会。\n- 把代表人物国别记混：斯密和李嘉图是英国人，圣西门、傅立叶是法国人，欧文是英国人。"
+    },
+    {
+      "block_id": "15044-intro-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "**关键词**：英国、亚当·斯密、大卫·李嘉图、劳动价值论。\n**串联**：把三步串成一条线，古典政治经济学提出并论证劳动价值论，马克思和恩格斯批判地继承，在此基础上创立剩余价值学说。\n**对比**：三个理论来源各管一块，德国古典哲学管哲学，英国古典政治经济学管经济学，英法两国的空想社会主义学说管社会主义。\n**记忆法**：记人先记国，斯密和李嘉图是英国人，圣西门、傅立叶是法国人，欧文是英国人。"
+    },
+    {
+      "block_id": "15044-intro-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "英国古典政治经济学的主要理论贡献是（ ）。\nA. 提出并论证了劳动价值论\nB. 创立了剩余价值学说\nC. 创立了唯物史观\nD. 设计了未来理想社会的蓝图",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，亚当·斯密和大卫·李嘉图提出并论证了劳动价值论，这是马克思主义政治经济学直接继承的思想材料。\nB 项剩余价值学说是马克思和恩格斯在批判继承劳动价值论的基础上创立的理论，属于马克思主义自身的内容。\nC 项唯物史观同样由马克思和恩格斯创立，不是古典政治经济学的成果。\nD 项对未来理想社会的设想属于空想社会主义，不是经济学说的贡献。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "### 要点梳理\n- 英法两国的空想社会主义学说产生于十九世纪初，代表人物是法国的圣西门、傅立叶和英国的欧文。\n- 它揭露和批判了资本主义社会的弊病，主张建立人人平等、共同劳动的理想社会，为科学社会主义提供了有价值的思想材料。\n- 它的根本局限是建立在唯心史观之上，既看不到无产阶级的历史作用，也找不到实现理想社会的现实道路和依靠力量。\n- 因此它只能停留于空想，把希望寄托在统治者的良心发现或者小范围的示范试验上。\n- 马克思和恩格斯批判地继承了它，把社会主义置于唯物史观和剩余价值学说的基础之上，使社会主义从空想变为科学。\n### 易错点\n- 把三位代表人物记成一国人物：圣西门、傅立叶是法国人，欧文是英国人，国别不能混。\n- 认为空想社会主义已经包含科学社会主义的全部内容：它只提供了思想材料，实现道路是由科学社会主义揭示的。\n- 把它当作纯粹的空谈而全盘否定：它批判资本主义的成果和未来社会的设想，是科学社会主义的重要思想来源。"
+    },
+    {
+      "block_id": "15044-intro-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "**口诀**：“法有圣傅，英有欧文”，圣西门、傅立叶是法国人，欧文是英国人。\n**记忆法**：按“批、想、空”三层记，批判资本主义弊病是它的贡献，设想人人平等的理想社会是它的内容，找不到现实道路和依靠力量是它的局限。\n**对比**：空想社会主义提供的是思想材料，科学社会主义才揭示了实现道路，两者不能混为一谈。\n**关键词**：批判资本主义；理想社会；唯心史观。\n**串联**：它和德国古典哲学、英国古典政治经济学一样，都属于马克思主义的直接理论来源，负责其中的社会主义这一块。"
+    },
+    {
+      "block_id": "15044-intro-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "下列人物中，属于英国空想社会主义者的是（ ）。\nA. 欧文\nB. 圣西门\nC. 傅立叶\nD. 黑格尔",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，欧文是英国空想社会主义的代表人物。\nB 项圣西门是法国空想社会主义者，与欧文的国别不同。\nC 项傅立叶也是法国空想社会主义者，同样不属于英国。\nD 项黑格尔是德国古典哲学的代表人物，与空想社会主义不是一回事。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "### 要点梳理\n- 自然科学的三大发现指细胞学说、能量守恒与转化定律和生物进化论，它们是马克思主义产生的重要自然科学前提。\n- 细胞学说说明动植物都由细胞构成，细胞有共同的构造与发育规律，从而揭示了生物界的统一性。\n- 能量守恒与转化定律说明自然界各种能量形式可以相互转化而总量不变，揭示了各种物质运动形式之间的内在联系。\n- 生物进化论说明生物是长期进化的产物，物种之间存在亲缘关系，揭示了自然界本身的历史发展过程。\n- 三大发现从不同侧面打破了形而上学和唯心主义的自然观，为辩证唯物主义世界观的确立提供了自然科学依据。\n### 易错点\n- 三大发现张冠李戴：正确说法是细胞学说、能量守恒与转化定律、生物进化论，不要把其他自然科学成果凑进来。\n- 漏掉能量守恒与转化定律中的转化二字，记成单纯的守恒定律，就丢掉了各种运动形式相互联系这一关键。\n- 把三大发现的作用说成直接提供了政治经济学的结论：它们的意义在于自然科学前提，即为辩证唯物主义提供依据。"
+    },
+    {
+      "block_id": "15044-intro-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "**口诀**：“细、能、进”，细胞学说、能量守恒与转化定律、生物进化论。\n**记忆法**：按“构造—运动—历史”三个角度记，细胞学说讲生物构造的统一，能量守恒与转化定律讲各种运动形式之间的联系，生物进化论讲自然界本身的历史发展。\n**对比**：三大发现是自然科学的“前提”，三个理论来源才是“直接理论来源”，一个在自然科学层面，一个在思想理论层面。\n**关键词**：自然科学前提；辩证唯物主义。\n**串联**：三个发现分别落在生物学、物理学和生物学史的范围，合起来说明自然界是有联系、发展着的整体，这正是打破形而上学自然观的依据。"
+    },
+    {
+      "block_id": "15044-intro-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L177"
+      ],
+      "text_md": "自然科学的三大发现是指（ ）。\nA. 细胞学说、能量守恒与转化定律、生物进化论\nB. 细胞学说、万有引力定律、生物进化论\nC. 能量守恒与转化定律、生物进化论、相对论\nD. 细胞学说、元素周期律、量子力学",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，细胞学说、能量守恒与转化定律和生物进化论就是自然科学的三大发现，它们是马克思主义产生的自然科学前提。\nB 项把万有引力定律混了进来，它不属于三大发现。\nC 项相对论不属于三大发现的内容。\nD 项元素周期律和量子力学都不属于三大发现。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L179"
+      ],
+      "text_md": "### 要点梳理\n- 马克思主义的直接理论来源有三个，即德国古典哲学、英国古典政治经济学和英法两国的空想社会主义学说。\n- 说它们直接，是因为它们是马克思和恩格斯创立理论时能够直接利用的人类思想成果，分别提供了哲学世界观、经济学分析和社会主义理想。\n- 三个来源与三个基本组成部分一一对应：哲学来源对应马克思主义哲学，经济学来源对应马克思主义政治经济学，社会主义来源对应科学社会主义。\n- 这种继承不是简单相加，而是批判地改造，马克思和恩格斯在唯物史观和剩余价值学说的基础上实现了根本变革。\n- 这一考点在绪论第一节中起总括作用，回答的是马克思主义从哪里来的问题，与自然科学前提分属两个不同层面。\n### 易错点\n- 把理论来源写成三大发现：三大发现属自然科学前提，理论来源属思想理论层面，两者不是一回事。\n- 把三个来源与三个基本组成部分的对应关系错位：记住哲学对哲学、经济学对经济学、社会主义对社会主义。\n- 只写德国古典哲学一个来源：三个来源缺一不可，少写任何一个都会丢分。"
+    },
+    {
+      "block_id": "15044-intro-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L179"
+      ],
+      "text_md": "**口诀**：“德哲、英经、英法社”，德国古典哲学、英国古典政治经济学、英法两国的空想社会主义学说。\n**串联**：三个来源对上三个组成部分，哲学对哲学，经济学对政治经济学，社会主义对科学社会主义。\n**记忆法**：抓住“直接”二字理解，它们是马克思和恩格斯当时能够直接利用的人类思想成果。\n**对比**：不要与自然科学前提混记，三大发现回答的是自然科学的依据，而不是理论来源。\n**关键词**：德国古典哲学；英国古典政治经济学；空想社会主义学说；批判继承。"
+    },
+    {
+      "block_id": "15044-intro-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L179"
+      ],
+      "text_md": "简述马克思主义的三个直接理论来源，并说明它们与马克思主义三个基本组成部分的对应关系。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）马克思主义的直接理论来源有三个，即德国古典哲学、英国古典政治经济学和英法两国的空想社会主义学说。（2）德国古典哲学对应马克思主义哲学，马克思和恩格斯批判地吸收了黑格尔辩证法的合理内核和费尔巴哈唯物主义的基本内核。（3）英国古典政治经济学对应马克思主义政治经济学，他们在劳动价值论的基础上创立了剩余价值学说。（4）英法两国的空想社会主义学说对应科学社会主义，它批判资本主义、设想未来社会，为科学社会主义提供了有价值的思想材料。（5）这种继承不是照搬，而是批判地改造，正是经过这种改造，马克思主义才成为完整的科学理论体系。解析：先答出三个来源，再逐一对应三个基本组成部分，最后点明批判继承、根本变革这层意思，只罗列名称拿不到完整分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L179"
+      ],
+      "text_md": "### 要点梳理\n- 习近平新时代中国特色社会主义思想，是马克思主义中国化时代化进程中形成的最新理论成果，也是马克思主义在当代中国的发展。\n- 马克思主义要发挥指导作用，必须同各国的具体实际和时代特征相结合，这种结合在中国表现为马克思主义中国化时代化的历史进程。\n- 说它一脉相承，是因为它坚持马克思主义的立场、观点和方法，坚持科学社会主义的基本原则。\n- 说它与时俱进，是因为它面对新时代提出的新课题作出了新的理论概括，因而处于这一进程中最新的位置。\n- 学习绪论要由此懂得，马克思主义不是一成不变的教条，它正是在同中国实际相结合的过程中不断丰富和发展的。\n### 易错点\n- 把它同马克思主义割裂或对立起来：它是马克思主义的继承和发展，不是另外一种理论。\n- 只把它当作一个需要背下来的提法：更要知道它为什么是最新成果，理解一脉相承与与时俱进两重含义。\n- 把它说成马克思主义的全部：它属于马克思主义中国化时代化的成果，是马克思主义发展进程中的一个阶段。"
+    },
+    {
+      "block_id": "15044-intro-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L179"
+      ],
+      "text_md": "**关键词**：马克思主义中国化时代化；最新理论成果。\n**串联**：把它放进一条线记，马克思主义同中国具体实际和时代特征相结合，形成马克思主义中国化时代化的历史进程，这一进程的最新结晶就是这一思想。\n**记忆法**：抓住“一脉相承”和“与时俱进”两面，一脉相承指坚持马克思主义的立场、观点和方法，与时俱进指回答新时代提出的新课题。\n**对比**：不能把它同马克思主义割裂或对立，它属于马克思主义，是马克思主义在当代中国的发展。"
+    },
+    {
+      "block_id": "15044-intro-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L179"
+      ],
+      "text_md": "马克思主义传入中国以后，必须回答中国在不同历史阶段提出的具体问题，并在回答这些问题的过程中形成新的理论成果。请说明习近平新时代中国特色社会主义思想为什么属于这一历史进程中最新的理论成果，以及它与马克思主义之间是什么关系。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）马克思主义要发挥指导作用，必须同各国的具体实际和时代特征相结合，这种结合在中国表现为马克思主义中国化时代化的历史进程。（2）这一思想是这一结合进程的最新理论结晶，它面对新时代提出的新课题作出了新的理论概括。（3）它与马克思主义一脉相承，坚持马克思主义的立场、观点和方法，坚持科学社会主义的基本原则。（4）它又与时俱进，根据新的时代条件和实践要求丰富和发展了马克思主义，因而处于最新的位置。（5）因此不能把它同马克思主义割裂开来或者对立起来，它是马克思主义在当代中国的发展。解析：本题的关键是同时答出一脉相承和与时俱进两面，只说最新而不说一脉相承会丢掉要点。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s2-p1/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L183"
+      ],
+      "text_md": "### 要点梳理\n- 马克思主义是由马克思和恩格斯创立、并由他们的后继者不断发展的科学理论体系。\n- 研究对象：自然、社会和人类思维发展的一般规律，而不是各门具体科学所研究的特殊规律。\n- 阶级属性：它是关于无产阶级解放和整个人类解放的学说，公开申明为无产阶级和广大劳动人民服务。\n- 目标指向：它揭示了社会主义代替资本主义的历史必然性，把实现共产主义作为最高社会理想。\n- 理论品格：它的基本特征是科学性、人民性、实践性、发展性四项，而与时俱进正是它的理论品质。\n### 易错点\n- 把它窄化为两位创始人的著作：后继者的发展成果同样属于马克思主义，它是发展着的体系。\n- 把研究对象说成一切具体规律：它提供的是最一般、最普遍的规律，不能代替各门具体科学。\n- 把基本特征与理论品质混为一谈：四项基本特征就是科学性、人民性、实践性、发展性，而与时俱进是理论品质。"
+    },
+    {
+      "block_id": "15044-intro-s2-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L183"
+      ],
+      "text_md": "**记忆法**：用四个问题记，由谁创立并发展，马克思和恩格斯创立、后继者不断发展；研究什么，自然、社会和人类思维发展的一般规律；为谁服务，无产阶级和广大劳动人民；奔着什么目标，社会主义代替资本主义、最终实现共产主义。\n**关键词**：科学理论体系；一般规律；无产阶级解放；最高社会理想。\n**串联**：四个问题答全，“马克思主义是什么”就完整了，再补一句它的基本特征是科学性、人民性、实践性、发展性。"
+    },
+    {
+      "block_id": "15044-intro-s2-p1/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s2-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L183"
+      ],
+      "text_md": "马克思主义是关于无产阶级和人类解放的学说，它的最高社会理想是（ ）。\nA. 实现共产主义\nB. 实现社会各阶级的永久共存\nC. 建立平均主义的理想社会\nD. 实现资本主义的自我完善",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，马克思主义把实现共产主义作为自己的最高社会理想，并把社会主义代替资本主义看作历史发展的必然。\nB 项与马克思主义的阶级属性不符，它公开申明为无产阶级和广大劳动人民服务，不主张各阶级永久共存。\nC 项平均主义的理想社会是空想社会主义一类思潮的设想，不是马克思主义的最高社会理想。\nD 项资本主义的自我完善恰恰是马克思主义所批判的观点，它揭示的是社会主义代替资本主义的历史必然性。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s2-p2/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L183"
+      ],
+      "text_md": "### 要点梳理\n- 马克思主义的基本特征是科学性、人民性、实践性和发展性，四者相互贯通、有机统一。\n- 科学性指它如实反映客观世界及其发展规律，是经得起实践检验的真理。\n- 人民性指它代表无产阶级和广大劳动人民的根本利益，为人民认识世界和改造世界服务。\n- 实践性指它来自实践、服务于实践，并在实践中接受检验和发展，是行动的指南而不是教条。\n- 发展性指它与时俱进，随着时代、实践和科学的发展而不断丰富和发展，不承认终极真理。\n### 易错点\n- 四个特征漏项或加项：考纲规定的就是科学性、人民性、实践性、发展性四项，不要把与时俱进补进去当第五项。\n- 把革命性当成四个基本特征之一：革命性与科学性的统一是对基本特征的另一种概括，不是四个特征中的一项。\n- 四个特征孤立背诵：它们是一个统一整体，说清科学性同人民性、实践性、发展性的内在联系才完整。"
+    },
+    {
+      "block_id": "15044-intro-s2-p2/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L183"
+      ],
+      "text_md": "**口诀**：“科、人、实、发”，科学性、人民性、实践性、发展性。\n**记忆法**：四个字各配一句话，科学性是如实反映客观规律，人民性是为无产阶级和劳动人民服务，实践性是从实践中来又回到实践中去，发展性是随时代和实践不断丰富。\n**对比**：不要把“与时俱进”塞进这四个特征里，与时俱进是马克思主义的理论品质，不是四个基本特征之一。\n**串联**：再补一层概括，考纲还从“革命性与科学性的统一”这个角度讲它的基本特征，两者并不矛盾。"
+    },
+    {
+      "block_id": "15044-intro-s2-p2/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s2-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L183"
+      ],
+      "text_md": "学习马克思主义，首先要掌握它的基本特征。马克思主义的基本特征是（ ）。\nA. 科学性、人民性、实践性、发展性\nB. 科学性、革命性、实践性、阶级性\nC. 人民性、实践性、开放性、创新性\nD. 科学性、人民性、革命性、发展性",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项完整列出了科学性、人民性、实践性和发展性这四个基本特征。\nB 项把阶级性等提法混了进来，阶级属性说的是它为谁服务，不等于四个基本特征。\nC 项开放性、创新性是对发展性的通俗描述，不是基本特征的规范名称。\nD 项用革命性替换了实践性，漏掉实践性；革命性与科学性的统一是对基本特征的另一种概括，不能顶替四个基本特征中的任何一项。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s2-p3/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "### 要点梳理\n- 科学性指马克思主义是对客观世界的正确反映，它揭示的是自然、社会和人类思维发展的一般规律，而不是主观臆造。\n- 它的科学性有其根据，即它有科学的世界观和方法论，也就是辩证唯物主义和历史唯物主义，坚持一切从实际出发。\n- 它以实践作为检验真理的标准，理论是否正确不由它自我标榜，而要由实践发展的结果来判定。\n- 它是开放的理论，随着实践和科学的发展而发展，不承认有什么终极真理。\n- 与什么相对：与唯心主义、形而上学和各种空想学说相对。空想社会主义之所以不科学，就在于它建立在唯心史观之上。\n### 易错点\n- 把科学性理解成永远正确、不容修正：正确说法是它随实践发展而发展，不承认终极状态。\n- 把科学性同革命性对立起来：二者是统一的，正因为揭示了客观规律，它才敢于号召改造世界。\n- 把科学性归因于某位思想家的个人天才：正确说法是它建立在客观规律和无产阶级实践的基础之上。"
+    },
+    {
+      "block_id": "15044-intro-s2-p3/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "**记忆法**：用三句话记科学性，反映客观规律所以“对”，以实践为检验标准所以“真”，不承认终极真理所以“活”。\n**对比**：与空想社会主义对照记，后者从主观理想出发、靠示范试验，马克思主义从客观规律出发、靠实践检验。\n**关键词**：客观规律；辩证唯物主义与历史唯物主义；实践检验。\n**串联**：科学性同革命性相统一，正因为反映了客观规律，它才敢于号召改造世界；科学性又同实践性互为支撑，以实践为检验标准，它才能始终保持科学。"
+    },
+    {
+      "block_id": "15044-intro-s2-p3/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s2-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "科学性是一种理论能够立足的根本。请简述马克思主义的科学性主要表现在哪些方面，并说明它的科学性是从哪里来的。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）从理论内容看，它如实反映客观世界，揭示的是自然、社会和人类思维发展的一般规律，而不是主观臆造。（2）从方法论基础看，它有科学的世界观和方法论，也就是辩证唯物主义和历史唯物主义，坚持一切从实际出发。（3）从检验标准看，它以实践作为检验真理的标准，理论是否正确要由实践的结果来判定。（4）从理论形态看，它是开放的理论，随着实践和科学的发展而发展，不承认终极真理。（5）从同革命性的关系看，正因为建立在客观规律的基础上，它才实现了科学性与革命性的统一。解析：答案要落到如实反映客观规律、有科学的世界观和方法论、以实践为检验标准、不承认终极真理这几点，只答它是科学的不得分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s2-p4/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "### 要点梳理\n- 人民性指马克思主义代表无产阶级和广大劳动人民的根本利益，公开申明自己为人民服务，是无产阶级和劳动人民的思想武器。\n- 为什么会有人民性：它的阶级属性决定了它的立场，它是无产阶级争取自身解放和整个人类解放的学说。\n- 落到目标上看，它把人的自由而全面的发展作为最高价值追求，实现共产主义正是为了人民的根本利益。\n- 与什么相对：与那些只为少数人利益辩护、并把自己为谁服务这一点掩盖起来的理论相对。\n- 它与科学性并不矛盾：只有站在人民的立场上，才能如实地揭示社会发展的客观规律。\n### 易错点\n- 把人民性理解成只与一部分人有关：它追求无产阶级解放与整个人类解放的统一，不能窄化服务对象。\n- 割裂人民性与阶级性：它是公开申明自己阶级属性的理论，人民性同无产阶级的立场是一致的。\n- 把它当成一句口号：人民性体现在它的全部理论内容和目标指向上，而不是外加的标签。"
+    },
+    {
+      "block_id": "15044-intro-s2-p4/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "**记忆法**：只问“为谁”两个字，为人民服务，为无产阶级和整个人类解放服务。\n**对比**：以往为少数人利益辩护的理论大多掩盖自己的立场，马克思主义则公开申明自己的阶级属性。\n**串联**：人民性同科学性相连，立场站在人民一边，才可能如实揭示社会发展的客观规律。\n**关键词**：无产阶级和人类解放；人的自由而全面的发展。\n**串联**：人民性、科学性、实践性、发展性是一个整体，人民性说明它站在谁的立场上，其余三项说明它为什么靠得住。"
+    },
+    {
+      "block_id": "15044-intro-s2-p4/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s2-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "请简述马克思主义的人民性主要体现在哪些方面，并说明为什么说它的人民性同科学性并不矛盾。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）从阶级属性看，它是无产阶级争取自身解放和整个人类解放的学说，公开申明为无产阶级和广大劳动人民服务。（2）从价值立场看，它把自己的理论活动同人民的利益联系在一起，为人民认识世界和改造世界提供思想武器。（3）从目标指向看，它把人的自由而全面的发展作为最高价值追求，实现共产主义正是为了人民的根本利益。（4）从理论内容看，它如实揭示社会发展的客观规律，因为只有如实反映规律才真正符合人民的根本利益。（5）人民性同科学性、实践性、发展性是统一的，不是从外面附加的口号。解析：先把人民性同阶级属性扣上，再落到价值立场和目标指向，避免只写一句为人民服务。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s2-p5/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "### 要点梳理\n- 实践性指马克思主义来源于实践、服务于实践，并在实践中接受检验和发展。\n- 它不只是认识世界的理论，更重要的是改造世界的思想武器，是行动的指南而不是供人背诵的教条。\n- 它的理论内容建立在对现实社会关系的分析之上，而不是从抽象概念推导出来的。\n- 实践性落到学习方法上，就决定了必须把理论与实际结合起来，这也是学习马克思主义所要求的根本方法。\n- 与什么相对：与把理论同实际割裂开来、只会背诵词句的教条主义相对。\n### 易错点\n- 只记它指导实践，漏掉它来自实践并在实践中发展：这半句话漏掉，实践性就答不完整。\n- 把实践性等同于应用性：实践性首先指理论来源于实践并受实践检验，不只是能拿来用。\n- 把它同科学性对立：正因为理论来自实践又回到实践，它才能不断被检验、修正和丰富，二者是统一的。"
+    },
+    {
+      "block_id": "15044-intro-s2-p5/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "**记忆法**：用三个“于”记实践性，来自实践、服务于实践、在实践中检验和发展。\n**关键词**：行动的指南，不是教条；理论联系实际，即把理论与实际结合起来，这是根本方法。\n**对比**：与教条主义对照记，教条主义把理论当成背诵材料，马克思主义把理论当成改造世界的武器。\n**串联**：由实践性可以顺理成章地推出，必须把理论与实际结合起来，这也是学习马克思主义所要求的根本方法，两个考点放在一起记。"
+    },
+    {
+      "block_id": "15044-intro-s2-p5/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s2-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "请简述马克思主义的实践性主要体现在哪些方面，并说明为什么它既是认识世界的理论，又是改造世界的思想武器。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）来源于实践，它的理论不是从抽象概念推导出来的，而是在总结工人运动和社会实践经验的基础上形成的。（2）服务于实践，它是认识世界和改造世界的思想武器，是行动的指南而不是供人背诵的教条。（3）在实践中接受检验，理论是否具有真理性，要由实践的结果来判定。（4）在实践中发展，它随着实践的推进而不断丰富和发展，不承认一劳永逸的答案。（5）落到学习方法上，实践性决定了必须把理论与实际结合起来，这也是学习马克思主义所要求的根本方法。解析：本题要依次答出来自实践、服务实践、受实践检验、随实践发展四个环节，并收在根本方法上。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s2-p6/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "### 要点梳理\n- 发展性指马克思主义随着时代、实践和科学的发展而不断丰富和发展，与时俱进是它的理论品质。\n- 道理在于：客观世界本身在运动变化，实践不断提出新的课题，理论必须跟着发展才不会脱离实际。\n- 它主要通过两条途径发展：一是同各国的具体实际相结合，二是在总结新的实践经验、回答新的时代课题中发展。\n- 马克思主义中国化时代化的历史进程不断产生新的理论成果，正是发展性的生动体现。\n- 与什么相对：与把马克思主义当成僵死教条、当成封闭的终极真理体系的看法相对。\n### 易错点\n- 把发展性记成马克思主义经常变：正确说法是它的基本原理不变，具体运用和结论随着实践的发展而更新。\n- 把发展性等同于可以随意修改：发展是在坚持基本原理的前提下进行的，不是任意发挥。\n- 混淆层级：发展性是四个基本特征之一，与时俱进是理论品质，两者不能互换名称。"
+    },
+    {
+      "block_id": "15044-intro-s2-p6/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "**记忆法**：记“两变一不变”，时代在变、实践在变，它的基本原理不变，具体运用和结论则随着实践的发展而更新。\n**关键词**：与时俱进是理论品质；不承认终极真理。\n**串联**：发展性最好的例子是马克思主义中国化时代化的历史进程，它不断产生新的理论成果。\n**对比**：与封闭的终极真理体系对照记，发展性恰恰说明它不承认有什么终极状态。\n**串联**：发展性也解释了为什么马克思主义必须同中国具体实际相结合，进而不断产生新的理论成果。"
+    },
+    {
+      "block_id": "15044-intro-s2-p6/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s2-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L184"
+      ],
+      "text_md": "请简述马克思主义的发展性主要体现在哪些方面，并结合它在中国的发展历程说明它为什么能够永葆生机。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：（1）从客观依据看，客观世界在运动变化，实践在不断发展，理论必须随之发展，否则就会脱离实际。（2）从理论品质看，与时俱进是马克思主义的理论品质，它不承认终极真理，也不提供一劳永逸的答案。（3）从发展途径看，一是同各国的具体实际相结合，二是在总结新的实践经验和回答新的时代课题中发展。（4）从实际例证看，马克思主义中国化时代化的历史进程不断产生新的理论成果，正是发展性的生动体现。（5）从学习要求看，发展性要求我们既坚持基本原理，又在新的历史条件下不断丰富和发展它。解析：答案要把为什么发展、靠什么发展、发展性对学习的要求这三个层次都写到。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "15044-intro-s3-p1/explain",
+      "kind": "explain",
+      "point_id": "15044-intro-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L189"
+      ],
+      "text_md": "### 要点梳理\n- 学习马克思主义的目的，首先是形成正确的世界观、人生观、价值观，认清人生的意义和方向。\n- 其次是掌握认识世界和改造世界的思想武器，提高分析问题和解决问题的能力，学会用唯物辩证的方法看待社会现象。\n- 再次是坚定共产主义最高社会理想和社会主义信念，明确社会发展的方向，在复杂环境中保持清醒。\n- 还包括提高辨别是非、抵制各种错误思潮影响的能力，不把马克思主义当成僵死的教条。\n- 这些目的落到方法上，就是理论联系实际；它不是目的本身，而是达到目的的根本方法。\n### 易错点\n- 把学习目的写成背记概念、应付考试：考纲指明的目的是形成正确的世界观、人生观和价值观。\n- 把根本方法当成学习目的：理论联系实际是根本方法，与学习目的是两个层面的问题。\n- 只记改造客观世界而漏掉改造主观世界：形成正确的世界观、人生观和价值观，正是改造主观世界的体现。"
+    },
+    {
+      "block_id": "15044-intro-s3-p1/memorize",
+      "kind": "memorize",
+      "point_id": "15044-intro-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L189"
+      ],
+      "text_md": "**记忆法**：用“三观、两世界、一运用”记学习目的，形成正确的世界观、人生观、价值观，掌握认识世界和改造世界的思想武器，并在新的历史条件下自觉地运用和发展它。\n**对比**：目的是树立三观、指导实践，根本方法是理论联系实际，两者不能互换，也不能把方法当成目的。\n**关键词**：世界观人生观价值观；共产主义最高社会理想；理论联系实际。\n**串联**：再补一句现实要求，提高辨别是非、抵制各种错误思潮影响的能力。"
+    },
+    {
+      "block_id": "15044-intro-s3-p1/drill",
+      "kind": "drill",
+      "point_id": "15044-intro-s3-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "syllabus:15044#L189"
+      ],
+      "text_md": "试述学习马克思主义的目的，并说明为什么必须把理论与实际结合起来，以及在实际学习中应当怎样做到这一点。",
+      "question_type": "论述题",
+      "answer_md": "参考答案：（1）学习马克思主义的首要目的，是形成正确的世界观、人生观、价值观，认清人生的意义和方向。（2）其次是掌握认识世界和改造世界的思想武器，提高分析问题和解决问题的能力，学会用唯物辩证的方法观察社会现象。（3）再次是坚定共产主义最高社会理想和社会主义信念，明确社会发展的方向，在复杂环境中保持清醒。（4）还包括提高辨别是非、抵制各种错误思潮影响的能力，不把马克思主义当成僵死的教条。（5）把理论与实际结合起来之所以是根本方法，是由马克思主义的实践性决定的，它来自实践、服务于实践，并在实践中接受检验和发展，离开实际就只剩下词句。（6）因此学习马克思主义要做到学用结合，既要掌握基本原理，又要用它分析现实问题，在新的历史条件下自觉运用和发展马克思主义。解析：本题分两部分作答，先答学习目的，再答根本方法的依据，只答一半会明显丢分。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "course/exam_strategy",
+      "kind": "exam_strategy",
+      "point_id": null,
+      "scope": "course",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-14"
+      },
+      "evidence_refs": [
+        "knowledge-model:exam"
+      ],
+      "text_md": "本课只考单项选择题、简答题与论述题三种题型。建议按先易后难安排作答顺序：先在客观题上快速拿分，再留出整块时间给简答与论述，避免在个别题目上纠缠过久导致后面写不完。审题要抓准问的是哪一个考核点，遇到「请结合实际」或需要先给材料的题目，先把材料中的关键信息扣住，再落到对应知识点上分点作答，不要一上来就堆概念。简答题按要点分条写，每条一句话说清一个判断；论述题在分条的基础上适当展开，把道理与依据说完整，宁可要点少而讲透，也不要把相关概念罗列一堆却都不展开。作答时使用规范表述，考纲给出的术语要写准，不要用近义词替换。最后务必留出一点时间通读全卷，检查是否有漏答、是否有把题号写串的情况，尤其是主观题的分点是否清楚可辨。"
+    }
+  ],
+  "review_schedule": {
+    "exam_date": null,
+    "weekly_hours": null,
+    "status": "named_gap",
+    "plans": [],
+    "ai_generated": true,
+    "review_state": "machine_draft",
+    "generator": {
+      "backend": "agent",
+      "model": "harness-agent",
+      "prompt_id": "stage_plan",
+      "prompt_version": "v1",
+      "generated_at": "2026-09-14"
+    },
+    "evidence_refs": [
+      "knowledge-model:exam"
+    ],
+    "gap_impact": "缺少 exam_date、weekly_hours，无法推导 30 / 14 / 7 天排程",
+    "next_evidence": "用户或官方考期公告提供 exam_date 与 weekly_hours（写入 knowledge-model.json 的 exam 块）"
+  }
+}
