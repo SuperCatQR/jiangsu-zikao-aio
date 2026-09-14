@@ -2,7 +2,7 @@
   "schema_version": 1,
   "course_code": "02333",
   "model_version": "v1",
-  "generated_at": "2026-09-13",
+  "generated_at": "2026-09-14",
   "generator": {
     "kind": "deterministic",
     "model": null,
@@ -1418,23 +1418,220 @@
       "slug": "ch14",
       "title": "第 14 章 简单的人事管理系统设计与开发（本章内容不作考核要求）",
       "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    }
+  ],
+  "appendices": [
+    {
+      "ordinal": 1,
+      "index": "附录一",
+      "slug": "ap01",
+      "title": "附录一 可行性研究报告",
+      "sections": [
+        {
+          "index": "1",
+          "title": "附录一 可行性研究报告",
+          "points": [
+            {
+              "id": "02333-ap01-s1-p1",
+              "title": "①可行性研究报告的内容和书写格式",
+              "requirement": "识记",
+              "quote": "①可行性研究报告的内容和书写格式",
+              "locator": "L315"
+            }
+          ]
+        }
+      ],
       "chapter_focus": [
         {
           "text": "本章重点和难点是：①可行性研究报告的内容和书写格式",
           "locator": "L317"
-        },
-        {
-          "text": "附录二 需求规格说明书",
-          "locator": "L319"
         }
       ],
-      "unmodeled": [
+      "unmodeled": []
+    },
+    {
+      "ordinal": 2,
+      "index": "附录二",
+      "slug": "ap02",
+      "title": "附录二 需求规格说明书",
+      "sections": [
         {
-          "locator": "L315",
-          "title": "识记：①可行性研究报告的内容和书写格式",
-          "reason": "unnumbered_section"
+          "index": "1",
+          "title": "附录二 需求规格说明书",
+          "points": [
+            {
+              "id": "02333-ap02-s1-p1",
+              "title": "①需求规格说明书的内容和书写格式",
+              "requirement": "识记",
+              "quote": "①需求规格说明书的内容和书写格式",
+              "locator": "L324"
+            }
+          ]
         }
-      ]
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①需求规格说明书的内容和书写格式",
+          "locator": "L326"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 3,
+      "index": "附录三",
+      "slug": "ap03",
+      "title": "附录三 总体设计说明书",
+      "sections": [
+        {
+          "index": "1",
+          "title": "附录三 总体设计说明书",
+          "points": [
+            {
+              "id": "02333-ap03-s1-p1",
+              "title": "①总体设计说明书的内容和书写格式",
+              "requirement": "识记",
+              "quote": "①总体设计说明书的内容和书写格式",
+              "locator": "L333"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①总体设计说明书的内容和书写格式",
+          "locator": "L335"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 4,
+      "index": "附录四",
+      "slug": "ap04",
+      "title": "附录四 详细设计说明书",
+      "sections": [
+        {
+          "index": "1",
+          "title": "附录四 详细设计说明书",
+          "points": [
+            {
+              "id": "02333-ap04-s1-p1",
+              "title": "①详细设计说明书的内容和书写格式",
+              "requirement": "识记",
+              "quote": "①详细设计说明书的内容和书写格式",
+              "locator": "L342"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①详细设计说明书的内容和书写格式",
+          "locator": "L346"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 5,
+      "index": "附录五",
+      "slug": "ap05",
+      "title": "附录五 软件测试的需求规格说明书",
+      "sections": [
+        {
+          "index": "1",
+          "title": "附录五 软件测试的需求规格说明书",
+          "points": [
+            {
+              "id": "02333-ap05-s1-p1",
+              "title": "①软件测试的需求规格说明书的内容和书写格式",
+              "requirement": "识记",
+              "quote": "①软件测试的需求规格说明书的内容和书写格式",
+              "locator": "L353"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件测试的需求规格说明书的内容和书写格式",
+          "locator": "L355"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 6,
+      "index": "附录六",
+      "slug": "ap06",
+      "title": "附录六 软件维护手册",
+      "sections": [
+        {
+          "index": "1",
+          "title": "附录六 软件维护手册",
+          "points": [
+            {
+              "id": "02333-ap06-s1-p1",
+              "title": "①软件维护手册的内容和书写格式",
+              "requirement": "识记",
+              "quote": "①软件维护手册的内容和书写格式",
+              "locator": "L362"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①软件维护手册的内容和书写格式",
+          "locator": "L364"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 7,
+      "index": "附录七",
+      "slug": "ap07",
+      "title": "附录七 UML 的模型及图示表示",
+      "sections": [
+        {
+          "index": "1",
+          "title": "附录七 UML 的模型及图示表示",
+          "points": [
+            {
+              "id": "02333-ap07-s1-p1",
+              "title": "①UML 的五大模型",
+              "requirement": "识记",
+              "quote": "①UML 的五大模型",
+              "locator": "L371"
+            },
+            {
+              "id": "02333-ap07-s1-p2",
+              "title": "②9 种图表示",
+              "requirement": "识记",
+              "quote": "②9 种图表示",
+              "locator": "L371"
+            },
+            {
+              "id": "02333-ap07-s1-p3",
+              "title": "①会根据实际问题应用五大模型来描述，如用例图、类图、时序图等",
+              "requirement": "应用",
+              "quote": "①会根据实际问题应用五大模型来描述，如用例图、类图、时序图等",
+              "locator": "L372"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点和难点是：①如何理解和应用五大模型",
+          "locator": "L374"
+        }
+      ],
+      "unmodeled": []
     }
   ],
   "exam": {
@@ -1448,10 +1645,10 @@
     "question_types_next_evidence": "官方考纲「考试命题的主要题型」段落（或等效的官方说明）"
   },
   "coverage": {
-    "official_point_count": 13,
-    "modeled_point_count": 13,
+    "official_point_count": 20,
+    "modeled_point_count": 20,
     "ratio": 1.0,
-    "denominator_rule": "考纲「二、考核知识点与考核要求」中的章数（该考纲不分子节，章即考核单元）",
+    "denominator_rule": "考纲「二、考核知识点与考核要求」中的章数（该考纲不分子节，章即考核单元），另加 7 个附录单元（`附录N` 各为一个考核单元）",
     "manual_reference": null,
     "diff_vs_manual": []
   }

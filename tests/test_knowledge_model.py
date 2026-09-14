@@ -1086,7 +1086,10 @@ def test_artifact_matches_fresh_build_for_fallback_courses():
         assert [c["slug"] for c in doc["chapters"]] == [f"ch{n:02d}" for n in range(1, expected + 1)], code
         coverage = doc["coverage"]
         assert coverage["ratio"] == 1.0, code
-        assert coverage["official_point_count"] == sum(len(c["sections"]) for c in doc["chapters"]), code
+        # 分母 = 章产出单元 + 附录产出单元（R41：`02333` 的 7 个 `附录N` 是独立考核单元，进分母）。
+        units = sum(len(c["sections"]) for c in doc["chapters"])
+        units += sum(len(a["sections"]) for a in doc.get("appendices", []))
+        assert coverage["official_point_count"] == units, code
         assert coverage["modeled_point_count"] == coverage["official_point_count"], code
         assert doc["generator"] == {
             "kind": "deterministic", "model": None, "prompt_id": None, "prompt_version": None,
@@ -1342,7 +1345,8 @@ def test_1_dot_not_assessed_section_builds_while_a_dropped_one_still_raises(tmp_
 def test_denominator_rule_describes_the_denominator_actually_used():
     """F-2：`denominator_rule` 必须描述**实际用的分母** —— 两门真实课各占一种形状。
 
-    `00898` 是节级考纲（50 个 `（N）` 节 / 16 章），`02333` 是章级考纲（13 个考核章 / 14 章）。
+    `00898` 是节级考纲（50 个 `（N）` 节 / 16 章），`02333` 是章级考纲 + 7 个附录单元
+    （`13` 考核章 + `7` `附录N` = `20`；R41：附录是独立考核单元，不再是第 14 章的正文）。
     旧实现按「任一章是章级」的 OR 选规则，`00898` 只因 6 个不考核章的空要求块就被判成章级，
     产物便自称「该考纲不分子节」—— 分母实为节数，是可被下游当事实读的假话。
     """
@@ -1352,8 +1356,10 @@ def test_denominator_rule_describes_the_denominator_actually_used():
     assert "节数" in section_level["denominator_rule"], section_level["denominator_rule"]
 
     chapter_level = km.build_knowledge_model(ROOT, "02333")["coverage"]
-    assert chapter_level["official_point_count"] == 13, "分母是考核章数（13）"
+    assert chapter_level["official_point_count"] == 20, "分母是 13 考核章 + 7 附录单元"
     assert "章即考核单元" in chapter_level["denominator_rule"], chapter_level["denominator_rule"]
+    # 规则串必须把附录单元写出来，否则下游读到的是「分母 = 13 章」而实际是 20 个单元
+    assert "7 个附录单元" in chapter_level["denominator_rule"], chapter_level["denominator_rule"]
 
 
 def test_00898_real_artifact_keeps_all_fifty_assessed_sections_and_no_misattribution():
@@ -1477,3 +1483,163 @@ def test_frozen_model_byte_pin_is_falsifiable(tmp_path: Path):
     # 仓内产物未被本次反向验证触碰
     for code, expected_sha in FROZEN_MODEL_SHA256.items():
         assert _model_digest(_frozen_model_path(code)) == expected_sha, f"反向验证不得改动仓内产物：{code}"
+
+
+# ---- R41 + R43：`02333` 附录单元被静默吞掉（附录不再是第 14 章的正文） ------------------------
+#
+# 缺陷（QC/QA/PM 三方复现，AST 级确认与基点 `334d637` 相同的既有缺陷）：
+# `02333` 无 `大纲目录`，章目走 `Ⅲ` 回退；`_body_slices()` 只把**部次标签**当末章边界，
+# 于是第 14 章切片一路吃到 `Ⅳ`（`L306–L375`），把 `L310–L374` 的 7 个 `附录N` 段落全包进来；
+# `_requirement_block()` 又只取章锚点后**第一个** `二、考核知识点与考核要求`（`L314`，实属附录一）。
+# 后果：7 条受考要求行（`L324`/`L333`/`L342`/`L353`/`L362`/`L371`/`L372`，末条含 `应用` 级）
+# 在整个产物里**一个字都没有**，而 `附录二 需求规格说明书`（`L319`）反被当成第 14 章的「本章重点」。
+# 全程 `ratio == 1.0`：分母与产出同源，丢单元时两侧同时变小（R43）。
+
+SAMPLE_233_DOC = (
+    "sources/jiangsu/processed/syllabus/02333-software-engineering-gaogang-4068/"
+    "document.extracted.md"
+)
+# 修复前**完全不在产物里**的 7 条要求行（行号即 `document.extracted.md` 的物理行号）
+R41_DROPPED_LINES = {
+    324: "①需求规格说明书的内容和书写格式",
+    333: "①总体设计说明书的内容和书写格式",
+    342: "①详细设计说明书的内容和书写格式",
+    353: "①软件测试的需求规格说明书的内容和书写格式",
+    362: "①软件维护手册的内容和书写格式",
+    371: "①UML 的五大模型",
+    372: "①会根据实际问题应用五大模型来描述，如用例图、类图、时序图等",
+}
+
+
+def _model_233() -> dict:
+    return json.loads((ROOT / "sources/jiangsu/courses/02333/knowledge-model.json").read_text(encoding="utf-8"))
+
+
+def _all_points(doc: dict) -> list[dict]:
+    """产物里全部 point（章 + 附录单元）。"""
+    units = [*doc["chapters"], *doc.get("appendices", [])]
+    return [point for unit in units for section in unit["sections"] for point in section["points"]]
+
+
+def test_r41_seven_appendix_requirement_lines_are_no_longer_dropped():
+    """R41：7 条附录要求行必须**有身份**地进产物 —— 逐条按源文行号核对，不再静默消失。
+
+    修复前：`ch14.sections == []`、`ch14.unmodeled == [L315]`，这 7 条在整个 JSON 里搜不到
+    （连子串都不存在）。修复后每条都必须是某个 point 的 `title`，且 `locator` 指向它自己那一行。
+    """
+    doc = _model_233()
+    by_locator: dict[str, list[dict]] = {}
+    for point in _all_points(doc):
+        by_locator.setdefault(point["locator"], []).append(point)
+
+    for line, phrase in R41_DROPPED_LINES.items():
+        points = by_locator.get(f"L{line}")
+        assert points, f"L{line} 的要求行没有任何 point（仍在被静默丢弃）"
+        titles = [point["title"] for point in points]
+        assert phrase in titles, f"L{line} 的短语 {phrase!r} 不在 {titles}"
+
+    # `L372` 的 `应用` 级要求必须保住层级（不得被降级成 `识记` 或被吞）
+    applied = [point for point in by_locator["L372"]]
+    assert [point["requirement"] for point in applied] == ["应用"], applied
+    # `L371` 的两个短语各自成 point（`；` 分句）
+    assert [point["title"] for point in by_locator["L371"]] == ["①UML 的五大模型", "②9 种图表示"]
+
+
+def test_r41_appendix_content_is_never_attributed_to_chapter_14():
+    """R41：附录内容**一律不得**挂在第 14 章下（这正是缺陷本身，不是可接受的呈现）。
+
+    第 14 章的标题自证「（本章内容不作考核要求）」，它的 `sections` / `chapter_focus` / `unmodeled`
+    都必须为空 —— 修复前 `chapter_focus` 里坐着 `附录二 需求规格说明书`（`L319`）。
+    """
+    doc = _model_233()
+    ch14 = doc["chapters"][13]
+    assert ch14["slug"] == "ch14" and "不作考核要求" in ch14["title"], ch14["title"]
+    assert ch14["sections"] == [], ch14["sections"]
+    assert ch14["chapter_focus"] == [], ch14["chapter_focus"]
+    assert ch14["unmodeled"] == [], ch14["unmodeled"]
+
+    blob = json.dumps(ch14, ensure_ascii=False)
+    for leaked in ("附录", "需求规格", "总体设计", "详细设计", "软件维护手册", "UML"):
+        assert leaked not in blob, f"第 14 章仍含附录内容：{leaked!r}"
+
+
+def test_r41_appendices_are_their_own_assessment_units():
+    """R41：`附录N` 是独立考核单元 —— 7 个、序连续、各自带 point 与自己的「本章重点」。"""
+    doc = _model_233()
+    appendices = doc["appendices"]
+    assert [ap["slug"] for ap in appendices] == [f"ap{n:02d}" for n in range(1, 8)]
+    assert [ap["ordinal"] for ap in appendices] == list(range(1, 8))
+    assert [ap["index"] for ap in appendices] == [f"附录{name}" for name in "一二三四五六七八九"[:7]]
+    for ap in appendices:
+        assert ap["sections"], ap["slug"]
+        assert all(section["points"] for section in ap["sections"]), ap["slug"]
+        # 「本章重点」归附录自己，不是第 14 章的
+        assert ap["chapter_focus"], ap["slug"]
+        assert all("附录" not in focus["text"] for focus in ap["chapter_focus"]), ap["slug"]
+    # point id 用附录自己的 slug，不得借用章 slug
+    ids = [point["id"] for ap in appendices for section in ap["sections"] for point in section["points"]]
+    assert ids == sorted(ids)
+    assert all(re.fullmatch(r"02333-ap\d{2}-s\d+-p\d+", pid) for pid in ids), ids
+
+
+def test_r41_does_not_touch_courses_without_numbered_appendices():
+    """R41 的爆炸半径：只有 `02333` 有 `附录N`；其余六门不得多出 `appendices` 字段 / 单元。
+
+    `附录：参考样卷`（15040/15043/15044）与 `附录 题型示例`（00898/04747/04751）**没有序号**，
+    是 `Ⅳ` 之后的样卷区而非考核内容 —— 判据必须把它们挡在考核单元之外。
+    """
+    for code in ("15040", "15043", "15044", "00898"):
+        doc = km.build_knowledge_model(ROOT, code)
+        assert "appendices" not in doc, f"{code} 不应有附录单元"
+    assert not km.APPENDIX_RE.match("附录：参考样卷")
+    assert not km.APPENDIX_RE.match("附录 题型示例")
+    assert not km.APPENDIX_RE.match("附录")
+    assert km.APPENDIX_RE.match("附录一 可行性研究报告")
+    assert km.APPENDIX_RE.match("附录 7 UML 图")
+
+
+def test_r43_denominator_is_counted_from_the_source_not_from_the_parse():
+    """R43：分母必须**独立于产出**数出来 —— 源侧计数能复现全部真实课，且能看穿丢单元。
+
+    反证：修复前的产物 `official_point_count == 13`（只数到 13 个考核章），
+    同源核对（`official` vs `sum(len(sections))`）**恒真**、放行；而源侧计数数出 **20**
+    （13 章 + 7 附录）。这条差异就是 R41 曾经不可见的原因。
+    """
+    ev = json.loads((ROOT / "sources/jiangsu/courses/02333/evidence.json").read_text(encoding="utf-8"))
+    lines = (ROOT / ev["syllabus"]["path"]).read_text(encoding="utf-8").split("\n")
+    declared = km.source_assessment_unit_count(lines, ev["syllabus"]["requirements_heading"])
+    assert declared == 20, f"源侧应数出 13 章 + 7 附录 = 20，实际 {declared}"
+    assert declared == _model_233()["coverage"]["official_point_count"]
+
+    # 现有 5 份模型的官方分母都必须能被**源侧**独立复现（否则新分母会变成另一套假话）
+    for code, expected in (("15040", 61), ("15043", 34), ("15044", 28), ("00898", 50), ("02333", 20)):
+        evidence = json.loads((ROOT / f"sources/jiangsu/courses/{code}/evidence.json").read_text(encoding="utf-8"))
+        source_lines = (ROOT / evidence["syllabus"]["path"]).read_text(encoding="utf-8").split("\n")
+        counted = km.source_assessment_unit_count(source_lines, evidence["syllabus"]["requirements_heading"])
+        assert counted == expected, f"{code}: 源侧计数 {counted} ≠ {expected}"
+
+
+def test_r43_evidence_gate_catches_a_swallowed_appendix_unit(tmp_path: Path):
+    """R43 的闸门侧：吞掉一个附录单元后，`run_evidence_gate` 必须报出（旧检查恒真）。
+
+    对照两半都有判别力：删单元（分母变小）必须报；文件本身不动时必须静默。
+    """
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = tmp_path / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    target = fake_root / "sources" / "jiangsu" / "courses" / "02333" / "knowledge-model.json"
+    clean = json.loads(target.read_text(encoding="utf-8"))
+    assert not [e for e in run_evidence_gate(fake_root) if "02333" in e], "对照前提：未改动的产物必须静默"
+
+    for dropped in (1, 2, 7):
+        data = json.loads(json.dumps(clean, ensure_ascii=False))
+        data["appendices"] = data["appendices"][: len(data["appendices"]) - dropped]
+        data["coverage"]["official_point_count"] -= dropped
+        data["coverage"]["modeled_point_count"] -= dropped
+        target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        errors = run_evidence_gate(fake_root)
+        assert any("考核单元" in e and "静默丢弃" in e for e in errors), (dropped, errors)

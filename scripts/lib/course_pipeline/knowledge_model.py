@@ -39,17 +39,26 @@
    **节级连续性守卫**（F-3，`_section_continuity_problems()`）：源侧声明的节号（`_declared_section_indexes()`）
    必须都在 `sections[]` 或 `not_assessed` 留痕里现身，否则报错并指名缺哪些节号 —— 章级守卫看不见
    「丢了一节」（`official_point_count` 与 `sum(len(sections))` 同源自同一次解析，比值恒为 `1.0`）。
+   **`附录N` 是独立考核单元**（R41，`_appendix_slices()`）：`附录N 标题` 与章同级，是它前面那一章的
+   **边界**而不是其正文，产出走独立的 `appendices[]`（slug `ap01`…、序连续），进分母、有自己的
+   「本章重点」。旧实现只把部次标签当章末边界，于是 `02333` 第 14 章的切片吃下了 7 个附录段落，
+   只解析出第一个附录的要求块 —— 其余 6 条要求行静默消失，`附录二 需求规格说明书` 反被当成第 14 章
+   的重点。判据带序号限定，故 `附录：参考样卷` / `附录 题型示例` 这类样卷区不入考核单元。
 4. **`quote` ≤ 60 字符且逐字来自考纲**：短语本身超长时取最后一个分句边界（`，、：,;`）之内的前缀
    ——不拼接、不改写、不加省略号，`title` 仍保留完整原文（GC4；长短语只截 `quote`、不拆 point，
    因此 point id 用节内 `p<seq>` 而不是 requirement 后缀）。
-5. **覆盖率**：分母 = 考核要求小节内带编号的节数（15040 实测 **61**，与 `index.md:549` 手工自评吻合）；
-   分子 = 至少抽出 1 个 point 的节数；`diff_vs_manual` 与手工页 `## 章节知识树` 的每条 `####` 元素
-   逐条比对留痕（`manual_only` = 手工页有、模型未抽出，必须逐条可见；无手工参照的课程写 `[]`）。
+5. **覆盖率**：分母 = 考核要求小节内带编号的节数（15040 实测 **61**，与 `index.md:549` 手工自评吻合），
+   加上附录单元数（`02333`：13 考核章 + 7 附录 = **20**）；分子 = 至少抽出 1 个 point 的单元数；
+   `diff_vs_manual` 与手工页 `## 章节知识树` 的每条 `####` 元素逐条比对留痕（`manual_only` = 手工页有、
+   模型未抽出，必须逐条可见；无手工参照的课程写 `[]`）。
    **分母形状由实际参与分母的单元投票决定**（F-2，`chapter_level_model`）：只有某章真的产出了考核单元时
    其 `chapter_level` 才参与投票，且要求所有产出单元都是章级形态；据此选 `denominator_rule` ——
-   章级形态写「该考纲不分子节，章即考核单元」，否则写「带编号的节数」。
+   章级形态写「该考纲不分子节，章即考核单元」，否则写「带编号的节数」，有附录时追加附录单元数。
    两者必须与**实际用的分母**一致：旧实现按「任一章是章级」的 OR 选规则，于是一份节级考纲只因
    几个不考核章的空要求块就自称章级，分母实为节数 50 而章数才 16 —— 那是可被下游当事实读的假话。
+   **分母的独立来源**（R43，`source_assessment_unit_count()`）：本模块另提供「按考纲原文重数一遍」
+   的独立计数，供 `evidence_gate` 与产物对账 —— 同源核对（`official` vs `sum(len(sections))`）恒真，
+   看不见整单元被吞掉。
 
 产物字节确定：`serialize()` 用 `ensure_ascii=False, indent=2` + 末尾换行，字段顺序固定，时间戳只到日期
 （`generated_at`），同一输入两次序列化字节一致（与 `evidence.py` 同约定）。
@@ -126,6 +135,15 @@ MANUAL_MARKER_SUFFIX_RE = re.compile(r"\s*—\s*[🟢🟡🔴\s]+$")
 MANUAL_INDEX_RE = re.compile(r"^\d+\.\d+\s+")
 # 部次标签（Ⅰ–Ⅳ）：末章切片不得越过 `Ⅳ 关于大纲的说明与考核实施要求`，否则部次标签 / 附录 / 样卷会混进本章重点
 PART_LABEL_RE = re.compile(r"^[ⅠⅡⅢⅣ]\s*\S")
+# 附录单元（R41）：`附录N 标题` 是 `Ⅲ` 部之下的**独立考核单元**，不是它前面那一章的正文。
+#
+# 判据要求附录名带**序号**（`附录一` … `附录七` / `附录 1`）。这条限定就是爆炸半径本身：
+# 实测七门考纲里只有 `02333` 的 7 个 `附录N` 命中，而 `附录：参考样卷`（15040/15043/15044）、
+# `附录 题型示例`（00898/02333/04747/04751）、裸 `附录`（15040/15043/15044）**一律不命中** ——
+# 后者是 `Ⅳ` 之后的样卷区，不是考核内容，不得成为考核单元（故六门课零影响，AC3 逐字节不变）。
+APPENDIX_RE = re.compile(r"^附\s*录\s*([一二三四五六七八九十]+|\d+)\s*(.*)$")
+# 闸门侧只判形态（`附录N` 且带标题）：`APPENDIX_RE` 的捕获组供抽取器使用，闸门不需要课码专属变体
+APPENDIX_TITLE_RE = re.compile(r"^附\s*录\s*(?:[一二三四五六七八九十]+|\d+)(?:\s*.+)?$")
 
 MAX_QUOTE_CHARS = 60
 SENTENCE_END = ("。", "！", "？")
@@ -133,6 +151,8 @@ CLAUSE_END = "，、：,;"
 QUOTE_STYLE = str.maketrans({"「": "“", "」": "”", "『": "‘", "』": "’"})
 DENOMINATOR_RULE_TEMPLATE = "考纲「{heading}」中带编号的节数"
 DENOMINATOR_RULE_CHAPTER_TEMPLATE = "考纲「{heading}」中的章数（该考纲不分子节，章即考核单元）"
+# `附录N` 是独立考核单元，必须写进规则串，否则分母描述与实际用的分母不一致（F-2 的同一纪律）
+DENOMINATOR_RULE_APPENDIX_SUFFIX = "，另加 {count} 个附录单元（`附录N` 各为一个考核单元）"
 MANUAL_MARKERS = {"🟢": "识记", "🟡": "领会", "🔴": "应用"}
 REQUIREMENT_ORDER = ("识记", "领会", "应用")
 
@@ -315,7 +335,14 @@ def _format_chapter_runs(numbers: list[int]) -> str:
 
 
 def _body_slices(lines: list[str], titles: list[str], start: int) -> list[list[tuple[int, str]]]:
-    """章正文切片：章首 = 章标题在目录切片之后的**首次**出现；章末 = 下一个章首 / 下一个部次标签。"""
+    """章正文切片：章首 = 章标题在目录切片之后的**首次**出现；章末 = 下一个章首 / 部次标签 / 附录单元。
+
+    **附录单元也是章末边界**（R41）：`附录N 标题` 是 `Ⅲ` 部之下的独立考核单元，不是它前面那一章的
+    正文。旧实现只把部次标签当边界，于是 `02333` 末章的切片一路吃到 `Ⅳ`（`L306–L375`），
+    7 个 `附录N` 段落全落在第 14 章切片内：`_requirement_block()` 只取章锚点后**第一个**
+    `二、考核知识点与考核要求`（`L314`，其实属于附录一），其余 6 个附录的要求行静默消失，
+    而 `附录二 需求规格说明书`（`L319`）还被当成第 14 章的「本章重点」。
+    """
     anchors: list[int | None] = []
     cursor = start
     for title in titles:
@@ -330,14 +357,104 @@ def _body_slices(lines: list[str], titles: list[str], start: int) -> list[list[t
             slices.append([])
             continue
         end = next((item for item in anchors[position + 1:] if item is not None), len(lines))
-        part_end = next(
-            (index for index in range(anchor, end) if PART_LABEL_RE.match(_fold(lines[index]))),
+        boundary = next(
+            (
+                index
+                for index in range(anchor, end)
+                if PART_LABEL_RE.match(_fold(lines[index])) or APPENDIX_RE.match(_fold(lines[index]))
+            ),
             None,
         )
-        if part_end is not None:
-            end = part_end
+        if boundary is not None:
+            end = boundary
         slices.append([(index + 1, lines[index]) for index in range(anchor, end)])
     return slices
+
+
+def _appendix_slices(lines: list[str], start: int) -> list[tuple[str, list[tuple[int, str]]]]:
+    """`附录N 标题` → `(标题, 正文切片)`，每个附录是**自己的**考核单元（R41）。
+
+    单元末 = 下一个 `附录N` / 下一个部次标签 / 文末。判据与章切片共用同一条边界规则，
+    故附录内容绝不会再落进它前面那一章的切片（那是 R41 的误归因来源）。
+    """
+    anchors = [
+        (index, _fold(lines[index]))
+        for index in range(start, len(lines))
+        if APPENDIX_RE.match(_fold(lines[index]))
+    ]
+    units: list[tuple[str, list[tuple[int, str]]]] = []
+    for position, (index, title) in enumerate(anchors):
+        end = anchors[position + 1][0] if position + 1 < len(anchors) else len(lines)
+        boundary = next(
+            (item for item in range(index, end) if PART_LABEL_RE.match(_fold(lines[item]))),
+            None,
+        )
+        if boundary is not None:
+            end = boundary
+        units.append((title, [(item + 1, lines[item]) for item in range(index, end)]))
+    return units
+
+
+def _appendix_number(text: str) -> int | None:
+    """`附录N 标题` → `N`（`附录一` / `附录 1` → 1）；非附录标题返回 `None`。
+
+    `slug` 由**附录序标签**推导（`ap01`），不由列表位置推导 —— 与 `_slug_for()` 对章的约定一致。
+    """
+    match = APPENDIX_RE.match(text)
+    if match is None:
+        return None
+    label = match.group(1)
+    return int(label) if label.isdigit() else _chinese_number(label)
+
+
+def _appendix_index(text: str) -> str:
+    """附录序标签（`附录一 可行性研究报告` → `附录一` / `附录 1 …` → `附录1`）：取标签段并折叠内部空白。
+
+    与 `_chapter_index()` 同口径：`index` 是**序标签**、`title` 保留原文。
+    """
+    match = APPENDIX_RE.match(text)
+    if match is None:
+        return text.split(" ", 1)[0]
+    return re.sub(r"\s+", "", f"附录{match.group(1)}")
+
+
+def source_assessment_unit_count(lines: list[str], heading: str) -> int:
+    """源侧独立分母（R43）：`Ⅲ` 部内**源文声明**的考核单元总数，不经模型切片 / 要求块解析。
+
+    判据：`Ⅲ 课程内容与考核要求`（取最后一处）到下一个 `Ⅳ` 之间的每一个 `heading` 行是一个考核单元；
+    单元内声明的 `（N）` / `N.` 节号多者按节数计（去重），一个节号都没有的单元计 1（章级 / 附录形态）；
+    标题带 `不作考核要求` 的节不进分母（「不考」不是「抽取失败」）。
+
+    这是 R43 的修法：台账分母由**源文**独立数出，而模型侧 `official_point_count` 由切片解析产出。
+    两侧都出自同一次解析时（旧实现：`official` 与 `sum(len(sections))` 同源），核对恒真 ——
+    `02333` 丢掉 7 个附录单元仍然 `ratio == 1.0`。本函数实测复现了现有 5 份模型的全部官方分母
+    （`15040` 61 / `15043` 34 / `15044` 28 / `00898` 50），而对修复前的 `02333` 数出 **20**
+    （13 考核章 + 7 附录）而模型只报 13 —— 正是缺口该被看见的地方。
+    """
+    folded = [_fold(line) for line in lines]
+    parts = [index for index, text in enumerate(folded) if PART_LABEL_RE.match(text)]
+    starts = [index for index in parts if SECTION_MARKER in folded[index]]
+    if not starts:
+        return 0
+    start = starts[-1]
+    end = next((index for index in parts if index > start and folded[index].startswith("Ⅳ")), len(folded))
+    anchors = [index for index in range(start, end) if folded[index] == heading]
+    units = 0
+    for position, anchor in enumerate(anchors):
+        stop = anchors[position + 1] if position + 1 < len(anchors) else end
+        declared: list[str] = []
+        for index in range(anchor + 1, stop):
+            text = folded[index]
+            if not text:
+                continue
+            if TOP_HEADING_RE.match(text):
+                break
+            indexes = _section_indexes_in(text)
+            if indexes and NOT_ASSESSED_MARKER in text:
+                continue
+            declared += indexes
+        units += len(dict.fromkeys(declared)) or 1
+    return units
 
 
 # ---- 折行 / 页码归一化 ---------------------------------------------------------
@@ -846,13 +963,49 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
             "unmodeled": unmodeled,
         })
 
+    # 附录单元（R41）：`附录N` 是 `Ⅲ` 部之下的独立考核单元，**不是**章 —— 故有独立身份字段，
+    # 不与 `chapters[]` 混编（`ordinal` 来自 `第N章` 标签，附录没有；混编会破坏章序连续守卫）。
+    # 附录切片由 `_appendix_slices()` 独立切出，与章切片共用同一条边界规则，因此附录内容
+    # 绝不会再落进它前面那一章的切片 / 本章重点 / 要求块。无附录的考纲写 `[]`。
+    appendices = []
+    for appendix_title, appendix_slice in _appendix_slices(lines, toc_end):
+        slug = f"ap{_appendix_number(appendix_title):02d}"
+        logical = _logical_lines(appendix_slice)
+        block = _requirement_block(logical, heading)
+        declared = _declared_section_indexes(block or [])
+        sections, unmodeled, appendix_level = _parse_requirement_block(block or [], code, slug, appendix_title)
+        if sections:
+            unit_shapes.append(appendix_level)
+        section_problems += _section_continuity_problems(code, slug, appendix_title, declared, sections, unmodeled)
+        appendices.append({
+            "ordinal": _appendix_number(appendix_title),
+            "index": _appendix_index(appendix_title),
+            "slug": slug,
+            "title": appendix_title,
+            "sections": sections,
+            # 附录自己的「本章重点」，与章同口径（不再是第 14 章的 chapter_focus）
+            "chapter_focus": _chapter_focus(logical),
+            "unmodeled": unmodeled,
+        })
+
     if section_problems:
         raise ValueError("考纲节号不连续：" + "；".join(section_problems))
     chapter_level_model = bool(unit_shapes) and all(unit_shapes)
 
     official = sum(len(chapter["sections"]) for chapter in chapters)
+    official += sum(len(appendix["sections"]) for appendix in appendices)
     modeled = sum(1 for chapter in chapters for section in chapter["sections"] if section["points"])
+    modeled += sum(1 for appendix in appendices for section in appendix["sections"] if section["points"])
     manual_reference, manual_elements = _manual_reference(root, code)
+    # 规则串必须描述**实际用的分母**（F-2 / R41）：附录单元进了分母就必须写进规则串，
+    # 否则下游读到的是「分母 = 13 个考核章」而实际是 20 个单元 —— 同一类假话。
+    denominator_rule = (
+        DENOMINATOR_RULE_CHAPTER_TEMPLATE.format(heading=heading)
+        if chapter_level_model
+        else DENOMINATOR_RULE_TEMPLATE.format(heading=heading)
+    )
+    if appendices:
+        denominator_rule += DENOMINATOR_RULE_APPENDIX_SUFFIX.format(count=len(appendices))
     return {
         "schema_version": SCHEMA_VERSION,
         "course_code": code,
@@ -861,6 +1014,8 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
         "generator": {"kind": "deterministic", "model": None, "prompt_id": None, "prompt_version": None},
         "source": {"doc_id": syllabus["doc_id"], "path": syllabus["path"], "sha256": syllabus.get("sha256")},
         "chapters": chapters,
+        # 只有真的有附录单元时才写该字段：无附录的考纲产物**逐字节不变**（AC3 的结构保证）
+        **({"appendices": appendices} if appendices else {}),
         "exam": _exam(lines, syllabus["doc_id"]),
         "coverage": {
             "official_point_count": official,
@@ -870,11 +1025,7 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
             # 于是一份**节级**考纲（`00898`：50 个 `（N）` 节）只因 6 个不考核章的空要求块也点亮了
             # 章级标记，产物便自称「该考纲不分子节，章即考核单元」—— 分母实为节数 50、章数才 16，
             # 是可被下游（B3b）当事实读的假话。现在只有**确实没有节号**时才发章级规则。
-            "denominator_rule": (
-                DENOMINATOR_RULE_CHAPTER_TEMPLATE.format(heading=heading)
-                if chapter_level_model
-                else DENOMINATOR_RULE_TEMPLATE.format(heading=heading)
-            ),
+            "denominator_rule": denominator_rule,
             "manual_reference": manual_reference,
             # 每次生成都写：无手工参照写 []；有手工参照则逐条留痕（无差异时全为 matched）
             "diff_vs_manual": _diff_vs_manual(manual_elements, chapters) if manual_reference else [],
