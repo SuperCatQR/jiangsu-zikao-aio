@@ -15,6 +15,7 @@
 
 ## 发布
 
+- [ ] `python scripts/run-gates.py`（7 层；`validate-content.py` **只**跑 content 层，**不**覆盖 `ai-content`）
 - [ ] `python scripts/validate-content.py`
 - [ ] `python scripts/validate-publish-gate.py` 与 `mkdocs build --strict`
 - [ ] `python scripts/check-source-links.py --offline`

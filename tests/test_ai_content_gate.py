@@ -893,3 +893,316 @@ def test_visible_heading_count_ignores_commented_headings(tmp_path: Path):
     assert any("小节数" in e and "explain" in e for e in errors), (
         f"注释里的标题不得计入可见小节数（否则计数可被注释补平）: {errors}"
     )
+
+
+# --------------------------------------------------------------------------------------
+# R20（=NEW-R3）：未闭合 `<!--` 隐藏其后内容 → 必须 fail-closed
+# --------------------------------------------------------------------------------------
+
+def _reader_lost_lines(text: str) -> list[str]:
+    """读者**整行丢失**的内容：未闭合 `<!--` 所在行**之后**的非空行。
+
+    HTML 注释的语义是「隐藏到闭合记号为止」，因此开记号之后的行对读者全部不可见 —— 这是独立的可观察
+    度量（量的是**页面内容**，不是闸门的布尔值），用来把「闸门是否报错」与「页面是否残缺」两件事对齐：
+    报错必须有对象。
+
+    只算**整行**：开记号自己那一行的剩余文本（如 `<!-- 未闭合的示例注释`）仍渲染出半行，
+    与「整段标题消失」不同量级 —— 闸门口径见 `_comment_hides_content()`。
+    围栏内的记号不隐藏任何东西，故先取围栏外的行。
+
+    R42 更正：**记号定位**与**尾巴切片**是两个视图。记号**是不是**注释只能在围栏视图里问（上一段），
+    但尾巴必须在**原文视图**里量 —— 未闭合注释吞掉其后的一切，**包括围栏记号本身**；
+    若尾巴仍在围栏视图里取，记号**之后**的未闭合围栏会删掉整段尾巴，量出「没丢内容」。
+    两个视图靠**原文行号**对齐：围栏出现在记号之前时，拿围栏视图的行号去切原文会切错位置
+    （R20 的 (d) 形状），把「确实丢了标题」误判成没丢。
+    """
+    lines = text.splitlines()
+    fence = re.compile(r"^ {0,3}(?P<fence>`{3,}|~{3,})")
+    visible: list[tuple[int, str]] = []
+    open_fence: str | None = None
+    for index, line in enumerate(lines):
+        match = fence.match(line)
+        if open_fence is None:
+            if match:
+                open_fence = match.group("fence")
+                continue
+            visible.append((index, line))
+        elif match and match.group("fence")[0] == open_fence[0] and len(match.group("fence")) >= len(open_fence):
+            open_fence = None
+
+    cursor = 0
+    joined = "\n".join(line for _, line in visible)
+    while True:
+        start = joined.find("<!--", cursor)
+        if start < 0:
+            return []
+        end = joined.find("-->", start + 4)
+        if end < 0:
+            marker_line = visible[joined.count("\n", 0, start)][0]
+            return [line for line in lines[marker_line + 1 :] if line.strip()]
+        cursor = end + 3
+
+
+def test_unclosed_comment_hiding_content_fails_closed(tmp_path: Path):
+    """R20 变异证明：末章页出现未闭合 `<!--`（其后仍有内容）→ 必须报错；改前为 **0 错误**。
+
+    缺口成因：`_blank_comments()` 只剥**成对**注释，未闭合的开记号原样留在文本里，于是
+    `_heading_body()` / `_count_visible_headings()` 仍把它后面的标题当作**已渲染证据**，
+    而读者看到的页面已经残缺 —— 谓词与计数双双不可见，闸门静默通过。
+
+    三种都报（都以「读者确实丢了内容」为前提，逐条断言，避免拿一个恒真条件充证据）：
+    (a) 页尾追加未闭合注释 + 其后新增标题（标题对读者不可见）；
+    (b) 在**最后一个已配对注释之后**插入未闭合记号（吞掉页面尾部）；
+    (c) 删掉最后一个注释的闭合记号（同样吞掉尾部）。
+    """
+    from lib.ai_content_gate import run_ai_content_gate
+
+    def _fresh_root(name: str) -> Path:
+        fake_root = tmp_path / name / "repo"
+        shutil.copytree(ROOT / "sources", fake_root / "sources")
+        shutil.copytree(ROOT / "ops", fake_root / "ops")
+        shutil.copytree(ROOT / "content", fake_root / "content")
+        return fake_root
+
+    assert run_ai_content_gate(_fresh_root("baseline_r20")) == [], "未变异的对照根必须全绿"
+
+    course = "content/jiangsu/courses/15043"
+    # 末章页（R20 的形状）：该页标题数量最多，且是「章页拼接」的最后一页
+    page_rel = Path(course) / "knowledge" / "10-ch10.md"
+
+    def _mutate(name: str, mutate) -> tuple[Path, list[str]]:
+        fake_root = _fresh_root(name)
+        page = fake_root / page_rel
+        mutate(page)
+        return fake_root, _reader_lost_lines(page.read_text(encoding="utf-8"))
+
+    # (a) 页尾追加未闭合注释，其后还有新增标题（末章页尾部被吞）
+    def _append(page: Path) -> None:
+        page.write_text(
+            page.read_text(encoding="utf-8") + "\n<!-- 追记（未闭合）\n\n## 补充说明\n\n- 追加热点提示\n",
+            encoding="utf-8",
+        )
+
+    root_a, lost_a = _mutate("unclosed_append", _append)
+    assert len(re.findall(r"(?m)^#{2,4} ", "\n".join(lost_a))) >= 1, (
+        "对照前提：未闭合注释之后确有标题对读者不可见（否则本用例没有守护对象）"
+    )
+    errors_a = run_ai_content_gate(root_a)
+    assert any("未闭合" in e and "10-ch10.md" in e for e in errors_a), (
+        f"(a) 未闭合注释隐藏其后标题，必须 fail-closed: {errors_a}"
+    )
+
+    # (b) 未闭合记号插在**最后一个已配对注释之后**（吞掉页面尾部）
+    def _after_last_comment(page: Path) -> None:
+        lines = page.read_text(encoding="utf-8").splitlines(keepends=True)
+        last = max(n for n, line in enumerate(lines) if "-->" in line)
+        lines.insert(last + 1, "<!--\n")
+        page.write_text("".join(lines), encoding="utf-8")
+
+    root_b, lost_b = _mutate("unclosed_midfile", _after_last_comment)
+    assert lost_b, "对照前提：插入点之后仍有读者可见内容被吞"
+    errors_b = run_ai_content_gate(root_b)
+    assert any("未闭合" in e for e in errors_b), f"(b) 页面尾部被吞，必须 fail-closed: {errors_b}"
+
+    # (c) 删掉最后一个注释的闭合记号（与 (b) 同形，证明判据不依赖「新增行」这一动作）
+    def _drop_closer(page: Path) -> None:
+        lines = page.read_text(encoding="utf-8").splitlines(keepends=True)
+        last = max(n for n, line in enumerate(lines) if "-->" in line)
+        lines[last] = lines[last].replace("-->", "", 1)
+        page.write_text("".join(lines), encoding="utf-8")
+
+    root_c, lost_c = _mutate("unclosed_dropped_closer", _drop_closer)
+    assert lost_c, "对照前提：删掉闭合记号后确有内容被吞"
+    errors_c = run_ai_content_gate(root_c)
+    assert any("未闭合" in e for e in errors_c), f"(c) 闭合记号被删，必须 fail-closed: {errors_c}"
+
+    # (d) 记号**之前**已有代码围栏：行视图必须与记号定位同源，否则行号错位会把本形态误判成不报错
+    def _fence_then_unclosed(page: Path) -> None:
+        page.write_text(
+            page.read_text(encoding="utf-8")
+            + "\n```markdown\n示例围栏\n```\n\n<!-- 未闭合\n\n## 隐藏的补充标题\n\n尾部正文\n",
+            encoding="utf-8",
+        )
+
+    root_d, lost_d = _mutate("fence_before_unclosed", _fence_then_unclosed)
+    assert any("隐藏的补充标题" in line for line in lost_d), (
+        "对照前提：未闭合记号之后确有标题对读者不可见"
+    )
+    errors_d = run_ai_content_gate(root_d)
+    assert any("未闭合" in e for e in errors_d), (
+        f"(d) 围栏在记号之前时仍须 fail-closed（行视图错位会让本形态漏报）: {errors_d}"
+    )
+
+    # 干净根零回归：两门课都不得因这条守卫误报
+    assert run_ai_content_gate(_fresh_root("clean_r20")) == [], "干净树上不得误报"
+
+
+def test_unclosed_comment_that_hides_nothing_does_not_fire(tmp_path: Path):
+    """R20 的**对称控制**：不隐藏任何内容的未闭合记号不得报错（否则守卫变成误报源）。
+
+    两条都不能报：
+    (a) 开记号是全文最后一个非空行（其后只有空行）—— 读者没丢任何可见内容；这正是 Y2 反向控制
+        `test_comment_stripping_does_not_swallow_later_headings` 钉住的形状，本守卫不得把它翻红；
+    (b) 未闭合记号落在**代码围栏内** —— 围栏里的记号不参与渲染，对读者不隐藏任何东西。
+    """
+    from lib.ai_content_gate import run_ai_content_gate
+
+    def _fresh_root(name: str) -> Path:
+        fake_root = tmp_path / name / "repo"
+        shutil.copytree(ROOT / "sources", fake_root / "sources")
+        shutil.copytree(ROOT / "ops", fake_root / "ops")
+        shutil.copytree(ROOT / "content", fake_root / "content")
+        return fake_root
+
+    page_rel = Path("content/jiangsu/courses/15043/knowledge/10-ch10.md")
+
+    # (a) 尾部未闭合示例注释（其后只有空行）
+    root_a = _fresh_root("bare_trailing")
+    page_a = root_a / page_rel
+    page_a.write_text(page_a.read_text(encoding="utf-8") + "\n<!-- 未闭合的示例注释\n", encoding="utf-8")
+    assert _reader_lost_lines(page_a.read_text(encoding="utf-8")) == [], (
+        "对照前提：该形状下读者没有丢失任何可见内容"
+    )
+    errors_a = run_ai_content_gate(root_a)
+    assert errors_a == [], f"未隐藏内容的未闭合示例注释不得报错: {errors_a}"
+
+    # (b) 围栏内的未闭合记号
+    root_b = _fresh_root("fenced_unclosed")
+    page_b = root_b / page_rel
+    page_b.write_text(
+        page_b.read_text(encoding="utf-8") + "\n```markdown\n<!-- 围栏内的示例记号\n```\n\n尾部正文\n",
+        encoding="utf-8",
+    )
+    assert _reader_lost_lines(page_b.read_text(encoding="utf-8")) == [], (
+        "对照前提：围栏内的记号不参与渲染（围栏外的尾部正文不被吞）"
+    )
+    errors_b = run_ai_content_gate(root_b)
+    assert errors_b == [], f"围栏内的未闭合记号不隐藏读者可见内容，不得报错: {errors_b}"
+
+
+# --------------------------------------------------------------------------------------
+# R42：未闭合注释**之后**又开一个未闭合围栏 → 尾巴不得被围栏视图删掉（R20 的次序缺口）
+# --------------------------------------------------------------------------------------
+
+def test_unclosed_comment_is_not_hidden_by_a_later_unclosed_fence(tmp_path: Path):
+    """R42 变异证明：记号之后出现未闭合围栏时，R20 的判据**必须仍报错**；改前为 **False / 0 错误**。
+
+    缺口成因：`_comment_hides_content()` 先取 `_unfenced_lines()`、再在这次**围栏视图**里找记号**并**切尾巴。
+    两个问题因此共用一个视图，而它们要的视图相反：
+
+    - 「这个 `<!--` 是不是注释」只能在围栏视图里问（围栏内的记号不是注释，见上一条对称控制）；
+    - 「它后面是否还有内容」必须在**原文视图**里量 —— 未闭合注释吞掉其后的一切，**包括围栏记号本身**。
+
+    于是 `<!--` + ``` + `#### 要点梳理` + 正文 这一形状里，记号之后的未闭合围栏把整段尾巴删空，
+    谓词反过来判「没隐藏任何内容」→ `False`。这**不是**只此一处的语义瑕疵：同一个 `_page_problems()`
+    调用点上的 R20 守卫也一并静默，端到端 `run_ai_content_gate()` 实测 **0 错误**（本用例 (a) 段断言）。
+
+    两点控制：围栏开在记号**之前**时不得把尾巴切错（R20 的 (d) 形状）；对称控制里那两条不得被本改动翻红。
+    """
+    from lib.ai_content_gate import _comment_hides_content, run_ai_content_gate
+
+    # (a) 谓词层：三形态逐一钉住（前后两例改前也报，是为了证明本用例量的是同一个谓词而非恒真条件）
+    assert _comment_hides_content("<!--\n#### 要点梳理\n内容\n") is True, (
+        "对照前提：记号之后有可见内容 → 改前即为 True"
+    )
+    assert _comment_hides_content("<!--\n```\n#### 要点梳理\n内容\n") is True, (
+        "R42：记号之后的未闭合围栏不得把尾巴删掉（改前 False）"
+    )
+    assert _comment_hides_content("<!--\n```\nhidden\n```\n#### 要点梳理\n") is True, (
+        "对照前提：记号之后是**已闭合**围栏 → 改前即为 True"
+    )
+
+    # (b) 端到端：同一个形状在真实页面上改前是 0 错误 —— 这里量「读者确实丢了整段 AI 小节」，
+    #     且丢的内容不是逐点锚点（`#### 要点梳理` 在锚点小节内、锚点小节本身仍在），
+    #     所以 R20 之外的次级守卫也全绿，闸门确实静默。
+    fake_root = tmp_path / "r42" / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+    assert run_ai_content_gate(fake_root) == [], "未变异的对照根必须全绿"
+
+    page = fake_root / "content" / "jiangsu" / "courses" / "15043" / "knowledge" / "01-ch01.md"
+    lines = page.read_text(encoding="utf-8").splitlines(keepends=True)
+    heading = next(n for n, line in enumerate(lines) if line.rstrip("\n") == "#### 要点梳理")
+    page.write_text("".join(lines[:heading] + ["<!--\n", "```\n"] + lines[heading:]), encoding="utf-8")
+
+    lost = _reader_lost_lines(page.read_text(encoding="utf-8"))
+    assert any(line.strip() == "#### 要点梳理" for line in lost), (
+        "对照前提：该形状下读者确实丢了一整行 `#### 要点梳理`（否则本用例没有守护对象）"
+    )
+    errors = run_ai_content_gate(fake_root)
+    assert any("未闭合" in e and "01-ch01.md" in e for e in errors), (
+        f"(b) 记号之后的未闭合围栏不得掩盖未闭合注释（改前 0 错误）: {errors}"
+    )
+
+
+# --------------------------------------------------------------------------------------
+# R21（=Y1-a）：产物侧课码枚举按 `^[0-9]{5}$` 设界
+# --------------------------------------------------------------------------------------
+
+def test_stray_hidden_sibling_dir_produces_no_noise(tmp_path: Path):
+    """R21 变异证明：植入带 AI 横幅页面的隐藏兄弟目录 → **不得**产生噪声错误。
+
+    `build` 的暂存目录（`mkdtemp` → `os.replace`）在窗口内被 SIGKILL 时会残留
+    `content/jiangsu/courses/.15043.promote.xxx/`。它不是课程，但改前会进入产物侧作用域键、
+    命中「AI 产物在、真值源不在」的反向判定 → 报一条与内容无关的错误。
+
+    **触发条件比 QC1 描述更窄**（PM 实测）：空目录形态本来就安静，必须该目录内**存在带 AI 横幅的
+    页面**才命中 —— 故本用例植入真实章页而**不是**空目录。
+    """
+    from lib.ai_content_gate import _rendered_course_dirs, run_ai_content_gate
+
+    fake_root = tmp_path / "stray-dir" / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    # 先证明空目录形态确实安静（避免把「本来就通过」当成修好了）
+    stray = fake_root / "content" / "jiangsu" / "courses" / ".15043.promote.abc123"
+    stray.mkdir(parents=True)
+    assert run_ai_content_gate(fake_root) == [], "对照前提：空残留目录不产生错误"
+
+    (stray / "knowledge").mkdir()
+    (stray / "knowledge" / "01-ch01.md").write_text(
+        (ROOT / "content" / "jiangsu" / "courses" / "15043" / "knowledge" / "01-ch01.md").read_text(
+            encoding="utf-8"
+        ),
+        encoding="utf-8",
+    )
+    assert run_ai_content_gate(fake_root) == [], (
+        "残留隐藏目录（内含 AI 横幅页面）不是课程，不得进入产物侧作用域键"
+    )
+    assert ".15043.promote.abc123" not in _rendered_course_dirs(fake_root), (
+        "产物侧课码须按 `^[0-9]{5}$` 过滤"
+    )
+
+
+def test_missing_source_with_rendered_pages_still_fires(tmp_path: Path):
+    """R21 的反向守护：真实形态（课的源缺失、页面在）**仍须报错** —— 过滤不得顺手关闸。
+
+    两个真实形态都要触发：删掉**整个源目录**（Y1）与只删 `content.json`（X2）。
+    """
+    from lib.ai_content_gate import _rendered_course_dirs, run_ai_content_gate
+
+    def _fresh_root(name: str) -> Path:
+        fake_root = tmp_path / name / "repo"
+        shutil.copytree(ROOT / "sources", fake_root / "sources")
+        shutil.copytree(ROOT / "ops", fake_root / "ops")
+        shutil.copytree(ROOT / "content", fake_root / "content")
+        return fake_root
+
+    # 课码本身必须仍然进入作用域（过滤的是非课码目录，不是课码目录）
+    root_whole = _fresh_root("source_dir_gone")
+    assert "15043" in _rendered_course_dirs(root_whole), "课码目录必须仍在产物侧作用域键内"
+    shutil.rmtree(root_whole / "sources" / "jiangsu" / "courses" / "15043")
+    errors_whole = run_ai_content_gate(root_whole)
+    assert any("15043" in e and "真值源缺失" in e for e in errors_whole), (
+        f"整个源目录缺失时仍须失败关闭: {errors_whole}"
+    )
+
+    root_json = _fresh_root("content_json_gone")
+    (root_json / "sources" / "jiangsu" / "courses" / "15043" / "content.json").unlink()
+    errors_json = run_ai_content_gate(root_json)
+    assert any("15043" in e and "content.json" in e and "真值源缺失" in e for e in errors_json), (
+        f"只缺 content.json 时仍须失败关闭: {errors_json}"
+    )

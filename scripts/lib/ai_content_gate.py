@@ -10,6 +10,10 @@
 3. **页面标记**：页面分类与标记字符串一律取自 `course.schema.json` 的 `generated_page_markers`
    （QC1 F-4 / QC3-003 / R9：schema 是唯一真源，同一规则不写两遍 —— 章页模式也由
    `_chapter_page_patterns()` 从该键派生，模块内不再自带 `knowledge/*.md` 字面量）；
+   另有**未闭合注释的 fail-closed**（R20 / NEW-R3）：`<!--` 少了闭合记号时其后内容对读者不可见，
+   而 `_blank_comments()` 只剥配对注释、谓词与计数仍把那些标题当证据 → 闸门全绿而页面已残缺。
+   判据取「未闭合注释是否真的隐藏了内容」（见 `_comment_hides_content()`），故 Y2 的未闭合示例注释
+   仍不报错（它没隐藏任何可见内容）；
 4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1 / F-QC2-1 / F-QC3-1 / Y2）：对账口径 = **4 个
    block kind（`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` /
    `review_schedule`）**：`explain` / `memorize` 按**逐考核点锚点**对账（`### 考点精讲：<point_id>`
@@ -24,6 +28,8 @@
    **源侧 ∪ 产物侧**的课码并集 —— 「产物存在」蕴含「源存在」，而不是以源的单个文件为前提：
    X2 只认 `content.json` 单文件缺失，于是**删掉整个源目录**时源侧迭代器里已经没有这门课，
    整门课连同 16 个渲染页一起逃出作用域（Y1）；把产物侧的课码并进来后，这一形态同样报错。
+   产物侧课码**按 `^[0-9]{5}$` 设界**（R21 / Y1-a）：暂存残留的隐藏兄弟目录不是课程，
+   放进作用域只会产生噪声错误（见 `_rendered_course_dirs()`）。
 
 **为什么主判据是逐点锚点、而不是全局精确计数**（X3，更正此前写反的理由）：精确相等**并不能**防住
 padding —— 删掉一个 `point_id` 的 `#### 要点梳理`、再在别处补一条同名标题，255 == 255 依旧全绿。
@@ -94,6 +100,63 @@ def _blank_comments(text: str) -> str:
     return _COMMENT_RE.sub(lambda match: "\n" * match.group(0).count("\n"), text)
 
 
+def _unclosed_comment_line(text: str) -> int | None:
+    """第一个**未闭合** `<!--` 所在的行号（0 基）；注释全部配平时返回 `None`。
+
+    扫描口径与 `_blank_comments()` 用的 `_COMMENT_RE`（`<!--.*?-->`，非贪婪）**一致**：每个 `<!--`
+    与其后最近的一个 `-->` 配对，游标跳过后继续找；找不到配对的那个即「未闭合」，其后的正文对读者
+    全部不可见（HTML 注释的语义就是「直到闭合记号为止」）。
+
+    裸 `-->`（前面没有开记号）**不**算未闭合：浏览器忽略它，它不隐藏任何内容，故不得报错。
+    这也正是本判据不用「`<!--` 与 `-->` 计数不相等」的理由 —— 计数法会把一条无害的裸闭合记号判成缺陷。
+    """
+    cursor = 0
+    while True:
+        start = text.find("<!--", cursor)
+        if start < 0:
+            return None
+        end = text.find("-->", start + 4)
+        if end < 0:
+            return text.count("\n", 0, start)
+        cursor = end + 3
+
+
+def _comment_hides_content(text: str) -> bool:
+    """未闭合的 `<!--` 之后是否还有**非空行**（有则 fail-closed，R20）。
+
+    背景（R20 / B2b QC3 NEW-R3）：`_blank_comments()` 只剥**配对**注释，未闭合的开记号原样留在文本里，
+    于是 `_heading_body()` / `_count_visible_headings()` 仍把它后面的标题当成**已渲染证据** ——
+    谓词与计数双双看不到「这些标题对读者不可见」，闸门在页面残缺时保持全绿。
+
+    **口径（R20 要求的「未闭合如何 fail-closed 而不误伤」）**：以「未闭合注释**是否真的隐藏了内容**」
+    为判据，而不是「记号计数是否配平」——
+    - 开记号**之后还有非空行** → 那些行读者看不见 → 报错（末章页尾部被吞掉的形态）；
+    - 开记号是全文最后一个非空行（其后只有空行，含 Y2 反向控制用例的形状）
+      → 读者没有丢失任何可见内容 → **不报错**；
+    - 开记号**自身那一行的剩余文本**不计入：`<!-- 未闭合的示例注释` 这种单行尾巴只丢半行，
+      与「整段标题消失」不同量级，判它会误伤示例注释（Y2 反向控制用例已钉住这一侧不得报错）。
+
+    围栏内的 `<!--` 示例同判：围栏里的记号不参与渲染，对读者不隐藏任何东西，故不报错 ——
+    与 `_blank_comments()` 只剥配对注释同一立场。
+
+    **记号定位与尾巴切片用两个不同的视图**（R42 更正 R20 的写法）。二者回答的是两个不同的问题：
+
+    - 「这个 `<!--` 是不是注释」只能在**围栏视图**里问 —— 围栏内的记号不是注释（上一段）；
+    - 「它后面是否还有内容」必须在**原文视图**里量 —— 未闭合注释吞掉其后的一切，**包括围栏记号本身**。
+      若尾巴仍在围栏视图里取，一个**开在记号之后**的未闭合围栏就会把整段尾巴删掉，谓词反过来判
+      「没隐藏任何内容」：`<!--` + ``` + `#### 要点梳理` + 正文 曾因此返回 `False`，而读者什么都看不见。
+
+    两个视图靠 `_unfenced_indexed_lines()` 的原文行号对齐，而不是各切各的 —— 围栏出现在记号**之前**时，
+    裸用围栏视图的行号去切原文会切错位置，把「确实隐藏了标题」误判成不报错（R20 的 (d) 形状）。
+    """
+    indexed = _unfenced_indexed_lines(text)
+    start = _unclosed_comment_line("\n".join(line for _, line in indexed))
+    if start is None:
+        return False
+    marker_line = indexed[start][0]
+    return any(line.strip() for line in text.splitlines()[marker_line + 1 :])
+
+
 def _unfenced_lines(text: str) -> list[str]:
     """`text` 中**不在代码围栏内**的行（围栏行本身也一并丢弃）。
 
@@ -101,15 +164,24 @@ def _unfenced_lines(text: str) -> list[str]:
     否则「删掉真标题、在围栏里补一条」就能让闸门放行。渲染器从不产出围栏（两门课实测围栏行均为 0），
     所以这一层只拦对抗路径、不动既有产物。
     """
-    lines: list[str] = []
+    return [line for _, line in _unfenced_indexed_lines(text)]
+
+
+def _unfenced_indexed_lines(text: str) -> list[tuple[int, str]]:
+    """`_unfenced_lines()` 的**带原文行号**版本：`(0 基原文行号, 行内容)`，围栏内的行（含围栏行）不返回。
+
+    行号是「围栏视图 ↔ 原文视图」之间唯一的对齐手段：围栏行被丢掉后行号不再相同，谁要跨视图取位置
+    （`_comment_hides_content()` 的尾巴切片）就必须换回原文行号，否则切到的是错位区间。
+    """
+    lines: list[tuple[int, str]] = []
     fence: str | None = None
-    for line in text.splitlines():
+    for index, line in enumerate(text.splitlines()):
         match = _FENCE_LINE_RE.match(line)
         if fence is None:
             if match:
                 fence = match.group("fence")
                 continue
-            lines.append(line)
+            lines.append((index, line))
         elif match and match.group("fence")[0] == fence[0] and len(match.group("fence")) >= len(fence):
             fence = None
     return lines
@@ -207,9 +279,17 @@ def _page_problems(rel_md: str, text: str, markers: dict, errors: list[str], *, 
     `sources.md`）的正文是手写官方事实页，渲染器不得改写（QC3-002 / QC3-006 / C2-011）。
     对它们套用「≤ 80 字符」等于要求「删掉手写正文的引用块」，而那正是被判定的 Critical 缺陷本身。
 
+    未闭合注释的 fail-closed（R20）放在最前、且**不**区分 official / AI 页：它是一条页面完整性守卫
+    （页面尾部被吞掉），不是 AI 层对账，故与页面的 `official_only` 分类无关。
+
     `rel_md` 是相对课程目录的路径（页面分类用），`label` 是报错前缀。
     """
     where = label or rel_md
+    if _comment_hides_content(text):
+        errors.append(
+            f"{where}: 存在未闭合的 `<!--`，其后内容对读者不可见"
+            f"（读者看到的页面已残缺，禁止静默通过）"
+        )
     if markers["any"] not in text:
         errors.append(f"{where}: 缺少生成标识注释 <!-- generated by ... -->")
 
@@ -472,11 +552,20 @@ def _rendered_course_dirs(root: Path) -> dict[str, Path]:
     """产物侧的作用域键：`content/jiangsu/courses/<code>/` 目录（课码 → 目录）。
 
     与源侧同样只取目录（`content/jiangsu/courses/` 下还有一个 `index.md` 文件，天然被排除）。
+    **课码须匹配 `^[0-9]{5}$`**（R21 / Y1-a）：`build` 的暂存目录名在 `mkdtemp` → `os.replace` 窗口内
+    被 SIGKILL 时会残留（如 `.15043.promote.abc123`），这类隐藏兄弟目录不是课程，若不设边界就会进
+    作用域并命中「AI 产物在、真值源不在」的反向判定、报出与内容无关的噪声错误。判据复用
+    `course_pages_contract.CODE`（同一语义：目录名即课码；schema 的 `directory_pattern` 亦为此式），
+    不在此另写字面量。真实形态（课码目录在、源侧缺失）不受影响 —— 其课码本就匹配该式。
     """
     courses_dir = root / "content" / "jiangsu" / "courses"
     if not courses_dir.is_dir():
         return {}
-    return {entry.name: entry for entry in sorted(courses_dir.iterdir()) if entry.is_dir()}
+    return {
+        entry.name: entry
+        for entry in sorted(courses_dir.iterdir())
+        if entry.is_dir() and course_pages_contract.CODE.fullmatch(entry.name)
+    }
 
 
 def _missing_source_problem(root: Path, code: str, rendered_dir: Path, markers: dict) -> str | None:

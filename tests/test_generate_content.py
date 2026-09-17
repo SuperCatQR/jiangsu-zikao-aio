@@ -698,11 +698,15 @@ def test_prompt_pack_declares_course_scope():
 
     assert gc.out_of_scope_prompts("15040") == [], "15040 在作用域内，不得误判"
     assert gc.out_of_scope_prompts("15043") == [], "B-1：15043 在作用域内，generate 必须可推进"
+    # B3b（DP-3 逐课放宽）：B3 迭代把作用域扩展到本轮生成的三门课。
+    for code in ("15044", "00898", "02333"):
+        assert gc.out_of_scope_prompts(code) == [], f"B3b：{code} 在作用域内，generate 必须可推进"
 
-    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 15100 是 L1 课程，
-    # 但仍不在提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
-    assert gc.out_of_scope_prompts("15044") == [f"{prompt_id}.v1" for prompt_id in prompts]
-    assert gc.out_of_scope_prompts("99999") == [f"{prompt_id}.v1" for prompt_id in prompts]
+    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 04747/04751 是 L1 课程、
+    # 考纲完整，但**不在**本轮提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
+    # 注：B3b 之前本用例用 15044 当反例；它已进入作用域，故改用真正作用域外的课码。
+    for code in ("04747", "04751", "99999"):
+        assert gc.out_of_scope_prompts(code) == [f"{prompt_id}.v1" for prompt_id in prompts], code
 
 
 def test_prompt_bodies_are_course_agnostic():
@@ -1015,22 +1019,23 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
 def test_cli_generate_refuses_a_course_without_a_prompt_pack():
     """F-401 失败关闭：作用域**外**的 L1 课程没有提示词包 → 拒绝，不得用别人的模板出内容。
 
-    B-1 之后 `15043` 已进入作用域（见 `test_cli_generate_accepts_an_in_scope_course`），
-    故这里改用仍是 L1、但不在作用域内的 `15044`：作用域是白名单而非通配，这一条必须一直是红的。
+    B-1 后 `15043` 进入作用域，B3b（DP-3）又把 `15044`/`00898`/`02333` 一并放宽，
+    故这里改用仍是 L1、考纲完整、但**不在**本轮作用域内的 `04747`：作用域是白名单而非通配，
+    这一条必须一直是红的。
     """
     proc = subprocess.run(
-        [sys.executable, "scripts/build-course-content.py", "generate", "15044", "--backend", "replay"],
+        [sys.executable, "scripts/build-course-content.py", "generate", "04747", "--backend", "replay"],
         cwd=ROOT,
         capture_output=True,
         text=True,
     )
 
     assert proc.returncode != 0, proc.stdout
-    assert "15044" in proc.stderr
+    assert "04747" in proc.stderr
     assert "提示词包" in proc.stderr
     for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
         assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
-    assert not (ROOT / "sources/jiangsu/courses/15044/content.json").exists(), "拒绝路径不得写盘"
+    assert not (ROOT / "sources/jiangsu/courses/04747/content.json").exists(), "拒绝路径不得写盘"
 
 
 def test_cli_generate_accepts_an_in_scope_course():
@@ -1192,8 +1197,23 @@ def test_committed_fixtures_resolve_every_call_plan_payload_for_each_course():
         path.parent.name
         for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/content.json")
     )
-    # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查
-    assert courses == ["15040", "15043"], f"对照前提：有 content.json 的课程为 15040/15043，实际 {courses}"
+    # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查。
+    # B3b（2026-09-13）接入 `15044`、`00898`、`02333`。前提改为**从知识模型推导**，与本用例
+    # docstring 要求的「新课接入后自动进入守护范围」一致：一门课只要产出了 `content.json`，
+    # 它的每个 `call_plan` payload 就必须有录制响应 —— 该性质由下方循环**直接**判定
+    # （`misses` 非空即失败），因此这里不再硬编码课程清单。
+    assert courses, "对照前提：必须存在有 content.json 的课程，否则本用例退化为空集合上的恒真检查"
+    modelled = {
+        path.parent.name
+        for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/knowledge-model.json")
+    }
+    assert set(courses) <= modelled, (
+        f"对照前提：有 content.json 的课程 {courses} 必须都有 knowledge-model.json；"
+        f"缺模型者 {sorted(set(courses) - modelled)}"
+    )
+    assert {"15040", "15043", "15044"} <= set(courses), (
+        f"对照前提：已上线课程必须留在守护范围内，实际 {courses}"
+    )
 
     for code in courses:
         model = _json(ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json")
@@ -1471,3 +1491,243 @@ def test_cli_agent_backend_fails_closed_without_results(tmp_path):
     assert content_path.is_file(), "成功路径必须产出 content.json"
     doc = _json(content_path)
     assert doc["generator"]["backend"] == "agent"
+
+
+# --------------------------------------------------------------------------------------
+# R49：附录单元（`appendices[]`）必须进生成路径（Task 3a 建模了，但旧消费者不读它）
+# --------------------------------------------------------------------------------------
+
+APPENDIX_COURSE = "02333"
+
+
+def _appendix_model() -> dict:
+    """真实 `02333` 知识模型（7 个附录 / 9 个点，含 `应用` 级 `ap07-s1-p3`）。"""
+    return _json(ROOT / f"sources/jiangsu/courses/{APPENDIX_COURSE}/knowledge-model.json")
+
+
+def _synthetic_appendix_model() -> dict:
+    """合成模型：章 `ch01`（1 节 3 点）+ 附录 `ap01`（1 节 3 点）。
+
+    合成而非只读真实模型：本用例要能对「附录点是否真的进了 jobs / 规范序 / 排程」下断言，
+    而真实 `02333` 的 `question_types` 是 `named_gap`（空），生成会 fail-closed 抛错。
+    """
+    model = _synthetic_model()
+    appendix = json.loads(json.dumps(model["chapters"][0], ensure_ascii=False))
+    appendix.update({"ordinal": 1, "index": "附录一", "slug": "ap01", "title": "附录一 合成附录"})
+    for section in appendix["sections"]:
+        for point in section["points"]:
+            point["id"] = point["id"].replace("-intro-", "-ap01-")
+    return {**model, "appendices": [appendix]}
+
+
+def _all_point_ids(model: dict) -> list[str]:
+    """源侧探针（独立于生产 `_point_ids()`，含附录）。"""
+    units = [*model["chapters"], *(model.get("appendices") or [])]
+    return [p["id"] for u in units for s in u["sections"] for p in s["points"]]
+
+
+def test_appendix_points_are_generated_as_their_own_units(monkeypatch, tmp_path):
+    """R49 主判据：`appendices[]` 的考点必须真的进 `call_plan()` 与产物 —— 不是一个都不读。
+
+    旧实现只迭代 `model["chapters"]`，于是 `02333` 的 9 个附录点（含 `应用` 级 `ap07-s1-p3`）
+    既没有 prompt 调用、也不会出现在 `content.json` 的 blocks 里：它们「被建模但永不到达读者」，
+    即 R41 登记的危害原样保留。本用例把它变成可判否的属性。
+    """
+    _wire(monkeypatch, tmp_path, record=True)
+    model = _synthetic_appendix_model()
+    appendix_points = [
+        p["id"] for a in model["appendices"] for s in a["sections"] for p in s["points"]
+    ]
+    assert len(appendix_points) == 3, "对照前提：合成附录有 3 个考核点"
+
+    plan = gc.call_plan(model)
+    payload_point_ids = {payload["point"]["id"] for _pid, _ver, payload in plan if "point" in payload}
+    for point_id in appendix_points:
+        assert point_id in payload_point_ids, f"附录点 {point_id} 没有 prompt 调用（未被生成）"
+
+    doc = gc.generate_course_content(ROOT, model, backend="cli")
+    generated = {block["point_id"] for block in doc["blocks"] if block.get("point_id")}
+    for point_id in appendix_points:
+        assert point_id in generated, f"附录点 {point_id} 未产出任何块"
+
+    # 按点计数：块数 = 点数 × 3 + 1（章 3 点 + 附录 3 点 = 6 点 → 19 块）
+    assert len(doc["blocks"]) == len(_all_point_ids(model)) * 3 + 1, (
+        f"块数必须按**点**算（含附录点）：{len(doc['blocks'])}"
+    )
+    # 附录的 explain 必须带附录自己的 `chapter_focus`（不是第 14 章的，Task 3a 的 R41 语义）
+    appendix_explain = next(
+        payload for _pid, _v, payload in plan
+        if payload.get("point", {}).get("id") == appendix_points[0] and "question_type" not in payload
+    )
+    assert appendix_explain["chapter"]["index"] == "附录一", appendix_explain["chapter"]
+    assert appendix_explain["chapter_focus"] == ["合成本章重点"], appendix_explain["chapter_focus"]
+
+
+def test_appendix_ordering_puts_every_appendix_point_after_every_chapter_point():
+    """规范序：附录点在**全部**章节点之后。
+
+    判据必须针对**真实撞车形态**：`02333` 的 `第1章` 与 `附录一` 的 `ordinal` **都是 1**
+    （附录 `ordinal` 与章同域）。若 `_point_order()` 只用 `ordinal` 排序，`附录一` 的点会排到
+    `第1章` 与 `第2章` 之间 —— 本用例用真实模型 + 一条合成附录来复现这个撞车，
+    合成模型里的 `ordinal 0 / 1` 不撞车，因此测不出该缺陷（第一版正是这样漏掉的）。
+    """
+    model = _appendix_model()
+    # 造一个 ordinal 与真实附录撞车的附录，插到 7 个真实附录之前（阅读序仍是章 → 附录）
+    collision = json.loads(json.dumps(model["appendices"][0], ensure_ascii=False))
+    assert model["chapters"][0]["ordinal"] == 1 and collision["ordinal"] == 1, (
+        "对照前提：第1章与附录一的 ordinal 必须撞车（都是 1）"
+    )
+    for section in collision["sections"]:
+        for point in section["points"]:
+            point["id"] = "02333-ap99-s1-p1"
+
+    blocks = [
+        {"block_id": f"{pid}/explain", "kind": "explain", "point_id": pid}
+        for pid in reversed(_all_point_ids(model))
+    ]
+    ordered = [block["point_id"] for block in gc.order_blocks(blocks, model)]
+    appendix_points = [p["id"] for a in model["appendices"] for s in a["sections"] for p in s["points"]]
+    chapter_points = [p["id"] for c in model["chapters"] for s in c["sections"] for p in s["points"]]
+    last_chapter = max(ordered.index(pid) for pid in chapter_points)
+    first_appendix = min(ordered.index(pid) for pid in appendix_points)
+    assert first_appendix > last_chapter, (
+        f"附录点必须排在全部章节点之后（附录一 ordinal=1 与第1章撞车）：{ordered[:20]}"
+    )
+    # 逐单元确认：每个附录点都排在每个章节点之后（不只是首尾）
+    for appendix_point in appendix_points:
+        for chapter_point in chapter_points:
+            assert ordered.index(appendix_point) > ordered.index(chapter_point), (
+                f"{appendix_point} 排在了 {chapter_point} 之前"
+            )
+    assert collision["ordinal"] == 1  # 撞车形态已构造（对照前提）
+
+
+def test_appendix_points_enter_the_review_schedule():
+    """排程按点算：附录点必须进 `items[].point_ids` 与 `spaced_repetition`（否则它们不进复习节奏）。"""
+    model = {
+        **_synthetic_appendix_model(),
+        "exam": {**_synthetic_model()["exam"], "exam_date": "2026-10-25", "weekly_hours": 6},
+    }
+    schedule = gc._review_schedule(model, generator={"backend": "replay", "model": "m",
+                                                     "prompt_id": "p", "prompt_version": "v1",
+                                                     "generated_at": "2026-01-01"})
+    appendix_points = {p["id"] for a in model["appendices"] for s in a["sections"] for p in s["points"]}
+    for plan in schedule["plans"]:
+        scheduled = {pid for item in plan["items"] for pid in item["point_ids"]}
+        repeated = {r["point_id"] for r in plan["spaced_repetition"]}
+        missing = appendix_points - scheduled
+        assert not missing, f"{plan['tier']}: 附录点未进 items[].point_ids：{sorted(missing)}"
+        assert not (appendix_points - repeated), f"{plan['tier']}: 附录点未进 spaced_repetition"
+
+
+def test_stage_plan_payload_lists_appendices_separately_and_omits_the_key_when_empty():
+    """课程级 payload：附录以**独立键**列出；无附录时**整个键省略**（`15040`/`15043` 字节不变的结构前提）。"""
+    model = _synthetic_appendix_model()
+    payload = gc._stage_plan_payload(model)
+    assert [a["index"] for a in payload["appendices"]] == ["附录一"], payload.get("appendices")
+    assert [c["index"] for c in payload["chapters"]] == ["导论"], "附录不得混进 chapters"
+    # point_total 按点算（含附录点）
+    assert payload["point_total"] == len(_all_point_ids(model)) == 6
+
+    plain = gc._stage_plan_payload(_synthetic_model())
+    assert "appendices" not in plain, "无附录的课程不得新增 appendices 键（payload 哈希会漂移）"
+    assert plain["point_total"] == 3
+
+
+def test_select_chapters_accepts_appendix_selectors_and_keeps_chapter_selectors_working():
+    """R49 验收②：`select_chapters` 对附录可寻址（slug `ap01` / 序标签 `附录一`），
+    且章的既有选择器语义不变（`intro` / `导论` / `0`）。"""
+    model = _synthetic_appendix_model()
+
+    by_slug = gc.select_chapters(model, ("ap01",))
+    assert [a["slug"] for a in by_slug["appendices"]] == ["ap01"]
+    assert by_slug["chapters"] == [], "只选附录时 chapters 必须是空列表（不是缺失键）"
+
+    # 附录的**序标签**仍是选择器；序数（`"1"`）不是 —— 附录不与章共用序数命名空间（F-2 回归见
+    # `test_select_chapters_ordinal_selector_does_not_alias_a_same_numbered_appendix`）。
+    by_label = gc.select_chapters(model, ("附录一",))
+    assert [a["slug"] for a in by_label["appendices"]] == ["ap01"], "附录序标签未命中附录"
+
+    # 章与附录混选：各自留各自的列表，顺序仍是知识模型内序
+    mixed = gc.select_chapters(model, ("intro", "ap01"))
+    assert [c["slug"] for c in mixed["chapters"]] == ["intro"]
+    assert [a["slug"] for a in mixed["appendices"]] == ["ap01"]
+
+    # 章的既有选择器：slug / 序标签 / ordinal 三种形态都仍可用
+    for selector in ("intro", "导论", "0"):
+        picked = gc.select_chapters(model, (selector,))
+        assert [c["slug"] for c in picked["chapters"]] == ["intro"], f"章选择器 {selector!r} 失效"
+        assert picked["appendices"] == [], f"章选择器 {selector!r} 不得带上附录"
+
+    # 无附录课程：不得新增 appendices 键（no-op 结构前提）
+    plain = gc.select_chapters(_synthetic_model(), ("intro",))
+    assert "appendices" not in plain
+
+
+def test_select_chapters_ordinal_selector_does_not_alias_a_same_numbered_appendix():
+    """F-2：章与附录的**序数命名空间必须不相交** —— `str(ordinal)` 只对章生效。
+
+    附录只用 `slug`（`ap01`…）与序标签（`附录一`…）寻址；`5` 恒指第 5 章，不顺手带上 `ap05`。
+    修前实测（真实 `02333` 模型）：`('1',)` → `chapters=['ch01']` **且** `appendices=['ap01']`；
+    `('5',)` → `ch05` + `ap05` —— 两者的 `ordinal` 同域（附录一 = 1），分批选择被静默放大。
+    """
+    model = _appendix_model()  # 真实 02333：`intro` + `ch01`…`ch13`，`ap01`…`ap07`
+
+    by_ordinal = gc.select_chapters(model, ("1",))
+    assert [c["slug"] for c in by_ordinal["chapters"]] == ["ch01"]
+    assert by_ordinal["appendices"] == [], "序数选择器不得带上同号的附录"
+
+    fifth = gc.select_chapters(model, ("5",))
+    assert [c["slug"] for c in fifth["chapters"]] == ["ch05"]
+    assert fifth["appendices"] == [], "序数选择器不得带上同号的附录"
+
+    # 附录仍可寻址，且两种选择器都不别名到章
+    for selector in ("ap01", "附录一"):
+        picked = gc.select_chapters(model, (selector,))
+        assert picked["chapters"] == [], f"附录选择器 {selector!r} 不得带上章"
+        assert [a["slug"] for a in picked["appendices"]] == ["ap01"], f"选择器 {selector!r} 未命中附录"
+
+    # 章 slug 也不别名到附录
+    assert gc.select_chapters(model, ("ch01",))["appendices"] == []
+
+
+def test_select_chapters_rejects_an_unknown_appendix_selector():
+    model = _synthetic_appendix_model()
+    with pytest.raises(ValueError):
+        gc.select_chapters(model, ("ap99",))
+    with pytest.raises(ValueError):
+        gc.select_chapters(model, ("附录九",))
+
+
+def test_committed_02333_model_has_nine_appendix_points_reachable():
+    """产物级对照前提：`02333` 的模型确实有 7 附录 / 9 点（含 `应用` 级），且它们全部进 call_plan。
+
+    这是「9 个点会到达读者」这条验收的**起点**：模型侧 9 点 + 消费者侧可达，两者缺一不可
+    （Task 3a 只做到前者）。
+
+    `02333` 的 `exam.question_types` 是 `named_gap`（空列表）→ `call_plan()` 按**既有**契约 fail-closed
+    抛错（`declared_question_types()`）。本用例只补一个合成题型集让 jobs 真正展开，其余事实
+    （7 附录 / 9 点 / 层级 / point id）全部取自**真实模型**，不改仓内文件。
+    """
+    model = _appendix_model()
+    assert len(model["appendices"]) == 7
+    appendix_points = [p["id"] for a in model["appendices"] for s in a["sections"] for p in s["points"]]
+    assert len(appendix_points) == 9, appendix_points
+    assert "02333-ap07-s1-p3" in appendix_points, "`应用` 级要求行必须在模型里"
+    assert (
+        next(
+            p for a in model["appendices"] for s in a["sections"] for p in s["points"]
+            if p["id"] == "02333-ap07-s1-p3"
+        )["requirement"]
+        == "应用"
+    )
+    # 消费者侧：9 个附录点全部进 jobs 的 payload（旧实现里它们是 0 条）
+    declared = {**model, "exam": {**model["exam"], "question_types": ["单项选择题", "简答题", "材料题"]}}
+    plan = gc.call_plan(declared)
+    payload_point_ids = {payload["point"]["id"] for _pid, _v, payload in plan if "point" in payload}
+    assert set(appendix_points) <= payload_point_ids, (
+        f"未进 call_plan 的附录点：{sorted(set(appendix_points) - payload_point_ids)}"
+    )
+    # 预算口径（plan § Task 3b）：块数**按点**算 = 153 点（144 章节点 + 9 附录点）→ 153×3 + 1 = 460
+    assert len(payload_point_ids) == 153, f"点数 = 144 + 9 = 153，实际 {len(payload_point_ids)}"
+    assert len(plan) == 153 * 3 + 1, f"调用计划长度 = 点数×3 + 1（stage_plan），实际 {len(plan)}"

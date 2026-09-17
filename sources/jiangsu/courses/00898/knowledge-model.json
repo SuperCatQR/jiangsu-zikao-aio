@@ -1,0 +1,2247 @@
+{
+  "schema_version": 1,
+  "course_code": "00898",
+  "model_version": "v1",
+  "generated_at": "2026-09-14",
+  "generator": {
+    "kind": "deterministic",
+    "model": null,
+    "prompt_id": null,
+    "prompt_version": null
+  },
+  "source": {
+    "doc_id": "syllabus:00898",
+    "path": "sources/jiangsu/processed/syllabus/00898-internet-software-development-gaogang-4295/document.extracted.md",
+    "sha256": "76789a95b7bafcdd8fe925cd33fa63769d0e54dbe2aa906fda9ceaac30a151e3"
+  },
+  "chapters": [
+    {
+      "ordinal": 1,
+      "index": "第1章",
+      "slug": "ch01",
+      "title": "第1章 JSP 与 Web 技术概论",
+      "sections": [
+        {
+          "index": "1",
+          "title": "Web 应用程序开发基础知识",
+          "points": [
+            {
+              "id": "00898-ch01-s1-p1",
+              "title": "①Web 应用程序所基于的协议",
+              "requirement": "识记",
+              "quote": "①Web 应用程序所基于的协议",
+              "locator": "L137"
+            },
+            {
+              "id": "00898-ch01-s1-p2",
+              "title": "②传统的 Web 应用程序",
+              "requirement": "识记",
+              "quote": "②传统的 Web 应用程序",
+              "locator": "L137"
+            },
+            {
+              "id": "00898-ch01-s1-p3",
+              "title": "③基于 Web模式的系统的结构",
+              "requirement": "识记",
+              "quote": "③基于 Web模式的系统的结构",
+              "locator": "L137"
+            },
+            {
+              "id": "00898-ch01-s1-p4",
+              "title": "①HTTP 通信协议及其流程",
+              "requirement": "领会",
+              "quote": "①HTTP 通信协议及其流程",
+              "locator": "L139"
+            },
+            {
+              "id": "00898-ch01-s1-p5",
+              "title": "②CGI 工作流程及缺点",
+              "requirement": "领会",
+              "quote": "②CGI 工作流程及缺点",
+              "locator": "L139"
+            },
+            {
+              "id": "00898-ch01-s1-p6",
+              "title": "③客户端和服务器端的作用和角色",
+              "requirement": "领会",
+              "quote": "③客户端和服务器端的作用和角色",
+              "locator": "L139"
+            },
+            {
+              "id": "00898-ch01-s1-p7",
+              "title": "④URL 的组成",
+              "requirement": "领会",
+              "quote": "④URL 的组成",
+              "locator": "L139"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "静态网页与 HTML",
+          "points": [
+            {
+              "id": "00898-ch01-s2-p1",
+              "title": "①HTML 的定义、基本组成、典型的标签",
+              "requirement": "识记",
+              "quote": "①HTML 的定义、基本组成、典型的标签",
+              "locator": "L142"
+            },
+            {
+              "id": "00898-ch01-s2-p2",
+              "title": "①静态网页的 HTML 技术的不足",
+              "requirement": "领会",
+              "quote": "①静态网页的 HTML 技术的不足",
+              "locator": "L143"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "交互式动态网页技术",
+          "points": [
+            {
+              "id": "00898-ch01-s3-p1",
+              "title": "①动态网页的程序语言的种类和文件类型",
+              "requirement": "识记",
+              "quote": "①动态网页的程序语言的种类和文件类型",
+              "locator": "L145"
+            },
+            {
+              "id": "00898-ch01-s3-p2",
+              "title": "②客户端执行的网页语言，包括定义和功效、种类",
+              "requirement": "识记",
+              "quote": "②客户端执行的网页语言，包括定义和功效、种类",
+              "locator": "L145"
+            },
+            {
+              "id": "00898-ch01-s3-p3",
+              "title": "③服务器端执行的网页语言，包括定义、技术种类和对比",
+              "requirement": "识记",
+              "quote": "③服务器端执行的网页语言，包括定义、技术种类和对比",
+              "locator": "L145"
+            },
+            {
+              "id": "00898-ch01-s3-p4",
+              "title": "①客户端与服务器端网页语言的不同",
+              "requirement": "领会",
+              "quote": "①客户端与服务器端网页语言的不同",
+              "locator": "L148"
+            },
+            {
+              "id": "00898-ch01-s3-p5",
+              "title": "②客户端执行的网页语言的工作过程和优、缺点",
+              "requirement": "领会",
+              "quote": "②客户端执行的网页语言的工作过程和优、缺点",
+              "locator": "L148"
+            },
+            {
+              "id": "00898-ch01-s3-p6",
+              "title": "③服务器端执行的网页语言的工作流程",
+              "requirement": "领会",
+              "quote": "③服务器端执行的网页语言的工作流程",
+              "locator": "L148"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "网站数据库技术",
+          "points": [
+            {
+              "id": "00898-ch01-s4-p1",
+              "title": "①网站访问数据库的操作",
+              "requirement": "识记",
+              "quote": "①网站访问数据库的操作",
+              "locator": "L151"
+            },
+            {
+              "id": "00898-ch01-s4-p2",
+              "title": "①Web 服务器和数据库服务器的位置关系",
+              "requirement": "领会",
+              "quote": "①Web 服务器和数据库服务器的位置关系",
+              "locator": "L152"
+            },
+            {
+              "id": "00898-ch01-s4-p3",
+              "title": "②JSP 页面访问数据库的基本流程",
+              "requirement": "领会",
+              "quote": "②JSP 页面访问数据库的基本流程",
+              "locator": "L152"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "JSP 与相关技术",
+          "points": [
+            {
+              "id": "00898-ch01-s5-p1",
+              "title": "①JSP 的倡导者、定义、组成、双重特性、动态程序的标记",
+              "requirement": "识记",
+              "quote": "①JSP 的倡导者、定义、组成、双重特性、动态程序的标记",
+              "locator": "L155"
+            },
+            {
+              "id": "00898-ch01-s5-p2",
+              "title": "②JSP 的特点",
+              "requirement": "识记",
+              "quote": "②JSP 的特点",
+              "locator": "L155"
+            },
+            {
+              "id": "00898-ch01-s5-p3",
+              "title": "③JSP 执行方式、运行本质、Servlet 容器的概念、JSP 与 Servlet 的关系、编写 JSP 的注意点",
+              "requirement": "识记",
+              "quote": "③JSP 执行方式、运行本质、Servlet 容器的概念、JSP 与 Servlet 的关系、编写 JSP 的注意点",
+              "locator": "L155"
+            },
+            {
+              "id": "00898-ch01-s5-p4",
+              "title": "④JSP 本质与 Servlet",
+              "requirement": "识记",
+              "quote": "④JSP 本质与 Servlet",
+              "locator": "L155"
+            },
+            {
+              "id": "00898-ch01-s5-p5",
+              "title": "①理解 JSP 的运行流程",
+              "requirement": "领会",
+              "quote": "①理解 JSP 的运行流程",
+              "locator": "L158"
+            },
+            {
+              "id": "00898-ch01-s5-p6",
+              "title": "②服务器的处理特点",
+              "requirement": "领会",
+              "quote": "②服务器的处理特点",
+              "locator": "L158"
+            },
+            {
+              "id": "00898-ch01-s5-p7",
+              "title": "③JavaBean 的定义和作用",
+              "requirement": "领会",
+              "quote": "③JavaBean 的定义和作用",
+              "locator": "L158"
+            }
+          ]
+        },
+        {
+          "index": "6",
+          "title": "软件编程体系简介",
+          "points": [
+            {
+              "id": "00898-ch01-s6-p1",
+              "title": "①两大编程体系，包括发展潮流、各自的编程语言",
+              "requirement": "识记",
+              "quote": "①两大编程体系，包括发展潮流、各自的编程语言",
+              "locator": "L161"
+            },
+            {
+              "id": "00898-ch01-s6-p2",
+              "title": "②B/S 的浏览器端编程语言的分类",
+              "requirement": "识记",
+              "quote": "②B/S 的浏览器端编程语言的分类",
+              "locator": "L161"
+            },
+            {
+              "id": "00898-ch01-s6-p3",
+              "title": "③两大编程体系的数据库支持系统",
+              "requirement": "识记",
+              "quote": "③两大编程体系的数据库支持系统",
+              "locator": "L161"
+            },
+            {
+              "id": "00898-ch01-s6-p4",
+              "title": "①B/S 模式和 C/S 模式的工作优缺点",
+              "requirement": "领会",
+              "quote": "①B/S 模式和 C/S 模式的工作优缺点",
+              "locator": "L163"
+            }
+          ]
+        },
+        {
+          "index": "7",
+          "title": "企业应用开发架构",
+          "points": [
+            {
+              "id": "00898-ch01-s7-p1",
+              "title": "①两层、三层、N 层架构的组成",
+              "requirement": "识记",
+              "quote": "①两层、三层、N 层架构的组成",
+              "locator": "L169"
+            },
+            {
+              "id": "00898-ch01-s7-p2",
+              "title": "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
+              "requirement": "识记",
+              "quote": "②J2EE 的版本、组成（基础）、特点、本质、相关产品",
+              "locator": "L169"
+            },
+            {
+              "id": "00898-ch01-s7-p3",
+              "title": "③J2EE 的分布",
+              "requirement": "识记",
+              "quote": "③J2EE 的分布",
+              "locator": "L169"
+            },
+            {
+              "id": "00898-ch01-s7-p4",
+              "title": "①开发架构之间的比较",
+              "requirement": "领会",
+              "quote": "①开发架构之间的比较",
+              "locator": "L171"
+            },
+            {
+              "id": "00898-ch01-s7-p5",
+              "title": "②J2EE 典型的 4 层架构",
+              "requirement": "领会",
+              "quote": "②J2EE 典型的 4 层架构",
+              "locator": "L171"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解 JSP 的本质、JSP 的运行流程",
+          "locator": "L174"
+        },
+        {
+          "text": "②理解软件编程体系及开发架构",
+          "locator": "L174"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L172",
+          "title": "（八）JSP 知识体系及学习之路（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "index": "第2章",
+      "slug": "ch02",
+      "title": "第2章 JSP 的开发和运行环境",
+      "sections": [
+        {
+          "index": "1",
+          "title": "JSP 的开发和应用平台介绍",
+          "points": [
+            {
+              "id": "00898-ch02-s1-p1",
+              "title": "①JSP 的开发和应用平台的种类",
+              "requirement": "识记",
+              "quote": "①JSP 的开发和应用平台的种类",
+              "locator": "L189"
+            },
+            {
+              "id": "00898-ch02-s1-p2",
+              "title": "②各平台的特性",
+              "requirement": "识记",
+              "quote": "②各平台的特性",
+              "locator": "L189"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "Eclipse Java EE 集成开发环境",
+          "points": [
+            {
+              "id": "00898-ch02-s2-p1",
+              "title": "①开发环境的定义",
+              "requirement": "识记",
+              "quote": "①开发环境的定义",
+              "locator": "L191"
+            },
+            {
+              "id": "00898-ch02-s2-p2",
+              "title": "②JDK 的配置",
+              "requirement": "识记",
+              "quote": "②JDK 的配置",
+              "locator": "L191"
+            },
+            {
+              "id": "00898-ch02-s2-p3",
+              "title": "③Tomcat 服务器的概述、特点",
+              "requirement": "识记",
+              "quote": "③Tomcat 服务器的概述、特点",
+              "locator": "L191"
+            },
+            {
+              "id": "00898-ch02-s2-p4",
+              "title": "④Tomcat 的安装、安装文件夹、解压缩版安装说明",
+              "requirement": "识记",
+              "quote": "④Tomcat 的安装、安装文件夹、解压缩版安装说明",
+              "locator": "L191"
+            },
+            {
+              "id": "00898-ch02-s2-p5",
+              "title": "⑤Tomcat 的部署和访问网页的链接",
+              "requirement": "识记",
+              "quote": "⑤Tomcat 的部署和访问网页的链接",
+              "locator": "L191"
+            },
+            {
+              "id": "00898-ch02-s2-p6",
+              "title": "⑥Eclipse Jave EE 开发环境的配置和开发",
+              "requirement": "识记",
+              "quote": "⑥Eclipse Jave EE 开发环境的配置和开发",
+              "locator": "L191"
+            },
+            {
+              "id": "00898-ch02-s2-p7",
+              "title": "①Tomcat 的目录结构以及具体内容",
+              "requirement": "领会",
+              "quote": "①Tomcat 的目录结构以及具体内容",
+              "locator": "L194"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "其他 JSP 开发环境。",
+          "points": [
+            {
+              "id": "00898-ch02-s4-p1",
+              "title": "①JSP 的相关开发环境的种类",
+              "requirement": "识记",
+              "quote": "①JSP 的相关开发环境的种类",
+              "locator": "L197"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①掌握 Eclipse Java EE 开发环境的安装和配置",
+          "locator": "L203"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L195",
+          "title": "（三）MyEclipse 开发环境（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "index": "第3章",
+      "slug": "ch03",
+      "title": "第3章 JSP 基本语法",
+      "sections": [
+        {
+          "index": "1",
+          "title": "JSP 文件的结构",
+          "points": [
+            {
+              "id": "00898-ch03-s1-p1",
+              "title": "①JSP 的概念和实质、组成部分、Java 代码的标记（即与 HTML 的区别）",
+              "requirement": "识记",
+              "quote": "①JSP 的概念和实质、组成部分、Java 代码的标记（即与 HTML 的区别）",
+              "locator": "L217"
+            },
+            {
+              "id": "00898-ch03-s1-p2",
+              "title": "②JSP 工作过程和相关转换",
+              "requirement": "识记",
+              "quote": "②JSP 工作过程和相关转换",
+              "locator": "L217"
+            },
+            {
+              "id": "00898-ch03-s1-p3",
+              "title": "③JSP 的组成元素",
+              "requirement": "识记",
+              "quote": "③JSP 的组成元素",
+              "locator": "L217"
+            },
+            {
+              "id": "00898-ch03-s1-p4",
+              "title": "①JSP 的批注、数据输出、声明",
+              "requirement": "领会",
+              "quote": "①JSP 的批注、数据输出、声明",
+              "locator": "L219"
+            },
+            {
+              "id": "00898-ch03-s1-p5",
+              "title": "②在 HTML 网页中嵌入 JSP 程序代码的方法",
+              "requirement": "领会",
+              "quote": "②在 HTML 网页中嵌入 JSP 程序代码的方法",
+              "locator": "L219"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "JSP 的脚本元素",
+          "points": [
+            {
+              "id": "00898-ch03-s2-p1",
+              "title": "①脚本元素的作用、种类",
+              "requirement": "识记",
+              "quote": "①脚本元素的作用、种类",
+              "locator": "L222"
+            },
+            {
+              "id": "00898-ch03-s2-p2",
+              "title": "②隐藏注释（包括目的、语法、处理）、HTML注释（包括格式、两种注释方法的比较、常用的 Java 注释）",
+              "requirement": "识记",
+              "quote": "②隐藏注释（包括目的、语法、处理）、HTML注释（包括格式、两种注释方法的比较、常用的 Java 注释）",
+              "locator": "L222"
+            },
+            {
+              "id": "00898-ch03-s2-p3",
+              "title": "③声明的语法、功能",
+              "requirement": "识记",
+              "quote": "③声明的语法、功能",
+              "locator": "L222"
+            },
+            {
+              "id": "00898-ch03-s2-p4",
+              "title": "④脚本代码，包括本质、功能、相关处理、注意点",
+              "requirement": "识记",
+              "quote": "④脚本代码，包括本质、功能、相关处理、注意点",
+              "locator": "L222"
+            },
+            {
+              "id": "00898-ch03-s2-p5",
+              "title": "⑤表达式，包括语法格式、转换、注意点",
+              "requirement": "识记",
+              "quote": "⑤表达式，包括语法格式、转换、注意点",
+              "locator": "L222"
+            },
+            {
+              "id": "00898-ch03-s2-p6",
+              "title": "①声明局部变量和全局变量（注意两者的不同）",
+              "requirement": "领会",
+              "quote": "①声明局部变量和全局变量（注意两者的不同）",
+              "locator": "L226"
+            },
+            {
+              "id": "00898-ch03-s2-p7",
+              "title": "②使用表达式的注意点",
+              "requirement": "领会",
+              "quote": "②使用表达式的注意点",
+              "locator": "L226"
+            },
+            {
+              "id": "00898-ch03-s2-p8",
+              "title": "①方法或变量的声明",
+              "requirement": "应用",
+              "quote": "①方法或变量的声明",
+              "locator": "L228"
+            },
+            {
+              "id": "00898-ch03-s2-p9",
+              "title": "②撰写 JSP 页面，如在页面输入半径，计算圆的周长和面积",
+              "requirement": "应用",
+              "quote": "②撰写 JSP 页面，如在页面输入半径，计算圆的周长和面积",
+              "locator": "L228"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "JSP 指令元素",
+          "points": [
+            {
+              "id": "00898-ch03-s3-p1",
+              "title": "①定义、特点、语法格式",
+              "requirement": "识记",
+              "quote": "①定义、特点、语法格式",
+              "locator": "L231"
+            },
+            {
+              "id": "00898-ch03-s3-p2",
+              "title": "②page 指令，包括作用、语法、相关属性（包括设置错误处理页面相关、设置内容类型等）",
+              "requirement": "识记",
+              "quote": "②page 指令，包括作用、语法、相关属性（包括设置错误处理页面相关、设置内容类型等）",
+              "locator": "L231"
+            },
+            {
+              "id": "00898-ch03-s3-p3",
+              "title": "③include 指令，包括作用、语法、路径的类型、包含的文件类型、处理、注意点",
+              "requirement": "识记",
+              "quote": "③include 指令，包括作用、语法、路径的类型、包含的文件类型、处理、注意点",
+              "locator": "L231"
+            },
+            {
+              "id": "00898-ch03-s3-p4",
+              "title": "④taglib 指令的功能、语法",
+              "requirement": "识记",
+              "quote": "④taglib 指令的功能、语法",
+              "locator": "L231"
+            },
+            {
+              "id": "00898-ch03-s3-p5",
+              "title": "①理解“使用 include 指令语句包含文本是静态的”的含义",
+              "requirement": "领会",
+              "quote": "①理解“使用 include 指令语句包含文本是静态的”的含义",
+              "locator": "L236"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "JSP 动作元素",
+          "points": [
+            {
+              "id": "00898-ch03-s4-p1",
+              "title": "①动作元素的执行、与其他标签的区别",
+              "requirement": "识记",
+              "quote": "①动作元素的执行、与其他标签的区别",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p2",
+              "title": "②动作元素的种类",
+              "requirement": "识记",
+              "quote": "②动作元素的种类",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p3",
+              "title": "③<jsp:include>的用途、包含方式、语法、注意点",
+              "requirement": "识记",
+              "quote": "③<jsp:include>的用途、包含方式、语法、注意点",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p4",
+              "title": "④<jsp:forward>的用途、工作特点、语法格式",
+              "requirement": "识记",
+              "quote": "④<jsp:forward>的用途、工作特点、语法格式",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p5",
+              "title": "⑤<jsp:param>的用途、语法、注意点、参数的获取",
+              "requirement": "识记",
+              "quote": "⑤<jsp:param>的用途、语法、注意点、参数的获取",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p6",
+              "title": "⑥<jsp:useBean>、<jsp:setProperty>、<jsp:getProperty>的用途、语法、注意点",
+              "requirement": "识记",
+              "quote": "⑥<jsp:useBean>、<jsp:setProperty>、<jsp:getProperty>的用途、语法、注意点",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p7",
+              "title": "⑦<jsp:plugin>的用途、语法格式",
+              "requirement": "识记",
+              "quote": "⑦<jsp:plugin>的用途、语法格式",
+              "locator": "L238"
+            },
+            {
+              "id": "00898-ch03-s4-p8",
+              "title": "①include 指令与 include 动作的区别",
+              "requirement": "领会",
+              "quote": "①include 指令与 include 动作的区别",
+              "locator": "L243"
+            },
+            {
+              "id": "00898-ch03-s4-p9",
+              "title": "②javaBean、<jsp:setProperty>、<jsp:getProperty>的关系和应用方法",
+              "requirement": "领会",
+              "quote": "②javaBean、<jsp:setProperty>、<jsp:getProperty>的关系和应用方法",
+              "locator": "L243"
+            },
+            {
+              "id": "00898-ch03-s4-p10",
+              "title": "①<jsp:forward>的重定向",
+              "requirement": "应用",
+              "quote": "①<jsp:forward>的重定向",
+              "locator": "L245"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①熟悉和把握 JSP 文件的结构",
+          "locator": "L247"
+        },
+        {
+          "text": "②掌握利用声明来声明变量和方法、通过 JSP 进行输入、在 JSP 文件中声明方法、在 JSP 文件中调用方法、在 JSP 页面上显示处理的结果",
+          "locator": "L247"
+        },
+        {
+          "text": "③理解 include 指令与 include 动作的区别",
+          "locator": "L247"
+        },
+        {
+          "text": "④掌握利用<jsp:forward>书写登录验证页面",
+          "locator": "L247"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 4,
+      "index": "第4章",
+      "slug": "ch04",
+      "title": "第4章 JSP 内置对象",
+      "sections": [
+        {
+          "index": "1",
+          "title": "JSP 内置对象概述",
+          "points": [
+            {
+              "id": "00898-ch04-s1-p1",
+              "title": "①常用内置对象及其功能",
+              "requirement": "领会",
+              "quote": "①常用内置对象及其功能",
+              "locator": "L271"
+            },
+            {
+              "id": "00898-ch04-s1-p2",
+              "title": "②对象之间的关联",
+              "requirement": "领会",
+              "quote": "②对象之间的关联",
+              "locator": "L271"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "request 对象",
+          "points": [
+            {
+              "id": "00898-ch04-s2-p1",
+              "title": "①request 对象的作用、父类（接口）、常用方法",
+              "requirement": "识记",
+              "quote": "①request 对象的作用、父类（接口）、常用方法",
+              "locator": "L273"
+            },
+            {
+              "id": "00898-ch04-s2-p2",
+              "title": "②通过 getParameter等方法获得参数",
+              "requirement": "识记",
+              "quote": "②通过 getParameter等方法获得参数",
+              "locator": "L273"
+            },
+            {
+              "id": "00898-ch04-s2-p3",
+              "title": "③类型转换",
+              "requirement": "识记",
+              "quote": "③类型转换",
+              "locator": "L273"
+            },
+            {
+              "id": "00898-ch04-s2-p4",
+              "title": "④通过 setCharacherEncoding 设置编码",
+              "requirement": "识记",
+              "quote": "④通过 setCharacherEncoding 设置编码",
+              "locator": "L273"
+            },
+            {
+              "id": "00898-ch04-s2-p5",
+              "title": "①get 和 post 传参方法的不同、数据大小的限制",
+              "requirement": "领会",
+              "quote": "①get 和 post 传参方法的不同、数据大小的限制",
+              "locator": "L275"
+            },
+            {
+              "id": "00898-ch04-s2-p6",
+              "title": "①request 对象应用实例（客户端向服务器端提交数据并进行展示）",
+              "requirement": "应用",
+              "quote": "①request 对象应用实例（客户端向服务器端提交数据并进行展示）",
+              "locator": "L276"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "response 对象",
+          "points": [
+            {
+              "id": "00898-ch04-s3-p1",
+              "title": "①response 对象的作用、父类（接口）、常用方法",
+              "requirement": "识记",
+              "quote": "①response 对象的作用、父类（接口）、常用方法",
+              "locator": "L278"
+            },
+            {
+              "id": "00898-ch04-s3-p2",
+              "title": "②response 对象应用实例，包括 setContentType 设置类型、设置自动刷新、设置重定向",
+              "requirement": "识记",
+              "quote": "②response 对象应用实例，包括 setContentType 设置类型、设置自动刷新、设置重定向",
+              "locator": "L278"
+            },
+            {
+              "id": "00898-ch04-s3-p3",
+              "title": "①response 的状态代码及其含义",
+              "requirement": "领会",
+              "quote": "①response 的状态代码及其含义",
+              "locator": "L280"
+            },
+            {
+              "id": "00898-ch04-s3-p4",
+              "title": "②response 对象 sendRedirect 方法和<jsp:forward>的区别",
+              "requirement": "领会",
+              "quote": "②response 对象 sendRedirect 方法和<jsp:forward>的区别",
+              "locator": "L280"
+            },
+            {
+              "id": "00898-ch04-s3-p5",
+              "title": "①通过 response 对象设置显示码的方法和显示码",
+              "requirement": "应用",
+              "quote": "①通过 response 对象设置显示码的方法和显示码",
+              "locator": "L282"
+            },
+            {
+              "id": "00898-ch04-s3-p6",
+              "title": "②通过 response 对象对 Cookie 进行操作",
+              "requirement": "应用",
+              "quote": "②通过 response 对象对 Cookie 进行操作",
+              "locator": "L282"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "out 对象",
+          "points": [
+            {
+              "id": "00898-ch04-s4-p1",
+              "title": "①out 对象的作用、主要方法、方法的分类、缓冲区的概念",
+              "requirement": "识记",
+              "quote": "①out 对象的作用、主要方法、方法的分类、缓冲区的概念",
+              "locator": "L285"
+            },
+            {
+              "id": "00898-ch04-s4-p2",
+              "title": "①提高输出的效率的方法（采用缓存区）",
+              "requirement": "领会",
+              "quote": "①提高输出的效率的方法（采用缓存区）",
+              "locator": "L286"
+            },
+            {
+              "id": "00898-ch04-s4-p3",
+              "title": "②clear、clearBuffer、flush方法的区别",
+              "requirement": "领会",
+              "quote": "②clear、clearBuffer、flush方法的区别",
+              "locator": "L286"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "session 对象",
+          "points": [
+            {
+              "id": "00898-ch04-s5-p1",
+              "title": "①session 的类名、与 Cookie 的关系，所处的位置、session 数据存取方式",
+              "requirement": "识记",
+              "quote": "①session 的类名、与 Cookie 的关系，所处的位置、session 数据存取方式",
+              "locator": "L289"
+            },
+            {
+              "id": "00898-ch04-s5-p2",
+              "title": "②session 与客户之间的关系、如何获得 ID",
+              "requirement": "识记",
+              "quote": "②session 与客户之间的关系、如何获得 ID",
+              "locator": "L289"
+            },
+            {
+              "id": "00898-ch04-s5-p3",
+              "title": "③session 其他常用方法",
+              "requirement": "识记",
+              "quote": "③session 其他常用方法",
+              "locator": "L289"
+            },
+            {
+              "id": "00898-ch04-s5-p4",
+              "title": "①session 的作用、有效期",
+              "requirement": "领会",
+              "quote": "①session 的作用、有效期",
+              "locator": "L291"
+            },
+            {
+              "id": "00898-ch04-s5-p5",
+              "title": "②不同用户 session 的辨别",
+              "requirement": "领会",
+              "quote": "②不同用户 session 的辨别",
+              "locator": "L291"
+            },
+            {
+              "id": "00898-ch04-s5-p6",
+              "title": "③session 生命周期对象结束的状况",
+              "requirement": "领会",
+              "quote": "③session 生命周期对象结束的状况",
+              "locator": "L291"
+            },
+            {
+              "id": "00898-ch04-s5-p7",
+              "title": "①访问 session 中的数据，包括新增、访问、设置、删除 session 变量等",
+              "requirement": "应用",
+              "quote": "①访问 session 中的数据，包括新增、访问、设置、删除 session 变量等",
+              "locator": "L293"
+            },
+            {
+              "id": "00898-ch04-s5-p8",
+              "title": "②session 应用实例",
+              "requirement": "应用",
+              "quote": "②session 应用实例",
+              "locator": "L293"
+            }
+          ]
+        },
+        {
+          "index": "6",
+          "title": "application 内置对象",
+          "points": [
+            {
+              "id": "00898-ch04-s6-p1",
+              "title": "①application 的作用域、父类（接口）、存取数据的方式",
+              "requirement": "识记",
+              "quote": "①application 的作用域、父类（接口）、存取数据的方式",
+              "locator": "L296"
+            },
+            {
+              "id": "00898-ch04-s6-p2",
+              "title": "②使用 application对象取得信息",
+              "requirement": "识记",
+              "quote": "②使用 application对象取得信息",
+              "locator": "L296"
+            },
+            {
+              "id": "00898-ch04-s6-p3",
+              "title": "①application 对象的作用和注意点",
+              "requirement": "领会",
+              "quote": "①application 对象的作用和注意点",
+              "locator": "L302"
+            },
+            {
+              "id": "00898-ch04-s6-p4",
+              "title": "②与 session 对象的不同",
+              "requirement": "领会",
+              "quote": "②与 session 对象的不同",
+              "locator": "L302"
+            },
+            {
+              "id": "00898-ch04-s6-p5",
+              "title": "①application 对象的应用",
+              "requirement": "应用",
+              "quote": "①application 对象的应用",
+              "locator": "L303"
+            }
+          ]
+        },
+        {
+          "index": "7",
+          "title": "其他 JSP 内置对象",
+          "points": [
+            {
+              "id": "00898-ch04-s7-p1",
+              "title": "①pageContext、config、page 对象的类名、作用和方法",
+              "requirement": "识记",
+              "quote": "①pageContext、config、page 对象的类名、作用和方法",
+              "locator": "L305"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解各个内置对象的功能和用途",
+          "locator": "L307"
+        },
+        {
+          "text": "②掌握利用 request对象实现客户端向服务器端提交数据并进行展示",
+          "locator": "L307"
+        },
+        {
+          "text": "③理解 response 重定向方法sendRedirect()和动作元素<jsp:forward>的区别",
+          "locator": "L307"
+        },
+        {
+          "text": "④掌握设置响应的状态行显示",
+          "locator": "L307"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 5,
+      "index": "第5章",
+      "slug": "ch05",
+      "title": "第5章 Cookie 及会话追踪",
+      "sections": [
+        {
+          "index": "1",
+          "title": "Cookie 的概念和特性",
+          "points": [
+            {
+              "id": "00898-ch05-s1-p1",
+              "title": "①Cookie 的概念和作用",
+              "requirement": "识记",
+              "quote": "①Cookie 的概念和作用",
+              "locator": "L323"
+            },
+            {
+              "id": "00898-ch05-s1-p2",
+              "title": "②有效时间的概念",
+              "requirement": "识记",
+              "quote": "②有效时间的概念",
+              "locator": "L323"
+            },
+            {
+              "id": "00898-ch05-s1-p3",
+              "title": "①Cookie 的工作过程与存放形式/地点",
+              "requirement": "领会",
+              "quote": "①Cookie 的工作过程与存放形式/地点",
+              "locator": "L324"
+            },
+            {
+              "id": "00898-ch05-s1-p4",
+              "title": "②临时的 Cookie 和持久的Cookie 区别",
+              "requirement": "领会",
+              "quote": "②临时的 Cookie 和持久的Cookie 区别",
+              "locator": "L324"
+            },
+            {
+              "id": "00898-ch05-s1-p5",
+              "title": "③Cookie 的安全性问题",
+              "requirement": "领会",
+              "quote": "③Cookie 的安全性问题",
+              "locator": "L324"
+            },
+            {
+              "id": "00898-ch05-s1-p6",
+              "title": "④Cookie 与浏览器的关系、浏览器的设置",
+              "requirement": "领会",
+              "quote": "④Cookie 与浏览器的关系、浏览器的设置",
+              "locator": "L324"
+            },
+            {
+              "id": "00898-ch05-s1-p7",
+              "title": "⑤Cookie 的常见用途、给网站和用户带来的好处",
+              "requirement": "领会",
+              "quote": "⑤Cookie 的常见用途、给网站和用户带来的好处",
+              "locator": "L324"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "在 JSP 中使用 Cookie",
+          "points": [
+            {
+              "id": "00898-ch05-s2-p1",
+              "title": "①Cookie 的实质",
+              "requirement": "识记",
+              "quote": "①Cookie 的实质",
+              "locator": "L328"
+            },
+            {
+              "id": "00898-ch05-s2-p2",
+              "title": "②Cookie 的类名",
+              "requirement": "识记",
+              "quote": "②Cookie 的类名",
+              "locator": "L328"
+            },
+            {
+              "id": "00898-ch05-s2-p3",
+              "title": "③Cookie 的创建和语法、传送给客户端的方法",
+              "requirement": "识记",
+              "quote": "③Cookie 的创建和语法、传送给客户端的方法",
+              "locator": "L328"
+            },
+            {
+              "id": "00898-ch05-s2-p4",
+              "title": "④读写 Cookie",
+              "requirement": "识记",
+              "quote": "④读写 Cookie",
+              "locator": "L328"
+            },
+            {
+              "id": "00898-ch05-s2-p5",
+              "title": "⑤Cookie 的主要方法，包括获取、访问和设置，以及时间相关方法",
+              "requirement": "识记",
+              "quote": "⑤Cookie 的主要方法，包括获取、访问和设置，以及时间相关方法",
+              "locator": "L328"
+            },
+            {
+              "id": "00898-ch05-s2-p6",
+              "title": "⑥Cookie 的主要方法以及操作 Cookie 的常用方法，包括自动保存 Cookie、删除 Cookie、设置有效时间、同名替换等",
+              "requirement": "识记",
+              "quote": "⑥Cookie 的主要方法以及操作 Cookie 的常用方法，包括自动保存 Cookie、删除 Cookie",
+              "locator": "L328"
+            },
+            {
+              "id": "00898-ch05-s2-p7",
+              "title": "①Cookie 的有效周期及其设置，包括特殊周期，默认周期",
+              "requirement": "领会",
+              "quote": "①Cookie 的有效周期及其设置，包括特殊周期，默认周期",
+              "locator": "L332"
+            },
+            {
+              "id": "00898-ch05-s2-p8",
+              "title": "②JSP 写Cookie 到客户端",
+              "requirement": "领会",
+              "quote": "②JSP 写Cookie 到客户端",
+              "locator": "L332"
+            },
+            {
+              "id": "00898-ch05-s2-p9",
+              "title": "③JSP 读取 Cookie",
+              "requirement": "领会",
+              "quote": "③JSP 读取 Cookie",
+              "locator": "L332"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "Cookie 对象的应用实例",
+          "points": [
+            {
+              "id": "00898-ch05-s3-p1",
+              "title": "①Cookie 的遍历",
+              "requirement": "应用",
+              "quote": "①Cookie 的遍历",
+              "locator": "L337"
+            },
+            {
+              "id": "00898-ch05-s3-p2",
+              "title": "②Cookie 的各种应用",
+              "requirement": "应用",
+              "quote": "②Cookie 的各种应用",
+              "locator": "L337"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "会话和会话追踪",
+          "points": [
+            {
+              "id": "00898-ch05-s4-p1",
+              "title": "①会话追踪的概念",
+              "requirement": "识记",
+              "quote": "①会话追踪的概念",
+              "locator": "L339"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "实现会话追踪的 4 种方式",
+          "points": [
+            {
+              "id": "00898-ch05-s5-p1",
+              "title": "①会话追踪 4 种方式的工作及优缺点",
+              "requirement": "识记",
+              "quote": "①会话追踪 4 种方式的工作及优缺点",
+              "locator": "L341"
+            },
+            {
+              "id": "00898-ch05-s5-p2",
+              "title": "②使用内建 session 对象实现会话跟踪的工作特点",
+              "requirement": "识记",
+              "quote": "②使用内建 session 对象实现会话跟踪的工作特点",
+              "locator": "L341"
+            },
+            {
+              "id": "00898-ch05-s5-p3",
+              "title": "③内建 session 对象的获取",
+              "requirement": "识记",
+              "quote": "③内建 session 对象的获取",
+              "locator": "L341"
+            },
+            {
+              "id": "00898-ch05-s5-p4",
+              "title": "④session 中数据的读取",
+              "requirement": "识记",
+              "quote": "④session 中数据的读取",
+              "locator": "L341"
+            },
+            {
+              "id": "00898-ch05-s5-p5",
+              "title": "①Cookie 和 session 的关系",
+              "requirement": "领会",
+              "quote": "①Cookie 和 session 的关系",
+              "locator": "L343"
+            }
+          ]
+        },
+        {
+          "index": "6",
+          "title": "内建 session 对象的生命周期",
+          "points": [
+            {
+              "id": "00898-ch05-s6-p1",
+              "title": "①内建 session 对象生命周期的概念、设定相关时间的方法",
+              "requirement": "识记",
+              "quote": "①内建 session 对象生命周期的概念、设定相关时间的方法",
+              "locator": "L345"
+            },
+            {
+              "id": "00898-ch05-s6-p2",
+              "title": "②在 web.xml中配置内建 session 对象的过期时间、时间的单位",
+              "requirement": "识记",
+              "quote": "②在 web.xml中配置内建 session 对象的过期时间、时间的单位",
+              "locator": "L345"
+            },
+            {
+              "id": "00898-ch05-s6-p3",
+              "title": "③设置内建 session 对象的过期时间，包括如何判断是一个新的 session、如何访问超时时间以及时间的单位",
+              "requirement": "识记",
+              "quote": "③设置内建 session 对象的过期时间，包括如何判断是一个新的 session、如何访问超时时间以及时间的单位",
+              "locator": "L345"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解 Cookie 的概念和常见用途，如何在 JSP 中使用Cookie",
+          "locator": "L350"
+        },
+        {
+          "text": "②掌握 Cookie 的工作过程和遍历 Cookie 的方法",
+          "locator": "L350"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L348",
+          "title": "（七）利用 Session 存取功能实现简单购物车（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "index": "第6章",
+      "slug": "ch06",
+      "title": "第6章 JavaBean 和表单处理",
+      "sections": [
+        {
+          "index": "1",
+          "title": "非 MVC 模式（Model1）",
+          "points": [
+            {
+              "id": "00898-ch06-s1-p1",
+              "title": "①非 MVC 模式的定位、JSP 承担的工作",
+              "requirement": "识记",
+              "quote": "①非 MVC 模式的定位、JSP 承担的工作",
+              "locator": "L363"
+            },
+            {
+              "id": "00898-ch06-s1-p2",
+              "title": "②非 MVC 模式的两种结构、JSP 在其中承担的角色、JavaBean 承担的角色",
+              "requirement": "识记",
+              "quote": "②非 MVC 模式的两种结构、JSP 在其中承担的角色、JavaBean 承担的角色",
+              "locator": "L363"
+            },
+            {
+              "id": "00898-ch06-s1-p3",
+              "title": "③Model1 的应用范围",
+              "requirement": "识记",
+              "quote": "③Model1 的应用范围",
+              "locator": "L363"
+            },
+            {
+              "id": "00898-ch06-s1-p4",
+              "title": "①纯 JSP 开发的优缺点",
+              "requirement": "领会",
+              "quote": "①纯 JSP 开发的优缺点",
+              "locator": "L365"
+            },
+            {
+              "id": "00898-ch06-s1-p5",
+              "title": "②JSP+JavaBean 的优点",
+              "requirement": "领会",
+              "quote": "②JSP+JavaBean 的优点",
+              "locator": "L365"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "MVC 编程模式（Model2）",
+          "points": [
+            {
+              "id": "00898-ch06-s2-p1",
+              "title": "①MVC 模式的概念、控制器的概念和作用/角色、JSP 的作用/角色",
+              "requirement": "识记",
+              "quote": "①MVC 模式的概念、控制器的概念和作用/角色、JSP 的作用/角色",
+              "locator": "L369"
+            },
+            {
+              "id": "00898-ch06-s2-p2",
+              "title": "②MVC 模式在 Web 编程中的应用（包括 M、V、C 分别代表了什么角色）",
+              "requirement": "识记",
+              "quote": "②MVC 模式在 Web 编程中的应用（包括 M、V、C 分别代表了什么角色）",
+              "locator": "L369"
+            },
+            {
+              "id": "00898-ch06-s2-p3",
+              "title": "①Model2 的工作过程",
+              "requirement": "领会",
+              "quote": "①Model2 的工作过程",
+              "locator": "L371"
+            },
+            {
+              "id": "00898-ch06-s2-p4",
+              "title": "②MVC 的优点",
+              "requirement": "领会",
+              "quote": "②MVC 的优点",
+              "locator": "L371"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "剖析 JavaBean",
+          "points": [
+            {
+              "id": "00898-ch06-s3-p1",
+              "title": "①JavaBean 的分类、优点、应用场合",
+              "requirement": "识记",
+              "quote": "①JavaBean 的分类、优点、应用场合",
+              "locator": "L373"
+            },
+            {
+              "id": "00898-ch06-s3-p2",
+              "title": "①JavaBean 的概念、本质",
+              "requirement": "领会",
+              "quote": "①JavaBean 的概念、本质",
+              "locator": "L374"
+            },
+            {
+              "id": "00898-ch06-s3-p3",
+              "title": "②采用 JavaBean 的优势和必要性",
+              "requirement": "领会",
+              "quote": "②采用 JavaBean 的优势和必要性",
+              "locator": "L374"
+            },
+            {
+              "id": "00898-ch06-s3-p4",
+              "title": "③JavaBean的特征（即必须满足哪些条件）",
+              "requirement": "领会",
+              "quote": "③JavaBean的特征（即必须满足哪些条件）",
+              "locator": "L374"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "在 JSP 中使用 JavaBean",
+          "points": [
+            {
+              "id": "00898-ch06-s4-p1",
+              "title": "①引用并读写 JavaBean 属性的标签",
+              "requirement": "识记",
+              "quote": "①引用并读写 JavaBean 属性的标签",
+              "locator": "L377"
+            },
+            {
+              "id": "00898-ch06-s4-p2",
+              "title": "②调用 JavaBean 的语法格式",
+              "requirement": "识记",
+              "quote": "②调用 JavaBean 的语法格式",
+              "locator": "L377"
+            },
+            {
+              "id": "00898-ch06-s4-p3",
+              "title": "③访问 JavaBean 属性，包括读出值的形式和存放方式、语法",
+              "requirement": "识记",
+              "quote": "③访问 JavaBean 属性，包括读出值的形式和存放方式、语法",
+              "locator": "L377"
+            },
+            {
+              "id": "00898-ch06-s4-p4",
+              "title": "④设置 JavaBean 属性，包括语法格式",
+              "requirement": "识记",
+              "quote": "④设置 JavaBean 属性，包括语法格式",
+              "locator": "L377"
+            },
+            {
+              "id": "00898-ch06-s4-p5",
+              "title": "⑤JavaBean 的生命周期，包括有哪些声明周期（生存长度、起止时间）、request 生命周期下的声明周期传递范围、request 对象存取 JavaBean 对象的方法、JavaBean 在 JSP 页面间传递的注意点（不能采用 sendRedirect）",
+              "requirement": "识记",
+              "quote": "⑤JavaBean 的生命周期，包括有哪些声明周期（生存长度、起止时间）、request 生命周期下的声明周期传递范围",
+              "locator": "L377"
+            },
+            {
+              "id": "00898-ch06-s4-p6",
+              "title": "⑥类型自动转换的规则，JavaBean 值属性的类型、常用的转换方法",
+              "requirement": "识记",
+              "quote": "⑥类型自动转换的规则，JavaBean 值属性的类型、常用的转换方法",
+              "locator": "L377"
+            },
+            {
+              "id": "00898-ch06-s4-p7",
+              "title": "①JavaBean 的 4 种生命周期的区别和不同",
+              "requirement": "领会",
+              "quote": "①JavaBean 的 4 种生命周期的区别和不同",
+              "locator": "L383"
+            },
+            {
+              "id": "00898-ch06-s4-p8",
+              "title": "②在 JSP 中使用 JavaBean",
+              "requirement": "领会",
+              "quote": "②在 JSP 中使用 JavaBean",
+              "locator": "L383"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "使用 JavaBean 处理表单数据",
+          "points": [
+            {
+              "id": "00898-ch06-s5-p1",
+              "title": "①表单的概念",
+              "requirement": "识记",
+              "quote": "①表单的概念",
+              "locator": "L385"
+            },
+            {
+              "id": "00898-ch06-s5-p2",
+              "title": "②处理过程中所涉及的 JSP 页面个数",
+              "requirement": "识记",
+              "quote": "②处理过程中所涉及的 JSP 页面个数",
+              "locator": "L385"
+            },
+            {
+              "id": "00898-ch06-s5-p3",
+              "title": "③表单的重要性",
+              "requirement": "识记",
+              "quote": "③表单的重要性",
+              "locator": "L385"
+            },
+            {
+              "id": "00898-ch06-s5-p4",
+              "title": "①HTML 表单与 JSP 的应用（工作、交互过程）",
+              "requirement": "领会",
+              "quote": "①HTML 表单与 JSP 的应用（工作、交互过程）",
+              "locator": "L387"
+            },
+            {
+              "id": "00898-ch06-s5-p5",
+              "title": "①JSP 处理与 form 相关的常用标签简单示例",
+              "requirement": "应用",
+              "quote": "①JSP 处理与 form 相关的常用标签简单示例",
+              "locator": "L388"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解 Model1 和 Model2 的概念和区别、JavaBean 的概念和用途、引入 JavaBean 的必要性",
+          "locator": "L390"
+        },
+        {
+          "text": "②把握直接使用 JSP 文件开发所有网站的模式的优缺点、采用 JSP+JavaBean 的模式的优点",
+          "locator": "L390"
+        },
+        {
+          "text": "③掌握利用 JavaBean 进行相关的开发",
+          "locator": "L390"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 7,
+      "index": "第7章",
+      "slug": "ch07",
+      "title": "第7章 JSP 中的文件操作",
+      "sections": [
+        {
+          "index": "1",
+          "title": "数据流和 File 类",
+          "points": [
+            {
+              "id": "00898-ch07-s1-p1",
+              "title": "①数据流的概念，包括分类，每种数据流的顶层操作类、出现的异常和返回值",
+              "requirement": "识记",
+              "quote": "①数据流的概念，包括分类，每种数据流的顶层操作类、出现的异常和返回值",
+              "locator": "L407"
+            },
+            {
+              "id": "00898-ch07-s1-p2",
+              "title": "②File 类，包括 File 类的功能、文件的关系、构造函数、所属的空间、JSP 如何载入、File 类的常用属性/方法、访问文件时的异常情况、文件维护的相关方法",
+              "requirement": "识记",
+              "quote": "②File 类，包括 File 类的功能、文件的关系、构造函数、所属的空间、JSP 如何载入",
+              "locator": "L407"
+            },
+            {
+              "id": "00898-ch07-s1-p3",
+              "title": "①相对路径和绝对路径的区别",
+              "requirement": "领会",
+              "quote": "①相对路径和绝对路径的区别",
+              "locator": "L411"
+            },
+            {
+              "id": "00898-ch07-s1-p4",
+              "title": "②File 类及作用",
+              "requirement": "领会",
+              "quote": "②File 类及作用",
+              "locator": "L411"
+            },
+            {
+              "id": "00898-ch07-s1-p5",
+              "title": "①利用 File 类查看文件内容",
+              "requirement": "应用",
+              "quote": "①利用 File 类查看文件内容",
+              "locator": "L412"
+            },
+            {
+              "id": "00898-ch07-s1-p6",
+              "title": "②利用 File 类进行文件目录的操作",
+              "requirement": "应用",
+              "quote": "②利用 File 类进行文件目录的操作",
+              "locator": "L412"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "读写文本文件",
+          "points": [
+            {
+              "id": "00898-ch07-s2-p1",
+              "title": "①读写文本文件的两个主要的类",
+              "requirement": "识记",
+              "quote": "①读写文本文件的两个主要的类",
+              "locator": "L414"
+            },
+            {
+              "id": "00898-ch07-s2-p2",
+              "title": "②输出流的工作方式",
+              "requirement": "识记",
+              "quote": "②输出流的工作方式",
+              "locator": "L414"
+            },
+            {
+              "id": "00898-ch07-s2-p3",
+              "title": "③BufferedReader 读写方法",
+              "requirement": "识记",
+              "quote": "③BufferedReader 读写方法",
+              "locator": "L414"
+            },
+            {
+              "id": "00898-ch07-s2-p4",
+              "title": "①读写文件",
+              "requirement": "应用",
+              "quote": "①读写文件",
+              "locator": "L416"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "文件的浏览",
+          "points": [
+            {
+              "id": "00898-ch07-s3-p1",
+              "title": "①浏览文件",
+              "requirement": "应用",
+              "quote": "①浏览文件",
+              "locator": "L418"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "创建和删除目录",
+          "points": [
+            {
+              "id": "00898-ch07-s4-p1",
+              "title": "①创建和删除目录",
+              "requirement": "应用",
+              "quote": "①创建和删除目录",
+              "locator": "L420"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "文件的上传和下载",
+          "points": [
+            {
+              "id": "00898-ch07-s5-p1",
+              "title": "①上传文件到服务器",
+              "requirement": "应用",
+              "quote": "①上传文件到服务器",
+              "locator": "L422"
+            },
+            {
+              "id": "00898-ch07-s5-p2",
+              "title": "②下载文件到本地",
+              "requirement": "应用",
+              "quote": "②下载文件到本地",
+              "locator": "L422"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解 JSP 中读写文件的工作主要过程和相关类",
+          "locator": "L426"
+        },
+        {
+          "text": "②编写读、写文本文件的 JSP",
+          "locator": "L426"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L423",
+          "title": "（六）使用 jspSmartUpload 上传包（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L424",
+          "title": "（七）使用 Commons-FilUpload 上传包（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        }
+      ]
+    },
+    {
+      "ordinal": 8,
+      "index": "第8章",
+      "slug": "ch08",
+      "title": "第8章 应用 JDBC 进行数据库开发",
+      "sections": [
+        {
+          "index": "1",
+          "title": "JDBC 概述",
+          "points": [
+            {
+              "id": "00898-ch08-s1-p1",
+              "title": "①定义、作用、定位",
+              "requirement": "识记",
+              "quote": "①定义、作用、定位",
+              "locator": "L444"
+            },
+            {
+              "id": "00898-ch08-s1-p2",
+              "title": "②典型用法",
+              "requirement": "识记",
+              "quote": "②典型用法",
+              "locator": "L444"
+            },
+            {
+              "id": "00898-ch08-s1-p3",
+              "title": "①JDBC 的体系结构",
+              "requirement": "领会",
+              "quote": "①JDBC 的体系结构",
+              "locator": "L445"
+            },
+            {
+              "id": "00898-ch08-s1-p4",
+              "title": "②JDBC 驱动器类型",
+              "requirement": "领会",
+              "quote": "②JDBC 驱动器类型",
+              "locator": "L445"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "JDBC 连接数据库的方法",
+          "points": [
+            {
+              "id": "00898-ch08-s2-p1",
+              "title": "①连接数据库的方法",
+              "requirement": "领会",
+              "quote": "①连接数据库的方法",
+              "locator": "L447"
+            }
+          ]
+        },
+        {
+          "index": "3",
+          "title": "使用 JDBC 操作数据库",
+          "points": [
+            {
+              "id": "00898-ch08-s3-p1",
+              "title": "①接口的层次、相关接口、访问数据库的过程",
+              "requirement": "识记",
+              "quote": "①接口的层次、相关接口、访问数据库的过程",
+              "locator": "L449"
+            },
+            {
+              "id": "00898-ch08-s3-p2",
+              "title": "②Statement 的作用、创建和 Statement 的相关方法（特别是执行 SQL 语句的相关方法的作用、相关细节）",
+              "requirement": "识记",
+              "quote": "②Statement 的作用、创建和 Statement 的相关方法（特别是执行 SQL 语句的相关方法的作用",
+              "locator": "L449"
+            },
+            {
+              "id": "00898-ch08-s3-p3",
+              "title": "③ResultSet 对象的作用和主要方法",
+              "requirement": "识记",
+              "quote": "③ResultSet 对象的作用和主要方法",
+              "locator": "L449"
+            },
+            {
+              "id": "00898-ch08-s3-p4",
+              "title": "①JDBC 对数据库的操作步骤",
+              "requirement": "领会",
+              "quote": "①JDBC 对数据库的操作步骤",
+              "locator": "L452"
+            },
+            {
+              "id": "00898-ch08-s3-p5",
+              "title": "②数据库操作的类别和相关操作",
+              "requirement": "领会",
+              "quote": "②数据库操作的类别和相关操作",
+              "locator": "L452"
+            },
+            {
+              "id": "00898-ch08-s3-p6",
+              "title": "③使用 ResultSet 处理结果集，包括主要方法和细节，如异常、数据定位位置、获取/更新数据等",
+              "requirement": "领会",
+              "quote": "③使用 ResultSet 处理结果集，包括主要方法和细节，如异常、数据定位位置、获取/更新数据等",
+              "locator": "L452"
+            },
+            {
+              "id": "00898-ch08-s3-p7",
+              "title": "①测试连接数据库是否成功",
+              "requirement": "应用",
+              "quote": "①测试连接数据库是否成功",
+              "locator": "L455"
+            },
+            {
+              "id": "00898-ch08-s3-p8",
+              "title": "②查获数据库的数据并显示",
+              "requirement": "应用",
+              "quote": "②查获数据库的数据并显示",
+              "locator": "L455"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "使用 JDBC 连接不同的数据库",
+          "points": [
+            {
+              "id": "00898-ch08-s5-p1",
+              "title": "①典型的驱动程序名/字符串",
+              "requirement": "识记",
+              "quote": "①典型的驱动程序名/字符串",
+              "locator": "L458"
+            }
+          ]
+        },
+        {
+          "index": "6",
+          "title": "连接池",
+          "points": [
+            {
+              "id": "00898-ch08-s6-p1",
+              "title": "①配置数据源和连接池（如何配置、典型参数/属性、注意点）",
+              "requirement": "识记",
+              "quote": "①配置数据源和连接池（如何配置、典型参数/属性、注意点）",
+              "locator": "L460"
+            },
+            {
+              "id": "00898-ch08-s6-p2",
+              "title": "①连接池的作用",
+              "requirement": "领会",
+              "quote": "①连接池的作用",
+              "locator": "L462"
+            },
+            {
+              "id": "00898-ch08-s6-p3",
+              "title": "②连接池的实现原理",
+              "requirement": "领会",
+              "quote": "②连接池的实现原理",
+              "locator": "L462"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解 JDBC 的概念和用途，以及相关类和主要方法，特别是 Statement 类的相关知识",
+          "locator": "L470"
+        },
+        {
+          "text": "②掌握通过 JDBC 操作数据库（特别是访问数据表格中的数据）、连接池的实现原理（创建和管理）",
+          "locator": "L470"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L456",
+          "title": "（四）Java 与 SQL 的数据类型转换（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L463",
+          "title": "（七）存取二进制文件（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L468",
+          "title": "（八）实现分页显示（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        }
+      ]
+    },
+    {
+      "ordinal": 9,
+      "index": "第9章",
+      "slug": "ch09",
+      "title": "第9章 JDBC 与 JavaBean 应用实例（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 10,
+      "index": "第10章",
+      "slug": "ch10",
+      "title": "第 10 章 Servlet 基础",
+      "sections": [
+        {
+          "index": "1",
+          "title": "Servlet 介绍",
+          "points": [
+            {
+              "id": "00898-ch10-s1-p1",
+              "title": "①Servlet 的概念、特性、作用、容器的概念、Servlet 之间的通信、服务器的处理",
+              "requirement": "识记",
+              "quote": "①Servlet 的概念、特性、作用、容器的概念、Servlet 之间的通信、服务器的处理",
+              "locator": "L488"
+            },
+            {
+              "id": "00898-ch10-s1-p2",
+              "title": "②Servlet 技术特点",
+              "requirement": "识记",
+              "quote": "②Servlet 技术特点",
+              "locator": "L488"
+            },
+            {
+              "id": "00898-ch10-s1-p3",
+              "title": "③Servlet 的分类、Servlet 容器的工作",
+              "requirement": "识记",
+              "quote": "③Servlet 的分类、Servlet 容器的工作",
+              "locator": "L488"
+            },
+            {
+              "id": "00898-ch10-s1-p4",
+              "title": "④常用接口及其分类",
+              "requirement": "识记",
+              "quote": "④常用接口及其分类",
+              "locator": "L488"
+            },
+            {
+              "id": "00898-ch10-s1-p5",
+              "title": "①使用 Servlet 的基本流程",
+              "requirement": "领会",
+              "quote": "①使用 Servlet 的基本流程",
+              "locator": "L491"
+            },
+            {
+              "id": "00898-ch10-s1-p6",
+              "title": "②Servlet 与 JSP 的关系和区别",
+              "requirement": "领会",
+              "quote": "②Servlet 与 JSP 的关系和区别",
+              "locator": "L491"
+            },
+            {
+              "id": "00898-ch10-s1-p7",
+              "title": "③Servlet的生命周期/基本阶段",
+              "requirement": "领会",
+              "quote": "③Servlet的生命周期/基本阶段",
+              "locator": "L491"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "开发部署一个简单的 Servlet",
+          "points": [
+            {
+              "id": "00898-ch10-s2-p1",
+              "title": "①Servlet 运行的条件",
+              "requirement": "识记",
+              "quote": "①Servlet 运行的条件",
+              "locator": "L494"
+            },
+            {
+              "id": "00898-ch10-s2-p2",
+              "title": "②创建 Servlet 的步骤、获取请求信息的类及主要方法、获取响应的类及主要方法",
+              "requirement": "识记",
+              "quote": "②创建 Servlet 的步骤、获取请求信息的类及主要方法、获取响应的类及主要方法",
+              "locator": "L494"
+            },
+            {
+              "id": "00898-ch10-s2-p3",
+              "title": "③Servlet 进行请求处理的主要类和方法",
+              "requirement": "识记",
+              "quote": "③Servlet 进行请求处理的主要类和方法",
+              "locator": "L494"
+            },
+            {
+              "id": "00898-ch10-s2-p4",
+              "title": "④部署配置",
+              "requirement": "识记",
+              "quote": "④部署配置",
+              "locator": "L494"
+            },
+            {
+              "id": "00898-ch10-s2-p5",
+              "title": "①创建 Servlet 的步骤",
+              "requirement": "领会",
+              "quote": "①创建 Servlet 的步骤",
+              "locator": "L497"
+            }
+          ]
+        },
+        {
+          "index": "4",
+          "title": "Servlet 请求和响应相关",
+          "points": [
+            {
+              "id": "00898-ch10-s4-p1",
+              "title": "①HttpServletRequest、HttpServletResponse 接口的作用、所属包",
+              "requirement": "识记",
+              "quote": "①HttpServletRequest、HttpServletResponse 接口的作用、所属包",
+              "locator": "L502"
+            }
+          ]
+        },
+        {
+          "index": "5",
+          "title": "Servlet 配置相关",
+          "points": [
+            {
+              "id": "00898-ch10-s5-p1",
+              "title": "①ServletConfig 和 ServletContext 的作用和不同、所属包",
+              "requirement": "领会",
+              "quote": "①ServletConfig 和 ServletContext 的作用和不同、所属包",
+              "locator": "L504"
+            },
+            {
+              "id": "00898-ch10-s5-p2",
+              "title": "②ServletConfig作用、容器获得 ServletConfig 的方法",
+              "requirement": "领会",
+              "quote": "②ServletConfig作用、容器获得 ServletConfig 的方法",
+              "locator": "L504"
+            },
+            {
+              "id": "00898-ch10-s5-p3",
+              "title": "③ServletConfig 的主要方法",
+              "requirement": "领会",
+              "quote": "③ServletConfig 的主要方法",
+              "locator": "L504"
+            },
+            {
+              "id": "00898-ch10-s5-p4",
+              "title": "①获取 Servlet 配置信息的例子",
+              "requirement": "应用",
+              "quote": "①获取 Servlet 配置信息的例子",
+              "locator": "L506"
+            }
+          ]
+        },
+        {
+          "index": "6",
+          "title": "Servlet 中的会话追踪",
+          "points": [
+            {
+              "id": "00898-ch10-s6-p1",
+              "title": "①会话的定义、对 HTTP 协议的转换、Servlet 对会话的支持，相关接口所属包、工作位置、Cookie 的相关内容",
+              "requirement": "识记",
+              "quote": "①会话的定义、对 HTTP 协议的转换、Servlet 对会话的支持，相关接口所属包、工作位置、Cookie 的相关内容",
+              "locator": "L508"
+            },
+            {
+              "id": "00898-ch10-s6-p2",
+              "title": "②HttpSession 的相关方法，特别是HttpSession 进行会话控制的过程中使用的方法",
+              "requirement": "识记",
+              "quote": "②HttpSession 的相关方法，特别是HttpSession 进行会话控制的过程中使用的方法",
+              "locator": "L508"
+            },
+            {
+              "id": "00898-ch10-s6-p3",
+              "title": "①HttpSession 接口的功能和会话控制过程",
+              "requirement": "领会",
+              "quote": "①HttpSession 接口的功能和会话控制过程",
+              "locator": "L511"
+            },
+            {
+              "id": "00898-ch10-s6-p4",
+              "title": "②废弃会话数据有哪些方法（或情况）",
+              "requirement": "领会",
+              "quote": "②废弃会话数据有哪些方法（或情况）",
+              "locator": "L511"
+            }
+          ]
+        },
+        {
+          "index": "7",
+          "title": "Servlet 上下文",
+          "points": [
+            {
+              "id": "00898-ch10-s7-p1",
+              "title": "①ServletContext 类的声明、作用、与主机的关系、如何获得 ServletContext",
+              "requirement": "识记",
+              "quote": "①ServletContext 类的声明、作用、与主机的关系、如何获得 ServletContext",
+              "locator": "L514"
+            },
+            {
+              "id": "00898-ch10-s7-p2",
+              "title": "②ServletContext 接口的相关方法",
+              "requirement": "识记",
+              "quote": "②ServletContext 接口的相关方法",
+              "locator": "L514"
+            },
+            {
+              "id": "00898-ch10-s7-p3",
+              "title": "ServletContext 接口的应用实例",
+              "requirement": "应用",
+              "quote": "ServletContext 接口的应用实例",
+              "locator": "L516"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解 Servlet 的概念、特点、工作原理",
+          "locator": "L522"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L498",
+          "title": "（三）Servlet 实现相关的接口和类（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L517",
+          "title": "（八）Servlet 协作（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L518",
+          "title": "（九）Servlet 异常相关（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L519",
+          "title": "（十）Servlet3.0 注解（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        },
+        {
+          "locator": "L520",
+          "title": "（十一）Servlet 应用实例（本节内容不作考核要求）",
+          "reason": "not_assessed"
+        }
+      ]
+    },
+    {
+      "ordinal": 11,
+      "index": "第11章",
+      "slug": "ch11",
+      "title": "第 11 章使用 Servlet 过滤器和监听器",
+      "sections": [
+        {
+          "index": "1",
+          "title": "过滤器在 Web 开发中的应用",
+          "points": [
+            {
+              "id": "00898-ch11-s1-p1",
+              "title": "①Filter 所属规范、概念、作用",
+              "requirement": "识记",
+              "quote": "①Filter 所属规范、概念、作用",
+              "locator": "L530"
+            },
+            {
+              "id": "00898-ch11-s1-p2",
+              "title": "②接口所属包",
+              "requirement": "识记",
+              "quote": "②接口所属包",
+              "locator": "L530"
+            },
+            {
+              "id": "00898-ch11-s1-p3",
+              "title": "③主要接口的作用",
+              "requirement": "识记",
+              "quote": "③主要接口的作用",
+              "locator": "L530"
+            },
+            {
+              "id": "00898-ch11-s1-p4",
+              "title": "④Filter 接口及其方法、相关注意点",
+              "requirement": "识记",
+              "quote": "④Filter 接口及其方法、相关注意点",
+              "locator": "L530"
+            },
+            {
+              "id": "00898-ch11-s1-p5",
+              "title": "⑤过滤器的部署",
+              "requirement": "识记",
+              "quote": "⑤过滤器的部署",
+              "locator": "L530"
+            },
+            {
+              "id": "00898-ch11-s1-p6",
+              "title": "⑥新增@WebFilter 注解",
+              "requirement": "识记",
+              "quote": "⑥新增@WebFilter 注解",
+              "locator": "L530"
+            },
+            {
+              "id": "00898-ch11-s1-p7",
+              "title": "①过滤器的工作过程",
+              "requirement": "领会",
+              "quote": "①过滤器的工作过程",
+              "locator": "L534"
+            },
+            {
+              "id": "00898-ch11-s1-p8",
+              "title": "①使用过滤器校验表单数据",
+              "requirement": "应用",
+              "quote": "①使用过滤器校验表单数据",
+              "locator": "L535"
+            }
+          ]
+        },
+        {
+          "index": "2",
+          "title": "Servlet 监听器",
+          "points": [
+            {
+              "id": "00898-ch11-s2-p1",
+              "title": "①监听器的定义和作用",
+              "requirement": "识记",
+              "quote": "①监听器的定义和作用",
+              "locator": "L537"
+            },
+            {
+              "id": "00898-ch11-s2-p2",
+              "title": "②ServletRequestListener、ServletRequestAttributeListener 的作用和相关方法",
+              "requirement": "识记",
+              "quote": "②ServletRequestListener",
+              "locator": "L537"
+            },
+            {
+              "id": "00898-ch11-s2-p3",
+              "title": "③ServletContextListener、ServletContextAttributeListener 的作用和相关方法",
+              "requirement": "识记",
+              "quote": "③ServletContextListener",
+              "locator": "L537"
+            },
+            {
+              "id": "00898-ch11-s2-p4",
+              "title": "④HttpSessionAttributeListener、HttpSessionBindingListener 的作用和相关方法",
+              "requirement": "识记",
+              "quote": "④HttpSessionAttributeListener",
+              "locator": "L537"
+            },
+            {
+              "id": "00898-ch11-s2-p5",
+              "title": "⑤新增@WebListener 注解",
+              "requirement": "识记",
+              "quote": "⑤新增@WebListener 注解",
+              "locator": "L537"
+            },
+            {
+              "id": "00898-ch11-s2-p6",
+              "title": "①实现一个简单的监听器，把用户请求资源的 URL 登记在日志文件中",
+              "requirement": "应用",
+              "quote": "①实现一个简单的监听器，把用户请求资源的 URL 登记在日志文件中",
+              "locator": "L541"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章的重点和难点：①理解过滤器和监听器的概念、功能和主要工作流程",
+          "locator": "L543"
+        }
+      ],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 12,
+      "index": "第12章",
+      "slug": "ch12",
+      "title": "第 12 章 JSTL 标准标签库（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 13,
+      "index": "第13章",
+      "slug": "ch13",
+      "title": "第 13 章 自定义标签库（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 14,
+      "index": "第14章",
+      "slug": "ch14",
+      "title": "第 14 章 网上书店（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 15,
+      "index": "第15章",
+      "slug": "ch15",
+      "title": "第 15 章 调查问卷管理系统（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 16,
+      "index": "第16章",
+      "slug": "ch16",
+      "title": "第 16 章 Web 应用开发实践（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    }
+  ],
+  "exam": {
+    "question_types": [
+      "单项选择题",
+      "判断改错题",
+      "简答题",
+      "综合应用题"
+    ],
+    "question_types_provenance": {
+      "doc_id": "syllabus:00898",
+      "locator": "L633"
+    },
+    "duration_minutes": null,
+    "duration_status": "named_gap",
+    "sample_paper": null
+  },
+  "coverage": {
+    "official_point_count": 50,
+    "modeled_point_count": 50,
+    "ratio": 1.0,
+    "denominator_rule": "考纲「二、考核知识点与考核要求」中带编号的节数",
+    "manual_reference": null,
+    "diff_vs_manual": []
+  }
+}
