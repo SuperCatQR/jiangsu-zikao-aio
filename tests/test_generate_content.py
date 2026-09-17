@@ -1198,10 +1198,22 @@ def test_committed_fixtures_resolve_every_call_plan_payload_for_each_course():
         for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/content.json")
     )
     # 对照前提：当前有产物（content.json）的课程都被覆盖到，而不是空集合上的恒真检查。
-    # B3b（2026-09-13）接入 `15044`：本用例按 `*/content.json` **自动**枚举，故新课只需让
-    # `call_plan(model)` 的每个 payload 都有录制响应即自动进入守护范围（见上方 docstring）。
-    # 下方列表只作**对照前提**使用，随课程接入递增。
-    assert courses == ["15040", "15043", "15044"], f"对照前提：有 content.json 的课程为 15040/15043/15044，实际 {courses}"
+    # B3b（2026-09-13）接入 `15044`、`00898`、`02333`。前提改为**从知识模型推导**，与本用例
+    # docstring 要求的「新课接入后自动进入守护范围」一致：一门课只要产出了 `content.json`，
+    # 它的每个 `call_plan` payload 就必须有录制响应 —— 该性质由下方循环**直接**判定
+    # （`misses` 非空即失败），因此这里不再硬编码课程清单。
+    assert courses, "对照前提：必须存在有 content.json 的课程，否则本用例退化为空集合上的恒真检查"
+    modelled = {
+        path.parent.name
+        for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/knowledge-model.json")
+    }
+    assert set(courses) <= modelled, (
+        f"对照前提：有 content.json 的课程 {courses} 必须都有 knowledge-model.json；"
+        f"缺模型者 {sorted(set(courses) - modelled)}"
+    )
+    assert {"15040", "15043", "15044"} <= set(courses), (
+        f"对照前提：已上线课程必须留在守护范围内，实际 {courses}"
+    )
 
     for code in courses:
         model = _json(ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json")
