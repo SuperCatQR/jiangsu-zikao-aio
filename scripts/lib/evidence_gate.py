@@ -25,7 +25,7 @@ from urllib.parse import urlparse
 
 from lib.course_pipeline.evidence import evaluate_eligibility
 from lib.course_pipeline.knowledge_model import (
-    APPENDIX_TITLE_RE,
+    APPENDIX_RE,
     CHAPTER_TITLE_RE,
     source_assessment_unit_count,
 )
@@ -313,7 +313,9 @@ def _knowledge_model_problems(
                 errors.append(f"{rel_km}: appendices[{index}] must be dict")
                 continue
             title = ap.get("title")
-            if not isinstance(title, str) or not APPENDIX_TITLE_RE.match(title.strip()):
+            # 形态判据与抽取器**共用同一个正则**（F-3）：两个各自维护的 `附录N` 判据曾漂移成
+            # 「都接受裸 `附录一`」，于是无标题条目在抽取侧与闸门侧同时被放行。
+            if not isinstance(title, str) or not APPENDIX_RE.match(title.strip()):
                 errors.append(f"{rel_km}: appendices[{index}].title 不是可识别的附录标题: {title!r}")
             ordinal = ap.get("ordinal")
             if not isinstance(ordinal, int) or isinstance(ordinal, bool) or ordinal != index + 1:

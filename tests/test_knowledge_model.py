@@ -1598,6 +1598,59 @@ def test_r41_does_not_touch_courses_without_numbered_appendices():
     assert km.APPENDIX_RE.match("附录 7 UML 图")
 
 
+def _appendix_fragment(appendix_blocks: list[str]) -> str:
+    """合成考纲：1 章 + 给定附录块（每块自带 `三、考核知识点与考核要求`，故是一整个考核单元）。
+
+    复用 `_fallback_fragment()`（无目录页、`Ⅲ` 部直接列章）；附录块插在末章与 `Ⅳ` 之间 ——
+    与真实考纲里 `附录N` 的位置一致（`02333` 的 7 个附录就在 `Ⅲ` 部末尾、`Ⅳ` 之前）。
+    """
+    blocks = "\n\n".join(
+        f"{block}\n{FALLBACK_HEADING}\n识记：附录识记内容。\n领会：附录领会内容。" for block in appendix_blocks
+    )
+    return _fallback_fragment(["第一章 示例章"]).replace(
+        "\n\nⅣ 关于大纲的说明与考核实施要求",
+        f"\n\n{blocks}\n\nⅣ 关于大纲的说明与考核实施要求",
+    )
+
+
+def test_appendix_heading_without_a_title_is_not_an_assessment_unit(tmp_path: Path):
+    """F-3①：裸 `附录一`（**无标题**）不是考核单元 —— 修前它被接受并占掉 `ap01`。
+
+    修前实测：`km.APPENDIX_RE.match("附录一")` 命中（标题捕获组为空串）、`_appendix_number("附录一") == 1`，
+    端到端抽取产出 `appendices[0]`（`slug: ap01`）；同一份文档里 `附录一 可行性研究报告` 也产出
+    `ap01` —— 两个单元共用一个 slug。修后前者不构成单元，标题判据与闸门侧共用同一个正则。
+    """
+    root, evidence = _fragment_root(tmp_path / "bare", _appendix_fragment(["附录一"]))
+    doc = km.extract_knowledge_model(root, evidence)
+
+    assert "appendices" not in doc, doc.get("appendices")
+    # 判据本身（`evidence_gate` 用的是同一个正则）：无标题不命中、带标题命中
+    assert not km.APPENDIX_RE.match("附录一")
+    assert not km.APPENDIX_RE.match("附录一 ")
+    assert km.APPENDIX_RE.match("附录一 可行性研究报告")
+
+
+def test_conflicting_appendix_numbers_fail_closed_with_both_locators(tmp_path: Path):
+    """F-3②：同号冲突失败关闭，并**指名冲突的两行 locator**（不得静默复用 `ap01`）。
+
+    修前实测：`附录一 甲附录` 与 `附录 1 乙附录` 都映射到 `number=1` / `slug=ap01`，抽取不报错 ——
+    两个单元的 slug 与 point id 前缀相同，产物里看不出「有两个附录一」。
+    """
+    text = _appendix_fragment(["附录一 甲附录", "附录 1 乙附录"])
+    root, evidence = _fragment_root(tmp_path / "clash", text)
+    lines = text.split("\n")
+    first = lines.index("附录一 甲附录") + 1
+    second = lines.index("附录 1 乙附录") + 1
+
+    with pytest.raises(ValueError) as excinfo:
+        km.extract_knowledge_model(root, evidence)
+
+    message = str(excinfo.value)
+    assert "附录序号冲突" in message, message
+    assert f"L{first}" in message and f"L{second}" in message, message
+    assert "ap01" in message, message
+
+
 def test_r43_denominator_is_counted_from_the_source_not_from_the_parse():
     """R43：分母必须**独立于产出**数出来 —— 源侧计数能复现全部真实课，且能看穿丢单元。
 
@@ -1643,3 +1696,27 @@ def test_r43_evidence_gate_catches_a_swallowed_appendix_unit(tmp_path: Path):
         target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
         errors = run_evidence_gate(fake_root)
         assert any("考核单元" in e and "静默丢弃" in e for e in errors), (dropped, errors)
+
+
+def test_f3_evidence_gate_rejects_an_appendix_title_without_a_title(tmp_path: Path):
+    """F-3① 的闸门侧：产物里 `appendices[].title` 是裸 `附录一`（**无标题**）时必须报出。
+
+    修前实测：闸门用的是第二个正则（`APPENDIX_TITLE_RE`，标题段写成可选 `(?:\\s*.+)?`），
+    故裸 `附录一` 被放行 —— 抽取侧与闸门侧两个判据各自漂移、同时接受无标题条目。
+    """
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = tmp_path / "repo"
+    shutil.copytree(ROOT / "sources", fake_root / "sources")
+    shutil.copytree(ROOT / "ops", fake_root / "ops")
+    shutil.copytree(ROOT / "content", fake_root / "content")
+
+    target = fake_root / "sources" / "jiangsu" / "courses" / "02333" / "knowledge-model.json"
+    clean = json.loads(target.read_text(encoding="utf-8"))
+    assert not [e for e in run_evidence_gate(fake_root) if "02333" in e], "对照前提：未改动的产物必须静默"
+
+    data = json.loads(json.dumps(clean, ensure_ascii=False))
+    data["appendices"][0]["title"] = "附录一"
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert any("可识别的附录标题" in e for e in errors), errors

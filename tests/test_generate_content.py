@@ -1635,7 +1635,7 @@ def test_stage_plan_payload_lists_appendices_separately_and_omits_the_key_when_e
 
 
 def test_select_chapters_accepts_appendix_selectors_and_keeps_chapter_selectors_working():
-    """R49 验收②：`select_chapters` 对附录可寻址（slug `ap01` / 序标签 `附录一` / ordinal），
+    """R49 验收②：`select_chapters` 对附录可寻址（slug `ap01` / 序标签 `附录一`），
     且章的既有选择器语义不变（`intro` / `导论` / `0`）。"""
     model = _synthetic_appendix_model()
 
@@ -1643,9 +1643,10 @@ def test_select_chapters_accepts_appendix_selectors_and_keeps_chapter_selectors_
     assert [a["slug"] for a in by_slug["appendices"]] == ["ap01"]
     assert by_slug["chapters"] == [], "只选附录时 chapters 必须是空列表（不是缺失键）"
 
-    for selector in ("附录一", "1"):
-        picked = gc.select_chapters(model, (selector,))
-        assert [a["slug"] for a in picked["appendices"]] == ["ap01"], f"选择器 {selector!r} 未命中附录"
+    # 附录的**序标签**仍是选择器；序数（`"1"`）不是 —— 附录不与章共用序数命名空间（F-2 回归见
+    # `test_select_chapters_ordinal_selector_does_not_alias_a_same_numbered_appendix`）。
+    by_label = gc.select_chapters(model, ("附录一",))
+    assert [a["slug"] for a in by_label["appendices"]] == ["ap01"], "附录序标签未命中附录"
 
     # 章与附录混选：各自留各自的列表，顺序仍是知识模型内序
     mixed = gc.select_chapters(model, ("intro", "ap01"))
@@ -1661,6 +1662,33 @@ def test_select_chapters_accepts_appendix_selectors_and_keeps_chapter_selectors_
     # 无附录课程：不得新增 appendices 键（no-op 结构前提）
     plain = gc.select_chapters(_synthetic_model(), ("intro",))
     assert "appendices" not in plain
+
+
+def test_select_chapters_ordinal_selector_does_not_alias_a_same_numbered_appendix():
+    """F-2：章与附录的**序数命名空间必须不相交** —— `str(ordinal)` 只对章生效。
+
+    附录只用 `slug`（`ap01`…）与序标签（`附录一`…）寻址；`5` 恒指第 5 章，不顺手带上 `ap05`。
+    修前实测（真实 `02333` 模型）：`('1',)` → `chapters=['ch01']` **且** `appendices=['ap01']`；
+    `('5',)` → `ch05` + `ap05` —— 两者的 `ordinal` 同域（附录一 = 1），分批选择被静默放大。
+    """
+    model = _appendix_model()  # 真实 02333：`intro` + `ch01`…`ch13`，`ap01`…`ap07`
+
+    by_ordinal = gc.select_chapters(model, ("1",))
+    assert [c["slug"] for c in by_ordinal["chapters"]] == ["ch01"]
+    assert by_ordinal["appendices"] == [], "序数选择器不得带上同号的附录"
+
+    fifth = gc.select_chapters(model, ("5",))
+    assert [c["slug"] for c in fifth["chapters"]] == ["ch05"]
+    assert fifth["appendices"] == [], "序数选择器不得带上同号的附录"
+
+    # 附录仍可寻址，且两种选择器都不别名到章
+    for selector in ("ap01", "附录一"):
+        picked = gc.select_chapters(model, (selector,))
+        assert picked["chapters"] == [], f"附录选择器 {selector!r} 不得带上章"
+        assert [a["slug"] for a in picked["appendices"]] == ["ap01"], f"选择器 {selector!r} 未命中附录"
+
+    # 章 slug 也不别名到附录
+    assert gc.select_chapters(model, ("ch01",))["appendices"] == []
 
 
 def test_select_chapters_rejects_an_unknown_appendix_selector():

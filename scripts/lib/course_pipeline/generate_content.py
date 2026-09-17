@@ -101,29 +101,40 @@ def out_of_scope_prompts(course_code: str) -> list[str]:
     ]
 
 
-def _unit_selectors(unit: dict) -> set[str]:
-    """单元的**全部**可寻址别名：`slug` / 序标签（`第一章` / `附录一`）/ `ordinal`。
+def _unit_selectors(unit: dict, *, with_ordinal: bool) -> set[str]:
+    """单元的可寻址别名：`slug` / 序标签（`第一章` / `附录一`），`with_ordinal=True` 时**另加** `ordinal`。
 
-    章与附录共用同一套规则（附录同样有 `slug` `ap01`…、`index` `附录一`、`ordinal` 1…7），
-    因此 `select_chapters` 对两者是同一份代码，不需要第二套选择器语法（R49 验收①）。
+    章与附录的**序数命名空间必须不相交**：`ordinal` 只对**章**生效（`str(ordinal)` 1…N 即章的序数），
+    附录只用 `slug`（`ap01`…）与序标签（`附录一`…）寻址。旧的合并用法让 `--chapters 5` 同时选中
+    `ch05` **与** `ap05`（两者的 `ordinal` 都是 5）—— 分批生成被静默放大成含附录的批。
     """
-    return {unit["slug"], unit["index"], str(unit["ordinal"])}
+    names = {unit["slug"], unit["index"]}
+    if with_ordinal:
+        names.add(str(unit["ordinal"]))
+    return names
 
 
 def select_chapters(model: dict, selectors) -> dict:
-    """按单元 `slug` / 序标签 / `ordinal` 选**考核单元**（分批生成用），保持知识模型内的单元序。
+    """按单元选择器选**考核单元**（分批生成用），保持知识模型内的单元序。
 
-    单元 = 章 + 附录（R49）。旧实现只认 `model["chapters"]`，于是 `02333` 的 7 个附录
-    （9 个点）无法单独成批 —— 它们会被 `--chapters ap01` 以「未知的章选择器」拒绝，
-    整条分批路径对该课不可用。选择器集合 = 单元自身的别名并集，故章的既有选择器
-    （`intro` / `第一章` / `0`）语义不变；**只选到附录**时 `chapters` 为空列表（不是缺失键），
-    `appendices` 保留被选中的附录。
+    单元 = 章 + 附录（R49），选择器口径（F-2 收口）：
+
+    - **章**：`slug`（`ch01` / `intro`）、序标签（`第一章` / `导论`）、**序数**（`str(ordinal)`：`0` / `1`…）
+      三者皆可 —— 章的既有选择器语义不变；
+    - **附录**：只有 `slug`（`ap01`…）与序标签（`附录一`…）；**序数不适用于附录**，`5` 恒指第 5 章，
+      不会顺手带上 `ap05`。附录的序数命名空间与章的交叠（`附录一` 与 `第1章` 的 `ordinal` 都是 1），
+      故不与章共用序数选择器。
+
+    旧实现只认 `model["chapters"]`，于是 `02333` 的 7 个附录（9 个点）无法单独成批 —— 它们会被
+    `--chapters ap01` 以「未知的章选择器」拒绝，整条分批路径对该课不可用。**只选到附录**时
+    `chapters` 为空列表（不是缺失键），`appendices` 保留被选中的附录。
     """
     wanted = [str(item).strip() for item in selectors if str(item).strip()]
     if not wanted:
-        raise ValueError("select_chapters 需要至少一个单元选择器（slug / 序标签 / ordinal；章与附录通用）")
+        raise ValueError("select_chapters 需要至少一个单元选择器（章：slug / 序标签 / ordinal；附录：slug / 序标签）")
     known = {unit["slug"]: unit for unit in _units(model)}
-    names = {unit["slug"]: _unit_selectors(unit) for unit in _units(model)}
+    names = {chapter["slug"]: _unit_selectors(chapter, with_ordinal=True) for chapter in model["chapters"]}
+    names.update({ap["slug"]: _unit_selectors(ap, with_ordinal=False) for ap in model.get("appendices") or []})
     unknown = [item for item in wanted if not any(item in names[slug] for slug in known)]
     if unknown:
         raise ValueError(f"未知的单元选择器: {'、'.join(unknown)}")
@@ -362,10 +373,12 @@ def _day_kind(day: int, days: int) -> str:
 def _tier(model: dict, horizon_days: int, exam_date: date, weekly_hours: float, generator: dict) -> dict:
     """一档排程。条目序 = 章 → 附录（`_units()` 的阅读序），因此附录点也进排程与间隔重复。
 
-    `evidence_refs` 写 `knowledge-model:units`（旧值 `knowledge-model:chapters`）：`_units()` 的取值源
-    就是这两个顶层键。该串是**新生成的**排程块自己的脚注，不是对既有产物的改写 ——
-    `15040` / `15043` 的 `review_schedule` 是 `named_gap`（无 `plans[]`），本函数对它们不产生任何输出，
-    故该串变化不影响它们的字节（这正是 no-op 证明里的一条）。
+    `evidence_refs` 写 **`knowledge-model:chapters`** —— 与 `stage_plan` / `_exam` 同一套命名空间：
+    该串引用的是**知识模型**（`knowledge-model.json`）这一份产物，不是「章的列表」这个顶层键。
+    F-4 收口前 `_tier` 用的是第二个引用名，同一份模型在产物里因此有两个引用名；现将命名空间统一为
+    既有值 `knowledge-model:chapters`（对齐已提交产物，避免失配），取值源仍是 `_units()`（章 + 附录）。
+    `15040` / `15043` / `15044` 的 `review_schedule` 是 `named_gap`（无 `plans[]`），本函数对它们
+    不产生输出，故该串变化不影响它们的字节。
     """
     entries = [
         (unit, section, point)
@@ -387,7 +400,7 @@ def _tier(model: dict, horizon_days: int, exam_date: date, weekly_hours: float, 
         "ai_generated": True,
         "review_state": "machine_draft",
         "generator": generator,
-        "evidence_refs": ["knowledge-model:units"],
+        "evidence_refs": ["knowledge-model:chapters"],
     }
     total = len(entries)
     for day in range(1, horizon_days + 1):

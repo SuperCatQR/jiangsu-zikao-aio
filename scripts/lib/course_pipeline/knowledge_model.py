@@ -43,7 +43,8 @@
    **边界**而不是其正文，产出走独立的 `appendices[]`（slug `ap01`…、序连续），进分母、有自己的
    「本章重点」。旧实现只把部次标签当章末边界，于是 `02333` 第 14 章的切片吃下了 7 个附录段落，
    只解析出第一个附录的要求块 —— 其余 6 条要求行静默消失，`附录二 需求规格说明书` 反被当成第 14 章
-   的重点。判据带序号限定，故 `附录：参考样卷` / `附录 题型示例` 这类样卷区不入考核单元。
+   的重点。判据要求序号 + 非空标题，故 `附录：参考样卷` / `附录 题型示例` 这类样卷区与裸 `附录一`
+   都不入考核单元；同一文档内两个附录行映射到同一序号时失败关闭（F-3）。
 4. **`quote` ≤ 60 字符且逐字来自考纲**：短语本身超长时取最后一个分句边界（`，、：,;`）之内的前缀
    ——不拼接、不改写、不加省略号，`title` 仍保留完整原文（GC4；长短语只截 `quote`、不拆 point，
    因此 point id 用节内 `p<seq>` 而不是 requirement 后缀）。
@@ -142,13 +143,13 @@ MANUAL_INDEX_RE = re.compile(r"^\d+\.\d+\s+")
 PART_LABEL_RE = re.compile(r"^[ⅠⅡⅢⅣ]\s*\S")
 # 附录单元（R41）：`附录N 标题` 是 `Ⅲ` 部之下的**独立考核单元**，不是它前面那一章的正文。
 #
-# 判据要求附录名带**序号**（`附录一` … `附录七` / `附录 1`）。这条限定就是爆炸半径本身：
-# 实测七门考纲里只有 `02333` 的 7 个 `附录N` 命中，而 `附录：参考样卷`（15040/15043/15044）、
-# `附录 题型示例`（00898/02333/04747/04751）、裸 `附录`（15040/15043/15044）**一律不命中** ——
-# 后者是 `Ⅳ` 之后的样卷区，不是考核内容，不得成为考核单元（故六门课零影响，AC3 逐字节不变）。
-APPENDIX_RE = re.compile(r"^附\s*录\s*([一二三四五六七八九十]+|\d+)\s*(.*)$")
-# 闸门侧只判形态（`附录N` 且带标题）：`APPENDIX_RE` 的捕获组供抽取器使用，闸门不需要课码专属变体
-APPENDIX_TITLE_RE = re.compile(r"^附\s*录\s*(?:[一二三四五六七八九十]+|\d+)(?:\s*.+)?$")
+# 判据要求附录名带**序号 + 非空标题**（`附录一 可行性研究报告` / `附录 7 UML 图`）。这条限定就是
+# 爆炸半径本身：实测七门考纲里只有 `02333` 的 7 个 `附录N` 命中，而 `附录：参考样卷`
+# （15040/15043/15044）、`附录 题型示例`（00898/02333/04747/04751）、裸 `附录`（15040/15043/15044）
+# **一律不命中** —— 后者是 `Ⅳ` 之后的样卷区，不是考核内容，不得成为考核单元（故六门课零影响，
+# AC3 逐字节不变）。**标题必填**是 F-3 的收口：裸 `附录一` 与 `附录一 可行性研究报告` 曾同时命中并
+# 产出同一个 `ap01`（同一 slug 两个单元），现在前者不再构成考核单元。
+APPENDIX_RE = re.compile(r"^附\s*录\s*([一二三四五六七八九十]+|\d+)\s*(\S.*)$")
 
 MAX_QUOTE_CHARS = 60
 SENTENCE_END = ("。", "！", "？")
@@ -745,8 +746,6 @@ def _exam(lines: list[str], doc_id: str) -> dict:
                     ]
         if sample_line is None and text == SAMPLE_PAPER_HEADING:
             sample_line = number
-        if sample_line is None and text == SAMPLE_PAPER_HEADING:
-            sample_line = number
     exam = {
         "question_types": question_types,
         "question_types_provenance": {"doc_id": doc_id, "locator": f"L{types_line}"} if types_line else None,
@@ -984,8 +983,21 @@ def extract_knowledge_model(root: Path, evidence: dict) -> dict:
     # 附录切片由 `_appendix_slices()` 独立切出，与章切片共用同一条边界规则，因此附录内容
     # 绝不会再落进它前面那一章的切片 / 本章重点 / 要求块。无附录的考纲写 `[]`。
     appendices = []
+    # 附录号 → 该号所在行（1-based 物理行号），用于同号冲突的失败关闭（F-3）：两个不同的附录行
+    # 映射到同一 number 时会产出**同一个** `ap<NN>` slug（两个单元共用 slug / point id 前缀），
+    # 必须指名两行的 locator 报错，不得静默复用前一个单元的 slug。
+    appendix_lines: dict[int, int] = {}
     for appendix_title, appendix_slice in _appendix_slices(lines, toc_end):
-        slug = f"ap{_appendix_number(appendix_title):02d}"
+        number = _appendix_number(appendix_title)
+        locator = appendix_slice[0][0]  # 切片首行 = `附录N 标题` 那一行
+        clashed = appendix_lines.get(number)
+        if clashed is not None:
+            raise ValueError(
+                f"{code}: 附录序号冲突 —— L{clashed} 与 L{locator} 映射到同一序号 {number}"
+                f"（slug 都是 ap{number:02d}）：{_fold(lines[clashed - 1])} / {appendix_title}"
+            )
+        appendix_lines[number] = locator
+        slug = f"ap{number:02d}"
         logical = _logical_lines(appendix_slice)
         block = _requirement_block(logical, heading)
         declared = _declared_section_indexes(block or [])
