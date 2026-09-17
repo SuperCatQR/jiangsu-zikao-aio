@@ -155,12 +155,69 @@ def _clean_explain_headings(text: str) -> str:
     return "\n".join(cleaned_lines)
 
 
+def _assessment_units(model: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
+    """阅读序的考核单元：章（`章`）在前、附录（`附录`）在后（R49）。
+
+    单元类别是**在这里显式标注**的，而不是让下游从 `slug` / `index` 的命名形态反推 ——
+    反推会在命名规则变化时静默把附录当成章（或反之），而这两个列表本来就是分开的真值源。
+
+    `appendices` 缺键或为空 → 返回的序列与旧实现的 `model["chapters"]` **逐个相同**，
+    因此无附录课程（`15040` / `15043` / `15044` / `00898`）的渲染输出逐字节不变。
+    """
+    return [
+        *(("章", chapter) for chapter in model.get("chapters", [])),
+        *(("附录", appendix) for appendix in model.get("appendices") or []),
+    ]
+
+
+def _unit_filename(unit: dict[str, Any]) -> str:
+    """单元页文件名（章与附录同形）。
+
+    方案：`knowledge/{ordinal:02d}-{slug}.md` —— 与章页**完全同形**，冲突由 slug 命名空间排除：
+    章的 `slug` 只可能是 `intro` / `ch<NN>`（`knowledge_model._slug_for()`），附录的只可能是
+    `ap<NN>`（`knowledge_model` 的附录分支），两者按构造不相交，故 `01-ch01.md` 与 `01-ap01.md`
+    不会互相覆盖，`NN-` 前缀也不会撞车（`ordinal` 在各自命名空间内唯一）。
+    """
+    return f"{unit['ordinal']:02d}-{unit['slug']}.md"
+
+
+# 单元页的**措辞**表（章 / 附录）—— 结构完全同形，只有这些词不同。
+# 章的取值逐字等于旧实现的硬编码文案，因此无附录课程的章页输出逐字节不变。
+UNIT_WORDING = {
+    "章": {
+        "kind": "章",
+        "nav": "章节导航",
+        "overview": "章节概览",
+        "focus": "本章重点",
+        "first": "这是第一章",
+        "last": "这是最后一章",
+    },
+    "附录": {
+        "kind": "附录",
+        "nav": "附录导航",
+        "overview": "附录概览",
+        "focus": "本附录重点",
+        "first": "这是第一个附录",
+        "last": "这是最后一个附录",
+    },
+}
+
+
 def _chapter_index_block(model: dict[str, Any]) -> str:
-    """`## 章节知识精读` 区块（章链接由知识模型派生，不是手写正文）。"""
+    """`## 章节知识精读` 区块（章链接由知识模型派生，不是手写正文）。
+
+    附录单元（R49）**在同一区块内**另起 `### 附录知识精读` 小节列出：它们与章同级（都是考核单元，
+    各自有单元页），但**不是章**，混进「本课程各章…」那一列表会让读者以为附录是章。
+    无附录课程不追加任何行 → 输出与旧实现逐字节相同。
+    """
     lines = ["## 章节知识精读", "", "本课程各章核心要点、记忆法与仿真练习：", ""]
     for ch in model["chapters"]:
-        fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
-        lines.append(f"- [{ch['title']}](knowledge/{fname})")
+        lines.append(f"- [{ch['title']}](knowledge/{_unit_filename(ch)})")
+    appendices = model.get("appendices") or []
+    if appendices:
+        lines.extend(["", "### 附录知识精读", "", "考纲 Ⅲ 部之下的附录单元同样是受考内容：", ""])
+        for appendix in appendices:
+            lines.append(f"- [{appendix['title']}](knowledge/{_unit_filename(appendix)})")
     return "\n".join(lines)
 
 
@@ -342,6 +399,21 @@ def _render_syllabus(
     ]
     for ch in model["chapters"]:
         out.append(f"| {ch['index']} | {ch['title']} |")
+    appendices = model.get("appendices") or []
+    if appendices:
+        # 附录单元同样是考纲 Ⅲ 部之下的受考单元（R49），不能只在章目索引里隐身：
+        # 读者需要从官方页看到「附录一–七」也被建模。用 `附录序` 作首列（不是 `章序`）以免被读成章。
+        out.extend(
+            [
+                "",
+                "### 附录索引（考纲 Ⅲ 部切片）",
+                "",
+                "| 附录序 | 附录名 |",
+                "| --- | --- |",
+            ]
+        )
+        for appendix in appendices:
+            out.append(f"| {appendix['index']} | {appendix['title']} |")
     return _apply_derived_blocks("\n".join(out), code, evidence, model)
 
 
@@ -423,7 +495,9 @@ def _render_plan(
     不再写死任何课码的字面量（C2-014）。
     """
     course_name = get_course_name(evidence, code)
+    units = _assessment_units(model)
     chapters = model["chapters"]
+    appendices = model.get("appendices") or []
     out = [
         GENERATED_COMMENT,
         f"# {course_name}（{code}）：学习计划",
@@ -442,12 +516,27 @@ def _render_plan(
         "",
         "## 如何使用",
         "",
-        f"按 [考纲与范围](syllabus.md) 的章目索引顺序学习：每行对应一章（共 {len(chapters)} 章），"
-        "通读该章大纲范围、记录不理解点，再按章末要求自检并勾选完成标记。不排周次、不绑定考期。",
-        "",
-        "## 阶段目标",
-        "",
     ]
+    if appendices:
+        # R49：附录单元也被渲染为单元页，故「共 N 章」必须与**实际渲染的单元数**一致。
+        # 旧文案只报章数，读者会以为学习序列只有章 —— 而 `## 按章学习序列` 表里确实还有附录行。
+        out.append(
+            f"按 [考纲与范围](syllabus.md) 的章目索引顺序学习：{len(chapters)} 章 + {len(appendices)} 个附录单元"
+            f"（共 {len(units)} 个考核单元），每行对应一个考核单元，"
+            "通读该单元大纲范围、记录不理解点，再按单元末要求自检并勾选完成标记。不排周次、不绑定考期。"
+        )
+    else:
+        out.append(
+            f"按 [考纲与范围](syllabus.md) 的章目索引顺序学习：每行对应一章（共 {len(chapters)} 章），"
+            "通读该章大纲范围、记录不理解点，再按章末要求自检并勾选完成标记。不排周次、不绑定考期。"
+        )
+    out.extend(
+        [
+            "",
+            "## 阶段目标",
+            "",
+        ]
+    )
     for stage in content.get("stage_plan") or []:
         out.append(f"### 阶段：{stage.get('stage')}")
         out.append("")
@@ -473,16 +562,21 @@ def _render_plan(
 
     out.extend(
         [
-            "## 按章学习序列",
+            # 表头随**实际渲染的单元**变化（R49）：表里有附录行时不能还叫「按章学习序列」。
+            # 无附录课程（`15040` / `15043` / `15044` / `00898`）保持 `## 按章学习序列` 逐字节不变
+            # —— 该标题被 `tests/test_chapter_index_study_plan.py` 与 `tests/test_00023_study_plan.py`
+            # 锁定，是既有契约，因此只在真的有附录时换名，不做全局改名。
+            "## 按考核单元学习序列" if appendices else "## 按章学习序列",
             "",
             "| 章节 | 学习任务 | 自检方式 | 完成标记 |",
             "| --- | --- | --- | --- |",
         ]
     )
-    for ch in chapters:
-        fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
+    for unit_kind, unit in units:
+        fname = _unit_filename(unit)
         out.append(
-            f"| {ch['title']} | [进入考点精读与自测](knowledge/{fname})；通读该章大纲范围；记录不理解点；自检章末要求。 | 能对照章名说出该章大纲范围，并列出待查项。 | ☐ |"
+            f"| {unit['title']} | [进入考点精读与自测](knowledge/{fname})；通读该{unit_kind}大纲范围；"
+            f"记录不理解点；自检{unit_kind}末要求。 | 能对照{unit_kind}名说出该{unit_kind}大纲范围，并列出待查项。 | ☐ |"
         )
     out.extend(
         [
@@ -513,7 +607,7 @@ def _render_practice(
     AI 练习块只能落在 `###` 层级，不得新增 H2。
     """
     course_name = get_course_name(evidence, code)
-    chapters = model["chapters"]
+    units = _assessment_units(model)
     drills_by_point: dict[str, dict[str, Any]] = {}
     for block in content.get("blocks") or []:
         if block.get("kind") == "drill" and block.get("point_id"):
@@ -548,8 +642,8 @@ def _render_practice(
     ]
 
     rendered = 0
-    for ch in chapters:
-        for sec in ch.get("sections") or []:
+    for unit_kind, unit in units:
+        for sec in unit.get("sections") or []:
             for point in sec.get("points") or []:
                 drill = drills_by_point.get(point["id"])
                 if not drill:
@@ -557,7 +651,9 @@ def _render_practice(
                 rendered += 1
                 out.append(f"### 练习题：{point['id']}（{drill.get('question_type', '题型自测')}）")
                 out.append("")
-                out.append(f"**章节**：{ch['title']} ｜ **考核点**：{point.get('title', '')}")
+                # 标签逐字沿用既有章页口径（`**章节**：`），附录单元用 `**附录**：` —— 章页文案不变
+                label = "章节" if unit_kind == "章" else "附录"
+                out.append(f"**{label}**：{unit['title']} ｜ **考核点**：{point.get('title', '')}")
                 out.append("")
                 out.append(str(drill.get("text_md", "")).strip())
                 out.append("")
@@ -576,17 +672,23 @@ def _render_practice(
     if not rendered:
         out.extend(["（本课程暂无 AI 仿真练习题。）", ""])
 
+    appendices = model.get("appendices") or []
+    summary = (
+        f"各考核单元（{len(model['chapters'])} 章 + {len(appendices)} 个附录单元）练习题与折叠解析"
+        "同时整理在对应单元知识精读页中："
+        if appendices
+        else f"各章练习题与折叠解析同时整理在对应章知识精读页中（共 {len(model['chapters'])} 章）："
+    )
     out.extend(
         [
             "### AI 仿真训练索引",
             "",
-            f"各章练习题与折叠解析同时整理在对应章知识精读页中（共 {len(chapters)} 章）：",
+            summary,
             "",
         ]
     )
-    for ch in chapters:
-        fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
-        out.append(f"- [{ch['title']} 练习题](knowledge/{fname}#ai)")
+    for unit_kind, unit in units:
+        out.append(f"- [{unit['title']} 练习题](knowledge/{_unit_filename(unit)}#ai)")
     out.extend(
         [
             "",
@@ -707,31 +809,42 @@ def _render_review(
     return "\n".join(out)
 
 
-def _render_chapter_page(
-    chapter: dict[str, Any],
+def _render_unit_page(
+    unit: dict[str, Any],
     blocks_by_point: dict[str, dict[str, dict[str, Any]]],
     *,
-    prev_chapter: dict[str, Any] | None = None,
-    next_chapter: dict[str, Any] | None = None,
+    kind: str = "章",
+    prev_unit: tuple[str, dict[str, Any]] | None = None,
+    next_unit: tuple[str, dict[str, Any]] | None = None,
 ) -> str:
-    title = chapter["title"]
+    """考核单元页（章页与附录页共用）。
 
-    chapter_nav_items = []
-    if prev_chapter:
-        prev_fn = f"{prev_chapter['ordinal']:02d}-{prev_chapter['slug']}.md"
-        chapter_nav_items.append(f"[← 上一章：{prev_chapter['title']}]({prev_fn})")
+    附录页（R49）与章页**同契约** —— 附录的考点同样要在页面上有 `### 考点精讲：<point_id>` 锚点与
+    练习小节（`ai_content_gate._per_point_reached_problems()` 的逐点对账对它一视同仁），因此只有
+    **措辞**按 `kind` 分叉（「章节导航」vs「附录导航」），结构与章节页逐字同形。
+
+    `prev_unit` / `next_unit` 是 `(kind, unit)`：导航条描述的是**目标单元**（末章的下一跳是第一个附录，
+    链路因此不断），单一 `kind` 无法表达跨界那一跳的措辞。`kind` 只决定本页自己的文案。
+    """
+    title = unit["title"]
+    words = UNIT_WORDING[kind]
+
+    unit_nav_items = []
+    if prev_unit:
+        prev_kind, prev = prev_unit
+        unit_nav_items.append(f"[← 上一{prev_kind}：{prev['title']}]({_unit_filename(prev)})")
     else:
-        chapter_nav_items.append("这是第一章")
+        unit_nav_items.append(words["first"])
 
-    chapter_nav_items.append("[返回课程概览](../index.md)")
+    unit_nav_items.append("[返回课程概览](../index.md)")
 
-    if next_chapter:
-        next_fn = f"{next_chapter['ordinal']:02d}-{next_chapter['slug']}.md"
-        chapter_nav_items.append(f"[下一章：{next_chapter['title']} →]({next_fn})")
+    if next_unit:
+        next_kind, nxt = next_unit
+        unit_nav_items.append(f"[下一{next_kind}：{nxt['title']} →]({_unit_filename(nxt)})")
     else:
-        chapter_nav_items.append("这是最后一章")
+        unit_nav_items.append(words["last"])
 
-    chapter_nav_bar = " ｜ ".join(chapter_nav_items)
+    unit_nav_bar = " ｜ ".join(unit_nav_items)
 
     out = [
         GENERATED_COMMENT,
@@ -741,12 +854,12 @@ def _render_chapter_page(
         "",
         "[返回课程概览](../index.md) ｜ [学习计划](../plan.md) ｜ [考纲与范围](../syllabus.md) ｜ [练习与真题](../practice.md)",
         "",
-        f"**章节导航**：{chapter_nav_bar}",
+        f"**{words['nav']}**：{unit_nav_bar}",
         "",
-        "## 章节概览",
+        f"## {words['overview']}",
         "",
     ]
-    for sec in chapter.get("sections", []):
+    for sec in unit.get("sections", []):
         out.append(f"- **{sec['title']}**")
     out.extend(
         [
@@ -755,7 +868,7 @@ def _render_chapter_page(
             "",
         ]
     )
-    for sec in chapter.get("sections", []):
+    for sec in unit.get("sections", []):
         out.append(f"### {sec['title']}")
         out.append("")
         out.append("| 知识点编号 | 能力层级 | 考纲原文短语 |")
@@ -764,14 +877,14 @@ def _render_chapter_page(
             out.append(f"| {p['id']} | {p['requirement']} | {p['quote']} |")
         out.append("")
 
-    if chapter.get("chapter_focus"):
+    if unit.get("chapter_focus"):
         out.extend(
             [
-                "## 本章重点",
+                f"## {words['focus']}",
                 "",
             ]
         )
-        for focus in chapter["chapter_focus"]:
+        for focus in unit["chapter_focus"]:
             if isinstance(focus, dict):
                 text = focus.get("text", "")
                 loc = focus.get("locator")
@@ -789,7 +902,7 @@ def _render_chapter_page(
             "",
         ]
     )
-    for sec in chapter.get("sections", []):
+    for sec in unit.get("sections", []):
         for p in sec.get("points", []):
             pid = p["id"]
             point_blocks = blocks_by_point.get(pid, {})
@@ -817,7 +930,7 @@ def _render_chapter_page(
             "",
         ]
     )
-    for sec in chapter.get("sections", []):
+    for sec in unit.get("sections", []):
         for p in sec.get("points", []):
             pid = p["id"]
             point_blocks = blocks_by_point.get(pid, {})
@@ -844,7 +957,7 @@ def _render_chapter_page(
         [
             "---",
             "",
-            f"**章节导航**：{chapter_nav_bar}",
+            f"**{words['nav']}**：{unit_nav_bar}",
             "",
         ]
     )
@@ -923,19 +1036,21 @@ def render_course_pages(root: Path, code: str, *, target_dir: Path | None = None
         ),
     )
 
-    # 7. 章页（AI 备考层：每章一页）
-    chapters = model.get("chapters", [])
-    for i, ch in enumerate(chapters):
-        fname = f"{ch['ordinal']:02d}-{ch['slug']}.md"
-        prev_ch = chapters[i - 1] if i > 0 else None
-        next_ch = chapters[i + 1] if i < len(chapters) - 1 else None
+    # 7. 考核单元页（AI 备考层：每章一页 + 每个附录一页，R49）—— 单元页的**唯一**写入路径。
+    #    单元序列取自 `_assessment_units()`（章在前、附录在后），导航的「上/下一个」按该序列相邻取，
+    #    因此末章的下一跳是第一个附录（阅读序不断链），跨界那一跳的措辞由目标单元的类别决定。
+    units = _assessment_units(model)
+    for i, (unit_kind, unit) in enumerate(units):
+        prev_unit = units[i - 1] if i > 0 else None
+        next_unit = units[i + 1] if i < len(units) - 1 else None
         _write(
-            f"knowledge/{fname}",
-            _render_chapter_page(
-                ch,
+            f"knowledge/{_unit_filename(unit)}",
+            _render_unit_page(
+                unit,
                 blocks_by_point,
-                prev_chapter=prev_ch,
-                next_chapter=next_ch,
+                kind=unit_kind,
+                prev_unit=prev_unit,
+                next_unit=next_unit,
             ),
         )
 

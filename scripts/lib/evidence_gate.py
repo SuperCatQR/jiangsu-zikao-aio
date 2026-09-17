@@ -24,7 +24,11 @@ from typing import Any
 from urllib.parse import urlparse
 
 from lib.course_pipeline.evidence import evaluate_eligibility
-from lib.course_pipeline.knowledge_model import CHAPTER_TITLE_RE
+from lib.course_pipeline.knowledge_model import (
+    APPENDIX_RE,
+    CHAPTER_TITLE_RE,
+    source_assessment_unit_count,
+)
 from lib.course_pipeline.official_source import is_official_url
 
 # `facts[*].status` 只允许契约里的两个取值（plan § Data contracts 2）。
@@ -34,7 +38,8 @@ VALID_STATUSES = {"verified", "named_gap"}
 # point id 形态的唯一真源（W7 / QC1 F-10）：`POINT_ID_BODY` 只写一遍，通用形态与课码专属形态都从它派生。
 # 旧实现除了 `POINT_ID_RE`，还在 `_knowledge_model_problems()` 里第二次 `re.compile(...)` 同一规则，
 # 改一处不会改另一处。
-POINT_ID_BODY = r"(intro|ch\d{2})-s\d+-p\d+"
+# `ap\d{2}` 是**附录单元**（R41）：`附录N` 是 `Ⅲ` 部之下的独立考核单元，其 point 不得借用章 slug。
+POINT_ID_BODY = r"(intro|ch\d{2}|ap\d{2})-s\d+-p\d+"
 POINT_ID_RE = re.compile(rf"^\d{{5}}-{POINT_ID_BODY}$")
 
 
@@ -192,7 +197,71 @@ def _course_url_problems(rel: str, code: str | None, url: Any, baseline_urls: di
         errors.append(f"{rel}: course_url {url!r} course_codes does not include {code}")
 
 
-def _knowledge_model_problems(root: Path, rel_km: str, code: str | None, km: dict, errors: list[str]) -> None:
+def _declared_unit_count(root: Path, syllabus: Any) -> int | None:
+    """考纲原文声明的考核单元数（R43 的独立分母）；取不到时返回 `None`（不判定）。
+
+    独立性是这条检查的全部价值：它读**抽取件原文**（`evidence.syllabus.path`）并按源文重数一遍，
+    而 `official_point_count` 是切片解析的产物。旧实现的「分母自洽」两侧同源，恒真。
+    读不到抽取件时不臆造判定（`syllabus.sha256` 漂移 / 路径缺失已由 `_eligibility_problems` 报出）。
+    """
+    if not isinstance(syllabus, dict) or syllabus.get("status") != "extracted":
+        return None
+    rel_path = syllabus.get("path")
+    heading = syllabus.get("requirements_heading")
+    if not isinstance(rel_path, str) or not isinstance(heading, str) or not heading:
+        return None
+    document = root / rel_path
+    if not document.is_file():
+        return None
+    return source_assessment_unit_count(document.read_text(encoding="utf-8").split("\n"), heading)
+
+
+def _sections_problems(
+    unit: dict, where: str, rel_km: str, pattern, seen_point_ids: set[str], errors: list[str]
+) -> int:
+    """单元（章 / 附录）的 `sections[]` 与 `points[]` 校验 → 产出的节数。
+
+    章与附录的节 / point 契约**完全相同**（id 形如 `<code>-<slug>-s<n>-p<n>`、`quote` 必填且 ≤ 60），
+    故两侧共用本函数：附录单元若不校验，一个坏 point 就能从附录侧绕过闸门。
+    """
+    sections = unit.get("sections")
+    if not isinstance(sections, list):
+        errors.append(f"{rel_km}: {where}.sections must be list")
+        return 0
+    for sec in sections:
+        if not isinstance(sec, dict):
+            errors.append(f"{rel_km}: {where}.sections 元素必须为对象")
+            continue
+        points = sec.get("points")
+        if not isinstance(points, list):
+            errors.append(f"{rel_km}: 节 {unit.get('index')}-{sec.get('index')} 的 points 必须为列表")
+            continue
+        for pt in points:
+            if not isinstance(pt, dict):
+                errors.append(f"{rel_km}: point 元素必须为对象")
+                continue
+            pid = pt.get("id")
+            if not pid or not isinstance(pid, str) or not pattern.fullmatch(pid):
+                errors.append(f"{rel_km}: invalid point id format: {pid!r}")
+            elif pid in seen_point_ids:
+                errors.append(f"{rel_km}: duplicate point id: {pid!r}")
+            else:
+                seen_point_ids.add(pid)
+
+            quote = pt.get("quote")
+            # 缺失与超长都必须失败关闭：旧实现 `pt.get("quote") or ""` 让「没有 quote」等同于合规
+            if not isinstance(quote, str) or not quote.strip():
+                errors.append(f"{rel_km}: point {pid} 缺 quote（考纲原文短语必填）")
+            elif len(quote) > MAX_QUOTE_CHARS:
+                errors.append(
+                    f"{rel_km}: point {pid} quote exceeds {MAX_QUOTE_CHARS} chars ({len(quote)}): {quote[:40]}..."
+                )
+    return len(sections)
+
+
+def _knowledge_model_problems(
+    root: Path, rel_km: str, code: str | None, km: dict, syllabus: Any, errors: list[str]
+) -> None:
     """知识模型：point id / quote / coverage / 章目与 `syllabus.md` 的一致性（B6 的闸门侧闭环）。"""
     if not isinstance(km, dict):
         errors.append(f"{rel_km}: knowledge-model 必须是 JSON 对象")
@@ -231,35 +300,30 @@ def _knowledge_model_problems(root: Path, rel_km: str, code: str | None, km: dic
         if not isinstance(sections, list):
             errors.append(f"{rel_km}: chapters[{index}].sections must be list")
             continue
-        section_total += len(sections)
-        for sec in sections:
-            if not isinstance(sec, dict):
-                errors.append(f"{rel_km}: chapters[{index}].sections 元素必须为对象")
-                continue
-            points = sec.get("points")
-            if not isinstance(points, list):
-                errors.append(f"{rel_km}: 节 {ch.get('index')}-{sec.get('index')} 的 points 必须为列表")
-                continue
-            for pt in points:
-                if not isinstance(pt, dict):
-                    errors.append(f"{rel_km}: point 元素必须为对象")
-                    continue
-                pid = pt.get("id")
-                if not pid or not isinstance(pid, str) or not pattern.fullmatch(pid):
-                    errors.append(f"{rel_km}: invalid point id format: {pid!r}")
-                elif pid in seen_point_ids:
-                    errors.append(f"{rel_km}: duplicate point id: {pid!r}")
-                else:
-                    seen_point_ids.add(pid)
+        section_total += _sections_problems(ch, f"chapters[{index}]", rel_km, pattern, seen_point_ids, errors)
 
-                quote = pt.get("quote")
-                # 缺失与超长都必须失败关闭：旧实现 `pt.get("quote") or ""` 让「没有 quote」等同于合规
-                if not isinstance(quote, str) or not quote.strip():
-                    errors.append(f"{rel_km}: point {pid} 缺 quote（考纲原文短语必填）")
-                elif len(quote) > MAX_QUOTE_CHARS:
-                    errors.append(
-                        f"{rel_km}: point {pid} quote exceeds {MAX_QUOTE_CHARS} chars ({len(quote)}): {quote[:40]}..."
-                    )
+    # 附录单元（R41）：`附录N` 是 `Ⅲ` 部之下的独立考核单元，其 point 与章同契约、同样进分母。
+    # 结构守卫与章同源：`ordinal` 必须 1..N 连续（缺口 = 有附录被静默吞掉），标题必须是 `附录N 标题`。
+    appendices = km.get("appendices", [])
+    if not isinstance(appendices, list):
+        errors.append(f"{rel_km}: appendices must be list")
+    else:
+        for index, ap in enumerate(appendices):
+            if not isinstance(ap, dict):
+                errors.append(f"{rel_km}: appendices[{index}] must be dict")
+                continue
+            title = ap.get("title")
+            # 形态判据与抽取器**共用同一个正则**（F-3）：两个各自维护的 `附录N` 判据曾漂移成
+            # 「都接受裸 `附录一`」，于是无标题条目在抽取侧与闸门侧同时被放行。
+            if not isinstance(title, str) or not APPENDIX_RE.match(title.strip()):
+                errors.append(f"{rel_km}: appendices[{index}].title 不是可识别的附录标题: {title!r}")
+            ordinal = ap.get("ordinal")
+            if not isinstance(ordinal, int) or isinstance(ordinal, bool) or ordinal != index + 1:
+                errors.append(
+                    f"{rel_km}: appendices[{index}].ordinal 必须是 {index + 1}（附录序连续），实际 {ordinal!r}"
+                    "（附录缺口 = 有附录单元被静默丢弃）"
+                )
+            section_total += _sections_problems(ap, f"appendices[{index}]", rel_km, pattern, seen_point_ids, errors)
 
     coverage = km.get("coverage")
     if not isinstance(coverage, dict):
@@ -272,15 +336,28 @@ def _knowledge_model_problems(root: Path, rel_km: str, code: str | None, km: dic
         elif ratio < MIN_COVERAGE_RATIO:
             errors.append(f"{rel_km}: coverage ratio {ratio:.2f} is under {MIN_COVERAGE_RATIO:.2f}")
 
-        # 分母自洽：`official_point_count` = 模型自身的节数，两者不等即说明有章 / 节被静默丢弃
+        # 分母自洽：`official_point_count` = 模型自身产出的单元数（章节 + 附录节）。
+        # 这一条**不是** R43 的修法 —— 两侧同源自同一次解析，恒真，只能抓「产物被手改坏了」。
         official = coverage.get("official_point_count")
         if isinstance(official, bool) or not isinstance(official, int):
             errors.append(f"{rel_km}: coverage.official_point_count 必须是整数，实际 {type(official).__name__}")
         elif official != section_total:
             errors.append(
-                f"{rel_km}: coverage.official_point_count {official} 与模型实际节数 {section_total} 不一致"
+                f"{rel_km}: coverage.official_point_count {official} 与模型实际单元数 {section_total} 不一致"
                 "（有章 / 节被静默丢弃）"
             )
+
+        # R43：分母必须**独立于产出**数出来 —— 源侧声明的考核单元数来自考纲原文
+        # （`source_assessment_unit_count()`），与模型的切片 / 要求块解析是两条独立路径。
+        # 旧实现只做上面那条同源核对：解析丢掉一整个单元时，`official` 与 `section_total`
+        # **同时变小**、比值仍 `1.0`，于是 `02333` 带着 7 个被吞掉的附录单元全绿出厂。
+        if isinstance(official, int) and not isinstance(official, bool):
+            declared = _declared_unit_count(root, syllabus)
+            if declared is not None and declared != official:
+                errors.append(
+                    f"{rel_km}: coverage.official_point_count {official} 与考纲原文声明的考核单元数 "
+                    f"{declared} 不一致（{declared - official} 个单元被静默丢弃；分母必须独立于产出）"
+                )
 
         diff = coverage.get("diff_vs_manual", [])
         if not isinstance(diff, list):
@@ -353,6 +430,6 @@ def run_evidence_gate(root: Path) -> list[str]:
             except Exception as exc:
                 errors.append(f"{rel_km}: JSON decode error: {exc}")
                 continue
-            _knowledge_model_problems(root, rel_km, code, km, errors)
+            _knowledge_model_problems(root, rel_km, code, km, ev.get("syllabus"), errors)
 
     return errors

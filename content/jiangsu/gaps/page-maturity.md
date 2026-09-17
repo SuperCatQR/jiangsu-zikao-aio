@@ -5,7 +5,7 @@
 |课程|lifecycle|completeness|成熟度|原因|公开下一步|
 |-|-|-|-|-|-|
 |00023|machine_ready|metadata-only|yellow|lifecycle:machine_ready; completeness:metadata-only|/courses/00023/|
-|00898|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|
+|00898|draft|metadata-only|yellow|lifecycle:draft; completeness:metadata-only|/courses/00898/|
 |02324|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|
 |02333|draft|metadata-only|yellow|lifecycle:draft; completeness:metadata-only|/courses/02333/|
 |03708|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|gap: 核验|

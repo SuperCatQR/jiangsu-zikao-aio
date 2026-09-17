@@ -67,8 +67,17 @@ REVIEW_GAP_IMPACT_TEMPLATE = "缺少 {missing}，无法推导 30 / 14 / 7 天排
 REVIEW_GAP_NEXT_EVIDENCE = "用户或官方考期公告提供 exam_date 与 weekly_hours（写入 knowledge-model.json 的 exam 块）"
 
 
+def _units(model: dict) -> list[dict]:
+    """考核单元 = 章 + 附录（R49）：`附录N` 是考纲 Ⅲ 部之下的独立考核单元，与章同契约。
+
+    该键**为空时整个键省略**（`knowledge_model.py` 的结构保证，Task 3a 的字节一致前提），
+    因此无附录的课程取到的就是 `model["chapters"]` 本身 —— 本函数对它们是可证明的 no-op
+    （`model.get("appendices", [])` 恒为 `[]`，逐单元序列与逐点序列都不变）。
+    """
+    return [*model["chapters"], *(model.get("appendices") or [])]
+
 def _point_ids(model: dict) -> list[str]:
-    return [point["id"] for chapter in model["chapters"] for section in chapter["sections"] for point in section["points"]]
+    return [point["id"] for unit in _units(model) for section in unit["sections"] for point in section["points"]]
 
 
 def declared_question_types(model: dict) -> list[str]:
@@ -92,27 +101,61 @@ def out_of_scope_prompts(course_code: str) -> list[str]:
     ]
 
 
+def _unit_selectors(unit: dict, *, with_ordinal: bool) -> set[str]:
+    """单元的可寻址别名：`slug` / 序标签（`第一章` / `附录一`），`with_ordinal=True` 时**另加** `ordinal`。
+
+    章与附录的**序数命名空间必须不相交**：`ordinal` 只对**章**生效（`str(ordinal)` 1…N 即章的序数），
+    附录只用 `slug`（`ap01`…）与序标签（`附录一`…）寻址。旧的合并用法让 `--chapters 5` 同时选中
+    `ch05` **与** `ap05`（两者的 `ordinal` 都是 5）—— 分批生成被静默放大成含附录的批。
+    """
+    names = {unit["slug"], unit["index"]}
+    if with_ordinal:
+        names.add(str(unit["ordinal"]))
+    return names
+
+
 def select_chapters(model: dict, selectors) -> dict:
-    """按章 `slug` / 章序标签 / `ordinal` 选章（分批生成用），保持知识模型内的章序。"""
+    """按单元选择器选**考核单元**（分批生成用），保持知识模型内的单元序。
+
+    单元 = 章 + 附录（R49），选择器口径（F-2 收口）：
+
+    - **章**：`slug`（`ch01` / `intro`）、序标签（`第一章` / `导论`）、**序数**（`str(ordinal)`：`0` / `1`…）
+      三者皆可 —— 章的既有选择器语义不变；
+    - **附录**：只有 `slug`（`ap01`…）与序标签（`附录一`…）；**序数不适用于附录**，`5` 恒指第 5 章，
+      不会顺手带上 `ap05`。附录的序数命名空间与章的交叠（`附录一` 与 `第1章` 的 `ordinal` 都是 1），
+      故不与章共用序数选择器。
+
+    旧实现只认 `model["chapters"]`，于是 `02333` 的 7 个附录（9 个点）无法单独成批 —— 它们会被
+    `--chapters ap01` 以「未知的章选择器」拒绝，整条分批路径对该课不可用。**只选到附录**时
+    `chapters` 为空列表（不是缺失键），`appendices` 保留被选中的附录。
+    """
     wanted = [str(item).strip() for item in selectors if str(item).strip()]
     if not wanted:
-        raise ValueError("select_chapters 需要至少一个章选择器（slug / 章序标签 / ordinal）")
-    known = {chapter["slug"]: chapter for chapter in model["chapters"]}
-    names = {
-        chapter["slug"]: {chapter["slug"], chapter["index"], str(chapter["ordinal"])}
-        for chapter in model["chapters"]
-    }
+        raise ValueError("select_chapters 需要至少一个单元选择器（章：slug / 序标签 / ordinal；附录：slug / 序标签）")
+    known = {unit["slug"]: unit for unit in _units(model)}
+    names = {chapter["slug"]: _unit_selectors(chapter, with_ordinal=True) for chapter in model["chapters"]}
+    names.update({ap["slug"]: _unit_selectors(ap, with_ordinal=False) for ap in model.get("appendices") or []})
     unknown = [item for item in wanted if not any(item in names[slug] for slug in known)]
     if unknown:
-        raise ValueError(f"未知的章选择器: {'、'.join(unknown)}")
-    chapters = [chapter for slug, chapter in known.items() if names[slug] & set(wanted)]
-    return {**model, "chapters": chapters}
+        raise ValueError(f"未知的单元选择器: {'、'.join(unknown)}")
+    picked = [unit for slug, unit in known.items() if names[slug] & set(wanted)]
+    chapter_slugs = {chapter["slug"] for chapter in model["chapters"]}
+    return {
+        **model,
+        "chapters": [unit for unit in picked if unit["slug"] in chapter_slugs],
+        # 无附录的课程必须**不新增**该键：省略即可保持既有调用方的字节形态（no-op 结构保证）
+        **({"appendices": [unit for unit in picked if unit["slug"] not in chapter_slugs]} if model.get("appendices") else {}),
+    }
 
 
-def _question_types(model: dict, chapter: dict) -> dict[str, str]:
-    """章内题型分配：先按要求层级映射，再保证本章覆盖考纲声明的全部题型（确定性、可复算）。"""
+def _question_types(model: dict, unit: dict) -> dict[str, str]:
+    """单元内题型分配：先按要求层级映射，再保证本单元覆盖考纲声明的全部题型（确定性、可复算）。
+
+    `unit` 是考核单元（章或附录）。按单元而非全课分配是既有语义：题型覆盖面是**逐单元**的保证，
+    附录单元因此也要自己覆盖一遍，不能靠章里的题型「顺带」覆盖。
+    """
     types = declared_question_types(model)
-    points = [point for section in chapter["sections"] for point in section["points"]]
+    points = [point for section in unit["sections"] for point in section["points"]]
     assignment: dict[str, str] = {}
     for point in points:
         preferred = REQUIREMENT_QUESTION_TYPES.get(point.get("requirement"))
@@ -125,10 +168,16 @@ def _question_types(model: dict, chapter: dict) -> dict[str, str]:
     return assignment
 
 
-def _point_payload(model: dict, chapter: dict, section: dict, point: dict, *, kind: str, question_type: str | None) -> dict:
+def _point_payload(model: dict, unit: dict, section: dict, point: dict, *, kind: str, question_type: str | None) -> dict:
+    """考核点的提示词 payload。`unit` 是**所属考核单元**（章或附录），键名沿用 `chapter`。
+
+    键名不改：`llm_client.payload_hash()` 哈希的是整个 payload，改键名会让 `15040` / `15043` 已录制的
+    648 + 648 + 648 个键**全部失效**（fixture 只增不改，GC4），而 payload 里携带的信息不变 ——
+    `chapter` 承载的是「该点所属考核单元的序 / 标签 / 标题」，附录单元的这三个值同样如实（`附录一` …）。
+    """
     payload = {
         "course_code": model["course_code"],
-        "chapter": {"ordinal": chapter["ordinal"], "index": chapter["index"], "title": chapter["title"]},
+        "chapter": {"ordinal": unit["ordinal"], "index": unit["index"], "title": unit["title"]},
         "section": {"index": section["index"], "title": section["title"]},
         "point": {
             "id": point["id"],
@@ -141,11 +190,23 @@ def _point_payload(model: dict, chapter: dict, section: dict, point: dict, *, ki
             {"id": item["id"], "title": item["title"], "requirement": item["requirement"]}
             for item in section["points"]
         ],
-        "chapter_focus": [item["text"] for item in chapter.get("chapter_focus") or []],
+        "chapter_focus": [item["text"] for item in unit.get("chapter_focus") or []],
     }
     if kind == "drill":
         payload["question_type"] = question_type
     return payload
+
+
+def _unit_payload_entry(unit: dict) -> dict:
+    return {
+        "ordinal": unit["ordinal"],
+        "index": unit["index"],
+        "title": unit["title"],
+        "sections": [
+            {"index": section["index"], "title": section["title"], "point_count": len(section["points"])}
+            for section in unit["sections"]
+        ],
+    }
 
 
 def _stage_plan_payload(model: dict) -> dict:
@@ -153,8 +214,13 @@ def _stage_plan_payload(model: dict) -> dict:
 
     排程输入（`exam_date` / `weekly_hours`）不进 payload —— 否则同一课程的 stage_plan payload 哈希会随
     用户输入变化，破坏 fixture 回放；排程由 `_review_schedule()` 确定性推导。
+
+    附录单元（R49）以**独立键** `appendices` 列出：附录不是章，混进 `chapters` 会让课程级提示词
+    把附录当作章来写阶段目标；而**无附录时整个键省略**，`15040` / `15043` 的 payload 逐字节不变
+    （`test_15043_replay_byte_test_is_falsifiable` 同款守护）。
     """
     exam = model.get("exam") or {}
+    appendices = model.get("appendices") or []
     return {
         "course_code": model["course_code"],
         "exam": {
@@ -163,29 +229,20 @@ def _stage_plan_payload(model: dict) -> dict:
             "duration_status": exam.get("duration_status"),
             "sample_paper": exam.get("sample_paper"),
         },
-        "chapters": [
-            {
-                "ordinal": chapter["ordinal"],
-                "index": chapter["index"],
-                "title": chapter["title"],
-                "sections": [
-                    {"index": section["index"], "title": section["title"], "point_count": len(section["points"])}
-                    for section in chapter["sections"]
-                ],
-            }
-            for chapter in model["chapters"]
-        ],
+        "chapters": [_unit_payload_entry(unit) for unit in model["chapters"]],
+        # `point_total` 按**点**算（章节点 + 附录点）：提示词用它估工作量，漏掉附录会低估整课范围
         "point_total": len(_point_ids(model)),
+        **({"appendices": [_unit_payload_entry(unit) for unit in appendices]} if appendices else {}),
     }
 
 
 def _jobs(model: dict) -> list[dict]:
     jobs: list[dict] = []
     assignments: dict[str, str] = {}
-    for chapter in model["chapters"]:
-        assignments.update(_question_types(model, chapter))
-    for chapter in model["chapters"]:
-        for section in chapter["sections"]:
+    for unit in _units(model):
+        assignments.update(_question_types(model, unit))
+    for unit in _units(model):
+        for section in unit["sections"]:
             for point in section["points"]:
                 for kind, (prompt_id, prompt_version) in POINT_PROMPTS:
                     jobs.append(
@@ -194,9 +251,9 @@ def _jobs(model: dict) -> list[dict]:
                             "prompt_id": prompt_id,
                             "prompt_version": prompt_version,
                             "payload": _point_payload(
-                                model, chapter, section, point, kind=kind, question_type=assignments[point["id"]]
+                                model, unit, section, point, kind=kind, question_type=assignments[point["id"]]
                             ),
-                            "chapter": chapter,
+                            "chapter": unit,
                             "section": section,
                             "point": point,
                         }
@@ -314,10 +371,19 @@ def _day_kind(day: int, days: int) -> str:
 
 
 def _tier(model: dict, horizon_days: int, exam_date: date, weekly_hours: float, generator: dict) -> dict:
+    """一档排程。条目序 = 章 → 附录（`_units()` 的阅读序），因此附录点也进排程与间隔重复。
+
+    `evidence_refs` 写 **`knowledge-model:chapters`** —— 与 `stage_plan` / `_exam` 同一套命名空间：
+    该串引用的是**知识模型**（`knowledge-model.json`）这一份产物，不是「章的列表」这个顶层键。
+    F-4 收口前 `_tier` 用的是第二个引用名，同一份模型在产物里因此有两个引用名；现将命名空间统一为
+    既有值 `knowledge-model:chapters`（对齐已提交产物，避免失配），取值源仍是 `_units()`（章 + 附录）。
+    `15040` / `15043` / `15044` 的 `review_schedule` 是 `named_gap`（无 `plans[]`），本函数对它们
+    不产生输出，故该串变化不影响它们的字节。
+    """
     entries = [
-        (chapter, section, point)
-        for chapter in model["chapters"]
-        for section in chapter["sections"]
+        (unit, section, point)
+        for unit in _units(model)
+        for section in unit["sections"]
         for point in section["points"]
     ]
     start = exam_date - timedelta(days=horizon_days - 1)
@@ -438,12 +504,21 @@ def _point_level_blocks(doc: dict, *, source: str) -> dict[str, dict]:
 KIND_ORDER = {kind: index for index, kind in enumerate([kind for kind, _ in POINT_PROMPTS] + ["exam_strategy"])}
 
 
-def _point_order(model: dict) -> dict[str, tuple[int, int, int]]:
-    """`point_id` → 规范序前缀（知识模型的章序 → 节序 → 点序）。"""
+def _point_order(model: dict) -> dict[str, tuple[int, int, int, int]]:
+    """`point_id` → 规范序前缀（阅读序的 单元类别 → 单元序 → 节序 → 点序）。
+
+    unit_class 是 0（章）/ 1（附录）；附录的 `ordinal` 与章同域（都是 1…N），只用 `ordinal` 会把
+    `附录一` 的点排到 `第1章` 旁边（附录 1 与第 1 章同序位）。加类别前缀后阅读序是「全部章 → 全部附录」，
+    与 `_units()` 的遍历序、渲染出的页序一致。
+
+    no-op：无附录的课程前缀恒为 `0`，整序与旧的 `(ordinal, section, point)` **同序**（前导常量不改排序）。
+    """
+    ordered = [(0, chapter) for chapter in model["chapters"]]
+    ordered += [(1, appendix) for appendix in model.get("appendices") or []]
     return {
-        point["id"]: (chapter["ordinal"], section_index, point_index)
-        for chapter in model["chapters"]
-        for section_index, section in enumerate(chapter["sections"])
+        point["id"]: (unit_class, unit["ordinal"], section_index, point_index)
+        for unit_class, unit in ordered
+        for section_index, section in enumerate(unit["sections"])
         for point_index, point in enumerate(section["points"])
     }
 
@@ -453,17 +528,18 @@ def order_blocks(blocks: list[dict], model: dict) -> list[dict]:
 
     逐批 `--merge` 与一次性全量生成都调用本函数：只有两条路径落在同一个序上，它们对同一内容集合
     才可能逐字节一致（plan § Data contracts 4；`tests/test_generate_content.py` 的字节相等用例锁住这一点）。
-    考点级块按知识模型的章序 → 节序 → 点序 → `kind`；课程级块（`point_id: null`）一律排在末尾。
+    考点级块按知识模型的章序 → 节序 → 点序 → `kind`（附录单元在全部章之后）；课程级块（`point_id: null`）
+    一律排在末尾。
     """
     order = _point_order(model)
 
-    def _key(block: dict) -> tuple[int, int, int, int, int]:
+    def _key(block: dict) -> tuple[int, int, int, int, int, int]:
         kind = block.get("kind")
         if kind not in KIND_ORDER:
             raise RuntimeError(f"块的 kind 不在标注契约内，无法按规范序重排: {block.get('block_id')}（{kind!r}）")
         point_id = block.get("point_id")
         if point_id is None:
-            return (1, 0, 0, 0, KIND_ORDER[kind])
+            return (1, 0, 0, 0, 0, KIND_ORDER[kind])
         position = order.get(point_id)
         if position is None:
             raise RuntimeError(f"考点级块不在知识模型内，无法按规范序重排: {block.get('block_id')}")

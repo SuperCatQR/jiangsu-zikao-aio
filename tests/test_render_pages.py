@@ -1035,3 +1035,287 @@ def test_15043_render_byte_test_is_falsifiable(tmp_path: Path):
 
     # 仓内产物未被本次反向验证触碰
     assert _snapshot(COURSE_15043) == committed, "反向验证不得改动仓内产物"
+
+
+# --------------------------------------------------------------------------------------
+# R49：附录单元页（`appendices[]` → `knowledge/NN-apNN.md`，排在全部章页之后）
+# --------------------------------------------------------------------------------------
+
+SOURCES_02333 = ROOT / "sources" / "jiangsu" / "courses" / "02333"
+COURSE_02333 = ROOT / "content" / "jiangsu" / "courses" / "02333"
+
+
+def _appendix_model() -> dict:
+    return json.loads((SOURCES_02333 / "knowledge-model.json").read_text(encoding="utf-8"))
+
+
+def _synthetic_appendix_content(model: dict, code: str) -> dict:
+    """用**本课模型自己的** point_id 合成 content.json（含附录点），使附录渲染路径真的被走到。
+
+    `02333` 尚无 `content.json`（Task 3 负责生成），而「附录点是否落到页面」必须现在就可判否：
+    合成 blocks 覆盖全部点的 explain / memorize / drill，判据（锚点、文件名、顺序）因此真实。
+    """
+    blocks = []
+    for unit in [*model["chapters"], *model.get("appendices", [])]:
+        for section in unit["sections"]:
+            for point in section["points"]:
+                pid = point["id"]
+                for kind, text in (
+                    ("explain", "### 要点梳理\n合成讲解。\n### 易错点\n合成易错点。"),
+                    ("memorize", "合成记忆法：口诀。"),
+                ):
+                    blocks.append({
+                        "block_id": f"{pid}/{kind}", "kind": kind, "point_id": pid, "text_md": text,
+                        "ai_generated": True, "review_state": "machine_draft",
+                        "generator": {"backend": "replay", "model": "m", "prompt_id": f"{kind}_point",
+                                      "prompt_version": "v1", "generated_at": "2026-01-01"},
+                        "evidence_refs": [f"syllabus:{code}#{point['locator']}"],
+                    })
+                blocks.append({
+                    "block_id": f"{pid}/drill", "kind": "drill", "point_id": pid,
+                    "question_type": "单项选择题", "text_md": "合成题干。", "answer_md": "合成答案。",
+                    "source_kind": "ai_generated", "ai_generated": True, "review_state": "machine_draft",
+                    "generator": {"backend": "replay", "model": "m", "prompt_id": "drill_point",
+                                  "prompt_version": "v1", "generated_at": "2026-01-01"},
+                    "evidence_refs": [f"syllabus:{code}#{point['locator']}"],
+                })
+    return {
+        "schema_version": 1, "course_code": code, "generated_at": "2026-01-01",
+        "generator": {"backend": "replay", "model": "m", "prompt_versions": {}},
+        "stage_plan": [
+            {"stage": stage, "goal": f"{stage}目标", "inputs": ["i"], "how": ["h"], "outputs": ["o"],
+             "done_when": "可判定。", "ai_generated": True, "review_state": "machine_draft",
+             "generator": {"backend": "replay", "model": "m", "prompt_id": "stage_plan",
+                           "prompt_version": "v1", "generated_at": "2026-01-01"},
+             "evidence_refs": ["knowledge-model:chapters"]}
+            for stage in ("入门", "精读", "刷题", "冲刺", "复盘")
+        ],
+        "blocks": blocks,
+        "review_schedule": {
+            "exam_date": None, "weekly_hours": None, "status": "named_gap", "plans": [],
+            "gap_impact": "合成缺口影响", "next_evidence": "合成下一证据",
+            "ai_generated": True, "review_state": "machine_draft",
+            "generator": {"backend": "replay", "model": "m", "prompt_id": "stage_plan",
+                          "prompt_version": "v1", "generated_at": "2026-01-01"},
+            "evidence_refs": ["knowledge-model:exam"],
+        },
+    }
+
+
+def _appendix_render_root(tmp_path: Path) -> Path:
+    """假仓：真实 `02333` 模型 + evidence 副本 + 合成 content.json（仓内文件零改动）。"""
+    fake = tmp_path / "repo"
+    source_dir = fake / "sources" / "jiangsu" / "courses" / "02333"
+    source_dir.mkdir(parents=True)
+    for name in ("evidence.json", "knowledge-model.json"):
+        (source_dir / name).write_bytes((SOURCES_02333 / name).read_bytes())
+    model = _appendix_model()
+    (source_dir / "content.json").write_text(
+        json.dumps(_synthetic_appendix_content(model, "02333"), ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    target = fake / "content" / "jiangsu" / "courses" / "02333"
+    target.mkdir(parents=True)
+    # 官方页手写正文照搬：走「有既有页」的 `_read_existing()` 分支
+    if COURSE_02333.is_dir():
+        for md in COURSE_02333.glob("*.md"):
+            (target / md.name).write_text(md.read_text(encoding="utf-8"), encoding="utf-8")
+    return fake
+
+
+def test_appendix_unit_pages_are_rendered_after_every_chapter_page(tmp_path: Path):
+    """R49 验收③：每个附录产出一页，命名与章页不撞车，且排在**全部**章页之后。"""
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake = _appendix_render_root(tmp_path)
+    out = fake / "content" / "jiangsu" / "courses" / "02333"
+    written = render_course_pages(fake, "02333", target_dir=out)
+
+    model = _appendix_model()
+    chapters, appendices = model["chapters"], model["appendices"]
+    knowledge = sorted(p.name for p in (out / "knowledge").glob("*.md"))
+    assert len(knowledge) == len(chapters) + len(appendices) == 21, knowledge
+
+    # 命名：`NN-slug.md`，附录 `ap01`…；两个命名空间不相交（章是 `intro`/`chNN`）
+    appendix_files = [f"{a['ordinal']:02d}-{a['slug']}.md" for a in appendices]
+    assert appendix_files == [f"{n:02d}-ap{n:02d}.md" for n in range(1, 8)], appendix_files
+    chapter_slugs = {c["slug"] for c in chapters}
+    assert not (chapter_slugs & {a["slug"] for a in appendices}), "章与附录的 slug 必须不相交"
+    for name in appendix_files:
+        assert (out / "knowledge" / name).is_file(), f"缺附录页 {name}"
+
+    # 顺序：`render_course_pages()` 的写入序里，全部章页都在附录页之前（页序 = 阅读序）
+    written_rel = [p.relative_to(out).as_posix() for p in written if p.parent.name == "knowledge"]
+    first_appendix = min(written_rel.index(f"knowledge/{name}") for name in appendix_files)
+    last_chapter = max(
+        written_rel.index(f"knowledge/{c['ordinal']:02d}-{c['slug']}.md") for c in chapters
+    )
+    assert first_appendix > last_chapter, f"附录页必须写在全部章页之后：{written_rel[-10:]}"
+
+
+def test_appendix_page_surfaces_the_application_level_requirement(tmp_path: Path):
+    """R49 的验收点：`02333` 附录七的 `应用` 级要求行（`ap07-s1-p3`）必须**可见地**出现在页面上。
+
+    这是 R41 登记危害的直接判否：「9 个点到达读者」。旧实现只渲染 `chapters[]`，
+    该点在任何页面上都不存在。
+    """
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake = _appendix_render_root(tmp_path)
+    out = fake / "content" / "jiangsu" / "courses" / "02333"
+    render_course_pages(fake, "02333", target_dir=out)
+
+    page = (out / "knowledge" / "07-ap07.md").read_text(encoding="utf-8")
+    assert "# 附录七 UML 的模型及图示表示" in page
+    assert "### 考点精讲：02333-ap07-s1-p3（应用）" in page, "`应用` 级考点小节缺失"
+    assert "#### 要点梳理" in page and "#### 记忆辅助" in page
+    assert "### 练习题：02333-ap07-s1-p3" in page
+    assert "本附录重点" in page, "附录必须用附录自己的 chapter_focus 小节标题"
+    assert "附录导航" in page, "附录页导航措辞必须是附录（不是章）"
+    assert "上一附录：附录六 软件维护手册" in page
+    assert "这是最后一个附录" in page, "最后一个附录的导航必须自述为最后一个附录"
+
+
+def test_appendix_pages_are_cross_linked_from_the_official_and_ai_indexes(tmp_path: Path):
+    """索引双向可达：`index.md` 的「章节知识精读」、`plan.md` 的学习序列、`practice.md` 的训练索引
+    都必须含附录页链接（否则读者从导航进不去附录页）。"""
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake = _appendix_render_root(tmp_path)
+    out = fake / "content" / "jiangsu" / "courses" / "02333"
+    render_course_pages(fake, "02333", target_dir=out)
+
+    index = (out / "index.md").read_text(encoding="utf-8")
+    assert "### 附录知识精读" in index, "index.md 必须单列附录小节"
+    assert "[附录七 UML 的模型及图示表示](knowledge/07-ap07.md)" in index
+
+    plan = (out / "plan.md").read_text(encoding="utf-8")
+    assert "knowledge/07-ap07.md" in plan, "plan.md 的学习序列必须链到附录页"
+    assert "14 章 + 7 个附录单元" in plan, f"plan.md 的计数文案必须与渲染的单元数一致：{plan[:20]}"
+
+    practice = (out / "practice.md").read_text(encoding="utf-8")
+    assert "knowledge/07-ap07.md#ai" in practice, "practice.md 的训练索引必须含附录页"
+
+
+def test_chapter_count_wording_matches_what_is_rendered(tmp_path: Path):
+    """R49 验收④：`plan.md` 的「如何使用」不得声称只有「共 N 章」而实际渲染了附录单元。
+
+    判据取**实际渲染的单元页数**（不是模型条目的自述），因此文案与页面集合之间不可能各自漂移。
+    """
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake = _appendix_render_root(tmp_path)
+    out = fake / "content" / "jiangsu" / "courses" / "02333"
+    render_course_pages(fake, "02333", target_dir=out)
+
+    model = _appendix_model()
+    rendered_units = len(list((out / "knowledge").glob("*.md")))
+    assert rendered_units == len(model["chapters"]) + len(model["appendices"]) == 21
+
+    plan = (out / "plan.md").read_text(encoding="utf-8")
+    assert f"（共 {rendered_units} 个考核单元）" in plan, f"plan.md 未报出实际渲染的单元数：{rendered_units}"
+    assert f"共 {len(model['chapters'])} 章）" not in plan, (
+        "plan.md 不得声称「共 13 章」而实际渲染了 21 个单元页（文案藏起附录）"
+    )
+
+
+def test_syllabus_fallback_lists_appendices_in_their_own_table(tmp_path: Path):
+    """`syllabus.md` 兜底骨架的章目索引必须含附录索引（首列用 `附录序`，不是 `章序`）。"""
+    from lib.course_pipeline.render_pages import render_course_pages
+
+    fake = tmp_path / "repo"
+    source_dir = fake / "sources" / "jiangsu" / "courses" / "02333"
+    source_dir.mkdir(parents=True)
+    for name in ("evidence.json", "knowledge-model.json"):
+        (source_dir / name).write_bytes((SOURCES_02333 / name).read_bytes())
+    (source_dir / "content.json").write_text(
+        json.dumps(_synthetic_appendix_content(_appendix_model(), "02333"), ensure_ascii=False), encoding="utf-8"
+    )
+    out = fake / "content" / "jiangsu" / "courses" / "02333"
+    out.mkdir(parents=True)
+    render_course_pages(fake, "02333", target_dir=out)
+
+    syllabus = (out / "syllabus.md").read_text(encoding="utf-8")
+    assert "### 附录索引（考纲 Ⅲ 部切片）" in syllabus
+    assert "| 附录序 | 附录名 |" in syllabus
+    assert "| 附录七 | 附录七 UML 的模型及图示表示 |" in syllabus
+    assert "章序 | 章名" in syllabus, "章目索引仍须保留"
+
+
+def test_appendix_free_models_produce_identical_output_with_or_without_an_empty_key():
+    """no-op 的**渲染**半边（结构性可判否）：`appendices` 缺键 ⇔ `appendices: []`，输出逐字符相同。
+
+    手法：对真实 `15040` / `15043` / `15044` / `00898` 模型，把渲染器的每个附录敏感入口各调一次 ——
+    `_assessment_units()`（单元序列 = 页集合与页序的真源）、`_chapter_index_block()`（index.md 索引）、
+    `_render_plan()`、`_render_practice()`、`_render_syllabus()` —— 分别在「原模型」与「显式插入
+    `appendices: []`」两种输入下取输出并逐字符比对。
+
+    为什么这一层而不是端到端：端到端的 `15040` / `15043` 字节一致由既有用例守护
+    （`test_15043_render_reproduces_the_committed_pages_byte_identically`）；
+    `15044` / `00898` 尚未生成 `content.json`（Task 3 负责），端到端此刻无输入可渲染。
+    本用例把「缺键 vs 空值」这条**唯一**的守卫差异钉在入口函数上，因此对尚未生成的两门课同样成立；
+    空值守卫若缺失（例如无条件写出 `### 附录知识精读` 标题），本用例立刻判否。
+    """
+    from lib.course_pipeline import render_pages
+
+    for code in ("15040", "15043", "15044", "00898"):
+        model = json.loads(
+            (ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json").read_text(encoding="utf-8")
+        )
+        assert "appendices" not in model, f"{code}: 对照前提 —— 模型不得含 appendices 键"
+        with_empty = {**model, "appendices": []}
+        evidence = json.loads(
+            (ROOT / f"sources/jiangsu/courses/{code}/evidence.json").read_text(encoding="utf-8")
+        )
+
+        units_missing = render_pages._assessment_units(model)
+        assert units_missing == render_pages._assessment_units(with_empty), f"{code}: 单元序列不同"
+        assert [unit["slug"] for _kind, unit in units_missing] == [
+            chapter["slug"] for chapter in model["chapters"]
+        ], f"{code}: 无附录时单元序列必须逐个等于 chapters"
+
+        assert render_pages._chapter_index_block(model) == render_pages._chapter_index_block(with_empty), (
+            f"{code}: index.md 的章节精读区块被空 appendices 改变"
+        )
+        assert render_pages._render_plan(code, evidence, model, {}) == render_pages._render_plan(
+            code, evidence, with_empty, {}
+        ), f"{code}: plan.md 被空 appendices 改变"
+        assert render_pages._render_practice(code, evidence, model, {}) == render_pages._render_practice(
+            code, evidence, with_empty, {}
+        ), f"{code}: practice.md 被空 appendices 改变"
+        assert render_pages._render_syllabus(code, evidence, model, "") == render_pages._render_syllabus(
+            code, evidence, with_empty, ""
+        ), f"{code}: syllabus.md 被空 appendices 改变"
+
+        # 对照前提：这些入口在**有**附录时确实会产出不同的字（否则上面的相等是恒真的）
+        assert render_pages._chapter_index_block(_appendix_model()) != render_pages._chapter_index_block(
+            {**_appendix_model(), "appendices": []}
+        ), "对照前提：有附录时 index.md 区块必须不同（否则判据恒真）"
+
+
+def test_appendix_render_path_is_falsifiable(tmp_path: Path):
+    """反向验证：把附录渲染**摘掉**（只迭代 `chapters`），上一条页序/页数用例必须判否。
+
+    不满足于「断言写在那儿」：把被守护的属性本身当作被测对象 —— 用「章页集合」冒充「全部单元页」，
+    确认页数 / 附录文件 / `应用` 级锚点三条判据都会失败。否则这些断言可能退化成恒真检查。
+    """
+    fake = _appendix_render_root(tmp_path)
+    out = fake / "content" / "jiangsu" / "courses" / "02333"
+
+    from lib.course_pipeline import render_pages
+
+    real = render_pages._assessment_units
+    try:
+        # 变异：单元 = 只有章（旧实现的语义）
+        render_pages._assessment_units = lambda model: [("章", c) for c in model.get("chapters", [])]
+        render_pages.render_course_pages(fake, "02333", target_dir=out)
+    finally:
+        render_pages._assessment_units = real
+
+    model = _appendix_model()
+    rendered = sorted(p.name for p in (out / "knowledge").glob("*.md"))
+    assert len(rendered) == len(model["chapters"]) == 14, f"变异后应只剩章页：{len(rendered)}"
+    assert not any(name.endswith("-ap07.md") for name in rendered), "变异后不应有附录页"
+    assert not (out / "knowledge" / "07-ap07.md").exists(), "`应用` 级要求行所在页不得存在"
+
+    plan = (out / "plan.md").read_text(encoding="utf-8")
+    assert "（共 21 个考核单元）" not in plan, "变异后计数文案必须随之变化（判据确实区分两种实现）"
