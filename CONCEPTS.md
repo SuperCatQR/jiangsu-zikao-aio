@@ -22,6 +22,26 @@ AI-generated study plans, point-by-point explanations, memory aids, and drills (
 ### L1 eligibility
 The prerequisite standard allowing a course to enter AI prep content generation: authoritative syllabus and official textbook information must both be fully verified. Non-L1 courses are strictly barred from having `content.json`.
 
+## Content model
+
+### Assessment unit
+One assessed top-level block of a course: either a chapter or an appendix. Units are the denominator of
+coverage claims, the address space of batch selectors, and the ordering spine of the knowledge model.
+
+Chapters and appendices are **siblings**, never merged: a chapter's ordinal is its position in a contiguous
+1..N sequence, an appendix's ordinal is its own 1..N sequence, and only chapters answer to a bare ordinal
+selector. An appendix is not part of the chapter it follows.
+
+### Appendix unit
+An assessed block declared outside a syllabus's numbered chapters (附录一 … 附录N) that carries its own
+requirement lines, including 应用-level ones. It is modelled as an assessment unit in its own right; filing
+its content under the preceding chapter is the defect this distinction prevents.
+
+### Quad annotation
+The four labels every AI prep block must carry: `ai_generated`, `generator`, a non-empty `evidence_refs`,
+and `review_state`. A block missing any of them is not publishable, and the `ai-content` gate layer is what
+enforces it.
+
 ## Lifecycle
 
 ### machine_ready
