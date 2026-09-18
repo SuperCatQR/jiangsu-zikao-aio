@@ -4,12 +4,41 @@ from __future__ import annotations
 import json
 import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+
+
+def _tracked(fake_root: Path) -> Path:
+    """把 copytree 出来的 fixture 根标注为「这 5 门既有课已在版本控制中」，并原样返回它。
+
+    **为什么需要**：`ai-content` 层的答案分布守卫用**该课 `content.json` 的 git 跟踪状态**区分
+    「新课失败关闭」与「既有课只报告」（plan § Data contracts 1）。`shutil.copytree(ROOT / ...)`
+    产出的树**按定义**是未跟踪的 —— 守卫会（正确地）把它读成一所「全新、尚未入库」的课，
+    而这 5 门课里有 2 门本身就超判据（`15040` A 占 54.1%、`15043` A 占 74.6%，判据 > 40%）。
+    不标注，这些**对照组**就会因为守卫按契约工作而变红，而它们要模拟的恰恰是既有课。
+
+    **为什么不是放宽断言**：标注之后断言原文不动，且多证明一条 —— 既有课的偏置不阻断闸门。
+    放宽（例如过滤掉含「答案分布」的错误）反而会把「守卫在既有课上误报」这一整类回归一起放过。
+
+    只用 `git init` + `git add`：跟踪状态读的就是**索引**，既不需要 commit，也不写 user 配置。
+    """
+    subprocess.run(["git", "-C", str(fake_root), "init", "-q"], check=True, capture_output=True)
+    rel_paths = sorted(
+        path.relative_to(fake_root).as_posix()
+        for path in (fake_root / "sources" / "jiangsu" / "courses").glob("*/content.json")
+    )
+    if rel_paths:
+        subprocess.run(
+            ["git", "-C", str(fake_root), "add", "-f", "--", *rel_paths],
+            check=True,
+            capture_output=True,
+        )
+    return fake_root
 
 
 def test_scope_only_courses_with_products():
@@ -27,6 +56,7 @@ def test_ai_content_gate_fails_missing_annotation_fields(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -44,6 +74,7 @@ def test_ai_content_gate_fails_empty_evidence_refs(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -61,6 +92,7 @@ def test_ai_content_gate_fails_8gram_overlap_over_20(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -81,6 +113,7 @@ def test_ai_content_gate_fails_point_id_not_in_model(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -98,6 +131,7 @@ def test_ai_content_gate_fails_drill_missing_fields(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -119,6 +153,7 @@ def test_ai_content_gate_fails_official_sample_missing_provenance(tmp_path: Path
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -140,6 +175,7 @@ def test_ai_content_gate_fails_stage_plan_not_5(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -157,6 +193,7 @@ def test_ai_content_gate_fails_review_schedule_missing_quad(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     target = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
     data = json.loads(target.read_text(encoding="utf-8"))
@@ -174,6 +211,7 @@ def test_ai_content_gate_fails_page_banner_missing_or_leaked(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     # Leak banner into index.md
     idx = fake_root / "content" / "jiangsu" / "courses" / "15040" / "index.md"
@@ -200,6 +238,7 @@ def test_ai_content_gate_fails_closed_on_missing_syllabus_corpus(tmp_path: Path)
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     ev_path = fake_root / "sources" / "jiangsu" / "courses" / "15040" / "evidence.json"
     data = json.loads(ev_path.read_text(encoding="utf-8"))
@@ -235,6 +274,7 @@ def test_ai_content_gate_fails_when_ai_block_did_not_reach_a_page(tmp_path: Path
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     course = "content/jiangsu/courses/15040"
@@ -441,6 +481,7 @@ def test_scope_key_cannot_switch_itself_off(tmp_path: Path):
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     root = _fresh_root("x2")
@@ -468,6 +509,7 @@ def test_scope_rule_still_silences_courses_without_any_ai_products(tmp_path: Pat
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     errors = run_ai_content_gate(fake_root)
     assert errors == [], f"无 AI 产物的课程不得被 X2 反向判定误伤: {errors}"
@@ -485,6 +527,7 @@ def test_reverse_condition_stays_silent_when_the_ai_pages_are_gone_too(tmp_path:
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     (fake_root / "sources" / "jiangsu" / "courses" / "15043" / "content.json").unlink()
     shutil.rmtree(fake_root / "content" / "jiangsu" / "courses" / "15043")
@@ -518,6 +561,7 @@ def test_scope_rule_survives_deleting_the_whole_source_dir(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
     shutil.copytree(ROOT / "scripts", fake_root / "scripts")
 
     # 对照前提：删之前该课的渲染页确实带 AI 横幅（否则「报错」可能来自无关原因）
@@ -560,6 +604,7 @@ def test_scope_rule_still_silences_courses_without_ai_pages_on_a_mutated_tree(tm
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     shutil.rmtree(fake_root / "sources" / "jiangsu" / "courses" / "15043")
 
@@ -584,6 +629,7 @@ def test_scope_rule_stays_silent_when_source_dir_and_ai_pages_are_both_gone(tmp_
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     shutil.rmtree(fake_root / "sources" / "jiangsu" / "courses" / "15043")
     shutil.rmtree(fake_root / "content" / "jiangsu" / "courses" / "15043")
@@ -605,6 +651,7 @@ def test_scope_rule_stays_silent_when_the_ai_pages_are_replaced_by_official_only
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     shutil.rmtree(fake_root / "sources" / "jiangsu" / "courses" / "15043")
     rendered = fake_root / "content" / "jiangsu" / "courses" / "15043"
@@ -634,6 +681,7 @@ def test_per_point_reconciliation_rejects_emptied_body_and_fenced_padding(tmp_pa
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     course = "content/jiangsu/courses/15043"
@@ -774,6 +822,7 @@ def test_comment_wrapped_heading_is_not_render_evidence(tmp_path: Path):
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     course = "content/jiangsu/courses/15043"
@@ -852,6 +901,7 @@ def test_comment_stripping_does_not_swallow_later_headings(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     page = fake_root / "content" / "jiangsu" / "courses" / "15043" / "knowledge" / "01-ch01.md"
     page.write_text(page.read_text(encoding="utf-8") + "\n<!-- 未闭合的示例注释\n", encoding="utf-8")
@@ -872,6 +922,7 @@ def test_visible_heading_count_ignores_commented_headings(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     course = "content/jiangsu/courses/15043"
     page = fake_root / course / "knowledge" / "01-ch01.md"
@@ -962,6 +1013,7 @@ def test_unclosed_comment_hiding_content_fails_closed(tmp_path: Path):
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     assert run_ai_content_gate(_fresh_root("baseline_r20")) == [], "未变异的对照根必须全绿"
@@ -1052,6 +1104,7 @@ def test_unclosed_comment_that_hides_nothing_does_not_fire(tmp_path: Path):
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     page_rel = Path("content/jiangsu/courses/15043/knowledge/10-ch10.md")
@@ -1119,6 +1172,7 @@ def test_unclosed_comment_is_not_hidden_by_a_later_unclosed_fence(tmp_path: Path
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
     assert run_ai_content_gate(fake_root) == [], "未变异的对照根必须全绿"
 
     page = fake_root / "content" / "jiangsu" / "courses" / "15043" / "knowledge" / "01-ch01.md"
@@ -1156,6 +1210,7 @@ def test_stray_hidden_sibling_dir_produces_no_noise(tmp_path: Path):
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
 
     # 先证明空目录形态确实安静（避免把「本来就通过」当成修好了）
     stray = fake_root / "content" / "jiangsu" / "courses" / ".15043.promote.abc123"
@@ -1189,6 +1244,7 @@ def test_missing_source_with_rendered_pages_still_fires(tmp_path: Path):
         shutil.copytree(ROOT / "sources", fake_root / "sources")
         shutil.copytree(ROOT / "ops", fake_root / "ops")
         shutil.copytree(ROOT / "content", fake_root / "content")
+        _tracked(fake_root)
         return fake_root
 
     # 课码本身必须仍然进入作用域（过滤的是非课码目录，不是课码目录）
