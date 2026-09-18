@@ -91,7 +91,7 @@ mkdocs serve
 - `publish`：`lifecycle=publishable` 发布资格硬门禁
 - `maturity-check`：非变异的公开页面成熟度投影比对
 - `evidence`：官方事实层（`evidence.json`）与知识模型（`knowledge-model.json`）覆盖率、断言状态校验
-- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率、渲染页横幅校验，以及 AI 块**页面到达性对账**（作用域**自动派生** = 源侧 `sources/jiangsu/courses/<code>/` ∪ 产物侧 `content/jiangsu/courses/<code>/`，非课程清单；当前覆盖 `15040` / `15043` / `15044` / `00898` / `02333`）
+- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率、渲染页横幅校验、**答案分布守卫**（本层第六类校验：样本下界 10、单选任一字母 > 40%、判断题同类真值 > 80%，样本 < 10 记 `insufficient-sample` 并照常打印，不静默通过），以及 AI 块**页面到达性对账**（作用域**自动派生** = 源侧 `sources/jiangsu/courses/<code>/` ∪ 产物侧 `content/jiangsu/courses/<code>/`，非课程清单；当前覆盖 `15040` / `15043` / `15044` / `00898` / `02333`）。该守卫的**作用域信号 = 该课 `content.json` 的 git 跟踪状态**：已跟踪（既有课）的偏置与覆盖缺口只进 stdout 报告通道、不阻断闸门，未跟踪或**无 git 工作树而无法判定**时按新课处理（fail-closed）—— `15040`（单选 A 105/194 = 54.1%）与 `15043`（129/173 = 74.6%）在工作树内即只报告的既有偏置。
 
 ### 课程内容流水线（`scripts/build-course-content.py`）
 
