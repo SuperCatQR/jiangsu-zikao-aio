@@ -27,6 +27,7 @@ from lib.course_pipeline.evidence import evaluate_eligibility
 from lib.course_pipeline.knowledge_model import (
     APPENDIX_RE,
     CHAPTER_TITLE_RE,
+    normalized_source_lines,
     source_assessment_unit_count,
 )
 from lib.course_pipeline.official_source import is_official_url
@@ -197,12 +198,25 @@ def _course_url_problems(rel: str, code: str | None, url: Any, baseline_urls: di
         errors.append(f"{rel}: course_url {url!r} course_codes does not include {code}")
 
 
-def _declared_unit_count(root: Path, syllabus: Any) -> int | None:
+def _declared_unit_count(root: Path, syllabus: Any, rel_km: str, errors: list[str]) -> int | None:
     """考纲原文声明的考核单元数（R43 的独立分母）；取不到时返回 `None`（不判定）。
 
     独立性是这条检查的全部价值：它读**抽取件原文**（`evidence.syllabus.path`）并按源文重数一遍，
     而 `official_point_count` 是切片解析的产物。旧实现的「分母自洽」两侧同源，恒真。
     读不到抽取件时不臆造判定（`syllabus.sha256` 漂移 / 路径缺失已由 `_eligibility_problems` 报出）。
+
+    **三态（R54），不得压成 `raw or normalized`**：
+
+    | 原文直读 | 规范化渲染 | 返回 | 含义 |
+    |---|---|---|---|
+    | `None` | — | `None` | 前置不可用 → **不判定**（既有行为） |
+    | `>0` | — | 该值 | 原读可用（既有 5 门课全在此态：分母不移动） |
+    | `0` | `>0` | 规范化值 | 版式噪声（`\\x0c` 等分隔符）把整篇读成一行 → 回退 |
+    | `0` | `0` | `None` **+ 记一条 `errors`** | `status == "extracted"` 却两侧都数不出 = 源侧损坏的**矛盾态** → 失败关闭 |
+
+    末态必须失败关闭，且不能静默跳过：`status == "extracted"` 的判据恰是「能定位到该小节」，
+    两侧都为 0 与该状态矛盾。按 `declared = 0` 去比对则**方向反了** —— 真实语义是**多**出
+    `official` 个未计入单元（源侧标记损坏），不是「源文声明了 0 个单元」。
     """
     if not isinstance(syllabus, dict) or syllabus.get("status") != "extracted":
         return None
@@ -213,7 +227,19 @@ def _declared_unit_count(root: Path, syllabus: Any) -> int | None:
     document = root / rel_path
     if not document.is_file():
         return None
-    return source_assessment_unit_count(document.read_text(encoding="utf-8").split("\n"), heading)
+    text = document.read_text(encoding="utf-8")
+    declared = source_assessment_unit_count(text.split("\n"), heading)
+    if declared > 0:
+        return declared
+    declared = source_assessment_unit_count(normalized_source_lines(text), heading)
+    if declared > 0:
+        return declared
+    errors.append(
+        f"{rel_km}: 考纲原文声明的考核单元数两侧都解出 0（原文直读与规范化渲染都定位不到"
+        f"「课程内容与考核要求」分部标记 /「{heading}」小节）—— `syllabus.status` 为 `extracted` "
+        "却数不出考核单元，是源侧损坏的矛盾态，不得当作『源文声明 0 个单元』通过"
+    )
+    return None
 
 
 def _sections_problems(
@@ -352,7 +378,7 @@ def _knowledge_model_problems(
         # 旧实现只做上面那条同源核对：解析丢掉一整个单元时，`official` 与 `section_total`
         # **同时变小**、比值仍 `1.0`，于是 `02333` 带着 7 个被吞掉的附录单元全绿出厂。
         if isinstance(official, int) and not isinstance(official, bool):
-            declared = _declared_unit_count(root, syllabus)
+            declared = _declared_unit_count(root, syllabus, rel_km, errors)
             if declared is not None and declared != official:
                 errors.append(
                     f"{rel_km}: coverage.official_point_count {official} 与考纲原文声明的考核单元数 "

@@ -1720,3 +1720,80 @@ def test_f3_evidence_gate_rejects_an_appendix_title_without_a_title(tmp_path: Pa
     target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     errors = run_evidence_gate(fake_root)
     assert any("可识别的附录标题" in e for e in errors), errors
+
+
+# ---- R54 3b：题型续行合并的行数上界（固定 3 行前瞻 + 越界失败关闭） -----------------------------
+
+def _r54_exam_lines(type_line: str, body: list[str]) -> list[str]:
+    """`_exam()` 的物理行输入：L4 是给定的题型声明行，其后跟 `body` 的长正文。"""
+    return [
+        "大纲目录",
+        "第一章 示例章",
+        "三、考核知识点与考核要求",
+        type_line,
+    ] + body
+
+
+def test_r54_question_type_merge_does_not_fold_the_trailing_body():
+    """R54 3b：题型续行合并以**固定 3 行前瞻**为界 —— 题型行自身已终止时不得再折进后续正文。
+
+    构造：L4 的 `、` 已达 4 个（`merged.count("、") >= 4` 这条终止条件在**本行内**即满足），
+    L5–L16 是长正文（无「等」、无句末句号）。修复前 `for follow in lines[number:]` **先拼一行再检查**，
+    于是 L5 被并进 `merged`；正则 `(.+?)(?:等|。|$)` 的 `$` 兜底把整行吞进 `group(1)`，
+    题型集最后一项变成 `材料题本课程考核说明第 5 段…`（正文被折进匹配，实测见任务报告）。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、简答题、材料题",
+        [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(5, 17)],
+    )
+
+    exam = km._exam(lines, "syllabus:99999")
+    assert exam["question_types"] == ["单项选择题", "多项选择题", "填空题", "简答题", "材料题"]
+    assert all("考核说明" not in item for item in exam["question_types"]), exam["question_types"]
+    assert exam["question_types_provenance"] == {"doc_id": "syllabus:99999", "locator": "L4"}
+
+
+def test_r54_question_type_merge_fails_closed_when_the_bound_is_exhausted():
+    """R54 3b：拼到上界仍未终止 → 失败关闭并**指名行号**，不得按已拼内容静默截断题型集。
+
+    构造：L4 既不收句号（来源把 `。` 写成 `．` 之类）、`、` 也不足 4 个；L5–L20 的正文长时间没有
+    句末标点 —— 终止条件只能靠「一路拼到文末」才可能满足。修复前 `lines[number:]` 无上界，
+    会把整篇正文折进 `merged` 并按 `$` 兜底产出一个被污染的题型集（静默污染 → drill 题型集偏离考纲）；
+    现在必须在**上界处**失败关闭，且错误点名题型声明所在行号。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试命题的主要题型一般有单项选择题、简答题、材料题",
+        [f"本课程考核说明第 {index} 段，来源此处未给出句末标点" for index in range(5, 21)],
+    )
+
+    with pytest.raises(ValueError) as excinfo:
+        km._exam(lines, "syllabus:99999")
+
+    message = str(excinfo.value)
+    assert "L4" in message, f"错误必须点名题型声明所在行号：{message}"
+    assert "上界" in message, message
+    assert km.QUESTION_TYPE_LOOKAHEAD == 3, "上界取 3（实测最坏情形需要 1 行续行；见模块常量注释）"
+
+
+def test_r54_question_types_are_reproduced_for_the_five_delivered_courses():
+    """R54 3b 的既有产物不变性：5 门课的题型集必须由源文**原地复现**（有界合并不改动任何一门）。
+
+    实测基线 = `15040`/`15043`/`15044` **3** 项、`00898`/`02333` **4** 项（本次实现前复跑核对）。
+    其中 `00898`/`02333` **需要跨行拼接**才能取全：`02333` 的 `…简答题、综` + `合应用题等。`
+    在**词中间**断开 —— 故上界不得收紧到 1。
+
+    ⚠️ 口径更正：design-notes § 4.2 写的「既有 5 门课实测题型数 6/6/6/4/4（本席以
+    `exam.question_types` 长度核对）」与产物不符 —— 5 门课**没有任何一门**是 6 项（也无 6 项的可能：
+    `QUESTION_TYPE_RE` 的 `group(1)` 止于第一个「等 / 。」，这两门课的声明在第一个句号前只有 4 个词条）。
+    本测试锁**实测值**，避免这个未复核的数字被继续引用。
+    """
+    measured = {"15040": 3, "15043": 3, "15044": 3, "00898": 4, "02333": 4}
+    for code, expected_len in measured.items():
+        evidence = json.loads((ROOT / f"sources/jiangsu/courses/{code}/evidence.json").read_text(encoding="utf-8"))
+        artifact = json.loads(
+            (ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json").read_text(encoding="utf-8")
+        )
+        exam = km.extract_knowledge_model(ROOT, evidence)["exam"]
+        assert exam["question_types"] == artifact["exam"]["question_types"], code
+        assert exam["question_types_provenance"] == artifact["exam"]["question_types_provenance"], code
+        assert len(exam["question_types"]) == expected_len, (code, exam["question_types"])
