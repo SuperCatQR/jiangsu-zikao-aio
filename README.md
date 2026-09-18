@@ -108,7 +108,7 @@ mkdocs serve
 | `fetch-source <url>` | 抓官方来源快照（B2 能力；B1 阶段提示并 exit 2） |
 
 常用开关：`--backend cli|agent|replay`（默认 `cli`；CI 与本地复算用 `replay`）、
-`--stages a,b,c`（只跑指定阶段）、`--dry-run`（只演练不落盘）、`--record-fixtures`（录制 fixture）。
+`--stages a,b,c`（只跑指定阶段）、`--dry-run`（不提升到 `content/jiangsu/courses/<code>`，但仍写 `sources/jiangsu/courses/<code>/` 产物并重戳 `generated_at`）、`--record-fixtures`（录制 fixture）。
 
 提示词有课程作用域：四个 v1 提示词模板的 `course_scope` 现覆盖 **`15040`（习近平新时代中国特色社会主义思想概论）、
 `15043`（中国近现代史纲要）、`15044`（马克思主义基本原理概论）、`00898`（互联网软件应用与开发）、
