@@ -136,6 +136,11 @@ PAGE_NUMBER_RE = re.compile(r"^\d{1,3}$")
 # 结尾用 `等|。|$` 以兼容无「等」字的版式；词表仍按顿号切分后过滤。
 QUESTION_TYPE_RE = re.compile(r"(?:主要题型一般有|可能采用的题型有[：:]?)(.+?)(?:等|。|$)")
 QUESTION_TYPE_SUFFIX_RE = re.compile(r"题型$")
+# 题型续行合并的**固定前瞻行数**（R54）：终止条件结构化，不再「一路拼到文末直到终止」。
+# 上界不得小于 2 —— `00898`（L633 `…简答题、` → L634 `综合应用题。（题型示例见附录）`）与
+# `02333`（L464 `…简答题、综` → L465 `合应用题等。`，在**词中间**断开）实测都需要一行跨行拼接；
+# 取 3 覆盖已实测最坏情形（`00898` 恰好拼满 3 行才满足终止判据）并留 1 行余量。
+QUESTION_TYPE_LOOKAHEAD = 3
 MANUAL_ELEMENT_RE = re.compile(r"^(\d+)\.(\d+)\s+(.*)$")
 MANUAL_MARKER_SUFFIX_RE = re.compile(r"\s*—\s*[🟢🟡🔴\s]+$")
 MANUAL_INDEX_RE = re.compile(r"^\d+\.\d+\s+")
@@ -463,6 +468,19 @@ def source_assessment_unit_count(lines: list[str], heading: str) -> int:
     return units
 
 
+def normalized_source_lines(text: str) -> list[str]:
+    """抽取件原文 → **规范化渲染**行（R54）：按逻辑断行切分后逐行 `_fold`。
+
+    `str.splitlines()` 认 `\\x0c` / `\\x0b` / `\\x1c`–`\\x1e` / `\\x85` / `\\u2028` / `\\u2029`
+    这些 `split("\\n")` 不认的分隔符（`\\r` / `\\r\\n` 无需在此处理：`Path.read_text()` 读取时
+    已按 universal newlines 译成 `\\n`），`_fold` 再把折行与分页符折叠成单个空格。
+
+    调用方是分母的原读路径（`evidence_gate._declared_unit_count()`）：版式噪声使整篇被读成一行时，
+    行首锚定的 `PART_LABEL_RE` 必然失败、原读数出 0，回退到本函数即可复原真实分母。
+    """
+    return [_fold(line) for line in text.splitlines()]
+
+
 # ---- 折行 / 页码归一化 ---------------------------------------------------------
 
 def _logical_lines(raw_lines: list[tuple[int, str]]) -> list[dict]:
@@ -714,12 +732,21 @@ def _chapter_focus(logical: list[dict]) -> list[dict]:
 
 # ---- 题型 / 样卷锚点（B1 只登记锚点，不转载题文） -------------------------------
 
+def _question_types_terminated(text: str) -> bool:
+    """题型声明合并窗口的**唯一**出口：已收句末句号，或 `、` 已出现 ≥ 4 次（即 ≥ 5 个词条）。"""
+    return text.rstrip().endswith("。") or text.count("、") >= 4
+
+
 def _exam(lines: list[str], doc_id: str) -> dict:
     """题型 / 样卷锚点（B1 只登记锚点，不转载题文）。
 
     考纲未声明题型时**不得**留 `question_types: []` 而让下游 `generate` 在运行时抛错（B6 / QC3-005）：
     显式写 `question_types_status: "named_gap"` + `gap_impact` + `next_evidence`，让「该课没有题型依据」
     在产物与闸门里都可见。
+
+    题型行的续行合并（R54）以 `QUESTION_TYPE_LOOKAHEAD` 行为界：拼到上界仍未满足终止判据时
+    **失败关闭**（`ValueError` 并指名行号），不按已拼内容产出 —— 否则需要 4 行以上才拼完的来源
+    会被静默截断题型集，drill 随之偏离考纲。
     """
     question_types: list[str] = []
     types_line: int | None = None
@@ -728,14 +755,20 @@ def _exam(lines: list[str], doc_id: str) -> dict:
         text = _fold(raw)
         if types_line is None:
             # 题型表述可能在行尾断开，下一行续写（00898）—— 甚至**词中间**断开（02333 的
-            # `…简答题、综` + `合应用题等。`）。故命中后**继续拼接后续行**，直到遇见句号
-            # 或已拼够 4 个词条，否则会把 `综合应用题` 截成 `综`。
+            # `…简答题、综` + `合应用题等。`）。故命中后**继续拼接后续行**，但前瞻固定为
+            # `QUESTION_TYPE_LOOKAHEAD` 行（R54）：旧实现 `lines[number:]` 无上界，终止判据
+            # 不成立时会把**整篇文档余下内容**折进 `merged`（正则的 `$` 兜底再把它吞进题型集）。
             if QUESTION_TYPE_RE.search(text):
                 merged = text
-                for follow in lines[number:]:
-                    merged += _fold(follow)
-                    if merged.rstrip().endswith("。") or merged.count("、") >= 4:
+                for follow in lines[number:number + QUESTION_TYPE_LOOKAHEAD]:
+                    if _question_types_terminated(merged):
                         break
+                    merged += _fold(follow)
+                if not _question_types_terminated(merged):
+                    raise ValueError(
+                        f"L{number}：题型声明拼到上界（{QUESTION_TYPE_LOOKAHEAD} 行）仍未终止"
+                        f"（既无句末「。」，`、` 也不足 4 个）—— 不得按已拼内容静默截断题型集：{text[:60]}"
+                    )
                 match = QUESTION_TYPE_RE.search(merged)
                 if match:
                     types_line = number
