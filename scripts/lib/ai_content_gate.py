@@ -2,7 +2,7 @@
 
 覆盖对象 = **存在 `content.json` 的课程**，外加一条**反向失败关闭**（F-QC3-2 / X2）：渲染页上已有带 AI
 横幅的 AI 页面、而 `content.json` 缺失时同样报错 —— 作用域键不得替自己关闸，否则删掉真值源就能让
-整层 AI 页面照常发布。既无 `content.json` 又无 AI 页面的课程保持全绿（其余 16 门课）。五类校验：
+整层 AI 页面照常发布。既无 `content.json` 又无 AI 页面的课程保持全绿（其余 16 门课）。六类校验：
 
 1. **标注四件套**（`validate_content_doc`）：`blocks[]` / `stage_plan[]` / `review_schedule` 及其 `plans[]`；
 2. **8-gram 抄袭守卫**：语料取自 `evidence.json` 的 `syllabus.path`，并**校验 `sha256`**（QC1 F-5：
@@ -14,7 +14,13 @@
    而 `_blank_comments()` 只剥配对注释、谓词与计数仍把那些标题当证据 → 闸门全绿而页面已残缺。
    判据取「未闭合注释是否真的隐藏了内容」（见 `_comment_hides_content()`），故 Y2 的未闭合示例注释
    仍不报错（它没隐藏任何可见内容）；
-4. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1 / F-QC2-1 / F-QC3-1 / Y2）：对账口径 = **4 个
+4. **答案分布守卫**（compass R4 / T4）：按 `answer_md` 统计每门课的 drill 答案分布，判据 = 样本下界 10 /
+   单选任一字母 > 40% / 判断题同类真值 > 80%。作用域信号是**该课 `content.json` 的 git 跟踪状态**
+   （`git ls-files --error-unmatch`）：未跟踪 ⇒ 新课，偏置失败关闭；已跟踪 ⇒ 既有课，只报告；
+   无法判定 ⇒ 按新课处理（fail-closed）。分布取证走**独立报告通道**（stdout），不进 `errors`；
+   落在两族题型内却提不出答案的块**失败关闭**。**不做**硬编码课码清单，也**不用** mtime/`generated_at`
+   （replay 会回放旧日期，不可复现）—— 那是 `conventions/gate-fail-closed-and-page-reach.md` 的旧缺陷类。
+5. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1 / F-QC2-1 / F-QC3-1 / Y2）：对账口径 = **4 个
    block kind（`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` /
    `review_schedule`）**：`explain` / `memorize` 按**逐考核点锚点**对账（`### 考点精讲：<point_id>`
    小节内必须有对应 H4 小节、**且其正文非空**、且该 H4 标题是**读者可见的**——既不在代码围栏内，
@@ -24,7 +30,7 @@
    课程存在 `content.json` 而渲染页目录不存在时**失败关闭**，不静默跳过整门课。
    这一条缺失正是「AI 备考层从未被渲染」能过关的原因：先只覆盖 3/4 个 kind（`exam_strategy` 整块删掉仍两层全绿），
    后又是 `explain` / `memorize` 无对账 + 目录缺失静默 `continue`。
-5. **反向失败关闭**（F-QC3-2 / X2 / Y1）：渲染页存在带 AI 横幅的页面而真值源不在 → 报错。作用域键取
+6. **反向失败关闭**（F-QC3-2 / X2 / Y1）：渲染页存在带 AI 横幅的页面而真值源不在 → 报错。作用域键取
    **源侧 ∪ 产物侧**的课码并集 —— 「产物存在」蕴含「源存在」，而不是以源的单个文件为前提：
    X2 只认 `content.json` 单文件缺失，于是**删掉整个源目录**时源侧迭代器里已经没有这门课，
    整门课连同 16 个渲染页一起逃出作用域（Y1）；把产物侧的课码并进来后，这一形态同样报错。
@@ -43,6 +49,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 
 from lib import course_pages_contract
@@ -73,6 +80,31 @@ MEMORIZE_AID_RE = re.compile(rf"(?m)^{re.escape(MEMORIZE_AID_HEADING)}$")
 # 见 `render_pages.py:798-809`。H3 切分（`^### `）与 `drill` 的 `^### ` 小节口径一致；
 # 该锚点同时是 MkDocs 目录里的稳定定位符，随页面重建而重建。
 POINT_ANCHOR_RE = re.compile(r"^### 考点精讲：(?P<point_id>[^\s（]+)（")
+
+# 答案分布守卫（plan § Data contracts 1/2；design-notes § 2.3/§ 2.4）的两条**单行**正则。
+# **不锚定行尾**（`\b` 而非 `$`）是关键：实测三种单选排布（`正确答案：A` 独占一行 / 该行后接解释 /
+# `答案：A。…` 压缩形态）与四种判断真值排布（`参考答案：错误。` / `…正确。` / `…错误，…` / `…正确。…`）
+# 的差别**只在同一行内**，故一次覆盖即可。按「三种形态」分别匹配会系统性漏掉一整类
+# （`15040` 的 31 道「前缀后接解释」曾因此被排除在样本外）。
+ANSWER_SINGLE_CHOICE_RE = re.compile(r"^\s*[*#\s]*(?:正确)?答案[*\s]*[:：]\s*\**\s*([A-D])\b")
+ANSWER_JUDGEMENT_RE = re.compile(r"^\s*[*#\s]*(?:参考|正确)?答案[*\s]*[:：]\s*\**\s*(正确|错误)")
+
+# 题型**家族子串**：`question_type` 是考纲抽取出的自由文本（`knowledge_model.py` 读考纲「考试命题的
+# 主要题型」段落），不是闭集枚举，故按家族子串分桶，而不是在这里写第二份题型白名单。未落入两族的题型
+# （简答题 / 材料题 / 论述题 / 名词解释题 / 综合应用题）的答案本就是文字型，不参与分布判定；
+# 实测五门课共 582 个此类 drill，全部无字母 / 真值答案，因此它们**不得**被当成「不可解析」报错。
+SINGLE_CHOICE_TYPE_MARKER = "选择"
+JUDGEMENT_TYPE_MARKER = "判断"
+
+# Clarify C2 判据：样本下界 10；单选任一字母 > 40%；判断题同类真值 > 80%。百分比用整数比较，
+# 边界不引入浮点误差（`n=10, count=4` 恰好 40% 不算偏置）。
+MIN_ANSWER_SAMPLES = 10
+MAX_SINGLE_CHOICE_SHARE_PERCENT = 40
+MAX_JUDGEMENT_SHARE_PERCENT = 80
+
+# 既有课的答案键偏置本轮**不回修**（Clarify C4），缺口由这两条 residual 跟踪。报告里点名它们，
+# 读者才分得清「报告出来的既有偏置」与「新出现的问题」。
+ANSWER_BIAS_RESIDUALS = "R15/R33"
 
 # Markdown 代码围栏（``` / ~~~）：闭合需**同一字符**且不短于开启长度；围栏内的行不是渲染证据。
 _FENCE_LINE_RE = re.compile(r"^ {0,3}(?P<fence>`{3,}|~{3,})")
@@ -593,6 +625,171 @@ def _missing_source_problem(root: Path, code: str, rendered_dir: Path, markers: 
     )
 
 
+def _answer_verdict(n: int, top_count: int, limit_percent: int) -> str:
+    """单维度的三元判定：`ok` / `biased` / `insufficient-sample`（Clarify C2）。
+
+    样本不足时**跳过占比判定**（不产生 `biased`），但调用方必须把 `insufficient-sample` 送进报告通道 ——
+    「跳过判定」不等于「静默通过」，这正是本守卫不走 `errors` 也要发声的那一半（§ Data contracts 1）。
+    """
+    if n < MIN_ANSWER_SAMPLES:
+        return "insufficient-sample"
+    return "biased" if top_count * 100 > limit_percent * n else "ok"
+
+
+def _answer_dimension(counts: dict[str, int], limit_percent: int) -> dict:
+    """一组答案计数的分布摘要（`n` / `counts` / 众数 / 占比 / `verdict`）—— 报告字段的唯一来源。
+
+    众数并列时按答案标签取最大者（`A`–`D` / `错误`），使同一份 `content.json` 的报告**逐字节可复现**；
+    占比只在 `n > 0` 时存在，`n == 0` 时显式留 `None`（报告层渲染成 `n/a`，不是 `0%`）。
+    """
+    n = sum(counts.values())
+    top_label, top_count = max(counts.items(), key=lambda item: (item[1], item[0]))
+    return {
+        "n": n,
+        "counts": counts,
+        "top": top_label if n else None,
+        "top_count": top_count if n else 0,
+        "max_share": (top_count / n) if n else None,
+        "limit_percent": limit_percent,
+        "verdict": _answer_verdict(n, top_count, limit_percent),
+    }
+
+
+def answer_distribution(content: dict) -> dict:
+    """`content.json` 里 drill 块的答案分布（**纯函数**：无 I/O、无副作用、可直接被单测变异）。
+
+    分桶按 `question_type` 的家族子串（见 `SINGLE_CHOICE_TYPE_MARKER`），提取按两条不锚行尾的正则。
+    **不可解析即失败关闭**：落在两族内却提不出答案的块进 `unparseable`（调用方据此报错），
+    绝不静默计入 `n=0` —— 那会把「解析器覆盖不到」伪装成「无偏置」，即 compass B4-R5 的漏检形态。
+    判断题真值只存在于 `answer_md` 文本中（`generate_content.py:300-304` 的 drill 只有
+    `question_type` / `answer_md` / `source_kind`），没有独立字段可回退，故这一条对它尤其关键。
+
+    已知边界（有意为之，不是缺口）：家族子串命中但答案形如多选（`AB`）的题型会被判为不可解析而报错，
+    而不是把首字母当成单选的样本 —— 失败关闭优先于凑出一份错的分布。
+    """
+    single = {letter: 0 for letter in "ABCD"}
+    judgement = {"正确": 0, "错误": 0}
+    unparseable: list[str] = []
+    for block in content.get("blocks") or []:
+        if block.get("kind") != "drill":
+            continue
+        question_type = str(block.get("question_type") or "")
+        # 判定只看**首行**：三种排布与四种真值排布的差别都在首行内，解释可能在后续行。
+        first_line = str(block.get("answer_md") or "").split("\n", 1)[0]
+        where = str(block.get("point_id") or block.get("block_id") or "?")
+        if SINGLE_CHOICE_TYPE_MARKER in question_type:
+            match = ANSWER_SINGLE_CHOICE_RE.match(first_line)
+            if match is None:
+                unparseable.append(f"{where}（{question_type}）")
+                continue
+            single[match.group(1)] += 1
+        elif JUDGEMENT_TYPE_MARKER in question_type:
+            match = ANSWER_JUDGEMENT_RE.match(first_line)
+            if match is None:
+                unparseable.append(f"{where}（{question_type}）")
+                continue
+            judgement[match.group(1)] += 1
+    return {
+        "single_choice": _answer_dimension(single, MAX_SINGLE_CHOICE_SHARE_PERCENT),
+        "judgement": _answer_dimension(judgement, MAX_JUDGEMENT_SHARE_PERCENT),
+        "unparseable": unparseable,
+    }
+
+
+def content_tracking_state(root: Path, content_path: Path) -> bool | None:
+    """该课 `content.json` 的 git 跟踪状态：`True` 已跟踪（既有课）/ `False` 未跟踪（新课）/ `None` 无法判定。
+
+    作用域信号的权威在**产物侧的 git 索引**，不在产物自己的声明里（Clarify C3 / § Data contracts 1）：
+    硬编码课码清单与 mtime/`generated_at` 都是被明确否掉的旧缺陷类。调用方对 `None` 取失败关闭方向
+    （按新课处理）—— 见 `_answer_distribution_problems()`。
+
+    退出码语义（实测，非猜测）：`0` = 路径在索引中；`1` = `pathspec ... did not match any file(s)
+    known to git`（未跟踪）；`128` = `fatal: not a git repository ...`（不是工作树，无从判定）。
+    `git` 可执行文件本身缺失（`OSError`）同归「无法判定」。把「非 1 的非零码」整体当无法判定，
+    而不是只认 128：git 的其他致命码（索引损坏、权限）同样不该被读成「这门课是新的」。
+    """
+    try:
+        rel_path = content_path.relative_to(root).as_posix()
+    except ValueError:
+        return None
+    try:
+        probe = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "--error-unmatch", "--", rel_path],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return None
+    if probe.returncode == 0:
+        return True
+    return False if probe.returncode == 1 else None
+
+
+def _counts_text(counts: dict[str, int]) -> str:
+    """`{'A': 105, ...}` → `A105/B70/...`（固定标签顺序，报告行可逐字比对）。"""
+    return "/".join(f"{label}{count}" for label, count in counts.items())
+
+
+def _max_share_text(dimension: dict) -> str:
+    """占比文本：`n == 0` 时为 `n/a`（没有样本就没有占比，不得渲染成 `0.0%`）。"""
+    share = dimension["max_share"]
+    return "n/a" if share is None else f"{share:.1%}"
+
+
+def _answer_distribution_problems(code: str, dist: dict, tracked: bool | None, errors: list[str]) -> None:
+    """报告一门课的答案分布，并只在**新课**（或判定失败）时把偏置失败关闭（Clarify C3 / D5）。
+
+    报告通道契约（§ Data contracts 1）：分布取证**不是** `content.json` 的新字段，而是 stdout 上的
+    独立输出通道 —— `verdict ∈ {ok, insufficient-sample}` **不得**进 `errors`（否则既有小样本课变红，
+    与 D5 冲突），但**必须**打印且含固定字面量 `insufficient-sample`。两个方向都要能断言，
+    才排除「既不报错也不报告」的静默通过。
+
+    `enforced` 三态 → 两个方向：`tracked is True`（既有课）只报告；`False`（新课）与 `None`
+    （无法判定）都失败关闭 —— 判定失败的降级方向是**按新课处理**，绝不静默降级为「只报告」。
+    """
+    single, judgement = dist["single_choice"], dist["judgement"]
+    if tracked is True:
+        scope = "enforced=false（git 已跟踪 content.json：既有课，只报告）"
+    elif tracked is False:
+        scope = "enforced=true（content.json 未跟踪：新生成课，失败关闭）"
+    else:
+        scope = "enforced=true（无法判定 git 跟踪状态，按新课处理）"
+    enforced = tracked is not True
+
+    biased = [dim for dim in (single, judgement) if dim["verdict"] == "biased"]
+    note = ""
+    if biased and not enforced:
+        note = f" 历史偏置由 {ANSWER_BIAS_RESIDUALS} 跟踪（本轮不回修）"
+    print(
+        f"[ai-content 答案分布] course={code}"
+        f" single(n={single['n']} counts={_counts_text(single['counts'])}"
+        f" max_share={_max_share_text(single)} verdict={single['verdict']})"
+        f" judgement(n={judgement['n']} counts={_counts_text(judgement['counts'])}"
+        f" max_share={_max_share_text(judgement)} verdict={judgement['verdict']})"
+        f" {scope}{note}"
+    )
+
+    # 解析覆盖缺口：落在两族内却提不出答案 = 该块的答案**没有**进入任何分布，静默跳过会让偏置消失。
+    # 这一条**不**受 `enforced` 约束：它不是分布判决，而是「守卫根本没看见这道题」的输入契约违约。
+    # 实测五门课的 582 个非字母型 drill 无一落入两族，故既有课不会因此变红。
+    if dist["unparseable"]:
+        errors.append(
+            f"course {code} 答案分布: {len(dist['unparseable'])} 个 drill 的 answer_md 无法解析出答案"
+            f"（首个 {dist['unparseable'][0]}）—— 不可解析不得静默记为「无偏置」"
+        )
+
+    for label, dimension in (("单选", single), ("判断题", judgement)):
+        if dimension["verdict"] != "biased" or not enforced:
+            continue
+        errors.append(
+            f"course {code} 答案分布: {label} verdict=biased"
+            f"（{dimension['top']} {dimension['top_count']}/{dimension['n']}"
+            f" = {dimension['max_share']:.1%} > {dimension['limit_percent']}%）"
+            "—— 新生成课的答案键必须打散（禁止静默通过）"
+        )
+
+
 def run_ai_content_gate(
     root: Path,
     *,
@@ -678,7 +875,16 @@ def run_ai_content_gate(
             for p in plagiarism_violations(content, syl_text, threshold=0.20):
                 errors.append(f"course {code} 8-gram overlap: {p}")
 
-        # 4. 渲染页标记 + 文本边界 + AI 块是否真的落到页面
+        # 4. 答案分布（Clarify C2/C3）：确定性判据 + 独立报告通道；作用域信号 = 该课 content.json 的
+        #    git 跟踪状态。放在页面校验**之前**，好让「页面缺失」的课也照样拿到分布报告（非静默）。
+        _answer_distribution_problems(
+            code,
+            answer_distribution(content),
+            content_tracking_state(root, content_path),
+            errors,
+        )
+
+        # 5. 渲染页标记 + 文本边界 + AI 块是否真的落到页面
         if not rendered_dir.is_dir():
             # 有 `content.json` 却没有渲染页目录 = 「AI 块从未被渲染」的极端形态（B2a N-1）：
             # 旧实现在这里静默 `continue`，于是删掉整个课程页目录也全绿。
