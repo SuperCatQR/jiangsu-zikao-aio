@@ -47,6 +47,7 @@ jiangsu-zikao-aio/
 - `ops/jiangsu/workflow.md`：专业页与课程页生产流程。
 - `ops/jiangsu/publish-gate-contract.md`：发布闸门契约。
 - `ops/jiangsu/course-status.md`：lifecycle + completeness 状态机。
+- `ops/jiangsu/plan-row-ownership.md`：plan 行归属元数据义务（`Done` + 删 lease 的同一写入内落 `working_branch` / `worktree_path`）；本宿主无 engine，属 no-op。
 - `ops/jiangsu/templates/study-plan.md`：课程学习计划模板。
 
 ## 使用
