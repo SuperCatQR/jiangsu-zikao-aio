@@ -355,7 +355,15 @@ def main(argv: list[str] | None = None) -> int:
     build_p.add_argument("query", help="课码或课名")
     build_p.add_argument("--backend", choices=llm_client.BACKENDS, default="cli", help="生成执行体（默认 cli）")
     build_p.add_argument("--stages", default=",".join(ALL_STAGES), help="执行阶段列表")
-    build_p.add_argument("--dry-run", action="store_true", help="只演练不落盘")
+    # R55：`--dry-run` 的唯一作用点是 `:340` 的提升守卫，`evidence` / `generate` 阶段无条件执行
+    # 并写 `sources/jiangsu/courses/<code>/` 下的产物。旧文案「只演练不落盘」与实现不符
+    # （会误导验收者以为演练不动工作区，实际留下 modified files）。
+    build_p.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="不把渲染结果提升到 content/jiangsu/courses/<code>；"
+        "evidence/generate 阶段仍会写 sources/jiangsu/courses/<code>/ 下的产物并重戳 generated_at",
+    )
     build_p.add_argument("--record-fixtures", action="store_true", help="录制 fixture")
 
     # resolve

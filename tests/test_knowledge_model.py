@@ -1720,3 +1720,138 @@ def test_f3_evidence_gate_rejects_an_appendix_title_without_a_title(tmp_path: Pa
     target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     errors = run_evidence_gate(fake_root)
     assert any("可识别的附录标题" in e for e in errors), errors
+
+
+# ---- R54 3b：题型续行合并的行数上界（固定 3 行前瞻 + 越界失败关闭） -----------------------------
+
+def _r54_exam_lines(type_line: str, body: list[str]) -> list[str]:
+    """`_exam()` 的物理行输入：L4 是给定的题型声明行，其后跟 `body` 的长正文。"""
+    return [
+        "大纲目录",
+        "第一章 示例章",
+        "三、考核知识点与考核要求",
+        type_line,
+    ] + body
+
+
+def test_r54_question_type_merge_does_not_fold_the_trailing_body():
+    """R54 3b：题型行**自身已收句末句号**时前瞻消耗 0 行 —— 后续正文一律不得折进题型集。
+
+    ⚠️ QC-5 口径更正：本用例原本靠 `merged.count("、") >= 4` 这条早停条件在 L4 行内终止。该条件已按
+    QC-5 移除（`、` 个数**不是**句末判据），故构造改为在 L4 结尾补上句末「。」，锁「句子已结束 ⇒
+    窗口立即关闭」这条路径；「≥4 个 `、` 但句子未结束」的形状由
+    `test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration` 覆盖。
+    正文仍是无「等」、无句末句号的长正文，但它在改后的判据下**不可观测** —— 见下面的 QC-8 更正。
+
+    ⚠️ QC-8 可达性更正：`考核说明` 断言**不是**一次对折行检查，而是**结构性不变量**的非回归钉。
+    判据收窄后折行路径在本构造下不可达，两条路各自独立地封死：①`_question_types_terminated(L4)` 在拼接
+    **任何**续行之前就为真（L4 自身已收句末「。」），故前瞻消耗 0 行，正文从未进入 `merged`；
+    ②同一个「。」又是 `QUESTION_TYPE_RE` 里 `(.+?)(?:等|。|$)` 的终止点，即使窗口真的折进了正文，
+    `group(1)` 也只会停在 L4 的句末（qc3 探针实测：拼接后 `"考核说明" in group(1)` = `False`），
+    `$` 兜底不可达。故本用例钉住的是「句子已结束 ⇒ 窗口立即关闭、正文不可观测」这条不变量：
+    若哪天停止集被放宽到让正文进入 `group(1)`，该断言立即变红。折行类防护由
+    `test_r54_question_type_merge_fails_closed_when_the_bound_is_exhausted`（拼到上界即失败关闭）
+    与 `test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration`（未收句末句号的
+    声明行仍须继续前瞻）承担，两条都在本次修正中有效。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、简答题、材料题。",
+        [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(5, 17)],
+    )
+
+    exam = km._exam(lines, "syllabus:99999")
+    assert exam["question_types"] == ["单项选择题", "多项选择题", "填空题", "简答题", "材料题"]
+    assert all("考核说明" not in item for item in exam["question_types"]), exam["question_types"]
+    assert exam["question_types_provenance"] == {"doc_id": "syllabus:99999", "locator": "L4"}
+
+
+def test_r54_question_type_merge_fails_closed_when_the_bound_is_exhausted():
+    """R54 3b：拼到上界仍未终止 → 失败关闭并**指名行号**，不得按已拼内容静默截断题型集。
+
+    构造：L4 不收句末句号（来源把 `。` 写成 `．` 之类）；L5–L20 的正文长时间没有句末标点 ——
+    终止条件只能靠「一路拼到文末」才可能满足。修复前 `lines[number:]` 无上界，
+    会把整篇正文折进 `merged` 并按 `$` 兜底产出一个被污染的题型集（静默污染 → drill 题型集偏离考纲）；
+    现在必须在**上界处**失败关闭，且错误点名题型声明所在行号。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试命题的主要题型一般有单项选择题、简答题、材料题",
+        [f"本课程考核说明第 {index} 段，来源此处未给出句末标点" for index in range(5, 21)],
+    )
+
+    with pytest.raises(ValueError) as excinfo:
+        km._exam(lines, "syllabus:99999")
+
+    message = str(excinfo.value)
+    assert "L4" in message, f"错误必须点名题型声明所在行号：{message}"
+    assert "上界" in message, message
+    assert km.QUESTION_TYPE_LOOKAHEAD == 3, "上界取 3（实测最坏情形需要 1 行续行；见模块常量注释）"
+
+
+def test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration():
+    """QC-5：声明行自身已含 4 个 `、` 但**未收句末句号**时，早停不得把它当作句子终止。
+
+    终止判据只认句末「。」—— `、` 的个数说明词条多，与句子是否结束无关。修复前
+    `merged.count("、") >= 4` 使循环在拼接**任何**续行之前就 `break`，正则
+    `(.+?)(?:等|。|$)` 的 `$` 兜底把**词中折行**的半截词 `简答` 收进 `question_types`、
+    整条 `论述题` 丢失，且因「已终止」而不触发失败关闭 —— 静默截断，正是 B4b 新来源的形状
+    （今天 5 门课的声明行只有 2–3 个 `、`，故未暴露）。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、判断题、简答",
+        ["题、论述题等。"]
+        + [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(6, 18)],
+    )
+
+    exam = km._exam(lines, "syllabus:99999")
+
+    assert exam["question_types"] == [
+        "单项选择题", "多项选择题", "填空题", "判断题", "简答题", "论述题",
+    ], exam["question_types"]
+    assert "简答" not in exam["question_types"], exam["question_types"]
+    assert all("考核说明" not in item for item in exam["question_types"]), exam["question_types"]
+    assert exam["question_types_provenance"] == {"doc_id": "syllabus:99999", "locator": "L4"}
+
+
+def test_qc5_question_type_window_closes_at_the_sentence_end_before_a_layout_note():
+    """QC-5：句子在**版式尾注之前**收尾即算终止 —— `00898` 的真实形状，不得误杀。
+
+    `00898` 的声明 = `…简答题、` + `综合应用题。（题型示例见附录）`。只认 `text.endswith("。")`
+    会因括号尾注判为「未终止」，继续折进正文、最终在 3 行上界处失败关闭（实测：真实 `00898`
+    的 L633 因此抛 `ValueError`，一门已交付课被误杀）。句末「。」是**句子**的终点而非行尾：
+    窗口在该句号处关闭，`group(1)` 停在第一个「等 / 。」处，尾注不进题型集。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试试题可能采用的题型有：单项选择题、判断改错题、简答题、",
+        ["综合应用题。（题型示例见附录）"]
+        + [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(6, 18)],
+    )
+
+    exam = km._exam(lines, "syllabus:99999")
+
+    assert exam["question_types"] == ["单项选择题", "判断改错题", "简答题", "综合应用题"], exam["question_types"]
+    assert all("附录" not in item for item in exam["question_types"]), exam["question_types"]
+    assert exam["question_types_provenance"] == {"doc_id": "syllabus:99999", "locator": "L4"}
+
+
+def test_r54_question_types_are_reproduced_for_the_five_delivered_courses():
+    """R54 3b 的既有产物不变性：5 门课的题型集必须由源文**原地复现**（有界合并不改动任何一门）。
+
+    实测基线 = `15040`/`15043`/`15044` **3** 项、`00898`/`02333` **4** 项（本次实现前复跑核对）。
+    其中 `00898`/`02333` **需要跨行拼接**才能取全：`02333` 的 `…简答题、综` + `合应用题等。`
+    在**词中间**断开 —— 故上界不得收紧到 1。
+
+    ⚠️ 口径更正：design-notes § 4.2 写的「既有 5 门课实测题型数 6/6/6/4/4（本席以
+    `exam.question_types` 长度核对）」与产物不符 —— 5 门课**没有任何一门**是 6 项（也无 6 项的可能：
+    `QUESTION_TYPE_RE` 的 `group(1)` 止于第一个「等 / 。」，这两门课的声明在第一个句号前只有 4 个词条）。
+    本测试锁**实测值**，避免这个未复核的数字被继续引用。
+    """
+    measured = {"15040": 3, "15043": 3, "15044": 3, "00898": 4, "02333": 4}
+    for code, expected_len in measured.items():
+        evidence = json.loads((ROOT / f"sources/jiangsu/courses/{code}/evidence.json").read_text(encoding="utf-8"))
+        artifact = json.loads(
+            (ROOT / f"sources/jiangsu/courses/{code}/knowledge-model.json").read_text(encoding="utf-8")
+        )
+        exam = km.extract_knowledge_model(ROOT, evidence)["exam"]
+        assert exam["question_types"] == artifact["exam"]["question_types"], code
+        assert exam["question_types_provenance"] == artifact["exam"]["question_types_provenance"], code
+        assert len(exam["question_types"]) == expected_len, (code, exam["question_types"])

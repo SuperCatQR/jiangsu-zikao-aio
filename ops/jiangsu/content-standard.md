@@ -70,6 +70,18 @@
   8-gram 字符级重合率严格不得超过 20%。语料取自 `evidence.json` 的 `syllabus.path` 并校验其 `sha256`（缺失即失败关闭）。
   **已声明豁免**：`review_schedule.plans[].items[].focus` 是确定性派生标签（章序标签 + 考纲节标题逐字拼接，实测重合率 85%），
   不是 LLM 生成正文，故不在守卫作用域内；它只出现在 `review.md` 的排程表里，且该页带 AI 横幅。
+- **答案分布守卫（本层第六类校验；模块 docstring 六类中的第 4 条）**：按 `answer_md` 统计每门课 drill 的答案分布，
+  判据 = 样本下界 **10** / 单选任一字母 **> 40%** / 判断题同类真值 **> 80%**（整数比较，`n=10` 且众数 4 恰好 40% 不算偏置）；
+  样本 < 10 记 `insufficient-sample` —— 跳过占比判定，但**必须**打印到 stdout，绝不静默通过。
+  同一条报告行上还有第二种覆盖形态：全课有 drill（`drills=N`，N > 0）却**两族题型标记（`single_choice` /
+  `judgement`）都没命中**，整门课脱出分布判定 —— 此时打 `coverage=family-not-matched drills=N`，
+  **只报告**、绝不进 `errors`，以免与「样本确实不足」的 `insufficient-sample` 混为一谈。
+  **作用域信号 = 该课 `content.json` 的 git 跟踪状态**（`git ls-files --error-unmatch`；不硬编码课码清单，
+  也不用 mtime / `generated_at`）：已跟踪 ⇒ 既有课**只报告**，偏置与**覆盖缺口**（落在两族题型内却提不出答案的
+  drill）都只进 stdout 报告通道、**不进 `errors`**；未跟踪 ⇒ 新课，两者都失败关闭；**判定失败**
+  （不是 git 工作树的运行时、`git` 缺失或索引致命错误）**按新课处理（fail-closed）**，绝不静默降级为「只报告」。
+  故 `15040`（单选 A 105/194 = 54.1%）与 `15043`（A 129/173 = 74.6%）在 git 工作树内只报告，
+  在无工作树的运行时同样报红；既有课的历史偏置由 `R15/R33` 跟踪，本轮不回修（Clarify C4）。
 - **AI 块页面到达性对账**：`ai-content` 层不只校验标注，还要证明每个 AI 产物块**真的落到了页面上**。对账口径是
   **4 个块类别（`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` / `review_schedule`）**，
   一个都不能漏：`explain` / `memorize` 按**逐考核点锚点**对账 —— 每个有块的 `point_id` 都要在章页上存在自己的

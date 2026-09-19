@@ -1,9 +1,11 @@
 """Unit and integration tests for evidence_gate (official facts + knowledge model)."""
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import sys
+from collections.abc import Callable
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -372,3 +374,102 @@ def test_evidence_gate_rejects_syllabus_sha256_drift(tmp_path: Path):
 
     errors = run_evidence_gate(fake_root)
     assert any("sha256" in e for e in errors), errors
+
+
+# ---- R54 3a：分母读取的三态（`>0` 用该值 / `0` 回退规范化渲染 / 两侧皆 0 失败关闭） -------------
+
+def _replace_syllabus_document(fake_root: Path, code: str, transform: Callable[[str], str]) -> Path:
+    """把某课抽取件**副本**的内容替换为 `transform(text)`，并同步 `evidence.json` 的 `sha256`。
+
+    同步 sha256 是为了让被观察到的失败**只**来自分母检查：否则 `syllabus.sha256 漂移`
+    （另一条独立检查）会同时报错，两条错误的来源无法区分。真实产物不受影响（GC2）。
+    """
+    evidence_file = fake_root / "sources" / "jiangsu" / "courses" / code / "evidence.json"
+    evidence = json.loads(evidence_file.read_text(encoding="utf-8"))
+    document = fake_root / evidence["syllabus"]["path"]
+    document.write_text(transform(document.read_text(encoding="utf-8")), encoding="utf-8")
+    evidence["syllabus"]["sha256"] = hashlib.sha256(document.read_bytes()).hexdigest()
+    evidence_file.write_text(json.dumps(evidence, ensure_ascii=False), encoding="utf-8")
+    return document
+
+
+def test_r54_declared_denominator_falls_back_to_the_normalized_rendering(tmp_path: Path):
+    """R54 3a：原文直读解不出（0）时必须回退到**规范化渲染**，不得把版式噪声判成「源文声明 0 个单元」。
+
+    构造 = `15040` 抽取件的**纯版式噪声**副本：文本逐字不变，只把 `\\n` 断行整体换成换页符 `\\x0c`
+    （真实抽取件里本来就有 31 个 `\\x0c`，属同一族版式噪声）。
+
+    **噪声为什么取 `\\x0c` 而不是 CR**（对 plan/design-notes 口径的一处收紧）：`Path.read_text()`
+    走 universal newlines，**读取时**就把 `\\r\\n` / `\\r` 译成 `\\n`，故 CR 噪声在闸门这一侧不可观测
+    （实测：CR-only 变体 raw / normalized 都是 61）。能真正落到「原文直读解不出」这个状态的是
+    `split("\\n")` 不认、而 `str.splitlines()` 认的分隔符（`\\x0c` / `\\x0b` / `\\u2028` / `\\u2029`）：
+    整篇被读成一行 → 行首锚定的 `PART_LABEL_RE` 必然失败 → 返回 0。修复前闸门据此报
+    「与考纲原文声明的考核单元数 0 不一致（-61 个单元被静默丢弃）」—— 源文一字未改的伪硬失败。
+    """
+    from lib.course_pipeline.knowledge_model import source_assessment_unit_count
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    assert not [e for e in run_evidence_gate(fake_root) if "15040" in e and "考核单元" in e], (
+        "对照前提：抽取件未改动时分母检查必须静默"
+    )
+
+    document = _replace_syllabus_document(fake_root, "15040", lambda text: text.replace("\n", "\x0c"))
+    evidence = json.loads(
+        (fake_root / "sources" / "jiangsu" / "courses" / "15040" / "evidence.json").read_text(encoding="utf-8")
+    )
+    heading = evidence["syllabus"]["requirements_heading"]
+    text = document.read_text(encoding="utf-8")
+
+    # 前提复现（两侧读数就是本条的判别力）：原文直读 0（伪硬失败的来源），规范化渲染 61（真实分母）
+    assert source_assessment_unit_count(text.split("\n"), heading) == 0
+    assert source_assessment_unit_count(text.splitlines(), heading) == 61
+
+    errors = run_evidence_gate(fake_root)
+    assert not [e for e in errors if "15040" in e and "考核单元" in e], errors
+
+
+def test_r54_declared_denominator_fails_closed_when_both_readings_are_zero(tmp_path: Path):
+    """R54 3a：`status == "extracted"` 却**两侧都解出 0** = 源侧损坏的矛盾态 → 必须失败关闭。
+
+    构造 = 把抽取件里 `Ⅲ 课程内容与考核要求` 的分部标记整体改成中文「三」（抽取/解码损坏形态），
+    两种读法都定位不到分部标记 → raw 0 / normalized 0。
+
+    **反向断言是这条的全部判别力**：不得退化成「源文声明 0 个单元」的分母比对 —— 那会报
+    「与考纲原文声明的考核单元数 0 不一致（-61 个单元被静默丢弃）」，即把「源侧分部标记整体损坏」
+    读成「源文声明了 0 个单元」，方向恰好反了（这份输入的真实语义是**多**出 61 个未计入单元）。
+    """
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    _replace_syllabus_document(
+        fake_root, "15040", lambda text: text.replace("Ⅲ 课程内容与考核要求", "三 课程内容与考核要求")
+    )
+
+    errors = run_evidence_gate(fake_root)
+    assert any("15040" in e and "两侧都解出 0" in e for e in errors), errors
+    assert not any("15040" in e and "声明的考核单元数 0" in e for e in errors), errors
+
+
+def test_r54_declared_denominator_does_not_judge_when_the_prerequisite_is_unavailable(tmp_path: Path):
+    """R54 3a 三态之一：前置不可用（未 `extracted` / 未记录小节 / 抽取件缺失）→ `None`（**不判定**）。
+
+    这是既有行为，不是失败关闭：读不到抽取件时不得臆造判定，也不得顺手报一条错
+    （`syllabus.sha256` 漂移 / 路径缺失由 `_eligibility_problems` 另行报出）。
+    """
+    from lib.evidence_gate import _declared_unit_count
+
+    errors: list[str] = []
+    unavailable = (
+        "not-a-dict",
+        {"status": "missing"},
+        {"status": "extracted", "path": None, "requirements_heading": "三、考核知识点与考核要求"},
+        {
+            "status": "extracted",
+            "path": "sources/jiangsu/processed/syllabus/99999-demo/document.extracted.md",
+            "requirements_heading": "三、考核知识点与考核要求",
+        },
+    )
+    for syllabus in unavailable:
+        assert _declared_unit_count(tmp_path, syllabus, "x/knowledge-model.json", errors) is None, syllabus
+    assert errors == [], errors

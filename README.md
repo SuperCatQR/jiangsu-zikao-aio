@@ -47,6 +47,7 @@ jiangsu-zikao-aio/
 - `ops/jiangsu/workflow.md`：专业页与课程页生产流程。
 - `ops/jiangsu/publish-gate-contract.md`：发布闸门契约。
 - `ops/jiangsu/course-status.md`：lifecycle + completeness 状态机。
+- `ops/jiangsu/plan-row-ownership.md`：plan 行归属元数据义务（`Done` + 删 lease 的同一写入内落 `working_branch` / `worktree_path`）；本宿主无 engine，属 no-op。
 - `ops/jiangsu/templates/study-plan.md`：课程学习计划模板。
 
 ## 使用
@@ -90,7 +91,7 @@ mkdocs serve
 - `publish`：`lifecycle=publishable` 发布资格硬门禁
 - `maturity-check`：非变异的公开页面成熟度投影比对
 - `evidence`：官方事实层（`evidence.json`）与知识模型（`knowledge-model.json`）覆盖率、断言状态校验
-- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率、渲染页横幅校验，以及 AI 块**页面到达性对账**（作用域**自动派生** = 源侧 `sources/jiangsu/courses/<code>/` ∪ 产物侧 `content/jiangsu/courses/<code>/`，非课程清单；当前覆盖 `15040` / `15043` / `15044` / `00898` / `02333`）
+- `ai-content`：AI 备考层（`content.json`）四件套标注、知识点归属、8-gram 重合率、渲染页横幅校验、**答案分布守卫**（本层第六类校验：样本下界 10、单选任一字母 > 40%、判断题同类真值 > 80%，样本 < 10 记 `insufficient-sample`、全课 drill 两族题型标记都没命中记 `coverage=family-not-matched drills=N`，两者都只照常打印、不静默通过），以及 AI 块**页面到达性对账**（作用域**自动派生** = 源侧 `sources/jiangsu/courses/<code>/` ∪ 产物侧 `content/jiangsu/courses/<code>/`，非课程清单；当前覆盖 `15040` / `15043` / `15044` / `00898` / `02333`）。该守卫的**作用域信号 = 该课 `content.json` 的 git 跟踪状态**：已跟踪（既有课）的偏置与覆盖缺口只进 stdout 报告通道、不阻断闸门，未跟踪或**无 git 工作树而无法判定**时按新课处理（fail-closed）—— `15040`（单选 A 105/194 = 54.1%）与 `15043`（129/173 = 74.6%）在工作树内即只报告的既有偏置。
 
 ### 课程内容流水线（`scripts/build-course-content.py`）
 
@@ -107,7 +108,7 @@ mkdocs serve
 | `fetch-source <url>` | 抓官方来源快照（B2 能力；B1 阶段提示并 exit 2） |
 
 常用开关：`--backend cli|agent|replay`（默认 `cli`；CI 与本地复算用 `replay`）、
-`--stages a,b,c`（只跑指定阶段）、`--dry-run`（只演练不落盘）、`--record-fixtures`（录制 fixture）。
+`--stages a,b,c`（只跑指定阶段）、`--dry-run`（不提升到 `content/jiangsu/courses/<code>`，但仍写 `sources/jiangsu/courses/<code>/` 产物并重戳 `generated_at`）、`--record-fixtures`（录制 fixture）。
 
 提示词有课程作用域：四个 v1 提示词模板的 `course_scope` 现覆盖 **`15040`（习近平新时代中国特色社会主义思想概论）、
 `15043`（中国近现代史纲要）、`15044`（马克思主义基本原理概论）、`00898`（互联网软件应用与开发）、
