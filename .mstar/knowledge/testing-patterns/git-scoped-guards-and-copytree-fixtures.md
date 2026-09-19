@@ -1,6 +1,7 @@
 ---
 module: jiangsu-ai-course-pipeline
 date: 2026-09-18
+last_updated: 2026-09-18
 problem_type: testing_pattern
 category: testing-patterns
 severity: medium
@@ -83,3 +84,24 @@ it. The pre-existing test file gained **56 inserted lines and 0 deleted lines** 
 distribution tests keep their own untracked roots so both directions stay covered. The PM review that approved this
 concluded it was an "honest fixture-realism fix, not masking", having reproduced the mechanism and confirmed the guard
 still fires on the real new-course path.
+
+## Addendum (same iteration, Phase 5): temporary build roots count too
+
+The full-suite run on the iteration PR found **three more** instances of the same class — and one masked assertion — in
+`tests/test_render_pages.py`. Those tests drive the **real** `run_build` / `run_render` path over a temporary root that
+is not a git repository, so the distribution guard read `15040` as a brand-new course and refused its historical
+54.1 %-A bias; the build exited 1 and three tests went red. The fix is the same one-line-per-test treatment
+(`git init -q` + `git add -f` the course content.json paths inside the fixture root, 39 added lines, 0 deleted).
+
+Two lessons to carry forward:
+
+- **Inventory by path, not by symptom.** Before a guard that reads repository state ships, grep for **every** test that
+  drives the build/render path over a copied *or temporary* root — not only the tests that already assert on the guard.
+  Here the guard's own modules were fixed in B4a, and these four were invisible to every targeted run; only the full
+  suite saw them.
+- **A fixture defect can also *mask* an assertion.** `test_failed_build_writes_nothing` asserted `returncode != 0` for
+  an injected `stage_plan` defect, but the spurious distribution failure kept the return code non-zero on its own — so
+  the clause could no longer fail for its intended reason. After the fix its stderr carries the `stage_plan` reasons
+  only, and a no-defect control returns 0, restoring falsifiability. When repairing a fixture, re-check what each
+  assertion in the repaired test *now* depends on.
+
