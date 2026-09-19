@@ -10,7 +10,8 @@
   `diff_vs_manual[].kind == "manual_only"`；
 - 知识模型章目与 `syllabus.md` 的章目索引**逐行一致（空白不敏感，见 `_without_whitespace`）**，
   且 `official_point_count` 与模型自身的节数一致
-  （防止静默丢章：`15044` 的 `绪 论` 曾因 `CHAPTER_RE` 只认 `导论` 而整章消失，见 B6）。
+  （防止静默丢章：`15044` 的 `绪 论` 曾因 `CHAPTER_RE` 只认 `导论` 而整章消失，见 B6）；
+  **该段存在却解析不出行**（表格损坏）→ 失败关闭，不得退化成「无该段」的静默跳过（W6 / QC1 Q1-2）。
 
 诊断纪律（C2-013）：本层对任何**类型**错误的产物都必须返回定位到文件与字段的错误字符串，
 不允许抛 `TypeError` 中断整层 —— 否则一个坏文件会掩盖其余课码的问题。
@@ -70,8 +71,21 @@ def is_fresh(obj1: Any, obj2: Any) -> bool:
     return _strip_generated_at(obj1) == _strip_generated_at(obj2)
 
 
-def _chapter_titles_from_syllabus(root: Path, code: str) -> list[str] | None:
-    """`content/jiangsu/courses/<code>/syllabus.md` 的章目索引第二列（逐字章名）；无该页返回 `None`。"""
+def _chapter_titles_from_syllabus(root: Path, code: str, rel_km: str, errors: list[str]) -> list[str] | None:
+    """`content/jiangsu/courses/<code>/syllabus.md` 的章目索引第二列（逐字章名）。
+
+    **三态（W6 / QC1 Q1-2），不得把后两态压成同一个 `None`**：
+
+    | 页面侧 | 返回 | 含义 |
+    |---|---|---|
+    | 无该页 / 无 `### 章目索引` 段 | `None` | 该课没有第二来源 → **跳过比较**（既有行为，两门课依赖它） |
+    | 有该段且解出 ≥1 行 | 章名列表 | 正常比较（空白不敏感，见 `_without_whitespace`） |
+    | 有该段但**零行**可解析 | `None` **+ 记一条 `errors`** | 表格损坏的矛盾态 → **失败关闭** |
+
+    末态必须失败关闭：`rows or None` 曾让「页面表存在但一行都解析不出」与「页面表不存在」返回**同一个**
+    `None`，整条交叉核对就此静默停摆 —— 恰是本判据（防静默丢章，B6）要防的静默类，只是上移了一层。
+    零行时不再比较（无物可比），失败由 `errors` 承担；这与 `_declared_unit_count` 的末态同构。
+    """
     path = root / "content" / "jiangsu" / "courses" / code / "syllabus.md"
     if not path.is_file():
         return None
@@ -91,7 +105,13 @@ def _chapter_titles_from_syllabus(root: Path, code: str) -> list[str] | None:
         if cells[0] == "章序":
             continue
         rows.append(cells[1])
-    return rows or None
+    if not rows:
+        errors.append(
+            f"{rel_km}: {path.relative_to(root).as_posix()} 章目索引存在但解析不出行"
+            "（表格损坏 / 列数不足）：第二来源不可读，失败关闭而不是静默跳过交叉核对"
+        )
+        return None
+    return rows
 
 
 def _without_whitespace(title: Any) -> Any:
@@ -413,7 +433,7 @@ def _knowledge_model_problems(
                     errors.append(f"{rel_km}: diff_vs_manual contains manual_only entry: {item}")
 
     if code:
-        expected_titles = _chapter_titles_from_syllabus(root, code)
+        expected_titles = _chapter_titles_from_syllabus(root, code, rel_km, errors)
         actual_titles = [ch.get("title") for ch in chapters if isinstance(ch, dict)]
         # 逐项比较两侧的「去空白视图」（W4.5 / Task 0b）：条数、顺序、空白以外的一切字符仍须完全一致。
         if expected_titles is not None and [_without_whitespace(t) for t in actual_titles] != [
