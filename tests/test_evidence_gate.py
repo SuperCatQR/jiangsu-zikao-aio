@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import shutil
 import sys
 from collections.abc import Callable
@@ -473,3 +474,81 @@ def test_r54_declared_denominator_does_not_judge_when_the_prerequisite_is_unavai
     for syllabus in unavailable:
         assert _declared_unit_count(tmp_path, syllabus, "x/knowledge-model.json", errors) is None, syllabus
     assert errors == [], errors
+
+
+# ---- W4.5（Task 0b）：章目索引交叉核对只对**空白**不敏感 ------------------------------------------
+
+def _chapter_index_errors(errors: list[str], code: str) -> list[str]:
+    """只挑「章目索引不一致」这一条判据的错误 —— 别的判据可能同时报，两者不能混为一谈。"""
+    return [e for e in errors if code in e and "章目索引不一致" in e]
+
+
+def test_w45_chapter_index_ignores_whitespace_but_still_fails_closed(tmp_path: Path):
+    """W4.5 / plan Task 0b：章号内部空白（页面表 `第6章` vs 模型 `第 6 章`）不再判失败，但**只**放过空白。
+
+    装置 = 副本仓 + 逐次只改写被观察的那一处，故「静默」与「报出」都归因到同一个比较。
+    ① / ①b 是正向变异（必须静默）；② 真改名 · ③ 少一行 · ④ 顺序对调是**必做负向控制**，
+    ⑤ 标题缺失 · ⑥ 只多一个非空白字符是加固 —— 死守卫纪律：守卫必须被证明会响，happy path 不算证据。
+    """
+    from lib.evidence_gate import _without_whitespace, run_evidence_gate
+
+    # 归一化面（本修复的全部放宽）：只删 `str.split()` 认的空白（含全角空格 U+3000），
+    # 标点 / 大小写 / 全半角 / 数字一律不动。
+    assert _without_whitespace(" 第 6 章\u3000Java A-B（x）\t") == "第6章JavaA-B（x）"
+
+    fake_root = _fake_root(tmp_path)
+    code = "15040"
+    model = fake_root / "sources" / "jiangsu" / "courses" / code / "knowledge-model.json"
+    page = fake_root / "content" / "jiangsu" / "courses" / code / "syllabus.md"
+    pristine = json.loads(model.read_text(encoding="utf-8"))
+    chapters = pristine["chapters"]
+    # 取第一个**带章序标签**的章：`导论` 这类标签内部插空白会被 `CHAPTER_TITLE_RE` 判成另一种非法，
+    # 那样「静默」就不是在断言这条比较了。
+    index = next(i for i, ch in enumerate(chapters) if re.match(r"^第", ch["title"]))
+    spaced = re.sub(r"^第(\S+)章", r"第 \1 章", chapters[index]["title"], count=1)
+    assert spaced != chapters[index]["title"], "变异必须真的改了空白"
+
+    def write(edited: list[dict]) -> list[str]:
+        data = json.loads(json.dumps(pristine))
+        data["chapters"] = edited
+        model.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        return run_evidence_gate(fake_root)
+
+    # 对照前提：副本仓未被变异时这条判据静默（否则下面的静默断言可能被别的错误掩盖）
+    assert _chapter_index_errors(run_evidence_gate(fake_root), code) == []
+
+    # ① 模型侧只在章号内加空白 → 静默（04747 5/13 行、04751 7/13 行的真实差异就是这个形态）
+    model_spaced = json.loads(json.dumps(chapters))
+    model_spaced[index]["title"] = spaced
+    assert _chapter_index_errors(write(model_spaced), code) == []
+
+    # ①b 同一变异打在**页面**表那一行 → 同样静默（两侧都归一化，不是只归一化模型）
+    original_page = page.read_text(encoding="utf-8")
+    head, table = original_page.split("### 章目索引", 1)
+    page.write_text(head + "### 章目索引" + table.replace(chapters[index]["title"], spaced, 1), encoding="utf-8")
+    assert page.read_text(encoding="utf-8") != original_page, "页面侧变异必须真的落上"
+    assert _chapter_index_errors(write(chapters), code) == []
+    page.write_text(original_page, encoding="utf-8")
+
+    # ② 真改名（非空白字符变了）→ 必须失败关闭
+    renamed = json.loads(json.dumps(chapters))
+    renamed[index]["title"] = "第一章 被改名的章"
+    assert _chapter_index_errors(write(renamed), code), "章名真不同必须仍报章目索引不一致"
+
+    # ③ 少一行 → 必须失败关闭
+    assert _chapter_index_errors(write(chapters[1:]), code), "少一行必须仍报章目索引不一致"
+
+    # ④ 顺序对调 → 必须失败关闭
+    reordered = json.loads(json.dumps(chapters))
+    reordered[0], reordered[1] = reordered[1], reordered[0]
+    assert _chapter_index_errors(write(reordered), code), "顺序对调必须仍报章目索引不一致"
+
+    # ⑤ 标题缺失 → 非字符串原样返回，与页面表字符串不等 ⇒ 仍失败关闭（且不得抛 `TypeError`）
+    blind = json.loads(json.dumps(chapters))
+    blind[index].pop("title")
+    assert _chapter_index_errors(write(blind), code), "章标题缺失必须仍报章目索引不一致"
+
+    # ⑥ 在 ① 的空白形态上再补一个非空白字符（句号）→ 必须失败关闭：归一化**不**吞标点
+    punctuated = json.loads(json.dumps(model_spaced))
+    punctuated[index]["title"] = spaced + "。"
+    assert _chapter_index_errors(write(punctuated), code), "只多一个标点也必须报章目索引不一致"

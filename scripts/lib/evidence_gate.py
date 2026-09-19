@@ -8,7 +8,8 @@
   声明 `L1` 而任一输入不满足 → 失败关闭；非 `L1` 课程存在 `content.json` / `knowledge-model.json` → 失败关闭；
 - `quote` > 60 字符（含**缺失**）→ 失败关闭；point `id` 重复 / 格式不符；`coverage.ratio < 0.90`；
   `diff_vs_manual[].kind == "manual_only"`；
-- 知识模型章目与 `syllabus.md` 的章目索引**逐行一致**，且 `official_point_count` 与模型自身的节数一致
+- 知识模型章目与 `syllabus.md` 的章目索引**逐行一致（空白不敏感，见 `_without_whitespace`）**，
+  且 `official_point_count` 与模型自身的节数一致
   （防止静默丢章：`15044` 的 `绪 论` 曾因 `CHAPTER_RE` 只认 `导论` 而整章消失，见 B6）。
 
 诊断纪律（C2-013）：本层对任何**类型**错误的产物都必须返回定位到文件与字段的错误字符串，
@@ -91,6 +92,21 @@ def _chapter_titles_from_syllabus(root: Path, code: str) -> list[str] | None:
             continue
         rows.append(cells[1])
     return rows or None
+
+
+def _without_whitespace(title: Any) -> Any:
+    """章目标题的「去空白视图」：删掉全部空白字符（首尾与内部），其余字符一律不动。
+
+    W4.5 / plan Task 0b：模型逐字照录抽取件（`04747` 抽取件印 `第 6 章`），手写 `syllabus.md`
+    表把章号内部空白归一掉了（`第6章`）—— 两侧章集合 / 章序 / 章名完全相同，差异**只在空白**。
+    这是**比较**侧的唯一放宽：空白以外（大小写、标点、全半角、数字）仍须逐字相同，章数与章序
+    仍由列表比较承担。非字符串原样返回：`title` 缺失时 `None` 与页面表字符串不等 ⇒ 仍失败关闭
+    （且不得抛 `TypeError` 中断整层，见模块头 C2-013 诊断纪律）。
+
+    与 `knowledge_model._fold` 的分工：`_fold` 是「空白串折叠为单个半角空格」（`第1章   X` → `第1章 X`），
+    实测**不**能让 `第 6 章` 与 `第6章` 判等 —— 本条要的是「删掉空白」，故不复用 `_fold`。
+    """
+    return "".join(title.split()) if isinstance(title, str) else title
 
 
 def _facts_problems(rel: str, facts: Any, errors: list[str]) -> None:
@@ -399,7 +415,10 @@ def _knowledge_model_problems(
     if code:
         expected_titles = _chapter_titles_from_syllabus(root, code)
         actual_titles = [ch.get("title") for ch in chapters if isinstance(ch, dict)]
-        if expected_titles is not None and actual_titles != expected_titles:
+        # 逐项比较两侧的「去空白视图」（W4.5 / Task 0b）：条数、顺序、空白以外的一切字符仍须完全一致。
+        if expected_titles is not None and [_without_whitespace(t) for t in actual_titles] != [
+            _without_whitespace(t) for t in expected_titles
+        ]:
             errors.append(
                 f"{rel_km}: chapters 与 content/jiangsu/courses/{code}/syllabus.md 章目索引不一致"
                 f"（模型 {len(actual_titles)} 章 / 页面 {len(expected_titles)} 章）"
