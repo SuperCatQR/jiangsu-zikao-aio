@@ -38,6 +38,26 @@ JUDGEMENT_SHAPES = {
     "④ 句号后接解释": "参考答案：正确。连接池的核心就是复用连接。",
 }
 
+# 多选答案的五种写法（QC-2：qc1 F-2 与 qc2 S-1 双席独立发现）。旧式 `([A-D])\b` 里 `\b` 在 `、`/`,`/`，`/
+# 空格之前**成立**（都是非词字符），于是前四种被静默计成首字母 `A`（错值进分子），而第五种 `AB` 又因 `\b`
+# 不成立失败关闭 —— 同一批多选答案两种相反行为。五种现在必须**一致**进入 `unparseable`。
+MULTI_ANSWER_SHAPES = {
+    "顿号分隔": "答案：A、B",
+    "半角逗号分隔": "答案：A,B",
+    "全角逗号分隔": "答案：A，B",
+    "空格分隔": "答案：A B",
+    "连写": "正确答案：AB",
+}
+
+# 单答案形态的**正向控制**（QC-2 的另一半：收紧多选判定不得动摇既有解析面，plan § Data contracts 2）。
+# `(维度, 期望答案)`：前三行是单选三形态的实测值，末行是 `00898` 的第 4 种判断题真值排布。
+SINGLE_ANSWER_SHAPES = {
+    "答案 前缀": ("单项选择题", "答案：A", "single_choice", "A"),
+    "正确答案 前缀": ("单项选择题", "正确答案：A", "single_choice", "A"),
+    "答案后接解释": ("单项选择题", "答案：A。解析：A 项符合题干。", "single_choice", "A"),
+    "真值后接解释": ("判断改错题", "参考答案：错误，有三处错误。", "judgement", "错误"),
+}
+
 
 def _drill(point_id: str, question_type: str, answer_md: str) -> dict:
     """最小可用的 drill 块（守卫只读 `kind` / `question_type` / `answer_md` / `point_id`）。"""
@@ -95,6 +115,11 @@ def _biased_errors(errors: list[str], code: str) -> list[str]:
     return [e for e in errors if f"course {code}" in e and "答案分布" in e and "verdict=biased" in e]
 
 
+def _unparseable_errors(errors: list[str], code: str) -> list[str]:
+    """点名某门课的**解析覆盖缺口**错误（QC-1 的判据面：作用域收敛只该影响这一条，不影响别的检查）。"""
+    return [e for e in errors if f"course {code}" in e and "答案分布" in e and "无法解析出答案" in e]
+
+
 # --------------------------------------------------------------------------------------
 # AC1：解析口径 —— 不锚行尾，一次覆盖全部实测形态；不可解析即失败关闭
 # --------------------------------------------------------------------------------------
@@ -113,6 +138,40 @@ def test_single_choice_parser_covers_every_measured_shape():
     # 逐条点名：形态②③ 的差别只在「首行是否以行尾结束」，锚了 `$` 就只剩 1 道。
     for text in SINGLE_CHOICE_SHAPES.values():
         assert answer_distribution(_content(_drill("p", "单项选择题", text)))["single_choice"]["n"] == 1, text
+
+
+def test_multi_letter_answers_never_contribute_a_first_letter():
+    """QC-2：多选答案的**每一种**写法都必须进 `unparseable`，不得把首字母当单选样本。
+
+    旧式 `\\b` 下 `答案：A、B` / `A,B` / `A，B` / `A B` 静默计成 `A`：进的是**错值**（不是缺值），
+    守卫自己的分子被污染，且不产生任何 `unparseable` 记录。五种写法现在必须同形。
+    """
+    from lib.ai_content_gate import answer_distribution
+
+    for label, text in MULTI_ANSWER_SHAPES.items():
+        dist = answer_distribution(_content(_drill("p1", "单项选择题", text)))
+        counts = dist["single_choice"]["counts"]
+        assert dist["single_choice"]["n"] == 0, (
+            f"多选写法「{label}」（{text}）不得贡献单选样本: {dist['single_choice']}"
+        )
+        assert counts == {"A": 0, "B": 0, "C": 0, "D": 0}, f"多选写法「{label}」污染了计数: {counts}"
+        assert len(dist["unparseable"]) == 1 and "p1" in dist["unparseable"][0], (
+            f"多选写法「{label}」（{text}）必须失败关闭为不可解析: {dist['unparseable']}"
+        )
+
+
+def test_single_letter_answers_still_parse_exactly_as_before():
+    """QC-2 的**正向控制**：收紧多选判定不得动摇既有的单答案 / 真值形态（基线表的解析面）。
+
+    与上一条同时成立才说明修的是「多选被误读」这一条，而不是把解析器整体收窄。
+    """
+    from lib.ai_content_gate import answer_distribution
+
+    for label, (question_type, text, dimension, expected) in SINGLE_ANSWER_SHAPES.items():
+        dist = answer_distribution(_content(_drill("p1", question_type, text)))
+        assert dist[dimension]["n"] == 1, f"「{label}」（{text}）必须照旧进样本: {dist[dimension]}"
+        assert dist[dimension]["counts"][expected] == 1, f"「{label}」（{text}）: {dist[dimension]['counts']}"
+        assert dist["unparseable"] == [], f"「{label}」（{text}）不得被误判为不可解析: {dist['unparseable']}"
 
 
 def test_judgement_parser_covers_every_measured_shape():
@@ -255,6 +314,122 @@ def test_tracking_probe_returns_none_when_git_cannot_answer(tmp_path: Path, monk
     assert ai_content_gate.content_tracking_state(root, content_path) is False, "退出码 1 ⇒ 确定未跟踪"
 
 
+def test_tracking_probe_is_bounded_and_degrades_on_timeout(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
+    """QC-4（qc3 F-2）：探针给 `git` 子进程一个有界 `timeout=`，且**超时**也必须降级为 `None`。
+
+    `subprocess.TimeoutExpired` 继承 `SubprocessError` 而**不是** `OSError`：只补 `timeout=` 会让超时
+    异常穿透 `run_ai_content_gate()`，把整层闸门打崩而不是按新课处理。两条一起钉住：
+    kwargs 里有有界的 `timeout`，且 `TimeoutExpired` / 其余 `SubprocessError` 都返回 `None`。
+    """
+    from lib import ai_content_gate
+
+    root = tmp_path / "root"
+    content_path = root / "sources" / "jiangsu" / "courses" / "15040" / "content.json"
+    content_path.parent.mkdir(parents=True)
+    content_path.write_text("{}", encoding="utf-8")
+
+    seen: list[dict] = []
+
+    def _timeout(*_args, **kwargs):
+        seen.append(kwargs)
+        raise subprocess.TimeoutExpired(cmd="git", timeout=kwargs.get("timeout") or 0)
+
+    monkeypatch.setattr(ai_content_gate.subprocess, "run", _timeout)
+    assert ai_content_gate.content_tracking_state(root, content_path) is None, "超时必须降级为「无法判定」"
+    assert seen, "探针必须真的调用 subprocess.run（否则 timeout 断言空转）"
+    timeout = seen[0].get("timeout")
+    assert isinstance(timeout, (int, float)) and not isinstance(timeout, bool) and 0 < timeout <= 60, (
+        f"探针必须给 git 子进程一个有界 timeout=（实测 kwargs: {seen[0]}）"
+    )
+
+    def _hard_failure(*_args, **_kwargs):
+        raise subprocess.SubprocessError("索引损坏等非超时失败")
+
+    monkeypatch.setattr(ai_content_gate.subprocess, "run", _hard_failure)
+    assert ai_content_gate.content_tracking_state(root, content_path) is None, (
+        "其余 SubprocessError 同样不得穿透闸门（捕获面必须放宽）"
+    )
+
+
+def test_unparseable_is_scope_gated_exactly_like_biased(capsys: pytest.CaptureFixture[str]):
+    """QC-1（qc1 F-1 + qc2 F-1，双席独立发现）：解析缺口与偏置受**同一个** `enforced` 约束。
+
+    方向一 —— `tracked=True`（既有课）：缺口仍必须**打印**（条数 + 首个块的 id，可 grep），但**不得**进
+    `errors`（Clarify C3 / compass D5）。方向二/三 —— `False`（新课）与 `None`（无法判定）：照旧失败关闭。
+    """
+    from lib.ai_content_gate import _answer_distribution_problems, answer_distribution
+
+    content = _content(
+        *(_drill(f"p{i}", "单项选择题", "正确答案：A") for i in range(11)),
+        _drill("p-bad", "单项选择题", "（出题模型没有按要求给出答案）"),
+    )
+    dist = answer_distribution(content)
+    assert dist["unparseable"] == ["p-bad（单项选择题）"], dist["unparseable"]
+
+    # 方向一：已跟踪的既有课 —— 同一份产物（既有偏置 + 解析缺口）只报告
+    tracked_errors: list[str] = []
+    _answer_distribution_problems("99999", dist, True, tracked_errors)
+    out_tracked = capsys.readouterr().out
+    assert tracked_errors == [], f"既有课不得被解析缺口阻断（C3/D5）: {tracked_errors}"
+    assert "unparseable(n=1 first=p-bad（单项选择题）)" in out_tracked, (
+        f"既有课的缺口必须打印条数与首个块 id（非静默）: {out_tracked}"
+    )
+    assert "enforced=false" in out_tracked, out_tracked
+
+    # 方向二/三：未跟踪（新课）与无法判定 —— 都必须失败关闭
+    for tracked in (False, None):
+        errors: list[str] = []
+        _answer_distribution_problems("99999", dist, tracked, errors)
+        capsys.readouterr()
+        assert _unparseable_errors(errors, "99999"), f"tracked={tracked} 必须失败关闭: {errors}"
+
+
+def _make_single_choice_answers_unparseable(path: Path, limit: int) -> list[str]:
+    """把该课**前 `limit` 道**单选题的答案改写成无法解析的文本，返回被改写的 `point_id`（空列表 = 变异空洞）。"""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    targets = [
+        block
+        for block in data["blocks"]
+        if block.get("kind") == "drill" and "选择" in str(block.get("question_type") or "")
+    ][:limit]
+    for block in targets:
+        block["answer_md"] = "（出题模型没有按要求给出答案）"
+    path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    return [str(block.get("point_id")) for block in targets]
+
+
+def test_gate_blocks_unparseable_on_a_new_course_and_only_reports_on_a_tracked_one(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+):
+    """QC-1 的**闸门级**双向证明：同一棵树只改跟踪状态 ⇒ 同一份不可解析产物从报错变成只报告。
+
+    走真实入口（`run_ai_content_gate()` + 真实 `git ls-files` 探针），证明作用域收敛在端到端路径上成立，
+    而不只是在 `_answer_distribution_problems()` 的单测里成立。两个方向都断言**那一条判据**，
+    不用「错误非空 / 为空」蒙混（同一条树上其他课仍可能因偏置报错，那是另一个方向的事）。
+    """
+    from lib.ai_content_gate import content_tracking_state, run_ai_content_gate
+
+    root = _fresh_root(tmp_path, "unparseable-scope")
+    broken = _make_single_choice_answers_unparseable(_content_path(root, "15044"), 2)
+    assert len(broken) == 2, "对照前提：该课确实有单选题可改写（否则变异空洞通过）"
+
+    # 方向一：未跟踪（新课）⇒ 解析缺口失败关闭
+    errors_new = run_ai_content_gate(root)
+    out_new = capsys.readouterr().out
+    assert _unparseable_errors(errors_new, "15044"), f"新课的解析缺口必须失败关闭: {errors_new}"
+    assert "unparseable(n=2" in out_new and broken[0] in out_new, out_new
+
+    # 方向二：同一棵树，只把该课登记进索引 ⇒ 同一份产物只报告、不进 errors
+    _git_track(root, "sources/jiangsu/courses/15044/content.json")
+    assert content_tracking_state(root, _content_path(root, "15044")) is True
+    errors_tracked = run_ai_content_gate(root)
+    out_tracked = capsys.readouterr().out
+    assert _unparseable_errors(errors_tracked, "15044") == [], f"既有课不得被解析缺口阻断: {errors_tracked}"
+    line_15044 = next(line for line in out_tracked.splitlines() if "course=15044" in line)
+    assert "unparseable(n=2" in line_15044 and broken[0] in line_15044, line_15044
+    assert "enforced=false" in line_15044 and "QC-1" in line_15044, line_15044
+
+
 def test_new_course_bias_errors_and_tracked_course_only_reports(tmp_path: Path, capsys: pytest.CaptureFixture[str]):
     """**变异双向证明**：同一份「所有单选答案都是 A」的产物，未跟踪时守卫报错、被跟踪后只报告。
 
@@ -309,6 +484,46 @@ def test_insufficient_sample_is_reported_and_never_returned_as_an_error(capsys: 
     assert errors == [], f"既有 5 门课不得因偏置或小样本变红: {errors}"
 
 
+def test_family_not_matched_is_a_distinct_report_only_marker(capsys: pytest.CaptureFixture[str]):
+    """QC-3（qc1 F-3）：有 drill 而两族题型标记都没命中 ⇒ 打印**独立**的 `family-not-matched` 覆盖标记。
+
+    否则「整门课脱出分布判定」与「样本确实不足」是同一个 `insufficient-sample` 字面量（该 verdict 按契约
+    永不进 `errors`），一门题型写作「单选」「客观题」的课会整门零覆盖而只留一行报告。标记只走报告通道。
+    """
+    from lib.ai_content_gate import _answer_distribution_problems, answer_distribution
+
+    # 反向控制：族命中（哪怕样本不足）不得带这个标记 —— 标记只能表示「守卫没看见题」
+    matched = answer_distribution(_content(_drill("p1", "单项选择题", "正确答案：A")))
+    matched_errors: list[str] = []
+    _answer_distribution_problems("99999", matched, False, matched_errors)
+    out_matched = capsys.readouterr().out
+    assert "insufficient-sample" in out_matched, out_matched
+    assert "family-not-matched" not in out_matched, f"族命中时不得出现覆盖标记: {out_matched}"
+
+    # 族未命中：文字型题型（简答 / 材料）⇒ 整门课的答案都没进分布判定
+    unmatched = answer_distribution(
+        _content(
+            _drill("p1", "简答题", "参考答案：（1）马克思主义的直接理论来源有三个……"),
+            _drill("p2", "材料题", "答案要点：\n- 第一点"),
+        )
+    )
+    assert unmatched["families"] == {"single_choice": 0, "judgement": 0, "drills": 2}, unmatched["families"]
+    errors: list[str] = []
+    _answer_distribution_problems("99999", unmatched, False, errors)
+    out = capsys.readouterr().out
+    assert "coverage=family-not-matched drills=2" in out, f"覆盖缺口必须有独立标记: {out}"
+    assert errors == [], f"覆盖标记只报告，绝不进 errors: {errors}"
+
+    # 第三个方向：族**已命中**、只是答案不可解析 ⇒ 缺口由 `unparseable` 发声，不得记成「题型没匹配上」
+    broken = answer_distribution(_content(_drill("p1", "单项选择题", "（没有答案）")))
+    broken_errors: list[str] = []
+    _answer_distribution_problems("99999", broken, False, broken_errors)
+    out_broken = capsys.readouterr().out
+    assert "family-not-matched" not in out_broken, f"族已命中（解析失败）不得报覆盖标记: {out_broken}"
+    assert "unparseable(n=1 first=p1（单项选择题）)" in out_broken, out_broken
+    assert _unparseable_errors(broken_errors, "99999"), broken_errors
+
+
 def test_existing_courses_reproduce_the_measured_baseline(capsys: pytest.CaptureFixture[str]):
     """AC5：既有 5 门课的实测分布与 plan § Data contracts 2 的基线表逐字一致（报告口径）。
 
@@ -319,7 +534,7 @@ def test_existing_courses_reproduce_the_measured_baseline(capsys: pytest.Capture
 
     run_ai_content_gate(ROOT)
     out = capsys.readouterr().out
-    lines = {code: next(l for l in out.splitlines() if f"course={code} " in l) for code in
+    lines = {code: next(line for line in out.splitlines() if f"course={code} " in line) for code in
              ("15040", "15043", "15044", "00898", "02333")}
 
     expected = {
