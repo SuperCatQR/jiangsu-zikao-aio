@@ -1735,15 +1735,17 @@ def _r54_exam_lines(type_line: str, body: list[str]) -> list[str]:
 
 
 def test_r54_question_type_merge_does_not_fold_the_trailing_body():
-    """R54 3b：题型续行合并以**固定 3 行前瞻**为界 —— 题型行自身已终止时不得再折进后续正文。
+    """R54 3b：题型行**自身已收句末句号**时前瞻消耗 0 行 —— 后续正文一律不得折进题型集。
 
-    构造：L4 的 `、` 已达 4 个（`merged.count("、") >= 4` 这条终止条件在**本行内**即满足），
-    L5–L16 是长正文（无「等」、无句末句号）。修复前 `for follow in lines[number:]` **先拼一行再检查**，
-    于是 L5 被并进 `merged`；正则 `(.+?)(?:等|。|$)` 的 `$` 兜底把整行吞进 `group(1)`，
-    题型集最后一项变成 `材料题本课程考核说明第 5 段…`（正文被折进匹配，实测见任务报告）。
+    ⚠️ QC-5 口径更正：本用例原本靠 `merged.count("、") >= 4` 这条早停条件在 L4 行内终止。该条件已按
+    QC-5 移除（`、` 个数**不是**句末判据），故构造改为在 L4 结尾补上句末「。」，锁「句子已结束 ⇒
+    窗口立即关闭」这条路径；「≥4 个 `、` 但句子未结束」的形状由
+    `test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration` 覆盖。
+    正文仍是无「等」、无句末句号的长正文：窗口一旦没能关闭，正文就会被正则的 `$` 兜底吞进
+    `group(1)`（末项变成 `材料题本课程考核说明第 5 段…`），故 `考核说明` 断言仍是一次真实的对折行检查。
     """
     lines = _r54_exam_lines(
-        "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、简答题、材料题",
+        "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、简答题、材料题。",
         [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(5, 17)],
     )
 
@@ -1756,8 +1758,8 @@ def test_r54_question_type_merge_does_not_fold_the_trailing_body():
 def test_r54_question_type_merge_fails_closed_when_the_bound_is_exhausted():
     """R54 3b：拼到上界仍未终止 → 失败关闭并**指名行号**，不得按已拼内容静默截断题型集。
 
-    构造：L4 既不收句号（来源把 `。` 写成 `．` 之类）、`、` 也不足 4 个；L5–L20 的正文长时间没有
-    句末标点 —— 终止条件只能靠「一路拼到文末」才可能满足。修复前 `lines[number:]` 无上界，
+    构造：L4 不收句末句号（来源把 `。` 写成 `．` 之类）；L5–L20 的正文长时间没有句末标点 ——
+    终止条件只能靠「一路拼到文末」才可能满足。修复前 `lines[number:]` 无上界，
     会把整篇正文折进 `merged` 并按 `$` 兜底产出一个被污染的题型集（静默污染 → drill 题型集偏离考纲）；
     现在必须在**上界处**失败关闭，且错误点名题型声明所在行号。
     """
@@ -1773,6 +1775,52 @@ def test_r54_question_type_merge_fails_closed_when_the_bound_is_exhausted():
     assert "L4" in message, f"错误必须点名题型声明所在行号：{message}"
     assert "上界" in message, message
     assert km.QUESTION_TYPE_LOOKAHEAD == 3, "上界取 3（实测最坏情形需要 1 行续行；见模块常量注释）"
+
+
+def test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration():
+    """QC-5：声明行自身已含 4 个 `、` 但**未收句末句号**时，早停不得把它当作句子终止。
+
+    终止判据只认句末「。」—— `、` 的个数说明词条多，与句子是否结束无关。修复前
+    `merged.count("、") >= 4` 使循环在拼接**任何**续行之前就 `break`，正则
+    `(.+?)(?:等|。|$)` 的 `$` 兜底把**词中折行**的半截词 `简答` 收进 `question_types`、
+    整条 `论述题` 丢失，且因「已终止」而不触发失败关闭 —— 静默截断，正是 B4b 新来源的形状
+    （今天 5 门课的声明行只有 2–3 个 `、`，故未暴露）。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、判断题、简答",
+        ["题、论述题等。"]
+        + [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(6, 18)],
+    )
+
+    exam = km._exam(lines, "syllabus:99999")
+
+    assert exam["question_types"] == [
+        "单项选择题", "多项选择题", "填空题", "判断题", "简答题", "论述题",
+    ], exam["question_types"]
+    assert "简答" not in exam["question_types"], exam["question_types"]
+    assert all("考核说明" not in item for item in exam["question_types"]), exam["question_types"]
+    assert exam["question_types_provenance"] == {"doc_id": "syllabus:99999", "locator": "L4"}
+
+
+def test_qc5_question_type_window_closes_at_the_sentence_end_before_a_layout_note():
+    """QC-5：句子在**版式尾注之前**收尾即算终止 —— `00898` 的真实形状，不得误杀。
+
+    `00898` 的声明 = `…简答题、` + `综合应用题。（题型示例见附录）`。只认 `text.endswith("。")`
+    会因括号尾注判为「未终止」，继续折进正文、最终在 3 行上界处失败关闭（实测：真实 `00898`
+    的 L633 因此抛 `ValueError`，一门已交付课被误杀）。句末「。」是**句子**的终点而非行尾：
+    窗口在该句号处关闭，`group(1)` 停在第一个「等 / 。」处，尾注不进题型集。
+    """
+    lines = _r54_exam_lines(
+        "4.本课程考试试题可能采用的题型有：单项选择题、判断改错题、简答题、",
+        ["综合应用题。（题型示例见附录）"]
+        + [f"本课程考核说明第 {index} 段，来源在此处没有给出句末标点" for index in range(6, 18)],
+    )
+
+    exam = km._exam(lines, "syllabus:99999")
+
+    assert exam["question_types"] == ["单项选择题", "判断改错题", "简答题", "综合应用题"], exam["question_types"]
+    assert all("附录" not in item for item in exam["question_types"]), exam["question_types"]
+    assert exam["question_types_provenance"] == {"doc_id": "syllabus:99999", "locator": "L4"}
 
 
 def test_r54_question_types_are_reproduced_for_the_five_delivered_courses():
