@@ -633,6 +633,7 @@ def test_failed_build_writes_nothing(tmp_path: Path):
     # 副本自带 fixture（与提示词一起），使 replay 的取数根落在副本内
     (fake_root / "tests").mkdir()
     shutil.copytree(ROOT / "tests" / "fixtures", fake_root / "tests" / "fixtures")
+    _tracked(fake_root)
 
     # 前提断言：入口把 fixture 根对齐到**副本**，而不是真实仓
     probe = subprocess.run(
