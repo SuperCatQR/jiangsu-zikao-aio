@@ -38,19 +38,32 @@ JUDGEMENT_SHAPES = {
     "④ 句号后接解释": "参考答案：正确。连接池的核心就是复用连接。",
 }
 
-# 多选答案的五种写法（QC-2：qc1 F-2 与 qc2 S-1 双席独立发现）。旧式 `([A-D])\b` 里 `\b` 在 `、`/`,`/`，`/
-# 空格之前**成立**（都是非词字符），于是前四种被静默计成首字母 `A`（错值进分子），而第五种 `AB` 又因 `\b`
-# 不成立失败关闭 —— 同一批多选答案两种相反行为。五种现在必须**一致**进入 `unparseable`。
+# 多选答案的写法（QC-2 = qc1 F-2 + qc2 S-1 双席独立发现；QC-7 = qc1 F-2′ + qc2 F-002-RE 把白名单收敛为
+# 一般判据）。旧式 `([A-D])\b` 里 `\b` 在 `、`/`,`/`，`/空格之前**成立**（都是非词字符），于是前四种被静默
+# 计成首字母 `A`（错值进分子），而 `AB` 又因 `\b` 不成立失败关闭 —— 同一批多选答案两种相反行为。
+# QC-2 的负向先行断言只列了 `[\s、,，/]`，于是 `;` / `**` / CJK 连接词（和/或/与/及/至）仍然取首字母：
+# 与被修掉的那个缺陷同一类，只是更窄。判据改为「捕获字母到**句末「。」**之间只隔着连接符时，不得再出现
+# 答案字母」后，下面 12 种写法必须**同形**失败关闭（qc2 实测：`A;B` / `A和B` / `A或B` / `A与B` / `A至D` /
+# `A、**B**` 在 `0e6f6e4` 上仍解析为 `A`，即本表的后七行是 QC-7 的修前红面）。
 MULTI_ANSWER_SHAPES = {
     "顿号分隔": "答案：A、B",
     "半角逗号分隔": "答案：A,B",
     "全角逗号分隔": "答案：A，B",
     "空格分隔": "答案：A B",
     "连写": "正确答案：AB",
+    "斜杠分隔": "答案：A/B",
+    "半角分号分隔": "答案：A;B",
+    "顿号 + 强调星号": "答案：A、**B**",
+    "连接词「和」": "答案：A和B",
+    "连接词「或」": "答案：A或B",
+    "连接词「与」": "答案：A与B",
+    "连接词「至」（区间）": "答案：A至D",
 }
 
 # 单答案形态的**正向控制**（QC-2 的另一半：收紧多选判定不得动摇既有解析面，plan § Data contracts 2）。
 # `(维度, 期望答案)`：前三行是单选三形态的实测值，末行是 `00898` 的第 4 种判断题真值排布。
+# 第三行是 QC-7 的**保留面**：第二个 `A` 落在句末「。」**之后**，是解释文字而不是答案的第二项 ——
+# 「捕获字母必须是答案在句内的终点」这条判据止于句末，不得把解释里的同字母也算成多选。
 SINGLE_ANSWER_SHAPES = {
     "答案 前缀": ("单项选择题", "答案：A", "single_choice", "A"),
     "正确答案 前缀": ("单项选择题", "正确答案：A", "single_choice", "A"),
@@ -172,6 +185,41 @@ def test_single_letter_answers_still_parse_exactly_as_before():
         assert dist[dimension]["n"] == 1, f"「{label}」（{text}）必须照旧进样本: {dist[dimension]}"
         assert dist[dimension]["counts"][expected] == 1, f"「{label}」（{text}）: {dist[dimension]['counts']}"
         assert dist["unparseable"] == [], f"「{label}」（{text}）不得被误判为不可解析: {dist['unparseable']}"
+
+
+def test_a_second_letter_behind_a_connector_fails_closed_until_the_sentence_ends():
+    """QC-7：判据是「捕获字母必须是答案在**句内**的终点」，故同一段尾随文字在句末「。」前后命运相反。
+
+    两行输入只差一个标点：`答案：A。解析：A 项符合题干。` 的第二个 `A` 落在句末之后（属于解释），
+    必须照旧解析为 `A`；`答案：A、A 项符合题干。` 的第二个 `A` 在句末之前、只隔着连接符 `、`，
+    是答案的第二项，必须进 `unparseable`。两侧同时钉住，才说明收紧的是「多选被误读」，
+    而不是把解释里的同字母也误判成多选（QC-7 的另一半：扫描**不越过句末**）。
+    """
+    from lib.ai_content_gate import answer_distribution
+
+    # 句末之后：解释文字里的同字母不是答案的第二项（plan § Data contracts 2 的保留面）。
+    for text in (
+        "答案：A。解析：A 项符合题干。",
+        "正确答案：B。B 项是官方口径。",
+        "答案：D。D 项与题干无关。",
+        "**答案：A**",
+    ):
+        dist = answer_distribution(_content(_drill("p1", "单项选择题", text)))
+        assert dist["single_choice"]["n"] == 1, f"「{text}」必须照旧进样本: {dist['single_choice']}"
+        assert dist["unparseable"] == [], f"「{text}」不得被判成多选: {dist['unparseable']}"
+
+    # 句末之前：同一个字母只要与首个字母只隔连接符 / 分隔符 / 空白，就是第二项，必须失败关闭。
+    for text in (
+        "答案：A、A 项符合题干。",
+        "答案：B B 项是官方口径。",
+        "答案：A，A 项符合题干。",
+    ):
+        dist = answer_distribution(_content(_drill("p1", "单项选择题", text)))
+        assert dist["single_choice"]["n"] == 0, f"「{text}」不得贡献单选样本: {dist['single_choice']}"
+        assert dist["single_choice"]["counts"] == {"A": 0, "B": 0, "C": 0, "D": 0}, (
+            f"「{text}」污染了计数: {dist['single_choice']['counts']}"
+        )
+        assert len(dist["unparseable"]) == 1, f"「{text}」必须失败关闭为不可解析: {dist['unparseable']}"
 
 
 def test_judgement_parser_covers_every_measured_shape():
