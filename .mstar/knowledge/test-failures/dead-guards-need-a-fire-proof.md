@@ -1,6 +1,7 @@
 ---
 module: jiangsu-ai-course-pipeline
 date: 2026-09-14
+last_updated: 2026-09-19
 problem_type: test_failure
 category: test-failures
 severity: high
@@ -15,9 +16,11 @@ plan_id: ai-course-prep-pipeline-b3b-course-generation
 applies_when:
   - "A fix or a review round adds a guard, predicate, or invariant test"
   - "Closing a finding on the strength of a green suite"
+  - "Adding a CI workflow, branch protection, or any other gate whose call site lives outside the repository"
   - "Reviewing a diff that adds a check which is not obviously reached"
 tags:
   - dead-guard
+  - ci-gate
   - falsifiability
   - mutation-check
   - green-suite-blindness
@@ -90,6 +93,30 @@ Pair this with the complementary convention in the conventions/ category — *Ga
 AI block must land on a page* — which covers guards that run but verify nothing because their condition can
 never be true (name/path mismatch, scope that switches itself off, counts that survive substitution).
 Together: **a check must be reachable, and its condition must be able to be false.**
+
+
+## Same class, one level up: gates whose call site lives outside the repository
+
+A CI workflow is a guard with the same two failure modes, plus a third: its **call site is an event configuration**
+(`on:`), not a line of code, so no diff review sees whether anything runs it.
+
+| State | What it means | How it is proven | What proves nothing |
+|---|---|---|---|
+| Authored | the YAML parses and mirrors the post-merge command set | structural parity against the deploy job's steps, cut programmatically where verification ends | a parser succeeding |
+| Runs | GitHub accepts the file for that event | a visible run on the head (`gh run list --json workflowName,event`) | a parse-clean file, a green status line |
+| Blocks | a red run prevents the merge | a deliberately red PR showing `mergeStateStatus: BLOCKED` **and** one real merge attempt refused | reading the branch-protection settings back |
+
+- **Make the red attributable.** Inject exactly one failing test as the control commit: the red log then reads
+  `1 failed, <N> passed` while the clean head reads `<N> passed` — same tests, plus the injected one, whose node id is in
+  the log. Anything else red is a delivery finding, not a proof.
+- **Protection needs the merge attempt, not the read-back.** Here the refused attempt came from the repository owner's
+  own account with `enforce_admins` on: *"the base branch policy prohibits the merge"*. Never "verify" it with `--admin`,
+  which fires the real merge.
+- **Declare the bypasses you chose not to exercise** (here: the `--admin` path, left configuration-verified) and destroy
+  the experiment afterwards (PR closed, branch and worktree deleted, default branch unmoved).
+
+Full treatment of the pre-merge gate itself — parity, triggers, sequencing and cleanup — lives in
+`.mstar/knowledge/workflow-patterns/pre-merge-ci-mirrors-the-deploy-command-set.md`.
 
 ## Prevention
 
