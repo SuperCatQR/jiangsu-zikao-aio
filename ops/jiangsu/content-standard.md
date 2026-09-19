@@ -100,7 +100,7 @@
   作用域键不得替自己关闸，否则删掉真值源就能让整层 AI 页面照常发布。作用域键因此取**源侧
   `sources/jiangsu/courses/<code>/` ∪ 产物侧 `content/jiangsu/courses/<code>/` 的课码并集**：
   「产物存在」蕴含「源存在」，缺源时报文点名缺失的目录（整目录缺失）或 `content.json`（单文件缺失）。
-  既无 `content.json` 又无 AI 横幅页面的课程保持全绿（其余 16 门课的真实形态）。
+  既无 `content.json` 又无 AI 横幅页面的课程保持全绿（其余 11 门课的真实形态）。
   这一条覆盖的正是「AI 备考层从未被渲染」的整层丢失形态；变异证明见 `tests/test_ai_content_gate.py`。
   产物侧课码按 `^[0-9]{5}$` 设界（**R21**）：`build` 暂存目录（`.15043.promote.xxx`）在
   `mkdtemp` → `os.replace` 窗口内被中断时会残留，它不是课程，不得进入作用域键而产生噪声错误；
