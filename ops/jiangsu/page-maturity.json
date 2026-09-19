@@ -86,7 +86,6 @@
     "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "thin-required-pages",
       "lifecycle:draft",
       "completeness:metadata-only"
     ]
@@ -98,7 +97,6 @@
     "status": "draft",
     "maturity": "yellow",
     "reasons": [
-      "thin-required-pages",
       "lifecycle:draft",
       "completeness:metadata-only"
     ]

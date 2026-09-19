@@ -1,9 +1,12 @@
 """Unit and integration tests for evidence_gate (official facts + knowledge model)."""
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import shutil
 import sys
+from collections.abc import Callable
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -372,3 +375,278 @@ def test_evidence_gate_rejects_syllabus_sha256_drift(tmp_path: Path):
 
     errors = run_evidence_gate(fake_root)
     assert any("sha256" in e for e in errors), errors
+
+
+# ---- R54 3a：分母读取的三态（`>0` 用该值 / `0` 回退规范化渲染 / 两侧皆 0 失败关闭） -------------
+
+def _replace_syllabus_document(fake_root: Path, code: str, transform: Callable[[str], str]) -> Path:
+    """把某课抽取件**副本**的内容替换为 `transform(text)`，并同步 `evidence.json` 的 `sha256`。
+
+    同步 sha256 是为了让被观察到的失败**只**来自分母检查：否则 `syllabus.sha256 漂移`
+    （另一条独立检查）会同时报错，两条错误的来源无法区分。真实产物不受影响（GC2）。
+    """
+    evidence_file = fake_root / "sources" / "jiangsu" / "courses" / code / "evidence.json"
+    evidence = json.loads(evidence_file.read_text(encoding="utf-8"))
+    document = fake_root / evidence["syllabus"]["path"]
+    document.write_text(transform(document.read_text(encoding="utf-8")), encoding="utf-8")
+    evidence["syllabus"]["sha256"] = hashlib.sha256(document.read_bytes()).hexdigest()
+    evidence_file.write_text(json.dumps(evidence, ensure_ascii=False), encoding="utf-8")
+    return document
+
+
+def test_r54_declared_denominator_falls_back_to_the_normalized_rendering(tmp_path: Path):
+    """R54 3a：原文直读解不出（0）时必须回退到**规范化渲染**，不得把版式噪声判成「源文声明 0 个单元」。
+
+    构造 = `15040` 抽取件的**纯版式噪声**副本：文本逐字不变，只把 `\\n` 断行整体换成换页符 `\\x0c`
+    （真实抽取件里本来就有 31 个 `\\x0c`，属同一族版式噪声）。
+
+    **噪声为什么取 `\\x0c` 而不是 CR**（对 plan/design-notes 口径的一处收紧）：`Path.read_text()`
+    走 universal newlines，**读取时**就把 `\\r\\n` / `\\r` 译成 `\\n`，故 CR 噪声在闸门这一侧不可观测
+    （实测：CR-only 变体 raw / normalized 都是 61）。能真正落到「原文直读解不出」这个状态的是
+    `split("\\n")` 不认、而 `str.splitlines()` 认的分隔符（`\\x0c` / `\\x0b` / `\\u2028` / `\\u2029`）：
+    整篇被读成一行 → 行首锚定的 `PART_LABEL_RE` 必然失败 → 返回 0。修复前闸门据此报
+    「与考纲原文声明的考核单元数 0 不一致（-61 个单元被静默丢弃）」—— 源文一字未改的伪硬失败。
+    """
+    from lib.course_pipeline.knowledge_model import source_assessment_unit_count
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    assert not [e for e in run_evidence_gate(fake_root) if "15040" in e and "考核单元" in e], (
+        "对照前提：抽取件未改动时分母检查必须静默"
+    )
+
+    document = _replace_syllabus_document(fake_root, "15040", lambda text: text.replace("\n", "\x0c"))
+    evidence = json.loads(
+        (fake_root / "sources" / "jiangsu" / "courses" / "15040" / "evidence.json").read_text(encoding="utf-8")
+    )
+    heading = evidence["syllabus"]["requirements_heading"]
+    text = document.read_text(encoding="utf-8")
+
+    # 前提复现（两侧读数就是本条的判别力）：原文直读 0（伪硬失败的来源），规范化渲染 61（真实分母）
+    assert source_assessment_unit_count(text.split("\n"), heading) == 0
+    assert source_assessment_unit_count(text.splitlines(), heading) == 61
+
+    errors = run_evidence_gate(fake_root)
+    assert not [e for e in errors if "15040" in e and "考核单元" in e], errors
+
+
+def test_r54_declared_denominator_fails_closed_when_both_readings_are_zero(tmp_path: Path):
+    """R54 3a：`status == "extracted"` 却**两侧都解出 0** = 源侧损坏的矛盾态 → 必须失败关闭。
+
+    构造 = 把抽取件里 `Ⅲ 课程内容与考核要求` 的分部标记整体改成中文「三」（抽取/解码损坏形态），
+    两种读法都定位不到分部标记 → raw 0 / normalized 0。
+
+    **反向断言是这条的全部判别力**：不得退化成「源文声明 0 个单元」的分母比对 —— 那会报
+    「与考纲原文声明的考核单元数 0 不一致（-61 个单元被静默丢弃）」，即把「源侧分部标记整体损坏」
+    读成「源文声明了 0 个单元」，方向恰好反了（这份输入的真实语义是**多**出 61 个未计入单元）。
+    """
+    from lib.evidence_gate import run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    _replace_syllabus_document(
+        fake_root, "15040", lambda text: text.replace("Ⅲ 课程内容与考核要求", "三 课程内容与考核要求")
+    )
+
+    errors = run_evidence_gate(fake_root)
+    assert any("15040" in e and "两侧都解出 0" in e for e in errors), errors
+    assert not any("15040" in e and "声明的考核单元数 0" in e for e in errors), errors
+
+
+def test_r54_declared_denominator_does_not_judge_when_the_prerequisite_is_unavailable(tmp_path: Path):
+    """R54 3a 三态之一：前置不可用（未 `extracted` / 未记录小节 / 抽取件缺失）→ `None`（**不判定**）。
+
+    这是既有行为，不是失败关闭：读不到抽取件时不得臆造判定，也不得顺手报一条错
+    （`syllabus.sha256` 漂移 / 路径缺失由 `_eligibility_problems` 另行报出）。
+    """
+    from lib.evidence_gate import _declared_unit_count
+
+    errors: list[str] = []
+    unavailable = (
+        "not-a-dict",
+        {"status": "missing"},
+        {"status": "extracted", "path": None, "requirements_heading": "三、考核知识点与考核要求"},
+        {
+            "status": "extracted",
+            "path": "sources/jiangsu/processed/syllabus/99999-demo/document.extracted.md",
+            "requirements_heading": "三、考核知识点与考核要求",
+        },
+    )
+    for syllabus in unavailable:
+        assert _declared_unit_count(tmp_path, syllabus, "x/knowledge-model.json", errors) is None, syllabus
+    assert errors == [], errors
+
+
+# ---- W4.5（Task 0b）：章目索引交叉核对只对**空白**不敏感 ------------------------------------------
+
+def _chapter_index_errors(errors: list[str], code: str) -> list[str]:
+    """只挑「章目索引不一致」这一条判据的错误 —— 别的判据可能同时报，两者不能混为一谈。"""
+    return [e for e in errors if code in e and "章目索引不一致" in e]
+
+
+def test_w45_chapter_index_ignores_whitespace_but_still_fails_closed(tmp_path: Path):
+    """W4.5 / plan Task 0b：章号内部空白（页面表 `第6章` vs 模型 `第 6 章`）不再判失败，但**只**放过空白。
+
+    装置 = 副本仓 + 逐次只改写被观察的那一处，故「静默」与「报出」都归因到同一个比较。
+    ① / ①b 是正向变异（必须静默）；② 真改名 · ③ 少一行 · ④ 顺序对调是**必做负向控制**，
+    ⑤ 标题缺失 · ⑥ 只多一个非空白字符是加固 —— 死守卫纪律：守卫必须被证明会响，happy path 不算证据。
+    """
+    from lib.evidence_gate import _without_whitespace, run_evidence_gate
+
+    # 归一化面（本修复的全部放宽）：只删 `str.split()` 认的空白（含全角空格 U+3000），
+    # 标点 / 大小写 / 全半角 / 数字一律不动。
+    assert _without_whitespace(" 第 6 章\u3000Java A-B（x）\t") == "第6章JavaA-B（x）"
+
+    fake_root = _fake_root(tmp_path)
+    code = "15040"
+    model = fake_root / "sources" / "jiangsu" / "courses" / code / "knowledge-model.json"
+    page = fake_root / "content" / "jiangsu" / "courses" / code / "syllabus.md"
+    pristine = json.loads(model.read_text(encoding="utf-8"))
+    chapters = pristine["chapters"]
+    # 取第一个**带章序标签**的章：`导论` 这类标签内部插空白会被 `CHAPTER_TITLE_RE` 判成另一种非法，
+    # 那样「静默」就不是在断言这条比较了。
+    index = next(i for i, ch in enumerate(chapters) if re.match(r"^第", ch["title"]))
+    spaced = re.sub(r"^第(\S+)章", r"第 \1 章", chapters[index]["title"], count=1)
+    assert spaced != chapters[index]["title"], "变异必须真的改了空白"
+
+    def write(edited: list[dict]) -> list[str]:
+        data = json.loads(json.dumps(pristine))
+        data["chapters"] = edited
+        model.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        return run_evidence_gate(fake_root)
+
+    # 对照前提：副本仓未被变异时这条判据静默（否则下面的静默断言可能被别的错误掩盖）
+    assert _chapter_index_errors(run_evidence_gate(fake_root), code) == []
+
+    # ① 模型侧只在章号内加空白 → 静默（04747 5/13 行、04751 7/13 行的真实差异就是这个形态）
+    model_spaced = json.loads(json.dumps(chapters))
+    model_spaced[index]["title"] = spaced
+    assert _chapter_index_errors(write(model_spaced), code) == []
+
+    # ①b 同一变异打在**页面**表那一行 → 同样静默（两侧都归一化，不是只归一化模型）
+    original_page = page.read_text(encoding="utf-8")
+    head, table = original_page.split("### 章目索引", 1)
+    page.write_text(head + "### 章目索引" + table.replace(chapters[index]["title"], spaced, 1), encoding="utf-8")
+    assert page.read_text(encoding="utf-8") != original_page, "页面侧变异必须真的落上"
+    assert _chapter_index_errors(write(chapters), code) == []
+    page.write_text(original_page, encoding="utf-8")
+
+    # ② 真改名（非空白字符变了）→ 必须失败关闭
+    renamed = json.loads(json.dumps(chapters))
+    renamed[index]["title"] = "第一章 被改名的章"
+    assert _chapter_index_errors(write(renamed), code), "章名真不同必须仍报章目索引不一致"
+
+    # ③ 少一行 → 必须失败关闭
+    assert _chapter_index_errors(write(chapters[1:]), code), "少一行必须仍报章目索引不一致"
+
+    # ④ 顺序对调 → 必须失败关闭
+    reordered = json.loads(json.dumps(chapters))
+    reordered[0], reordered[1] = reordered[1], reordered[0]
+    assert _chapter_index_errors(write(reordered), code), "顺序对调必须仍报章目索引不一致"
+
+    # ⑤ 标题缺失 → 非字符串原样返回，与页面表字符串不等 ⇒ 仍失败关闭（且不得抛 `TypeError`）
+    blind = json.loads(json.dumps(chapters))
+    blind[index].pop("title")
+    assert _chapter_index_errors(write(blind), code), "章标题缺失必须仍报章目索引不一致"
+
+    # ⑥ 在 ① 的空白形态上再补一个非空白字符（句号）→ 必须失败关闭：归一化**不**吞标点
+    punctuated = json.loads(json.dumps(model_spaced))
+    punctuated[index]["title"] = spaced + "。"
+    assert _chapter_index_errors(write(punctuated), code), "只多一个标点也必须报章目索引不一致"
+
+
+# ---- W6（QC1 Q1-2）：章目索引交叉核对的三态 —— 无该段跳过 / 有段有行比较 / 有段零行失败关闭 ------
+
+# 真树当前形态：5 门课有该段（第二来源可读），2 门课没有（跳过；其覆盖面缺口由 PM 另行登记，
+# 不在本席位范围）。两侧都由 `test_w6_chapter_index_normal_compare_still_runs` 断言。
+CHAPTER_INDEX_PRESENT = ("04747", "04751", "15040", "15043", "15044")
+CHAPTER_INDEX_ABSENT = ("00898", "02333")
+
+
+def test_w6_chapter_index_present_but_unparseable_fails_closed(tmp_path: Path):
+    """W6 / QC1 Q1-2：`### 章目索引` **存在却解析不出行** → 失败关闭，不得与「无该段」一样静默。
+
+    装置 = 副本仓 + 只改写 `15040` 的页面表：页面侧的唯一读点就是本判据，故「静默」与「报出」
+    都归因到同一个分支。变异前整闸门 0 errors，变异后必须**恰好多出这一条** ——
+    退化成 `None`（旧 `rows or None`）时 `errors` 回到 `[]`，本用例即红。
+    """
+    from lib.evidence_gate import CHAPTER_INDEX_HEADING, run_evidence_gate
+
+    fake_root = _fake_root(tmp_path)
+    code = "15040"
+    page = fake_root / "content" / "jiangsu" / "courses" / code / "syllabus.md"
+
+    # 对照前提：副本仓未变异 → 该段可读、本条判据静默（否则下面的「报出」不可归因）
+    assert run_evidence_gate(fake_root) == []
+
+    # 变异 ①：数据行整体丢掉列分隔符 → 一行都进不了 `rows`
+    head, table = page.read_text(encoding="utf-8").split(CHAPTER_INDEX_HEADING, 1)
+    page.write_text(head + CHAPTER_INDEX_HEADING + table.replace("|", " "), encoding="utf-8")
+    assert CHAPTER_INDEX_HEADING in page.read_text(encoding="utf-8"), "变异必须保住该段标题"
+    errors = run_evidence_gate(fake_root)
+    assert len(errors) == 1, errors
+    assert "章目索引存在但解析不出行" in errors[0], errors
+    assert f"content/jiangsu/courses/{code}/syllabus.md" in errors[0], errors
+
+    # 变异 ②：另一种「零行」形态 —— 表体被抽空，只剩标题与表头骨架（渲染中断的形态）
+    page.write_text(head + CHAPTER_INDEX_HEADING + "\n\n| 章序 | 章名 |\n| --- | --- |\n", encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert len(errors) == 1 and "章目索引存在但解析不出行" in errors[0], errors
+
+
+def test_w6_chapter_index_absent_section_still_skips(tmp_path: Path):
+    """W6 第一态（既有行为，不得改动）：无该页 / 无该段 → `None` **且不记错误**。
+
+    `00898` / `02333` 靠这一态继续通过（AC2）；`15040` 副本删掉整页后同样必须跳过 ——
+    新分支只认「该段存在」，不把「读不到行」一概当失败。
+    """
+    from lib.evidence_gate import CHAPTER_INDEX_HEADING, _chapter_titles_from_syllabus, run_evidence_gate
+
+    errors: list[str] = []
+    # ① 真树上两门无该段的 L1 课
+    for code in CHAPTER_INDEX_ABSENT:
+        page = ROOT / "content" / "jiangsu" / "courses" / code / "syllabus.md"
+        assert page.is_file() and CHAPTER_INDEX_HEADING not in page.read_text(encoding="utf-8"), code
+        assert _chapter_titles_from_syllabus(ROOT, code, "x/knowledge-model.json", errors) is None, code
+
+    # ② 连页面都不存在的课码
+    assert _chapter_titles_from_syllabus(ROOT, "99999", "x/knowledge-model.json", errors) is None
+    assert errors == [], errors
+
+    # ③ 端到端：真树上整闸门仍是 0 errors
+    assert run_evidence_gate(ROOT) == []
+
+    # ④ 反向控制：把有该段课程的**整页**删掉 → 退化成跳过，而不是被新分支判失败
+    fake_root = _fake_root(tmp_path)
+    (fake_root / "content" / "jiangsu" / "courses" / "15040" / "syllabus.md").unlink()
+    assert run_evidence_gate(fake_root) == [], "无该页必须跳过（新分支只认「该段存在」）"
+
+
+def test_w6_chapter_index_normal_compare_still_runs(tmp_path: Path):
+    """W6 第二态：有该段且解出 ≥1 行 → 比较照旧运行（W4.5 的空白不敏感语义未动）。
+
+    两个方向都断言：① 两侧都有数据且行数相等 ⇒ 比较真的在跑并通过（不是被新分支变成跳过）；
+    ② 模型侧真改名 ⇒ 仍报「章目索引不一致」，且**不**报 W6 的新错误（两条判据不互相冒充）。
+    """
+    from lib.evidence_gate import _chapter_titles_from_syllabus, run_evidence_gate
+
+    errors: list[str] = []
+    for code in CHAPTER_INDEX_PRESENT:
+        model = json.loads(
+            (ROOT / "sources" / "jiangsu" / "courses" / code / "knowledge-model.json").read_text(encoding="utf-8")
+        )
+        titles = _chapter_titles_from_syllabus(ROOT, code, "x/knowledge-model.json", errors)
+        assert titles and len(titles) == len(model["chapters"]), (code, titles)
+    assert errors == [], errors
+    assert run_evidence_gate(ROOT) == []
+
+    # ② 比较仍是活的：模型侧改一个章名 → 报「章目索引不一致」
+    fake_root = _fake_root(tmp_path)
+    code = "15040"
+    target = fake_root / "sources" / "jiangsu" / "courses" / code / "knowledge-model.json"
+    data = json.loads(target.read_text(encoding="utf-8"))
+    index = next(i for i, ch in enumerate(data["chapters"]) if re.match(r"^第", ch["title"]))
+    data["chapters"][index]["title"] = "第一章 被改名的章"
+    target.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+    errors = run_evidence_gate(fake_root)
+    assert _chapter_index_errors(errors, code), errors
+    assert not any("章目索引存在但解析不出行" in e for e in errors), errors

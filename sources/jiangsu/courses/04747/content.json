@@ -1,0 +1,2597 @@
+{
+  "schema_version": 1,
+  "course_code": "04747",
+  "generated_at": "2026-09-19",
+  "generator": {
+    "backend": "agent",
+    "model": "harness-agent",
+    "prompt_versions": {
+      "explain_point": "v1",
+      "memorize_point": "v1",
+      "drill_point": "v1",
+      "stage_plan": "v1"
+    }
+  },
+  "stage_plan": [
+    {
+      "stage": "入门",
+      "goal": "先看清本课考什么、按什么方式考，建立从第1章到第13章的整体框架，不急于记细节。",
+      "inputs": [
+        "考纲章节目录与各章考核点清单（13 章、42 个考核点，其中 4 章不作考核要求）",
+        "本课应试总览（六种题型与作答纪律）"
+      ],
+      "how": [
+        "通读考纲目录，把 13 章的标题抄成一页提纲，标出哪些章是考核章、哪些章不作考核要求。",
+        "按章翻一遍要点梳理，只求认出概念名称以及它属于哪一章，不要求记住细节。",
+        "先读本课应试总览，弄清只考哪六种题型、主观题与程序题分别怎么作答。"
+      ],
+      "outputs": [
+        "一页纸的课程提纲，含各章标题与自己标注的重点章"
+      ],
+      "done_when": "能不看资料说出本课共有哪几章、每章大致考什么主题，并指出自己最陌生的两章。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "精读",
+      "goal": "把 42 个考核点逐个读通，做到看见考点名称就能说出它的界定、构成与所在位置。",
+      "inputs": [
+        "本课全部考点讲解块与记忆块",
+        "考纲中各章的重点说明"
+      ],
+      "how": [
+        "按章顺序逐个考点读讲解，读一个就合上材料把要点复述一遍，说不出来就回头再读。",
+        "每个考点读完再读它的记忆块，把关键词、口诀或对比表抄到笔记的同一页上。",
+        "读完全章后回头对照本章重点，检查自己是否漏掉了考纲点名的内容。"
+      ],
+      "outputs": [
+        "按章组织的考点笔记，每个考点一行界定加一行记忆抓手"
+      ],
+      "done_when": "任取一个考点，能说出它的界定、关键词以及它属于哪一章哪一节。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "刷题",
+      "goal": "把每个考点的练习题至少做一遍，形成错题清单，并能说清每道错题错在哪里。",
+      "inputs": [
+        "本课每个考点配的练习题与答案解析",
+        "第 8 章至第 10 章涉及的界面与 Applet 相关代码片段"
+      ],
+      "how": [
+        "按章做题，先自己写出答案再对照解析，不要边看解析边作答。",
+        "单项选择题与填空题重点看干扰项为什么错；简答题重点比对自己的要点是否齐全。",
+        "程序改错题与程序分析题把代码抄到纸上手工走一遍，逐步写出变量的取值变化。",
+        "程序设计题先写类与方法签名，再补方法体，写完用一组简单数据自行验证。"
+      ],
+      "outputs": [
+        "错题清单，逐条写明题号、错因与正确做法"
+      ],
+      "done_when": "错题清单上的每一道题都能不看答案讲出正确思路，并能指出自己当初错在哪一步。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "冲刺",
+      "goal": "把全课考点压缩成可快速回看的清单，程序题能限时写出完整可读的代码。",
+      "inputs": [
+        "按章组织的考点笔记与错题清单",
+        "本课应试总览中的作答顺序与检查要点"
+      ],
+      "how": [
+        "只看笔记与错题清单回看全课，遇到卡住的考点才回到讲解块重读。",
+        "把容易混淆的成对概念并排写在一张表上（如继承与组合、模式与非模式对话框）。",
+        "按题型各挑题目限时练手，程序题重点练书写规范：类名、入口方法、大括号配对与分号。"
+      ],
+      "outputs": [
+        "两到三页的考点速查清单，以及一份按题型整理的程序题书写检查表"
+      ],
+      "done_when": "能在限定时间内完整答完一份自选练习，程序题的代码可直接通过阅读检查出错误。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    },
+    {
+      "stage": "复盘",
+      "goal": "把全部错题与易错点再过一遍，确认没有遗留的知识盲区，稳定应试状态。",
+      "inputs": [
+        "错题清单、考点速查清单与程序题书写检查表"
+      ],
+      "how": [
+        "重做错题清单上的题目，只看题干不看答案，做对的划掉，仍错的单独标记。",
+        "把仍然做错的考点与其讲解块对照重读，找出是概念没分清还是书写不熟练。",
+        "按应试总览的作答顺序完整模拟一遍作答流程，重点是时间分配与检查步骤。"
+      ],
+      "outputs": [
+        "一份只剩少量条目的最终待复习清单"
+      ],
+      "done_when": "错题清单上不再有做错的题目，且能不看资料说出六种题型各自的作答要求。",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "knowledge-model:chapters"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "block_id": "04747-ch01-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch01-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L103"
+      ],
+      "text_md": "### 要点梳理\n- 出身：Java 由 Sun 公司研发，最初服务于消费类电子设备的嵌入式控制，1995 年正式对外发布，随后随万维网兴起转向网络应用。\n- 归属：Sun 被 Oracle 收购后，Java 由 Oracle 继续维护，语言规范通过公开的社区流程演进。\n- 平台划分：面向桌面与基础类库的 Java SE、面向企业级服务的 Java EE、面向移动与嵌入端的 Java ME，共同构成 Java 的技术体系。\n- 生命力所在：跨平台能力与长期向后兼容，使同一份源程序能在不同操作系统与硬件上运行，早期编写的代码今天仍可编译运行。\n- 发展主线：从「为设备写控制程序」到「为网络写应用」，再到覆盖服务端、桌面端与移动端的主流开发语言之一。\n### 易错点\n- 把 Java 与 JavaScript 混为一谈：两者名字相近，来源与用途都不同，Java 是编译型、面向对象的通用语言，JavaScript 主要运行在浏览器里处理网页脚本。\n- 只记公司不记转折：Java 的普及关键是与万维网结合，早期定位其实是嵌入式设备，不要答成「一开始就为网络而生」。\n- 把三个平台分支写成包含关系：SE、EE、ME 面向不同应用方向，是并列关系，不是 SE 包含 EE 的层级关系。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch01-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L103"
+      ],
+      "text_md": "**关键词**：Sun 起步、Oracle 接手；嵌入式出身、万维网转折；SE / EE / ME 三分；跨平台、向后兼容。\n**记忆法**：把发展线串成一句话记 —— 「一家公司（Sun）→ 两个阶段（设备 → 网络）→ 三个平台（SE、EE、ME）」。\n**对比**：SE 是语言核心与桌面，EE 管企业级服务，ME 管移动与嵌入端；三者是同一门语言的不同应用面，不是新旧替代关系。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch01-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L103"
+      ],
+      "text_md": "关于 Java 语言的产生和发展，下列表述正确的是（　）\nA. Java 最初用于消费类电子设备的嵌入式控制，后来随着万维网的发展转向网络应用\nB. Java 自发布起就以网络应用为唯一目标，与嵌入式设备无关\nC. Java 是由 Microsoft 公司研发并长期维护的语言\nD. Java SE、Java EE、Java ME 是新旧三代版本，后者依次取代前者",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，「先设备、后网络」是 Java 发展过程的基本线索，早期定位确为嵌入式控制。\nB 项错误，它把后来的重心当成了最初的定位，漏掉了发展中的转折。\nC 项错误，Java 由 Sun 公司研发，Sun 被收购后由 Oracle 维护，与 Microsoft 无关。\nD 项错误，SE、EE、ME 是面向不同应用方向的并列分支，不是互相取代的版本序列。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch01-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch01-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L103"
+      ],
+      "text_md": "### 要点梳理\n- 平台的含义：Java 平台由 Java 虚拟机与标准类库两部分组成，源代码并不直接面向操作系统，而是面向这一层平台。\n- 三个分支：Java SE 提供语言核心、基础类库与桌面运行环境；Java EE 在其之上提供服务器端组件与公共服务；Java ME 面向资源受限的移动与嵌入式设备。\n- 应用落点：SE 用于桌面工具，EE 用于网站后台与企业信息系统，ME 用于手机与机顶盒一类终端。\n- 关系：SE 是另外两个分支的共同基础，EE 与 ME 各自在 SE 之上增加面向特定场景的类库与运行支持。\n- 选择依据：独立桌面程序用 SE，被服务器统一部署的用 EE，受限于终端资源的用 ME。\n### 易错点\n- 把 Java 平台等同于虚拟机：平台是「虚拟机 + 类库」的整体，只有虚拟机而没有配套类库，程序里的标准类根本无从调用。\n- 把 EE 说成「更大的 SE」：EE 不是把 SE 放大，而是在 SE 之上补齐服务端所需的组件与规范。\n- 认为 ME 已经替代 SE：三者面向不同设备与场景，长期并存，不存在谁取代谁。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch01-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L103"
+      ],
+      "text_md": "**关键词**：虚拟机 + 类库 = 平台；SE 桌面、EE 服务端、ME 移动嵌入。\n**记忆法**：用「一台机器、三间房子」记 —— 虚拟机是那台机器，SE、EE、ME 是建在同一台机器上的三间用途不同的房子。\n**串联**：写代码时不问操作系统，只问平台：要独立跑桌面程序找 SE，要被服务器部署找 EE，要装进小设备找 ME。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch01-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L103"
+      ],
+      "text_md": "阅读下面的 Java 程序，回答问题。\n\npublic class PlatformDemo {\n    public static void main(String[] args) {\n        String[] langs = {\"Java SE\", \"Java EE\", \"Java ME\"};\n        for (int i = 0; i < langs.length; i++) {\n            System.out.println(\"平台分支 \" + (i + 1) + \"：\" + langs[i]);\n        }\n    }\n}\n\n问题：该程序编译后能否直接在装有 Java 运行环境的机器上运行？它体现了 Java 哪个平台分支的能力？请说明理由。",
+      "question_type": "程序分析题",
+      "answer_md": "参考答案：\n1. 能直接运行。程序只用到了字符串、数组与标准输出这几项基础能力，不需要服务器容器，也不需要移动终端的运行时。\n2. 它体现的是 Java SE 的能力。Java SE 提供语言核心、基础类库与桌面运行环境，是另外两个分支的共同基础。\n3. 之所以可以直接运行，是因为源程序先被编译成与平台无关的字节码，再由目标机器上的 Java 虚拟机负责执行，换了机器不必重新编译。\n4. 如果同样的逻辑改由服务器统一部署、供大量用户并发访问，才需要 Java EE 那一套服务端技术；\n   若要装进资源受限的终端设备，则属于 Java ME 的场景。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch01-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch01-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "### 要点梳理\n- 跨平台：源程序编译成字节码后交给 Java 虚拟机执行，同一份字节码可以在不同操作系统与硬件上运行，这是 Java 最核心的特点。\n- 面向对象：以类为基本单位，封装、继承与多态贯穿语言设计，程序结构贴近现实问题的划分方式。\n- 简单与安全：去掉了指针运算一类容易出错的能力，由运行环境承担内存管理与边界检查，降低越界访问的风险。\n- 多线程与网络能力：语言层面内置线程支持，类库对网络通信有完整封装，适合编写并发与联网程序。\n- 健壮与可移植：强类型检查、异常处理机制与统一的类库接口，使程序在不同环境下表现一致。\n### 易错点\n- 把「跨平台」理解成「不需要编译」：Java 仍要先把源程序编译成字节码，跨平台靠的是虚拟机这一中间层。\n- 把面向对象说成「用了很多类」：关键在于封装、继承、多态三项机制，而不只是文件里出现了 class 这个词。\n- 把「简单」答成「功能少」：Java 的简单指去掉了易出错的语言成分、语法规则统一，并不是能力弱。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch01-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "**关键词**：跨平台（字节码 + 虚拟机）、面向对象、简单、安全、多线程、网络、健壮。\n**记忆法**：记成「一个中间层 + 三项机制 + 三门能力」—— 中间层是虚拟机，三项机制是封装、继承、多态，三门能力是线程、网络、异常处理。\n**对比**：跨平台讲的是同一份字节码换机器照样跑；可移植讲的是换环境后行为一致。方向相同，落点不同，答题时不要互相顶替。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch01-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "简述 Java 语言的主要特点，并指出其中哪一项最能解释「同一份源程序换一台机器仍然可以运行」这一现象。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 跨平台性是首要特点：源程序编译成与平台无关的字节码，由目标机器上的 Java 虚拟机解释执行，因此换机器不必重新编译。\n2. 面向对象：以类组织数据与操作，支持封装、继承与多态，便于代码复用和功能扩展。\n3. 简单易用：语法规则统一，去掉了指针这类直接操作内存的成分，学习门槛较低。\n4. 安全与健壮：由虚拟机负责内存管理与边界检查，再配合异常处理机制，避免个别错误导致整个程序崩溃。\n5. 支持多线程与网络编程：语言与类库内置线程和网络通信能力，适合编写并发与联网应用。\n6. 综合来看，能直接解释这一现象的是跨平台性，它的实现依赖「字节码 + 虚拟机」这一中间层。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch01-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "04747-ch01-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "### 要点梳理\n- 三个组成部分：Java 虚拟机负责执行字节码，类库提供现成的类与方法，开发工具负责把源程序编译成字节码。\n- 运行链条：写好的源文件经编译产生字节码文件，再由虚拟机加载执行；装载、校验、解释执行依次进行。\n- 环境变量：为了让命令行在任意目录下都能找到编译与运行命令，需要把工具所在目录写进系统的搜索路径。\n- 类名与文件名：含 public 类的源文件，其名字必须与类名完全一致（含大小写），否则编译阶段就会失败。\n- 入口约定：虚拟机只把固定写法的 main 方法当作程序起点，签名写错则运行时报找不到入口。\n### 易错点\n- 把编译与运行混为一步：两者是先后两个动作，先编译出字节码才能运行，顺序颠倒必然失败。\n- 认为装了虚拟机就能编译：运行环境与开发工具是两回事，只有虚拟机时能运行已有的字节码，却编译不了新的源文件。\n- 忽略大小写：类名、文件名以及 System 这类标准类名都区分大小写，写错一个字母就找不到符号。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch01-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "**关键词**：虚拟机、类库、开发工具；先编译后运行；类名 = 文件名；固定写法的 main 是入口。\n**记忆法**：按「三步走」记 —— 写文件（名字随类名）→ 编译（生成字节码）→ 运行（虚拟机找入口），每一步都有各自的失败点。\n**对比**：虚拟机是执行者，开发工具是生产者。只有执行者时只能跑现成的字节码，要生产新的字节码就必须装开发工具。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "04747-ch01-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "下面的程序希望输出一行问候语，但在运行环境的配置与书写规范上存在错误，请指出并改正。\n\n文件名为 hello.java：\n\npublic class Hello {\n    public void main(String args) {\n        system.out.println(\"Hello, Java!\");\n    }\n}\n\n问题：指出上面程序中属于运行环境与书写规范方面的错误，逐条说明原因，并给出改正后的完整程序。",
+      "question_type": "程序改错题",
+      "answer_md": "参考答案：\n1. 文件名与类名不一致。含 public 类的源文件，其文件名必须与类名完全相同（含大小写），Hello 类应当保存在 Hello.java 中。\n2. 入口方法的签名不完整。虚拟机只把 public static void main(String[] args) 当作程序起点，缺少 static 修饰符，或把参数写成 String args，都会导致运行时找不到入口。\n3. 标准输出类名大小写错误。System 是类名，首字母必须大写；system 不是标准类库中的名字，编译阶段就会报找不到符号。\n4. 改正后的程序（文件名为 Hello.java）：\npublic class Hello {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, Java!\");\n    }\n}\n5. 改完后先执行编译命令生成字节码，再执行运行命令让虚拟机加载该字节码，两步顺序不能颠倒。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch01-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "04747-ch01-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "### 要点梳理\n- 定位：Applet 是一类嵌入网页、由支持 Java 的浏览器加载执行的小应用程序，它自身没有独立的启动入口。\n- 与页面的配合：Applet 的字节码放在服务器上，网页里用专门的标签指明它的位置与显示区域，浏览器下载后再运行。\n- 生命周期：加载、初始化、启动、停止、销毁依次发生，每一步都对应一个可重写的方法，浏览器在页面切换时自动调用。\n- 能力边界：Applet 运行在浏览器提供的安全限制之内，默认不能随意读写本地文件，也不能任意连接其他主机。\n- 现状：随着浏览器逐步取消对插件的支持，Applet 已不再是主流做法，但它的生命周期思想与事件驱动方式仍影响后续的图形界面编程。\n### 易错点\n- 说 Applet 有 main 方法：Applet 由浏览器按生命周期方法驱动，入口不是 main，这是它与普通应用程序最直观的区别。\n- 把 Applet 与 Servlet 混为一谈：前者运行在浏览器一侧负责显示，后者运行在服务器一侧负责处理请求，方向正好相反。\n- 认为 Applet 可以随意访问本地文件：安全限制正是它存在的边界，越过边界需要用户显式授权。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch01-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "**关键词**：嵌入网页、浏览器加载、无 main、安全沙箱、生命周期方法。\n**记忆法**：把生命周期记成「生、启、停、亡」四步 —— 初始化（生）、启动（启）、停止（停）、销毁（亡），浏览器按页面状态自动走这四步。\n**对比**：普通应用程序由虚拟机调 main 启动，Applet 由浏览器按状态调方法启动；前者是「程序找入口」，后者是「环境推着走」。"
+    },
+    {
+      "block_id": "04747-ch01-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "04747-ch01-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L104"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\nApplet 是一种可以嵌入网页、由支持 Java 的浏览器加载执行的 ______ 程序。它没有 main 方法，\n启动时机由浏览器根据页面状态决定；又因为它运行在浏览器提供的安全限制之内，通常不能直接读写本地文件。\n\n问题：补全上面横线处的内容，并说明 Applet 与普通 Java 应用程序在启动方式上的两点区别。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「小应用程序」，也可答「嵌入网页运行的 Java 小程序」。\n2. 区别之一是入口不同：普通应用程序由虚拟机直接调用 main 方法启动，Applet 没有 main 方法。\n3. 区别之二是驱动者不同：Applet 由浏览器在页面加载、切换等时机按生命周期方法依次调用，启动与停止都跟着页面的状态走。\n4. 由此还带来一处差别：普通应用程序在命令行或桌面环境下独立运行，Applet 必须嵌在网页中，随页面一起下载和执行。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch02-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch02-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L115"
+      ],
+      "text_md": "### 要点梳理\n- 定义：关键字是 Java 语言事先规定、含义固定的单词，只能按语言规定的用法出现，不能另作他用。\n- 书写特征：全部由小写字母组成，如 class、public、static、void、int、if、while、new。\n- 用途分组：声明类与方法、规定访问权限、定义数据类型、书写流程控制。\n- 硬约束：关键字不能用作类名、变量名或方法名，违反时编译器直接报错，这属于语法层面的限制，不是风格建议。\n- 相关概念：语言还保留了一些暂未使用的词，同样不允许作为自定义名字。\n### 易错点\n- 把 true、false、null 当普通标识符：它们是语言规定的固定写法，不能拿来当变量名使用。\n- 大小写不辨：关键字一律小写，写成 Class、Public 就不再是关键字，编译器会把它当成自定义名字去查找，反而报找不到符号。\n- 把关键字与类库类名混淆：String、System 是标准类库中的类名，属于标识符，只是习惯上首字母大写，并不是关键字。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch02-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L115"
+      ],
+      "text_md": "**关键词**：全小写、含义固定、不能占用；class、public、static、void、int、if、while、new、return。\n**记忆法**：按用途分四组记 —— 声明类与方法（class、void、static）、管访问权限（public、private）、定数据类型（int、double、boolean、char）、控流程（if、else、while、for、switch、return）。\n**对比**：关键字与标识符的区别只有一句话 —— 关键字是语言自己定好名字的词，标识符是程序员自己起的名字。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch02-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L115"
+      ],
+      "text_md": "下列关于 Java 关键字的表述，正确的是（　）\nA. 关键字可以改作变量名，只要不引起编译错误\nB. 关键字是 Java 语言预先规定、含义固定的单词，一律由小写字母组成\nC. String 与 System 都是 Java 关键字\nD. 关键字只要把首字母大写，就可以用作类名",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，关键字由语言预先规定且含义固定，书写形式全部为小写字母。\nA 项错误，关键字不能用作变量名、类名或方法名，编译器会直接报错。\nC 项错误，String 与 System 是标准类库中的类名，属于标识符，不是关键字。\nD 项错误，把首字母改成大写并不能使它变成标识符，用关键字作类名仍然非法。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch02-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch02-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L115"
+      ],
+      "text_md": "### 要点梳理\n- 定义：自定义标识符是程序员为类、变量、方法等自己起的名字，用来在一段程序里区分不同的对象。\n- 字符范围：只能由字母、数字、下划线 _ 与美元符号 $ 组成，不能出现空格、连字符等其它符号。\n- 首字符规则：第一个字符不能是数字，必须是字母、下划线或美元符号；其余位置可以出现数字。\n- 大小写敏感：count 与 Count、Total 与 total 都是彼此不同的名字，拼写不一致就会找不到符号。\n- 命名习惯：类名首字母大写（如 Student），变量与方法名首字母小写（如 score、getName），常量全大写并用下划线分词，名字要能说明用途。\n### 易错点\n- 用关键字作名字：int、class、new 这类词即便是小写、看起来像普通单词，也一律不能当标识符。\n- 名字里带连字符或空格：连字符在语言里是减号，写成 my-name 会被解析成减法运算，而不是一个名字。\n- 认为名字可以随意起：名字除了合法，还要有意义；用 a1、b2 这类名字虽然能编译通过，却让程序难以维护。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch02-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L115"
+      ],
+      "text_md": "**关键词**：字母 / 数字 / 下划线 / 美元符号；首字符不能是数字；区分大小写；不能占用关键字。\n**记忆法**：记成「一条边界、两个不能」—— 边界是四类允许字符，两个不能是首字符不能为数字、名字不能是关键字。\n**对比**：类名首字母大写、变量与方法名首字母小写，这条约定只要记住「大写的是类型，小写的是个体」，就能在阅读别人代码时迅速分清。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch02-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L115"
+      ],
+      "text_md": "阅读下面的程序，回答问题。\n\npublic class NameCheck {\n    public static void main(String[] args) {\n        int 2count = 5;\n        int count_2 = 6;\n        int total = 2count + count_2;\n        System.out.println(total);\n    }\n}\n\n问题：该程序哪一行不能通过编译？为什么？请按自定义标识符的命名规则说明理由，并给出可行的改法。",
+      "question_type": "程序分析题",
+      "answer_md": "参考答案：\n1. 不能通过编译的是 int 2count = 5; 这一行，因为标识符不能以数字开头，2count 的首字符是数字。\n2. 自定义标识符只能由字母、数字、下划线 _ 与美元符号 $ 组成，并且第一个字符不能是数字。\n3. 同一段程序里大小写敏感，count 与 Count 是两个不同的名字；同时名字不能与语言规定的关键字重名。\n4. 可行的改法是把它改成以字母或下划线开头的写法，例如 count2 或 _2count，程序其余部分不必改动。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch02-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch02-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "### 要点梳理\n- 写法：以两个斜线 // 开头，从该处直到本行结束的全部内容都被编译器忽略。\n- 作用：给代码加一句说明，或者临时让某一行语句失效以便排查问题，属于写给人和自己看的文字。\n- 位置：既可独占一行写在语句上方，也可跟在一条语句的右侧写在同一行末尾。\n- 生效范围：只在本行内有效，不能跨行；换行之后必须重新写 // 才会继续被当成注释。\n- 与文档注释的分工：单行注释是写给人读的实现说明，不参与自动生成对外文档，因此不必写成结构化的格式。\n### 易错点\n- 想在单行注释里用记号结束注释：// 没有结束标记，本行从第一个 // 起全部是注释，再写什么记号都不起作用。\n- 把 // 当成除号：除法运算符只有一个斜线，双斜线是注释的开头，两者含义完全不同。\n- 以为注释会留在程序里：注释在编译阶段就被丢弃，既不进入字节码，也不影响运行速度。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch02-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "**关键词**：双斜线开头、本行有效、可写在语句上方或行尾、只给人读。\n**记忆法**：记成「一斜线除、两斜线注」—— 单个 / 是除号，成对的 // 是注释；再补一句「一行为止」，写法和范围就一起记住了。\n**串联**：三种注释按长短排队 —— 单行注释管一行，多行注释管一段，文档注释管对外说明；写得越正式，越可能被工具提取。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch02-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "简述 Java 单行注释的书写方式与生效范围，说明它最常见的两种使用场合，并指出它与文档注释在用途上的区别。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 书写方式：以两个斜线 // 开头，从 // 到本行结束的所有内容都作为注释，编译器不做处理。\n2. 生效范围：只限于本行，不能延续到下一行；换行后需要重新写 // 才会继续产生注释。\n3. 使用场合之一：在语句上方或行尾写说明，解释这段代码做什么、为什么这样做，方便日后维护。\n4. 使用场合之二：调试时把暂时不想执行的语句注释掉，确认问题后再恢复，比反复删除重写更稳妥。\n5. 需要注意：单行注释不参与文档生成，若希望说明被工具提取成对外文档，应当改用文档注释。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch02-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "04747-ch02-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "### 要点梳理\n- 写法：以 /* 开头、以 */ 结束，夹在两者之间的所有内容都是注释，可以跨越多行。\n- 生效范围：从开头的记号一直延伸到第一个结束记号，中间的内容无论多少行都不会被编译。\n- 用途：适合临时屏蔽一整段代码，或在方法、类之前写一段较长的说明。\n- 不允许嵌套：注释内部再出现开头的记号不会开启第二层注释，反而会与最先出现的结束记号配成一对，提前结束注释。\n- 与文档注释的区别：两者都以 /* 起头，但文档注释多写一个星号，且写在被说明的声明正上方，可被文档工具提取。\n### 易错点\n- 在注释里嵌套同类注释：这是最常见的误用，会导致注释提前结束，其后的正文被当成代码而报语法错误。\n- 忘记写结束记号：注释会一直吞掉后面的代码，直到文件里出现下一个结束记号，报错位置往往离真正的问题很远。\n- 用注释代替删除：把废弃代码长期留在注释里会让文件越来越难读，确认无用后应当直接删掉。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch02-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "**关键词**：/* 开头、*/ 结束、可跨多行、不能嵌套。\n**记忆法**：记成「有头有尾、只此一层」—— 头是 /*，尾是 */，两个记号配成一对；再补「只此一层」，嵌套这个坑就记住了。\n**对比**：多行注释以 /* 开头，文档注释以 /** 开头，多一个星号就是「对外说明」的身份标记。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "04747-ch02-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "下面的程序想用多行注释说明一段逻辑，但注释的写法存在错误，请指出并改正。\n\npublic class BlockNote {\n    public static void main(String[] args) {\n        /* 下面这段代码计算两数之和\n           临时保留，便于对照\n        int a = 3;\n        int b = 4;\n        System.out.println(a + b);\n        /* 结束 */\n    }\n}\n\n问题：指出注释写法上的错误并说明原因，然后给出改正后的完整程序。",
+      "question_type": "程序改错题",
+      "answer_md": "参考答案：\n1. 错误在于多行注释内部又写出了开头的记号。多行注释不允许嵌套，内层那个记号只会被当成普通字符。\n2. 后果：文件里最先出现的结束记号会提前终止整段注释，其后的正文被编译器当作代码处理，于是产生语法错误。\n3. 改正办法：把内层的开头记号去掉，换成普通文字，例如只写「结束」两字，或者改用单行注释逐行标注。\n4. 改正后的程序如下：\npublic class BlockNote {\n    public static void main(String[] args) {\n        int a = 3;\n        int b = 4;\n        System.out.println(a + b);\n    }\n}\n5. 使用建议：需要临时屏蔽一整段代码时，用一对起止记号把整段包住，段内不要再出现这对记号。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch02-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "04747-ch02-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "### 要点梳理\n- 写法：以 /** 开头、以 */ 结束，比普通多行注释多写一个星号，这是它被工具识别的身份标记。\n- 位置：写在类、方法或成员变量声明的正上方，紧贴被说明的对象，中间不插其它语句。\n- 内容结构：先用一句话概括作用，再用 @ 开头的标记分别说明，如 @param 注参数含义、@return 注返回值、@author 注作者。\n- 作用：既能给人看，也能被文档工具按结构提取，自动生成类与方法的说明文档。\n- 与其它注释的分工：单行注释与多行注释只是写给人读的实现说明，编译阶段即被丢弃；只有文档注释能进入对外文档。\n### 易错点\n- 位置放错：把文档注释写在语句中间或方法体内部，工具不会把它算作该声明的说明，注释就白白浪费了。\n- 少写一个星号：/** 与 /* 只差一个字符，写成后者就退化成普通多行注释，不会被文档工具提取。\n- 用 @ 标记却写错名字：标记名拼错时工具不会报错，但生成的文档里对应条目会缺失，属于不易察觉的错误。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch02-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "**关键词**：/** 开头、写在声明正上方、@ 标记、可被文档工具提取。\n**记忆法**：记成「三个记号一支笔」—— 单星 /* 管一段、双星 /** 管对外、双斜线 // 管一行；「一支笔」指 @ 标记负责分项注明。\n**串联**：写方法的顺序固定为 —— 一行概括作用、@param 逐个说参数、@return 说返回值，写完这三样，方法的对外说明就齐了。"
+    },
+    {
+      "block_id": "04747-ch02-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "04747-ch02-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L116"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\nJava 的三种注释中，只有 ______ 注释会被文档工具提取并生成对外说明文档。\n它写在类、方法或成员变量声明的正上方，内部用 @ 开头的标记分别注明参数与返回值。\n\n问题：补全横线处的内容，并说明它与另外两种注释在用途上的区别。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「文档」，即文档注释，写法为 /** … */。\n2. 单行注释与多行注释只是写给人读的说明，编译阶段就被丢弃，不会出现在任何对外材料中。\n3. 文档注释除了给人看，还能被文档工具按结构提取，自动生成类与方法的说明文档，因此必须写在被说明的声明正上方。\n4. 写法上的区别在开头：文档注释以 /** 起头，多行注释以 /* 起头，单行注释以 // 起头，三者不能互相替代。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "### 要点梳理\n- 定义：运算符是语言规定的、用来对数据执行某种运算的符号，参与运算的数据称为操作数。\n- 按功能分类：算术运算符、关系运算符、逻辑运算符、赋值运算符、自增自减运算符与条件运算符。\n- 按操作数个数分类：单目运算符只需一个操作数（自增、自减、逻辑非），双目运算符需要两个，条件运算符是三目运算符。\n- 优先级与结合性：不同运算符的运算次序有明确规定，同一优先级按结合方向依次计算；不确定时用圆括号，圆括号的优先级最高。\n- 结果类型：算术运算的结果类型由两个操作数共同决定，出现范围更大的类型时结果向该类型靠拢。\n### 易错点\n- 把 = 与 == 混用：单个等号是赋值，两个等号才判断相等，写错时常不报错却得到完全错误的结果。\n- 认为取余运算只能用于整数：取余对浮点数同样成立，结果是相除之后剩下的部分。\n- 忽略自增自减的书写位置：写在操作数前面与后面，取值时机不同，混在同一条表达式里最容易出错。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "**关键词**：算术、关系、逻辑、赋值、自增自减、条件；单目 / 双目 / 三目；优先级与结合性。\n**记忆法**：按「先算谁、再比谁、最后定谁」记一条链 —— 算术运算先算，关系运算比出真假，逻辑运算把真假连起来，赋值运算最后把结果放进变量。\n**对比**：= 是「把值放进去」，== 是「问是不是相等」；前者改变变量的值，后者只产生一个真假结果，两者绝不通用。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "关于 Java 运算符，下列表述正确的是（　）\nA. = 与 == 的作用相同，都用来判断两个值是否相等\nB. 取余运算符 % 只能用于整数，不能用于浮点数\nC. 运算符按操作数个数可分为单目、双目和三目，条件运算符是三目运算符\nD. 自增运算符写在操作数前面或后面，效果完全一样",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\nC 项正确，按操作数个数划分，条件运算符需要三个操作数，是唯一的三目运算符。\nA 项错误，单个等号是赋值运算，把右边的值放进左边的变量；判断相等必须用两个等号。\nB 项错误，取余运算对浮点数同样适用，结果是相除之后剩下的部分。\nD 项错误，自增运算符前置与后置的取值时机不同，前置是先加后用，后置是先用后加。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "### 要点梳理\n- 定义：空语句是只由一个分号构成、不执行任何操作的语句，程序执行到它不会产生任何效果。\n- 语法地位：它是语言允许的合法语句，因此可以出现在语法要求必须有语句、而逻辑上确实无事可做的地方。\n- 常见用法：循环体本身为空、循环只用于推进条件时，把循环写成一行并以分号收尾，表示这一点。\n- 位置要求：分号必须紧跟循环或条件的圆括号之后；若误写到下一行或别处，原本的循环体就会脱离循环。\n- 与空块的区别：一对花括号构成的空块同样不做操作，但它是语句块，可以在其中书写变量声明。\n### 易错点\n- 在条件之后误加分号：写成带分号的判断会使其后的语句脱离该条件而无条件执行，这是最隐蔽的一类错误。\n- 把空语句当成占位装饰：它有明确的语法含义，多写一个分号就可能改变程序的控制流。\n- 用空语句代替空块：需要在其中声明局部变量时只能用空块，空语句里写不下声明。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "**关键词**：一个分号、不做事、合法语句、可放在需要语句的位置。\n**记忆法**：记成「一个分号一句话，什么都不做」—— 凡是语法要求必须有语句、逻辑上又确实无事可做的地方，就写它。\n**对比**：空语句是「一个分号」，空块是「一对花括号」；两者都不做事，但只有空块里能写变量声明。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "关于 Java 空语句，下列表述正确的是（　）\nA. 空语句不合法，编译器会把它当成语法错误处理\nB. 空语句与空块完全等价，二者可以互相替代\nC. 在条件表达式之后误加分号，不会影响程序的执行结果\nD. 空语句由一个分号构成，执行时不产生任何操作",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，空语句就是一个分号，它是合法语句，执行时什么也不做。\nA 项错误，空语句是语言允许的合法语句，编译器不会因此报错。\nB 项错误，空块是一对花括号构成的语句块，可以在其中声明变量；空语句只是一个分号，写不下声明。\nC 项错误，在条件之后误加分号会让紧随其后的语句脱离该条件、变成无条件执行，执行结果被改变。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "### 要点梳理\n- 定位：Math 类位于标准类库中，集中提供常用的数学运算方法，使用时不需要创建对象。\n- 调用方式：类中的方法都是静态方法，直接用类名加点再加方法名调用，例如求平方根、求两个数中的较大者。\n- 常用能力：求绝对值、求最大值与最小值、求平方根、求幂、四舍五入与取整，方法名大多见名知意。\n- 常量：类中提供圆周率与自然对数底数两个常用常量，需要时直接引用，不必自己定义。\n- 随机数：类中提供生成随机数的方法，返回一个大于等于零且小于一的浮点数。\n### 易错点\n- 先创建对象再调用：Math 的方法是静态的，属于类本身，应直接用类名调用，而不是通过实例调用。\n- 把取整与四舍五入混为一谈：一个直接舍去小数部分，一个按小数位进位，结果可能相差一。\n- 忽略参数类型的影响：同一个方法传入整数与传入浮点数可能得到不同结果，写参数时要看清题目给的是哪种字面量。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "**关键词**：标准类库、全静态方法、类名直接调用、内置常量、随机数。\n**记忆法**：记成「不用造对象，直接喊名字」—— Math 里全是静态方法，写类名加点就能用；再记四件事：绝对值、最值、开方与求幂、取整。\n**对比**：取整是「砍掉小数」，四舍五入是「看小数进位」；同一道题里若混用这两个方法，结果可能正好相差一。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L130"
+      ],
+      "text_md": "关于 Java 的 Math 类，下列表述正确的是（　）\nA. Math 类的方法是静态方法，可以直接用类名调用，不需要先创建对象\nB. 使用 Math 类必须先创建 Math 对象，再通过对象调用它的方法\nC. Math 类只能做整数的加减乘除，不能计算平方根\nD. Math 类中没有提供任何常量，圆周率必须由程序员自己定义",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，Math 类的方法都是静态方法，直接用类名加点调用即可。\nB 项错误，静态方法属于类本身，既不需要创建对象，也不允许通过实例调用。\nC 项错误，Math 类提供求平方根、求幂等浮点运算方法，并不限于整数四则运算。\nD 项错误，Math 类内置圆周率与自然对数底数两个常量，直接引用即可，不必自己定义。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "### 要点梳理\n- 形式：由赋值运算符连接左值与右值构成，左值必须是变量，右值可以是常量、变量或表达式。\n- 求值顺序：先算出右侧表达式的值，再把它存入左侧变量，因此右侧可以引用左侧变量的旧值。\n- 表达式自身的值：赋值本身也有值，其值就是刚被赋进去的那个值，所以赋值可以连写，从右向左依次进行。\n- 复合形式：把算术运算与赋值合并书写，例如让某个变量自加一个量，含义是先算结果再存回该变量。\n- 类型要求：左右类型不一致时按类型转换规则处理；把范围大的类型赋给范围小的类型需要显式转换。\n### 易错点\n- 把赋值当作等式来读：赋值是一个「把右边放进左边」的动作，不是两边相等的判断。\n- 连写赋值的方向记反：连写时从右向左依次赋值，最左边的变量最后才得到值。\n- 忽略复合形式隐含的类型转换：展开成两步书写与复合写法在数值上通常相同，但类型处理并不完全等价。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "**关键词**：先算右边、再存左边；本身有值；从右向左连写；复合形式自带转换。\n**记忆法**：记成「右手先干活，左手再收货」—— 右侧表达式先算出结果，左侧变量随后接收；连写时这笔货从最右边一路传到最左边。\n**对比**：展开写法与复合写法在数值上一般相同，但复合形式隐含一次类型转换，边界取值时结果可能不同。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "简述 Java 赋值表达式的求值顺序、它自身的值，以及复合赋值形式的写法与含义。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 求值顺序是先右后左：先计算赋值运算符右侧表达式的值，再把这个值存入左侧的变量。\n2. 因为先算右边，右侧表达式中可以引用左侧变量的旧值，例如把变量自身加一后再存回原变量。\n3. 赋值表达式本身也有值，其值就是刚刚赋进去的那个值，因此赋值可以连写，从右向左依次赋值，最左边的变量最后得到值。\n4. 复合赋值形式把算术运算与赋值合并书写，例如让某个变量自加一个量，含义是先算结果再存回该变量。\n5. 需要注意复合形式自带一次隐式类型转换，与展开成两步书写在类型处理上并不完全等价。\n6. 赋值运算符左侧必须是变量，不能是常量或表达式，否则无法作为赋值的目标。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "### 要点梳理\n- 构成：由算术运算符把操作数连接起来，操作数可以是常量、变量或方法调用的结果。\n- 五个运算符：加、减、乘、除与取余；其中加号在有一侧是字符串时改为拼接，不再做数值相加。\n- 整数除法：两个整数相除，结果仍是整数，小数部分被直接舍去，不会四舍五入。\n- 取余运算：结果是整除之后剩下的部分，符号与被除数保持一致，因此负数取余可能得到负值。\n- 混合类型：两个操作数类型不同时，先向范围更大的类型靠拢再运算，所以整数与浮点数相除会得到带小数的结果。\n### 易错点\n- 以为整数相除会四舍五入：小数部分直接被舍去；想保留小数，必须让参与运算的数中至少有一个是浮点类型。\n- 把加号的拼接与相加混淆：只要有一侧是字符串，加号就变成拼接，数字会被原样接在后面而不是求和。\n- 除数写零：整数除以零会抛出异常，浮点数除以零得到特殊值，两者都不是正常结果。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "**关键词**：加减乘除取余；整数相除舍小数；余数符号随被除数；混合运算先提类型；加号可拼接字符串。\n**记忆法**：记成「同类型算，大类型赢」—— 两个操作数类型不同时，先按范围大的那一个统一，再开始运算。\n**对比**：整数除法「砍掉小数」，浮点除法「保留小数」；同一个算式只要把一个操作数写成浮点写法，结果就完全不同。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "简述 Java 算术表达式的构成与运算规则，并说明整数相除与浮点数相除的结果为什么不同。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 算术表达式由算术运算符与操作数构成，操作数可以是常量、变量或方法调用的结果。\n2. 运算符包括加、减、乘、除与取余；其中加号在有一侧是字符串时改为拼接，不再做数值相加。\n3. 两个整数相除时结果仍是整数，小数部分被直接舍去，不会进行四舍五入。\n4. 取余运算得到整除之后剩下的部分，其余数的符号与被除数保持一致。\n5. 结果不同的原因在类型：整数参与的除法按整数规则得出整数结果；只要有一个操作数是浮点类型，运算就先向浮点靠拢，结果自然带小数。\n6. 因此想让除法保留小数，应让参与运算的数中至少有一个写成浮点形式。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "### 要点梳理\n- 构成：由关系运算符连接两个操作数，比较它们的值并得到一个布尔结果。\n- 六个运算符：大于、小于、大于等于、小于等于、等于、不等于；其中等于要写两个等号，不等于写作感叹号加等号。\n- 结果类型：关系表达式的值只有真与假两种，因此它天然适合直接作为判断与循环的条件。\n- 适用对象：数值按大小比较，字符按编码顺序比较；引用类型用等号比较时，判断的是两个引用是否指向同一个对象。\n- 组合使用：多个关系表达式可以用逻辑运算符连接，构成同时满足若干条件的复合判断。\n### 易错点\n- 用单个等号做比较：那会变成赋值，布尔结果随之丢失，编译器还可能报类型不匹配。\n- 用等号比较字符串内容：等号问的是「是不是同一个对象」，比较内容应改用相应的方法。\n- 直接用等号比较浮点数：浮点计算往往带精度误差，判断相等应改用两者差值是否落在允许范围内。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "**关键词**：一比就出真假；六个比较符；等于写两个等号；不等于写感叹号加等号。\n**记忆法**：记成「一比就出真假」—— 关系表达式不做运算只作判断；六个符号按「大、小、等」三组记，符号里带等号的含义是「含相等」。\n**对比**：数值比大小用关系运算符；字符串比内容要用相应的方法。用等号比较引用时问的是「是不是同一个对象」，不是「内容是否一样」。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "设计一个 Java 程序：从命令行参数读入两个整数，用关系表达式判断它们的大小关系，并按三种情况之一输出结果 —— 第一个数较大、第二个数较大、两数相等。\n要求把比较结果先存入布尔变量再使用，并用注释说明每一处关系表达式的作用。",
+      "question_type": "程序设计题",
+      "answer_md": "参考答案：\n1. 设计思路：先把命令行参数转成整数，再用关系表达式得出布尔结果，最后按结果分支输出。\n2. 参考程序（文件名为 CompareTwo.java）：\npublic class CompareTwo {\n    public static void main(String[] args) {\n        int a = Integer.parseInt(args[0]);\n        int b = Integer.parseInt(args[1]);\n        boolean greater = a > b;   // 判断第一个数是否较大\n        boolean equal = a == b;    // 判断两数是否相等\n        if (greater) {\n            System.out.println(\"第一个数较大\");\n        } else if (equal) {\n            System.out.println(\"两数相等\");\n        } else {\n            System.out.println(\"第二个数较大\");\n        }\n    }\n}\n3. 关键点之一：关系表达式的值是布尔类型，既可以直接作为判断条件，也可以先存入布尔变量再使用。\n4. 关键点之二：判断相等必须写两个等号，写成单个等号就退化成赋值，无法完成比较。\n5. 关键点之三：当前两种情况都不成立时，剩下的情形必然是第二个数较大，因此最后的 else 分支不必再写关系表达式。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "### 要点梳理\n- 构成：由逻辑运算符连接一个或多个关系表达式或布尔变量，结果仍然是布尔值。\n- 三个运算符：逻辑与（两个与号）、逻辑或（两个竖线）、逻辑非（一个感叹号）。\n- 短路特性：逻辑与在左侧为假时不再计算右侧，逻辑或在左侧为真时不再计算右侧。\n- 优先级：逻辑非最高，其次是逻辑与，最后是逻辑或；混合使用时建议加圆括号，让判断意图一目了然。\n- 常见用处：把多个条件合成一个判断，例如同时满足取值范围与奇偶要求，或满足其中之一即可。\n### 易错点\n- 用单个符号代替双符号：单个与号、单个竖线是另一种按位运算，用在布尔值上虽能编译，语义却不同。\n- 忽视短路带来的副作用：把带副作用的表达式放在右侧，可能因为短路而根本不执行。\n- 依赖默认优先级：把逻辑与、逻辑或混写而不加括号，容易得出与预期相反的结果。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "**关键词**：与、或、非；双符号写法；短路求值；优先级「非 > 与 > 或」。\n**记忆法**：记成「两横是与、两竖是或、一撇是非」—— 写法一眼可辨；再记优先级口诀「先非、再与、后或」。\n**对比**：逻辑与要求两侧都真才为真，逻辑或只要一侧为真即为真；两者对右侧是否继续计算的态度差别，正是短路特性起作用的地方。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "阅读下面的程序，回答问题。\n\npublic class LogicShort {\n    public static void main(String[] args) {\n        int score = 58;\n        boolean passed = score >= 60 && ++score > 0;\n        System.out.println(\"passed=\" + passed + \" score=\" + score);\n        boolean retry = score >= 60 || ++score > 0;\n        System.out.println(\"retry=\" + retry + \" score=\" + score);\n    }\n}\n\n问题：程序先后输出什么？请结合逻辑表达式的短路特性说明理由。",
+      "question_type": "程序分析题",
+      "answer_md": "参考答案：\n1. 第一行输出 passed=false score=58。逻辑与的左侧 score >= 60 为假，短路特性使右侧的自增运算根本不执行，score 保持 58。\n2. 第二行输出 retry=true score=59。此时 score 为 58，逻辑或的左侧 score >= 60 仍为假，右侧必须继续计算，自增执行后 score 变为 59，右侧结果为真，整个表达式为真。\n3. 结论：逻辑与在左侧为假时直接得假、不再计算右侧；逻辑或在左侧为真时直接得真、不再计算右侧。两条规则合起来就是短路求值。\n4. 由本例可见，把带副作用的运算写在逻辑运算符右侧并不安全，它执不执行完全取决于左侧的真假。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p8/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "### 要点梳理\n- 条件表达式：由问号与冒号构成，是语言中唯一的三目运算，先判断条件，为真取第一个值，为假取第二个值。\n- 结果类型：两个分支的类型应当兼容，不一致时按类型转换规则统一；结果可以直接参与赋值或输出。\n- 位运算表达式：按二进制位逐个计算，包括按位与、按位或、按位异或与按位取反，另有左移与右移。\n- 移位的含义：左移一位相当于乘以二，右移一位相当于整除二；移位位数超出类型宽度时按规则取模。\n- 使用场合：条件表达式适合替代简单的两分支赋值；位运算适合处理标志位，或需要直接操作二进制位的场合。\n### 易错点\n- 把条件表达式当成语句：它的本质是表达式，必须有结果被使用，单独写成一行没有意义。\n- 混淆按位运算与逻辑运算：前者逐位计算得到整数，后者连接真假值得到布尔结果，符号写法也不同。\n- 两个分支类型不匹配：一边是整数、一边是字符串时，编译阶段就会报类型错误。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p8/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "**关键词**：三目条件表达式；问号与冒号；位运算逐位计算；左移乘二、右移除二。\n**记忆法**：记成「一问一答」—— 条件表达式先问一句真假，再按答案从两个值中挑一个；位运算记「逐位对齐，各算各的」。\n**对比**：逻辑运算连接的是真假值，按位运算处理的是整数每一个二进制位；一个管条件，一个管数位，不能互相替代。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p8/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p8",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "下面的程序想用条件表达式与位运算完成两件事，但存在错误，请指出并改正。\n\npublic class OtherExpr {\n    public static void main(String[] args) {\n        int a = 7;\n        int b = 3;\n        int max;\n        if (a > b) ? a : b;\n        int doubled = a << 1;\n        int flag = a & b;\n        System.out.println(max + \",\" + doubled + \",\" + flag);\n    }\n}\n\n问题：指出程序中的错误并说明原因，给出改正后的完整程序。",
+      "question_type": "程序改错题",
+      "answer_md": "参考答案：\n1. 第一处错误：把条件表达式当成了 if 语句。条件表达式是表达式，必须把它的结果赋给变量或参与其它运算，不能单独成句，写成语句形式无法通过编译。\n2. 第二处错误：变量 max 只声明而没有赋初值。局部变量在使用之前必须已经确定取值，直接输出会编译失败。\n3. 改正办法是把条件表达式的结果赋给 max，即把它改写为 int max = a > b ? a : b;\n4. 其余两行没有错误：a << 1 把 a 的二进制位整体左移一位，结果为 14；a & b 是按位与，7 与 3 逐位相与得到 3。\n5. 改正后的程序如下：\npublic class OtherExpr {\n    public static void main(String[] args) {\n        int a = 7;\n        int b = 3;\n        int max = a > b ? a : b;\n        int doubled = a << 1;\n        int flag = a & b;\n        System.out.println(max + \",\" + doubled + \",\" + flag);\n    }\n}\n6. 运行后输出 7,14,3。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch03-s1-p9/explain",
+      "kind": "explain",
+      "point_id": "04747-ch03-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "### 要点梳理\n- 两种方向：取值范围小的类型自动转为范围大的类型，称为自动转换；反方向必须显式书写，称为强制转换。\n- 自动转换：由语言自动完成，不会丢失信息，例如整数与浮点数混合运算时整数先转为浮点。\n- 强制转换：在表达式前写出目标类型并加圆括号，可能丢失精度或超出目标类型范围，后果由程序员承担。\n- 类型提升：同一表达式中出现多种类型时，先把它们统一到其中范围最大的类型，再开始计算。\n- 赋值场合：把范围大的值直接赋给范围小的变量不被允许，必须显式转换，否则编译不通过。\n### 易错点\n- 以为强制转换会四舍五入：它直接截断小数部分，想四舍五入要借助数学运算方法。\n- 忽略整数字面量的默认类型：整数相除先舍去小数，事后再赋给浮点变量也救不回来。\n- 认为自动转换双向成立：自动转换只有一个方向，从范围大回到范围小必须显式书写。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p9/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch03-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "**关键词**：小到大自动、大到小强制；强制转换截断小数；表达式先提升到最大类型。\n**记忆法**：记成「上坡自动走，下坡自己跳」—— 类型范围变大时语言替你完成，变小则必须写明目标类型，而且可能损失数据。\n**对比**：强制转换对小数是「截断」，四舍五入是「进位」；同一个浮点数用两种做法可能得到相差一的结果。"
+    },
+    {
+      "block_id": "04747-ch03-s1-p9/drill",
+      "kind": "drill",
+      "point_id": "04747-ch03-s1-p9",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L131"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\n在 Java 表达式中，把取值范围较小的类型自动转为取值范围较大的类型，称为 ______ 转换；\n反过来，把取值范围大的值放进范围小的变量时，必须写出目标类型并加圆括号，称为强制转换，这种转换可能丢失数据。\n\n问题：补全横线处的内容，并说明强制转换与四舍五入在结果上的差别。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「自动」，即自动类型转换，也称隐式转换。\n2. 自动转换由语言自动完成，方向只能是从范围小的类型到范围大的类型，不会丢失信息。\n3. 强制转换需要程序员写出目标类型并加圆括号，方向与自动转换相反，可能丢失精度或超出目标类型的取值范围。\n4. 强制转换对小数采取截断做法，直接舍去小数部分，不做进位。\n5. 四舍五入要看小数部分的大小决定是否进位，因此同一个浮点数用两种做法可能得到相差一的结果。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch04-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch04-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L148"
+      ],
+      "text_md": "### 要点梳理\n- 定位：StringBuffer 表示内容可以修改的字符序列，与内容不可变的字符串类形成对照。\n- 创建：用构造方法创建对象，可以创建空的缓冲区，也可以按已有字符串或指定容量创建。\n- 常用操作：追加内容、插入内容、删除指定区间、替换区间内容、反转整个序列，以及查询当前长度与容量。\n- 与不可变字符串的关系：它保存的内容可以随时改写，改写后仍是同一个对象；不可变字符串每次拼接都会产生新对象。\n- 适用场合：需要反复拼接或大量修改字符时使用它，可以减少中间对象的产生。\n### 易错点\n- 把它当成内容不可变的字符串来用：它的内容可以原地修改，多数方法调用后不必接收返回值也能看到变化。\n- 混淆长度与容量：长度是当前实际的字符数，容量是缓冲区能容纳的字符数，两者取值通常并不相等。\n- 认为两者方法完全通用：不可变字符串的方法与它并不一一对应，反转一类操作只由它提供。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch04-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L148"
+      ],
+      "text_md": "**关键词**：可变的字符序列；追加、插入、删除、替换、反转；长度与容量。\n**记忆法**：记成「一个是刻好的碑，一个是草稿纸」—— 碑文要改就得重刻一块，也就是产生新对象；草稿纸可以直接涂改。\n**对比**：不可变字符串每拼接一次就生成新对象，可变字符序列始终在同一个对象上改写；前者适合少量不变的文本，后者适合反复修改的场景。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch04-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L148"
+      ],
+      "text_md": "关于 Java 的 StringBuffer 类，下列表述正确的是（　）\nA. StringBuffer 对象的内容一旦确定就不能再修改\nB. StringBuffer 表示内容可以修改的字符序列，提供追加、插入、删除、替换与反转等操作\nC. StringBuffer 的 length() 方法返回的是缓冲区的容量\nD. 反复拼接字符串时，使用 StringBuffer 一定比使用不可变字符串产生更多对象",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，StringBuffer 是可变的字符序列，追加、插入、删除、替换与反转都是它的常用操作。\nA 项错误，内容不可变是不可变字符串的特点，StringBuffer 恰恰以可以修改为特征。\nC 项错误，length() 返回当前实际的字符数，容量由另一个方法返回，两者通常不相等。\nD 项错误，结论正好相反：反复拼接时可变序列在同一对象上改写，产生的中间对象更少。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch04-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch04-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "### 要点梳理\n- 概念：多维数组可以理解为「数组的数组」，二维数组的每个元素本身又是一个一维数组。\n- 声明形式：把两组方括号写在类型之后或变量名之后，两种写法完全等价；声明只确定名字与维数，不分配空间。\n- 两步走：声明只引进一个名字，真正占用内存要等到用创建语法分配空间。\n- 维度含义：第一组方括号对应行数，第二组对应每行的列数；也可以先只确定行数，各行稍后再定。\n- 不规则数组：因为每一行都是独立的一维数组，所以各行的长度可以互不相同。\n### 易错点\n- 在声明时把长度写进方括号：数组的声明不写长度，长度只能出现在创建语法里。\n- 把两种方括号位置当成不同含义：写在类型后或写在名字后只是书写习惯的差别，语义完全相同。\n- 以为声明后就能直接使用：只声明不创建时数组变量没有指向任何数组，访问元素会抛出空指针异常。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch04-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "**关键词**：数组的数组；声明不分配空间；方括号可在类型后或名字后；每行长度可以不同。\n**记忆法**：记成「两层楼」—— 外层数组是楼层号，内层数组是每层的房间号；先有楼层，再逐层定房间。\n**对比**：声明只给名字与维数，创建才分配空间。两句话不能合并成一句，也不能颠倒顺序，否则运行时必然出错。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch04-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "简述 Java 中二维数组的声明形式及其含义，说明声明与创建这两步之间的区别，并指出每一行的长度为什么允许互不相同。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 二维数组可以理解为「数组的数组」，它的每一个元素本身又是一个一维数组。\n2. 声明时可以把两组方括号写在类型之后，也可以写在变量名之后，两种写法完全等价。\n3. 声明只确定数组的名字与维数，并不分配存储空间，此时数组变量还没有指向任何数组对象。\n4. 创建阶段才真正分配空间，语法里给出第一个维度的长度，也可以同时给出第二个维度的长度。\n5. 因为每一行都是独立的一维数组，所以各行长度允许互不相同，形成不规则数组。\n6. 只声明不创建就访问元素会抛出空指针异常，因此两步必须依次完成。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch04-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch04-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "### 要点梳理\n- 创建语法：用关键字加类型与方括号，并在方括号中给出长度，例如先给行数、再给列数。\n- 分配过程：先为外层数组分配空间，其每个元素依次指向一个内层数组；只给行数时，各元素暂时为空。\n- 逐行创建：可以随后为每一行单独分配空间，因此同一数组的各行长度可以不同。\n- 长度询问：外层数组的长度给出行数，某一行的长度给出该行的列数，两者要分别询问。\n- 越界规则：元素下标从零开始，访问不存在的行或列都会抛出下标越界异常。\n### 易错点\n- 创建时写全两个长度，之后又逐行重新分配：前面的分配被丢弃，虽能运行却浪费空间。\n- 把行数与列数写反：外层长度是行数，取到内层数组后才问列数，写反会导致越界。\n- 认为各行长度必须相同：不规则数组是合法形态，只要每一行各自创建得当即可。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch04-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "**关键词**：关键字加类型、方括号里给长度；先分配外层、再分配内层；行列分别询问长度。\n**记忆法**：记成「先搭架子，再装抽屉」—— 外层数组是先按行数搭好的架子，每个格子里再装一个大小自定的抽屉。\n**对比**：一次写全两个长度相当于「统一样式」，逐行创建则是「各按需分配」；只有后者能得到长度不等的行。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch04-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "阅读下面的程序，回答问题。\n\npublic class MatrixCreate {\n    public static void main(String[] args) {\n        int[][] grid = new int[3][];\n        for (int i = 0; i < grid.length; i++) {\n            grid[i] = new int[i + 1];\n        }\n        int total = 0;\n        for (int i = 0; i < grid.length; i++) {\n            total += grid[i].length;\n        }\n        System.out.println(grid.length + \",\" + grid[2].length + \",\" + total);\n    }\n}\n\n问题：程序输出什么？请说明该数组的创建过程与各行的长度。",
+      "question_type": "程序分析题",
+      "answer_md": "参考答案：\n1. 输出 3,3,6。外层数组长度为 3，第三行（下标 2）的长度为 3，三行长度之和为 1 + 2 + 3 = 6。\n2. 创建过程分两步：先执行 new int[3][] 只分配外层空间，得到三个还没有指向任何内层数组的元素。\n3. 随后循环为每一行单独分配空间，第 i 行分配的长度是 i + 1，于是三行长度依次为 1、2、3。\n4. 因此这不是矩形数组，而是各行长度互不相同的二维数组，这正是「数组的数组」这一结构的直接结果。\n5. 询问长度时要分层：外层数组的长度给出行数，某一行的长度才给出该行的列数。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch04-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "04747-ch04-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "### 要点梳理\n- 静态初始化：在声明的同时用一对花括号按行列出初值，内层花括号对应一行，行与行之间用逗号分隔。\n- 动态初始化：用创建语法给出长度，随后按下标逐个赋初值，适合元素较多或初值需要计算的情况。\n- 混合形式：用创建语法给出行数，各行的初值再单独指定，这样同一数组里各行长度可以不同。\n- 默认值：数值类型元素默认取零，布尔类型默认取假，引用类型默认取空，因此创建之后即可安全读取。\n- 行长度推断：静态初始化时行数由外层花括号中元素的个数决定，列数由该行内元素的个数决定。\n### 易错点\n- 静态初始化时又多写长度：用花括号列初值的写法里不能再写方括号中的数字，两种写法不能混用。\n- 花括号层数写错：少写或多写一层，会把一整行当成一个元素，导致类型不匹配。\n- 以为创建后元素是随机值：数值数组的元素会被自动置零，这是语言规定的默认值，不是未定义状态。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch04-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "**关键词**：静态初始化按行用花括号列出；动态初始化先给长度再逐个赋值；默认值为零。\n**记忆法**：记成「写死的用花括号，算出来的用下标」—— 初值在写程序时就确定，用花括号；初值要靠计算得到，就用创建语法加下标赋值。\n**对比**：用花括号列初值时方括号里不能写数字，用创建语法时必须写数字。两种写法各自成套，拼在一起就编译不过。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "04747-ch04-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "下面的程序想创建一个两行三列的二维数组并输出全部元素之和，但存在错误，请指出并改正。\n\npublic class MatrixInit {\n    public static void main(String[] args) {\n        int[][] grid = new int[2][3]{{1, 2, 3}, {4, 5, 6}};\n        int sum = 0;\n        for (int i = 0; i <= grid.length; i++) {\n            for (int j = 0; j <= grid[i].length; j++) {\n                sum += grid[i][j];\n            }\n        }\n        System.out.println(sum);\n    }\n}\n\n问题：指出程序中的错误并说明原因，给出改正后的完整程序。",
+      "question_type": "程序改错题",
+      "answer_md": "参考答案：\n1. 第一处错误：初始化写法混用。用花括号列出初值时，方括号里不能再写长度数字，两者只能取其一。\n2. 第二处错误：两层循环的终止条件都用了小于等于。数组下标从零开始，写成小于等于会取到越界下标，运行时报异常。\n3. 第三处问题：外层循环一旦越界，内层循环引用当前行也会连带出错，因此必须先把循环边界改对。\n4. 改正后的程序如下：\npublic class MatrixInit {\n    public static void main(String[] args) {\n        int[][] grid = {{1, 2, 3}, {4, 5, 6}};\n        int sum = 0;\n        for (int i = 0; i < grid.length; i++) {\n            for (int j = 0; j < grid[i].length; j++) {\n                sum += grid[i][j];\n            }\n        }\n        System.out.println(sum);\n    }\n}\n5. 运行后输出 21，即两行全部元素之和。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch04-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "04747-ch04-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "### 要点梳理\n- 访问元素：用两组下标定位，第一组选行、第二组选列，两组下标都从零开始。\n- 遍历方式：外层循环枚举行，内层循环枚举该行的列；内层边界取当前行的长度，而不是固定列数。\n- 取用整行：只写第一组下标时得到的是整行，它本身是一个一维数组，可以整体传递或赋值。\n- 常见处理：求和、求最值、查找、按行输出，以及在行与列之间做位置互换。\n- 与一维数组的关系：凡能对一维数组做的处理，都能以「一行」为单位在二维数组上重做一遍。\n### 易错点\n- 内层循环边界写成固定列数：遇到长度不等的行就会越界，正确做法是每次询问当前行的长度。\n- 行列下标写反：第一组是行、第二组是列，写反后仍可能落在范围内，问题不会立刻暴露，结果却全错。\n- 把整行当成单个元素：带一组下标得到的是一个一维数组，不能直接与数值比较或参与运算。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch04-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "**关键词**：两组下标、先行后列、下标从零起；内层边界取当前行长度；一组下标取整行。\n**记忆法**：记成「先找行，再找列」—— 读起来就是「第几行第几列」，与日常说「第几排第几个」完全一致。\n**串联**：把内层边界统一写成当前行的长度，这一条固定下来，矩形数组与不规则数组就能共用同一段遍历代码。"
+    },
+    {
+      "block_id": "04747-ch04-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "04747-ch04-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L149"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\n访问二维数组的元素需要写出两组下标，其中第一组下标选择的是 ______，第二组下标选择该行中的列，\n两组下标都从零开始计数。遍历时内层循环的终止条件应当取当前行的长度，而不是固定的列数。\n\n问题：补全横线处的内容，并说明内层循环的边界为什么必须取当前行的长度。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「行」，即第一组下标用于选择第几行。\n2. 二维数组是「数组的数组」，它的每个元素本身就是一个一维数组，因此必须先确定行，再在该行内部确定列。\n3. 如果创建时只给出行数、各行空间再单独分配，那么各行长度允许互不相同，固定的列数无法覆盖所有行。\n4. 内层循环的终止条件取当前行的长度，就能同时适应长度相等的矩形数组与长度不等的不规则数组。\n5. 若写成固定的列数，遇到较短的行就会访问不存在的元素，运行时抛出下标越界异常。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "### 要点梳理\n- 对象：对象是现实事物在程序中的表示，它把描述状态的数据与施加于这些数据的操作放在一起。\n- 类：类是对具有相同属性与行为的一组对象的抽象描述，是创建对象的模板；对象是类的一个实例。\n- 封装：把数据与操作数据的代码放在一起，并对外只暴露必要的接口，隐藏内部实现细节。\n- 继承：在已有类的基础上派生新类，子类自动拥有父类可继承的成员，并可增加或改写自己的成员。\n- 多态：同一个操作作用在不同类型的对象上可以表现出不同的行为，通常依靠方法重写与父类引用调用子类对象实现。\n### 易错点\n- 把类与对象混为一谈：类是模板，对象是按模板造出的具体实例，一个类可以创建多个对象。\n- 把封装理解成「把变量都写成私有」：封装的重点是隐藏实现并给出访问接口，只写私有而不给接口，外部就无法使用。\n- 把多态等同于方法重载：重载是同一个类中同名方法的参数不同，多态强调的是同一调用在不同对象上表现不同。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "**关键词**：对象、类、封装、继承、多态；类是模板，对象是实例。\n**记忆法**：记成「一张图纸，多件产品」—— 类是图纸，对象是按图纸造出的产品；三项机制记作「封、继、多」。\n**对比**：封装管「藏起来一部分」，继承管「从别人那里拿来一部分」，多态管「同一个动作有不同做法」，三者关注点各不一样。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "关于面向对象的基本概念，下列表述正确的是（　）\nA. 类就是对象，对象就是类，两者只是说法不同\nB. 封装就是把一个类中的全部成员都声明为私有\nC. 类是创建对象的模板，对象是类的一个实例，同一个类可以创建多个对象\nD. 多态就是同一个类中出现多个同名方法",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\nC 项正确，类是对一组对象的抽象描述，对象是它的实例，一个类可以创建任意多个对象。\nA 项错误，类是模板、对象是实例，二者是描述与被描述的关系，不是同义说法。\nB 项错误，封装是隐藏实现细节并对外提供必要的访问接口，把成员全部私有化反而使外部无从使用。\nD 项错误，同一个类中多个同名方法属于方法重载；多态强调的是同一调用在不同对象上表现不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "### 要点梳理\n- 贴近问题本身：按现实事物划分模块，程序结构与业务概念互相对应，需求变化时容易判断该改哪里。\n- 可复用：类一旦写成即可在多处使用，继承与组合让已有成果直接进入新程序，不必重复实现。\n- 易维护：封装把内部实现与对外接口分开，只要接口不变，修改内部细节不会波及调用方。\n- 易扩展：需要新增功能时，通常只需派生新类并重写个别方法，原有实现基本不动。\n- 可靠性：模块边界清晰，出错范围被限制在类内部，配合异常处理便于定位与隔离问题。\n### 易错点\n- 认为面向对象一定更快：它的优势在结构与维护，执行效率并不必然优于面向过程的写法。\n- 把可复用理解成「必须用继承」：组合同样能复用，而且往往更灵活，继承只是手段之一。\n- 把易扩展说成「不用改代码」：扩展通常仍要新增类并接入调用点，只是不再改动既有实现。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "**关键词**：贴近问题、可复用、易维护、易扩展、可靠性高；封装的边界作用。\n**记忆法**：记成「一贴、二复、三维、四扩」—— 结构贴近问题、成果可以复用、维护不伤外部、扩展只需增加。\n**对比**：面向过程以步骤为中心，面向对象以对象为中心；前者按「先做什么、再做什么」组织，后者按「谁来做」组织。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "关于面向对象编程的优点，下列表述正确的是（　）\nA. 面向对象程序的执行效率一定高于面向过程的程序\nB. 面向对象的可复用性只能通过继承实现，使用组合达不到复用目的\nC. 面向对象程序在扩展功能时完全不需要编写新的代码\nD. 封装把内部实现与对外接口分开，实现细节的修改不会波及调用方",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，封装使内部实现与对外接口分离，只要接口保持不变，内部改动就不会影响调用它的代码。\nA 项错误，面向对象的优势主要体现在结构清晰与便于维护，执行效率并不必然更高。\nB 项错误，复用既可以通过继承，也可以通过把已有对象组合进来，后者往往更灵活。\nC 项错误，扩展通常仍要新增类并接入调用点，只是不必改动既有的实现代码。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "### 要点梳理\n- 定义：继承是在已有类的基础上派生新类，被继承的称为父类，派生出来的称为子类。\n- 语法：在子类声明的类名之后用关键字指明父类；不写时默认继承标准类库中的根类。\n- 获得的内容：子类自动拥有父类可被继承的成员，因而不必重复声明，同时可以增加属于自己的成员。\n- 单继承：一个类只能有一个直接父类，但可以沿继承链层层向上；需要多重能力时借助接口实现。\n- 构造顺序：创建子类对象时先执行父类构造方法，再执行子类构造方法，因此父类部分先完成初始化。\n### 易错点\n- 认为子类能继承一切：父类中声明为私有的成员在子类里不能直接访问，只能通过父类提供的接口使用。\n- 把继承与包含混为一谈：继承表达「是一种」的关系，把别的对象写成成员表达的是「有一个」。\n- 忘记父类的带参构造方法：父类只定义了带参数的构造方法时，子类必须显式调用它，否则编译不通过。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "**关键词**：父类与子类；关键字指明父类；只能单继承；构造顺序先父后子。\n**记忆法**：记成「一种关系一条链」—— 继承表达「是一种」，一个类只能有一个直接父类，但可以沿链一路向上。\n**对比**：继承是「是一种」，组合是「有一个」；前者靠关键字建立，后者靠把对象写成成员变量，答题时不要写反。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L166"
+      ],
+      "text_md": "设计一个 Java 程序：先定义一个表示人的父类，包含姓名成员与一个自我介绍的方法；再定义一个继承它的学生子类，增加学号成员并重写自我介绍方法，在重写的方法里先调用父类版本、再补充学号信息。最后在测试类中创建学生对象并调用该方法。",
+      "question_type": "程序设计题",
+      "answer_md": "参考答案：\n1. 设计思路：父类负责共有的姓名与通用介绍，子类在继承的基础上增加学号，并通过重写让介绍更具体。\n2. 参考程序如下：\nclass Person {\n    protected String name;\n    Person(String name) { this.name = name; }\n    String introduce() { return \"姓名：\" + name; }\n}\nclass Student extends Person {\n    private String sno;\n    Student(String name, String sno) {\n        super(name);\n        this.sno = sno;\n    }\n    @Override\n    String introduce() {\n        return super.introduce() + \"，学号：\" + sno;\n    }\n}\npublic class InheritDemo {\n    public static void main(String[] args) {\n        Student s = new Student(\"张明\", \"2024001\");\n        System.out.println(s.introduce());\n    }\n}\n3. 关键点之一：子类用关键字继承父类，并通过父类构造方法完成父类部分的初始化，顺序是先父后子。\n4. 关键点之二：子类重写父类方法后，用父类引用调用时仍表现出子类的行为，这正是多态的体现。\n5. 关键点之三：父类中声明为私有的成员在子类里不能直接访问，因此父类需要提供可继承的访问方式。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "### 要点梳理\n- 四种可见性：私有、默认（不写修饰符）、受保护、公有，可见范围由小到大依次放宽。\n- 私有：只在本类内部可见，用于隐藏只服务于内部实现的成员。\n- 默认：同一个包内的其它类可以访问，包外不可见，适合包内协作的成员。\n- 受保护：同包内可见，并且在不同包的子类中也可见，为继承留出一条访问通道。\n- 公有：任何位置都可访问，通常只留给确实需要对外提供的方法与常量。\n### 易错点\n- 把受保护当成比默认更严：受保护的可见范围比默认更大，多出的正是跨包子类这条通道。\n- 认为私有成员在子类里可以直接用：私有成员在子类中不可见，只能通过父类的公有或受保护方法间接使用。\n- 把所有成员都写成公有：这会让内部实现暴露在外，调用方一旦依赖细节，后续修改就会牵连一大片代码。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "**关键词**：私有、默认、受保护、公有；可见范围从小到大；受保护为跨包子类开通道。\n**记忆法**：按范围画四个圈记 —— 本类 < 本包 < 本包加跨包子类 < 全部；从里往外依次是私有、默认、受保护、公有。\n**对比**：默认与受保护只差一条通道，就是「不同包的子类」；答题时抓住这一条，两者的顺序就不会记反。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "简述 Java 四种访问控制符的可见范围，并说明「受保护」与「默认」在适用范围上的差别。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 私有成员只在本类内部可见，用于隐藏仅供内部实现使用的数据与辅助方法。\n2. 默认成员不写任何访问修饰符，同一个包内的类可以访问它，包外的类不能访问。\n3. 受保护成员在同包内可见，同时还允许不同包的子类访问，从而为继承留出访问通道。\n4. 公有成员在任何位置都可以访问，一般只用于确实需要对外提供的接口与常量。\n5. 受保护与默认的差别只有一条：受保护多出「不同包的子类」这条通道，可见范围因此更大。\n6. 使用原则是最小可见性：能用更小的范围就不要放宽，以免调用方依赖内部实现细节。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p5/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "### 要点梳理\n- 关联：一个类把另一个类的对象作为成员长期持有，表示两者之间存在稳定的结构联系。\n- 依赖：一个类只在某个方法中使用另一个类，例如把它作为参数或局部变量，关系较弱且短暂。\n- 聚合与组合：都表示整体与部分的关系，聚合的部分可以独立存在，组合的部分随整体一同产生与消亡。\n- 继承与实现：继承表达「是一种」，实现接口表示「具备某种能力」，两者都是纵向的层次关系。\n- 判断依据：看关系的强弱与生命周期 —— 是长期持有还是临时使用，是整体与部分还是类型归属。\n### 易错点\n- 把关联与依赖混为一谈：关联是长期持有的成员关系，依赖只在某个方法执行期间出现。\n- 把继承用在「有一个」的场景：能说成「含有」的关系应当用成员变量表达，硬套继承会得到错误的类型层次。\n- 把聚合与组合当成一回事：区别在于部分能否脱离整体独立存在，组合的整体消失时部分也随之消失。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p5/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "**关键词**：关联、依赖、聚合、组合、继承、实现；纵向是「是一种」，横向是「有一个」。\n**记忆法**：记成「一横一纵」—— 横向是整体与部分、使用与被使用，纵向是继承与实现；先判方向，再判强弱。\n**对比**：聚合与组合都表示整体与部分，差别只有一句 —— 部分能不能独立存在；能独立的是聚合，不能独立的是组合。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p5/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p5",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "阅读下面的程序，回答问题。\n\nclass Engine {\n    void start() { System.out.println(\"发动机启动\"); }\n}\nclass Car {\n    private Engine engine = new Engine();\n    void run() { engine.start(); }\n    void repair(Engine e) { e.start(); }\n}\npublic class RelationDemo {\n    public static void main(String[] args) {\n        Car car = new Car();\n        car.run();\n        car.repair(new Engine());\n    }\n}\n\n问题：程序中的类之间存在哪两种关系？请分别指出它们体现在哪一处，并说明两种关系的强弱差别。",
+      "question_type": "程序分析题",
+      "answer_md": "参考答案：\n1. 存在关联关系与依赖关系两种。\n2. 关联关系体现在 Car 把 Engine 对象作为成员变量长期持有。这条联系在对象的整个存活期间一直存在，关系较强。\n3. 依赖关系体现在 repair 方法把 Engine 作为参数使用。它只在方法被调用的这段时间出现，方法返回后联系即结束，关系较弱。\n4. 两者的差别在于持续时间与耦合程度：关联是长期持有的结构联系，依赖是临时使用的关系。\n5. 两种关系都不改变类型层次。若改成 Engine 派生自某个父类、Car 继承该父类，那就变成了继承关系，含义完全不同。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p6/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "### 要点梳理\n- 定义：用抽象修饰符声明的类称为抽象类，它不能被直接实例化，只能作为父类被继承。\n- 存在意义：把多个子类共有的成员集中上来，同时把暂时无法给出实现的行为留给子类完成。\n- 构造方法：抽象类可以定义构造方法，供子类在创建对象时调用，完成共有部分的初始化。\n- 成员构成：可以同时包含已实现的具体方法与没有实现体的抽象方法，还可以有成员变量与常量。\n- 继承要求：子类若没有实现全部抽象方法，则子类自身也必须声明为抽象类，否则编译不通过。\n### 易错点\n- 试图直接创建抽象类的对象：抽象类不能实例化，只能通过它的具体子类来创建对象。\n- 在抽象类中写了没有实现体的方法却不加抽象修饰符：这样的方法必须写在抽象类里，并带上抽象修饰符。\n- 认为抽象类不能有构造方法：它可以有构造方法，而且子类创建对象时必定会用到。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p6/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "**关键词**：抽象修饰符；不能实例化；可以有构造方法；可同时含具体方法与抽象方法；子类要么实现、要么也抽象。\n**记忆法**：记成「半成品图纸」—— 抽象类是一张只画了一半的图纸，缺的那部分必须由子类补齐，之后才能用来造产品。\n**对比**：抽象类可以被继承并携带已实现的成员，接口只规定能力而不提供实现；一个类只能继承一个抽象类，却可以实现多个接口。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p6/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p6",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "下面的程序想通过抽象类与子类输出不同形状的面积说明，但存在错误，请指出并改正。\n\npublic class ShapeDemo {\n    public static void main(String[] args) {\n        Shape s = new Shape();\n        System.out.println(s.describe());\n    }\n}\nabstract class Shape {\n    abstract double area();\n    String describe() { return \"面积是 \" + area(); }\n}\nclass Circle extends Shape {\n    private double r;\n    Circle(double r) { this.r = r; }\n}\n\n问题：指出程序中的错误并说明原因，给出改正后的完整程序。",
+      "question_type": "程序改错题",
+      "answer_md": "参考答案：\n1. 第一处错误：在 main 方法中直接创建了抽象类的对象。抽象类不能被实例化，写 new Shape() 无法通过编译。\n2. 第二处错误：子类 Circle 没有实现父类的抽象方法 area。子类若未实现全部抽象方法，其自身也必须声明为抽象类，否则编译失败。\n3. 改正办法是让 Circle 给出 area 的实现，并在 main 方法中改为创建 Circle 对象，用父类类型的变量来接收。\n4. 改正后的程序如下：\npublic class ShapeDemo {\n    public static void main(String[] args) {\n        Shape s = new Circle(2.0);\n        System.out.println(s.describe());\n    }\n}\nabstract class Shape {\n    abstract double area();\n    String describe() { return \"面积是 \" + area(); }\n}\nclass Circle extends Shape {\n    private double r;\n    Circle(double r) { this.r = r; }\n    @Override\n    double area() { return 3.14 * r * r; }\n}\n5. 运行后输出该圆的面积说明文字，其中的面积由子类实现的抽象方法算出。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch05-s1-p7/explain",
+      "kind": "explain",
+      "point_id": "04747-ch05-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "### 要点梳理\n- 定义：只声明方法的名字、参数与返回值，没有方法体，这样的方法称为抽象方法。\n- 所在位置：抽象方法只能出现在抽象类或接口中，写在普通类里会编译不通过。\n- 修饰要求：声明时要带上抽象修饰符，并以分号结束，不能写一对空花括号充数。\n- 实现责任：继承它的子类必须给出实现，否则子类自身也要声明为抽象类。\n- 使用价值：它把「做什么」固定下来，「怎么做」交给各个子类，从而使父类引用可以统一调用不同的实现。\n### 易错点\n- 把抽象方法写成空方法体：方法体为空说明该方法已经有了实现，此时不能再加抽象修饰符。\n- 以为抽象方法可以是私有或静态：抽象方法需要子类去实现，而私有方法与静态方法都不能被重写。\n- 忘记子类必须实现：子类既不实现又不声明为抽象类，编译阶段就会报错，这是强制约束而不是建议。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p7/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch05-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "**关键词**：只有声明没有方法体；只能待在抽象类或接口里；子类必须实现；把「做什么」与「怎么做」分开。\n**记忆法**：记成「留白」—— 抽象方法就是父类故意留下的空白，谁继承谁负责把这块空白填上。\n**对比**：抽象方法有声明无实现，具体方法有声明也有实现；子类重新实现同名方法是重写，而抽象方法被实现则是必须完成的义务。"
+    },
+    {
+      "block_id": "04747-ch05-s1-p7/drill",
+      "kind": "drill",
+      "point_id": "04747-ch05-s1-p7",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L167"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\n只声明方法名、参数与返回值而没有方法体的方法称为 ______ 方法，它只能出现在抽象类或接口中；\n继承它的子类必须给出实现，否则子类本身也要声明为抽象类。\n\n问题：补全横线处的内容，并说明抽象方法对子类提出了什么要求、这样设计有什么用处。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「抽象」，即抽象方法。\n2. 抽象方法只给出方法声明，没有方法体，并且必须写在抽象类或接口之中。\n3. 对子类的要求是：继承抽象方法的子类必须把它实现出来；若子类没有实现全部抽象方法，子类自身也必须声明为抽象类。\n4. 这样设计的用处是把「做什么」与「怎么做」分开：父类规定行为的名称与含义，具体做法由各个子类分别给出。\n5. 由此父类类型的引用可以统一调用不同的子类实现，在不必改动父类代码的前提下增加新的子类。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch06-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L188"
+      ],
+      "text_md": "### 要点梳理\n- 定义：用户自定义异常是程序员为表达本程序中特有的错误情况而自己定义的异常类型，不是标准类库自带的。\n- 做法：新建一个类去继承标准类库中的异常类，通常只需提供构造方法，把说明信息交给父类保存。\n- 两种父类：继承受检异常时，调用方必须处理或者声明抛出；继承运行时异常时，由程序逻辑自行保证不触发。\n- 抛出：在检测到错误条件时用抛出语句产生该异常对象，可以把出错原因一并传入构造方法。\n- 捕获：使用它的代码按类型捕获，方式与捕获标准类库中的异常完全一致。\n### 易错点\n- 自定义异常不继承异常类：直接继承普通类时它不能被抛出，编译阶段就会报错。\n- 把受检异常当运行时异常用：继承受检异常后，调用方既不处理也不声明抛出就会编译失败。\n- 认为必须重写全部方法：通常只要给出构造方法即可，其余行为从父类继承。"
+    },
+    {
+      "block_id": "04747-ch06-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L188"
+      ],
+      "text_md": "**关键词**：自己定义的异常类型；继承标准异常类；通常只写构造方法；受检与运行时两条路。\n**记忆法**：记成「起个名字、认个亲」—— 起一个能说明错误情况的类名，再让它继承标准类库里的异常类，一个新异常就定义好了。\n**对比**：继承受检异常要求调用方必须处理或声明抛出，继承运行时异常则不强制，两者对调用方的约束强度不同。"
+    },
+    {
+      "block_id": "04747-ch06-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch06-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L188"
+      ],
+      "text_md": "关于用户自定义异常，下列表述正确的是（　）\nA. 自定义异常需要继承标准类库中的异常类，通常只需提供构造方法把说明信息交给父类\nB. 自定义异常可以直接继承任意普通类，只要类名以 Exception 结尾就可以\nC. 继承受检异常的自定义异常，调用方不处理也不会产生编译错误\nD. 自定义异常必须重写父类的全部方法，否则无法抛出",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：A\nA 项正确，自定义异常通过继承标准类库中的异常类得到，一般只补充构造方法即可使用。\nB 项错误，异常类型必须继承异常体系中的类，继承普通类时它不能被抛出，编译阶段就会失败。\nC 项错误，受检异常要求调用方处理或者声明抛出，否则编译不通过。\nD 项错误，不必重写全部方法，其余行为直接继承父类即可。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch08-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch08-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L204"
+      ],
+      "text_md": "### 要点梳理\n- 三个部分：图形用户界面由组件、容器与事件处理共同构成，缺了任何一部分界面都无法正常交互。\n- 组件：按钮、标签、文本框、列表等可见元素，是用户直接操作的对象。\n- 容器：能够容纳其它组件的组件，例如窗口与面板；容器里还可以再放容器，从而形成层次结构。\n- 布局：容器用布局管理器决定内部组件的位置与大小，使界面在不同平台上保持一致的相对关系。\n- 事件处理：用户的点击、输入等动作被包装成事件对象，由注册过的监听者接收并作出响应。\n### 易错点\n- 把容器排除在组件之外：容器本身也是组件，只是多了一项容纳其它组件的能力。\n- 认为组件位置靠坐标写死：界面通常交给布局管理器安排，写死坐标在窗口缩放时就会错位。\n- 把界面搭建与事件响应混在一起：前者管外观，后者管反应，分开编写才便于阅读与维护。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch08-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L204"
+      ],
+      "text_md": "**关键词**：组件、容器、布局、事件处理；容器也是组件；事件由监听者接收。\n**记忆法**：记成「三件套」—— 看得见的组件、装得下的容器、管反应的事件处理；再补一条：容器里可以套容器，形成层次。\n**对比**：组件回答「界面上有什么」，容器回答「这些东西放在哪里」，事件处理回答「用户动了以后做什么」，三者分工清楚。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch08-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L204"
+      ],
+      "text_md": "关于 Java 图形用户界面的组成，下列表述正确的是（　）\nA. 容器不是组件，它与组件是两类互不相干的东西\nB. 图形用户界面由组件、容器与事件处理共同构成，容器本身也是一种组件\nC. 组件的位置与大小必须用坐标写死，不需要布局管理器\nD. 事件处理与界面搭建是同一件事，写在同一个方法里最合适",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：B\nB 项正确，界面由组件、容器与事件处理三部分构成，容器是能够容纳其它组件的组件。\nA 项错误，容器本身也是组件，只是额外具备容纳其它组件的能力。\nC 项错误，组件的位置与大小通常交给布局管理器决定，写死坐标在窗口缩放时会错位。\nD 项错误，界面搭建与事件响应关注点不同，分开编写更便于阅读与维护。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch08-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch08-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "### 要点梳理\n- 定义：容器是可以容纳其它组件的组件，用来把界面元素组织成一个整体。\n- 两类容器：顶层窗口是最外层的容器，能独立显示并直接与操作系统交互；面板是中间层容器，必须放进别的容器才能显示。\n- 层次结构：顶层容器里放面板，面板里再放组件或面板，形成树状的包含关系。\n- 添加组件：把组件加入容器时通常指定一个区域，最终摆放方式由该容器所用的布局管理器决定。\n- 作用：容器把界面分区，使复杂界面可以分块搭建，也让布局与事件处理能够按区域分别设置。\n### 易错点\n- 把面板直接显示出来：面板不是顶层容器，必须被加入窗口或另一个面板之后才会出现在界面上。\n- 认为容器只能装组件、不能再装容器：容器允许嵌套，面板里再放面板是搭建复杂界面的常用手段。\n- 忽略容器的布局管理器：组件加入之后的位置取决于该容器的布局管理器，而不是添加的先后顺序。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch08-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "**关键词**：能装别的组件；顶层容器与中间层容器；可以嵌套；摆放由布局管理器决定。\n**记忆法**：记成「大大小小套盒子」—— 窗口是最外面的大盒子，面板是小盒子，小盒子里还能再放更小的盒子。\n**对比**：顶层容器能独立显示并直接与系统交互，中间层容器必须挂在别的容器里；前者是窗口，后者是面板。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch08-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "简述 Java 容器的含义与两类常见容器的作用，并说明容器允许嵌套对界面搭建有什么意义。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 容器是可以容纳其它组件的组件，用来把界面元素组织成一个整体。\n2. 顶层容器是最外层的容器，能够独立显示并直接与操作系统交互，窗口就属于这一类。\n3. 中间层容器不能独立显示，必须被加入别的容器之后才能出现，面板属于这一类。\n4. 容器允许嵌套：顶层容器里放面板，面板里再放组件或面板，从而形成树状的包含关系。\n5. 嵌套的意义在于把复杂界面分区，每个区域各自设置布局、各自管理其中的组件，便于分块搭建和分别修改。\n6. 需要注意组件加入容器之后的位置由该容器的布局管理器决定，而不是由添加的先后顺序决定。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch08-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch08-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "### 要点梳理\n- 作用：布局管理器决定容器内各组件的位置与大小，使界面在窗口缩放时按规则自动调整。\n- 常见策略：流式布局按顺序从左到右排列、一行放不下就换行；边界布局把容器分成几个固定区域；网格布局把容器切成大小相等的格子；卡片布局让多个组件共用同一块区域，一次只显示其中一个。\n- 指定方式：把组件加入容器时给出所在区域，容器则通过设置布局管理器决定整体排布规则。\n- 嵌套使用：把采用不同布局的容器相互嵌套，就能拼出复杂的界面。\n- 默认规则：不同容器各有默认的布局策略，不显式设置时按默认规则排布。\n### 易错点\n- 既设置布局管理器又写死坐标：两者互相冲突，写死的坐标会被布局管理器覆盖，等于白写。\n- 把同一个组件重复加入容器：组件在同一时刻只能出现在一个位置上，后加入的位置会使它从原位置移走。\n- 认为布局管理器只管位置不管大小：它同时决定组件的大小，窗口缩放时组件会随之变化。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch08-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "**关键词**：流式按序换行、边界分区域、网格切等格、卡片共用一块区域；可以嵌套。\n**记忆法**：把四种策略想成四种摆放方式 —— 排队（流式）、分区（边界）、切格子（网格）、轮流上台（卡片）。\n**对比**：网格布局的每格大小相同，边界布局的各区域大小可以不同；需要整齐对齐用前者，需要主次分明用后者。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch08-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "下面的程序想在一个窗口里按上下两个区域放置两个按钮，但存在错误，请指出并改正。\n\nimport java.awt.*;\nimport javax.swing.*;\npublic class LayoutDemo {\n    public static void main(String[] args) {\n        JFrame f = new JFrame(\"布局示例\");\n        JButton ok = new JButton(\"确定\");\n        JButton cancel = new JButton(\"取消\");\n        f.setLayout(null);\n        f.add(ok);\n        f.add(cancel);\n        f.setSize(300, 200);\n        f.setVisible(true);\n    }\n}\n\n问题：指出程序在布局管理上的问题并说明原因，给出改正后的完整程序。",
+      "question_type": "程序改错题",
+      "answer_md": "参考答案：\n1. 问题在于程序把容器的布局管理器设为空，也就是取消了布局管理。这时组件的位置与大小必须逐个手工设定。\n2. 后果是两个按钮都没有给出位置与大小，界面显示时不会按预期分别出现在上下两个区域；即使手工补上坐标，窗口缩放时也会错位。\n3. 改正办法是改用布局管理器。窗口默认使用边界布局，把两个按钮分别加入北、南两个区域即可得到上下分布的效果。\n4. 改正后的程序如下：\nimport java.awt.*;\nimport javax.swing.*;\npublic class LayoutDemo {\n    public static void main(String[] args) {\n        JFrame f = new JFrame(\"布局示例\");\n        f.add(new JButton(\"确定\"), BorderLayout.NORTH);\n        f.add(new JButton(\"取消\"), BorderLayout.SOUTH);\n        f.setSize(300, 200);\n        f.setVisible(true);\n    }\n}\n5. 若要放三个以上组件，可以改用网格布局，或者把面板嵌套进来，让每个区域各自设置布局。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch08-s1-p4/explain",
+      "kind": "explain",
+      "point_id": "04747-ch08-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "### 要点梳理\n- 事件源：产生事件的组件，例如被点击的按钮；它负责把事件通知给登记过的对象。\n- 事件对象：一次动作被包装成对象，其中携带事件源、动作类型等信息。\n- 监听者：实现监听接口的对象，接口中声明的方法就是事件发生时要执行的动作。\n- 注册：把监听者登记到事件源上，此后事件源一旦产生事件就会回调该监听者。\n- 委托模型：事件源不自己处理事件，而是把处理工作委托给注册过的监听者，这就是委托事件处理机制。\n### 易错点\n- 只实现监听接口却不注册：接口实现得再完整，不登记到事件源上就永远不会被调用。\n- 以为主方法返回后程序就结束：界面程序由事件驱动，方法返回后界面仍在等待用户操作，不会顺序往下走。\n- 混淆事件源与监听者：事件源是产生动作的组件，监听者是接收并响应动作的对象，两个角色不能互换。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p4/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch08-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "**关键词**：事件源、事件对象、监听者、注册；委托模型 = 谁产生、谁通知、谁响应。\n**记忆法**：记成「四步走」—— 找事件源、实现监听接口、把监听者注册上去、在接口方法里写响应；少任何一步事件都不会被处理。\n**对比**：事件源负责「发生」，监听者负责「响应」，两者靠注册这一步连接；只写监听方法而不注册，等于装好了门铃却没有接线。"
+    },
+    {
+      "block_id": "04747-ch08-s1-p4/drill",
+      "kind": "drill",
+      "point_id": "04747-ch08-s1-p4",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L208"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\nJava 的图形界面采用委托事件处理机制：产生动作的 ______ 把事件包装成对象，交给事先注册好的监听者处理，\n监听者通过实现监听接口中的方法来响应事件。若只实现接口而没有完成注册，事件发生时监听者的方法不会被调用。\n\n问题：补全横线处的内容，并按顺序说明完成一次事件处理需要经过哪些步骤。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「事件源」，也就是产生事件的那个组件。\n2. 第一步：确定事件源，即用户会去操作的那个组件，例如按钮。\n3. 第二步：编写监听者，实现对应的监听接口，在接口方法中写清楚事件发生时要执行的动作。\n4. 第三步：把监听者注册到事件源上，建立起「谁产生、通知谁」的联系。\n5. 第四步：用户操作触发事件，事件被包装成对象传给监听者，接口方法随之执行。\n6. 其中第三步最容易被遗漏：只实现接口而不注册，监听方法永远不会被调用，界面看上去毫无反应。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch09-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch09-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "### 要点梳理\n- 定位：辅助类本身不是界面上可见的组件，而是为组件与事件处理提供支撑的类。\n- 事件适配器类：监听接口往往声明多个方法，适配器类为这些方法都提供了空实现，使用时只需重写真正关心的那一个。\n- 内部类与匿名内部类：把监听者写在需要它的类内部，可以直接访问外部类的成员；匿名内部类进一步省去类名，适合只用在一个地方的监听者。\n- 计时器类：按设定间隔反复触发一个动作，常用来实现动画或周期性刷新。\n- 选择原则：接口方法多而只关心其一时用适配器；监听者要访问外部成员时用内部类；只用一次的监听者用匿名内部类。\n### 易错点\n- 用适配器却写错方法名：适配器不会因为方法名写错而报错，只是重写没生效，事件看上去毫无反应。\n- 在匿名内部类里访问外部局部变量：该变量必须是不可改写的，否则编译不通过。\n- 把辅助类当成界面组件去添加：适配器与内部类都不出现在界面上，不能被加入容器。"
+    },
+    {
+      "block_id": "04747-ch09-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch09-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "**关键词**：适配器类提供空实现、内部类与匿名内部类、计时器；辅助类不直接显示。\n**记忆法**：记成「三个帮手」—— 适配器帮着省掉空方法，内部类帮着拿到外部成员，匿名内部类帮着省掉类名。\n**对比**：适配器类解决「方法太多、只用一个」的问题，匿名内部类解决「只用一次」的问题；两者都是为了少写代码。"
+    },
+    {
+      "block_id": "04747-ch09-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch09-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "简述 Java 图形界面编程中辅助类的含义与常见种类，并说明事件适配器类解决了什么问题。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 辅助类本身不是界面上可见的组件，而是为组件与事件处理提供支撑的类。\n2. 常见种类之一是事件适配器类。监听接口通常声明多个方法，适配器类为这些方法都提供了空实现。\n3. 使用适配器时只需重写真正关心的那个方法，不必把接口中的全部方法都写出来，代码因此更短也更清楚。\n4. 常见种类之二是内部类与匿名内部类。把监听者定义在需要它的类内部，可以直接访问外部类的成员；匿名内部类还能省去类名，适合只用一次的监听者。\n5. 常见种类之三是计时器一类的工具类，按设定间隔反复触发动作，常用来实现动画或周期性刷新。\n6. 需要注意的是，适配器与内部类都不会出现在界面上，不能被当作组件加入容器。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch09-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch09-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "### 要点梳理\n- 菜单栏：位于窗口顶部的横向条，用来容纳各个菜单，一个窗口通常设置一个菜单栏。\n- 菜单：菜单栏上的下拉项，展开后列出一组命令；菜单还可以包含子菜单，形成多级结构。\n- 菜单项：菜单中真正可点击的命令，点击后触发相应动作；分隔线用于把命令分组。\n- 组织关系：菜单栏装菜单，菜单装菜单项或子菜单，构成层次分明的三级结构。\n- 与事件处理的配合：为菜单项注册监听者，点击时执行对应动作，做法与按钮完全一致。\n### 易错点\n- 把菜单直接加入窗口：应当先把菜单加入菜单栏，再把菜单栏设置到窗口上，少一步菜单都不会出现。\n- 把分隔线当成可点击的命令：分隔线只起视觉分组作用，不响应点击。\n- 把菜单与菜单项混用：菜单是容器，展开后列出条目；菜单项才是执行命令的那一项。"
+    },
+    {
+      "block_id": "04747-ch09-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch09-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "**关键词**：菜单栏装菜单、菜单装菜单项；可有多级子菜单；菜单项才是命令。\n**记忆法**：记成「三层楼」—— 一层是菜单栏，二层是菜单，三层是菜单项；要执行命令，住在最下面一层。\n**对比**：菜单像文件夹，展开后还能有下一层；菜单项像文件，点下去就直接执行动作，两者角色不同。"
+    },
+    {
+      "block_id": "04747-ch09-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch09-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\n在 Java 的图形界面中，窗口顶部用于放置各个菜单的横向条称为 ______；它容纳菜单，菜单再容纳菜单项与子菜单。\n真正可以点击并触发动作的是菜单项，为它注册监听者的做法与按钮完全一致。\n\n问题：补全横线处的内容，并按从外到内的顺序说明菜单体系的层次关系。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「菜单栏」。\n2. 第一层是菜单栏，它位于窗口顶部，用来容纳各个菜单，一个窗口通常设置一个菜单栏。\n3. 第二层是菜单，它是菜单栏上的下拉项，展开后列出一组命令，还可以包含下一级子菜单。\n4. 第三层是菜单项，它是菜单中真正可以点击的命令；其中的分隔线只起视觉分组作用，不响应点击。\n5. 搭建时有固定的先后顺序：先创建菜单栏，把菜单加入菜单栏，再把菜单栏设置到窗口上，缺少任何一步菜单都不会显示。\n6. 菜单项需要注册监听者才会响应点击，这一点与按钮的处理方式完全一致。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch09-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch09-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "### 要点梳理\n- 定义：对话框是依附于某个窗口出现的临时小窗口，用来提示信息或向用户索取输入。\n- 两类形态：模式对话框出现后，用户必须先处理它才能回到原窗口；非模式对话框则可以与原窗口交替操作。\n- 常见用途：显示提示与警告、要求确认某个操作、让用户输入一行文字或选择一个选项。\n- 标准形式：类库中已提供若干现成的对话框方法，直接调用即可显示提示、确认与输入三类常见对话。\n- 与窗口的关系：对话框通常需要一个所属窗口作为父级，父窗口关闭时它也随之消失。\n### 易错点\n- 把对话框当成普通窗口使用：对话框依附于父窗口，一般不作为主界面；需要独立主界面时应使用窗口。\n- 混淆模式与非模式：需要用户先作决定时用模式对话框，需要边看边改时用非模式对话框。\n- 忽略对话框的返回值：确认类与输入类对话框会返回用户的选择或内容，不接收返回值就等于放弃了用户的输入。"
+    },
+    {
+      "block_id": "04747-ch09-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch09-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "**关键词**：依附父窗口的临时小窗口；模式必须先处理、非模式可交替；提示、确认、输入三类。\n**记忆法**：记成「一问一答的小窗口」—— 想说一句话用提示框，想确认一件事用确认框，想取一段内容用输入框。\n**对比**：模式对话框挡住原窗口，非模式对话框不挡；需要用户立刻答复用前者，需要边看资料边填写用后者。"
+    },
+    {
+      "block_id": "04747-ch09-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch09-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L225"
+      ],
+      "text_md": "关于 Java 中的对话框，下列表述正确的是（　）\nA. 对话框是独立的主窗口，不依附于任何其它窗口\nB. 模式对话框出现后，用户仍可以自由操作原来的窗口\nC. 对话框依附于某个窗口出现，其中模式对话框要求用户先处理它才能回到原窗口\nD. 确认类对话框不会把用户的选择返回给程序，因此无法据此分支处理",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：C\nC 项正确，对话框依附于父窗口出现，模式对话框会挡住原窗口，用户必须先处理它。\nA 项错误，对话框是依附于某个窗口的临时小窗口，一般不作为独立的主界面使用。\nB 项错误，模式对话框出现后必须先处理它，才能回到原来的窗口继续操作。\nD 项错误，确认类与输入类对话框会把用户的选择或输入返回给程序，程序据此决定后续流程。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch10-s1-p1/explain",
+      "kind": "explain",
+      "point_id": "04747-ch10-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L237"
+      ],
+      "text_md": "### 要点梳理\n- 定义：Applet 是一类可以嵌入网页、由支持 Java 的浏览器加载并执行的小应用程序。\n- 继承关系：它由标准类库中的 Applet 类派生而来，因此天然具备与浏览器交互的能力。\n- 与网页的配合：字节码放在服务器上，网页用专门的标签指明它的位置与显示区域，浏览器下载后运行。\n- 与普通应用程序的差别：Applet 没有 main 方法，启动时机由浏览器决定，运行范围受浏览器安全限制约束。\n- 现状：随着浏览器逐步取消对插件的支持，Applet 已不再是主流做法，但它的生命周期与事件驱动思想仍被后续界面技术沿用。\n### 易错点\n- 认为 Applet 需要 main 方法：它的入口不是 main，而是由浏览器按生命周期方法依次调用。\n- 把 Applet 与服务器端程序混淆：Applet 在浏览器一侧运行并负责显示，服务器端程序负责处理请求，两者位置正好相反。\n- 认为 Applet 可以任意访问本地资源：它运行在安全限制之内，默认不能随意读写本地文件。"
+    },
+    {
+      "block_id": "04747-ch10-s1-p1/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch10-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L237"
+      ],
+      "text_md": "**关键词**：嵌入网页、继承 Applet 类、没有 main、由浏览器加载、在安全限制内运行。\n**记忆法**：记成「网页里的小程序」—— 它住在网页里，由浏览器叫醒，不能自己启动，也不能随便动本地文件。\n**对比**：普通应用程序由虚拟机调用 main 启动，Applet 由浏览器按页面状态启动；一个自己找入口，一个被环境推着走。"
+    },
+    {
+      "block_id": "04747-ch10-s1-p1/drill",
+      "kind": "drill",
+      "point_id": "04747-ch10-s1-p1",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L237"
+      ],
+      "text_md": "关于 Java Applet 的基础知识，下列表述正确的是（　）\nA. Applet 与普通 Java 应用程序一样，由虚拟机调用 main 方法启动\nB. Applet 在服务器一侧运行，负责处理浏览器发来的请求\nC. Applet 不受任何限制，可以随意读写本地文件\nD. Applet 由标准类库中的 Applet 类派生，嵌入网页后由支持 Java 的浏览器加载执行",
+      "question_type": "单项选择题",
+      "answer_md": "正确答案：D\nD 项正确，Applet 继承标准类库中的 Applet 类，嵌入网页后由支持 Java 的浏览器加载并执行。\nA 项错误，Applet 没有 main 方法，启动时机由浏览器按页面状态决定。\nB 项错误，Applet 在浏览器一侧运行并负责界面显示；在服务器一侧处理请求的是另一类技术。\nC 项错误，Applet 运行在浏览器提供的安全限制之内，默认不能随意读写本地文件。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch10-s1-p2/explain",
+      "kind": "explain",
+      "point_id": "04747-ch10-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L238"
+      ],
+      "text_md": "### 要点梳理\n- 生命周期四步：加载后先初始化，再启动；离开视野或页面暂停时停止；页面关闭或被替换时销毁。\n- 初始化：只在加载时执行一次，用来完成界面元素的创建与初始设置。\n- 启动与暂停：每次进入视野都会启动，每次离开视野都会暂停，同一对方法可能被反复调用多次。\n- 销毁：在对象被回收之前执行一次，用来释放占用较多的资源。\n- 绘制：需要显示内容时由环境调用绘制方法，通常在其中完成画面输出。\n### 易错点\n- 把初始化与启动当成一回事：初始化只在加载时执行一次，启动则会在每次回到视野时重新执行。\n- 在启动方法里创建界面元素：界面元素应在初始化时创建，启动方法负责恢复动作，否则重复创建会浪费资源。\n- 认为暂停与销毁等价：暂停只是暂时离开视野，对象仍然存在，之后还会再次启动；销毁之后对象不再使用。"
+    },
+    {
+      "block_id": "04747-ch10-s1-p2/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch10-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L238"
+      ],
+      "text_md": "**关键词**：初始化一次、启动与暂停多次、销毁一次；绘制方法负责显示。\n**记忆法**：记成「生、启、停、亡」四步 —— 初始化为生，启动为启，暂停为停，销毁为亡；其中只有启与停会反复发生。\n**对比**：初始化与销毁各执行一次，启动与暂停可以执行多次；前者管对象的一生，后者管它在视野里的进进出出。"
+    },
+    {
+      "block_id": "04747-ch10-s1-p2/drill",
+      "kind": "drill",
+      "point_id": "04747-ch10-s1-p2",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L238"
+      ],
+      "text_md": "简述 Applet 的生命周期包含哪几个阶段、各阶段执行次数有何不同，并说明启动与暂停为什么可能被反复调用。",
+      "question_type": "简答题",
+      "answer_md": "参考答案：\n1. 生命周期依次经过初始化、启动、暂停与销毁四个阶段。\n2. 初始化在 Applet 加载之后执行一次，用来创建界面元素并完成初始设置。\n3. 销毁在对象不再使用之前执行一次，用来释放占用较多的资源。\n4. 启动与暂停则可能被反复调用多次，它们分别对应 Applet 进入与离开浏览器视野的过程。\n5. 原因在于浏览器在页面切换、滚动、最小化等情况下会反复改变 Applet 的可见状态：每次重新可见就调用启动方法，每次离开视野就调用暂停方法。\n6. 因此，需要反复执行的动作放在启动与暂停中，只需做一次的准备工作放在初始化中，二者不能互换。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "04747-ch10-s1-p3/explain",
+      "kind": "explain",
+      "point_id": "04747-ch10-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "explain_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L238"
+      ],
+      "text_md": "### 要点梳理\n- 获取与加载：字节码存放在服务器上，浏览器按网页中的标记下载它，再由浏览器内置的 Java 运行环境加载执行。\n- 与网页的配合：网页用专门的标签指明字节码的位置与显示区域的大小。\n- 本地限制：Applet 从服务器下载后在本机运行，但不能随意读写本地文件或连接其它主机，这些限制由安全管理机制实施。\n- 参数传递：网页可以把参数按名值对传给 Applet，Applet 在初始化阶段读取这些参数。\n- 结束条件：页面被替换或关闭时 Applet 停止并销毁，占用的资源随之释放。\n### 易错点\n- 认为 Applet 在服务器上运行：字节码从服务器下载，但实际执行发生在访问者的机器上。\n- 认为页面参数随时可读：参数应在初始化阶段读取，之后再读取可能得不到期望的结果。\n- 以为安全限制可以随意取消：限制的目的是保护访问者的机器，取消限制需要明确的用户授权。"
+    },
+    {
+      "block_id": "04747-ch10-s1-p3/memorize",
+      "kind": "memorize",
+      "point_id": "04747-ch10-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "memorize_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L238"
+      ],
+      "text_md": "**关键词**：字节码在服务器、执行在本机；网页用标记指明位置；参数在初始化阶段读取；受安全限制约束。\n**记忆法**：记成「下载到本机跑，规矩由浏览器定」—— 代码从服务器取来，运行却发生在访问者的机器上，因此必须受限制。\n**对比**：普通应用程序由用户主动启动，权限取决于登录账户；Applet 由网页触发，权限由浏览器的安全管理机制划定。"
+    },
+    {
+      "block_id": "04747-ch10-s1-p3/drill",
+      "kind": "drill",
+      "point_id": "04747-ch10-s1-p3",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "drill_point",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "syllabus:04747#L238"
+      ],
+      "text_md": "在下面的描述中填入恰当的内容。\n\nApplet 的字节码存放于服务器，由网页中的标记指明位置后下载到访问者的机器上执行；网页还可以把\n按名值对组织的 ______ 传给 Applet，由它在初始化阶段读取。Applet 运行期间不能随意读写本地文件，\n这些限制由浏览器的安全管理机制实施。\n\n问题：补全横线处的内容，并说明 Applet 为什么必须受到这些限制。",
+      "question_type": "填空题",
+      "answer_md": "参考答案：\n1. 横线处应填「参数」。\n2. 运行机制上，字节码存在服务器一侧，浏览器按网页中的标记下载它，再由本机的 Java 运行环境加载执行。\n3. 也就是说，代码来自服务器，执行却发生在访问者的机器上，网页中的参数正是两者之间的传递通道。\n4. 正因为程序是在别人的机器上运行，如果不加限制就可能读写本地文件、连接其它主机，从而危害访问者。\n5. 因此浏览器用安全管理机制划定权限范围，默认不允许随意访问本地资源；要取消限制，需要用户明确授权。\n6. 参数应在初始化阶段读取；页面被替换或关闭时 Applet 停止并销毁，占用的资源随之释放。",
+      "source_kind": "ai_generated"
+    },
+    {
+      "block_id": "course/exam_strategy",
+      "kind": "exam_strategy",
+      "point_id": null,
+      "scope": "course",
+      "ai_generated": true,
+      "review_state": "machine_draft",
+      "generator": {
+        "backend": "agent",
+        "model": "harness-agent",
+        "prompt_id": "stage_plan",
+        "prompt_version": "v1",
+        "generated_at": "2026-09-19"
+      },
+      "evidence_refs": [
+        "knowledge-model:exam"
+      ],
+      "text_md": "本课只考单项选择题、填空题、简答题、程序改错题、程序分析题与程序设计题六种题型。建议按先客观后主观的顺序作答：先把单项选择题与填空题做完，这类题目答案明确、耗时可控，一时拿不准的先按第一判断落笔并做上记号，不要在现场反复纠缠；随后集中处理简答题，答题时先给结论再补依据，分条书写，每条一句话说清一个判断。程序改错题与程序分析题都要先读通整段代码再动手：改错题逐行核对语法与语义，指出错误所在并说明原因，改完后把修正结果完整写出来；分析题先说明执行流程与关键变量的取值变化，再给出运行结果，只写结果不作分析是拿不到过程分的。程序设计题通常分值最重，作答时先写清类的划分与方法签名，再补方法体，特别注意关键字大小写、类名与文件名的对应关系，以及入口方法的固定写法；写完后用一组简单数据在草稿上走一遍，检查边界情况。全卷最后留出一点时间通读检查，程序题重点核对大括号是否配对、分号是否遗漏、题号是否写错。"
+    }
+  ],
+  "review_schedule": {
+    "exam_date": null,
+    "weekly_hours": null,
+    "status": "named_gap",
+    "plans": [],
+    "ai_generated": true,
+    "review_state": "machine_draft",
+    "generator": {
+      "backend": "agent",
+      "model": "harness-agent",
+      "prompt_id": "stage_plan",
+      "prompt_version": "v1",
+      "generated_at": "2026-09-19"
+    },
+    "evidence_refs": [
+      "knowledge-model:exam"
+    ],
+    "gap_impact": "缺少 exam_date、weekly_hours，无法推导 30 / 14 / 7 天排程",
+    "next_evidence": "用户或官方考期公告提供 exam_date 与 weekly_hours（写入 knowledge-model.json 的 exam 块）"
+  }
+}

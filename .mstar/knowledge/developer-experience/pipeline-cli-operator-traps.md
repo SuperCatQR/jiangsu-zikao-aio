@@ -47,7 +47,9 @@ another.
   believing a diff. Restoring the original `generator` blocks for response-identical keys makes the fixture
   diff purely additive, which is the property the plan's "additive-only" constraint actually means.
 
-- **`--dry-run` does not mean "touches nothing".** Its help text says 只演练不落盘, and it does protect the
+- **`--dry-run` does not mean "touches nothing".** Its help text *used to* say 只演练不落盘; after B4a the help
+  states the real scope (it does not promote into content/jiangsu/courses/, but `generate`/`evidence` still write
+  sources/jiangsu/courses/<code>/ and re-stamp `generated_at`). The trap itself is unchanged, and it does protect the
   final promotion into the per-course page directory under content/jiangsu/courses/ — but the `generate` and
   `evidence` stages still write the three per-course artefacts under sources/jiangsu/courses/
   (content.json, evidence.json, knowledge-model.json — see `sources/jiangsu/courses/02333/content.json`), and

@@ -8,8 +8,10 @@
   声明 `L1` 而任一输入不满足 → 失败关闭；非 `L1` 课程存在 `content.json` / `knowledge-model.json` → 失败关闭；
 - `quote` > 60 字符（含**缺失**）→ 失败关闭；point `id` 重复 / 格式不符；`coverage.ratio < 0.90`；
   `diff_vs_manual[].kind == "manual_only"`；
-- 知识模型章目与 `syllabus.md` 的章目索引**逐行一致**，且 `official_point_count` 与模型自身的节数一致
-  （防止静默丢章：`15044` 的 `绪 论` 曾因 `CHAPTER_RE` 只认 `导论` 而整章消失，见 B6）。
+- 知识模型章目与 `syllabus.md` 的章目索引**逐行一致（空白不敏感，见 `_without_whitespace`）**，
+  且 `official_point_count` 与模型自身的节数一致
+  （防止静默丢章：`15044` 的 `绪 论` 曾因 `CHAPTER_RE` 只认 `导论` 而整章消失，见 B6）；
+  **该段存在却解析不出行**（表格损坏）→ 失败关闭，不得退化成「无该段」的静默跳过（W6 / QC1 Q1-2）。
 
 诊断纪律（C2-013）：本层对任何**类型**错误的产物都必须返回定位到文件与字段的错误字符串，
 不允许抛 `TypeError` 中断整层 —— 否则一个坏文件会掩盖其余课码的问题。
@@ -27,6 +29,7 @@ from lib.course_pipeline.evidence import evaluate_eligibility
 from lib.course_pipeline.knowledge_model import (
     APPENDIX_RE,
     CHAPTER_TITLE_RE,
+    normalized_source_lines,
     source_assessment_unit_count,
 )
 from lib.course_pipeline.official_source import is_official_url
@@ -68,8 +71,21 @@ def is_fresh(obj1: Any, obj2: Any) -> bool:
     return _strip_generated_at(obj1) == _strip_generated_at(obj2)
 
 
-def _chapter_titles_from_syllabus(root: Path, code: str) -> list[str] | None:
-    """`content/jiangsu/courses/<code>/syllabus.md` 的章目索引第二列（逐字章名）；无该页返回 `None`。"""
+def _chapter_titles_from_syllabus(root: Path, code: str, rel_km: str, errors: list[str]) -> list[str] | None:
+    """`content/jiangsu/courses/<code>/syllabus.md` 的章目索引第二列（逐字章名）。
+
+    **三态（W6 / QC1 Q1-2），不得把后两态压成同一个 `None`**：
+
+    | 页面侧 | 返回 | 含义 |
+    |---|---|---|
+    | 无该页 / 无 `### 章目索引` 段 | `None` | 该课没有第二来源 → **跳过比较**（既有行为，两门课依赖它） |
+    | 有该段且解出 ≥1 行 | 章名列表 | 正常比较（空白不敏感，见 `_without_whitespace`） |
+    | 有该段但**零行**可解析 | `None` **+ 记一条 `errors`** | 表格损坏的矛盾态 → **失败关闭** |
+
+    末态必须失败关闭：`rows or None` 曾让「页面表存在但一行都解析不出」与「页面表不存在」返回**同一个**
+    `None`，整条交叉核对就此静默停摆 —— 恰是本判据（防静默丢章，B6）要防的静默类，只是上移了一层。
+    零行时不再比较（无物可比），失败由 `errors` 承担；这与 `_declared_unit_count` 的末态同构。
+    """
     path = root / "content" / "jiangsu" / "courses" / code / "syllabus.md"
     if not path.is_file():
         return None
@@ -89,7 +105,28 @@ def _chapter_titles_from_syllabus(root: Path, code: str) -> list[str] | None:
         if cells[0] == "章序":
             continue
         rows.append(cells[1])
-    return rows or None
+    if not rows:
+        errors.append(
+            f"{rel_km}: {path.relative_to(root).as_posix()} 章目索引存在但解析不出行"
+            "（表格损坏 / 列数不足）：第二来源不可读，失败关闭而不是静默跳过交叉核对"
+        )
+        return None
+    return rows
+
+
+def _without_whitespace(title: Any) -> Any:
+    """章目标题的「去空白视图」：删掉全部空白字符（首尾与内部），其余字符一律不动。
+
+    W4.5 / plan Task 0b：模型逐字照录抽取件（`04747` 抽取件印 `第 6 章`），手写 `syllabus.md`
+    表把章号内部空白归一掉了（`第6章`）—— 两侧章集合 / 章序 / 章名完全相同，差异**只在空白**。
+    这是**比较**侧的唯一放宽：空白以外（大小写、标点、全半角、数字）仍须逐字相同，章数与章序
+    仍由列表比较承担。非字符串原样返回：`title` 缺失时 `None` 与页面表字符串不等 ⇒ 仍失败关闭
+    （且不得抛 `TypeError` 中断整层，见模块头 C2-013 诊断纪律）。
+
+    与 `knowledge_model._fold` 的分工：`_fold` 是「空白串折叠为单个半角空格」（`第1章   X` → `第1章 X`），
+    实测**不**能让 `第 6 章` 与 `第6章` 判等 —— 本条要的是「删掉空白」，故不复用 `_fold`。
+    """
+    return "".join(title.split()) if isinstance(title, str) else title
 
 
 def _facts_problems(rel: str, facts: Any, errors: list[str]) -> None:
@@ -197,12 +234,25 @@ def _course_url_problems(rel: str, code: str | None, url: Any, baseline_urls: di
         errors.append(f"{rel}: course_url {url!r} course_codes does not include {code}")
 
 
-def _declared_unit_count(root: Path, syllabus: Any) -> int | None:
+def _declared_unit_count(root: Path, syllabus: Any, rel_km: str, errors: list[str]) -> int | None:
     """考纲原文声明的考核单元数（R43 的独立分母）；取不到时返回 `None`（不判定）。
 
     独立性是这条检查的全部价值：它读**抽取件原文**（`evidence.syllabus.path`）并按源文重数一遍，
     而 `official_point_count` 是切片解析的产物。旧实现的「分母自洽」两侧同源，恒真。
     读不到抽取件时不臆造判定（`syllabus.sha256` 漂移 / 路径缺失已由 `_eligibility_problems` 报出）。
+
+    **三态（R54），不得压成 `raw or normalized`**：
+
+    | 原文直读 | 规范化渲染 | 返回 | 含义 |
+    |---|---|---|---|
+    | `None` | — | `None` | 前置不可用 → **不判定**（既有行为） |
+    | `>0` | — | 该值 | 原读可用（既有 5 门课全在此态：分母不移动） |
+    | `0` | `>0` | 规范化值 | 版式噪声（`\\x0c` 等分隔符）把整篇读成一行 → 回退 |
+    | `0` | `0` | `None` **+ 记一条 `errors`** | `status == "extracted"` 却两侧都数不出 = 源侧损坏的**矛盾态** → 失败关闭 |
+
+    末态必须失败关闭，且不能静默跳过：`status == "extracted"` 的判据恰是「能定位到该小节」，
+    两侧都为 0 与该状态矛盾。按 `declared = 0` 去比对则**方向反了** —— 真实语义是**多**出
+    `official` 个未计入单元（源侧标记损坏），不是「源文声明了 0 个单元」。
     """
     if not isinstance(syllabus, dict) or syllabus.get("status") != "extracted":
         return None
@@ -213,7 +263,19 @@ def _declared_unit_count(root: Path, syllabus: Any) -> int | None:
     document = root / rel_path
     if not document.is_file():
         return None
-    return source_assessment_unit_count(document.read_text(encoding="utf-8").split("\n"), heading)
+    text = document.read_text(encoding="utf-8")
+    declared = source_assessment_unit_count(text.split("\n"), heading)
+    if declared > 0:
+        return declared
+    declared = source_assessment_unit_count(normalized_source_lines(text), heading)
+    if declared > 0:
+        return declared
+    errors.append(
+        f"{rel_km}: 考纲原文声明的考核单元数两侧都解出 0（原文直读与规范化渲染都定位不到"
+        f"「课程内容与考核要求」分部标记 /「{heading}」小节）—— `syllabus.status` 为 `extracted` "
+        "却数不出考核单元，是源侧损坏的矛盾态，不得当作『源文声明 0 个单元』通过"
+    )
+    return None
 
 
 def _sections_problems(
@@ -352,7 +414,7 @@ def _knowledge_model_problems(
         # 旧实现只做上面那条同源核对：解析丢掉一整个单元时，`official` 与 `section_total`
         # **同时变小**、比值仍 `1.0`，于是 `02333` 带着 7 个被吞掉的附录单元全绿出厂。
         if isinstance(official, int) and not isinstance(official, bool):
-            declared = _declared_unit_count(root, syllabus)
+            declared = _declared_unit_count(root, syllabus, rel_km, errors)
             if declared is not None and declared != official:
                 errors.append(
                     f"{rel_km}: coverage.official_point_count {official} 与考纲原文声明的考核单元数 "
@@ -371,9 +433,12 @@ def _knowledge_model_problems(
                     errors.append(f"{rel_km}: diff_vs_manual contains manual_only entry: {item}")
 
     if code:
-        expected_titles = _chapter_titles_from_syllabus(root, code)
+        expected_titles = _chapter_titles_from_syllabus(root, code, rel_km, errors)
         actual_titles = [ch.get("title") for ch in chapters if isinstance(ch, dict)]
-        if expected_titles is not None and actual_titles != expected_titles:
+        # 逐项比较两侧的「去空白视图」（W4.5 / Task 0b）：条数、顺序、空白以外的一切字符仍须完全一致。
+        if expected_titles is not None and [_without_whitespace(t) for t in actual_titles] != [
+            _without_whitespace(t) for t in expected_titles
+        ]:
             errors.append(
                 f"{rel_km}: chapters 与 content/jiangsu/courses/{code}/syllabus.md 章目索引不一致"
                 f"（模型 {len(actual_titles)} 章 / 页面 {len(expected_titles)} 章）"

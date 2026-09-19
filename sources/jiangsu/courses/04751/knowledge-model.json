@@ -1,0 +1,642 @@
+{
+  "schema_version": 1,
+  "course_code": "04751",
+  "model_version": "v1",
+  "generated_at": "2026-09-19",
+  "generator": {
+    "kind": "deterministic",
+    "model": null,
+    "prompt_id": null,
+    "prompt_version": null
+  },
+  "source": {
+    "doc_id": "syllabus:04751",
+    "path": "sources/jiangsu/processed/syllabus/04751-computer-network-security-gaogang-4389/document.extracted.md",
+    "sha256": "76d66be82178b06f606b1db55ba46d0726b544e2ad0e7b9ad28d979ab1732745"
+  },
+  "chapters": [
+    {
+      "ordinal": 1,
+      "index": "第1章",
+      "slug": "ch01",
+      "title": "第 1 章 网络安全概述",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 1 章 网络安全概述",
+          "points": [
+            {
+              "id": "04751-ch01-s1-p1",
+              "title": "①网络安全的相关概念、网络安全的目标和特征",
+              "requirement": "识记",
+              "quote": "①网络安全的相关概念、网络安全的目标和特征",
+              "locator": "L92"
+            },
+            {
+              "id": "04751-ch01-s1-p2",
+              "title": "②网络安全技术中的 PDRR 模型和 IPDRRR 模型",
+              "requirement": "识记",
+              "quote": "②网络安全技术中的 PDRR 模型和 IPDRRR 模型",
+              "locator": "L92"
+            },
+            {
+              "id": "04751-ch01-s1-p3",
+              "title": "③网络安全面临主要威胁的种类",
+              "requirement": "识记",
+              "quote": "③网络安全面临主要威胁的种类",
+              "locator": "L92"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 2,
+      "index": "第2章",
+      "slug": "ch02",
+      "title": "第 2 章 网络安全技术基础",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 2 章 网络安全技术基础",
+          "points": [
+            {
+              "id": "04751-ch02-s1-p1",
+              "title": "①网络安全技术的基础知识",
+              "requirement": "识记",
+              "quote": "①网络安全技术的基础知识",
+              "locator": "L106"
+            },
+            {
+              "id": "04751-ch02-s1-p2",
+              "title": "②TCP/IP 层次安全及常用技术",
+              "requirement": "识记",
+              "quote": "②TCP/IP 层次安全及常用技术",
+              "locator": "L106"
+            },
+            {
+              "id": "04751-ch02-s1-p3",
+              "title": "①IPv6 的优势与特点、IPv6 相比 IPv4 在网络安全上的变化、IPv6 的安全机制和移动 IPv6 的特性",
+              "requirement": "领会",
+              "quote": "①IPv6 的优势与特点、IPv6 相比 IPv4 在网络安全上的变化、IPv6 的安全机制和移动 IPv6 的特性",
+              "locator": "L107"
+            },
+            {
+              "id": "04751-ch02-s1-p4",
+              "title": "②虚拟专用网（VPN）的基本概念、技术特点、关键技术和实用解决方案",
+              "requirement": "领会",
+              "quote": "②虚拟专用网（VPN）的基本概念、技术特点、关键技术和实用解决方案",
+              "locator": "L107"
+            },
+            {
+              "id": "04751-ch02-s1-p5",
+              "title": "③无线网络接入点安全和 IEEE802.1x 认证过程",
+              "requirement": "领会",
+              "quote": "③无线网络接入点安全和 IEEE802.1x 认证过程",
+              "locator": "L107"
+            },
+            {
+              "id": "04751-ch02-s1-p6",
+              "title": "①IEEE802.1x 认证过程",
+              "requirement": "应用",
+              "quote": "①IEEE802.1x 认证过程",
+              "locator": "L110"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 3,
+      "index": "第3章",
+      "slug": "ch03",
+      "title": "第 3章 网络安全体系与管理",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 3章 网络安全体系与管理",
+          "points": [
+            {
+              "id": "04751-ch03-s1-p1",
+              "title": "①ISO 网络安全体系结构和 TCP/IP 网络安全体系结构",
+              "requirement": "识记",
+              "quote": "①ISO 网络安全体系结构和 TCP/IP 网络安全体系结构",
+              "locator": "L123"
+            },
+            {
+              "id": "04751-ch03-s1-p2",
+              "title": "②网络安全相关法律法规",
+              "requirement": "识记",
+              "quote": "②网络安全相关法律法规",
+              "locator": "L123"
+            },
+            {
+              "id": "04751-ch03-s1-p3",
+              "title": "③网络安全评估准则和方法",
+              "requirement": "识记",
+              "quote": "③网络安全评估准则和方法",
+              "locator": "L123"
+            },
+            {
+              "id": "04751-ch03-s1-p4",
+              "title": "①ISO 网络安全体系结构中网络安全机制和网络安全服务",
+              "requirement": "领会",
+              "quote": "①ISO 网络安全体系结构中网络安全机制和网络安全服务",
+              "locator": "L125"
+            },
+            {
+              "id": "04751-ch03-s1-p5",
+              "title": "②TCP/IP网络安全管理体系结构",
+              "requirement": "领会",
+              "quote": "②TCP/IP网络安全管理体系结构",
+              "locator": "L125"
+            },
+            {
+              "id": "04751-ch03-s1-p6",
+              "title": "③网络安全保障体系",
+              "requirement": "领会",
+              "quote": "③网络安全保障体系",
+              "locator": "L125"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 4,
+      "index": "第4章",
+      "slug": "ch04",
+      "title": "第4章 黑客攻防与检测防御",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第4章 黑客攻防与检测防御",
+          "points": [
+            {
+              "id": "04751-ch04-s1-p1",
+              "title": "①黑客的相关概念、黑客攻击的目的和过程",
+              "requirement": "识记",
+              "quote": "①黑客的相关概念、黑客攻击的目的和过程",
+              "locator": "L140"
+            },
+            {
+              "id": "04751-ch04-s1-p2",
+              "title": "②网络攻击的防范措施",
+              "requirement": "识记",
+              "quote": "②网络攻击的防范措施",
+              "locator": "L140"
+            },
+            {
+              "id": "04751-ch04-s1-p3",
+              "title": "①端口扫描的攻防、网络监听的攻防、社会工程学的攻防、密码破解的攻防、缓冲区溢出的攻防、拒绝服务的攻防、特洛伊木马的攻防和网络欺骗的攻防",
+              "requirement": "领会",
+              "quote": "①端口扫描的攻防、网络监听的攻防、社会工程学的攻防、密码破解的攻防、缓冲区溢出的攻防、拒绝服务的攻防",
+              "locator": "L141"
+            },
+            {
+              "id": "04751-ch04-s1-p4",
+              "title": "②入侵检测和防御系统的基本原理",
+              "requirement": "领会",
+              "quote": "②入侵检测和防御系统的基本原理",
+              "locator": "L141"
+            },
+            {
+              "id": "04751-ch04-s1-p5",
+              "title": "①入侵检测系统原理及功能",
+              "requirement": "应用",
+              "quote": "①入侵检测系统原理及功能",
+              "locator": "L144"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 5,
+      "index": "第5章",
+      "slug": "ch05",
+      "title": "第5章 密码与加密技术",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第5章 密码与加密技术",
+          "points": [
+            {
+              "id": "04751-ch05-s1-p1",
+              "title": "①密码学基本概念和基本术语",
+              "requirement": "识记",
+              "quote": "①密码学基本概念和基本术语",
+              "locator": "L154"
+            },
+            {
+              "id": "04751-ch05-s1-p2",
+              "title": "②密码体制及其分类",
+              "requirement": "识记",
+              "quote": "②密码体制及其分类",
+              "locator": "L154"
+            },
+            {
+              "id": "04751-ch05-s1-p3",
+              "title": "③数据及网络加密方式",
+              "requirement": "识记",
+              "quote": "③数据及网络加密方式",
+              "locator": "L154"
+            },
+            {
+              "id": "04751-ch05-s1-p4",
+              "title": "④密码破译方法与密钥管理",
+              "requirement": "识记",
+              "quote": "④密码破译方法与密钥管理",
+              "locator": "L154"
+            },
+            {
+              "id": "04751-ch05-s1-p5",
+              "title": "⑤信息隐藏技术和量子密码",
+              "requirement": "识记",
+              "quote": "⑤信息隐藏技术和量子密码",
+              "locator": "L154"
+            },
+            {
+              "id": "04751-ch05-s1-p6",
+              "title": "①密码系统基本原理",
+              "requirement": "领会",
+              "quote": "①密码系统基本原理",
+              "locator": "L156"
+            },
+            {
+              "id": "04751-ch05-s1-p7",
+              "title": "②非对称密码体制",
+              "requirement": "领会",
+              "quote": "②非对称密码体制",
+              "locator": "L156"
+            },
+            {
+              "id": "04751-ch05-s1-p8",
+              "title": "③单向加密体制",
+              "requirement": "领会",
+              "quote": "③单向加密体制",
+              "locator": "L156"
+            },
+            {
+              "id": "04751-ch05-s1-p9",
+              "title": "④WEP加密技术",
+              "requirement": "领会",
+              "quote": "④WEP加密技术",
+              "locator": "L156"
+            },
+            {
+              "id": "04751-ch05-s1-p10",
+              "title": "①古典密码体制中置换密码",
+              "requirement": "应用",
+              "quote": "①古典密码体制中置换密码",
+              "locator": "L158"
+            },
+            {
+              "id": "04751-ch05-s1-p11",
+              "title": "②对称密码体制",
+              "requirement": "应用",
+              "quote": "②对称密码体制",
+              "locator": "L158"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 6,
+      "index": "第6章",
+      "slug": "ch06",
+      "title": "第6章 身份认证与访问控制",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第6章 身份认证与访问控制",
+          "points": [
+            {
+              "id": "04751-ch06-s1-p1",
+              "title": "①身份认证的基本概念",
+              "requirement": "识记",
+              "quote": "①身份认证的基本概念",
+              "locator": "L168"
+            },
+            {
+              "id": "04751-ch06-s1-p2",
+              "title": "②访问控制的基本概念",
+              "requirement": "识记",
+              "quote": "②访问控制的基本概念",
+              "locator": "L168"
+            },
+            {
+              "id": "04751-ch06-s1-p3",
+              "title": "③网络安全审计",
+              "requirement": "识记",
+              "quote": "③网络安全审计",
+              "locator": "L168"
+            },
+            {
+              "id": "04751-ch06-s1-p4",
+              "title": "①身份认证的常用方式",
+              "requirement": "领会",
+              "quote": "①身份认证的常用方式",
+              "locator": "L172"
+            },
+            {
+              "id": "04751-ch06-s1-p5",
+              "title": "②访问控制实现方法、访问控制模型和认证服务与访问控制系统",
+              "requirement": "领会",
+              "quote": "②访问控制实现方法、访问控制模型和认证服务与访问控制系统",
+              "locator": "L172"
+            },
+            {
+              "id": "04751-ch06-s1-p6",
+              "title": "③数字签名方法和功能",
+              "requirement": "领会",
+              "quote": "③数字签名方法和功能",
+              "locator": "L172"
+            },
+            {
+              "id": "04751-ch06-s1-p7",
+              "title": "①数字签名的签名和验证过程",
+              "requirement": "应用",
+              "quote": "①数字签名的签名和验证过程",
+              "locator": "L174"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 7,
+      "index": "第7章",
+      "slug": "ch07",
+      "title": "第7章 计算机及手机病毒防范",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第7章 计算机及手机病毒防范",
+          "points": [
+            {
+              "id": "04751-ch07-s1-p1",
+              "title": "①病毒的基本概念和发展阶段",
+              "requirement": "识记",
+              "quote": "①病毒的基本概念和发展阶段",
+              "locator": "L184"
+            },
+            {
+              "id": "04751-ch07-s1-p2",
+              "title": "②病毒的特点和种类",
+              "requirement": "识记",
+              "quote": "②病毒的特点和种类",
+              "locator": "L184"
+            },
+            {
+              "id": "04751-ch07-s1-p3",
+              "title": "②病毒的检测、清除和防范",
+              "requirement": "识记",
+              "quote": "②病毒的检测、清除和防范",
+              "locator": "L184"
+            },
+            {
+              "id": "04751-ch07-s1-p4",
+              "title": "①病毒的构成、传播、触发和生存",
+              "requirement": "领会",
+              "quote": "①病毒的构成、传播、触发和生存",
+              "locator": "L186"
+            },
+            {
+              "id": "04751-ch07-s1-p5",
+              "title": "②木马病毒和蠕虫病毒",
+              "requirement": "领会",
+              "quote": "②木马病毒和蠕虫病毒",
+              "locator": "L186"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 8,
+      "index": "第8章",
+      "slug": "ch08",
+      "title": "第8章 防火墙技术及应用",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第8章 防火墙技术及应用",
+          "points": [
+            {
+              "id": "04751-ch08-s1-p1",
+              "title": "①防火墙基本概念、特点、主要缺陷和常用类型",
+              "requirement": "识记",
+              "quote": "①防火墙基本概念、特点、主要缺陷和常用类型",
+              "locator": "L197"
+            },
+            {
+              "id": "04751-ch08-s1-p2",
+              "title": "①包过滤型防火墙和应用代理型防火墙",
+              "requirement": "领会",
+              "quote": "①包过滤型防火墙和应用代理型防火墙",
+              "locator": "L198"
+            },
+            {
+              "id": "04751-ch08-s1-p3",
+              "title": "②防火墙阻止 SYN Flood攻击",
+              "requirement": "领会",
+              "quote": "②防火墙阻止 SYN Flood攻击",
+              "locator": "L198"
+            },
+            {
+              "id": "04751-ch08-s1-p4",
+              "title": "①防火墙的主要应用",
+              "requirement": "应用",
+              "quote": "①防火墙的主要应用",
+              "locator": "L200"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 9,
+      "index": "第9章",
+      "slug": "ch09",
+      "title": "第9章 操作系统及站点安全",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第9章 操作系统及站点安全",
+          "points": [
+            {
+              "id": "04751-ch09-s1-p1",
+              "title": "①Linux 操作系统安全",
+              "requirement": "识记",
+              "quote": "①Linux 操作系统安全",
+              "locator": "L213"
+            },
+            {
+              "id": "04751-ch09-s1-p2",
+              "title": "②UNIX 操作系统安全",
+              "requirement": "识记",
+              "quote": "②UNIX 操作系统安全",
+              "locator": "L213"
+            },
+            {
+              "id": "04751-ch09-s1-p3",
+              "title": "①Windows 操作系统安全",
+              "requirement": "领会",
+              "quote": "①Windows 操作系统安全",
+              "locator": "L214"
+            },
+            {
+              "id": "04751-ch09-s1-p4",
+              "title": "②Web 站点的安全",
+              "requirement": "领会",
+              "quote": "②Web 站点的安全",
+              "locator": "L214"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 10,
+      "index": "第10章",
+      "slug": "ch10",
+      "title": "第 10 章 数据库及数据库安全",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 10 章 数据库及数据库安全",
+          "points": [
+            {
+              "id": "04751-ch10-s1-p1",
+              "title": "①数据库及数据安全相关概念和数据库系统面临的安全问题",
+              "requirement": "识记",
+              "quote": "①数据库及数据安全相关概念和数据库系统面临的安全问题",
+              "locator": "L224"
+            },
+            {
+              "id": "04751-ch10-s1-p2",
+              "title": "②可信DBMS 体系结构",
+              "requirement": "识记",
+              "quote": "②可信DBMS 体系结构",
+              "locator": "L224"
+            },
+            {
+              "id": "04751-ch10-s1-p3",
+              "title": "③数据库的安全防护",
+              "requirement": "识记",
+              "quote": "③数据库的安全防护",
+              "locator": "L224"
+            },
+            {
+              "id": "04751-ch10-s1-p4",
+              "title": "④数据库备份和恢复",
+              "requirement": "识记",
+              "quote": "④数据库备份和恢复",
+              "locator": "L224"
+            },
+            {
+              "id": "04751-ch10-s1-p5",
+              "title": "①数据库安全的层次体系结构",
+              "requirement": "领会",
+              "quote": "①数据库安全的层次体系结构",
+              "locator": "L226"
+            },
+            {
+              "id": "04751-ch10-s1-p6",
+              "title": "②数据库的安全性、数据库及数据的完整性",
+              "requirement": "领会",
+              "quote": "②数据库的安全性、数据库及数据的完整性",
+              "locator": "L226"
+            },
+            {
+              "id": "04751-ch10-s1-p7",
+              "title": "③数据库的并发控制",
+              "requirement": "领会",
+              "quote": "③数据库的并发控制",
+              "locator": "L226"
+            },
+            {
+              "id": "04751-ch10-s1-p8",
+              "title": "④SQL Server 的安全机制",
+              "requirement": "领会",
+              "quote": "④SQL Server 的安全机制",
+              "locator": "L226"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 11,
+      "index": "第11章",
+      "slug": "ch11",
+      "title": "第 11 章 电子商务安全（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 12,
+      "index": "第12章",
+      "slug": "ch12",
+      "title": "第 12 章 网络安全新技术及解决方案（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 13,
+      "index": "第13章",
+      "slug": "ch13",
+      "title": "第 13 章 网络安全课程设计指导（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    }
+  ],
+  "exam": {
+    "question_types": [
+      "单项选择题",
+      "判断改错题",
+      "简答题",
+      "论述题"
+    ],
+    "question_types_provenance": {
+      "doc_id": "syllabus:04751",
+      "locator": "L324"
+    },
+    "duration_minutes": null,
+    "duration_status": "named_gap",
+    "sample_paper": null
+  },
+  "coverage": {
+    "official_point_count": 10,
+    "modeled_point_count": 10,
+    "ratio": 1.0,
+    "denominator_rule": "考纲「二、考核知识点与考核要求」中的章数（该考纲不分子节，章即考核单元）",
+    "manual_reference": null,
+    "diff_vs_manual": []
+  }
+}
