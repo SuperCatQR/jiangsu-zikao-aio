@@ -18,7 +18,8 @@
    单选任一字母 > 40% / 判断题同类真值 > 80%。作用域信号是**该课 `content.json` 的 git 跟踪状态**
    （`git ls-files --error-unmatch`）：未跟踪 ⇒ 新课，偏置失败关闭；已跟踪 ⇒ 既有课，只报告；
    无法判定 ⇒ 按新课处理（fail-closed）。分布取证走**独立报告通道**（stdout），不进 `errors`；
-   落在两族题型内却提不出答案的块**失败关闭**。**不做**硬编码课码清单，也**不用** mtime/`generated_at`
+   落在两族题型内却提不出答案的块**同受该作用域约束**（新课失败关闭；既有课只报告 —— QC-1 裁定，
+   见 `_answer_distribution_problems()`）。**不做**硬编码课码清单，也**不用** mtime/`generated_at`
    （replay 会回放旧日期，不可复现）—— 那是 `conventions/gate-fail-closed-and-page-reach.md` 的旧缺陷类。
 5. **AI 块必须真正落到页面**（QC3-001 / C2-004 / W1 / B2a N-1 / F-QC2-1 / F-QC3-1 / Y2）：对账口径 = **4 个
    block kind（`explain` / `memorize` / `drill` / `exam_strategy`）+ 2 个课程级顶层产物（`stage_plan` /
@@ -82,11 +83,19 @@ MEMORIZE_AID_RE = re.compile(rf"(?m)^{re.escape(MEMORIZE_AID_HEADING)}$")
 POINT_ANCHOR_RE = re.compile(r"^### 考点精讲：(?P<point_id>[^\s（]+)（")
 
 # 答案分布守卫（plan § Data contracts 1/2；design-notes § 2.3/§ 2.4）的两条**单行**正则。
-# **不锚定行尾**（`\b` 而非 `$`）是关键：实测三种单选排布（`正确答案：A` 独占一行 / 该行后接解释 /
-# `答案：A。…` 压缩形态）与四种判断真值排布（`参考答案：错误。` / `…正确。` / `…错误，…` / `…正确。…`）
-# 的差别**只在同一行内**，故一次覆盖即可。按「三种形态」分别匹配会系统性漏掉一整类
-# （`15040` 的 31 道「前缀后接解释」曾因此被排除在样本外）。
-ANSWER_SINGLE_CHOICE_RE = re.compile(r"^\s*[*#\s]*(?:正确)?答案[*\s]*[:：]\s*\**\s*([A-D])\b")
+# 单选式有**两条互相独立**的约束，缺任一条都会给出错值：
+# ① **不锚定行尾**：实测三种单选排布（`正确答案：A` 独占一行 / 该行后接解释 / `答案：A。…` 压缩形态）
+#    与四种判断真值排布（`参考答案：错误。` / `…正确。` / `…错误，…` / `…正确。…`）的差别**只在同一行内**，
+#    故一次覆盖即可。按「三种形态」分别匹配会系统性漏掉一整类（`15040` 的 31 道「前缀后接解释」曾因此被排除在样本外）。
+# ② **捕获的字母必须是答案的终点**（QC-2 = qc1 F-2 + qc2 S-1，双席独立发现）：`\b` 在 `、` / `,` / `，` /
+#    空格之前**成立**（它们都是非词字符），于是 `答案：A、B` / `答案：A,B` / `答案：A，B` / `答案：A B`
+#    被静默记成 `A` —— 把**错值**灌进守卫自己的分子，比漏掉一个样本更糟；而同一批答案里的 `正确答案：AB`
+#    又因 `\b` 不成立而失败关闭，两种多选写法行为相反。改为负向先行断言 `(?![\s、,，/]*[A-D])`：捕获字母之后
+#    （允许空白与分隔符）**不得**再出现答案字母，五种多选形态因此一致进入 `unparseable`。
+#    `答案：A。解析：…` 这类「解释紧跟」的形态不受影响 —— `。` 不是分隔符，解释文字也不以 A–D 开头。
+ANSWER_SINGLE_CHOICE_RE = re.compile(
+    r"^\s*[*#\s]*(?:正确)?答案[*\s]*[:：]\s*\**\s*([A-D])(?![\s、,，/]*[A-D])"
+)
 ANSWER_JUDGEMENT_RE = re.compile(r"^\s*[*#\s]*(?:参考|正确)?答案[*\s]*[:：]\s*\**\s*(正确|错误)")
 
 # 题型**家族子串**：`question_type` 是考纲抽取出的自由文本（`knowledge_model.py` 读考纲「考试命题的
@@ -105,6 +114,11 @@ MAX_JUDGEMENT_SHARE_PERCENT = 80
 # 既有课的答案键偏置本轮**不回修**（Clarify C4），缺口由这两条 residual 跟踪。报告里点名它们，
 # 读者才分得清「报告出来的既有偏置」与「新出现的问题」。
 ANSWER_BIAS_RESIDUALS = "R15/R33"
+
+# 作用域探针（`git ls-files`）的**上界**（QC-4 / qc3 F-2）：`ai-content` 层在 7 层闸门的关键路径上，
+# 探针挂起（索引锁竞争、网络文件系统、`safe.directory` 类等待）会无诊断地阻塞整层。有界之后超时落进
+# `content_tracking_state()` 的「无法判定 ⇒ 按新课处理」通道，而不是把闸门打崩。
+GIT_TRACKING_PROBE_TIMEOUT_SECONDS = 10
 
 # Markdown 代码围栏（``` / ~~~）：闭合需**同一字符**且不短于开启长度；围栏内的行不是渲染证据。
 _FENCE_LINE_RE = re.compile(r"^ {0,3}(?P<fence>`{3,}|~{3,})")
@@ -664,26 +678,37 @@ def answer_distribution(content: dict) -> dict:
     判断题真值只存在于 `answer_md` 文本中（`generate_content.py:300-304` 的 drill 只有
     `question_type` / `answer_md` / `source_kind`），没有独立字段可回退，故这一条对它尤其关键。
 
-    已知边界（有意为之，不是缺口）：家族子串命中但答案形如多选（`AB`）的题型会被判为不可解析而报错，
-    而不是把首字母当成单选的样本 —— 失败关闭优先于凑出一份错的分布。
+    已知边界（有意为之，不是缺口）：家族子串命中但答案形如多选（`AB`，含 `A、B` / `A,B` / `A，B` / `A B`
+    等分隔符写法）的题型一律判为**不可解析**，而不是把首字母当成单选的样本 —— 失败关闭优先于凑出一份错的
+    分布（QC-2：`\b` 曾让分隔符写法静默计成首字母，与 `AB` 的失败关闭方向相反，同一批答案两种行为；
+    改写为「字母之后不得再接答案字母」的负向先行断言后，五种多选写法同形）。
+
+    返回的 `families` 是**已分桶 / 未分桶**的块数对照（qc1 F-3 / QC-3）：两族命中数都为 0 而本课确有 drill
+    ⇒ 整门课的答案都没进入分布判定，调用方据此打印 `family-not-matched` 覆盖标记（报告通道，非 `errors`）。
+    判据取**家族命中数**而非答案计数：一个家族内全是不可解析块的课，族是命中的（缺口由 `unparseable` 发声），
+    不得再被记成「题型没匹配上」。
     """
     single = {letter: 0 for letter in "ABCD"}
     judgement = {"正确": 0, "错误": 0}
     unparseable: list[str] = []
+    families = {"single_choice": 0, "judgement": 0, "drills": 0}
     for block in content.get("blocks") or []:
         if block.get("kind") != "drill":
             continue
+        families["drills"] += 1
         question_type = str(block.get("question_type") or "")
         # 判定只看**首行**：三种排布与四种真值排布的差别都在首行内，解释可能在后续行。
         first_line = str(block.get("answer_md") or "").split("\n", 1)[0]
         where = str(block.get("point_id") or block.get("block_id") or "?")
         if SINGLE_CHOICE_TYPE_MARKER in question_type:
+            families["single_choice"] += 1
             match = ANSWER_SINGLE_CHOICE_RE.match(first_line)
             if match is None:
                 unparseable.append(f"{where}（{question_type}）")
                 continue
             single[match.group(1)] += 1
         elif JUDGEMENT_TYPE_MARKER in question_type:
+            families["judgement"] += 1
             match = ANSWER_JUDGEMENT_RE.match(first_line)
             if match is None:
                 unparseable.append(f"{where}（{question_type}）")
@@ -693,6 +718,7 @@ def answer_distribution(content: dict) -> dict:
         "single_choice": _answer_dimension(single, MAX_SINGLE_CHOICE_SHARE_PERCENT),
         "judgement": _answer_dimension(judgement, MAX_JUDGEMENT_SHARE_PERCENT),
         "unparseable": unparseable,
+        "families": families,
     }
 
 
@@ -707,6 +733,11 @@ def content_tracking_state(root: Path, content_path: Path) -> bool | None:
     known to git`（未跟踪）；`128` = `fatal: not a git repository ...`（不是工作树，无从判定）。
     `git` 可执行文件本身缺失（`OSError`）同归「无法判定」。把「非 1 的非零码」整体当无法判定，
     而不是只认 128：git 的其他致命码（索引损坏、权限）同样不该被读成「这门课是新的」。
+
+    探针**有界**（QC-4 / qc3 F-2）：`subprocess.run(..., timeout=GIT_TRACKING_PROBE_TIMEOUT_SECONDS)`
+    挂起即降级。捕获必须放宽到 `(OSError, subprocess.SubprocessError)` —— `TimeoutExpired` 继承
+    `SubprocessError` 而**不是** `OSError`，只补 `timeout=` 会让超时异常穿透 `run_ai_content_gate()`，
+    与这里承诺的「`None` = 无法判定」相反（闸门整层崩掉，而不是按新课处理）。
     """
     try:
         rel_path = content_path.relative_to(root).as_posix()
@@ -718,8 +749,9 @@ def content_tracking_state(root: Path, content_path: Path) -> bool | None:
             capture_output=True,
             text=True,
             check=False,
+            timeout=GIT_TRACKING_PROBE_TIMEOUT_SECONDS,
         )
-    except OSError:
+    except (OSError, subprocess.SubprocessError):
         return None
     if probe.returncode == 0:
         return True
@@ -738,7 +770,7 @@ def _max_share_text(dimension: dict) -> str:
 
 
 def _answer_distribution_problems(code: str, dist: dict, tracked: bool | None, errors: list[str]) -> None:
-    """报告一门课的答案分布，并只在**新课**（或判定失败）时把偏置失败关闭（Clarify C3 / D5）。
+    """报告一门课的答案分布，并只在**新课**（或判定失败）时把偏置与解析缺口失败关闭（Clarify C3 / D5）。
 
     报告通道契约（§ Data contracts 1）：分布取证**不是** `content.json` 的新字段，而是 stdout 上的
     独立输出通道 —— `verdict ∈ {ok, insufficient-sample}` **不得**进 `errors`（否则既有小样本课变红，
@@ -747,8 +779,21 @@ def _answer_distribution_problems(code: str, dist: dict, tracked: bool | None, e
 
     `enforced` 三态 → 两个方向：`tracked is True`（既有课）只报告；`False`（新课）与 `None`
     （无法判定）都失败关闭 —— 判定失败的降级方向是**按新课处理**，绝不静默降级为「只报告」。
+
+    **`unparseable` 与 `biased` 受同一个 `enforced` 约束**（QC-1 裁定 = qc1 F-1 + qc2 F-1，双席独立发现）：
+    已跟踪的既有课即使出现解析覆盖缺口也**只报告** —— 缺口仍逐课打印（条数 + 首个块的 id，绝不静默），
+    未跟踪 / 无法判定才失败关闭。此前该分支无条件 `errors.append`，与 C3/D5「既有课只报告」冲突：
+    一条解析覆盖面缺口就足以让既有课永久报红，正是「守卫变成噪声」的旧失败形态。§ Data contracts 2 的
+    「不可解析即失败关闭」与该作用域条款只在**已跟踪课**上相撞，按 PM 裁定以 D5（用户裁定）为准；
+    「新课」方向不受影响，故守卫不因此变盲（plan QC 合并报告 § PM adjudications 1）。
+
+    覆盖缺口另有**独立标记**（qc1 F-3 / QC-3）：有 drill 而两族题型标记都没命中时打印
+    `coverage=family-not-matched` —— 否则整门课脱出分布判定只会呈现为一行 `insufficient-sample`，
+    与「样本确实不足」无法区分（该 verdict 按契约永不进 `errors`）。标记只走报告通道。
     """
     single, judgement = dist["single_choice"], dist["judgement"]
+    unparseable = dist["unparseable"]
+    families = dist["families"]
     if tracked is True:
         scope = "enforced=false（git 已跟踪 content.json：既有课，只报告）"
     elif tracked is False:
@@ -758,25 +803,38 @@ def _answer_distribution_problems(code: str, dist: dict, tracked: bool | None, e
     enforced = tracked is not True
 
     biased = [dim for dim in (single, judgement) if dim["verdict"] == "biased"]
-    note = ""
+    family_not_matched = bool(families["drills"]) and not families["single_choice"] and not families["judgement"]
+
+    # 解析覆盖缺口与覆盖标记都落在**报告行**上：条数与首个块的 id 一律可见（`unparseable(n=…)`），
+    # 标记与「样本不足」区分开。报告行始终带 `unparseable(n=…)` 字段，两个方向都可逐字断言。
+    coverage = [
+        f"unparseable(n={len(unparseable)}" + (f" first={unparseable[0]}" if unparseable else "") + ")"
+    ]
+    if family_not_matched:
+        coverage.append(f"coverage=family-not-matched drills={families['drills']}")
+
+    notes: list[str] = []
     if biased and not enforced:
-        note = f" 历史偏置由 {ANSWER_BIAS_RESIDUALS} 跟踪（本轮不回修）"
+        notes.append(f"历史偏置由 {ANSWER_BIAS_RESIDUALS} 跟踪（本轮不回修）")
+    if unparseable and not enforced:
+        notes.append("既有课的解析覆盖缺口只报告、不阻断闸门（QC-1 作用域裁定）")
+
     print(
         f"[ai-content 答案分布] course={code}"
         f" single(n={single['n']} counts={_counts_text(single['counts'])}"
         f" max_share={_max_share_text(single)} verdict={single['verdict']})"
         f" judgement(n={judgement['n']} counts={_counts_text(judgement['counts'])}"
         f" max_share={_max_share_text(judgement)} verdict={judgement['verdict']})"
-        f" {scope}{note}"
+        f" {' '.join(coverage)}"
+        f" {scope}" + "".join(f" {note}" for note in notes)
     )
 
-    # 解析覆盖缺口：落在两族内却提不出答案 = 该块的答案**没有**进入任何分布，静默跳过会让偏置消失。
-    # 这一条**不**受 `enforced` 约束：它不是分布判决，而是「守卫根本没看见这道题」的输入契约违约。
-    # 实测五门课的 582 个非字母型 drill 无一落入两族，故既有课不会因此变红。
-    if dist["unparseable"]:
+    # 解析覆盖缺口（QC-1）：与 `biased` **同一**作用域口径 —— 既有课只报告（上面的报告行已点名条数与首个块），
+    # 新课 / 判定失败才失败关闭。不可解析不得静默记为「无偏置」（§ Data contracts 2 的新课方向）。
+    if unparseable and enforced:
         errors.append(
-            f"course {code} 答案分布: {len(dist['unparseable'])} 个 drill 的 answer_md 无法解析出答案"
-            f"（首个 {dist['unparseable'][0]}）—— 不可解析不得静默记为「无偏置」"
+            f"course {code} 答案分布: {len(unparseable)} 个 drill 的 answer_md 无法解析出答案"
+            f"（首个 {unparseable[0]}）—— 不可解析不得静默记为「无偏置」"
         )
 
     for label, dimension in (("单选", single), ("判断题", judgement)):
