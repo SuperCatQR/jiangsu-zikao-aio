@@ -1741,8 +1741,18 @@ def test_r54_question_type_merge_does_not_fold_the_trailing_body():
     QC-5 移除（`、` 个数**不是**句末判据），故构造改为在 L4 结尾补上句末「。」，锁「句子已结束 ⇒
     窗口立即关闭」这条路径；「≥4 个 `、` 但句子未结束」的形状由
     `test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration` 覆盖。
-    正文仍是无「等」、无句末句号的长正文：窗口一旦没能关闭，正文就会被正则的 `$` 兜底吞进
-    `group(1)`（末项变成 `材料题本课程考核说明第 5 段…`），故 `考核说明` 断言仍是一次真实的对折行检查。
+    正文仍是无「等」、无句末句号的长正文，但它在改后的判据下**不可观测** —— 见下面的 QC-8 更正。
+
+    ⚠️ QC-8 可达性更正：`考核说明` 断言**不是**一次对折行检查，而是**结构性不变量**的非回归钉。
+    判据收窄后折行路径在本构造下不可达，两条路各自独立地封死：①`_question_types_terminated(L4)` 在拼接
+    **任何**续行之前就为真（L4 自身已收句末「。」），故前瞻消耗 0 行，正文从未进入 `merged`；
+    ②同一个「。」又是 `QUESTION_TYPE_RE` 里 `(.+?)(?:等|。|$)` 的终止点，即使窗口真的折进了正文，
+    `group(1)` 也只会停在 L4 的句末（qc3 探针实测：拼接后 `"考核说明" in group(1)` = `False`），
+    `$` 兜底不可达。故本用例钉住的是「句子已结束 ⇒ 窗口立即关闭、正文不可观测」这条不变量：
+    若哪天停止集被放宽到让正文进入 `group(1)`，该断言立即变红。折行类防护由
+    `test_r54_question_type_merge_fails_closed_when_the_bound_is_exhausted`（拼到上界即失败关闭）
+    与 `test_qc5_question_type_merge_does_not_truncate_a_separator_heavy_declaration`（未收句末句号的
+    声明行仍须继续前瞻）承担，两条都在本次修正中有效。
     """
     lines = _r54_exam_lines(
         "4.本课程考试命题的主要题型一般有单项选择题、多项选择题、填空题、简答题、材料题。",
