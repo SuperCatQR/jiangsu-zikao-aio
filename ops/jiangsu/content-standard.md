@@ -73,6 +73,9 @@
 - **答案分布守卫（本层第六类校验；模块 docstring 六类中的第 4 条）**：按 `answer_md` 统计每门课 drill 的答案分布，
   判据 = 样本下界 **10** / 单选任一字母 **> 40%** / 判断题同类真值 **> 80%**（整数比较，`n=10` 且众数 4 恰好 40% 不算偏置）；
   样本 < 10 记 `insufficient-sample` —— 跳过占比判定，但**必须**打印到 stdout，绝不静默通过。
+  同一条报告行上还有第二种覆盖形态：全课有 drill（`drills=N`，N > 0）却**两族题型标记（`single_choice` /
+  `judgement`）都没命中**，整门课脱出分布判定 —— 此时打 `coverage=family-not-matched drills=N`，
+  **只报告**、绝不进 `errors`，以免与「样本确实不足」的 `insufficient-sample` 混为一谈。
   **作用域信号 = 该课 `content.json` 的 git 跟踪状态**（`git ls-files --error-unmatch`；不硬编码课码清单，
   也不用 mtime / `generated_at`）：已跟踪 ⇒ 既有课**只报告**，偏置与**覆盖缺口**（落在两族题型内却提不出答案的
   drill）都只进 stdout 报告通道、**不进 `errors`**；未跟踪 ⇒ 新课，两者都失败关闭；**判定失败**
