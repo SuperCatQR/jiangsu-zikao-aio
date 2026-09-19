@@ -534,7 +534,7 @@ def test_existing_courses_reproduce_the_measured_baseline(capsys: pytest.Capture
 
     run_ai_content_gate(ROOT)
     out = capsys.readouterr().out
-    lines = {code: next(l for l in out.splitlines() if f"course={code} " in l) for code in
+    lines = {code: next(line for line in out.splitlines() if f"course={code} " in line) for code in
              ("15040", "15043", "15044", "00898", "02333")}
 
     expected = {
