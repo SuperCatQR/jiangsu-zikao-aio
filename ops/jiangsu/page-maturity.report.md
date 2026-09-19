@@ -9,8 +9,8 @@
 |03708|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
 |03709|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
 |04735|machine_ready|metadata-only|yellow|lifecycle:machine_ready; completeness:metadata-only|
-|04747|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
-|04751|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
+|04747|draft|metadata-only|yellow|lifecycle:draft; completeness:metadata-only|
+|04751|draft|metadata-only|yellow|lifecycle:draft; completeness:metadata-only|
 |13000|machine_ready|metadata-only|yellow|thin-required-pages; lifecycle:machine_ready; completeness:metadata-only|
 |13003|machine_ready|metadata-only|yellow|thin-required-pages; lifecycle:machine_ready; completeness:metadata-only|
 |13013|draft|metadata-only|yellow|thin-required-pages; lifecycle:draft; completeness:metadata-only|
