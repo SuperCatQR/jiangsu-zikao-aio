@@ -731,6 +731,41 @@ def _cli_module_for_build():
     return module
 
 
+def _tracked(fake_root: Path) -> Path:
+    """把 copytree 出来的副本根标注为「这些课的 `content.json` 已在版本控制中」，并原样返回它。
+
+    **为什么需要**：`ai-content` 层的答案分布守卫用**该课 `content.json` 的 git 跟踪状态**区分
+    「新课失败关闭」与「既有课只报告」（`scripts/lib/ai_content_gate.py`：`enforced = tracked is not True`）。
+    `shutil.copytree(ROOT / ...)` 产出的树按定义**没有索引**：`git -C <副本> ls-files --error-unmatch`
+    返回 `128`（不是工作树）⇒ `tracked=None` ⇒ 守卫按新课失败关闭。而本仓 `15040` 的答案键本身带历史
+    偏置（单选 A 105/194 = 54.1%，判据 > 40%）—— 于是这所**既有课**在 `render → gate` 上被守卫拦下，
+    副本根撒谎成「一所尚未入库的新课」，用例根本走不到被测对象（暂存页损坏中止 / 陈旧文件清除 / render 路由）。
+
+    **为什么不是放宽断言**：标注之后断言原文一字不动，且多证明一条 —— 既有课的历史偏置**不阻断**闸门
+    （与生产一致：全量跑 7 门课均为 `enforced=false`，只报告）。反向「过滤掉含答案分布的错误」会把
+    「守卫在既有课上误报」这一整类回归一起放过，方向恰好反了。
+
+    **与生产的一致性**：仓内 7 门课的 `sources/jiangsu/courses/*/content.json` 全部已被跟踪，而副本是
+    整仓快照（`scripts` / `ops` / `sources` / `content`），所以「快照里每门有产物的课都已跟踪」才是生产
+    的真实形态；只标注 `15040` 会让同一份副本对其余课继续说谎。
+
+    只用 `git init` + `git add`：跟踪状态读的就是**索引**，既不需要 commit，也不写 user 配置。
+    与 `tests/test_ai_content_gate.py::_tracked`（B4a 的同类修复）同一口径。
+    """
+    subprocess.run(["git", "-C", str(fake_root), "init", "-q"], check=True, capture_output=True)
+    rel_paths = sorted(
+        path.relative_to(fake_root).as_posix()
+        for path in (fake_root / "sources" / "jiangsu" / "courses").glob("*/content.json")
+    )
+    if rel_paths:
+        subprocess.run(
+            ["git", "-C", str(fake_root), "add", "-f", "--", *rel_paths],
+            check=True,
+            capture_output=True,
+        )
+    return fake_root
+
+
 def test_staging_dir_is_course_code_named_so_the_contract_check_really_runs():
     """B1：暂存目录必须是**课码命名**目录，否则 `check_course_dir` 静默早返回 `[]`。
 
@@ -777,6 +812,7 @@ def test_corrupted_staged_page_aborts_build_and_promotes_nothing(tmp_path: Path,
     shutil.copytree(real_root / "ops", fake_root / "ops")
     shutil.copytree(real_root / "sources", fake_root / "sources")
     shutil.copytree(real_root / "content", fake_root / "content")
+    _tracked(fake_root)
 
     cli.ROOT = fake_root
     # 只跑到 render+gate：上游阶段已被既有产物满足（evidence/model/content 都在 fake_root 里）
@@ -820,6 +856,7 @@ def test_promotion_prunes_stale_files(tmp_path: Path):
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
     cli.ROOT = fake_root
 
     stale = fake_root / "content/jiangsu/courses/15040/knowledge/99-orphan.md"
@@ -843,6 +880,7 @@ def test_render_subcommand_routes_through_staging_and_gate(tmp_path: Path):
     shutil.copytree(ROOT / "ops", fake_root / "ops")
     shutil.copytree(ROOT / "sources", fake_root / "sources")
     shutil.copytree(ROOT / "content", fake_root / "content")
+    _tracked(fake_root)
     cli.ROOT = fake_root
 
     course_dir = fake_root / "content" / "jiangsu" / "courses" / "15040"
