@@ -682,11 +682,32 @@ def test_select_chapters_rejects_unknown_selector():
         gc.select_chapters(_model(), ("不存在的章",))
 
 
+def _l1_course_codes() -> list[str]:
+    """仓内 L1 课码，**从 `sources/jiangsu/courses/*/evidence.json` 推导**（不硬编码清单）。
+
+    W1.5 的新不变量要有主语，而写死一份课码清单恰恰会复现本轮的缺陷：清单本身会过期。
+    B4b 规划期就发生过「新课（`04747`/`04751`）已入目录、未入提示词作用域」——
+    当时拿两门新课当反向用例（B3b），反而把这件事盖住了。
+    """
+    return sorted(
+        path.parent.name
+        for path in (ROOT / "sources" / "jiangsu" / "courses").glob("*/evidence.json")
+        if (json.loads(path.read_text(encoding="utf-8")).get("eligibility") or {}).get("level") == "L1"
+    )
+
+
 def test_prompt_pack_declares_course_scope():
     """F-401：四个提示词模板声明 `course_scope`；作用域外的课程没有提示词包。
 
     P-2（plan § 决议记录 R-1）：B-1 把作用域放宽到 `15043`，但**它不是通配**——
     作用域仍是一个显式白名单，作用域外的课码必须继续被拒。
+
+    **W1.5 重锚定（2026-09-18）**：B3b 的反向用例原是 `04747`/`04751`（当时它们合法地在作用域外）；
+    本片把两门课纳入作用域后，仓内**不再存在**「L1 但作用域外」的课，故：
+    ① 反向用例改用**非目录课码**（作用域是白名单而非通配，这一条必须一直是红的）；
+    ② **新增正向不变量**——作用域必须覆盖**全部** L1 课（集合从 `evidence.json` 推导）。
+    ② 把本类缺陷从「生成时才 exit 2」提前到「测试时就红」：下一次有新 L1 课入目录而漏加作用域，
+    本用例在测试期直接失败，而不是等到 `generate` 阶段丢一个 exit 2。
     """
     prompts = ("explain_point", "memorize_point", "drill_point", "stage_plan")
 
@@ -702,11 +723,22 @@ def test_prompt_pack_declares_course_scope():
     for code in ("15044", "00898", "02333"):
         assert gc.out_of_scope_prompts(code) == [], f"B3b：{code} 在作用域内，generate 必须可推进"
 
-    # 反向用例（守护本用例存在的意义）：作用域外的课码仍必须 fail closed —— 04747/04751 是 L1 课程、
-    # 考纲完整，但**不在**本轮提示词作用域内，不得因为「放宽」而变成「任何课程都能用这四个模板生成」。
-    # 注：B3b 之前本用例用 15044 当反例；它已进入作用域，故改用真正作用域外的课码。
-    for code in ("04747", "04751", "99999"):
-        assert gc.out_of_scope_prompts(code) == [f"{prompt_id}.v1" for prompt_id in prompts], code
+    # W1.5 新不变量（正向）：**作用域必须覆盖全部 L1 课**。课码集合由 evidence.json 推导，
+    # 不写死 —— 写死清单本身就是本类缺陷的成因（清单会比目录先过期）；`out_of_scope_prompts()`
+    # 逐份检查四个模板，故失败信息能直接点名是哪几份漏了，不需要再补一层逐模板断言。
+    l1_codes = _l1_course_codes()
+    assert l1_codes, "探针无主语：evidence.json 未推导出任何 L1 课，下面的不变量会空转"
+    for code in l1_codes:
+        missing = gc.out_of_scope_prompts(code)
+        assert missing == [], (
+            f"{code} 是 L1 课程（evidence.json eligibility.level），四个模板的 course_scope 必须覆盖它；"
+            f"缺失 {missing} → generate 阶段 exit 2「无提示词包」（W1.5 修掉的缺陷类）"
+        )
+
+    # 反向用例（守护本用例存在的意义）：**非目录课码**仍必须 fail closed，不得因为「放宽」而变成
+    # 「任何课程都能用这四个模板生成」。注：W1.5 之后反例只能是非目录课码（见 docstring ①）；
+    # 「真实 L1 课是否都在作用域内」由上一条正向不变量守护，两条合起来仍锁住整个契约。
+    assert gc.out_of_scope_prompts("99999") == [f"{prompt_id}.v1" for prompt_id in prompts]
 
 
 def test_prompt_bodies_are_course_agnostic():
@@ -1016,26 +1048,81 @@ def test_cli_generate_reports_missing_evidence_and_skips_blocked_course():
     assert not (ROOT / "sources/jiangsu/courses/00023/content.json").exists()
 
 
-def test_cli_generate_refuses_a_course_without_a_prompt_pack():
+# 副本树里的提示词目录（相对仓根）；`_narrow_copied_scope()` 只改副本，真实仓零改动。
+PROMPTS_REL = Path("scripts") / "lib" / "course_pipeline" / "prompts"
+SCRIPTS_REL = Path("scripts")
+# 自备的作用域行探针（不复用生产正则）：本用例要构造「反事实输入」，构造它的解析器不应与被测的
+# 那一个共用同一套约定，否则解析口径本身出错时两边一起错、测不出来。
+SCOPE_LINE_RE = re.compile(r"^course_scope:[ \t]*(\[.*\])[ \t]*$", re.M)
+
+
+def _narrow_copied_scope(fake_root: Path, excluded_code: str) -> None:
+    """把**副本树**里四份模板的 `course_scope` 收窄到不含 `excluded_code`（真实仓不动）。
+
+    反事实**从真实作用域派生**（读出当前值、减掉目标课码），不另写一份课码清单：
+    硬编码的反事实会在下一次放宽作用域时静默失效（本片正是被这种过期假设绊了一次）。
+    `excluded_code` 不在作用域内时直接断言失败 —— 那时「反事实」是空操作，用例会变成
+    「因为这门课本来就没进作用域」而误绿，恰好把 W1.5 要修的缺陷盖住。
+    """
+    for prompt_path in sorted((fake_root / PROMPTS_REL).glob("*.v1.md")):
+        text = prompt_path.read_text(encoding="utf-8")
+
+        def _drop(match: re.Match[str]) -> str:
+            scope = json.loads(match.group(1))
+            assert excluded_code in scope, (
+                f"{prompt_path.name} 的 course_scope 不含 {excluded_code}：反事实不成立"
+                "（W1.5 的放宽被撤销了，或作用域又被改窄）"
+            )
+            kept = [code for code in scope if code != excluded_code]
+            return f"course_scope: {json.dumps(kept, ensure_ascii=False)}"
+
+        text, replacements = SCOPE_LINE_RE.subn(_drop, text)
+        assert replacements == 1, f"{prompt_path.name}: 未找到唯一的 course_scope 行（{replacements}）"
+        prompt_path.write_text(text, encoding="utf-8")
+
+
+def test_cli_generate_refuses_a_course_without_a_prompt_pack(tmp_path: Path):
     """F-401 失败关闭：作用域**外**的 L1 课程没有提示词包 → 拒绝，不得用别人的模板出内容。
 
-    B-1 后 `15043` 进入作用域，B3b（DP-3）又把 `15044`/`00898`/`02333` 一并放宽，
-    故这里改用仍是 L1、考纲完整、但**不在**本轮作用域内的 `04747`：作用域是白名单而非通配，
-    这一条必须一直是红的。
+    B-1 后 `15043` 进入作用域，B3b（DP-3）放宽了 `15044`/`00898`/`02333`，本片（W1.5）
+    又把 `04747`/`04751` 纳入 —— 于是**仓内已不存在「L1 但作用域外」的课**，
+    B3b 用真实课码当反例的那条路走到头了（非 L1 课码在 `build-course-content.py:119-122`
+    就先返回 0，根本到不了作用域守卫）。
+
+    **重锚定（覆盖不缩减，仍走真实 CLI 端到端）**：用仓库既有的「副本仓」接缝
+    （先例 `tests/test_ai_content_gate.py:56`）——在 `tmp_path` 里 copytree 出 `scripts/`
+    与目标课的 `evidence.json`，**只把副本树里**四份模板的作用域收窄到不含 `04747`，
+    再在副本根内跑同一个 `scripts/build-course-content.py`。起火路径完整保留：
+    evidence 资格判据放行（L1）→ 作用域守卫起火 → `exit 2` → 不写盘。
+
+    **为什么这条用例仍然有效**：`llm_client.PROMPTS_DIR` 由 `__file__` 推导
+    （`set_repo_root()` 只重定向 fixture / courses 两处根），副本树因此读**自己的**模板。
+    反过来就是本用例的防伪性质：真实仓现在已含 `04747`，若进程串回真实仓的模板，
+    守卫不会起火、本用例必红 —— 只有副本树的收窄作用域被真正读到，它才会绿。
     """
+    fake_root = tmp_path / "repo"
+    shutil.copytree(
+        ROOT / SCRIPTS_REL, fake_root / SCRIPTS_REL, ignore=shutil.ignore_patterns("__pycache__")
+    )
+    course_rel = Path("sources") / "jiangsu" / "courses" / "04747"
+    (fake_root / course_rel).mkdir(parents=True)
+    shutil.copy2(ROOT / course_rel / "evidence.json", fake_root / course_rel / "evidence.json")
+    _narrow_copied_scope(fake_root, "04747")
+
     proc = subprocess.run(
         [sys.executable, "scripts/build-course-content.py", "generate", "04747", "--backend", "replay"],
-        cwd=ROOT,
+        cwd=fake_root,
         capture_output=True,
         text=True,
     )
 
-    assert proc.returncode != 0, proc.stdout
+    assert proc.returncode == 2, f"F-401 拒绝路径必须 exit 2：rc={proc.returncode}\n{proc.stdout}\n{proc.stderr}"
     assert "04747" in proc.stderr
     assert "提示词包" in proc.stderr
     for prompt_id in ("explain_point.v1", "memorize_point.v1", "drill_point.v1", "stage_plan.v1"):
         assert prompt_id in proc.stderr, f"必须点名缺失的提示词包：{prompt_id}"
-    assert not (ROOT / "sources/jiangsu/courses/04747/content.json").exists(), "拒绝路径不得写盘"
+    # 写盘断言挂在**副本根**：W2 起真实仓的 `04747/content.json` 是合法产物，不能再钉它。
+    assert not (fake_root / course_rel / "content.json").exists(), "拒绝路径不得写盘"
 
 
 def test_cli_generate_accepts_an_in_scope_course():

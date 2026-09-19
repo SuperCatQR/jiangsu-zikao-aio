@@ -1,0 +1,651 @@
+{
+  "schema_version": 1,
+  "course_code": "04747",
+  "model_version": "v1",
+  "generated_at": "2026-09-19",
+  "generator": {
+    "kind": "deterministic",
+    "model": null,
+    "prompt_id": null,
+    "prompt_version": null
+  },
+  "source": {
+    "doc_id": "syllabus:04747",
+    "path": "sources/jiangsu/processed/syllabus/04747-java-programming-1-gaogang-4067/document.extracted.md",
+    "sha256": "1d713b732f4cc516f80206824a5d15c4829fcab884b70807c13fdd65b7930db4"
+  },
+  "chapters": [
+    {
+      "ordinal": 1,
+      "index": "第1章",
+      "slug": "ch01",
+      "title": "第1章 概述",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第1章 概述",
+          "points": [
+            {
+              "id": "04747-ch01-s1-p1",
+              "title": "①Java 语言的产生和发展",
+              "requirement": "识记",
+              "quote": "①Java 语言的产生和发展",
+              "locator": "L103"
+            },
+            {
+              "id": "04747-ch01-s1-p2",
+              "title": "②Java 语言平台及相关应用",
+              "requirement": "识记",
+              "quote": "②Java 语言平台及相关应用",
+              "locator": "L103"
+            },
+            {
+              "id": "04747-ch01-s1-p3",
+              "title": "①Java 语言的特点",
+              "requirement": "领会",
+              "quote": "①Java 语言的特点",
+              "locator": "L104"
+            },
+            {
+              "id": "04747-ch01-s1-p4",
+              "title": "②Java 语言的运行环境",
+              "requirement": "领会",
+              "quote": "②Java 语言的运行环境",
+              "locator": "L104"
+            },
+            {
+              "id": "04747-ch01-s1-p5",
+              "title": "③Java Applet",
+              "requirement": "领会",
+              "quote": "③Java Applet",
+              "locator": "L104"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言的特点和 Java 开发环境的基本使用",
+          "locator": "L107"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L105",
+          "title": "简单应用：①Java 应用程序；②Java 程序初步",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "index": "第2章",
+      "slug": "ch02",
+      "title": "第2章 标识符和数据类型",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第2章 标识符和数据类型",
+          "points": [
+            {
+              "id": "04747-ch02-s1-p1",
+              "title": "①关键字",
+              "requirement": "识记",
+              "quote": "①关键字",
+              "locator": "L115"
+            },
+            {
+              "id": "04747-ch02-s1-p2",
+              "title": "②自定义标识符",
+              "requirement": "识记",
+              "quote": "②自定义标识符",
+              "locator": "L115"
+            },
+            {
+              "id": "04747-ch02-s1-p3",
+              "title": "①单行注释",
+              "requirement": "领会",
+              "quote": "①单行注释",
+              "locator": "L116"
+            },
+            {
+              "id": "04747-ch02-s1-p4",
+              "title": "②多行注释",
+              "requirement": "领会",
+              "quote": "②多行注释",
+              "locator": "L116"
+            },
+            {
+              "id": "04747-ch02-s1-p5",
+              "title": "③文档注释",
+              "requirement": "领会",
+              "quote": "③文档注释",
+              "locator": "L116"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言的常变量和面向对象基本概念",
+          "locator": "L121"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L117",
+          "title": "简单应用：①整型；②浮点型；③字符型；④布尔型；⑤常量与变量；⑥数据类型的相互转换",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L119",
+          "title": "综合应用：①复合数据类型；②面向对象基本概念",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "index": "第3章",
+      "slug": "ch03",
+      "title": "第3章 表达式和流程控制语句",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第3章 表达式和流程控制语句",
+          "points": [
+            {
+              "id": "04747-ch03-s1-p1",
+              "title": "①运算符",
+              "requirement": "识记",
+              "quote": "①运算符",
+              "locator": "L130"
+            },
+            {
+              "id": "04747-ch03-s1-p2",
+              "title": "②空语句",
+              "requirement": "识记",
+              "quote": "②空语句",
+              "locator": "L130"
+            },
+            {
+              "id": "04747-ch03-s1-p3",
+              "title": "③Math 类",
+              "requirement": "识记",
+              "quote": "③Math 类",
+              "locator": "L130"
+            },
+            {
+              "id": "04747-ch03-s1-p4",
+              "title": "①赋值表达式",
+              "requirement": "领会",
+              "quote": "①赋值表达式",
+              "locator": "L131"
+            },
+            {
+              "id": "04747-ch03-s1-p5",
+              "title": "②算术表达式",
+              "requirement": "领会",
+              "quote": "②算术表达式",
+              "locator": "L131"
+            },
+            {
+              "id": "04747-ch03-s1-p6",
+              "title": "③关系表达式",
+              "requirement": "领会",
+              "quote": "③关系表达式",
+              "locator": "L131"
+            },
+            {
+              "id": "04747-ch03-s1-p7",
+              "title": "④逻辑表达式",
+              "requirement": "领会",
+              "quote": "④逻辑表达式",
+              "locator": "L131"
+            },
+            {
+              "id": "04747-ch03-s1-p8",
+              "title": "⑤其他表达式",
+              "requirement": "领会",
+              "quote": "⑤其他表达式",
+              "locator": "L131"
+            },
+            {
+              "id": "04747-ch03-s1-p9",
+              "title": "⑥表达中的类型转换",
+              "requirement": "领会",
+              "quote": "⑥表达中的类型转换",
+              "locator": "L131"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言的流程控制语句",
+          "locator": "L140"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L133",
+          "title": "简单应用：①方法调用语句；②条件选择语句；③switch 语句",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L137",
+          "title": "综合应用：①复合语句；②while 语句；③do－while 语句；④for 语句；⑤循环的嵌套；⑥brea 语句；⑦c",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 4,
+      "index": "第4章",
+      "slug": "ch04",
+      "title": "第4章 数组、向量和字符串",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第4章 数组、向量和字符串",
+          "points": [
+            {
+              "id": "04747-ch04-s1-p1",
+              "title": "①StringBuffer 类",
+              "requirement": "识记",
+              "quote": "①StringBuffer 类",
+              "locator": "L148"
+            },
+            {
+              "id": "04747-ch04-s1-p2",
+              "title": "①多维数组的声明",
+              "requirement": "领会",
+              "quote": "①多维数组的声明",
+              "locator": "L149"
+            },
+            {
+              "id": "04747-ch04-s1-p3",
+              "title": "②多维数组的创建",
+              "requirement": "领会",
+              "quote": "②多维数组的创建",
+              "locator": "L149"
+            },
+            {
+              "id": "04747-ch04-s1-p4",
+              "title": "③多维数组的初始化",
+              "requirement": "领会",
+              "quote": "③多维数组的初始化",
+              "locator": "L149"
+            },
+            {
+              "id": "04747-ch04-s1-p5",
+              "title": "④多维数组的使用",
+              "requirement": "领会",
+              "quote": "④多维数组的使用",
+              "locator": "L149"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言中数组的声明、创建和使用",
+          "locator": "L156"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L151",
+          "title": "简单应用：①一维数组的声明；②一维数组的创建；③一维数组的初始化；④多维数组的声明；⑤多维数组的创建；⑥多维数组的初始化",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L154",
+          "title": "综合应用：①一维数组的使用；②多维数组的使用；③String 类",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 5,
+      "index": "第5章",
+      "slug": "ch05",
+      "title": "第5章 进一步讨论对象和类",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第5章 进一步讨论对象和类",
+          "points": [
+            {
+              "id": "04747-ch05-s1-p1",
+              "title": "①面向对象的基本概念",
+              "requirement": "识记",
+              "quote": "①面向对象的基本概念",
+              "locator": "L166"
+            },
+            {
+              "id": "04747-ch05-s1-p2",
+              "title": "②面向对象编程的优点",
+              "requirement": "识记",
+              "quote": "②面向对象编程的优点",
+              "locator": "L166"
+            },
+            {
+              "id": "04747-ch05-s1-p3",
+              "title": "③继承的基本概念",
+              "requirement": "识记",
+              "quote": "③继承的基本概念",
+              "locator": "L166"
+            },
+            {
+              "id": "04747-ch05-s1-p4",
+              "title": "①访问控制符",
+              "requirement": "领会",
+              "quote": "①访问控制符",
+              "locator": "L167"
+            },
+            {
+              "id": "04747-ch05-s1-p5",
+              "title": "②类与类之间的关系",
+              "requirement": "领会",
+              "quote": "②类与类之间的关系",
+              "locator": "L167"
+            },
+            {
+              "id": "04747-ch05-s1-p6",
+              "title": "③抽象类",
+              "requirement": "领会",
+              "quote": "③抽象类",
+              "locator": "L167"
+            },
+            {
+              "id": "04747-ch05-s1-p7",
+              "title": "④抽象方法",
+              "requirement": "领会",
+              "quote": "④抽象方法",
+              "locator": "L167"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言中类与对象的创建和使用，Java 语言中类与类之间的关系",
+          "locator": "L178"
+        },
+        {
+          "text": "本章难点是继承过程中产生的隐藏和覆盖问题",
+          "locator": "L180"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L168",
+          "title": "简单应用：①类的声明；②成员变量；③成员方法；④main 方法；⑤static修饰符；⑥final 修符；⑦接口的定义；",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L174",
+          "title": "综合应用：①对象的创建；②构造方法；③对象的使用；④this 的使用；⑤方法的重载；⑥构造方法的重载；⑦子类的创建；⑧子",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 6,
+      "index": "第6章",
+      "slug": "ch06",
+      "title": "第 6 章 Java 语言中的异常",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 6 章 Java 语言中的异常",
+          "points": [
+            {
+              "id": "04747-ch06-s1-p1",
+              "title": "①用户自定义异常",
+              "requirement": "识记",
+              "quote": "①用户自定义异常",
+              "locator": "L188"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言中的异常处理机制",
+          "locator": "L191"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L189",
+          "title": "简单应用：①常见异常；②常见异常的处理",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 7,
+      "index": "第7章",
+      "slug": "ch07",
+      "title": "第7章 Java 语言的高级特性（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 8,
+      "index": "第8章",
+      "slug": "ch08",
+      "title": "第8章 Java 的图形用户界面设计",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第8章 Java 的图形用户界面设计",
+          "points": [
+            {
+              "id": "04747-ch08-s1-p1",
+              "title": "①Java GUI 的组成",
+              "requirement": "识记",
+              "quote": "①Java GUI 的组成",
+              "locator": "L204"
+            },
+            {
+              "id": "04747-ch08-s1-p2",
+              "title": "①容器",
+              "requirement": "领会",
+              "quote": "①容器",
+              "locator": "L208"
+            },
+            {
+              "id": "04747-ch08-s1-p3",
+              "title": "②布局管理",
+              "requirement": "领会",
+              "quote": "②布局管理",
+              "locator": "L208"
+            },
+            {
+              "id": "04747-ch08-s1-p4",
+              "title": "③事件处理",
+              "requirement": "领会",
+              "quote": "③事件处理",
+              "locator": "L208"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言中容器、布局，一些常规组件的基本使用，以及 Java的委托事件处理机制",
+          "locator": "L212"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L209",
+          "title": "简单应用：①Swing 中布局管理的拓展",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L210",
+          "title": "综合应用：①常规组件；②常用布局管理器",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 9,
+      "index": "第9章",
+      "slug": "ch09",
+      "title": "第9章 Swing 组件",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第9章 Swing 组件",
+          "points": [
+            {
+              "id": "04747-ch09-s1-p1",
+              "title": "①辅助类",
+              "requirement": "领会",
+              "quote": "①辅助类",
+              "locator": "L225"
+            },
+            {
+              "id": "04747-ch09-s1-p2",
+              "title": "②菜单和菜单项",
+              "requirement": "领会",
+              "quote": "②菜单和菜单项",
+              "locator": "L225"
+            },
+            {
+              "id": "04747-ch09-s1-p3",
+              "title": "③对话框",
+              "requirement": "领会",
+              "quote": "③对话框",
+              "locator": "L225"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Java 语言中常规组件的综合使用",
+          "locator": "L229"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L226",
+          "title": "综合应用：①按钮、标签、列表、组合框、文本域和文本区等常规组件的声明和创建",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 10,
+      "index": "第10章",
+      "slug": "ch10",
+      "title": "第 10 章 Java Applet",
+      "sections": [
+        {
+          "index": "1",
+          "title": "第 10 章 Java Applet",
+          "points": [
+            {
+              "id": "04747-ch10-s1-p1",
+              "title": "①Applet 的基础知识",
+              "requirement": "识记",
+              "quote": "①Applet 的基础知识",
+              "locator": "L237"
+            },
+            {
+              "id": "04747-ch10-s1-p2",
+              "title": "①Applet 类的主要方法和 Applet 生命周期",
+              "requirement": "领会",
+              "quote": "①Applet 类的主要方法和 Applet 生命周期",
+              "locator": "L238"
+            },
+            {
+              "id": "04747-ch10-s1-p3",
+              "title": "②Applet 的运行机制",
+              "requirement": "领会",
+              "quote": "②Applet 的运行机制",
+              "locator": "L238"
+            }
+          ]
+        }
+      ],
+      "chapter_focus": [
+        {
+          "text": "本章重点是 Applet 类的主要方法和 Applet 的生命周期",
+          "locator": "L245"
+        }
+      ],
+      "unmodeled": [
+        {
+          "locator": "L239",
+          "title": "简单应用：①HTML 与 Applet 的配合使用",
+          "reason": "unnumbered_section"
+        },
+        {
+          "locator": "L243",
+          "title": "综合应用：①Applet 的应用",
+          "reason": "unnumbered_section"
+        }
+      ]
+    },
+    {
+      "ordinal": 11,
+      "index": "第11章",
+      "slug": "ch11",
+      "title": "第 11 章 Java 数据流（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 12,
+      "index": "第12章",
+      "slug": "ch12",
+      "title": "第 12 章 线程（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    },
+    {
+      "ordinal": 13,
+      "index": "第13章",
+      "slug": "ch13",
+      "title": "第 13 章 Java 的网络功能（本章内容不作考核要求）",
+      "sections": [],
+      "chapter_focus": [],
+      "unmodeled": []
+    }
+  ],
+  "exam": {
+    "question_types": [
+      "单项选择题",
+      "填空题",
+      "简答题",
+      "程序改错题",
+      "程序分析题",
+      "程序设计题"
+    ],
+    "question_types_provenance": {
+      "doc_id": "syllabus:04747",
+      "locator": "L326"
+    },
+    "duration_minutes": null,
+    "duration_status": "named_gap",
+    "sample_paper": null
+  },
+  "coverage": {
+    "official_point_count": 9,
+    "modeled_point_count": 9,
+    "ratio": 1.0,
+    "denominator_rule": "考纲「二、考核知识点与考核要求」中的章数（该考纲不分子节，章即考核单元）",
+    "manual_reference": null,
+    "diff_vs_manual": []
+  }
+}
